@@ -145,7 +145,7 @@ namespace Presentacion_UI
            
             if (result == DialogResult.OK)
             {
-                usuario = form_login.Usuario;
+                //usuario = form_login.Usuario;
                 hallazgoToolStripMenuItem.Enabled = true;
                 entregaToolStripMenuItem1.Enabled = true;
                 reporteToolStripMenuItem.Enabled = true;

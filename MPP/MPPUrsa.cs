@@ -39,7 +39,7 @@ namespace MPP
                     BEUnidad Bunidad = new BEUnidad();
                     Bunidad.Id = int.Parse(fila["Unidad.Id"].ToString());
                     Bunidad.Cod = fila["Cod"].ToString();
-                    Bunidad.NombreUnidad = fila["Unidad.Nombre"].ToString();
+                    Bunidad.Nombre = fila["Unidad.Nombre"].ToString();
 
                     pUrsa.Unidades.Add(Bunidad);
 
@@ -64,7 +64,7 @@ namespace MPP
                 {
 
                     BEUrsa Bursa = new BEUrsa(Convert.ToInt32(fila["Id"]));
-                    Bursa.NombreUrsa = fila["Nombre"].ToString();
+                    Bursa.Nombre = fila["Nombre"].ToString();
                     Bursa = ListarObjeto(Bursa);
                     
                     //Bursa.Unidades = new List<BEUnidad>();

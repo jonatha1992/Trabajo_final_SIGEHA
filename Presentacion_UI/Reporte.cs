@@ -76,7 +76,7 @@ namespace Presentacion_UI
                 {
                     if (hallazgo.listaElementos != null && hallazgo.Unidad.Id == item.Id)
                     {
-                        reporte.Cant_Elementos_Resguardo += hallazgo.listaElementos.FindAll(x => x.Estado.Estado == "Resguardo").Count;
+                        reporte.Cant_Elementos_Resguardo += hallazgo.listaElementos.FindAll(x => x.Estado.Nombre == "Resguardo").Count;
 
                     }
                 }
@@ -84,7 +84,7 @@ namespace Presentacion_UI
                 {
                     if (entrega.listaElementos != null && entrega.Unidad.Id == item.Id)
                     {
-                        reporte.Cant_Elementos_Entregado += entrega.listaElementos.FindAll(x => x.Estado.Estado == "Entregado").Count;
+                        reporte.Cant_Elementos_Entregado += entrega.listaElementos.FindAll(x => x.Estado.Nombre == "Entregado").Count;
                     }
                 }
                 listado.Add(reporte);
@@ -110,11 +110,11 @@ namespace Presentacion_UI
                     }
                     else
                     {
-                        if (item.EstadoPersona.Estado == "Descubridor" || item.EstadoPersona.Estado == "Propietario")
+                        if (item.EstadoPersona.Nombre == "Descubridor" || item.EstadoPersona.Nombre == "Propietario")
                         {
                             Desc_Propie = item;
                         }
-                        else if (item.EstadoPersona.Estado == "Testigo")
+                        else if (item.EstadoPersona.Nombre == "Testigo")
                         {
                             if (Testigo1 == null)
                             {
@@ -160,7 +160,7 @@ namespace Presentacion_UI
         void llenarParametrosHallazgo()
         {
             Parametros = new ReportParameterCollection(){ new ReportParameter("NroActa",hallazgo.NroActa),
-                                                                                    new ReportParameter("Unidad", hallazgo.Unidad.NombreUnidad),
+                                                                                    new ReportParameter("Unidad", hallazgo.Unidad.Nombre),
                                                                                     new ReportParameter("FechaHallazgo", hallazgo.FechaHallazgo.ToShortDateString()),
                                                                                     new ReportParameter("HoraHallazgo", hallazgo.FechaHallazgo.ToShortTimeString()),
                                                                                     new ReportParameter("LugarHallazgo",hallazgo.LugarHallazgo.ToUpper())
@@ -209,7 +209,7 @@ namespace Presentacion_UI
         void llenarParametrosEntrega()
         {
             Parametros = new ReportParameterCollection(){ new ReportParameter("NroActa",entrega.NroActa),
-                                                                                    new ReportParameter("Unidad",entrega.Unidad.NombreUnidad),
+                                                                                    new ReportParameter("Unidad",entrega.Unidad.Nombre),
                                                                                     new ReportParameter("Dia", entrega.Fecha_entrega.Day.ToString()),
                                                                                     new ReportParameter("Mes", entrega.Fecha_entrega.ToString("MMMM")),
                                                                                     new ReportParameter("Ano", entrega.Fecha_entrega.Year.ToString()),

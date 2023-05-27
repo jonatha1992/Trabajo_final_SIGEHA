@@ -36,7 +36,7 @@ namespace MPP
                 foreach (DataRow fila in Tabla.Rows)
                 {
                     estadoPersona.Id = int.Parse(fila["Id"].ToString());
-                    estadoPersona.Estado = fila["Estado"].ToString();
+                    estadoPersona.Nombre = fila["Estado"].ToString();
                 }
             }
             else
@@ -57,7 +57,7 @@ namespace MPP
                 {
                     BEEstado_Persona estadoPersona = new BEEstado_Persona();
                     estadoPersona.Id = int.Parse(fila["Id"].ToString());
-                    estadoPersona.Estado = fila["Estado"].ToString();
+                    estadoPersona.Nombre = fila["Estado"].ToString();
                     ListaEstado.Add(estadoPersona);
                 }
             }

@@ -46,12 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BEArticulo.cs" />
+    <Compile Include="BEDestino.cs" />
     <Compile Include="BEElemento.cs" />
     <Compile Include="BEEstado_Elemento.cs" />
     <Compile Include="BEEntrega.cs" />
     <Compile Include="BEHallazgo.cs" />
     <Compile Include="BEJerarquia.cs" />
     <Compile Include="BEPAdreHallazgo.cs" />
+    <Compile Include="BERol.cs" />
     <Compile Include="BEUrsa.cs" />
     <Compile Include="BEEstado_Persona.cs" />
     <Compile Include="BEInstructor.cs" />

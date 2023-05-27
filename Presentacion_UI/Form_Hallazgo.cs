@@ -29,7 +29,7 @@ namespace Presentacion_UI
             try
             {
                 listaCategorias = Form_Contenedor.Categorias;
-                ListabEEstadoElementos = Form_Contenedor.EstadosElementos.FindAll(x => x.Estado != "Entregado");
+                ListabEEstadoElementos = Form_Contenedor.EstadosElementos.FindAll(x => x.Nombre != "Entregado");
                 comboBoxCategoria.DataSource = Form_Contenedor.Categorias;
                 comboBoxEstado.DataSource = ListabEEstadoElementos;
                 //dateTimePickerFechaHallazgo.Value = DateTime.Now;
@@ -84,15 +84,15 @@ namespace Presentacion_UI
             if (Usuario.Rol == "REGION")
             {
                 bEUrsa = Form_Contenedor.Ursa;
-                comboBoxUrsa.Text = bEUrsa.NombreUrsa;
+                comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUnidad.DataSource = bEUrsa.Unidades;
             }
             else if (Usuario.Rol == "UNIDAD")
             {
                 bEUnidad = Form_Contenedor.Unidad;
                 bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
-                comboBoxUnidad.Text = bEUnidad.NombreUnidad;
-                comboBoxUrsa.Text = bEUrsa.NombreUrsa;
+                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUrsa.Text = bEUrsa.Nombre;
             }
             else
             {
@@ -152,9 +152,9 @@ namespace Presentacion_UI
             {
                 if (bEElemento != null)
                 {
-                    comboBoxCategoria.Text = bEElemento.Articulo.Categoria.Categoria;
+                    comboBoxCategoria.Text = bEElemento.Articulo.Categoria.Nombre;
                     comboBoxArticulo.Text = bEElemento.Articulo.NombreArticulo;
-                    comboBoxEstado.Text = bEElemento.Estado.Estado;
+                    comboBoxEstado.Text = bEElemento.Estado.Nombre;
                     //textBoxCantidad.Text = bEElemento.Cantidad.ToString();
                     NUPCantidad.Text = bEElemento.Cantidad.ToString();
                     textBoxDescripcion.Text = bEElemento.Descripcion;
@@ -300,7 +300,7 @@ namespace Presentacion_UI
         {
             if (SeleccionHallazgo)
             {
-                comboBoxUnidad.Text = bEHallazgo.Unidad.NombreUnidad;
+                comboBoxUnidad.Text = bEHallazgo.Unidad.Nombre;
                 comboBoxUnidad.Enabled = false;
                 comboBoxUrsa.Enabled = false;
             }
@@ -324,7 +324,7 @@ namespace Presentacion_UI
                 {
                     cumple = true;
                 }
-                if (bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Estado == "Testigo") && bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Estado == "Descubridor") && bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Estado == "Instructor"))
+                if (bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Descubridor") && bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
                 {
                     cumple = true;
                 }

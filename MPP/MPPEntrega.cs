@@ -182,7 +182,7 @@ namespace MPP
 
                             BEEstado_Persona estado = new BEEstado_Persona(Convert.ToInt32(y["Estado_Persona.Id"]), y["Estado"].ToString());
 
-                            if (estado.Estado == "Instructor")
+                            if (estado.Nombre == "Instructor")
                             {
                                 BEJerarquia bEJerarquia = new BEJerarquia(Convert.ToInt32(y["Id jerarquia"]), y["Jerarquia"].ToString(), y["Abreviatura"].ToString());
                                 persona = new BEInstructor(Convert.ToInt32(y["Persona.Id"]), y["Nombre completo"].ToString(), y["DNI"].ToString(), Convert.ToInt32(y["Legajo"]), bEJerarquia);
@@ -236,7 +236,7 @@ namespace MPP
 
                     BEEstado_Persona estado = new BEEstado_Persona(Convert.ToInt32(y["Estado_Persona.Id"]), y["Estado"].ToString());
 
-                    if (estado.Estado == "Instructor")
+                    if (estado.Nombre == "Instructor")
                     {
                         BEJerarquia bEJerarquia = new BEJerarquia(Convert.ToInt32(y["Id jerarquia"]), y["Jerarquia"].ToString(), y["Abreviatura"].ToString());
                         persona = new BEInstructor(Convert.ToInt32(y["Persona.Id"]), y["Nombre completo"].ToString(), y["DNI"].ToString(), Convert.ToInt32(y["Legajo"]), bEJerarquia);
@@ -332,9 +332,9 @@ namespace MPP
                     pEntrega.FechaActa = fila["Fecha acta"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(fila["Fecha acta"]);
 
                     pEntrega.Unidad = new BEUnidad(Convert.ToInt32(fila["Id unidad"]));
-                    pEntrega.Unidad.NombreUnidad = fila["Unidad.Nombre"].ToString();
+                    pEntrega.Unidad.Nombre = fila["Unidad.Nombre"].ToString();
                     pEntrega.Unidad.Ursa = new BEUrsa(Convert.ToInt32(fila["Id ursa"]));
-                    pEntrega.Unidad.Ursa.NombreUrsa = fila["Ursa.Nombre"].ToString();
+                    pEntrega.Unidad.Ursa.Nombre = fila["Ursa.Nombre"].ToString();
 
 
                     lista.Add(pEntrega);

@@ -12,14 +12,14 @@ namespace BE
         public BEEstado_Elemento(int id, string estado)
         {
             Id = id;
-            Estado = estado;
+            Nombre = estado;
         }
         public int Id { get; set; }
-        public string Estado { get; set; }
+        public string Nombre { get; set; }
 
         public override string ToString()
         {
-            return Estado;
+            return Nombre;
         }
     }
 }

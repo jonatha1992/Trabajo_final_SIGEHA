@@ -14,14 +14,14 @@ namespace Negocio
             mpPUsuario = new MPPUsuario();
         }
 
-        public List<BEUsuario> ListarTodo()
+        public List<BEInstructor> ListarTodo()
         {
             return mpPUsuario.ListarTodo();
         }
 
-        public BEUsuario ControlPasswword(string user, string pass)
+        public BEInstructor ControlPasswword(string legajo, string pass)
         {
-            var usuario = ListarTodo().Find(x => x.Id == user && x.contraseña == pass);
+            var usuario = ListarTodo().Find(x => x.Legajo == int.Parse(legajo) && x.Password == pass);
             if (usuario == null)
             {
                 return null;

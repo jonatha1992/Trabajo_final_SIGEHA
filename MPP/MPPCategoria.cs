@@ -35,7 +35,7 @@ namespace MPP
                 foreach (DataRow fila in Tabla.Rows)
                 {
                     bCategoria.Id = Convert.ToInt32(fila["Id"]);
-                    bCategoria.Categoria = fila["Categoria"].ToString();
+                    bCategoria.Nombre = fila["Categoria"].ToString();
                 }
             }
             else
@@ -55,7 +55,7 @@ namespace MPP
                 {
                     BECategoria BCategoria = new BECategoria();
                     BCategoria.Id = Convert.ToInt32(fila["Id"]);
-                    BCategoria.Categoria = fila["Categoria"].ToString();
+                    BCategoria.Nombre = fila["Categoria"].ToString();
 
                     BCategoria.Articulos = new List<BEArticulo>();
 

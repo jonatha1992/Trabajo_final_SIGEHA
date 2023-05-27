@@ -123,9 +123,9 @@ namespace MPP
                     bEHallazgo.FechaActa = fila["Fecha acta"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(fila["Fecha acta"]);
 
                     bEHallazgo.Unidad = new BEUnidad(Convert.ToInt32(fila["Id unidad"]));
-                    bEHallazgo.Unidad.NombreUnidad = fila["Unidad.Nombre"].ToString();
+                    bEHallazgo.Unidad.Nombre = fila["Unidad.Nombre"].ToString();
                     bEHallazgo.Unidad.Ursa = new BEUrsa(Convert.ToInt32(fila["Id ursa"]));
-                    bEHallazgo.Unidad.Ursa.NombreUrsa = fila["Ursa.Nombre"].ToString();
+                    bEHallazgo.Unidad.Ursa.Nombre = fila["Ursa.Nombre"].ToString();
 
                     list.Add(bEHallazgo);
                 }
@@ -272,7 +272,7 @@ namespace MPP
 
                             BEEstado_Persona estado = new BEEstado_Persona(Convert.ToInt32(y["Estado_Persona.Id"]), y["Estado"].ToString());
 
-                            if (estado.Estado == "Instructor")
+                            if (estado.Nombre == "Instructor")
                             {
                                 BEJerarquia bEJerarquia = new BEJerarquia(Convert.ToInt32(y["Id jerarquia"]), y["Jerarquia"].ToString(), y["Abreviatura"].ToString());
                                 persona = new BEInstructor(Convert.ToInt32(y["Persona.Id"]), y["Nombre completo"].ToString(), y["DNI"].ToString(), Convert.ToInt32(y["Legajo"]), bEJerarquia);
@@ -333,7 +333,7 @@ namespace MPP
 
                     BEEstado_Persona estado = new BEEstado_Persona(Convert.ToInt32(y["Estado_Persona.Id"]), y["Estado"].ToString());
 
-                    if (estado.Estado == "Instructor")
+                    if (estado.Nombre == "Instructor")
                     {
                         BEJerarquia bEJerarquia = new BEJerarquia(Convert.ToInt32(y["Id jerarquia"]), y["Jerarquia"].ToString(), y["Abreviatura"].ToString());
                         persona = new BEInstructor(Convert.ToInt32(y["Persona.Id"]), y["Nombre completo"].ToString(), y["DNI"].ToString(), Convert.ToInt32(y["Legajo"]), bEJerarquia);

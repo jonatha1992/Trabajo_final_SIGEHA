@@ -37,10 +37,10 @@ namespace BE
             {
                 Elemento elemento = new Elemento();
                 elemento.Id = item.Id;
-                elemento.Articulo = item.Articulo.Categoria.Categoria + "-" + item.Articulo.NombreArticulo;
+                elemento.Articulo = item.Articulo.Categoria.Nombre + "-" + item.Articulo.NombreArticulo;
                 elemento.Descripcion = item.Descripcion.ToLower();
                 elemento.Cantidad = item.Cantidad;
-                elemento.Estado = item.Estado.Estado;
+                elemento.Estado = item.Estado.Nombre;
                 lista.Add(elemento);
 
             }

@@ -79,11 +79,11 @@ namespace Presentacion_UI
 
             if (Hallazgo)
             {
-                comboBoxTipoPersona.DataSource = bLLEstado_Persona.ListarTodo().FindAll(x => x.Estado != "Propietario");
+                comboBoxTipoPersona.DataSource = bLLEstado_Persona.ListarTodo().FindAll(x => x.Nombre != "Propietario");
             }
             else
             {
-                comboBoxTipoPersona.DataSource = bLLEstado_Persona.ListarTodo().FindAll(x => x.Estado != "Descubridor");
+                comboBoxTipoPersona.DataSource = bLLEstado_Persona.ListarTodo().FindAll(x => x.Nombre != "Descubridor");
             }
         }
 
@@ -263,14 +263,14 @@ namespace Presentacion_UI
                     }
                     else
                     {
-                        if ((BePAdreHallazgo.listaPersonas.FindAll(x => x.EstadoPersona.Estado == "Testigo").Count == 2) && comboBoxTipoPersona.Text == "Testigo")
+                        if ((BePAdreHallazgo.listaPersonas.FindAll(x => x.EstadoPersona.Nombre == "Testigo").Count == 2) && comboBoxTipoPersona.Text == "Testigo")
                         {
                             MessageBox.Show($"Ya posee 2 Testigos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return false;
                         }
                         else
                         {
-                            if (comboBoxTipoPersona.Text != "Testigo" && BePAdreHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Estado == comboBoxTipoPersona.Text))
+                            if (comboBoxTipoPersona.Text != "Testigo" && BePAdreHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == comboBoxTipoPersona.Text))
                             {
                                 MessageBox.Show($"Ya posee {comboBoxTipoPersona.Text} ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return false;
@@ -477,7 +477,7 @@ namespace Presentacion_UI
             }
             else
             {
-                comboBoxTipoPersona.Text = persona.EstadoPersona.Estado;
+                comboBoxTipoPersona.Text = persona.EstadoPersona.Nombre;
                 CargarPersona();
             }
             Habilitar();

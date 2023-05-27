@@ -42,10 +42,10 @@ namespace MPP
 
                     Punidad.Id = int.Parse(fila["Unidad.Id"].ToString());
                     Punidad.Cod = fila["Cod"].ToString();
-                    Punidad.NombreUnidad = fila["Unidad.Nombre"].ToString();
+                    Punidad.Nombre = fila["Unidad.Nombre"].ToString();
 
                     BEUrsa ursa = new BEUrsa(Convert.ToInt32(fila["Ursa.Id"]));
-                    ursa.NombreUrsa = fila["Ursa.Nombre"].ToString();
+                    ursa.Nombre = fila["Ursa.Nombre"].ToString();
                     Punidad.Ursa = ursa;
                 }
             }
@@ -71,7 +71,7 @@ namespace MPP
 
                     Bunidad.Id = int.Parse(fila["Id"].ToString());
                     Bunidad.Cod = fila["Cod"].ToString();
-                    Bunidad.NombreUnidad = fila["Nombre"].ToString();
+                    Bunidad.Nombre = fila["Nombre"].ToString();
 
                     Bunidad.Ursa = new BEUrsa(Convert.ToInt32(fila["Id ursa"]));
                     ListaUnidad.Add(Bunidad);

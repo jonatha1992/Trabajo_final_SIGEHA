@@ -34,7 +34,7 @@ namespace Presentacion_UI
         }
 
         BLLUsuario bLLUsuario;
-        public BEUsuario Usuario;
+        public BEInstructor Usuario;
 
         public bool Verificar()
         {

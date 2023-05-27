@@ -65,15 +65,15 @@ namespace Presentacion_UI
             if (Usuario.Rol == "REGION")
             {
                 bEUrsa = Form_Contenedor.Ursa;
-                comboBoxUrsa.Text = bEUrsa.NombreUrsa;
+                comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUnidad.DataSource = bEUrsa.Unidades;
             }
             else if (Usuario.Rol == "UNIDAD")
             {
                 bEUnidad = Form_Contenedor.Unidad;
                 bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
-                comboBoxUnidad.Text = bEUnidad.NombreUnidad;
-                comboBoxUrsa.Text = bEUrsa.NombreUrsa;
+                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUrsa.Text = bEUrsa.Nombre;
             }
             else
             {
@@ -203,13 +203,13 @@ namespace Presentacion_UI
         {
             if (SeleccionEntrega)
             {
-                comboBoxUnidad.Text = bEEntrega.Unidad.NombreUnidad;
+                comboBoxUnidad.Text = bEEntrega.Unidad.Nombre;
                 comboBoxUnidad.Enabled = false;
                 comboBoxUrsa.Enabled = false;
 
                 if (ModoCreacion)
                 {
-                    comboBoxEstado.DataSource = Form_Contenedor.EstadosElementos.FindAll(x => x.Estado == "Entregado" || x.Estado == "Resguardo");
+                    comboBoxEstado.DataSource = Form_Contenedor.EstadosElementos.FindAll(x => x.Nombre == "Entregado" || x.Nombre == "Resguardo");
                     comboBoxEstado.Text = "Entregado";
                 }
 
@@ -239,7 +239,7 @@ namespace Presentacion_UI
                 {
                     cumple = true;
                 }
-                if (bEEntrega.listaPersonas.Exists(x => x.EstadoPersona.Estado == "Testigo") && bEEntrega.listaPersonas.Exists(x => x.EstadoPersona.Estado == "Descubridor") && bEEntrega.listaPersonas.Exists(x => x.EstadoPersona.Estado == "Instructor"))
+                if (bEEntrega.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEEntrega.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Descubridor") && bEEntrega.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
                 {
                     cumple = true;
                 }
@@ -406,7 +406,7 @@ namespace Presentacion_UI
             Elemento = new BEElemento(elementoBusqueda.Id);
             Elemento.Estado = new BEEstado_Elemento();
             Elemento.Descripcion = elementoBusqueda.Descripcion.ToUpper();
-            Elemento.Estado.Estado = elementoBusqueda.Estado;
+            Elemento.Estado.Nombre = elementoBusqueda.Estado;
             Elemento.Cantidad = Convert.ToDouble(elementoBusqueda.Cantidad);
             Elemento.Articulo = ListaArticulos.Find(x => x.NombreArticulo == elementoBusqueda.Articulo);
             return Elemento;
@@ -657,7 +657,7 @@ namespace Presentacion_UI
                                     {
                                         BEElemento eElemento = CovertirElemento((ElementoBusqueda)item.DataBoundItem);
 
-                                        if (eElemento.Estado.Estado == "Resguardo") // solo se eran las entregas de aquellos elementos que esten en resguardo
+                                        if (eElemento.Estado.Nombre == "Resguardo") // solo se eran las entregas de aquellos elementos que esten en resguardo
                                         {
                                             eElemento.Estado = (BEEstado_Elemento)comboBoxEstado.SelectedItem;
                                             bLLElemento.AgregarElementoEntrega(bEEntrega, eElemento);
@@ -678,7 +678,7 @@ namespace Presentacion_UI
                                         {
                                             BEElemento eElemento = CovertirElemento(aux);
 
-                                            if (eElemento.Estado.Estado == "Entregado") // si estaba entregado anteriormente lo volvemos a resguardo
+                                            if (eElemento.Estado.Nombre == "Entregado") // si estaba entregado anteriormente lo volvemos a resguardo
                                             {
                                                 eElemento.Estado = (BEEstado_Elemento)comboBoxEstado.SelectedItem;
                                                 bLLElemento.EliminarElementoEntrega(eElemento);
@@ -714,7 +714,7 @@ namespace Presentacion_UI
                                     {
                                         BEElemento eElemento = CovertirElemento((ElementoBusqueda)item.DataBoundItem);
 
-                                        if (eElemento.Estado.Estado != "Entregado") // SOLO SE HARAN LOS ELEMENTOS QUE NO FUERON ENTREGADOS
+                                        if (eElemento.Estado.Nombre != "Entregado") // SOLO SE HARAN LOS ELEMENTOS QUE NO FUERON ENTREGADOS
                                         {
                                             eElemento.Estado = (BEEstado_Elemento)comboBoxEstado.SelectedItem;
                                             bLLElemento.Actualizar(eElemento);
