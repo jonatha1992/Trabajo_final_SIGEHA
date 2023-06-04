@@ -110,13 +110,13 @@
             // articulosToolStripMenuItem
             // 
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.articulosToolStripMenuItem.Text = "Articulos";
             // 
             // unidadesToolStripMenuItem
             // 
             this.unidadesToolStripMenuItem.Name = "unidadesToolStripMenuItem";
-            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.unidadesToolStripMenuItem.Text = "Unidades";
             // 
             // backUpToolStripMenuItem
