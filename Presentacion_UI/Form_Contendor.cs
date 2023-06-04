@@ -24,7 +24,8 @@ namespace Presentacion_UI
 
         Form_Hallazgo form_Hallazgo;
         Form_Entrega form_Entrega;
-        BEUsuario usuario;
+        //BEUsuario usuario;
+        BEInstructor usuario;
 
         BLLCategoria bLLCategoria;
         BLLArticulo bLLArticulo;
@@ -72,8 +73,8 @@ namespace Presentacion_UI
 
             try
             {
-                form_Hallazgo = new Form_Hallazgo(usuario);
-                form_Hallazgo.ShowDialog();
+                //form_Hallazgo = new Form_Hallazgo(usuario);
+                //form_Hallazgo.ShowDialog();
 
             }
             catch (Exception ex)
@@ -88,8 +89,8 @@ namespace Presentacion_UI
 
             try
             {
-                form_Entrega = new Form_Entrega(usuario);
-                form_Entrega.ShowDialog();
+                //form_Entrega = new Form_Entrega(usuario);
+                //form_Entrega.ShowDialog();
 
             }
             catch (Exception ex)
@@ -103,13 +104,13 @@ namespace Presentacion_UI
 
             try
             {
-                Reporte reporte = new Reporte(usuario);
+                //Reporte reporte = new Reporte(usuario);
 
                 XLWorkbook wb = new XLWorkbook();
                 string esc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 SaveFileDialog file = new SaveFileDialog();
 
-                wb.AddWorksheet(reporte.reporte);
+                //wb.AddWorksheet(reporte.reporte);
 
                 file.Filter = "Excel Files | *.xlsx";
                 file.FileName = $"Reporte {DateTime.Today.Day + DateTime.Today.ToString("MMMM").ToUpper() + DateTime.Now.Year.ToString()}";
@@ -142,18 +143,18 @@ namespace Presentacion_UI
 
             Form_Login form_login = new Form_Login();
             var result = form_login.ShowDialog();
-           
+            //var result = form_login.Show();
+
             if (result == DialogResult.OK)
             {
-                //usuario = form_login.Usuario;
+                usuario = form_login.Usuario;
                 hallazgoToolStripMenuItem.Enabled = true;
                 entregaToolStripMenuItem1.Enabled = true;
                 reporteToolStripMenuItem.Enabled = true;
-                labelUsuario.Text = "Usuario: " + usuario.Id;
+                labelUsuario.Text = "Usuario: " + usuario.NombreCompleto;
                
-                Ursa = bLLUrsa.ListarObjeto(usuario);
-                Unidad = bLLUnidad.ListarObjeto(usuario);
-
+                //Ursa = bLLUrsa.ListarObjeto(usuario);
+                //Unidad = bLLUnidad.ListarObjeto(usuario);
 
             }
             else
