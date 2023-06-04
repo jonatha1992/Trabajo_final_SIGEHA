@@ -4,6 +4,8 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace MPP
 {
@@ -47,53 +49,48 @@ namespace MPP
 
         public List<BEPersona> ListarTodo()
         {
-            DataTable Tabla;
+            string Nodo = "Personas";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Persona");
 
-            string Consulta = "SELECT * From Persona";
-            Tabla = conexion.Leer(Consulta);
+            List<BEPersona> Lista = new List<BEPersona>();
 
-            List<BEPersona> listaPersonas = new List<BEPersona>();
-
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEPersona persona = new BEPersona();
-                    persona.Id = Convert.ToInt32(fila["Id"]);
-                    persona.DNI = fila["DNI"].ToString();
-                    persona.NombreCompleto = fila["Nombre completo"].ToString();
-                    persona.Domicilio = fila["Domicilio"].ToString();
-                    persona.Ocupacion = fila["Ocupacion"].ToString();
-                    persona.Telefono = fila["Telefono"].ToString();
-                    listaPersonas.Add(persona);
-                }
+                Lista = (from x in Consulta
+                         select new BEPersona
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             NombreCompleto = Convert.ToString(x.Element("Nombrecompleto")?.Value),
+                             DNI = Convert.ToString(x.Element("DNI")?.Value),
+                             Telefono = Convert.ToString(x.Element("Telefono")?.Value),
+                             Domicilio = Convert.ToString(x.Element("Domicilio")?.Value),
+                             Ocupacion = Convert.ToString(x.Element("Ocupacion")?.Value),
+                         }).ToList();
             }
             else
-            { listaPersonas = null; }
-            return listaPersonas;
+            { Lista = null; }
+            return Lista;
         }
 
         public BEPersona ListarObjeto(BEPersona pPersona)
         {
-            DataTable Tabla;
-
-            string Consulta = $"SELECT * From Persona where (id = {pPersona.Id})";
-            Tabla = conexion.Leer(Consulta);
+            string Nodo = "Personas";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Persona");
 
 
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-
-                    pPersona.Id = Convert.ToInt32(fila["Id"]);
-                    pPersona.DNI = fila["DNI"].ToString();
-                    pPersona.NombreCompleto = fila["Nombre completo"].ToString();
-                    pPersona.Domicilio = fila["Domicilio"].ToString();
-                    pPersona.Ocupacion = fila["Ocupacion"].ToString();
-                    pPersona.Telefono = fila["Telefono"].ToString();
-
-                }
+               pPersona = (from x in Consulta
+                         where Convert.ToInt32(x.Element("Id")?.Value) == pPersona.Id
+                         select new BEPersona
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             NombreCompleto = Convert.ToString(x.Element("Nombrecompleto")?.Value),
+                             DNI = Convert.ToString(x.Element("DNI")?.Value),
+                             Telefono = Convert.ToString(x.Element("Telefono")?.Value),
+                             Domicilio = Convert.ToString(x.Element("Domicilio")?.Value),
+                             Ocupacion = Convert.ToString(x.Element("Ocupacion")?.Value),
+                         }).FirstOrDefault();
             }
             else
             { pPersona = null; }

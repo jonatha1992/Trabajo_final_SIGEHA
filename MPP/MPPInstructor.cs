@@ -4,6 +4,8 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace MPP
 {
@@ -58,76 +60,91 @@ namespace MPP
         {
             try
             {
-
-                DataTable Tabla;
-                MPPJerarquia mPPJerarquia = new MPPJerarquia();
-                var jerarquias = mPPJerarquia.ListarTodo();
-                string Consulta = "SELECT * From Persona";
-                Tabla = conexion.Leer(Consulta);
+                string Nodo = "Instructores";
+                var Consulta = conexion.Leer2(Nodo).Descendants("Instructor");
 
                 List<BEInstructor> lista = new List<BEInstructor>();
 
-                if (Tabla.Rows.Count > 0)
+                if (Consulta.Count() > 0)
                 {
-                    foreach (DataRow fila in Tabla.Rows)
-                    {
-                        if (fila["Legajo"].ToString() != "")
-                        {
-                            BEInstructor instructor = new BEInstructor();
-                            instructor.Id = Convert.ToInt32(fila["Id"]);
-                            instructor.DNI = fila["DNI"].ToString();
-                            instructor.NombreCompleto = fila["Nombre completo"].ToString();
-                            instructor.Domicilio = fila["Domicilio"].ToString();
-                            instructor.Ocupacion = fila["Ocupacion"].ToString();
-                            instructor.Telefono = fila["Telefono"].ToString();
-                            instructor.Legajo = Convert.ToInt32(fila["Legajo"]);
-                            instructor.Mail = fila["Mail"].ToString();
-                            //instructor.Jerarquia =  mPPJerarquia.ListarObjeto( new BEJerarquia(Convert.ToInt32(fila["Id jerarquia"])));
-                            instructor.Jerarquia = jerarquias.Find(x => x.Id == Convert.ToInt32(fila["Id jerarquia"]));
+                    var lista2 = from x in Consulta
+                                     //where x.Element("Id_rol")?.Value.ToString() != ""
+                                 select new BEInstructor
+                                 {
+                                     Id = Convert.ToInt32(Convert.ToString(x.Element("Id_persona")?.Value)),
+                                     Legajo = Convert.ToInt32(Convert.ToString(x.Element("Legajo")?.Value)),
+                                     Destino = new BEDestino(Convert.ToInt32(Convert.ToString(x.Element("Id_destino")?.Value))),
+                                     Password = Convert.ToString(x.Element("Password")?.Value),
+                                     Rol = new BERol(Convert.ToInt32(Convert.ToString(x.Element("Id_rol")?.Value))),
+                                     Mail = Convert.ToString(x.Element("Mail")?.Value),
+                                     Jerarquia = new BEJerarquia(Convert.ToInt32(Convert.ToString(x.Element("Id_jerarquia")?.Value))),
+                                 };
 
-                            lista.Add(instructor);
-                        }
-                    }
+                    lista = lista2.ToList<BEInstructor>();
                 }
                 else
-                { lista = null; }
+                {
+                    lista = null;
+                }
                 return lista;
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
+
+        public List<BEInstructor> ListarUsuarios()
+        {
+            try
+            {
+                string Nodo = "Instructores";
+                var Consulta = conexion.Leer2(Nodo).Descendants("Instructor");
+
+                List<BEInstructor> lista = new List<BEInstructor>();
+
+                if (Consulta.Count() > 0)
+                {
+                    lista = (from x in Consulta
+                             where x.Element("Id_rol")?.Value.ToString() != ""
+                             select new BEInstructor
+                             {
+                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id_persona")?.Value)),
+                                 Legajo = Convert.ToInt32(Convert.ToString(x.Element("Legajo")?.Value)),
+                                 Destino = new BEDestino(Convert.ToInt32(Convert.ToString(x.Element("Id_destino")?.Value))),
+                                 Password = Convert.ToString(x.Element("Password")?.Value),
+                                 Rol = new BERol(Convert.ToInt32(Convert.ToString(x.Element("Id_rol")?.Value))),
+                                 Mail = Convert.ToString(x.Element("Mail")?.Value),
+                                 Jerarquia = new BEJerarquia(Convert.ToInt32(Convert.ToString(x.Element("Id_jerarquia")?.Value))),
+                             }).ToList();
+                }
+                else
+                {
+                    lista = null;
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
 
         public BEInstructor ListarObjeto(BEInstructor instructor)
         {
-            DataTable Tabla;
+            MPPJerarquia mPPJerarquia = new MPPJerarquia();
+            //MPPRol mPPRol= new MPPRol();
+            MPPPersona mPPPersona = new MPPPersona();
 
-            string Consulta = $"SELECT * From Persona where ( Id = {instructor.Id} )";
-            Tabla = conexion.Leer(Consulta);
+            var persona = mPPPersona.ListarObjeto(instructor);
+            instructor.NombreCompleto = persona.NombreCompleto;
+            instructor.DNI = persona.DNI;
+            instructor.Telefono = persona.Telefono;
+            instructor.Domicilio = persona.Domicilio;
+            instructor.Ocupacion = persona.Ocupacion;
+            instructor.Jerarquia = mPPJerarquia.ListarObjeto(instructor.Jerarquia);
 
-            if (Tabla.Rows.Count > 0)
-            {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    instructor.Id = Convert.ToInt32(fila["Id"]);
-                    instructor.DNI = fila["DNI"].ToString();
-                    instructor.NombreCompleto = fila["Nombre completo"].ToString();
-                    instructor.Domicilio = fila["Domicilio"].ToString();
-                    instructor.Ocupacion = fila["Ocupacion"].ToString();
-                    instructor.Telefono = fila["Telefono"].ToString();
-                    instructor.Legajo = Convert.ToInt32(fila["Legajo"]);
-                    instructor.Mail = fila["Mail"].ToString();
-                    instructor.Jerarquia = new BEJerarquia(Convert.ToInt32(fila["Id jerarquia"]));
-
-                    var table = conexion.Leer($"SELECT * From Jerarquia where ( Id = {instructor.Jerarquia.Id} )");
-                    instructor.Jerarquia.Jerarquia = table.Rows[0]["Jerarquia"].ToString();
-                    instructor.Jerarquia.Abreviatura = table.Rows[0]["Abreviatura"].ToString();
-                }
-            }
-            else
-            { instructor = null; }
             return instructor;
         }
     }

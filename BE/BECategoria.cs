@@ -19,14 +19,10 @@ namespace BE
         public string Nombre { get; set; }
         public List<BEArticulo> Articulos { get; set; }
 
-
         public override string ToString()
         {
             return Nombre;
         }
-
-
-
 
     }
 }

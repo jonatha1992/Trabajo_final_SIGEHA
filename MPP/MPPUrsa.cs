@@ -4,6 +4,8 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace MPP
 {
@@ -24,72 +26,69 @@ namespace MPP
         {
             throw new NotImplementedException();
         }
+         
 
-        public BEUrsa ListarObjeto(BEUrsa pUrsa)
+        public BEUrsa ListarObjeto(BEUrsa pursa)
         {
-            DataTable Tabla;
-            Tabla = conexion.Leer($" SELECT Ursa.*, Unidad.* FROM Unidad INNER JOIN Ursa ON Unidad.[Id ursa] = Ursa.Id where (Ursa.Id = {pUrsa.Id} )");
+            string Nodo = "Ursas";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Ursa");
 
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                pUrsa.Unidades = new List<BEUnidad>();
-               
-                foreach (DataRow fila in Tabla.Rows)
+                pursa = (from x in Consulta
+                              where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                              select new BEUrsa
+                              {
+                                  Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                  Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                              }).FirstOrDefault();
+
+                Nodo = "Unidades";
+                Consulta = conexion.Leer2(Nodo).Descendants("Unidad");
+                if (Consulta.Count() > 0)
                 {
-                    BEUnidad Bunidad = new BEUnidad();
-                    Bunidad.Id = int.Parse(fila["Unidad.Id"].ToString());
-                    Bunidad.Cod = fila["Cod"].ToString();
-                    Bunidad.Nombre = fila["Unidad.Nombre"].ToString();
 
-                    pUrsa.Unidades.Add(Bunidad);
+                    pursa.Unidades= new List<BEUnidad>();
 
+                    pursa.Unidades = (from x in Consulta
+                                            where Convert.ToInt32(x.Element("Id_categoria")?.Value) == pursa.Id
+                                            select new BEUnidad
+                                            {
+                                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                                Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                                                Cod = Convert.ToString(x.Element("Cod")?.Value),
+                                                Ursa= new BEUrsa(pursa.Id)
+                                            }).ToList<BEUnidad>();
                 }
             }
             else
-            { pUrsa = null; }
-            return pUrsa;
+            { pursa = null; }
+            return pursa;
         }
-
         public List<BEUrsa> ListarTodo()
         {
-            DataTable Tabla;
-            Tabla = conexion.Leer("SELECT * FROM Ursa ");
-            List<BEUrsa> listaRegionales = new List<BEUrsa>();
+            string Nodo = "Ursas";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Ursa");
 
-            //MPPUnidad mPPUnidad = new MPPUnidad();
 
-            if (Tabla.Rows.Count > 0)
+            List<BEUrsa> lista = new List<BEUrsa>();
+
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-
-                    BEUrsa Bursa = new BEUrsa(Convert.ToInt32(fila["Id"]));
-                    Bursa.Nombre = fila["Nombre"].ToString();
-                    Bursa = ListarObjeto(Bursa);
-                    
-                    //Bursa.Unidades = new List<BEUnidad>();
-
-
-
-                    //var Tabla2 = conexion.Leer($"SELECT * FROM Unidad where [Id ursa]= {Bursa.Id} ");
-
-
-                    //foreach (DataRow fila2 in Tabla2.Rows)
-                    //{
-                    //    BEUnidad Bunidad = new BEUnidad();
-
-                    //    Bunidad.Id = int.Parse(fila2["Id"].ToString());
-                    //    Bunidad.Cod = fila2["Cod"].ToString();
-                    //    Bunidad.NombreUnidad = fila2["Nombre"].ToString();
-
-                    //    Bursa.Unidades.Add(Bunidad);
-                    //}
-                    listaRegionales.Add(Bursa);
-                }
+                 lista = (from x in Consulta
+                             where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                             select new BEUrsa
+                             {
+                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                 Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                             }).ToList<BEUrsa>(); ;
             }
             else
-            { listaRegionales = null; }
-            return listaRegionales;
+            {
+                lista = null;
+            }
+
+            return lista;
         }
     }
 }

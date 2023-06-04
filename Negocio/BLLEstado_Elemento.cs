@@ -8,10 +8,10 @@ namespace Negocio
 {
     public class BLLEstado_Elemento : IGestor<BEEstado_Elemento>
     {
-        MPPEstado_Articulo mPPEstado_Articulo;
+        MPPEstado_Elemento mPPEstado_Elemento;
         public BLLEstado_Elemento()
         {
-            mPPEstado_Articulo = new MPPEstado_Articulo();
+            mPPEstado_Elemento = new MPPEstado_Elemento();
         }
         public bool Actualizar(BEEstado_Elemento Object)
         {
@@ -30,12 +30,12 @@ namespace Negocio
 
         public BEEstado_Elemento ListarObjeto(BEEstado_Elemento Object)
         {
-            return mPPEstado_Articulo.ListarObjeto(Object);
+            return mPPEstado_Elemento.ListarObjeto(Object);
         }
 
         public List<BEEstado_Elemento> ListarTodo()
         {
-            return mPPEstado_Articulo.ListarTodo();
+            return mPPEstado_Elemento.ListarTodo();
         }
     }
 }

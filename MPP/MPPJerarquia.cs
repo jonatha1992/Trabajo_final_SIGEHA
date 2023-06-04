@@ -4,6 +4,8 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace MPP
 {
@@ -27,16 +29,19 @@ namespace MPP
 
         public BEJerarquia ListarObjeto(BEJerarquia jerarquia)
         {
-            DataTable Tabla;
-            Tabla = conexion.Leer($"SELECT * FROM Jerarquia WHERE ( Id = {jerarquia.Id}) ");
+            string Nodo = "Jerarquias";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Jerarquia");
 
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    jerarquia.Jerarquia = fila["Jerarquia"].ToString();
-                    jerarquia.Abreviatura = fila["Abreviatura"].ToString();
-                }
+                jerarquia = (from x in Consulta
+                            where Convert.ToInt32(x.Element("Id")?.Value) == jerarquia.Id
+                            select new BEJerarquia
+                            {
+                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                Jerarquia = Convert.ToString(x.Element("Jerarquia")?.Value),
+                                Abreviatura = Convert.ToString(x.Element("Abreviatura")?.Value),
+                            }).FirstOrDefault();
             }
             else
             { jerarquia = null; }
@@ -45,24 +50,25 @@ namespace MPP
 
         public List<BEJerarquia> ListarTodo()
         {
-            DataTable Tabla;
-            Tabla = conexion.Leer("Select * From Jerarquia");
-            List<BEJerarquia> ListasJerarquia = new List<BEJerarquia>();
+            string Nodo = "Jerarquias";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Jerarquia");
 
-            if (Tabla.Rows.Count > 0)
+            List<BEJerarquia> jerarquias = new List<BEJerarquia>();
+
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEJerarquia jerarquia = new BEJerarquia();
-                    jerarquia.Id = Convert.ToInt32(fila["Id"]);
-                    jerarquia.Jerarquia = fila["Jerarquia"].ToString();
-                    jerarquia.Abreviatura = fila["Abreviatura"].ToString();
-                    ListasJerarquia.Add(jerarquia);
-                }
+                jerarquias = (from x in Consulta
+                             where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                             select new BEJerarquia
+                             {
+                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                 Jerarquia = Convert.ToString(x.Element("Jerarquia")?.Value),
+                                 Abreviatura = Convert.ToString(x.Element("Abreviatura")?.Value),
+                             }).ToList<BEJerarquia>();
             }
             else
-            { ListasJerarquia = null; }
-            return ListasJerarquia;
+            { jerarquias = null; }
+            return jerarquias;
         }
     }
 }

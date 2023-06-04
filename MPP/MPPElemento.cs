@@ -119,7 +119,7 @@ namespace MPP
 
             DataTable Tabla = conexion.Leer(consulta);
             MPPArticulo mPPArticulo = new MPPArticulo();
-            MPPEstado_Articulo mPPEstado_Articulo = new MPPEstado_Articulo();
+            MPPEstado_Elemento mPPEstado_Articulo = new MPPEstado_Elemento();
 
 
             if (Tabla.Rows.Count > 0)

@@ -29,7 +29,6 @@ namespace MPP
 
         public List<BEInstructor> ListarTodo()
         {
-            //DataTable Tabla;
             string Nodo = "Instructores";
             var Consulta = conexion.Leer2(Nodo).Descendants("Instructor");
 

@@ -33,7 +33,8 @@ namespace Presentacion_UI
             Application.Exit();
         }
 
-        BLLUsuario bLLUsuario;
+        //BLLUsuario bLLUsuario;
+        BLLInstructor bLLInstructor;
         public BEInstructor Usuario;
 
         public bool Verificar()
@@ -44,7 +45,7 @@ namespace Presentacion_UI
                 {
                     if (Validar.SoloContraseña(textBoxPassword.Text))
                     {
-                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text, textBoxPassword.Text);
+                        Usuario = bLLInstructor.ControlPasswword(textBoxUsuario.Text, textBoxPassword.Text);
                         if (Usuario != null)
                         {
                             return true;
@@ -83,7 +84,10 @@ namespace Presentacion_UI
     
         private void Form_Login_Load(object sender, EventArgs e)
         {
-            bLLUsuario = new BLLUsuario();
+            //bLLUsuario = new BLLUsuario();
+
+            bLLInstructor = new BLLInstructor();
+
         }
 
         private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)

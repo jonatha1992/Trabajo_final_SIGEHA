@@ -37,12 +37,10 @@
             this.entidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labelUsuario = new System.Windows.Forms.Label();
             this.backUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -51,6 +49,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hallazgoToolStripMenuItem,
             this.entregaToolStripMenuItem1,
@@ -61,7 +60,7 @@
             this.usuariosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1233, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1644, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -69,7 +68,7 @@
             // 
             this.hallazgoToolStripMenuItem.Enabled = false;
             this.hallazgoToolStripMenuItem.Name = "hallazgoToolStripMenuItem";
-            this.hallazgoToolStripMenuItem.Size = new System.Drawing.Size(81, 22);
+            this.hallazgoToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
             this.hallazgoToolStripMenuItem.Text = "Hallazgo";
             this.hallazgoToolStripMenuItem.Click += new System.EventHandler(this.hallazgoToolStripMenuItem_Click);
             // 
@@ -77,7 +76,7 @@
             // 
             this.entregaToolStripMenuItem1.Enabled = false;
             this.entregaToolStripMenuItem1.Name = "entregaToolStripMenuItem1";
-            this.entregaToolStripMenuItem1.Size = new System.Drawing.Size(76, 22);
+            this.entregaToolStripMenuItem1.Size = new System.Drawing.Size(97, 26);
             this.entregaToolStripMenuItem1.Text = "Entrega";
             this.entregaToolStripMenuItem1.Click += new System.EventHandler(this.entregaToolStripMenuItem1_Click);
             // 
@@ -85,7 +84,7 @@
             // 
             this.reporteToolStripMenuItem.Enabled = false;
             this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
-            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.reporteToolStripMenuItem.Text = "Reporte Excel";
             this.reporteToolStripMenuItem.Click += new System.EventHandler(this.reporteToolStripMenuItem_Click);
             // 
@@ -93,7 +92,7 @@
             // 
             this.loginToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(77, 26);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
@@ -105,20 +104,32 @@
             this.unidadesToolStripMenuItem});
             this.entidadesToolStripMenuItem.Enabled = false;
             this.entidadesToolStripMenuItem.Name = "entidadesToolStripMenuItem";
-            this.entidadesToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
+            this.entidadesToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
             this.entidadesToolStripMenuItem.Text = "Entidades";
             // 
             // articulosToolStripMenuItem
             // 
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.articulosToolStripMenuItem.Text = "Articulos";
             // 
             // unidadesToolStripMenuItem
             // 
             this.unidadesToolStripMenuItem.Name = "unidadesToolStripMenuItem";
-            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.unidadesToolStripMenuItem.Text = "Unidades";
+            // 
+            // backUpToolStripMenuItem
+            // 
+            this.backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
+            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(101, 26);
+            this.backUpToolStripMenuItem.Text = "Back Up";
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(107, 26);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // pictureBox1
             // 
@@ -126,74 +137,32 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::Presentacion_UI.Properties.Resources.Logo_PSA;
-            this.pictureBox1.Location = new System.Drawing.Point(427, 84);
+            this.pictureBox1.Location = new System.Drawing.Point(569, 103);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(374, 333);
+            this.pictureBox1.Size = new System.Drawing.Size(499, 412);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 35.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(314, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(700, 54);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Sistema Gestión de Hallazgos";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.labelUsuario);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1233, 499);
+            this.panel1.Size = new System.Drawing.Size(1644, 616);
             this.panel1.TabIndex = 4;
-            // 
-            // labelUsuario
-            // 
-            this.labelUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelUsuario.AutoSize = true;
-            this.labelUsuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelUsuario.Location = new System.Drawing.Point(11, 16);
-            this.labelUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(0, 16);
-            this.labelUsuario.TabIndex = 5;
-            this.labelUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // backUpToolStripMenuItem
-            // 
-            this.backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
-            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
-            this.backUpToolStripMenuItem.Text = "Back Up";
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(83, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // Form_Contenedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1233, 525);
+            this.ClientSize = new System.Drawing.Size(1644, 646);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
@@ -202,6 +171,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form_Contenedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -212,7 +182,6 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,17 +192,15 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hallazgoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
-        private System.Windows.Forms.Label labelUsuario;
         private System.Windows.Forms.ToolStripMenuItem entidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem articulosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backUpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
     }
 
     

@@ -12,18 +12,18 @@ namespace BE
         public BEArticulo(int id, string nombre, BECategoria eCategoria)
         {
             Id = id;
-            NombreArticulo = nombre;
+            Nombre = nombre;
             Categoria = eCategoria;
         }
         public int Id { get; set; }
 
-        public string NombreArticulo { get; set; }
+        public string Nombre { get; set; }
 
         public BECategoria Categoria { get; set; }
 
         public override string ToString()
         {
-            return NombreArticulo;
+            return Nombre;
         }
 
     }

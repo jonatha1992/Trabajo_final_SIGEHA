@@ -4,6 +4,8 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace MPP
 {
@@ -25,45 +27,53 @@ namespace MPP
             throw new NotImplementedException();
         }
 
-        public BEEstado_Persona ListarObjeto(BEEstado_Persona estadoPersona)
+
+        public BEEstado_Persona ListarObjeto(BEEstado_Persona pEstadoPersona)
         {
-            DataTable Tabla;
+            string Nodo = "Estado_Personas";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Estado_Persona");
 
-            Tabla = conexion.Leer($"Select * From Estado_Persona where (Id = {estadoPersona.Id})");
-
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    estadoPersona.Id = int.Parse(fila["Id"].ToString());
-                    estadoPersona.Nombre = fila["Estado"].ToString();
-                }
+                pEstadoPersona = (from x in Consulta
+                                  where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                                  select new BEEstado_Persona
+                                  {
+                                      Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                      Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                                  }).FirstOrDefault();
+
             }
             else
-            { estadoPersona = null; }
-            return estadoPersona;
+            { pEstadoPersona = null; }
+            return pEstadoPersona;
         }
-
         public List<BEEstado_Persona> ListarTodo()
         {
-            DataTable Tabla;
+            string Nodo = "Estado_Personas";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Estado_Persona");
 
-            Tabla = conexion.Leer("Select * From Estado_Persona");
-            List<BEEstado_Persona> ListaEstado = new List<BEEstado_Persona>();
 
-            if (Tabla.Rows.Count > 0)
+            List<BEEstado_Persona> lista = new List<BEEstado_Persona>();
+
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEEstado_Persona estadoPersona = new BEEstado_Persona();
-                    estadoPersona.Id = int.Parse(fila["Id"].ToString());
-                    estadoPersona.Nombre = fila["Estado"].ToString();
-                    ListaEstado.Add(estadoPersona);
-                }
+                lista = (from x in Consulta
+                         where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                         select new BEEstado_Persona
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                         }).ToList<BEEstado_Persona>(); ;
             }
             else
-            { ListaEstado = null; }
-            return ListaEstado;
+            {
+                lista = null;
+            }
+
+            return lista;
         }
+
+
     }
 }

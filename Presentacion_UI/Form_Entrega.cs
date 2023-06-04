@@ -408,7 +408,7 @@ namespace Presentacion_UI
             Elemento.Descripcion = elementoBusqueda.Descripcion.ToUpper();
             Elemento.Estado.Nombre = elementoBusqueda.Estado;
             Elemento.Cantidad = Convert.ToDouble(elementoBusqueda.Cantidad);
-            Elemento.Articulo = ListaArticulos.Find(x => x.NombreArticulo == elementoBusqueda.Articulo);
+            Elemento.Articulo = ListaArticulos.Find(x => x.Nombre == elementoBusqueda.Articulo);
             return Elemento;
         }
 

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Linq;
+
 
 namespace Presentacion_UI
 {
@@ -54,7 +56,8 @@ namespace Presentacion_UI
                 }
 
                 Categorias = bLLCategoria.ListarTodo();
-                Articulos = bLLArticulo.ListarTodo();
+                Articulos =  bLLArticulo.ListarTodo();
+                //Articulos = Categorias.SelectMany(categoria => categoria.Articulos).ToList(); 
                 EstadosElementos = bLLEstado_Elemento.ListarTodo();
                 Ursas = bLLUrsa.ListarTodo();
                 Unidades = bLLUnidad.ListarTodo();
@@ -143,7 +146,6 @@ namespace Presentacion_UI
 
             Form_Login form_login = new Form_Login();
             var result = form_login.ShowDialog();
-            //var result = form_login.Show();
 
             if (result == DialogResult.OK)
             {
@@ -153,9 +155,7 @@ namespace Presentacion_UI
                 reporteToolStripMenuItem.Enabled = true;
                 labelUsuario.Text = "Usuario: " + usuario.NombreCompleto;
                
-                //Ursa = bLLUrsa.ListarObjeto(usuario);
-                //Unidad = bLLUnidad.ListarObjeto(usuario);
-
+             
             }
             else
             {

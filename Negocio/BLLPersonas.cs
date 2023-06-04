@@ -23,7 +23,7 @@ namespace Negocio
                 {
                     if (personas.Exists(x => x.DNI == ePersona.DNI))
                     {
-                        ePersona.Id = ListarTodo().Find(x => x.DNI == ePersona.DNI).Id; // OBTENER EL ID
+                        ePersona.Id = ListarTodo().Find(x => x.DNI == ePersona.DNI).Id; 
                     }
                     else
                     {

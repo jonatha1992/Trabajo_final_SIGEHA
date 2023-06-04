@@ -4,6 +4,9 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Xml.Linq;
+using System.Linq;
+
 
 namespace MPP
 {
@@ -29,57 +32,48 @@ namespace MPP
 
         public BEUnidad ListarObjeto(BEUnidad Punidad)
         {
+            string Nodo = "Unidades";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Unidad");
 
-            DataTable Tabla;
-
-            Tabla = conexion.Leer($" Select Ursa.* ,Unidad.* From Unidad INNER JOIN Ursa ON Unidad.[Id ursa] = Ursa.Id where (Unidad.Id = {Punidad.Id} )");
-            MPPUrsa mPPUrsa = new MPPUrsa();
-
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-
-                    Punidad.Id = int.Parse(fila["Unidad.Id"].ToString());
-                    Punidad.Cod = fila["Cod"].ToString();
-                    Punidad.Nombre = fila["Unidad.Nombre"].ToString();
-
-                    BEUrsa ursa = new BEUrsa(Convert.ToInt32(fila["Ursa.Id"]));
-                    ursa.Nombre = fila["Ursa.Nombre"].ToString();
-                    Punidad.Ursa = ursa;
-                }
+                Punidad = (from x in Consulta
+                         where Convert.ToInt32(x.Element("Id")?.Value) ==  Punidad.Id
+                         select new BEUnidad
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                         }).FirstOrDefault();
+                
             }
             else
             { Punidad = null; }
             return Punidad;
+
         }
 
         public List<BEUnidad> ListarTodo()
         {
             //Declaro el objeto datatable para guardar los datos y luego pasarlos a lista
-            DataTable Tabla;
-            MPPUrsa mPPUrsa = new MPPUrsa();
-            var listaUrsas = mPPUrsa.ListarTodo();
-            Tabla = conexion.Leer("Select * From Unidad");
-            List<BEUnidad> ListaUnidad = new List<BEUnidad>();
+            string Nodo = "Unidades";
+            var Consulta = conexion.Leer2(Nodo).Descendants("Unidad");
 
-            if (Tabla.Rows.Count > 0)
+
+            List<BEUnidad> lista = new List<BEUnidad>();    
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEUnidad Bunidad = new BEUnidad();
+                lista = (from x in Consulta
+                         select new BEUnidad
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                             Ursa = new BEUrsa(Convert.ToInt32(Convert.ToString(x.Element("Idursa")?.Value)))
+                           }).ToList<BEUnidad>();
 
-                    Bunidad.Id = int.Parse(fila["Id"].ToString());
-                    Bunidad.Cod = fila["Cod"].ToString();
-                    Bunidad.Nombre = fila["Nombre"].ToString();
-
-                    Bunidad.Ursa = new BEUrsa(Convert.ToInt32(fila["Id ursa"]));
-                    ListaUnidad.Add(Bunidad);
-                }
             }
             else
-            { ListaUnidad = null; }
-            return ListaUnidad;
+            { lista = null; }
+            return lista;
         }
     }
 }

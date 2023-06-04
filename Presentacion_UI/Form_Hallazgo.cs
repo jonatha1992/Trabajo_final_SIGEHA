@@ -153,7 +153,7 @@ namespace Presentacion_UI
                 if (bEElemento != null)
                 {
                     comboBoxCategoria.Text = bEElemento.Articulo.Categoria.Nombre;
-                    comboBoxArticulo.Text = bEElemento.Articulo.NombreArticulo;
+                    comboBoxArticulo.Text = bEElemento.Articulo.Nombre;
                     comboBoxEstado.Text = bEElemento.Estado.Nombre;
                     //textBoxCantidad.Text = bEElemento.Cantidad.ToString();
                     NUPCantidad.Text = bEElemento.Cantidad.ToString();
