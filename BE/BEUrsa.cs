@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace BE
 {
-    public class BEUrsa :BEDestino, IEntidad
+    public class BEUrsa : IEntidad
     {
         public BEUrsa() { }
         public BEUrsa(int id)
         {
             Id = id;
         }
-        //public int Id { get; set; }
-        //public string Nombre { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
 
         public List<BEUnidad> Unidades { get; set; }
         

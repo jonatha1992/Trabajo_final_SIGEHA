@@ -54,6 +54,66 @@ namespace DAL
            
         }
 
+
+        public bool Escribir(string consulta, List<XElement> hijos)
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XElement elementoPadre = xmlDoc.Element(consulta);
+
+                if (elementoPadre == null)
+                {
+                    elementoPadre = new XElement(consulta);
+                    xmlDoc.Add(elementoPadre);
+                }
+
+                foreach (XElement elementoHijo in hijos)
+                {
+                    elementoPadre.Add(elementoHijo);
+                }
+
+
+                xmlDoc.Save(XmlFilePath);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
+
+        public bool Escribir(string consulta)
+        {
+            try
+            {
+                //    XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                //    XElement elementoPadre = xmlDoc.Element(consulta);
+
+                //    if (elementoPadre == null)
+                //    {
+                //        elementoPadre = new XElement(consulta);
+                //        xmlDoc.Add(elementoPadre);
+                //    }
+
+                //    foreach (XElement elementoHijo in hijos)
+                //    {
+                //        elementoPadre.Add(elementoHijo);
+                //    }
+
+
+                //    xmlDoc.Save(XmlFilePath);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
         public DataTable Leer(string consulta)
         {
             try
@@ -82,48 +142,6 @@ namespace DAL
             }
 
         }
-
-        public bool Escribir(string consulta)
-        {
-            try
-            {
-                XmlDocument xmlDoc = new XmlDocument();
-                if (File.Exists(XmlFilePath))
-                {
-                    xmlDoc.Load(XmlFilePath);
-                }
-                else
-                {
-                    XmlDeclaration xmlDeclaration = xmlDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
-                    xmlDoc.AppendChild(xmlDeclaration);
-
-                    // Agrega la estructura inicial del archivo XML si este no existe.
-                    // Puedes personalizar esta estructura según tus necesidades.
-                    XmlElement root = xmlDoc.CreateElement("root");
-                    xmlDoc.AppendChild(root);
-                }
-
-                // Realiza el procesamiento de la consulta para agregar o modificar datos en el documento XML.
-                // Aquí deberás implementar tu lógica personalizada para trabajar con el XML.
-
-                // Ejemplo de cómo agregar datos al XML:
-                XmlElement element = xmlDoc.CreateElement("element");
-                // Agrega los nodos y atributos necesarios al elemento 'element'
-                // element.AppendChild(...);
-                xmlDoc.DocumentElement?.AppendChild(element);
-
-                // Guarda los cambios en el archivo XML
-                xmlDoc.Save(XmlFilePath);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"{ex.Message}");
-            }
-        }
-
-
 
         //static OleDbCommand cmd;
 
