@@ -36,7 +36,7 @@ namespace MPP
         }
 
 
- 
+
 
         public bool Agregar_Elemento_Entrega(BEEntrega entrega, BEElemento elemento)
         {
@@ -162,7 +162,7 @@ namespace MPP
         }
         public BEElemento ListarObjeto(BEElemento bElemento)
         {
-         
+
             MPPArticulo mPPArticulo = new MPPArticulo();
             MPPEstado_Elemento mPPEstado_Articulo = new MPPEstado_Elemento();
 
@@ -173,7 +173,7 @@ namespace MPP
                 bElemento.Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value));
                 bElemento.Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value);
                 bElemento.Descripcion = Convert.ToString(x.Element("Descripcion")?.Value);
-                bElemento.Articulo = mPPArticulo.ListarObjeto(new BEArticulo( Convert.ToInt32(x.Element("IdArticulo")?.Value)));
+                bElemento.Articulo = mPPArticulo.ListarObjeto(new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)));
                 bElemento.Estado = mPPEstado_Articulo.ListarObjeto(new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstadoElemento")?.Value)));
             }
             else
@@ -231,39 +231,39 @@ namespace MPP
         }
 
 
-        public List<ElementoBusqueda> BusquedaElementosHallazgo(string nroActa, string lugar)
+        public List<ElementoBusqueda> BusquedaElementosHallazgo(string nroActa)
         {
             List<ElementoBusqueda> lista = new List<ElementoBusqueda>();
+            MPPArticulo mPPArticulo = new MPPArticulo();
+            MPPCategoria mPPCategoria = new MPPCategoria();
+            MPPElemento mPPElementos = new MPPElemento();
+            MPPEstado_Elemento mPPEstado_Elemento = new MPPEstado_Elemento();
+            MPPHallazgo mPPHallazgo = new MPPHallazgo();
+            MPPEntrega mPPEntrega = new MPPEntrega();
 
-            DataTable Tabla;
+            var Categorias = mPPCategoria.ListarTodo();
+            var Estado_Elementos = mPPEstado_Elemento.ListarTodo();
+            var Articulos = mPPArticulo.ListarTodo();
+            var Entregas = mPPEntrega.ListarTodo();
+            var Hallazgo = mPPHallazgo.ListarTodo().Find(x => x.NroActa == nroActa );
 
 
-            string Consulta2 = $"SELECT Elemento.Id, Elemento.Descripcion, Elemento.Cantidad, " +
-                               $"Estado_Elemento.Estado, Hallazgo.[Nro acta], Hallazgo.[Lugar hallazgo], " +
-                               $"Articulo.Articulo, Entrega.[Nro acta], FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') AS [Fecha hallazgo] " +
-                               $"FROM Entrega RIGHT JOIN (Estado_Elemento INNER JOIN (Hallazgo INNER JOIN (Articulo INNER JOIN Elemento " +
-                               $"ON Articulo.Id = Elemento.[Id articulo]) " +
-                               $"ON Hallazgo.Id = Elemento.[Id hallazgo]) " +
-                               $"ON Estado_Elemento.Id = Elemento.[Id estado_elemento]) " +
-                               $"ON Entrega.Id = Elemento.[Id entrega]" +
-                               $" WHERE ( Hallazgo.[Nro acta] = '{nroActa}' );";
 
-            Tabla = conexion.Leer(Consulta2);
 
-            if (Tabla.Rows.Count > 0)
+            if (Hallazgo != null)
             {
-                foreach (DataRow fila in Tabla.Rows)
+                foreach (BEElemento elemento in Hallazgo.listaElementos)
                 {
                     ElementoBusqueda bElemento = new ElementoBusqueda();
-                    bElemento.Id = Convert.ToInt32(fila["Id"]);
-                    bElemento.Cantidad = fila["Cantidad"].ToString();
-                    bElemento.Descripcion = fila["Descripcion"].ToString();
-                    bElemento.Articulo = fila["Articulo"].ToString();
-                    bElemento.Estado = fila["Estado"].ToString();
-                    bElemento.Hallazgo = fila["Hallazgo.Nro acta"].ToString();
-                    bElemento.Lugar = fila["Lugar hallazgo"].ToString();
-                    bElemento.Entrega = fila["Entrega.Nro acta"].ToString();
-                    bElemento.Fecha_hallazgo = fila["Fecha hallazgo"].ToString();
+                    bElemento.Id = elemento.Id;
+                    bElemento.Cantidad = elemento.Cantidad.ToString();
+                    bElemento.Descripcion = elemento.Descripcion;
+                    bElemento.Articulo = Articulos.Find(x=>x.Id == elemento.Articulo.Id).Nombre;
+                    bElemento.Estado = Estado_Elementos.Find(x => x.Id == elemento.Estado.Id).Nombre;
+                    bElemento.Hallazgo = Hallazgo.NroActa;
+                    bElemento.Lugar = Hallazgo.LugarHallazgo;
+                    //bElemento.Entrega = fila["Entrega.Nro acta"].ToString();
+                    bElemento.Fecha_hallazgo = Hallazgo.FechaHallazgo.ToString();
                     bElemento.Entrega = ObtenerNroEntrega(new BEElemento(bElemento.Id));
 
                     lista.Add(bElemento);
@@ -271,7 +271,6 @@ namespace MPP
             }
 
             return lista;
-
         }
     }
 }

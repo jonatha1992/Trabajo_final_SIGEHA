@@ -158,7 +158,7 @@ namespace DAL
 
                 if (elementocontenedor == "") // si es una tabla normal
                 {
-                     elementoAEliminar = elementoPadre.Elements().FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
+                    elementoAEliminar = elementoPadre.Elements().FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
                 }
                 else //si es una tabla de muchos a muchos
                 {
@@ -205,7 +205,37 @@ namespace DAL
                 throw new Exception($"{ex.Message}");
             }
         }
-      
+
+
+        public bool Eliminar(string NodoPadre, Func<XElement, bool> criterioEliminacion)
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
+
+                if (elementoPadre == null)
+                {
+                    throw new Exception($"No se encontró el nodo: {NodoPadre}");
+                }
+
+                XElement elementoAEliminar = elementoPadre.Elements().FirstOrDefault(criterioEliminacion);
+
+                if (elementoAEliminar == null)
+                {
+                    throw new Exception($"No se encontró el elemento con el criterio especificado en el nodo: {NodoPadre}");
+                }
+
+                elementoAEliminar.Remove();
+                xmlDoc.Save(XmlFilePath);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
 
     }
 }

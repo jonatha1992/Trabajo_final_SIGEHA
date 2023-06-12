@@ -59,20 +59,23 @@ namespace MPP
 
             if (pEntrega.listaPersonas != null)
             {
-                conexion.Eliminar("Entrega_Persona", pEntrega.Id.ToString(), "IdEntrega");
+                MPPPersona mPPPersona = new MPPPersona();
+                foreach (BEPersona item in pEntrega.listaPersonas)
+                {
+                    mPPPersona.EliminarPersonaEntrega(pEntrega, item);
+                }
+            }
+
+            if (pEntrega.listaElementos != null)
+            {
+                MPPElemento mPPElemento = new MPPElemento();
+                foreach (var item in pEntrega.listaElementos)
+                {
+                    mPPElemento.Eliminar_Elemento_Entrega(item);
+                }
             }
 
             return conexion.Eliminar(NodoPadre, pEntrega.Id.ToString());
-
-            //Todo: colocar el elemennto que no tiene en entrega es deci
-            //MPPElemento mPPElemento = null;
-            //if (pEntrega.listaElementos != null)
-            //{
-            //    foreach (var item in pEntrega.listaElementos)
-            //    {
-            //        mPPElemento.Eliminar_Elemento_Entrega(item);
-            //    }
-            //}
 
         }
 
@@ -192,103 +195,8 @@ namespace MPP
             }
 
             return list;
-            //string consulta = string.Empty;
-
-
-
-            //List<BEEntrega> lista = new List<BEEntrega>();
-
-            //var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Enntrega");
-
-            //DataTable dt;
-            //dt = conexion.Leer(consulta);
-            //if (dt.Rows.Count > 0)
-            //{
-            //    foreach (DataRow fila in dt.Rows)
-            //    {
-            //        BEEntrega pEntrega = new BEEntrega();
-            //        pEntrega.Id = int.Parse(fila["Id"].ToString());
-            //        pEntrega.NroActa = fila["Nro acta"].ToString();
-            //        pEntrega.Fecha_entrega = Convert.ToDateTime(fila["Fecha entrega"]);
-            //        pEntrega.Anio = int.Parse(fila["anio"].ToString());
-            //        pEntrega.FechaActa = fila["Fecha acta"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(fila["Fecha acta"]);
-
-            //        pEntrega.Unidad = new BEUnidad(Convert.ToInt32(fila["Id unidad"]));
-            //        pEntrega.Unidad.Nombre = fila["Unidad.Nombre"].ToString();
-            //        pEntrega.Unidad.Ursa = new BEUrsa(Convert.ToInt32(fila["Id ursa"]));
-            //        pEntrega.Unidad.Ursa.Nombre = fila["Ursa.Nombre"].ToString();
-
-
-            //        lista.Add(pEntrega);
-            //    }
-            //}
-            //else
-            //{ lista = null; }
-
-            //return lista;
 
         }
 
-        //public List<BEEntrega> ListarTodo(BEUnidad unidad, int Anio)
-        //{
-        //    List<BEEntrega> list = new List<BEEntrega>();
-
-
-        //    string consulta = string.Empty;
-        //    consulta = $" SELECT * FROM Entrega where ([Id unidad] = {unidad.Id} AND Anio = {Anio}) " +
-        //               $" ORDER BY [Nro acta] DESC ";
-
-        //    DataTable dt;
-        //    dt = conexion.Leer(consulta);
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow fila in dt.Rows)
-        //        {
-        //            BEEntrega Entrega = new BEEntrega();
-        //            Entrega.Id = Convert.ToInt32(fila["Id"]);
-        //            Entrega.NroActa = fila["Nro acta"].ToString();
-        //            Entrega.Fecha_entrega = Convert.ToDateTime(fila["Fecha entrega"]);
-        //            Entrega.Anio = Convert.ToInt32(fila["Anio"]);
-        //            Entrega.FechaActa = fila["Fecha acta"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(fila["Fecha acta"]);
-
-        //            Entrega.Unidad = unidad;
-
-        //            list.Add(Entrega);
-        //        }
-        //    }
-        //    return list;
-        //}
-
-        //public List<BEEntrega> ListarTodo(BEUnidad unidad, DateTime fecha)
-        //{
-        //    List<BEEntrega> list = new List<BEEntrega>();
-
-        //    int Anio = fecha.Year;
-        //    int Mes = fecha.Month;
-
-        //    string consulta = string.Empty;
-        //    consulta = $" SELECT * FROM Entrega where ([Id unidad] = {unidad.Id} AND Anio = {Anio} AND Month([Fecha entrega]) ={Mes} ) " +
-        //               $" ORDER BY [Nro acta] DESC ";
-
-        //    DataTable dt;
-        //    dt = conexion.Leer(consulta);
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow fila in dt.Rows)
-        //        {
-        //            BEEntrega Entrega = new BEEntrega();
-        //            Entrega.Id = Convert.ToInt32(fila["Id"]);
-        //            Entrega.NroActa = fila["Nro acta"].ToString();
-        //            Entrega.Fecha_entrega = Convert.ToDateTime(fila["Fecha entrega"]);
-        //            Entrega.Anio = Convert.ToInt32(fila["Anio"]);
-        //            Entrega.FechaActa = fila["Fecha acta"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(fila["Fecha acta"]);
-
-        //            Entrega.Unidad = unidad;
-
-        //            list.Add(Entrega);
-        //        }
-        //    }
-        //    return list;
-        //}
     }
 }

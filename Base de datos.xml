@@ -706,7 +706,7 @@
 		<Elemento>
 			<Id>1</Id>
 			<IdArticulo>41</IdArticulo>
-			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdEstadoElemento>5</IdEstadoElemento>
 			<IdHallazgo>1</IdHallazgo>
 			<Descripcion>NEGRO MARCA CVNTG CHAPELARIA VINTAGE</Descripcion>
 			<Cantidad>1</Cantidad>
@@ -714,7 +714,7 @@
 		<Elemento>
 			<Id>2</Id>
 			<IdArticulo>63</IdArticulo>
-			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdEstadoElemento>5</IdEstadoElemento>
 			<IdHallazgo>1</IdHallazgo>
 			<Descripcion>RECTANGULARES COLOR NEGRO </Descripcion>
 			<Cantidad>1</Cantidad>
@@ -722,7 +722,7 @@
 		<Elemento>
 			<Id>3</Id>
 			<IdArticulo>31</IdArticulo>
-			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdEstadoElemento>5</IdEstadoElemento>
 			<IdHallazgo>2</IdHallazgo>
 			<Descripcion>COLOR VERDE MARCA ZUNE DENIM</Descripcion>
 			<Cantidad>1</Cantidad>
@@ -730,7 +730,7 @@
 		<Elemento>
 			<Id>4</Id>
 			<IdArticulo>32</IdArticulo>
-			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdEstadoElemento>5</IdEstadoElemento>
 			<IdHallazgo>2</IdHallazgo>
 			<Descripcion>DE TELA COLOR GRIS CON PASADOR</Descripcion>
 			<Cantidad>1</Cantidad>
@@ -738,7 +738,7 @@
 		<Elemento>
 			<Id>5</Id>
 			<IdArticulo>30</IdArticulo>
-			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdEstadoElemento>5</IdEstadoElemento>
 			<IdHallazgo>3</IdHallazgo>
 			<Descripcion>CULLO DE VIAJE COLO ROSA --CUELLO GRIS-- - AR 1303</Descripcion>
 			<Cantidad>3</Cantidad>
@@ -746,7 +746,7 @@
 		<Elemento>
 			<Id>6</Id>
 			<IdArticulo>1</IdArticulo>
-			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdEstadoElemento>5</IdEstadoElemento>
 			<IdHallazgo>3</IdHallazgo>
 			<Descripcion>AURICULAES DE COLOR BLANCO--- AR1303</Descripcion>
 			<Cantidad>1</Cantidad>
@@ -754,7 +754,7 @@
 		<Elemento>
 			<Id>7</Id>
 			<IdArticulo>5</IdArticulo>
-			<IdEstado_elemento>3</IdEstado_elemento>
+			<IdEstadoElemento>3</IdEstadoElemento>
 			<IdEntrega>2</IdEntrega>
 			<IdHallazgo>3</IdHallazgo>
 			<Descripcion>TSBLET SAMSUNG PANTALLA ROTA CON FUNDA CELESTE--AR1020</Descripcion>

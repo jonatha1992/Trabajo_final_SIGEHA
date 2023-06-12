@@ -12,39 +12,42 @@ namespace MPP
     public class MPPPersona : IGestor<BEPersona>
     {
         Conexion conexion = new Conexion();
+        string NodoPadre = "Personas";
+        string NodoContenedor = "Persona";
         public BEPersona Agregar(BEPersona bEPersona)
         {
-            string consulta = "INSERT INTO Persona " +
-                        " ([Nombre completo], Ocupacion, Telefono, DNI, Domicilio ) " +
-                        $" VALUES('{bEPersona.NombreCompleto.Trim()}'" +
-                        $",'{bEPersona.Ocupacion.Trim()}'" +
-                        $",'{bEPersona.Telefono.Trim()}'" +
-                        $",'{bEPersona.DNI.Trim()}'" +
-                        $",'{bEPersona.Domicilio.Trim()}')";
+            var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
 
-            conexion.Escribir(consulta);
-            DataTable Tabla = conexion.Leer($"Select Id From Persona WHERE ( DNI = '{bEPersona.DNI}' )");
-            bEPersona.Id = Convert.ToInt32(Tabla.Rows[0]["Id"]);
+            XElement Persona = new XElement("Persona",
+          new XElement("Id", NuevoID),
+          new XElement("Domcicilio", bEPersona.Domicilio),
+          new XElement("Nombrecompleto", bEPersona.NombreCompleto),
+          new XElement("Ocupacion", bEPersona.Ocupacion),
+          new XElement("Telefono", bEPersona.Telefono)
+          );
+
+            bEPersona.Id = NuevoID;
+
             return bEPersona;
         }
 
-        public bool Actualizar(BEPersona bEPersona)
+        public bool Actualizar(BEPersona pPersona)
         {
-            string consulta = "UPDATE Persona " +
-                        $"SET Domicilio = '{bEPersona.Domicilio.Trim()}' " +
-                        $", [Nombre completo] = '{bEPersona.NombreCompleto.Trim()}'" +
-                        $", Ocupacion =  '{bEPersona.Ocupacion.Trim()}' " +
-                        $", Telefono = '{bEPersona.Telefono.Trim()}' " +
-                        $", DNI = '{bEPersona.DNI.Trim()}' " +
-                        $" WHERE ( Id =  {bEPersona.Id} )";
 
-            return conexion.Escribir(consulta);
+            XElement bEPersona = new XElement("Persona",
+                     new XElement("Id", pPersona.Id),
+                     new XElement("Domcicilio", pPersona.Domicilio),
+                     new XElement("Nombrecompleto", pPersona.NombreCompleto),
+                     new XElement("Ocupacion", pPersona.Ocupacion),
+                     new XElement("Telefono", pPersona.Telefono)
+                     );
+
+            return conexion.Actualizar(NodoPadre, pPersona.Id.ToString(), bEPersona);
         }
 
         public bool Eliminar(BEPersona pPersona)
         {
-            string consulta = $" DELETE FROM Persona WHERE (Id = {pPersona.Id} )";
-            return conexion.Escribir(consulta);
+            return conexion.Eliminar(NodoPadre, pPersona.Id.ToString());
         }
 
         public List<BEPersona> ListarTodo()
@@ -80,17 +83,17 @@ namespace MPP
 
             if (Consulta.Count() > 0)
             {
-               pPersona = (from x in Consulta
-                         where Convert.ToInt32(x.Element("Id")?.Value) == pPersona.Id
-                         select new BEPersona
-                         {
-                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                             NombreCompleto = Convert.ToString(x.Element("Nombrecompleto")?.Value),
-                             DNI = Convert.ToString(x.Element("DNI")?.Value),
-                             Telefono = Convert.ToString(x.Element("Telefono")?.Value),
-                             Domicilio = Convert.ToString(x.Element("Domicilio")?.Value),
-                             Ocupacion = Convert.ToString(x.Element("Ocupacion")?.Value),
-                         }).FirstOrDefault();
+                pPersona = (from x in Consulta
+                            where Convert.ToInt32(x.Element("Id")?.Value) == pPersona.Id
+                            select new BEPersona
+                            {
+                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                NombreCompleto = Convert.ToString(x.Element("Nombrecompleto")?.Value),
+                                DNI = Convert.ToString(x.Element("DNI")?.Value),
+                                Telefono = Convert.ToString(x.Element("Telefono")?.Value),
+                                Domicilio = Convert.ToString(x.Element("Domicilio")?.Value),
+                                Ocupacion = Convert.ToString(x.Element("Ocupacion")?.Value),
+                            }).FirstOrDefault();
             }
             else
             { pPersona = null; }
@@ -98,115 +101,38 @@ namespace MPP
         }
 
 
-        public List<BEPersona> ListarPersonasHallazgo(BEHallazgo hallazgo)
-        {
-            DataTable Tabla;
-            string consulta = $"Select * From Hallazgo_Persona where( [Id hallazgo] = {hallazgo.Id})";
-
-            Tabla = conexion.Leer(consulta);
-
-            List<BEPersona> ListaPersonas = new List<BEPersona>();
-            MPPPersona mPPPersona = new MPPPersona();
-            MPPInstructor mPPInstructor = new MPPInstructor();
-            MPPEstado_Persona mPPEstado_Persona = new MPPEstado_Persona();
-
-            if (Tabla.Rows.Count > 0)
-            {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEPersona persona = new BEPersona(Convert.ToInt32(fila["Id persona"]));
-                    mPPPersona.ListarObjeto(persona);
-
-                    BEEstado_Persona estado = new BEEstado_Persona(Convert.ToInt32(fila["Id estado"]));
-                    mPPEstado_Persona.ListarObjeto(estado);
-                    persona.EstadoPersona = estado;
-
-                    ListaPersonas.Add(persona);
-                }
-            }
-            else
-            {
-                ListaPersonas = null;
-            }
-            return ListaPersonas;
-        }
-
-
-        public List<BEPersona> ListarPersonaEntrega(BEEntrega entrega)
-        {
-            DataTable Tabla;
-            string consulta = $"Select * From Entrega_Persona where( [Id entrega] = {entrega.Id})";
-
-            List<BEPersona> ListaPersonas = new List<BEPersona>();
-            MPPPersona mPPPersona = new MPPPersona();
-            MPPInstructor mPPInstructor = new MPPInstructor();
-            MPPEstado_Persona mPPEstado_Persona = new MPPEstado_Persona();
-
-            Tabla = conexion.Leer(consulta);
-
-
-            if (Tabla.Rows.Count > 0)
-            {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEPersona persona = new BEPersona(Convert.ToInt32(fila["Id persona"]));
-                    mPPPersona.ListarObjeto(persona);
-
-                    BEEstado_Persona estado = new BEEstado_Persona(Convert.ToInt32(fila["Id estado"]));
-                    mPPEstado_Persona.ListarObjeto(estado);
-                    persona.EstadoPersona = estado;
-
-                    ListaPersonas.Add(persona);
-                }
-            }
-            else
-            {
-                ListaPersonas = null;
-            }
-            return ListaPersonas;
-
-        }
-
         public bool AgregarPersonaHallazgo(BEHallazgo hallazgo, BEPersona ePersona)
         {
-            string consulta = "INSERT INTO Hallazgo_Persona ([Id Hallazgo], [Id persona], [Id estado]) " +
-                              $"VALUES( {hallazgo.Id} , {ePersona.Id}, {ePersona.EstadoPersona.Id})";
 
-            return conexion.Escribir(consulta);
+
+            XElement personaElement = new XElement("Hallazgo_Persona",
+                    new XElement("IdHallazgo", hallazgo.Id),
+                    new XElement("IdPersona", ePersona.Id),
+                    new XElement("IdEstado", ePersona.EstadoPersona.Id));
+
+            return conexion.Agregar("Hallazgo_Personas", personaElement);
         }
 
         public bool AgregarPersonaEntrega(BEEntrega entrega, BEPersona ePersona)
         {
 
-            string consulta = " INSERT INTO Entrega_Persona ([Id entrega], [Id persona], [id estado]) " +
-                             $" VALUES( {entrega.Id},{ePersona.Id} , {ePersona.EstadoPersona.Id} )";
+            XElement personaElement = new XElement("Entrega_Persona",
+                  new XElement("IdEntrega", entrega.Id),
+                  new XElement("IdPersona", ePersona.Id),
+                  new XElement("IdEstado", ePersona.EstadoPersona.Id));
 
-            conexion.Escribir(consulta);
-            return true;
-
+            return conexion.Agregar("Entrega_Personas", personaElement);
         }
 
 
         public bool EliminarPersonaHallazgo(BEHallazgo hallazgo, BEPersona persona)
         {
-            string consulta = "";
-
-            consulta = "DELETE FROM Hallazgo_Persona " +
-                       $"WHERE ([Id hallazgo] = {hallazgo.Id}) " +
-                       $"AND ([Id persona] = {persona.Id} )";
-
-            return conexion.Escribir(consulta);
+            return conexion.Eliminar("Hallazgo_Personas", x => x.Element("IdHallazgo").Value == hallazgo.Id.ToString() && x.Element("IdPersona").Value == persona.Id.ToString());
         }
 
         public bool EliminarPersonaEntrega(BEEntrega entrega, BEPersona persona)
         {
-            string consulta = "";
-
-            consulta = "DELETE FROM Entrega_Persona " +
-                       $"WHERE ([Id entrega] = {entrega.Id} ) " +
-                       $"AND ( [Id persona] = {persona.Id} )";
-
-            return conexion.Escribir(consulta);
+            return conexion.Eliminar("Entrega_Personas", x => x.Element("IdEntrega").Value == entrega.Id.ToString() && x.Element("IdPersona").Value == persona.Id.ToString());
         }
 
     }

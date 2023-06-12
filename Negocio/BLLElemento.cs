@@ -77,7 +77,7 @@ namespace Negocio
         public List<ElementoBusqueda> BusquedaElementosHallazgo(string NroActa, string Lugar)
         {
 
-            return mPPElemento.BusquedaElementosHallazgo(NroActa, Lugar);
+            return mPPElemento.BusquedaElementosHallazgo(NroActa);
         }
 
     }
