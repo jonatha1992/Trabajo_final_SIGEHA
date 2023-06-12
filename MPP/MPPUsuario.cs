@@ -30,7 +30,7 @@ namespace MPP
         public List<BEInstructor> ListarTodo()
         {
             string Nodo = "Instructores";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Instructor");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Instructor");
 
             List<BEInstructor> lista = new List<BEInstructor>();
 
@@ -42,7 +42,7 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id_persona")?.Value)),
                              Legajo = Convert.ToInt32(Convert.ToString(x.Element("Legajo")?.Value)),
-                             Destino = new BEDestino(Convert.ToInt32(Convert.ToString(x.Element("Id_destino")?.Value))),
+                             //Destino = new BEDestino(Convert.ToInt32(Convert.ToString(x.Element("Id_destino")?.Value))),
                              Password = Convert.ToString(x.Element("Password")?.Value),
                              Rol = new BERol(Convert.ToInt32(Convert.ToString(x.Element("Id_rol")?.Value))),
                              Mail = Convert.ToString(x.Element("Mail")?.Value),

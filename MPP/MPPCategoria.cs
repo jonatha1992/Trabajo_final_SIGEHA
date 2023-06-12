@@ -12,25 +12,39 @@ namespace MPP
     public class MPPCategoria : IGestor<BECategoria>
     {
         Conexion conexion = new Conexion();
+        string Nodo = "Categorias";
         public bool Actualizar(BECategoria Object)
         {
-            throw new NotImplementedException();
+            XElement elementoCategoria = new XElement("Categoria",
+              new XElement("Id", Object.Id),
+              new XElement("Nombre", Object.Nombre));
+
+            return conexion.Actualizar(Nodo, Object.Id.ToString(), elementoCategoria);
         }
 
         public BECategoria Agregar(BECategoria Object)
         {
-            throw new NotImplementedException();
+            var NuevoID = conexion.ObtenerUltimoID(Nodo);
+            XElement elementoCategoria = new XElement("Categoria",
+                new XElement("Id", NuevoID),
+                new XElement("Nombre", Object.Nombre));
+
+            conexion.Agregar(Nodo, elementoCategoria);
+
+            Object.Id = NuevoID;
+
+            return Object;
         }
 
         public bool Eliminar(BECategoria Object)
         {
-            throw new NotImplementedException();
+            return conexion.Eliminar(Nodo, Object.Id.ToString());
         }
 
         public BECategoria ListarObjeto(BECategoria bCategoria)
         {
-            string Nodo = "Categorias";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Categoria");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Categoria");
+            MPPArticulo mPPArticulo = new MPPArticulo();
 
             if (Consulta.Count() > 0)
             {
@@ -42,22 +56,13 @@ namespace MPP
                                   Nombre = Convert.ToString(x.Element("Nombre")?.Value),
                               }).FirstOrDefault();
 
-                Nodo = "Articulos";
-                Consulta = conexion.Leer2(Nodo).Descendants("Articulo");
-                if (Consulta.Count() > 0)
-                {
 
-                    bCategoria.Articulos = new List<BEArticulo>();
+                    var articulos = mPPArticulo.ListarTodo();
 
-                    bCategoria.Articulos = (from x in Consulta
-                                            where Convert.ToInt32(x.Element("Id_categoria")?.Value) == bCategoria.Id
-                                            select new BEArticulo
-                                            {
-                                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                                Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                                                Categoria = new BECategoria(bCategoria.Id)
-                                            }).ToList<BEArticulo>();
-                }
+
+                bCategoria.Articulos = articulos.Where(art => art.Categoria.Id == bCategoria.Id).ToList();
+
+
             }
             else
             { bCategoria = null; }
@@ -65,21 +70,21 @@ namespace MPP
         }
         public List<BECategoria> ListarTodo()
         {
-            string Nodo = "Categorias";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Categoria");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Categoria");
 
-            
             List<BECategoria> lista = new List<BECategoria>();
 
             if (Consulta.Count() > 0)
             {
-                 lista = (from x in Consulta
-                             where Convert.ToInt32(x.Element("Id")?.Value) > 0
-                             select new BECategoria
-                             {
-                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                 Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             }).ToList<BECategoria>();
+                lista = (from x in Consulta
+                         where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                         select new BECategoria
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                         }).ToList();
+
+
             }
             else
             {

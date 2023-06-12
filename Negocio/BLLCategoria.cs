@@ -17,17 +17,36 @@ namespace Negocio
 
         public bool Actualizar(BECategoria Object)
         {
-            throw new System.NotImplementedException();
+            var exixte = ListarTodo().Exists(x => x.Id == Object.Id);
+
+            if (Object.Id == 0)
+            {
+                return false;
+            }
+
+            return mPPCateroria.Actualizar(Object);
         }
 
         public BECategoria Agregar(BECategoria Object)
         {
-            throw new System.NotImplementedException();
+            var exixte = ListarTodo().Exists(x => x.Nombre == Object.Nombre);
+
+            if (exixte)
+            {
+                return null;
+            }
+
+            return mPPCateroria.Agregar(Object);
         }
 
         public bool Eliminar(BECategoria Object)
         {
-            throw new System.NotImplementedException();
+            var exixte = ListarTodo().Exists(x => x.Id == Object.Id);
+            if (!exixte)
+            {
+                return false;
+            }
+            return mPPCateroria.Eliminar(Object);
         }
 
         public BECategoria ListarObjeto(BECategoria bECategoria)

@@ -50,7 +50,7 @@ namespace MPP
         public List<BEPersona> ListarTodo()
         {
             string Nodo = "Personas";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Persona");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Persona");
 
             List<BEPersona> Lista = new List<BEPersona>();
 
@@ -75,7 +75,7 @@ namespace MPP
         public BEPersona ListarObjeto(BEPersona pPersona)
         {
             string Nodo = "Personas";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Persona");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Persona");
 
 
             if (Consulta.Count() > 0)

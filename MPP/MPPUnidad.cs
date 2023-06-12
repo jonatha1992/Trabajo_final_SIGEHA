@@ -13,7 +13,8 @@ namespace MPP
     public class MPPUnidad : IGestor<BEUnidad>
     {
         Conexion conexion = new Conexion();
-
+        string NodoPadre = "Unidades";
+        string NodoContenedor = "Unidad";
 
         public bool Actualizar(BEUnidad Object)
         {
@@ -32,19 +33,13 @@ namespace MPP
 
         public BEUnidad ListarObjeto(BEUnidad Punidad)
         {
-            string Nodo = "Unidades";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Unidad");
+            var Consulta = conexion.LeerObjeto(NodoContenedor, Punidad.Id.ToString());
 
-            if (Consulta.Count() > 0)
+            if (Consulta != null)
             {
-                Punidad = (from x in Consulta
-                         where Convert.ToInt32(x.Element("Id")?.Value) ==  Punidad.Id
-                         select new BEUnidad
-                         {
-                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                         }).FirstOrDefault();
-                
+                Punidad.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
+                Punidad.Nombre = Convert.ToString(Consulta.Element("Nombre")?.Value);
+                Punidad.Ursa = new BEUrsa(Convert.ToInt32(Consulta.Element("IdUrsa")?.Value));
             }
             else
             { Punidad = null; }
@@ -55,8 +50,7 @@ namespace MPP
         public List<BEUnidad> ListarTodo()
         {
             //Declaro el objeto datatable para guardar los datos y luego pasarlos a lista
-            string Nodo = "Unidades";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Unidad");
+            var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Unidad");
 
 
             List<BEUnidad> lista = new List<BEUnidad>();    
@@ -67,7 +61,7 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             Ursa = new BEUrsa(Convert.ToInt32(Convert.ToString(x.Element("Idursa")?.Value)))
+                             Ursa = new BEUrsa(Convert.ToInt32(Convert.ToString(x.Element("IdUrsa")?.Value)))
                            }).ToList<BEUnidad>();
 
             }

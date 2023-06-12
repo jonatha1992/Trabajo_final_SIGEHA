@@ -3,6 +3,7 @@ using BE;
 using MPP;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Negocio
 {
@@ -21,7 +22,12 @@ namespace Negocio
         {
 
 
-            string NroEntrega = mmPEntrega.ObtenerNroEntrega(unidad, anio);
+            string NroEntrega = "";
+            var Entregas = ListarTodo();
+
+            NroEntrega = Entregas.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+                           .OrderByDescending(h => h.NroActa)
+                           .FirstOrDefault()?.NroActa;
 
 
             if (NroEntrega == "")
@@ -54,7 +60,8 @@ namespace Negocio
 
         public BEEntrega Agregar(BEEntrega entrega)
         {
-            if (!mmPEntrega.VerificarSiExisteNroEntrega(entrega.NroActa)) // SI NO EXISTE QUE LO AGREGUE
+            var verificarExisteNroActa = ListarTodo().Exists(x => x.NroActa == entrega.NroActa);
+            if (!verificarExisteNroActa) // SI NO EXISTE QUE LO AGREGUE
             {
                 return mmPEntrega.Agregar(entrega);
             }
@@ -88,15 +95,14 @@ namespace Negocio
         {
             return mmPEntrega.ListarTodo();
         }
-        public List<BEEntrega> ListarTodo(BEUnidad bEUnidad, int Anio)
-        {
-            var Lista = mmPEntrega.ListarTodo(bEUnidad, Anio);
-            return Lista;
-        }
+
 
         public List<BEEntrega> ListarTodo(BEUnidad bEUnidad, DateTime Fecha)
         {
-            var Lista = mmPEntrega.ListarTodo(bEUnidad, Fecha);
+            int Anio = Fecha.Year;
+            int Mes = Fecha.Month;
+            var Lista = mmPEntrega.ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.Fecha_entrega.Month == Mes)
+                                     .OrderByDescending(x => x.Fecha_entrega).ToList(); ;
             return Lista;
         }
 

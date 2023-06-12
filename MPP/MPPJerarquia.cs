@@ -30,7 +30,7 @@ namespace MPP
         public BEJerarquia ListarObjeto(BEJerarquia jerarquia)
         {
             string Nodo = "Jerarquias";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Jerarquia");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Jerarquia");
 
             if (Consulta.Count() > 0)
             {
@@ -51,7 +51,7 @@ namespace MPP
         public List<BEJerarquia> ListarTodo()
         {
             string Nodo = "Jerarquias";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Jerarquia");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Jerarquia");
 
             List<BEJerarquia> jerarquias = new List<BEJerarquia>();
 

@@ -4,652 +4,652 @@
 		<Articulo>
 			<Id>1</Id>
 			<Nombre>Auriculares</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>2</Id>
 			<Nombre>Celular / Smartphone</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>3</Id>
 			<Nombre>Cámara de Fotos / Lentes-Óptica</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>4</Id>
 			<Nombre>Reproductor de música</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>5</Id>
 			<Nombre>Tablet / E-book</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>6</Id>
 			<Nombre>Notebook</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>7</Id>
 			<Nombre>Calculadora</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>8</Id>
 			<Nombre>Cables de datos / Cargador</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>9</Id>
 			<Nombre>Smartwatch</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>10</Id>
 			<Nombre>Adaptadores</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>11</Id>
 			<Nombre>Pendrive / Disco Rígido / Memoria</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>12</Id>
 			<Nombre>Cargadores / Cargador portátil</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>13</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>14</Id>
 			<Nombre>Compresores</Nombre>
-			<Id_categoria>2</Id_categoria>
+			<IdCategoria>2</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>15</Id>
 			<Nombre>Balanza</Nombre>
-			<Id_categoria>2</Id_categoria>
+			<IdCategoria>2</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>16</Id>
 			<Nombre>Anafe</Nombre>
-			<Id_categoria>2</Id_categoria>
+			<IdCategoria>2</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>17</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>2</Id_categoria>
+			<IdCategoria>2</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>18</Id>
 			<Nombre>Sillas</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>19</Id>
 			<Nombre>Libro / Revista</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>20</Id>
 			<Nombre>Instrumento Musical</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>21</Id>
 			<Nombre>Elementos deportivos</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>22</Id>
 			<Nombre>Juegos de Mesa / Juguetes</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>23</Id>
 			<Nombre>Cuadros / Retratos / Fotos</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>24</Id>
 			<Nombre>Camping / Pesca / Caza</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>25</Id>
 			<Nombre>Coche de bebé</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>26</Id>
 			<Nombre>Decoración</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>27</Id>
 			<Nombre>Colchoneta / Aislante / Alfombra</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>28</Id>
 			<Nombre>Kit de Mate</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>29</Id>
 			<Nombre>Herramientas</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>30</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>3</Id_categoria>
+			<IdCategoria>3</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>31</Id>
 			<Nombre>Campera</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>32</Id>
 			<Nombre>Cinto</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>33</Id>
 			<Nombre>Buzo</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>34</Id>
 			<Nombre>Pantalón</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>35</Id>
 			<Nombre>Remera</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>36</Id>
 			<Nombre>Pañuelo</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>37</Id>
 			<Nombre>Bufanda</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>38</Id>
 			<Nombre>Capucha</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>39</Id>
 			<Nombre>Chaleco</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>40</Id>
 			<Nombre>Zapatillas</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>41</Id>
 			<Nombre>Sombrero</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>42</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>43</Id>
 			<Nombre>Caja / Estuche</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>44</Id>
 			<Nombre>Valija Cerrada sin contenido detallado</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>45</Id>
 			<Nombre>Valija Cerrada con contenido detallado</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>46</Id>
 			<Nombre>Riñonera</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>47</Id>
 			<Nombre>Cartera</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>48</Id>
 			<Nombre>Mochila Cerrada sin contenido detallado</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>49</Id>
 			<Nombre>Mochila Cerrada con contenido detallado</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>50</Id>
 			<Nombre>Maletín</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>51</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>5</Id_categoria>
+			<IdCategoria>5</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>52</Id>
 			<Nombre>Neceser</Nombre>
-			<Id_categoria>6</Id_categoria>
+			<IdCategoria>6</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>53</Id>
 			<Nombre>Aerosoles</Nombre>
-			<Id_categoria>6</Id_categoria>
+			<IdCategoria>6</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>54</Id>
 			<Nombre>Perfume</Nombre>
-			<Id_categoria>6</Id_categoria>
+			<IdCategoria>6</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>55</Id>
 			<Nombre>Cremas</Nombre>
-			<Id_categoria>6</Id_categoria>
+			<IdCategoria>6</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>56</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>6</Id_categoria>
+			<IdCategoria>6</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>57</Id>
 			<Nombre>Pulsera</Nombre>
-			<Id_categoria>7</Id_categoria>
+			<IdCategoria>7</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>58</Id>
 			<Nombre>Brazalete</Nombre>
-			<Id_categoria>7</Id_categoria>
+			<IdCategoria>7</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>59</Id>
 			<Nombre>Prendedor</Nombre>
-			<Id_categoria>7</Id_categoria>
+			<IdCategoria>7</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>60</Id>
 			<Nombre>Collar</Nombre>
-			<Id_categoria>7</Id_categoria>
+			<IdCategoria>7</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>61</Id>
 			<Nombre>Anillo</Nombre>
-			<Id_categoria>7</Id_categoria>
+			<IdCategoria>7</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>62</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>7</Id_categoria>
+			<IdCategoria>7</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>63</Id>
 			<Nombre>Anteojos / Lentes</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>64</Id>
 			<Nombre>Billetera</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>65</Id>
 			<Nombre>Paraguas</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>66</Id>
 			<Nombre>Llavero / Llaves</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>67</Id>
 			<Nombre>Santería</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>68</Id>
 			<Nombre>Bastón</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>69</Id>
 			<Nombre>Reloj</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>70</Id>
 			<Nombre>Casco</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>71</Id>
 			<Nombre>Almohada</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>72</Id>
 			<Nombre>Correa / Cinturón</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>73</Id>
 			<Nombre>Sordinas</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>74</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>8</Id_categoria>
+			<IdCategoria>8</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>75</Id>
 			<Nombre>Medidores de Glucosa</Nombre>
-			<Id_categoria>9</Id_categoria>
+			<IdCategoria>9</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>76</Id>
 			<Nombre>Medicamentos</Nombre>
-			<Id_categoria>9</Id_categoria>
+			<IdCategoria>9</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>77</Id>
 			<Nombre>Insulina</Nombre>
-			<Id_categoria>9</Id_categoria>
+			<IdCategoria>9</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>78</Id>
 			<Nombre>Kit Sanitario </Nombre>
-			<Id_categoria>9</Id_categoria>
+			<IdCategoria>9</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>79</Id>
 			<Nombre>Tubo de oxígeno</Nombre>
-			<Id_categoria>9</Id_categoria>
+			<IdCategoria>9</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>80</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>9</Id_categoria>
+			<IdCategoria>9</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>81</Id>
 			<Nombre>Dólar estadounidense</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>82</Id>
 			<Nombre>Peso Argentino</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>83</Id>
 			<Nombre>Oro</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>84</Id>
 			<Nombre>Euro</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>85</Id>
 			<Nombre>Real Brasileño</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>86</Id>
 			<Nombre>Peso Chileno</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>87</Id>
 			<Nombre>Peso Colombiano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>88</Id>
 			<Nombre>Dólar Canadiense</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>89</Id>
 			<Nombre>Peso Uruguayo</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>90</Id>
 			<Nombre>Libra Esterlina</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>91</Id>
 			<Nombre>Guaraní</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>92</Id>
 			<Nombre>Peso Boliviano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>93</Id>
 			<Nombre>Lira turca</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>94</Id>
 			<Nombre>Peso Mexicano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>95</Id>
 			<Nombre>Soles</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>96</Id>
 			<Nombre>Dólar Neozelandés</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>97</Id>
 			<Nombre>Dólar Australiano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>98</Id>
 			<Nombre>Rublo Ruso</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>99</Id>
 			<Nombre>Dólar Singapur</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>100</Id>
 			<Nombre>Boliviano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>101</Id>
 			<Nombre>Yuan chino</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>102</Id>
 			<Nombre>Lempira</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>103</Id>
 			<Nombre>Francos del Pacífico</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>104</Id>
 			<Nombre>Shequel</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>105</Id>
 			<Nombre>wons coreano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>106</Id>
 			<Nombre>Rand </Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>107</Id>
 			<Nombre>leus rumanos</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>108</Id>
 			<Nombre>Peso cubano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>109</Id>
 			<Nombre>Zloti</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>110</Id>
 			<Nombre>Bolívar fuerte </Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>111</Id>
 			<Nombre>Libras del Líbano</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>112</Id>
 			<Nombre>Francos Suizos</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>113</Id>
 			<Nombre>Francos</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>114</Id>
 			<Nombre>Nuevo sol</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>115</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>10</Id_categoria>
+			<IdCategoria>10</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>116</Id>
 			<Nombre>D.N.I</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>117</Id>
 			<Nombre>Pasaporte</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>118</Id>
 			<Nombre>Tarjeta de Crédito/Débito</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>119</Id>
 			<Nombre>Cédula</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>120</Id>
 			<Nombre>Licencia</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>121</Id>
 			<Nombre>Carnet</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>122</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>11</Id_categoria>
+			<IdCategoria>11</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>123</Id>
 			<Nombre>Golosinas</Nombre>
-			<Id_categoria>12</Id_categoria>
+			<IdCategoria>12</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>124</Id>
 			<Nombre>Bebidas</Nombre>
-			<Id_categoria>12</Id_categoria>
+			<IdCategoria>12</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>125</Id>
 			<Nombre>Almacen</Nombre>
-			<Id_categoria>12</Id_categoria>
+			<IdCategoria>12</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>126</Id>
 			<Nombre>Otro</Nombre>
-			<Id_categoria>12</Id_categoria>
+			<IdCategoria>12</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>127</Id>
 			<Nombre>Chocolate</Nombre>
-			<Id_categoria>12</Id_categoria>
+			<IdCategoria>12</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>128</Id>
 			<Nombre>Calzado</Nombre>
-			<Id_categoria>4</Id_categoria>
+			<IdCategoria>4</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>129</Id>
 			<Nombre>Dron</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 		<Articulo>
 			<Id>130</Id>
 			<Nombre>VideoJuego</Nombre>
-			<Id_categoria>1</Id_categoria>
+			<IdCategoria>1</IdCategoria>
 		</Articulo>
 	</Articulos>
 	<Categorias>
@@ -705,83 +705,63 @@
 	<Elementos>
 		<Elemento>
 			<Id>1</Id>
-			<Idarticulo>41</Idarticulo>
-			<Idestado_elemento>5</Idestado_elemento>
-			<Idhallazgo>1</Idhallazgo>
+			<IdArticulo>41</IdArticulo>
+			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdHallazgo>1</IdHallazgo>
 			<Descripcion>NEGRO MARCA CVNTG CHAPELARIA VINTAGE</Descripcion>
 			<Cantidad>1</Cantidad>
 		</Elemento>
 		<Elemento>
 			<Id>2</Id>
-			<Idarticulo>63</Idarticulo>
-			<Idestado_elemento>5</Idestado_elemento>
-			<Idhallazgo>1</Idhallazgo>
+			<IdArticulo>63</IdArticulo>
+			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdHallazgo>1</IdHallazgo>
 			<Descripcion>RECTANGULARES COLOR NEGRO </Descripcion>
 			<Cantidad>1</Cantidad>
 		</Elemento>
 		<Elemento>
 			<Id>3</Id>
-			<Idarticulo>31</Idarticulo>
-			<Idestado_elemento>5</Idestado_elemento>
-			<Idhallazgo>2</Idhallazgo>
+			<IdArticulo>31</IdArticulo>
+			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdHallazgo>2</IdHallazgo>
 			<Descripcion>COLOR VERDE MARCA ZUNE DENIM</Descripcion>
 			<Cantidad>1</Cantidad>
 		</Elemento>
 		<Elemento>
 			<Id>4</Id>
-			<Idarticulo>32</Idarticulo>
-			<Idestado_elemento>5</Idestado_elemento>
-			<Idhallazgo>2</Idhallazgo>
+			<IdArticulo>32</IdArticulo>
+			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdHallazgo>2</IdHallazgo>
 			<Descripcion>DE TELA COLOR GRIS CON PASADOR</Descripcion>
 			<Cantidad>1</Cantidad>
 		</Elemento>
 		<Elemento>
 			<Id>5</Id>
-			<Idarticulo>30</Idarticulo>
-			<Idestado_elemento>5</Idestado_elemento>
-			<Idhallazgo>3</Idhallazgo>
+			<IdArticulo>30</IdArticulo>
+			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdHallazgo>3</IdHallazgo>
 			<Descripcion>CULLO DE VIAJE COLO ROSA --CUELLO GRIS-- - AR 1303</Descripcion>
 			<Cantidad>3</Cantidad>
 		</Elemento>
 		<Elemento>
 			<Id>6</Id>
-			<Idarticulo>1</Idarticulo>
-			<Idestado_elemento>5</Idestado_elemento>
-			<Idhallazgo>3</Idhallazgo>
+			<IdArticulo>1</IdArticulo>
+			<IdEstado_elemento>5</IdEstado_elemento>
+			<IdHallazgo>3</IdHallazgo>
 			<Descripcion>AURICULAES DE COLOR BLANCO--- AR1303</Descripcion>
 			<Cantidad>1</Cantidad>
 		</Elemento>
 		<Elemento>
 			<Id>7</Id>
-			<Idarticulo>5</Idarticulo>
-			<Idestado_elemento>3</Idestado_elemento>
-			<Identrega>2</Identrega>
-			<Idhallazgo>3</Idhallazgo>
+			<IdArticulo>5</IdArticulo>
+			<IdEstado_elemento>3</IdEstado_elemento>
+			<IdEntrega>2</IdEntrega>
+			<IdHallazgo>3</IdHallazgo>
 			<Descripcion>TSBLET SAMSUNG PANTALLA ROTA CON FUNDA CELESTE--AR1020</Descripcion>
 			<Cantidad>1</Cantidad>
 		</Elemento>
 	</Elementos>
 	<Entregas>
-		<Entrega_Persona>
-			<Identrega>2</Identrega>
-			<Idpersona>153</Idpersona>
-			<Idestado>1</Idestado>
-		</Entrega_Persona>
-		<Entrega_Persona>
-			<Identrega>2</Identrega>
-			<Idpersona>168</Idpersona>
-			<Idestado>4</Idestado>
-		</Entrega_Persona>
-		<Entrega_Persona>
-			<Identrega>2</Identrega>
-			<Idpersona>164</Idpersona>
-			<Idestado>3</Idestado>
-		</Entrega_Persona>
-		<Entrega_Persona>
-			<Identrega>2</Identrega>
-			<Idpersona>169</Idpersona>
-			<Idestado>3</Idestado>
-		</Entrega_Persona>
 	</Entregas>
 	<Jerarquias>
 		<Jerarquia>
@@ -833,14 +813,14 @@
 			<Ocupacion></Ocupacion>
 			<Telefono></Telefono>
 			<Legajo>507793</Legajo>
-			<Idjerarquia>1</Idjerarquia>
+			<IdJerarquia>1</IdJerarquia>
 			<DNI>35755209</DNI>
 		</Persona>
 		<Persona>
 			<Id>2</Id>
 			<Nombrecompleto>RIBEIRO BERNARDO</Nombrecompleto>
 			<Legajo>502875</Legajo>
-			<Idjerarquia>7</Idjerarquia>
+			<IdJerarquia>7</IdJerarquia>
 			<DNI>25370429</DNI>
 		</Persona>
 		<Persona>
@@ -848,7 +828,7 @@
 			<Nombrecompleto>AGUILERA VERA SABRINA MAYRA</Nombrecompleto>
 			<Ocupacion>POLICIA</Ocupacion>
 			<Legajo>508239</Legajo>
-			<Idjerarquia>1</Idjerarquia>
+			<IdJerarquia>1</IdJerarquia>
 			<DNI>36150005</DNI>
 		</Persona>
 		<Persona>
@@ -856,7 +836,7 @@
 			<Nombrecompleto>CARRERAS TATIANA FERNANDA</Nombrecompleto>
 			<Ocupacion>POLICIA</Ocupacion>
 			<Legajo>505408</Legajo>
-			<Idjerarquia>3</Idjerarquia>
+			<IdJerarquia>3</IdJerarquia>
 			<DNI>34572736</DNI>
 		</Persona>
 		<Persona>
@@ -866,28 +846,28 @@
 			<Ocupacion>POLICIA</Ocupacion>
 			<Telefono>1159910666</Telefono>
 			<Legajo>506896</Legajo>
-			<Idjerarquia>2</Idjerarquia>
+			<IdJerarquia>2</IdJerarquia>
 			<DNI>37216265</DNI>
 		</Persona>
 		<Persona>
 			<Id>16</Id>
 			<Nombrecompleto>DENEGRIS MARIA DEL CARMEN</Nombrecompleto>
 			<Legajo>505965</Legajo>
-			<Idjerarquia>3</Idjerarquia>
+			<IdJerarquia>3</IdJerarquia>
 			<DNI>35340086</DNI>
 		</Persona>
 		<Persona>
 			<Id>17</Id>
 			<Nombrecompleto>DOMINGUEZ MONICA ELISABET</Nombrecompleto>
 			<Legajo>505190</Legajo>
-			<Idjerarquia>3</Idjerarquia>
+			<IdJerarquia>3</IdJerarquia>
 			<DNI>31823745</DNI>
 		</Persona>
 		<Persona>
 			<Id>18</Id>
 			<Nombrecompleto>GARCIA JOSE MANUEL</Nombrecompleto>
 			<Legajo>503189</Legajo>
-			<Idjerarquia>5</Idjerarquia>
+			<IdJerarquia>5</IdJerarquia>
 			<DNI>25681276</DNI>
 		</Persona>
 		<Persona>
@@ -897,7 +877,7 @@
 			<Ocupacion>POLICIA</Ocupacion>
 			<Telefono>111111111</Telefono>
 			<Legajo>503244</Legajo>
-			<Idjerarquia>3</Idjerarquia>
+			<IdJerarquia>3</IdJerarquia>
 			<DNI>25495542</DNI>
 		</Persona>
 		<Persona>
@@ -907,26 +887,26 @@
 			<Ocupacion></Ocupacion>
 			<Telefono></Telefono>
 			<Legajo>506601</Legajo>
-			<Idjerarquia>1</Idjerarquia>
+			<IdJerarquia>1</IdJerarquia>
 			<DNI>36594097</DNI>
 		</Persona>
 		<Persona>
 			<Id>21</Id>
 			<Nombrecompleto>MEDINA BRENDA YAMILA</Nombrecompleto>
 			<Legajo>507901</Legajo>
-			<Idjerarquia>1</Idjerarquia>
+			<IdJerarquia>1</IdJerarquia>
 			<DNI>38127506</DNI>
 		</Persona>
 	</Personas>
 	<Instructores>
 		<Instructor>
-			<Id_persona>1</Id_persona>
-			<Id_rol>1</Id_rol>
-			<Id_destino>1</Id_destino>
+			<IdPersona>1</IdPersona>
+			<IdRol>1</IdRol>
+			<IdUrsa>1</IdUrsa>
 			<Legajo>506896</Legajo>
 			<Password>506896</Password>
 			<Mail>jgcorrea@psa.gob.ar</Mail>
-			<Id_jerarquia>1</Id_jerarquia>
+			<IdJerarquia>1</IdJerarquia>
 		</Instructor>
 	</Instructores>
 	<Unidad>
@@ -1217,7 +1197,7 @@
 		<Hallazgo>
 			<Id>1</Id>
 			<Nroacta>0015EZE/2023</Nroacta>
-			<Idunidad>4</Idunidad>
+			<IdUnidad>4</IdUnidad>
 			<Lugarhallazgo>TERMINAL A</Lugarhallazgo>
 			<Anio>2023</Anio>
 			<Fechahallazgo>2023-01-02T19:45:00</Fechahallazgo>
@@ -1225,7 +1205,7 @@
 		<Hallazgo>
 			<Id>2</Id>
 			<Nroacta>0016EZE/2023</Nroacta>
-			<Idunidad>4</Idunidad>
+			<IdUnidad>4</IdUnidad>
 			<Lugarhallazgo>PRE-C</Lugarhallazgo>
 			<Anio>2023</Anio>
 			<Fechahallazgo>2023-01-02T19:45:00</Fechahallazgo>
@@ -1233,7 +1213,7 @@
 		<Hallazgo>
 			<Id>3</Id>
 			<Nroacta>0017EZE/2023</Nroacta>
-			<Idunidad>4</Idunidad>
+			<IdUnidad>4</IdUnidad>
 			<Lugarhallazgo>GPS VUELOS AR</Lugarhallazgo>
 			<Anio>2023</Anio>
 			<Fechahallazgo>2023-01-02T19:45:00</Fechahallazgo>
@@ -1241,94 +1221,114 @@
 		<Hallazgo>
 			<Id>4</Id>
 			<Nroacta>0018EZE/2023</Nroacta>
-			<Idunidad>4</Idunidad>
+			<IdUnidad>4</IdUnidad>
 			<Lugarhallazgo>ARRIBOS TERMINAL C</Lugarhallazgo>
 			<Anio>2023</Anio>
 			<Fechahallazgo>2023-01-03T00:59:00</Fechahallazgo>
 		</Hallazgo>
 	</Hallazgos>
 	<Entrega_Personas>
+		<Entrega_Persona>
+			<IdEntrega>2</IdEntrega>
+			<IdPersona>153</IdPersona>
+			<IdEstado>1</IdEstado>
+		</Entrega_Persona>
+		<Entrega_Persona>
+			<IdEntrega>2</IdEntrega>
+			<IdPersona>168</IdPersona>
+			<IdEstado>4</IdEstado>
+		</Entrega_Persona>
+		<Entrega_Persona>
+			<IdEntrega>2</IdEntrega>
+			<IdPersona>164</IdPersona>
+			<IdEstado>3</IdEstado>
+		</Entrega_Persona>
+		<Entrega_Persona>
+			<IdEntrega>2</IdEntrega>
+			<IdPersona>169</IdPersona>
+			<IdEstado>3</IdEstado>
+		</Entrega_Persona>
 	</Entrega_Personas>
 	<Hallazgo_Personas>
 		<Hallazgo_Persona>
 			<IdHallazgo>1</IdHallazgo>
-			<Idpersona>123</Idpersona>
-			<Idestado>1</Idestado>
+			<IdPersona>123</IdPersona>
+			<IdEstado>1</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>1</IdHallazgo>
-			<Idpersona>124</Idpersona>
-			<Idestado>2</Idestado>
+			<IdPersona>124</IdPersona>
+			<IdEstado>2</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>1</IdHallazgo>
-			<Idpersona>125</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>125</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>1</IdHallazgo>
-			<Idpersona>126</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>126</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>2</IdHallazgo>
-			<Idpersona>123</Idpersona>
-			<Idestado>1</Idestado>
+			<IdPersona>123</IdPersona>
+			<IdEstado>1</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>2</IdHallazgo>
-			<Idpersona>127</Idpersona>
-			<Idestado>2</Idestado>
+			<IdPersona>127</IdPersona>
+			<IdEstado>2</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>2</IdHallazgo>
-			<Idpersona>128</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>128</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>2</IdHallazgo>
-			<Idpersona>129</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>129</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>3</IdHallazgo>
-			<Idpersona>130</Idpersona>
-			<Idestado>1</Idestado>
+			<IdPersona>130</IdPersona>
+			<IdEstado>1</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>3</IdHallazgo>
-			<Idpersona>131</Idpersona>
-			<Idestado>2</Idestado>
+			<IdPersona>131</IdPersona>
+			<IdEstado>2</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>3</IdHallazgo>
-			<Idpersona>132</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>132</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>3</IdHallazgo>
-			<Idpersona>133</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>133</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>4</IdHallazgo>
-			<Idpersona>130</Idpersona>
-			<Idestado>1</Idestado>
+			<IdPersona>130</IdPersona>
+			<IdEstado>1</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>4</IdHallazgo>
-			<Idpersona>134</Idpersona>
-			<Idestado>2</Idestado>
+			<IdPersona>134</IdPersona>
+			<IdEstado>2</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>4</IdHallazgo>
-			<Idpersona>135</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>135</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 		<Hallazgo_Persona>
 			<IdHallazgo>4</IdHallazgo>
-			<Idpersona>136</Idpersona>
-			<Idestado>3</Idestado>
+			<IdPersona>136</IdPersona>
+			<IdEstado>3</IdEstado>
 		</Hallazgo_Persona>
 	</Hallazgo_Personas>
 	<Estado_Elementos>

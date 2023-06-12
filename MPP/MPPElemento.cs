@@ -4,142 +4,182 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace MPP
 {
     public class MPPElemento : IGestor<BEElemento>
     {
         Conexion conexion = new Conexion();
-
+        string NodoPadre = "Elementos";
+        string NodoContenedor = "Elemento";
         public BEElemento Agregar(BEElemento pElemento)
         {
-
             throw new NotImplementedException();
         }
 
         public bool Agregar_Elemento_Hallazgo(BEHallazgo hallazgo, BEElemento elemento)
         {
-            string consulta = "INSERT INTO Elemento ([Id articulo], [Id estado_elemento],[Id hallazgo], [Descripcion],[Cantidad] )" +
-                            $"VALUES( {elemento.Articulo.Id} ," +
-                            $"{elemento.Estado.Id}," +
-                            $"{hallazgo.Id}," +
-                            $"'{elemento.Descripcion}'," +
-                            $"'{elemento.Cantidad}')";
+            var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
 
-            return conexion.Escribir(consulta);
+            XElement Elemento = new XElement("Elemento",
+             new XElement("Id", NuevoID),
+             new XElement("IdArticulo", elemento.Articulo.Id),
+             new XElement("IdArticulo", elemento.Articulo.Id),
+             new XElement("IdHallazgo", hallazgo.Id),
+             new XElement("Descripcion", elemento.Descripcion),
+             new XElement("Cantidad", elemento.Cantidad)
+             );
+
+            return conexion.Agregar(NodoPadre, Elemento);
         }
 
 
+ 
+
         public bool Agregar_Elemento_Entrega(BEEntrega entrega, BEElemento elemento)
         {
-            string consulta = $" UPDATE Elemento SET [Id entrega] = {entrega.Id} " +
-                              $" WHERE ( Id = {elemento.Id})";
-            return conexion.Escribir(consulta);
+            XElement Elemento = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+
+            if (Elemento != null)
+            {
+                Elemento.Add(new XElement("IdEntrega", entrega.Id)); // Añade IdEntrega al Elemento
+
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento en el XML
+            }
+
+            return false; // No se encontró el Elemento
         }
 
         public bool Eliminar_Elemento_Entrega(BEElemento elemento)
         {
-            string consulta = consulta = $" UPDATE  Elemento SET  [Id entrega] = NULL" +
-                                         $" WHERE ( Id = {elemento.Id} )";
-            return conexion.Escribir(consulta);
+            XElement Elemento = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+
+            if (Elemento != null)
+            {
+                Elemento.Element("IdEntrega")?.Remove(); // Elimina el nodo IdEntrega si existe
+
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento en el XML
+            }
+
+            return false;
         }
 
         public bool Actualizar(BEElemento pElemento)
         {
+            XElement Elemento = conexion.LeerObjeto("Elemento", pElemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            if (Elemento != null)
+            {
+                Elemento.SetElementValue("IdArticulo", pElemento.Articulo.Id);
+                Elemento.SetElementValue("IdEstadoElemento", pElemento.Estado.Id);
+                Elemento.SetElementValue("Descripcion", pElemento.Descripcion);
+                Elemento.SetElementValue("Cantidad", pElemento.Cantidad);
 
-            string consulta = $" UPDATE  Elemento SET  [id articulo] = {pElemento.Articulo.Id}, " +
-                                $" [Id estado_elemento] = {pElemento.Estado.Id}, " +
-                                $" Descripcion = '{pElemento.Descripcion}'," +
-                                $" Cantidad =  '{pElemento.Cantidad}'" +
-                                $" WHERE( Id = {pElemento.Id} )";
-
-            return conexion.Escribir(consulta);
+                return conexion.Actualizar("Elementos", pElemento.Id.ToString(), Elemento); // Actualiza el Elemento en el XML
+            }
+            return false; // No se encontró el Elemento
         }
         public bool Eliminar(BEElemento pElemento)
         {
-
-            string consulta = $"DELETE FROM Elemento WHERE (Id =  {pElemento.Id}  )";
-
-            return conexion.Escribir(consulta);
-
+            return conexion.Eliminar(NodoPadre, pElemento.Id.ToString());
         }
 
         public string ObtenerNroHallazgo(BEElemento bEElemento)
         {
-            string Nro = "";
-            string consulta = $"Select [Nro acta] From Hallazgo inner join Elemento ON  Elemento.[Id hallazgo]  =  Hallazgo.Id  where (Elemento.Id = {bEElemento.Id} ) ";
-            DataTable Tabla = conexion.Leer(consulta);
-            if (Tabla.Rows.Count > 0)
+            // Obtener el XElement que corresponde al Elemento
+            XElement elementoXml = conexion.LeerObjeto("Elemento", bEElemento.Id.ToString());
+
+            if (elementoXml != null)
             {
-                Nro = Tabla.Rows[0]["Nro acta"].ToString();
+                // Obtener el IdHallazgo del Elemento
+                string idHallazgo = elementoXml.Element("IdHallazgo")?.Value;
+
+                // Si hay un IdHallazgo, buscar el Hallazgo correspondiente
+                if (!string.IsNullOrEmpty(idHallazgo))
+                {
+                    XElement hallazgoXml = conexion.LeerObjeto("Hallazgo", idHallazgo);
+
+                    // Si el Hallazgo existe, retornar el número
+                    if (hallazgoXml != null)
+                    {
+                        return hallazgoXml.Element("NroActa")?.Value;
+                    }
+                }
             }
-            return Nro;
+            // Si no se encontró el Elemento o el Hallazgo, retornar un string vacío
+            return "";
         }
         public string ObtenerNroEntrega(BEElemento bEElemento)
         {
-            string Nro = "";
-            string consulta = $"Select  [Nro acta] From Entrega inner join Elemento ON  Elemento.[Id entrega]  =  Entrega.Id  where ( Elemento.[Id] = {bEElemento.Id} ) ";
-            DataTable Tabla = conexion.Leer(consulta);
-            if (Tabla.Rows.Count > 0)
+            // Obtener el XElement que corresponde al Elemento
+            XElement elementoXml = conexion.LeerObjeto("Elemento", bEElemento.Id.ToString());
+
+            if (elementoXml != null)
             {
-                Nro = Tabla.Rows[0]["Nro acta"].ToString();
+                // Obtener el IdEntrega del Elemento
+                string idEntrega = elementoXml.Element("IdEntrega")?.Value;
+
+                // Si hay un IdHallazgo, buscar el Hallazgo correspondiente
+                if (!string.IsNullOrEmpty(idEntrega))
+                {
+                    XElement EntregaXml = conexion.LeerObjeto("Entrega", idEntrega);
+
+                    // Si el Hallazgo existe, retornar el número
+                    if (EntregaXml != null)
+                    {
+                        return EntregaXml.Element("NroActa")?.Value;
+                    }
+                }
             }
-            return Nro;
+            // Si no se encontró el Elemento o el Hallazgo, retornar un string vacío
+            return "";
+
         }
 
         public List<BEElemento> ListarTodo()
         {
-            string consulta = "Select * From Elemento";
+
 
             List<BEElemento> lista = new List<BEElemento>();
 
-            DataTable Tabla = conexion.Leer(consulta);
+            var Consulta = conexion.LeerTodos(NodoPadre).Descendants(NodoContenedor);
 
-
-
-
-            if (Tabla.Rows.Count > 0)
+            if (Consulta.Count() > 0)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    BEElemento bElemento = new BEElemento();
-                    bElemento.Id = Convert.ToInt32(fila["Id"]);
-                    bElemento.Cantidad = double.Parse(fila["Cantidad"].ToString());
-                    bElemento.Descripcion = fila["Descripcion"].ToString();
-
-                    lista.Add(bElemento);
-                }
+                lista = (from x in Consulta
+                         select new BEElemento
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Articulo = new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)),
+                             Descripcion = Convert.ToString(x.Element("Descripcion")?.Value),
+                             Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value),
+                             Estado = new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstado")?.Value))
+                         }).ToList();
             }
 
             return lista;
         }
         public BEElemento ListarObjeto(BEElemento bElemento)
         {
-            string consulta = $"Select * From ELemento where (Id = {bElemento.Id} ) ";
-
-            DataTable Tabla = conexion.Leer(consulta);
+         
             MPPArticulo mPPArticulo = new MPPArticulo();
             MPPEstado_Elemento mPPEstado_Articulo = new MPPEstado_Elemento();
 
+            var x = conexion.LeerObjeto(NodoContenedor, bElemento.Id.ToString());
 
-            if (Tabla.Rows.Count > 0)
+            if (x != null)
             {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    bElemento.Id = Convert.ToInt32(fila["Id"]);
-                    bElemento.Cantidad = double.Parse(fila["Cantidad"].ToString());
-                    bElemento.Descripcion = fila["Descripcion"].ToString();
-
-                    BEEstado_Elemento bEEstado = new BEEstado_Elemento(Convert.ToInt32(fila["Id estado_elemento"]));
-                    bElemento.Estado = mPPEstado_Articulo.ListarObjeto(bEEstado);
-
-
-                    BEArticulo articulo = new BEArticulo(Convert.ToInt32(fila["id articulo"]));
-                    bElemento.Articulo = mPPArticulo.ListarObjeto(articulo);
-                }
+                bElemento.Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value));
+                bElemento.Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value);
+                bElemento.Descripcion = Convert.ToString(x.Element("Descripcion")?.Value);
+                bElemento.Articulo = mPPArticulo.ListarObjeto(new BEArticulo( Convert.ToInt32(x.Element("IdArticulo")?.Value)));
+                bElemento.Estado = mPPEstado_Articulo.ListarObjeto(new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstadoElemento")?.Value)));
             }
-
+            else
+            { bElemento = null; }
             return bElemento;
+
         }
 
 
@@ -148,43 +188,43 @@ namespace MPP
 
             List<ElementoBusqueda> lista = new List<ElementoBusqueda>();
 
-            string Lugar = LugarHallazgo == "" ? "" : $" AND (Hallazgo.[Lugar hallazgo] LIKE '%{LugarHallazgo}%')";
-            string descrípcion = PDescripcion == "" ? "" : $" AND (Elemento.Descripcion LIKE '%{PDescripcion}%')";
-            string Articulo = bEArticulo == null ? "" : $" AND (Elemento.[id articulo] = {bEArticulo.Id})";
-            string Dia = pDia == null ? "" : $" AND ( FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') = '{pDia.Value.ToString("dd/MM/yyyy")}')";
-            DataTable Tabla;
+            //string Lugar = LugarHallazgo == "" ? "" : $" AND (Hallazgo.[Lugar hallazgo] LIKE '%{LugarHallazgo}%')";
+            //string descrípcion = PDescripcion == "" ? "" : $" AND (Elemento.Descripcion LIKE '%{PDescripcion}%')";
+            //string Articulo = bEArticulo == null ? "" : $" AND (Elemento.[id articulo] = {bEArticulo.Id})";
+            //string Dia = pDia == null ? "" : $" AND ( FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') = '{pDia.Value.ToString("dd/MM/yyyy")}')";
+            //DataTable Tabla;
 
-            string consulta = $"SELECT Elemento.Id, Elemento.Descripcion, Elemento.Cantidad, " +
-                               $"Estado_Elemento.Estado, Hallazgo.[Nro acta], Hallazgo.[Lugar hallazgo], " +
-                               $"Articulo.Articulo, Entrega.[Nro acta], FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') AS [Fecha hallazgo]  " +
-                               $"FROM Entrega RIGHT JOIN (Estado_Elemento INNER JOIN (Hallazgo INNER JOIN (Articulo INNER JOIN Elemento " +
-                               $"ON Articulo.Id = Elemento.[Id articulo]) " +
-                               $"ON Hallazgo.Id = Elemento.[Id hallazgo]) " +
-                               $"ON Estado_Elemento.Id = Elemento.[Id estado_elemento]) " +
-                               $"ON Entrega.Id = Elemento.[Id entrega] " +
-                               $"WHERE (  (Hallazgo.[Id unidad] = {unidad.Id}) AND (Hallazgo.Anio = {anio}) {Dia}   {Lugar} {Articulo}  {descrípcion} );";
+            //string consulta = $"SELECT Elemento.Id, Elemento.Descripcion, Elemento.Cantidad, " +
+            //                   $"Estado_Elemento.Estado, Hallazgo.[Nro acta], Hallazgo.[Lugar hallazgo], " +
+            //                   $"Articulo.Articulo, Entrega.[Nro acta], FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') AS [Fecha hallazgo]  " +
+            //                   $"FROM Entrega RIGHT JOIN (Estado_Elemento INNER JOIN (Hallazgo INNER JOIN (Articulo INNER JOIN Elemento " +
+            //                   $"ON Articulo.Id = Elemento.[Id articulo]) " +
+            //                   $"ON Hallazgo.Id = Elemento.[Id hallazgo]) " +
+            //                   $"ON Estado_Elemento.Id = Elemento.[Id estado_elemento]) " +
+            //                   $"ON Entrega.Id = Elemento.[Id entrega] " +
+            //                   $"WHERE (  (Hallazgo.[Id unidad] = {unidad.Id}) AND (Hallazgo.Anio = {anio}) {Dia}   {Lugar} {Articulo}  {descrípcion} );";
 
-            Tabla = conexion.Leer(consulta);
+            //Tabla = conexion.Leer(consulta);
 
-            if (Tabla.Rows.Count > 0)
-            {
-                foreach (DataRow fila in Tabla.Rows)
-                {
-                    ElementoBusqueda bElemento = new ElementoBusqueda();
-                    bElemento.Id = Convert.ToInt32(fila["Id"]);
-                    bElemento.Cantidad = fila["Cantidad"].ToString();
-                    bElemento.Descripcion = fila["Descripcion"].ToString();
-                    bElemento.Articulo = fila["Articulo"].ToString();
-                    bElemento.Estado = fila["Estado"].ToString();
-                    bElemento.Hallazgo = fila["Hallazgo.Nro acta"].ToString();
-                    bElemento.Lugar = fila["Lugar hallazgo"].ToString();
-                    bElemento.Entrega = fila["Entrega.Nro acta"].ToString();
-                    bElemento.Fecha_hallazgo = fila["Fecha hallazgo"].ToString();
+            //if (Tabla.Rows.Count > 0)
+            //{
+            //    foreach (DataRow fila in Tabla.Rows)
+            //    {
+            //        ElementoBusqueda bElemento = new ElementoBusqueda();
+            //        bElemento.Id = Convert.ToInt32(fila["Id"]);
+            //        bElemento.Cantidad = fila["Cantidad"].ToString();
+            //        bElemento.Descripcion = fila["Descripcion"].ToString();
+            //        bElemento.Articulo = fila["Articulo"].ToString();
+            //        bElemento.Estado = fila["Estado"].ToString();
+            //        bElemento.Hallazgo = fila["Hallazgo.Nro acta"].ToString();
+            //        bElemento.Lugar = fila["Lugar hallazgo"].ToString();
+            //        bElemento.Entrega = fila["Entrega.Nro acta"].ToString();
+            //        bElemento.Fecha_hallazgo = fila["Fecha hallazgo"].ToString();
 
 
-                    lista.Add(bElemento);
-                }
-            }
+            //        lista.Add(bElemento);
+            //    }
+            //}
 
             return lista;
 

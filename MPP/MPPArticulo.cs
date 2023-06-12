@@ -12,96 +12,60 @@ namespace MPP
     public class MPPArticulo : IGestor<BEArticulo>
     {
         Conexion conexion = new Conexion();
+
+        string NodoPadre = "Articulos";
+        string NodoContenedor = "Articulo";
         public bool Actualizar(BEArticulo Object)
         {
-            throw new NotImplementedException();
+            XElement elementoContenedor = new XElement("Articulo",
+                    new XElement("Id", Object.Id),
+                    new XElement("Nombre", Object.Nombre),
+                    new XElement("IdCategoria", Object.Categoria.Id));
+
+            return conexion.Actualizar(NodoPadre, Object.Id.ToString(), elementoContenedor);
         }
 
         public BEArticulo Agregar(BEArticulo Object)
         {
-            throw new NotImplementedException();
+            var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
+
+            XElement elementoContenedor = new XElement("Categoria",
+                new XElement("Id", NuevoID),
+                new XElement("Nombre", Object.Nombre),
+                new XElement("IdCategoria", Object.Categoria.Id));
+
+            conexion.Agregar(NodoPadre, elementoContenedor);
+
+            Object.Id = NuevoID;
+
+            return Object;
+
         }
 
         public bool Eliminar(BEArticulo Object)
         {
-            throw new NotImplementedException();
+            return conexion.Eliminar(NodoPadre, Object.Id.ToString());
         }
-
-        //public BEArticulo ListarObjeto(BEArticulo pArticulo)
-        //{
-        //    DataTable Tabla;
-        //    Tabla = conexion.Leer($"SELECT * FROM Articulo WHERE ( Id = {pArticulo.Id}) ");
-        //    MPPCategoria mPPCategoria = new MPPCategoria();
-        //    if (Tabla.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow fila in Tabla.Rows)
-        //        {
-        //            pArticulo.Id = Convert.ToInt32(fila["Id"]);
-        //            pArticulo.Nombre = fila["Articulo"].ToString();
-
-        //            BECategoria bECategoria = new BECategoria(Convert.ToInt32(fila["Id Categoria"]));
-        //            pArticulo.Categoria = mPPCategoria.ListarObjeto(bECategoria);
-        //        }
-        //    }
-        //    else
-        //    { pArticulo = null; }
-        //    return pArticulo;
-        //}
-
-        //public List<BEArticulo> ListarTodo()
-        //{
-        //    DataTable Tabla;
-        //    conexion = new Conexion();
-        //    Tabla = conexion.Leer("SELECT * FROM Articulo");
-        //    List<BEArticulo> ListaArticulos = new List<BEArticulo>();
-        //    MPPCategoria mCategoria = new MPPCategoria();
-        //    var categorias = mCategoria.ListarTodo();
-
-        //    if (Tabla.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow fila in Tabla.Rows)
-        //        {
-        //            BEArticulo bEArticulo = new BEArticulo();
-        //            bEArticulo.Id = Convert.ToInt32(fila["Id"]);
-        //            bEArticulo.Nombre = fila["Articulo"].ToString();
-
-        //            bEArticulo.Categoria = new BECategoria(Convert.ToInt32(fila["Id categoria"]));
-
-        //            //bEArticulo.Categoria = mCategoria.ListarObjeto(BeCategoria);
-        //            //bEArticulo.Categoria = categorias.Find(x => x.Id == Convert.ToInt32(fila["Id categoria"]));
-
-        //            ListaArticulos.Add(bEArticulo);
-        //        }
-        //    }
-        //    else
-        //    { ListaArticulos = null; }
-        //    return ListaArticulos;
-        //}
 
 
         public BEArticulo ListarObjeto(BEArticulo pArticulo)
         {
-            string Nodo = "Articulos";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Articulo");
+            var Consulta = conexion.LeerObjeto(NodoContenedor, pArticulo.Id.ToString());
 
-            if (Consulta.Count() > 0)
+            if (Consulta != null)
             {
-                pArticulo = (from x in Consulta
-                             where Convert.ToInt32(x.Element("Id")?.Value) > 0
-                             select new BEArticulo
-                             {
-                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                 Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             }).FirstOrDefault();
+                pArticulo.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
+                pArticulo.Nombre = Convert.ToString(Consulta.Element("Nombre")?.Value);
+                pArticulo.Categoria = new BECategoria(Convert.ToInt32(Consulta.Element("IdCategoria")?.Value));
             }
             else
             { pArticulo = null; }
             return pArticulo;
         }
+
         public List<BEArticulo> ListarTodo()
         {
-            string Nodo = "Articulo";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Articulo");
+            var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Articulo");
 
 
             List<BEArticulo> lista = new List<BEArticulo>();
@@ -114,7 +78,8 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                         }).ToList<BEArticulo>();
+                             Categoria = new BECategoria(Convert.ToInt32(x.Element("IdCategoria")?.Value))
+                         }).ToList();
             }
             else
             {

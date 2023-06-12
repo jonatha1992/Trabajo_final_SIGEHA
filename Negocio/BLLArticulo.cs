@@ -14,29 +14,55 @@ namespace Negocio
             mpParticulo = new MPPArticulo();
         }
 
-        public bool Actualizar(BEArticulo Object)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public BEArticulo Agregar(BEArticulo Object)
         {
-            throw new System.NotImplementedException();
-        }
+            var exixte = ListarTodo().Exists(x => x.Nombre == Object.Nombre);
 
-        public List<BEArticulo> ListarTodo()
-        {
-            return mpParticulo.ListarTodo();
-        }
+            if (exixte)
+            {
+                return null;
+            }
 
+            return mpParticulo.Agregar(Object);
+        }
         public bool Eliminar(BEArticulo Object)
         {
-            throw new System.NotImplementedException();
+            var exixte = ListarTodo().Exists(x => x.Id == Object.Id);
+            if (!exixte)
+            {
+                return false;
+            }
+            return mpParticulo.Eliminar(Object);
+        }
+
+        public bool Actualizar(BEArticulo Object)
+        {
+
+            var exixte = ListarTodo().Exists(x => x.Id == Object.Id);
+
+            if (Object.Id == 0)
+            {
+                return false;
+            }
+
+            return mpParticulo.Actualizar(Object);
         }
 
         public BEArticulo ListarObjeto(BEArticulo Object)
         {
-            throw new System.NotImplementedException();
+
+            if (Object.Id == 0)
+            {
+                return null;
+            }
+
+            return mpParticulo.ListarObjeto(Object);
+        }
+
+
+        public List<BEArticulo> ListarTodo()
+        {
+            return mpParticulo.ListarTodo();
         }
 
 

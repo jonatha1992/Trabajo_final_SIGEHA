@@ -30,7 +30,7 @@ namespace MPP
         {
 
             string Nodo = "Estado_Elementos";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Estado_Elemento");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Estado_Elemento");
 
             if (Consulta.Count() > 0)
             {
@@ -52,7 +52,7 @@ namespace MPP
 
 
             string Nodo = "Estado_Elementos";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Estado_Elemento");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Estado_Elemento");
 
 
             List<BEEstado_Elemento> lista = new List<BEEstado_Elemento>();

@@ -52,11 +52,21 @@ namespace Presentacion_UI
                 Conexion conexion = new Conexion();
                 if (conexion.TestConection())
                 {
-                    loginToolStripMenuItem_Click(null, null);
-                }
 
+                    BEArticulo bEArticulo = new BEArticulo();
+                    bEArticulo.Nombre = "Software";
+                    bEArticulo.Categoria = new BECategoria(1);
+                    bLLArticulo.Agregar(bEArticulo);
+
+                    bEArticulo.Nombre = "SoftwareActualizado";
+                    bLLArticulo.Actualizar(bEArticulo);
+                    bEArticulo= bLLArticulo.ListarObjeto(bEArticulo);
+                    bLLArticulo.Eliminar(bEArticulo);
+
+                    //loginToolStripMenuItem_Click(null, null);
+                }
                 Categorias = bLLCategoria.ListarTodo();
-                Articulos =  bLLArticulo.ListarTodo();
+                Articulos = bLLArticulo.ListarTodo();
                 //Articulos = Categorias.SelectMany(categoria => categoria.Articulos).ToList(); 
                 EstadosElementos = bLLEstado_Elemento.ListarTodo();
                 Ursas = bLLUrsa.ListarTodo();
@@ -142,7 +152,6 @@ namespace Presentacion_UI
             entregaToolStripMenuItem1.Enabled = false;
             reporteToolStripMenuItem.Enabled = false;
             usuario = null;
-            labelUsuario.Text = "";
 
             Form_Login form_login = new Form_Login();
             var result = form_login.ShowDialog();
@@ -153,9 +162,7 @@ namespace Presentacion_UI
                 hallazgoToolStripMenuItem.Enabled = true;
                 entregaToolStripMenuItem1.Enabled = true;
                 reporteToolStripMenuItem.Enabled = true;
-                labelUsuario.Text = "Usuario: " + usuario.NombreCompleto;
-               
-             
+
             }
             else
             {

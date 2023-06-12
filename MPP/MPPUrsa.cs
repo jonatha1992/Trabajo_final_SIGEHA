@@ -31,7 +31,7 @@ namespace MPP
         public BEUrsa ListarObjeto(BEUrsa pursa)
         {
             string Nodo = "Ursas";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Ursa");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Ursa");
 
             if (Consulta.Count() > 0)
             {
@@ -44,7 +44,7 @@ namespace MPP
                               }).FirstOrDefault();
 
                 Nodo = "Unidades";
-                Consulta = conexion.Leer2(Nodo).Descendants("Unidad");
+                Consulta = conexion.LeerTodos(Nodo).Descendants("Unidad");
                 if (Consulta.Count() > 0)
                 {
 
@@ -68,7 +68,7 @@ namespace MPP
         public List<BEUrsa> ListarTodo()
         {
             string Nodo = "Ursas";
-            var Consulta = conexion.Leer2(Nodo).Descendants("Ursa");
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Ursa");
 
 
             List<BEUrsa> lista = new List<BEUrsa>();

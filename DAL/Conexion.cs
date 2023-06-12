@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -35,44 +36,86 @@ namespace DAL
             return File.Exists(XmlFilePath);
         }
 
-        public IEnumerable<XElement> Leer2(string consulta)
+        public IEnumerable<XElement> LeerTodos(string Nodopadre)
         {
             try
             {
-
-
                 XDocument xdoc = XDocument.Load(XmlFilePath);
 
-                IEnumerable<XElement> ElementosGenericos = xdoc.Descendants(consulta);
-           
+                IEnumerable<XElement> ElementosGenericos = xdoc.Descendants(Nodopadre);
+
                 return ElementosGenericos;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-           
+
         }
 
 
-        public bool Escribir(string consulta, List<XElement> hijos)
+        public bool Agregar(string NodoPadre, XElement elemento)
         {
             try
             {
                 XDocument xmlDoc = XDocument.Load(XmlFilePath);
-                XElement elementoPadre = xmlDoc.Element(consulta);
+                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).First();
 
                 if (elementoPadre == null)
                 {
-                    elementoPadre = new XElement(consulta);
-                    xmlDoc.Add(elementoPadre);
+                    elementoPadre = new XElement(NodoPadre);
+                    xmlDoc.Root.Add(elementoPadre);
                 }
 
-                foreach (XElement elementoHijo in hijos)
+
+                elementoPadre.Add(elemento);
+
+                xmlDoc.Save(XmlFilePath);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
+        public bool Actualizar(string NodoPadre, string idElemento, XElement nuevoElemento)
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
+
+                if (elementoPadre == null)
                 {
-                    elementoPadre.Add(elementoHijo);
+                    throw new Exception($"No se encontró el nodo: {NodoPadre}");
                 }
 
+                XElement elementoAActualizar = elementoPadre.Elements()
+                                                            .FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
+
+                if (elementoAActualizar == null)
+                {
+                    throw new Exception($"No se encontró el elemento con el Id: {idElemento} en el nodo: {NodoPadre}");
+                }
+
+                // Para cada elemento en el nuevoElemento
+                foreach (XElement element in nuevoElemento.Elements())
+                {
+                    // Comprueba si el elemento ya existe en elementoAActualizar
+                    XElement existingElement = elementoAActualizar.Element(element.Name);
+                    if (existingElement != null)
+                    {
+                        // Si existe, actualiza su valor
+                        existingElement.Value = element.Value;
+                    }
+                    else
+                    {
+                        // Si no existe, añádelo
+                        elementoAActualizar.Add(new XElement(element.Name, element.Value));
+                    }
+                }
 
                 xmlDoc.Save(XmlFilePath);
 
@@ -85,26 +128,53 @@ namespace DAL
         }
 
 
-        public bool Escribir(string consulta)
+        public XElement LeerObjeto(string NodoContenedor, string idElemento)
         {
             try
             {
-                //    XDocument xmlDoc = XDocument.Load(XmlFilePath);
-                //    XElement elementoPadre = xmlDoc.Element(consulta);
+                XDocument xdoc = XDocument.Load(XmlFilePath);
 
-                //    if (elementoPadre == null)
-                //    {
-                //        elementoPadre = new XElement(consulta);
-                //        xmlDoc.Add(elementoPadre);
-                //    }
+                XElement ElementoGenerico = xdoc.Descendants(NodoContenedor)
+                                                 .FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
 
-                //    foreach (XElement elementoHijo in hijos)
-                //    {
-                //        elementoPadre.Add(elementoHijo);
-                //    }
+                return ElementoGenerico;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Eliminar(string NodoPadre, string idElemento, string elementocontenedor = "")
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
+                XElement elementoAEliminar;
+                if (elementoPadre == null)
+                {
+                    throw new Exception($"No se encontró el nodo: {NodoPadre}");
+                }
+
+                if (elementocontenedor == "") // si es una tabla normal
+                {
+                     elementoAEliminar = elementoPadre.Elements().FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
+                }
+                else //si es una tabla de muchos a muchos
+                {
+                    elementoAEliminar = elementoPadre.Elements().FirstOrDefault(e => e.Element(elementocontenedor)?.Value == idElemento);
+                }
 
 
-                //    xmlDoc.Save(XmlFilePath);
+                if (elementoAEliminar == null)
+                {
+                    throw new Exception($"No se encontró el elemento con el Id: {idElemento} en el nodo: {NodoPadre}");
+                }
+
+                // Elimina el elemento
+                elementoAEliminar.Remove();
+
+                xmlDoc.Save(XmlFilePath);
 
                 return true;
             }
@@ -114,121 +184,28 @@ namespace DAL
             }
         }
 
-        public DataTable Leer(string consulta)
+
+        public int ObtenerUltimoID(string elementoPadre)
         {
             try
             {
-                DataTable istagenerica = new DataTable();
+                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                IEnumerable<XElement> elementos = xmlDoc.Descendants(elementoPadre).Elements();
 
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(XmlFilePath);
-
-                // Realiza el procesamiento de la consulta para obtener los datos necesarios del documento XML
-                // y cargarlos en el DataTable 'dt' según sea necesario.
-                // Aquí deberás implementar tu lógica personalizada para trabajar con el XML.
-
-                // Ejemplo de cómo cargar datos desde el XML a un DataTable:
-                XmlNodeList nodes = xmlDoc.SelectNodes("/Base/Instructores");
-                foreach (XmlNode node in nodes)
+                if (elementos.Any())
                 {
-                    //devolver una lista
-
+                    int ultimoId = elementos.Max(x => (int)x.Element("Id"));
+                    return ultimoId + 1;
                 }
-                return istagenerica;
+
+                return 0;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception($"{ex.Message}");
             }
-
         }
-
-        //static OleDbCommand cmd;
-
-
-        //static OleDbConnection cn;
-        //static string ConexionsString { get; set; }
-        //public bool TestConection()
-        //{
-        //    using (StreamReader Archivo = new StreamReader(@"ConexionString.txt"))
-        //    {
-        //        ConexionsString = Archivo.ReadLine();
-        //    }
-        //    OleDbConnection conexion;
-
-        //    bool fileExist = File.Exists(ConexionsString);
-
-        //    if (fileExist)
-        //    {
-        //        conexion = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + ConexionsString + "; Jet OLEDB:Database Password = scg; ");
-        //    }
-        //    else
-        //    {
-        //        conexion = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = BaseHallazgos.accdb ; Jet OLEDB:Database Password = scg; ");
-        //    }
-
-
-
-        //    conexion.Open();
-
-
-        //    if (conexion.State == ConnectionState.Open)
-        //    {
-        //        //cn = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + ConexionsString + "; Jet OLEDB:Database Password = scg; ");
-        //        cn = conexion;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        //public DataTable Leer(string consulta)
-        //{
-        //    //  cn = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + ConexionsString + "; Jet OLEDB:Database Password = scg; ");
-
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        OleDbDataAdapter da = new OleDbDataAdapter(consulta, cn);
-        //        da.Fill(dt);
-        //    }
-        //    catch (OleDbException ex)
-        //    { throw ex; }
-        //    catch (Exception ex)
-        //    { throw ex; }
-        //    finally
-        //    {
-        //        cn.Close();
-        //    }
-
-        //    return dt;
-        //}
-
-        //public bool Escribir(string consulta)
-        //{
-        //    //cn = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + ConexionsString + "; Jet OLEDB:Database Password = scg; ");
-
-        //    cn.Open();
-        //    cmd = new OleDbCommand();
-        //    cmd.CommandType = CommandType.Text;
-        //    cmd.Connection = cn;
-        //    cmd.CommandText = consulta;
-        //    try
-        //    {
-        //        int respuesta = cmd.ExecuteNonQuery();
-        //        return true;
-        //    }
-        //    catch (OleDbException ex)
-        //    {
-        //        throw new Exception($"{ex.Message}");
-        //    }
-
-        //    finally
-        //    { cn.Close(); }
-
-        //}
+      
 
     }
 }

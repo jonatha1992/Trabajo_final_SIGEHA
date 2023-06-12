@@ -3,6 +3,7 @@ using BE;
 using MPP;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Negocio
 {
@@ -17,15 +18,16 @@ namespace Negocio
         }
         public BEHallazgo Agregar(BEHallazgo pHallazgo)
         {
-            if (!mPPHallazgo.VerificarSiExisteNroHallazgo(pHallazgo.NroActa)) // SI NO EXISTE QUE LO AGREGUE
+            var verificarExisteNroActa = ListarTodo().Exists(x => x.NroActa == pHallazgo.NroActa);
+            if (!verificarExisteNroActa) // SI NO EXISTE QUE LO AGREGUE
             {
-                return mPPHallazgo.Agregar(pHallazgo);
+                return null;
             }
-            else return pHallazgo;
-
+                return mPPHallazgo.Agregar(pHallazgo);
         }
         public bool Actualizar(BEHallazgo Phallazgo)
         {
+
             return mPPHallazgo.Actualizar(Phallazgo);
         }
 
@@ -56,8 +58,13 @@ namespace Negocio
         public override string ObtenerNroActa(BEUnidad unidad, int anio)
         {
             string nroHallazgo = "";
+            var hallazgos = ListarTodo();
 
-            nroHallazgo = mPPHallazgo.ObtenerNroHallazgo(unidad, anio);
+             nroHallazgo = hallazgos.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+                            .OrderByDescending(h => h.NroActa)
+                            .FirstOrDefault()?.NroActa;
+
+            //nroHallazgo = mPPHallazgo.ObtenerNroHallazgo(unidad, anio);
 
             if (nroHallazgo == "")
             {
@@ -86,17 +93,16 @@ namespace Negocio
         }
 
 
-        public List<BEHallazgo> ListarTodo(BEUnidad bEUnidad, int Anio)
-        {
-            var Lista = mPPHallazgo.ListarTodo(bEUnidad, Anio);
-            return Lista;
-        }
-
+   
 
         public List<BEHallazgo> ListarTodo(BEUnidad bEUnidad, DateTime fecha)
         {
-            var Lista = mPPHallazgo.ListarTodo(bEUnidad, fecha);
-            return Lista;
+            int Anio = fecha.Year;
+            int Mes = fecha.Month;
+
+            List<BEHallazgo> lista = ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.FechaHallazgo.Month == Mes)
+                                     .OrderByDescending(x => x.FechaHallazgo).ToList();
+            return lista;
         }
 
 
