@@ -1189,9 +1189,127 @@
 			<Nombre>CEAC</Nombre>
 		</Ursa>
 	</Ursas>
+	<Menus>
+		<Menu>
+			<Id>1</Id>
+			<Nombre>Entregas</Nombre>
+		</Menu>
+		<Menu>
+			<Id>2</Id>
+			<Nombre>Hallazgos</Nombre>
+		</Menu>
+		<Menu>
+			<Id>3</Id>
+			<Nombre>Gestion</Nombre>
+		</Menu>
+	</Menus>
+	<Rol_Permisos>
+		<Rol_Permiso>
+			<IdPermiso>1</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>2</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>3</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>4</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>5</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>6</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>7</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>8</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+		<Rol_Permiso>
+			<IdPermiso>9</IdPermiso>
+			<IdRol>1</IdRol>
+			<Permitido>true</Permitido>
+		</Rol_Permiso>
+	</Rol_Permisos>
 	<Permisos>
+		<Permiso>
+			<Id>1</Id>
+			<Nombre>Generar Reporte</Nombre>
+			<IdMenu>3</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>2</Id>
+			<Nombre>Alta Hallazgos</Nombre>
+			<IdMenu>2</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>3</Id>
+			<Nombre>Alta Entregas</Nombre>
+			<IdMenu>1</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>4</Id>
+			<Nombre>Gestion Usuarios</Nombre>
+			<IdMenu>3</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>5</Id>
+			<Nombre>ABM Categorias</Nombre>
+			<IdMenu>3</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>6</Id>
+			<Nombre>ABM Articulos</Nombre>
+			<IdMenu>3</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>7</Id>
+			<Nombre>Back up</Nombre>
+			<IdMenu>3</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>8</Id>
+			<Nombre>Gestion Entregas</Nombre>
+			<IdMenu>1</IdMenu>
+		</Permiso>
+		<Permiso>
+			<Id>9</Id>
+			<Nombre>Gestion Hallazgos</Nombre>
+			<IdMenu>2</IdMenu>
+		</Permiso>
 	</Permisos>
 	<Roles>
+		<Rol>
+			<Id>1</Id>
+			<Nombre>Administrador</Nombre>
+		</Rol>
+		<Rol>
+			<Id>2</Id>
+			<Nombre>Supervisor</Nombre>
+		</Rol>
+		<Rol>
+			<Id>2</Id>
+			<Nombre>Instructor</Nombre>
+		</Rol>
 	</Roles>
 	<Hallazgos>
 		<Hallazgo>

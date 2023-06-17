@@ -53,12 +53,14 @@
     <Compile Include="BEHallazgo.cs" />
     <Compile Include="BEJerarquia.cs" />
     <Compile Include="BEPAdreHallazgo.cs" />
+    <Compile Include="BEPermiso.cs" />
     <Compile Include="BERol.cs" />
     <Compile Include="BEUrsa.cs" />
     <Compile Include="BEEstado_Persona.cs" />
     <Compile Include="BEInstructor.cs" />
     <Compile Include="BEPersona.cs" />
     <Compile Include="BEUsuario.cs" />
+    <Compile Include="BEComponente.cs" />
     <Compile Include="Grilavista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BECategoria.cs" />

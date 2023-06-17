@@ -46,7 +46,7 @@ namespace MPP
             {
                 Elemento.Add(new XElement("IdEntrega", entrega.Id)); // Añade IdEntrega al Elemento
 
-                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento en el XML
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
             }
 
             return false; // No se encontró el Elemento
@@ -60,7 +60,7 @@ namespace MPP
             {
                 Elemento.Element("IdEntrega")?.Remove(); // Elimina el nodo IdEntrega si existe
 
-                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento en el XML
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
             }
 
             return false;
@@ -76,7 +76,7 @@ namespace MPP
                 Elemento.SetElementValue("Descripcion", pElemento.Descripcion);
                 Elemento.SetElementValue("Cantidad", pElemento.Cantidad);
 
-                return conexion.Actualizar("Elementos", pElemento.Id.ToString(), Elemento); // Actualiza el Elemento en el XML
+                return conexion.Actualizar("Elementos", pElemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
             }
             return false; // No se encontró el Elemento
         }
@@ -186,47 +186,47 @@ namespace MPP
         public List<ElementoBusqueda> BusquedaElementos(BEArticulo bEArticulo, string PDescripcion, string LugarHallazgo, DateTime? pDia, int anio, BEUnidad unidad)
         {
 
-            List<ElementoBusqueda> lista = new List<ElementoBusqueda>();
+            // Obtén todos los nodos de cada tipo
+            var elementosXml = conexion.LeerTodos("Elemento");
+            var hallazgosXml = conexion.LeerTodos("Hallazgo");
+            var entregasXml = conexion.LeerTodos("Entrega");
+            var articulosXml = conexion.LeerTodos("Articulo");
+            var estadosElementoXml = conexion.LeerTodos("Estado_Elemento");
 
-            //string Lugar = LugarHallazgo == "" ? "" : $" AND (Hallazgo.[Lugar hallazgo] LIKE '%{LugarHallazgo}%')";
-            //string descrípcion = PDescripcion == "" ? "" : $" AND (Elemento.Descripcion LIKE '%{PDescripcion}%')";
-            //string Articulo = bEArticulo == null ? "" : $" AND (Elemento.[id articulo] = {bEArticulo.Id})";
-            //string Dia = pDia == null ? "" : $" AND ( FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') = '{pDia.Value.ToString("dd/MM/yyyy")}')";
-            //DataTable Tabla;
+            // Aquí puedes usar tu lógica de filtrado y combinación como antes, pero usando los XElementos directamente.
+            // Nota: Asegúrate de convertir correctamente los valores articulo su tipo correspondiente.
+            var hallazgosFiltrados = hallazgosXml
+                .Where(h => (int)h.Element("Unidad").Element("Id") == unidad.Id &&
+                            (int)h.Element("Anio") == anio &&
+                            (pDia == null || Convert.ToDateTime(h.Element("FechaHallazgo").Value) == pDia.Value.Date) &&
+                            (LugarHallazgo == "" || ((string)h.Element("LugarHallazgo")).Contains(LugarHallazgo)))
+                .ToList();
 
-            //string consulta = $"SELECT Elemento.Id, Elemento.Descripcion, Elemento.Cantidad, " +
-            //                   $"Estado_Elemento.Estado, Hallazgo.[Nro acta], Hallazgo.[Lugar hallazgo], " +
-            //                   $"Articulo.Articulo, Entrega.[Nro acta], FORMAT(Hallazgo.[Fecha hallazgo], 'dd/mm/yyyy') AS [Fecha hallazgo]  " +
-            //                   $"FROM Entrega RIGHT JOIN (Estado_Elemento INNER JOIN (Hallazgo INNER JOIN (Articulo INNER JOIN Elemento " +
-            //                   $"ON Articulo.Id = Elemento.[Id articulo]) " +
-            //                   $"ON Hallazgo.Id = Elemento.[Id hallazgo]) " +
-            //                   $"ON Estado_Elemento.Id = Elemento.[Id estado_elemento]) " +
-            //                   $"ON Entrega.Id = Elemento.[Id entrega] " +
-            //                   $"WHERE (  (Hallazgo.[Id unidad] = {unidad.Id}) AND (Hallazgo.Anio = {anio}) {Dia}   {Lugar} {Articulo}  {descrípcion} );";
+            var elementosFiltrados = elementosXml
+                .Where(e => (bEArticulo == null || (int)e.Element("Articulo").Element("Id") == bEArticulo.Id) &&
+                            (PDescripcion == "" || ((string)e.Element("Descripcion")).Contains(PDescripcion)))
+                .ToList();
 
-            //Tabla = conexion.Leer(consulta);
+            var busquedas = from hallazgo in hallazgosFiltrados
+                            join elemento in elementosFiltrados on (int)hallazgo.Element("Id") equals (int)elemento.Element("Hallazgo").Element("Id")
+                            join articulo in articulosXml on (int)elemento.Element("Articulo").Element("Id") equals (int)articulo.Element("Id")
+                            join estado in estadosElementoXml on (int)elemento.Element("Estado").Element("Id") equals (int)estado.Element("Id")
+                            join entrega in entregasXml on (int)elemento.Element("Entrega").Element("Id") equals (int)entrega.Element("Id") into grupoEntrega
+                            from en in grupoEntrega.DefaultIfEmpty()
+                            select new ElementoBusqueda
+                            {
+                                Id = (int)elemento.Element("Id"),
+                                Cantidad = (string)elemento.Element("Cantidad"),
+                                Descripcion = (string)elemento.Element("Descripcion"),
+                                Articulo = (string)articulo.Element("Nombre"),
+                                Estado = (string)estado.Element("Nombre"),
+                                Hallazgo = (string)hallazgo.Element("NroActa"),
+                                Lugar = (string)hallazgo.Element("LugarHallazgo"),
+                                Entrega = (string)en?.Element("NroActa"),
+                                Fecha_hallazgo = (string)hallazgo.Element("FechaHallazgo")
+                            };
 
-            //if (Tabla.Rows.Count > 0)
-            //{
-            //    foreach (DataRow fila in Tabla.Rows)
-            //    {
-            //        ElementoBusqueda bElemento = new ElementoBusqueda();
-            //        bElemento.Id = Convert.ToInt32(fila["Id"]);
-            //        bElemento.Cantidad = fila["Cantidad"].ToString();
-            //        bElemento.Descripcion = fila["Descripcion"].ToString();
-            //        bElemento.Articulo = fila["Articulo"].ToString();
-            //        bElemento.Estado = fila["Estado"].ToString();
-            //        bElemento.Hallazgo = fila["Hallazgo.Nro acta"].ToString();
-            //        bElemento.Lugar = fila["Lugar hallazgo"].ToString();
-            //        bElemento.Entrega = fila["Entrega.Nro acta"].ToString();
-            //        bElemento.Fecha_hallazgo = fila["Fecha hallazgo"].ToString();
-
-
-            //        lista.Add(bElemento);
-            //    }
-            //}
-
-            return lista;
+            return busquedas.ToList();
 
         }
 
@@ -235,13 +235,10 @@ namespace MPP
         {
             List<ElementoBusqueda> lista = new List<ElementoBusqueda>();
             MPPArticulo mPPArticulo = new MPPArticulo();
-            MPPCategoria mPPCategoria = new MPPCategoria();
-            MPPElemento mPPElementos = new MPPElemento();
             MPPEstado_Elemento mPPEstado_Elemento = new MPPEstado_Elemento();
             MPPHallazgo mPPHallazgo = new MPPHallazgo();
             MPPEntrega mPPEntrega = new MPPEntrega();
 
-            var Categorias = mPPCategoria.ListarTodo();
             var Estado_Elementos = mPPEstado_Elemento.ListarTodo();
             var Articulos = mPPArticulo.ListarTodo();
             var Entregas = mPPEntrega.ListarTodo();
@@ -262,9 +259,9 @@ namespace MPP
                     bElemento.Estado = Estado_Elementos.Find(x => x.Id == elemento.Estado.Id).Nombre;
                     bElemento.Hallazgo = Hallazgo.NroActa;
                     bElemento.Lugar = Hallazgo.LugarHallazgo;
-                    //bElemento.Entrega = fila["Entrega.Nro acta"].ToString();
                     bElemento.Fecha_hallazgo = Hallazgo.FechaHallazgo.ToString();
                     bElemento.Entrega = ObtenerNroEntrega(new BEElemento(bElemento.Id));
+                    //bElemento.Entrega = ObtenerEntregaPorElemento(elemento);
 
                     lista.Add(bElemento);
                 }
@@ -272,5 +269,41 @@ namespace MPP
 
             return lista;
         }
+
+        //public string ObtenerEntregaPorElemento(BEElemento elemento)
+        //{
+        //    MPPElemento mPPElementos = new MPPElemento();
+
+        //    IEnumerable<XElement> todosElementos = conexion.LeerTodos(NodoPadre);
+
+        //    XElement elementoEncontrado = todosElementos.FirstOrDefault(x => (int)x.Element("Id") == elemento.Id);
+
+        //    // Realizamos un chequeo de null para asegurarnos de que se encontró un Elemento con el Id
+        //    if (elementoEncontrado != null)
+        //    {
+        //        // Ahora buscamos la entrega basada entrega el IdEntrega de elementoEncontrado
+        //        MPPEntrega mPPEntrega = new MPPEntrega();
+        //        IEnumerable<XElement> todasEntregas = conexion.LeerTodos("Entregas");
+
+        //        int IdEntrega = (int)elementoEncontrado.Element("IdEntrega");
+
+        //        XElement entregaEncontrada = todasEntregas.FirstOrDefault(x => (int)x.Element("Id") == IdEntrega);
+
+        //        // Realizamos un chequeo de null para asegurarnos de que se encontró una Entrega con el Id
+        //        if (entregaEncontrada != null)
+        //        {
+        //            return (string)entregaEncontrada.Element("NroActa");
+                    
+        //        }
+        //        else
+        //        {
+        //            throw new Exception($"No se encontró una Entrega con el Id: {IdEntrega}");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new Exception($"No se encontró un Elemento con el Id: {elemento.Id}");
+        //    }
+        //}
     }
 }

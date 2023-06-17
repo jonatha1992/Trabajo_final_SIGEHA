@@ -2,29 +2,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Rol : Componente
+    public class Permiso : Componente
     {
-        private IList<Componente> _hijos;
-        public Rol()
-        {
-            _hijos = new List<Componente>();
-        }
-
         public override IList<Componente> Hijos
         {
             get
             {
-                return _hijos.ToList();
+                return null;
             }
 
         }
 
         public override void AgregarHijo(Componente c)
         {
-            _hijos.Add(c);
+
         }
+
+
     }
 }
