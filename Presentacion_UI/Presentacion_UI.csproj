@@ -101,6 +101,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_Permiso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Permiso.Designer.cs">
+      <DependentUpon>Form_Permiso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Articulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="ActaEntrega.rdlc" />
     <EmbeddedResource Include="ActaHallazgo.rdlc" />
+    <EmbeddedResource Include="Form_Permiso.resx">
+      <DependentUpon>Form_Permiso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Articulo.resx">
       <DependentUpon>Form_Articulo.cs</DependentUpon>
     </EmbeddedResource>

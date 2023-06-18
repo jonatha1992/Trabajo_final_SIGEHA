@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public abstract class Componente: IEntidad
+    public abstract class BEComponente: IEntidad
     {
-        public string Nombre { get; set; }
         public int Id { get; set; }
+        public string Nombre { get; set; }
 
-        public abstract IList<Componente> Hijos { get; }
-        public abstract void AgregarHijo(Componente c);
+        public abstract IList<BEComponente> Hijos { get; }
+        public abstract void AgregarHijo(BEComponente c);
+        public abstract void VaciarHijos();
+
 
     }
 

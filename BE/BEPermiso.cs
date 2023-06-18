@@ -7,22 +7,25 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Permiso : Componente
+    public class BEPermiso : BEComponente
     {
-        public override IList<Componente> Hijos
+        public override IList<BEComponente> Hijos
         {
             get
             {
-                return null;
+                return new List<BEComponente>();
             }
 
         }
 
-        public override void AgregarHijo(Componente c)
+        public override void AgregarHijo(BEComponente c)
         {
-
+            throw new NotImplementedException();
         }
 
-
+        public override void VaciarHijos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

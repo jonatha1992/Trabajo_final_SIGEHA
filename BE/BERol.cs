@@ -5,15 +5,15 @@ using System.Linq;
 
 namespace BE
 {
-    public class Rol : Componente
+    public class BERol : BEComponente
     {
-        private IList<Componente> _hijos;
-        public Rol()
+        private IList<BEComponente> _hijos;
+        public BERol()
         {
-            _hijos = new List<Componente>();
+            _hijos = new List<BEComponente>();
         }
 
-        public override IList<Componente> Hijos
+        public override IList<BEComponente> Hijos
         {
             get
             {
@@ -22,9 +22,15 @@ namespace BE
 
         }
 
-        public override void AgregarHijo(Componente c)
+
+        public override void AgregarHijo(BEComponente c)
         {
             _hijos.Add(c);
+        }
+
+        public override void VaciarHijos()
+        {
+            _hijos = new List<BEComponente>();
         }
     }
 }
