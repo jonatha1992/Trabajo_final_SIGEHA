@@ -1,69 +1,87 @@
 ﻿using Abstraccion;
 using BE;
 using MPP;
+using System;
 using System.Collections.Generic;
 
 namespace Negocio
 {
-    public class BLLPermiso : IGestor<BEPermiso>
+    public class BLLPermiso
     {
 
-        MPPPermiso mPPPermiso;
-
+        //instancio el objeto Mapper de permisos
+        MPPPermiso oMPPPermiso;
         public BLLPermiso()
         {
-            mPPPermiso = new MPPPermiso();
+            oMPPPermiso = new MPPPermiso();
         }
 
-        public bool Actualizar(BECategoria Object)
+        //método para sabner si existe
+
+        public bool Existe(BEComponente c, int id)
         {
-            var exixte = ListarTodo().Exists(x => x.Id == Object.Id);
+            bool existe = false;
 
-            if (Object.Id == 0)
-            {
-                return false;
-            }
+            if (c.Id.Equals(id))
+                existe = true;
+            else
 
-            return mPPCateroria.Actualizar(Object);
+                foreach (var item in c.Hijos)
+                {
+
+                    existe = Existe(item, id);
+                    if (existe) return true;
+                }
+            return existe;
         }
 
-        public BECategoria Agregar(BECategoria Object)
+        
+
+        //método para guardar  los permisosm en la rol
+        public BEComponente GuardarComponente(BEComponente p, bool esrol)
         {
-            var exixte = ListarTodo().Exists(x => x.Nombre == Object.Nombre);
-
-            if (exixte)
-            {
-                return null;
-            }
-
-            return mPPCateroria.Agregar(Object);
+            return oMPPPermiso.GuardarComponente(p, esrol);
         }
 
-        public bool Eliminar(BECategoria Object)
+        //método para guardar  rols
+        public void Guardarrol(BERol c)
         {
-            var exixte = ListarTodo().Exists(x => x.Id == Object.Id);
-            if (!exixte)
-            {
-                return false;
-            }
-            return mPPCateroria.Eliminar(Object);
+            oMPPPermiso.Guardarrol(c);
         }
 
-        public BECategoria ListarObjeto(BECategoria bECategoria)
+        //método para taer todas las permisos
+        public IList<BEPermiso> Listarpermisos()
         {
-            return mPPCateroria.ListarObjeto(bECategoria);
+            return oMPPPermiso.Listarpermisos();
         }
 
-        public List<BECategoria> ListarTodo()
+        //método para taer todas las rols
+        public IList<BERol> ListaRoles()
         {
-            return mPPCateroria.ListarTodo();
+            return oMPPPermiso.ListarRoles();
+        }
+
+        //método para taer todas las permisos
+        public IList<BEComponente> GetAll(string rol)
+        {
+            return oMPPPermiso.GetAll(rol);
+
         }
 
 
-        public void  BuscarPermisosUsuario(BEInstructor usuario)
+        //método para taer los permisos de los usuaurios
+        public void FillUserComponents(BEUsuario u)
         {
+            oMPPPermiso.FillUserComponents(u);
 
+        }
+
+        //método para taer todos las rols con sus permisos
+        public void FillFamilyComponents(BERol rol)
+        {
+            oMPPPermiso.FillFamilyComponents(rol);
         }
 
     }
+
 }

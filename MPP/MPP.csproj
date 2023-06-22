@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MPPComponente.cs" />
+    <Compile Include="MPPPermiso.cs" />
     <Compile Include="MPPUsuario.cs" />
     <Compile Include="MPPJerarquia.cs" />
     <Compile Include="MPPEntrega.cs" />

@@ -52,6 +52,22 @@ namespace DAL
             }
 
         }
+        public XElement LeerObjeto(string NodoContenedor, string idElemento)
+        {
+            try
+            {
+                XDocument xdoc = XDocument.Load(XmlFilePath);
+
+                XElement ElementoGenerico = xdoc.Descendants(NodoContenedor)
+                                                 .FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
+
+                return ElementoGenerico;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
         public bool Agregar(string NodoPadre, XElement elemento)
@@ -128,22 +144,6 @@ namespace DAL
         }
 
 
-        public XElement LeerObjeto(string NodoContenedor, string idElemento)
-        {
-            try
-            {
-                XDocument xdoc = XDocument.Load(XmlFilePath);
-
-                XElement ElementoGenerico = xdoc.Descendants(NodoContenedor)
-                                                 .FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
-
-                return ElementoGenerico;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         public bool Eliminar(string NodoPadre, string idElemento, string elementocontenedor = "")
         {
             try
@@ -207,7 +207,7 @@ namespace DAL
         }
 
 
-        public bool Eliminar(string NodoPadre, Func<XElement, bool> criterioEliminacion)
+        public bool EliminarConCriterio(string NodoPadre, Func<XElement, bool> criterioEliminacion)
         {
             try
             {

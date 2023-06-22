@@ -24,19 +24,21 @@ namespace MPP
           new XElement("Nombrecompleto", bEPersona.NombreCompleto),
           new XElement("Ocupacion", bEPersona.Ocupacion),
           new XElement("Telefono", bEPersona.Telefono)
+
           );
 
-            bEPersona.Id = NuevoID;
+     
 
+            conexion.Agregar(NodoPadre, Persona);
             return bEPersona;
         }
 
         public bool Actualizar(BEPersona pPersona)
         {
-
+           
             XElement bEPersona = new XElement("Persona",
                      new XElement("Id", pPersona.Id),
-                     new XElement("Domcicilio", pPersona.Domicilio),
+                     new XElement("Domicilio", pPersona.Domicilio),
                      new XElement("Nombrecompleto", pPersona.NombreCompleto),
                      new XElement("Ocupacion", pPersona.Ocupacion),
                      new XElement("Telefono", pPersona.Telefono)
@@ -127,12 +129,12 @@ namespace MPP
 
         public bool EliminarPersonaHallazgo(BEHallazgo hallazgo, BEPersona persona)
         {
-            return conexion.Eliminar("Hallazgo_Personas", x => x.Element("IdHallazgo").Value == hallazgo.Id.ToString() && x.Element("IdPersona").Value == persona.Id.ToString());
+            return conexion.EliminarConCriterio("Hallazgo_Personas", x => x.Element("IdHallazgo").Value == hallazgo.Id.ToString() && x.Element("IdPersona").Value == persona.Id.ToString());
         }
 
         public bool EliminarPersonaEntrega(BEEntrega entrega, BEPersona persona)
         {
-            return conexion.Eliminar("Entrega_Personas", x => x.Element("IdEntrega").Value == entrega.Id.ToString() && x.Element("IdPersona").Value == persona.Id.ToString());
+            return conexion.EliminarConCriterio("Entrega_Personas", x => x.Element("IdEntrega").Value == entrega.Id.ToString() && x.Element("IdPersona").Value == persona.Id.ToString());
         }
 
     }

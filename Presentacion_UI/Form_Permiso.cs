@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BE;
+using Negocio;
 
 namespace Presentacion_UI
 {
@@ -21,5 +23,7 @@ namespace Presentacion_UI
         {
             
         }
+
+       
     }
 }

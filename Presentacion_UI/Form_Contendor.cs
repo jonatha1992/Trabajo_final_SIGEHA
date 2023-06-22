@@ -30,6 +30,7 @@ namespace Presentacion_UI
         BEInstructor usuario;
 
         BLLCategoria bLLCategoria;
+        BLLPermiso bLLPermiso;
         BLLArticulo bLLArticulo;
         BLLUnidad bLLUnidad;
         BLLUrsa bLLUrsa;
@@ -42,6 +43,63 @@ namespace Presentacion_UI
         public static List<BEUnidad> Unidades { get; set; }
         public static BEUrsa Ursa { get; set; }
         public static BEUnidad Unidad { get; set; }
+
+        public void CargarToolStripSegunPermisos()
+        {
+
+            List<string> permisosDelUsuario = bLLPermiso.ListarPermisos();
+
+            List<string> listaToolStrip = GetAllMenuStripItems(menuStrip);
+
+            foreach (ToolStripMenuItem c in menuStrip.Items)
+            {
+
+                foreach (ToolStripMenuItem j in c.DropDownItems)
+                {
+                    if (j is ToolStripMenuItem)
+                    {
+                        if (!permisosDelUsuario.Contains(j.Name.ToString()))
+                        {
+                            j.Visible = false;
+
+                        }
+                    }
+
+                }
+            }
+        }
+
+        public List<string> GetAllMenuStripItems(MenuStrip menuStrip)
+        {
+            List<string> items = new List<string>();
+
+            foreach (ToolStripItem item in menuStrip.Items)
+            {
+                items.Add(item.Name);
+                if (item is ToolStripMenuItem)
+                {
+                    items.AddRange(GetDropDownItems((ToolStripMenuItem)item));
+                }
+            }
+
+            return items;
+        }
+
+        private List<string> GetDropDownItems(ToolStripMenuItem item)
+        {
+            List<string> items = new List<string>();
+
+            foreach (ToolStripItem dropdownItem in item.DropDownItems)
+            {
+                items.Add(dropdownItem.Name);
+                if (dropdownItem is ToolStripMenuItem)
+                {
+                    items.AddRange(GetDropDownItems((ToolStripMenuItem)dropdownItem));
+                }
+            }
+
+            return items;
+        }
 
 
         private void Form_Contenedor_Load(object sender, EventArgs e)
@@ -148,9 +206,9 @@ namespace Presentacion_UI
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            hallazgoToolStripMenuItem.Enabled = false;
-            entregaToolStripMenuItem1.Enabled = false;
-            reporteToolStripMenuItem.Enabled = false;
+            Hallazgo.Enabled = false;
+            Entrega.Enabled = false;
+            //reporteToolStripMenuItem.Enabled = false;
             usuario = null;
 
             Form_Login form_login = new Form_Login();
@@ -159,9 +217,9 @@ namespace Presentacion_UI
             if (result == DialogResult.OK)
             {
                 usuario = form_login.Usuario;
-                hallazgoToolStripMenuItem.Enabled = true;
-                entregaToolStripMenuItem1.Enabled = true;
-                reporteToolStripMenuItem.Enabled = true;
+                Hallazgo.Enabled = true;
+                Entrega.Enabled = true;
+                //reporteToolStripMenuItem.Enabled = true;
 
             }
             else
@@ -171,6 +229,14 @@ namespace Presentacion_UI
 
         }
 
+        private void CrearHallazgo_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

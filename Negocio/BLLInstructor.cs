@@ -57,21 +57,7 @@ namespace Negocio
         }
 
 
-        public BEInstructor ControlPasswword(string legajo, string pass)
-        {
-            var usuario = mpPinstructor.ListarUsuarios().Find(x => x.Legajo == int.Parse(legajo) && x.Password == pass);
-            if (usuario == null)
-            {
-                return null;
-
-            }
-            else
-            {
-                usuario = mpPinstructor.ListarObjeto(usuario);
-                
-                return usuario;
-            }
-        }
+     
     }
 }
 

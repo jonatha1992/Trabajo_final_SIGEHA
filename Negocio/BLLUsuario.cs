@@ -19,7 +19,7 @@ namespace Negocio
             return mpPUsuario.ListarTodo();
         }
 
-        public BEInstructor ControlPasswword(string legajo, string pass)
+        public BEUsuario ControlPasswword(string legajo, string pass)
         {
             var usuario = ListarTodo().Find(x => x.Legajo == int.Parse(legajo) && x.Password == pass);
             if (usuario == null)
@@ -30,6 +30,7 @@ namespace Negocio
             else { return usuario; }
         }
 
+    
         public DataSet ObtenerElementosReporte(BEUrsa ursa, BEUnidad unidad = null)
         {
             return mpPUsuario.ObtenerElementosReporte(ursa, unidad);

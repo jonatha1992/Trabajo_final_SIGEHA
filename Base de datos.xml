@@ -898,17 +898,6 @@
 			<DNI>38127506</DNI>
 		</Persona>
 	</Personas>
-	<Instructores>
-		<Instructor>
-			<IdPersona>1</IdPersona>
-			<IdRol>1</IdRol>
-			<IdUrsa>1</IdUrsa>
-			<Legajo>506896</Legajo>
-			<Password>506896</Password>
-			<Mail>jgcorrea@psa.gob.ar</Mail>
-			<IdJerarquia>1</IdJerarquia>
-		</Instructor>
-	</Instructores>
 	<Unidad>
 		<Unidad>
 			<Id>1</Id>
@@ -1189,128 +1178,94 @@
 			<Nombre>CEAC</Nombre>
 		</Ursa>
 	</Ursas>
-	<Menus>
-		<Menu>
-			<Id>1</Id>
-			<Nombre>Entregas</Nombre>
-		</Menu>
-		<Menu>
-			<Id>2</Id>
-			<Nombre>Hallazgos</Nombre>
-		</Menu>
-		<Menu>
-			<Id>3</Id>
-			<Nombre>Gestion</Nombre>
-		</Menu>
-	</Menus>
-	<Rol_Permisos>
-		<Rol_Permiso>
-			<IdPermiso>1</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>2</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>3</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>4</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>5</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>6</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>7</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>8</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-		<Rol_Permiso>
-			<IdPermiso>9</IdPermiso>
-			<IdRol>1</IdRol>
-			<Permitido>true</Permitido>
-		</Rol_Permiso>
-	</Rol_Permisos>
+	<Usuario_Permisos>
+		<Usuario_Permiso>
+			<IdUsuario>10</IdUsuario>
+			<IdPermiso>10</IdPermiso>
+		</Usuario_Permiso>
+	</Usuario_Permisos>
 	<Permisos>
 		<Permiso>
 			<Id>1</Id>
-			<Nombre>Generar Reporte</Nombre>
-			<IdMenu>3</IdMenu>
+			<Nombre>Reporte</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>2</Id>
-			<Nombre>Alta Hallazgos</Nombre>
-			<IdMenu>2</IdMenu>
+			<Nombre>CrearHallazgo</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>3</Id>
-			<Nombre>Alta Entregas</Nombre>
-			<IdMenu>1</IdMenu>
+			<Nombre>CrearEntrega</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>4</Id>
-			<Nombre>Gestion Usuarios</Nombre>
-			<IdMenu>3</IdMenu>
+			<Nombre>GestionUsuarios</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>5</Id>
-			<Nombre>ABM Categorias</Nombre>
-			<IdMenu>3</IdMenu>
+			<Nombre>BackUp</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>6</Id>
-			<Nombre>ABM Articulos</Nombre>
-			<IdMenu>3</IdMenu>
+			<Nombre>ABMCategorias</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>7</Id>
-			<Nombre>Back up</Nombre>
-			<IdMenu>3</IdMenu>
+			<Nombre>Informe</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>8</Id>
-			<Nombre>Gestion Entregas</Nombre>
-			<IdMenu>1</IdMenu>
+			<Nombre>Entrega</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>9</Id>
-			<Nombre>Gestion Hallazgos</Nombre>
-			<IdMenu>2</IdMenu>
+			<Nombre>Hallazgo</Nombre>
+			<EsPermiso>true</EsPermiso>
+		</Permiso>
+		<Permiso>
+			<Id>10</Id>
+			<Nombre>Instructor</Nombre>
+			<EsPermiso>false</EsPermiso>
+		</Permiso>
+		<Permiso>
+			<Id>11</Id>
+			<Nombre>Administrador</Nombre>
+			<EsPermiso>false</EsPermiso>
+		</Permiso>
+		<Permiso>
+			<Id>12</Id>
+			<Nombre>Supervisor</Nombre>
+			<EsPermiso>false</EsPermiso>
+		</Permiso>
+		<Permiso>
+			<Id>13</Id>
+			<Nombre>Administracion</Nombre>
+			<EsPermiso>true</EsPermiso>
+		</Permiso>
+		<Permiso>
+			<Id>14</Id>
+			<Nombre>GestionPermisos</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 	</Permisos>
-	<Roles>
-		<Rol>
-			<Id>1</Id>
-			<Nombre>Administrador</Nombre>
-		</Rol>
-		<Rol>
-			<Id>2</Id>
-			<Nombre>Supervisor</Nombre>
-		</Rol>
-		<Rol>
-			<Id>2</Id>
-			<Nombre>Instructor</Nombre>
-		</Rol>
-	</Roles>
+	<Permisos_Permisos>
+		<Permiso_Permiso>
+			<IdPermisoPadre>13</IdPermisoPadre>
+			<IdPermisoHijo>1</IdPermisoHijo>
+		</Permiso_Permiso>
+		<Permiso_Permiso>
+			<IdPermiso>13</IdPermiso>
+			<IdPermisoHijo>4</IdPermisoHijo>
+		</Permiso_Permiso>
+	</Permisos_Permisos>
 	<Hallazgos>
 		<Hallazgo>
 			<Id>1</Id>

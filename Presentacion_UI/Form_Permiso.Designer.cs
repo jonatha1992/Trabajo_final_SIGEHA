@@ -35,14 +35,14 @@
             // 
             // treeViewPermisos
             // 
-            this.treeViewPermisos.Location = new System.Drawing.Point(26, 62);
+            this.treeViewPermisos.Location = new System.Drawing.Point(38, 44);
             this.treeViewPermisos.Name = "treeViewPermisos";
-            this.treeViewPermisos.Size = new System.Drawing.Size(550, 787);
+            this.treeViewPermisos.Size = new System.Drawing.Size(537, 510);
             this.treeViewPermisos.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(659, 102);
+            this.button1.Location = new System.Drawing.Point(38, 581);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 112);
             this.button1.TabIndex = 1;
@@ -51,7 +51,7 @@
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(659, 235);
+            this.button.Location = new System.Drawing.Point(410, 581);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(155, 112);
             this.button.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 934);
+            this.ClientSize = new System.Drawing.Size(1461, 934);
             this.Controls.Add(this.button);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.treeViewPermisos);
