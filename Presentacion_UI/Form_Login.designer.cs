@@ -89,7 +89,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 18);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Usuario:";
+            this.label1.Text = "NombreUsuario:";
             // 
             // textBoxUsuario
             // 

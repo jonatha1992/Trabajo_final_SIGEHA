@@ -3,6 +3,7 @@ using BE;
 using MPP;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Negocio
 {
@@ -62,24 +63,44 @@ namespace Negocio
         }
 
         //método para taer todas las permisos
-        public IList<BEComponente> GetAll(string rol)
+        public IList<BEComponente> ObternerPermisosRol(string rol)
         {
-            return oMPPPermiso.GetAll(rol);
+            return oMPPPermiso.ObternerPermisosRol(rol);
 
         }
 
 
-        //método para taer los permisos de los usuaurios
-        public void FillUserComponents(BEUsuario u)
+        //método para taer los permisos de un usuario
+        public List<string> ObternerPermisosUsuario(BEUsuario user)
         {
-            oMPPPermiso.FillUserComponents(u);
+            user =  oMPPPermiso.ObternerPermisoUsuario(user);
+            List<string> nombresPermisos = new List<string>();
 
+            foreach (var permiso in user.Permisos)
+            {
+                AgregarNombresPermisos(permiso, nombresPermisos);
+            }
+            return nombresPermisos;
+
+        }
+
+
+        private void AgregarNombresPermisos(BEComponente permiso, List<string> nombresPermisos)
+        {
+            nombresPermisos.Add(permiso.Nombre);
+            if (permiso is BERol rol)
+            {
+                foreach (var permisoHijo in rol.Hijos)
+                {
+                    AgregarNombresPermisos(permisoHijo, nombresPermisos);
+                }
+            }
         }
 
         //método para taer todos las rols con sus permisos
-        public void FillFamilyComponents(BERol rol)
+        public void BuscarRolComponents(BERol rol)
         {
-            oMPPPermiso.FillFamilyComponents(rol);
+            oMPPPermiso.BuscarRolComponents(rol);
         }
 
     }

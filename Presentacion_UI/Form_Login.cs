@@ -33,9 +33,8 @@ namespace Presentacion_UI
             Application.Exit();
         }
 
-        //BLLUsuario bLLUsuario;
-        BLLInstructor bLLInstructor;
-        public BEInstructor Usuario;
+        BLLUsuario bLLUsuario;
+        public BEUsuario Usuario;
 
         public bool Verificar()
         {
@@ -45,14 +44,14 @@ namespace Presentacion_UI
                 {
                     if (Validar.SoloContraseña(textBoxPassword.Text))
                     {
-                        Usuario = bLLInstructor.ControlPasswword(textBoxUsuario.Text, textBoxPassword.Text);
+                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text, textBoxPassword.Text);
                         if (Usuario != null)
                         {
                             return true;
                         }
                         else
                         {
-                            MessageBox.Show("No coinciden la contrseña o Usuario");
+                            MessageBox.Show("No coinciden la contrseña o NombreUsuario");
                             return false;
                         }
                     }
@@ -84,10 +83,7 @@ namespace Presentacion_UI
     
         private void Form_Login_Load(object sender, EventArgs e)
         {
-            //bLLUsuario = new BLLUsuario();
-
-            bLLInstructor = new BLLInstructor();
-
+            bLLUsuario = new BLLUsuario();
         }
 
         private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)

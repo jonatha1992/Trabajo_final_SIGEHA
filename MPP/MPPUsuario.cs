@@ -3,6 +3,7 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -27,29 +28,51 @@ namespace MPP
             throw new NotImplementedException();
         }
 
-        public List<BEInstructor> ListarTodo()
+        public bool GuardarPermisos(BEUsuario oBEUsu)
         {
-            string Nodo = "Instructores";
-            var Consulta = conexion.LeerTodos(Nodo).Descendants("Instructor");
+            try
+            {
+                // Elimina los permisos existentes del usuario
+                conexion.Eliminar("UsuariosPermisos", oBEUsu.Id.ToString(), "IdUsuario");
 
-            List<BEInstructor> lista = new List<BEInstructor>();
+                // Agrega los nuevos permisos
+                foreach (var permiso in oBEUsu.Permisos)
+                {
+                    var permisoUsuarioElement = new XElement("UsuarioPermiso",
+                        new XElement("IdUsuario", oBEUsu.Id),
+                        new XElement("IdPermiso", permiso.Id));
+
+                    conexion.Agregar("UsuariosPermisos", permisoUsuarioElement);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
+
+        public List<BEUsuario> ListarTodo()
+        {
+            string Nodo = "Usuarios";
+            var Consulta = conexion.LeerTodos(Nodo).Descendants("Usuario");
+
+            List<BEUsuario> lista = new List<BEUsuario>();
 
             if (Consulta.Count() > 0)
             {
-              var  lista2 = from x in Consulta
-                         where x.Element("Id_rol")?.Value.ToString() != ""
-                         select new BEInstructor
-                         {
-                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id_persona")?.Value)),
-                             Legajo = Convert.ToInt32(Convert.ToString(x.Element("Legajo")?.Value)),
-                             //Destino = new BEDestino(Convert.ToInt32(Convert.ToString(x.Element("Id_destino")?.Value))),
-                             Password = Convert.ToString(x.Element("Password")?.Value),
-                             Rol = new BERol(Convert.ToInt32(Convert.ToString(x.Element("Id_rol")?.Value))),
-                             Mail = Convert.ToString(x.Element("Mail")?.Value),
-                             Jerarquia = new BEJerarquia(Convert.ToInt32(Convert.ToString(x.Element("Id_jerarquia")?.Value))),
-                         };
+                var lista2 = from x in Consulta
+                             where x.Element("Id_rol")?.Value.ToString() != ""
+                             select new BEUsuario
+                             {
+                                 NombreUsuario = Convert.ToString(x.Element("NombreUsuario")?.Value),
+                                 Password = Convert.ToString(x.Element("Password")?.Value)
 
-                lista = lista2.ToList<BEInstructor>();
+                             };
+
+                lista = lista2.ToList<BEUsuario>();
             }
             else
             {
@@ -124,8 +147,6 @@ namespace MPP
             //Tabla = conexion.Leer(consulta);
             //Tabla.TableName = "Entrega - Actores";
             //ds.Tables.Add(Tabla);
-
-
 
             return ds;
         }

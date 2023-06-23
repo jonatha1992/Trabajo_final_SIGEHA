@@ -1178,6 +1178,15 @@
 			<Nombre>CEAC</Nombre>
 		</Ursa>
 	</Ursas>
+	<Usuarios>
+		<ÇUsuario>
+			<NombreUsuario>Admin</NombreUsuario>
+			<DNI>1234566</DNI>
+			<Password>1234</Password>
+			<IdUrsa>1</IdUrsa>
+			<IdUnidad>1</IdUnidad>
+		</ÇUsuario>
+	</Usuarios>
 	<Usuario_Permisos>
 		<Usuario_Permiso>
 			<IdUsuario>10</IdUsuario>
@@ -1262,7 +1271,7 @@
 			<IdPermisoHijo>1</IdPermisoHijo>
 		</Permiso_Permiso>
 		<Permiso_Permiso>
-			<IdPermiso>13</IdPermiso>
+			<IdPermisoPadre>13</IdPermisoPadre>
 			<IdPermisoHijo>4</IdPermisoHijo>
 		</Permiso_Permiso>
 	</Permisos_Permisos>

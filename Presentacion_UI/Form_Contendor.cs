@@ -22,15 +22,17 @@ namespace Presentacion_UI
             bLLUnidad = new BLLUnidad();
             bLLUrsa = new BLLUrsa();
             bLLEstado_Elemento = new BLLEstado_Elemento();
+            bLLPermiso = new BLLPermiso();
         }
 
         Form_Hallazgo form_Hallazgo;
         Form_Entrega form_Entrega;
         //BEUsuario usuario;
-        BEInstructor usuario;
+        BEUsuario usuario;
 
         BLLCategoria bLLCategoria;
         BLLPermiso bLLPermiso;
+
         BLLArticulo bLLArticulo;
         BLLUnidad bLLUnidad;
         BLLUrsa bLLUrsa;
@@ -44,16 +46,19 @@ namespace Presentacion_UI
         public static BEUrsa Ursa { get; set; }
         public static BEUnidad Unidad { get; set; }
 
+
+       
+
+
         public void CargarToolStripSegunPermisos()
         {
 
-            List<string> permisosDelUsuario = bLLPermiso.ListarPermisos();
+            List<string> permisosDelUsuario = bLLPermiso.ObternerPermisosUsuario(usuario);
 
-            List<string> listaToolStrip = GetAllMenuStripItems(menuStrip);
+            List<string> listaToolStrip = ObternerTodosMenuStripItems(menuStrip1);
 
-            foreach (ToolStripMenuItem c in menuStrip.Items)
+            foreach (ToolStripMenuItem c in menuStrip1.Items)
             {
-
                 foreach (ToolStripMenuItem j in c.DropDownItems)
                 {
                     if (j is ToolStripMenuItem)
@@ -69,7 +74,7 @@ namespace Presentacion_UI
             }
         }
 
-        public List<string> GetAllMenuStripItems(MenuStrip menuStrip)
+        public List<string> ObternerTodosMenuStripItems(MenuStrip menuStrip)
         {
             List<string> items = new List<string>();
 
@@ -78,14 +83,14 @@ namespace Presentacion_UI
                 items.Add(item.Name);
                 if (item is ToolStripMenuItem)
                 {
-                    items.AddRange(GetDropDownItems((ToolStripMenuItem)item));
+                    items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)item));
                 }
             }
 
             return items;
         }
 
-        private List<string> GetDropDownItems(ToolStripMenuItem item)
+        private List<string> ObtenerDropDownItems(ToolStripMenuItem item)
         {
             List<string> items = new List<string>();
 
@@ -94,7 +99,7 @@ namespace Presentacion_UI
                 items.Add(dropdownItem.Name);
                 if (dropdownItem is ToolStripMenuItem)
                 {
-                    items.AddRange(GetDropDownItems((ToolStripMenuItem)dropdownItem));
+                    items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)dropdownItem));
                 }
             }
 
@@ -118,7 +123,7 @@ namespace Presentacion_UI
 
                     bEArticulo.Nombre = "SoftwareActualizado";
                     bLLArticulo.Actualizar(bEArticulo);
-                    bEArticulo= bLLArticulo.ListarObjeto(bEArticulo);
+                    bEArticulo = bLLArticulo.ListarObjeto(bEArticulo);
                     bLLArticulo.Eliminar(bEArticulo);
 
                     //loginToolStripMenuItem_Click(null, null);
