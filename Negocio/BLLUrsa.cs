@@ -39,24 +39,24 @@ namespace Negocio
             var lista = mPPUrsa.ListarTodo();
             var tipo = bEUsuario.Id;
             BEUrsa ursa = new BEUrsa();
-            switch (tipo)
-            {
-                case "REGION1":
-                    ursa = lista.Find(x => x.Id == 1);
-                    break;
-                case "REGION2":
-                    ursa = lista.Find(x => x.Id == 2);
-                    break;
-                case "REGION3":
-                    ursa = lista.Find(x => x.Id == 3);
-                    break;
-                case "REGION4":
-                    ursa = lista.Find(x => x.Id == 3);
-                    break;
-                case "REGION5":
-                    ursa = lista.Find(x => x.Id == 3);
-                    break;
-            }
+            //switch (tipo)
+            //{
+            //    case "REGION1":
+            //        ursa = lista.Find(x => x.Id == 1);
+            //        break;
+            //    case "REGION2":
+            //        ursa = lista.Find(x => x.Id == 2);
+            //        break;
+            //    case "REGION3":
+            //        ursa = lista.Find(x => x.Id == 3);
+            //        break;
+            //    case "REGION4":
+            //        ursa = lista.Find(x => x.Id == 3);
+            //        break;
+            //    case "REGION5":
+            //        ursa = lista.Find(x => x.Id == 3);
+            //        break;
+            //}
             return ursa;
         }
 

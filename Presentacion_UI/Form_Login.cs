@@ -44,7 +44,8 @@ namespace Presentacion_UI
                 {
                     if (Validar.SoloContraseña(textBoxPassword.Text))
                     {
-                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text, textBoxPassword.Text);
+                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text,Encriptacion.Encriptar(textBoxPassword.Text));
+                        
                         if (Usuario != null)
                         {
                             return true;

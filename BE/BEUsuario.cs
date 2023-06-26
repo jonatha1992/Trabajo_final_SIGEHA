@@ -9,5 +9,11 @@ namespace BE
         public BEUnidad Unidad { get; set; }
         public BEUrsa Ursa{ get; set; }
         public IList<BEComponente> Permisos { get; set; }
+
+
+        public BEUsuario()
+        {
+            Permisos = new List<BEComponente>();
+        }
     }
 }

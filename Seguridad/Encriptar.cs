@@ -1,36 +1,54 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Seguridad
 {
-    public class Encriptar
+    public class Encriptacion
     {
-        public static string Encriptacion(string pass)
+
+        private static byte[] Llave = Encoding.UTF8.GetBytes("Clave_Maestra123"); // Debe ser de 16 bytes
+        private static byte[] IV = new byte[16]; // 16 bytes inicializados a 0
+       
+
+        public static string Encriptar(string text)
         {
-            try
-            {
-                var message = Encoding.UTF8.GetBytes(pass);
+            Aes aes = Aes.Create();
+            aes.Key = Llave;
+            aes.IV = IV;
 
+            MemoryStream ms = new MemoryStream();
+            CryptoStream cs = new CryptoStream(ms, aes.CreateEncryptor(), CryptoStreamMode.Write);
+            StreamWriter sw = new StreamWriter(cs);
 
-                SHA256 shadow = SHA256.Create();
-                StringBuilder sb = new StringBuilder();
-                byte[] stream = null;
-                stream = shadow.ComputeHash(message);
+            sw.Write(text);
+            sw.Close();
+            cs.Close();
+            ms.Close();
+            aes.Dispose();
 
-                foreach (byte x in stream)
-                {
-                    sb.AppendFormat("{0:x2}", x);
-                }
+            return Convert.ToBase64String(ms.ToArray());
+        }
 
-                return sb.ToString();
+        public static string Desinciptar(string text)
+        {
+            Aes aes = Aes.Create();
+            aes.Key = Llave;
+            aes.IV = IV;
 
+            MemoryStream ms = new MemoryStream(Convert.FromBase64String(text));
+            CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
+            StreamReader sr = new StreamReader(cs);
 
-            }
-            catch (CryptographicException ex) { throw new Exception(ex.Message); }
-            catch (Exception e) { throw new Exception(e.Message); }
+            string TextDescipto = sr.ReadToEnd();
 
+            sr.Close();
+            cs.Close();
+            ms.Close();
+            aes.Dispose();
 
+            return TextDescipto;
         }
     }
 }

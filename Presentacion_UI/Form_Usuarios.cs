@@ -31,15 +31,6 @@ namespace Presentacion_UI
             
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonConfigurar_Click(object sender, EventArgs e)
         {
@@ -49,7 +40,7 @@ namespace Presentacion_UI
             tmp = new BEUsuario();
             tmp.Id = seleccion.Id;
             tmp.NombreCompleto = seleccion.NombreCompleto;
-            oBLLPermiso.FillUserComponents(tmp);
+            oBLLPermiso.ObternerPermisosUsuario(tmp);
 
             MostrarPermisos(tmp);
         }

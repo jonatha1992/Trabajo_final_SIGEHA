@@ -12,9 +12,9 @@ using Negocio;
 
 namespace Presentacion_UI
 {
-    public partial class FormPermisos : Form
+    public partial class Form_Permiso : Form
     {
-        public FormPermisos()
+        public Form_Permiso()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace Presentacion_UI
         BERol beRol;
         private void FormPermisos_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtNombreFamilia_TextChanged(object sender, EventArgs e)
@@ -32,50 +32,46 @@ namespace Presentacion_UI
 
         }
 
-       
+
 
         private void cmdSeleccionarRol_Click(object sender, EventArgs e)
         {
             var tmp = (BERol)this.comboRol.SelectedItem;
+
             beRol = new BERol();
             beRol.Id = tmp.Id;
             beRol.Nombre = tmp.Nombre;
 
-            MostrarRol(true);
+            MostrarRol(beRol);
         }
 
-        void MostrarRol(bool init)
+        void MostrarRol(BERol Rol)
         {
-            if (beRol == null) return;
+            if (Rol == null) return;
 
-
-            IList<BEComponente> rol = null;
-            
-            if (init)
-            {
-                //traigo los hijos de la base
-                rol = bllpermiso.ObternerPermisosRol(beRol.Id.ToString());
-
-                foreach (var i in rol)
-                    beRol.AgregarHijo(i);
-            }
             else
             {
-                rol = beRol.Hijos;
+
+
+              var permisos = bllpermiso.ObternerPermisosRol(Rol);
+
+                foreach (var i in permisos)
+                    beRol.AgregarHijo(i);
+
+
+                this.treeConfigurarRol.Nodes.Clear();
+
+                TreeNode root = new TreeNode(beRol.Nombre);
+                root.Tag = beRol;
+                this.treeConfigurarRol.Nodes.Add(root);
+
+                foreach (var item in permisos)
+                {
+                    MostrarEnTreeView(root, item);
+                }
+
+                treeConfigurarRol.ExpandAll();
             }
-
-            this.treeConfigurarRol.Nodes.Clear();
-
-            TreeNode root = new TreeNode(beRol.Nombre);
-            root.Tag = beRol;
-            this.treeConfigurarRol.Nodes.Add(root);
-
-            foreach (var item in rol)
-            {
-                MostrarEnTreeView(root, item);
-            }
-
-            treeConfigurarRol.ExpandAll();
         }
 
 

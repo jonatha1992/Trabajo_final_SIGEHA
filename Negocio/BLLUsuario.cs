@@ -8,10 +8,12 @@ namespace Negocio
     public class BLLUsuario
     {
         MPPUsuario mpPUsuario;
+        MPPPermiso mpPpermiso;
 
         public BLLUsuario()
         {
             mpPUsuario = new MPPUsuario();
+            mpPpermiso = new MPPPermiso();
         }
 
         public List<BEUsuario> ListarTodo()
@@ -23,14 +25,12 @@ namespace Negocio
         {
             var usuario = ListarTodo().Find(x => x.NombreUsuario == nombre && x.Password == pass);
             if (usuario == null)
-            {
                 return null;
-
-            }
-            else { return usuario; }
+            else
+                return usuario;
         }
 
-    
+
         public DataSet ObtenerElementosReporte(BEUrsa ursa, BEUnidad unidad = null)
         {
             return mpPUsuario.ObtenerElementosReporte(ursa, unidad);

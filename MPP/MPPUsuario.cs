@@ -63,22 +63,21 @@ namespace MPP
 
             if (Consulta.Count() > 0)
             {
-                var lista2 = from x in Consulta
-                             where x.Element("Id_rol")?.Value.ToString() != ""
+                 lista = (from x in Consulta
                              select new BEUsuario
                              {
+                                 Id =  Convert.ToInt32((x.Element("Id").Value)),
                                  NombreUsuario = Convert.ToString(x.Element("NombreUsuario")?.Value),
-                                 Password = Convert.ToString(x.Element("Password")?.Value)
-
-                             };
-
-                lista = lista2.ToList<BEUsuario>();
+                                 Password = Convert.ToString(x.Element("Password")?.Value),
+                                 DNI = Convert.ToString(x.Element("DNI")?.Value),
+                                 Ursa = new BEUrsa( Convert.ToInt32(Convert.ToString(x.Element("IdUrsa")?.Value))),
+                                 Unidad = new BEUnidad( Convert.ToInt32(Convert.ToString(x.Element("IdUnidad")?.Value)))
+                             }).ToList();
             }
             else
             {
                 lista = null;
             }
-
             return lista;
         }
 

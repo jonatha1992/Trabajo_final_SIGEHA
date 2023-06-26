@@ -24,18 +24,18 @@ namespace Presentacion_UI
             bLLUrsa = new BLLUrsa();
             bLLUsuario = new BLLUsuario();
 
-            if (usuario.Rol == "REGION")
-            {
-                Ursa = bLLUrsa.ListarObjeto(usuario);
-                reporte = bLLUsuario.ObtenerElementosReporte(Ursa);
+            //if (usuario.Rol == "REGION")
+            //{
+            //    Ursa = bLLUrsa.ListarObjeto(usuario);
+            //    reporte = bLLUsuario.ObtenerElementosReporte(Ursa);
 
-            }
-            if (usuario.Rol == "UNIDAD")
-            {
-                Unidad = bLLUnidad.ListarObjeto(usuario);
-                Ursa = Unidad.Ursa;
-                reporte = bLLUsuario.ObtenerElementosReporte(Ursa, Unidad);
-            }
+            //}
+            //if (usuario.Rol == "UNIDAD")
+            //{
+            //    Unidad = bLLUnidad.ListarObjeto(usuario);
+            //    Ursa = Unidad.Ursa;
+            //    reporte = bLLUsuario.ObtenerElementosReporte(Ursa, Unidad);
+            //}
 
         }
 

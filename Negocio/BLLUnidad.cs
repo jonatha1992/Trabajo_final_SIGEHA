@@ -33,12 +33,12 @@ namespace Negocio
         {
             throw new System.NotImplementedException();
         }
-        public BEUnidad ListarObjeto(BEUsuario bEUsuario)
-        {
-            var unidad = mPPUnidad.ListarTodo().Find(x => x.Cod == bEUsuario.Id);
+        //public BEUnidad ListarObjeto(BEUsuario bEUsuario)
+        //{
+        //    var unidad = mPPUnidad.ListarTodo().Find(x => x.Cod == bEUsuario.Id);
 
-            return unidad;
-        }
+        //    return unidad;
+        //}
         public List<BEUnidad> ListarTodo()
         {
             return mPPUnidad.ListarTodo();

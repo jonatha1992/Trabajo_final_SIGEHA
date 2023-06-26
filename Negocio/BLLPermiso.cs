@@ -63,9 +63,9 @@ namespace Negocio
         }
 
         //método para taer todas las permisos
-        public IList<BEComponente> ObternerPermisosRol(string rol)
+        public IList<BEComponente> ObternerPermisosRol(BERol  rol)
         {
-            return oMPPPermiso.ObternerPermisosRol(rol);
+            return oMPPPermiso.ObternerPermisosRol(rol );
 
         }
 

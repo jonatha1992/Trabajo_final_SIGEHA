@@ -50,26 +50,37 @@ namespace Presentacion_UI
        
 
 
-        public void CargarToolStripSegunPermisos()
+        public void CargarMenu()
         {
 
+            List<string> listaToolStrip = ObternerTodosMenuStripItems(menuStrip1);
             List<string> permisosDelUsuario = bLLPermiso.ObternerPermisosUsuario(usuario);
 
-            List<string> listaToolStrip = ObternerTodosMenuStripItems(menuStrip1);
-
-            foreach (ToolStripMenuItem c in menuStrip1.Items)
+            foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
             {
-                foreach (ToolStripMenuItem j in c.DropDownItems)
+                if (permisosDelUsuario.Contains(menuItem.Name))
                 {
-                    if (j is ToolStripMenuItem)
+                    menuItem.Visible = true;
+
+                    if (menuItem.DropDownItems != null)
                     {
-                        if (!permisosDelUsuario.Contains(j.Name.ToString()))
+                        foreach (ToolStripItem item in menuItem.DropDownItems)
                         {
-                            j.Visible = false;
-
+                            if (permisosDelUsuario.Contains(item.Name))
+                            {
+                                item.Visible = true;
+                            }
+                            else
+                            {
+                                item.Visible = false;
+                            }
                         }
-                    }
 
+                    }
+                }
+                else
+                {
+                    menuItem.Visible = false;
                 }
             }
         }
@@ -115,30 +126,19 @@ namespace Presentacion_UI
                 Conexion conexion = new Conexion();
                 if (conexion.TestConection())
                 {
-
-                    BEArticulo bEArticulo = new BEArticulo();
-                    bEArticulo.Nombre = "Software";
-                    bEArticulo.Categoria = new BECategoria(1);
-                    bLLArticulo.Agregar(bEArticulo);
-
-                    bEArticulo.Nombre = "SoftwareActualizado";
-                    bLLArticulo.Actualizar(bEArticulo);
-                    bEArticulo = bLLArticulo.ListarObjeto(bEArticulo);
-                    bLLArticulo.Eliminar(bEArticulo);
-
-                    //loginToolStripMenuItem_Click(null, null);
+                    loginToolStripMenuItem_Click(null, null);
                 }
                 Categorias = bLLCategoria.ListarTodo();
                 Articulos = bLLArticulo.ListarTodo();
-                //Articulos = Categorias.SelectMany(categoria => categoria.Articulos).ToList(); 
                 EstadosElementos = bLLEstado_Elemento.ListarTodo();
                 Ursas = bLLUrsa.ListarTodo();
                 Unidades = bLLUnidad.ListarTodo();
+                //Articulos = Categorias.SelectMany(categoria => categoria.Articulos).ToList(); 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
+                //Application.Exit();
             }
         }
 
@@ -149,8 +149,8 @@ namespace Presentacion_UI
 
             try
             {
-                //form_Hallazgo = new Form_Hallazgo(usuario);
-                //form_Hallazgo.ShowDialog();
+                form_Hallazgo = new Form_Hallazgo(usuario);
+                form_Hallazgo.ShowDialog();
 
             }
             catch (Exception ex)
@@ -211,9 +211,7 @@ namespace Presentacion_UI
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hallazgo.Enabled = false;
-            Entrega.Enabled = false;
-            //reporteToolStripMenuItem.Enabled = false;
+
             usuario = null;
 
             Form_Login form_login = new Form_Login();
@@ -222,9 +220,7 @@ namespace Presentacion_UI
             if (result == DialogResult.OK)
             {
                 usuario = form_login.Usuario;
-                Hallazgo.Enabled = true;
-                Entrega.Enabled = true;
-                //reporteToolStripMenuItem.Enabled = true;
+                CargarMenu();
 
             }
             else
@@ -241,6 +237,20 @@ namespace Presentacion_UI
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void GestionUsuarios_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GestionPermisos_Click(object sender, EventArgs e)
+        {
+            Form_Permiso form_Permiso = new Form_Permiso();
+            form_Permiso.Show();
+            form_Permiso.MdiParent = this;
+
 
         }
     }

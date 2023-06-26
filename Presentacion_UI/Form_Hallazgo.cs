@@ -81,26 +81,26 @@ namespace Presentacion_UI
 
         void CargarCombo()
         {
-            if (Usuario.Rol == "REGION")
-            {
-                bEUrsa = Form_Contenedor.Ursa;
-                comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            }
-            else if (Usuario.Rol == "UNIDAD")
-            {
-                bEUnidad = Form_Contenedor.Unidad;
-                bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
-                comboBoxUnidad.Text = bEUnidad.Nombre;
-                comboBoxUrsa.Text = bEUrsa.Nombre;
-            }
-            else
-            {
-                ListaUnidades = Form_Contenedor.Unidades;
-                ListaUrsas = Form_Contenedor.Ursas;
-                comboBoxUrsa.DataSource = ListaUrsas;
-                comboBoxUnidad.DataSource = ListaUnidades;
-            }
+            //if (Usuario.Rol == "REGION")
+            //{
+            //    bEUrsa = Form_Contenedor.Ursa;
+            //    comboBoxUrsa.Text = bEUrsa.Nombre;
+            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //}
+            //else if (Usuario.Rol == "UNIDAD")
+            //{
+            //    bEUnidad = Form_Contenedor.Unidad;
+            //    bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
+            //    comboBoxUnidad.Text = bEUnidad.Nombre;
+            //    comboBoxUrsa.Text = bEUrsa.Nombre;
+            //}
+            //else
+            //{
+            //    ListaUnidades = Form_Contenedor.Unidades;
+            //    ListaUrsas = Form_Contenedor.Ursas;
+            //    comboBoxUrsa.DataSource = ListaUrsas;
+            //    comboBoxUnidad.DataSource = ListaUnidades;
+            //}
         }
         bool VerificarCamposElementos()
         {
@@ -311,8 +311,8 @@ namespace Presentacion_UI
             }
 
 
-            comboBoxUrsa.Enabled = Usuario.Rol == "REGION" || Usuario.Rol == "UNIDAD" ? false : true;
-            comboBoxUnidad.Enabled = Usuario.Rol == "UNIDAD" ? false : true;
+            //comboBoxUrsa.Enabled = Usuario.Rol == "REGION" || Usuario.Rol == "UNIDAD" ? false : true;
+            //comboBoxUnidad.Enabled = Usuario.Rol == "UNIDAD" ? false : true;
         }
         bool VerificarCantidadPersonas()
         {
@@ -336,34 +336,34 @@ namespace Presentacion_UI
         {
             if (SeleccionHallazgo)
             {
-                if (Usuario.Rol == "UNIDAD") //UNIDAD
-                {
-                    buttonEliminar.Visible = false;
+                //if (Usuario.Rol == "UNIDAD") //UNIDAD
+                //{
+                //    buttonEliminar.Visible = false;
 
-                    if (ModoCreacion)// SI ESTA EN MODO CREACION
-                    {
-                        button_Agregar.Visible = false;
-                        button_Modificar.Visible = true;
-                        buttonFinalizarHallazgo.Visible = true;
-                        groupBoxDatosElementos.Enabled = true;
-                        buttonCargarPersonas.Visible = true;
+                //    if (ModoCreacion)// SI ESTA EN MODO CREACION
+                //    {
+                //        button_Agregar.Visible = false;
+                //        button_Modificar.Visible = true;
+                //        buttonFinalizarHallazgo.Visible = true;
+                //        groupBoxDatosElementos.Enabled = true;
+                //        buttonCargarPersonas.Visible = true;
 
-                    }
-                    else //SI NO ESTA EN MODO CREACION
-                    {
-                        groupBoxDatosElementos.Enabled = false;
-                        groupBoxDatosHallazgo.Enabled = false;
-                        buttonImprimir.Visible = false;
+                //    }
+                //    else //SI NO ESTA EN MODO CREACION
+                //    {
+                //        groupBoxDatosElementos.Enabled = false;
+                //        groupBoxDatosHallazgo.Enabled = false;
+                //        buttonImprimir.Visible = false;
 
-                    }
-                }
-                else //REGION O ADMIN
-                {
-                    button_Modificar.Visible = true;
-                    buttonEliminar.Visible = true;
-                    button_Agregar.Visible = false;
-                    buttonFinalizarHallazgo.Visible = false;
-                }
+                //    }
+                //}
+                //else //REGION O ADMIN
+                //{
+                //    button_Modificar.Visible = true;
+                //    buttonEliminar.Visible = true;
+                //    button_Agregar.Visible = false;
+                //    buttonFinalizarHallazgo.Visible = false;
+                //}
 
 
                 if (VerificarCantidadPersonas())
@@ -394,14 +394,14 @@ namespace Presentacion_UI
             }
             else // si no se selecciono ningun hallazgo
             {
-                if (Usuario.Rol == "UNIDAD")
-                {
-                    button_Agregar.Visible = true;
-                }
-                else // ADMIN O REGION
-                {
-                    button_Agregar.Visible = false;
-                }
+                //if (Usuario.Rol == "UNIDAD")
+                //{
+                //    button_Agregar.Visible = true;
+                //}
+                //else // ADMIN O REGION
+                //{
+                //    button_Agregar.Visible = false;
+                //}
 
                 groupBoxDatosHallazgo.Enabled = true;
                 groupBoxDatosElementos.Enabled = false;
@@ -829,40 +829,38 @@ namespace Presentacion_UI
         #region "Hallazgo"
         private void comboBoxUrsa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Usuario.Rol == "ADMIN")
-            {
+            //if (Usuario.Rol == "ADMIN")
+            //{
 
-                bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            }
-            else if (Usuario.Rol == "REGION")
-            {
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            }
-
-
+            //    bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
+            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //}
+            //else if (Usuario.Rol == "REGION")
+            //{
+            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //}
 
         }
         private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Usuario.Rol == "ADMIN")
-            {
-                bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-                bEHallazgo = null;
-                limpiarCamposHallazgos();
-                CargarGrillaHallazgos();
-                CargarGrillaElementos();
-                Habilitar();
-            }
-            else if (Usuario.Rol == "REGION")
-            {
-                bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-                bEHallazgo = null;
-                limpiarCamposHallazgos();
-                CargarGrillaHallazgos();
-                CargarGrillaElementos();
-                Habilitar();
-            }
+            //if (Usuario.Rol == "ADMIN")
+            //{
+            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            //    bEHallazgo = null;
+            //    limpiarCamposHallazgos();
+            //    CargarGrillaHallazgos();
+            //    CargarGrillaElementos();
+            //    Habilitar();
+            //}
+            //else if (Usuario.Rol == "REGION")
+            //{
+            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            //    bEHallazgo = null;
+            //    limpiarCamposHallazgos();
+            //    CargarGrillaHallazgos();
+            //    CargarGrillaElementos();
+            //    Habilitar();
+            //}
 
         }
         private void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
@@ -873,10 +871,10 @@ namespace Presentacion_UI
             {
                 CargarGrillaHallazgos();
             }
-            if (!SeleccionHallazgo && Usuario.Rol == "UNIDAD")
-            {
-                ColocarNumero();
-            }
+            //if (!SeleccionHallazgo && Usuario.Rol == "UNIDAD")
+            //{
+            //    ColocarNumero();
+            //}
 
         }
 

@@ -62,26 +62,26 @@ namespace Presentacion_UI
 
         void CargarCombo()
         {
-            if (Usuario.Rol == "REGION")
-            {
-                bEUrsa = Form_Contenedor.Ursa;
-                comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            }
-            else if (Usuario.Rol == "UNIDAD")
-            {
-                bEUnidad = Form_Contenedor.Unidad;
-                bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
-                comboBoxUnidad.Text = bEUnidad.Nombre;
-                comboBoxUrsa.Text = bEUrsa.Nombre;
-            }
-            else
-            {
-                ListaUnidades = Form_Contenedor.Unidades;
-                ListaUrsas = Form_Contenedor.Ursas;
-                comboBoxUrsa.DataSource = ListaUrsas;
-                comboBoxUnidad.DataSource = ListaUnidades;
-            }
+            //if (Usuario.Rol == "REGION")
+            //{
+            //    bEUrsa = Form_Contenedor.Ursa;
+            //    comboBoxUrsa.Text = bEUrsa.Nombre;
+            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //}
+            //else if (Usuario.Rol == "UNIDAD")
+            //{
+            //    bEUnidad = Form_Contenedor.Unidad;
+            //    bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
+            //    comboBoxUnidad.Text = bEUnidad.Nombre;
+            //    comboBoxUrsa.Text = bEUrsa.Nombre;
+            //}
+            //else
+            //{
+            //    ListaUnidades = Form_Contenedor.Unidades;
+            //    ListaUrsas = Form_Contenedor.Ursas;
+            //    comboBoxUrsa.DataSource = ListaUrsas;
+            //    comboBoxUnidad.DataSource = ListaUnidades;
+            //}
 
             comboBoxCategoria.DataSource = Form_Contenedor.Categorias;
             comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
@@ -117,34 +117,34 @@ namespace Presentacion_UI
 
             if (SeleccionEntrega)
             {
-                if (Usuario.Rol == "UNIDAD")
-                {
-                    buttonEliminar.Visible = false;
+                //if (Usuario.Rol == "UNIDAD")
+                //{
+                //    buttonEliminar.Visible = false;
 
-                    if (ModoCreacion)
-                    {
-                        buttonAgregar.Visible = false;
-                        buttonModificar.Visible = true;
-                        buttonFinalizar.Visible = true;
-                        buttonCargarPersonas.Visible = true;
+                //    if (ModoCreacion)
+                //    {
+                //        buttonAgregar.Visible = false;
+                //        buttonModificar.Visible = true;
+                //        buttonFinalizar.Visible = true;
+                //        buttonCargarPersonas.Visible = true;
 
-                    }
-                    else
-                    {
-                        buttonAgregar.Visible = true;
-                        buttonEliminar.Visible = false;
-                        buttonFinalizar.Visible = false;
-                        buttonModificar.Visible = false;
-                        groupBoxEntrega.Enabled = false;
-                    }
-                }
-                else //REGION O ADMIN
-                {
-                    buttonModificar.Visible = true;
-                    buttonEliminar.Visible = true;
-                    buttonAgregar.Visible = false;
-                    buttonFinalizar.Visible = false;
-                }
+                //    }
+                //    else
+                //    {
+                //        buttonAgregar.Visible = true;
+                //        buttonEliminar.Visible = false;
+                //        buttonFinalizar.Visible = false;
+                //        buttonModificar.Visible = false;
+                //        groupBoxEntrega.Enabled = false;
+                //    }
+                //}
+                //else //REGION O ADMIN
+                //{
+                //    buttonModificar.Visible = true;
+                //    buttonEliminar.Visible = true;
+                //    buttonAgregar.Visible = false;
+                //    buttonFinalizar.Visible = false;
+                //}
 
                 if (VerificarCantidadPersonas())
                 {
@@ -168,14 +168,14 @@ namespace Presentacion_UI
             {
 
 
-                if (Usuario.Rol == "UNIDAD")
-                {
-                    buttonAgregar.Visible = true;
-                }
-                else // ADMIN O REGION
-                {
-                    buttonAgregar.Visible = false;
-                }
+                //if (Usuario.Rol == "UNIDAD")
+                //{
+                //    buttonAgregar.Visible = true;
+                //}
+                //else // ADMIN O REGION
+                //{
+                //    buttonAgregar.Visible = false;
+                //}
 
                 buttonModificar.Visible = false;
                 buttonEliminar.Visible = false;
@@ -220,8 +220,8 @@ namespace Presentacion_UI
                 comboBoxUrsa.Enabled = true;
                 comboBoxUnidad.Enabled = true;
             }
-            comboBoxUrsa.Enabled = Usuario.Rol == "REGION" || Usuario.Rol == "UNIDAD" ? false : true;
-            comboBoxUnidad.Enabled = Usuario.Rol == "UNIDAD" ? false : true;
+            //comboBoxUrsa.Enabled = Usuario.Rol == "REGION" || Usuario.Rol == "UNIDAD" ? false : true;
+            //comboBoxUnidad.Enabled = Usuario.Rol == "UNIDAD" ? false : true;
         }
         void Habilitar()
         {
@@ -595,11 +595,11 @@ namespace Presentacion_UI
                 {
                     Habilitar();
                     MostrarEntregas();
-                    if (Usuario.Rol == "UNIDAD")
-                    {
-                        dgvEntregas.Rows[0].Selected = true;
-                        dgvEntregas.Rows[0].Cells["Seleccion"].Value = true;
-                    }
+                    //if (Usuario.Rol == "UNIDAD")
+                    //{
+                    //    dgvEntregas.Rows[0].Selected = true;
+                    //    dgvEntregas.Rows[0].Cells["Seleccion"].Value = true;
+                    //}
                     MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -838,35 +838,35 @@ namespace Presentacion_UI
 
         private void comboBoxUrsa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Usuario.Rol == "ADMIN")
-            {
+            //if (Usuario.Rol == "ADMIN")
+            //{
 
-                bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            }
-            else if (Usuario.Rol == "REGION")
-            {
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            }
+            //    bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
+            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //}
+            //else if (Usuario.Rol == "REGION")
+            //{
+            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //}
 
 
         }
         private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Usuario.Rol == "ADMIN")
-            {
-                bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-                LimpiarCamposEntrega();
-                MostrarEntregas();
-                Habilitar();
-            }
-            else if (Usuario.Rol == "REGION")
-            {
-                bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-                LimpiarCamposEntrega();
-                MostrarEntregas();
-                Habilitar();
-            }
+            //if (Usuario.Rol == "ADMIN")
+            //{
+            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            //    LimpiarCamposEntrega();
+            //    MostrarEntregas();
+            //    Habilitar();
+            //}
+            //else if (Usuario.Rol == "REGION")
+            //{
+            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            //    LimpiarCamposEntrega();
+            //    MostrarEntregas();
+            //    Habilitar();
+            //}
 
         }
 
@@ -877,10 +877,10 @@ namespace Presentacion_UI
             {
                 MostrarEntregas();
             }
-            if (!SeleccionEntrega && Usuario.Rol == "UNIDAD")
-            {
-                ColocarNumero();
-            }
+            //if (!SeleccionEntrega && Usuario.Rol == "UNIDAD")
+            //{
+            //    ColocarNumero();
+            //}
         }
 
         #endregion
