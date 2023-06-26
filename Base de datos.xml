@@ -1179,18 +1179,18 @@
 		</Ursa>
 	</Ursas>
 	<Usuarios>
-		<ÇUsuario>
+		<Usuario>
+			<Id>1</Id>
 			<NombreUsuario>Admin</NombreUsuario>
 			<DNI>1234566</DNI>
-			<Password>1234</Password>
-			<IdUrsa>1</IdUrsa>
+			<Password>AJSiNvvjAYGDnfkv6Slv6Q==</Password>
 			<IdUnidad>1</IdUnidad>
-		</ÇUsuario>
+		</Usuario>
 	</Usuarios>
 	<Usuario_Permisos>
 		<Usuario_Permiso>
-			<IdUsuario>10</IdUsuario>
-			<IdPermiso>10</IdPermiso>
+			<IdUsuario>1</IdUsuario>
+			<IdPermiso>15</IdPermiso>
 		</Usuario_Permiso>
 	</Usuario_Permisos>
 	<Permisos>
@@ -1241,38 +1241,47 @@
 		</Permiso>
 		<Permiso>
 			<Id>10</Id>
-			<Nombre>Instructor</Nombre>
-			<EsPermiso>false</EsPermiso>
+			<Nombre>GestionPermisos</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>11</Id>
-			<Nombre>Administrador</Nombre>
-			<EsPermiso>false</EsPermiso>
+			<Nombre>GestionUsuarios</Nombre>
+			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
 			<Id>12</Id>
-			<Nombre>Supervisor</Nombre>
-			<EsPermiso>false</EsPermiso>
-		</Permiso>
-		<Permiso>
-			<Id>13</Id>
 			<Nombre>Administracion</Nombre>
 			<EsPermiso>true</EsPermiso>
 		</Permiso>
 		<Permiso>
+			<Id>13</Id>
+			<Nombre>Instructor</Nombre>
+			<EsPermiso>false</EsPermiso>
+		</Permiso>
+		<Permiso>
 			<Id>14</Id>
-			<Nombre>GestionPermisos</Nombre>
-			<EsPermiso>true</EsPermiso>
+			<Nombre>Supervisor</Nombre>
+			<EsPermiso>false</EsPermiso>
+		</Permiso>
+		<Permiso>
+			<Id>15</Id>
+			<Nombre>Administrador</Nombre>
+			<EsPermiso>false</EsPermiso>
 		</Permiso>
 	</Permisos>
 	<Permisos_Permisos>
 		<Permiso_Permiso>
-			<IdPermisoPadre>13</IdPermisoPadre>
-			<IdPermisoHijo>1</IdPermisoHijo>
+			<IdPermisoPadre>15</IdPermisoPadre>
+			<IdPermisoHijo>10</IdPermisoHijo>
 		</Permiso_Permiso>
 		<Permiso_Permiso>
-			<IdPermisoPadre>13</IdPermisoPadre>
+			<IdPermisoPadre>15</IdPermisoPadre>
 			<IdPermisoHijo>4</IdPermisoHijo>
+		</Permiso_Permiso>
+		<Permiso_Permiso>
+			<IdPermisoPadre>15</IdPermisoPadre>
+			<IdPermisoHijo>12</IdPermisoHijo>
 		</Permiso_Permiso>
 	</Permisos_Permisos>
 	<Hallazgos>
