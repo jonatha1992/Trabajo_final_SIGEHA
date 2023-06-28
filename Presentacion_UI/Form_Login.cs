@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 using Negocio;
 using Seguridad;
 
@@ -21,9 +22,9 @@ namespace Presentacion_UI
         }
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
-            if (Verificar())
+            if (Verificar()) 
             {
-                DialogResult = DialogResult.OK;
+                loginExitoso = true;
                 this.Close();
             } 
         }
@@ -35,16 +36,17 @@ namespace Presentacion_UI
 
         BLLUsuario bLLUsuario;
         public BEUsuario Usuario;
-
+        private bool loginExitoso = false;
+        bool visible = false;
         public bool Verificar()
         {
             try
             {
                 if (Validar.SoloContraseña(textBoxUsuario.Text))
                 {
-                    if (Validar.SoloContraseña(textBoxPassword.Text))
+                    if (Validar.SoloContraseña(TextBoxPassword1.Texto))
                     {
-                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text,Encriptacion.Encriptar(textBoxPassword.Text));
+                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text,Encriptacion.Encriptar(TextBoxPassword1.Texto));
                         
                         if (Usuario != null)
                         {
@@ -59,7 +61,7 @@ namespace Presentacion_UI
                     else
                     {
                         MessageBox.Show("Solo alfabetico sin espacios");
-                        textBoxPassword.Text = String.Empty;
+                        TextBoxPassword1.Texto = String.Empty;
                         return false;
                     }
                 }
@@ -95,5 +97,7 @@ namespace Presentacion_UI
                 buttonIngresar_Click(null, null);
             }
         }
+
+      
     }
 }

@@ -68,6 +68,7 @@ namespace MPP
                              {
                                  Id =  Convert.ToInt32((x.Element("Id").Value)),
                                  NombreUsuario = Convert.ToString(x.Element("NombreUsuario")?.Value),
+                                 NombreCompleto = Convert.ToString(x.Element("NombreCompleto")?.Value),
                                  Password = Convert.ToString(x.Element("Password")?.Value),
                                  DNI = Convert.ToString(x.Element("DNI")?.Value),
                                  Ursa = new BEUrsa( Convert.ToInt32(Convert.ToString(x.Element("IdUrsa")?.Value))),

@@ -8,12 +8,17 @@ namespace BE
         public string NombreUsuario { get; set; }
         public BEUnidad Unidad { get; set; }
         public BEUrsa Ursa{ get; set; }
-        public IList<BEComponente> Permisos { get; set; }
+        public List<BEComponente> Permisos { get; set; }
 
 
         public BEUsuario()
         {
             Permisos = new List<BEComponente>();
+        }
+
+        public override string ToString()
+        {
+            return NombreUsuario;
         }
     }
 }

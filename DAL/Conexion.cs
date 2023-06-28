@@ -151,6 +151,7 @@ namespace DAL
                 XDocument xmlDoc = XDocument.Load(XmlFilePath);
                 XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
                 XElement elementoAEliminar;
+               
                 if (elementoPadre == null)
                 {
                     throw new Exception($"No se encontró el nodo: {NodoPadre}");

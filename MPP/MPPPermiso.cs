@@ -22,23 +22,20 @@ namespace MPP
 
 
 
-        public BEComponente GuardarComponente(BEComponente oComp, bool esrol)
+        public BEComponente CrearComponente(BEComponente oComp, bool esrol)
         {
             try
             {
-                var Id = conexion.ObtenerUltimoID("Permiso") + 1;
+                var Id = conexion.ObtenerUltimoID("Permisos");
 
                 XElement nuevoElemento = new XElement("Permiso",
                     new XElement("Id", Id),
                     new XElement("Nombre", oComp.Nombre),
-                    new XElement("EsPermiso", !esrol));
+                    // si es rol se guarda como permiso en false,caso contrario se coloca en false como rol
+                    new XElement("EsPermiso", esrol ? false : true));
 
-                if (!esrol)
-                {
-                    nuevoElemento.Add(new XElement("Permiso", oComp.Nombre.ToString()));
-                }
 
-                if (!conexion.Agregar("Permiso", nuevoElemento))
+                if (!conexion.Agregar("Permisos", nuevoElemento))
                 {
                     throw new Exception($"No se pudo agregar el componente {oComp.Nombre}.");
                 }
@@ -53,15 +50,22 @@ namespace MPP
         }
 
 
-        public bool Guardarrol(BERol oBErol)
+        public bool GuardarRol(BERol oBErol)
         {
             try
             {
-                // Eliminar todos los elementos de Permiso_Permiso con id_permiso_padre igual al Id del rol
-                if (!conexion.Eliminar("Permiso_Permiso", oBErol.Id.ToString(), "IdPermisoPadre"))
+                var Permisos = ObternerPermisosRol(oBErol);
+
+                if (Permisos.Count > 0)
                 {
-                    throw new Exception("No se pudo eliminar los elementos existentes.");
+                    foreach (var item in Permisos)
+                    {
+                        conexion.Eliminar("Permisos_Permisos", oBErol.Id.ToString(), "IdPermisoPadre");
+                    }
+
                 }
+                // Eliminar todos los elementos de Permiso_Permiso con id_permiso_padre igual al Id del rol
+
 
                 // Agregar nuevos elementos de Permiso_Permiso para cada hijo del rol
                 foreach (var permiso in oBErol.Hijos)
@@ -70,7 +74,7 @@ namespace MPP
                         new XElement("IdPermisoPadre", oBErol.Id),
                         new XElement("IdPermisoHijo", permiso.Id));
 
-                    if (!conexion.Agregar("Permiso_Permiso", nuevoElemento))
+                    if (!conexion.Agregar("Permisos_Permisos", nuevoElemento))
                     {
                         throw new Exception($"No se pudo agregar el elemento con IdPermisoPadre {oBErol.Id} y IdPermisoHijo {permiso.Id}.");
                     }
@@ -85,7 +89,7 @@ namespace MPP
         }
 
 
-        public IList<BEPermiso> Listarpermisos()
+        public List<BEPermiso> Listarpermisos()
         {
 
             //instancio un objeto de la clase datos para operar con la BD
@@ -122,14 +126,15 @@ namespace MPP
             foreach (XElement permisoElement in Consulta)
             {
                 // Crear un nuevo permiso y establecer sus propiedades basándose en los elementos del XML.
-                if (Convert.ToBoolean(permisoElement.Element("EsPersmiso").Value) == false)
+                if (Convert.ToBoolean(permisoElement.Element("EsPermiso").Value) == false)
                 {
                     BERol rol = new BERol
                     {
                         Id = int.Parse(permisoElement.Element("Id").Value),
                         Nombre = permisoElement.Element("Nombre").Value,
                     };
-                    // Agregar el permiso a la lista.
+                    // Agregar el rol a la lista.
+                 
                     Listarol.Add(rol);
                 }
 
@@ -138,10 +143,10 @@ namespace MPP
             return Listarol;
         }
 
-        public IList<BEComponente> ObternerPermisosRol(BERol rol)
+        public List<BEComponente> ObternerPermisosRol(BERol rol)
         {
             // LeerTodos para obtener todos los elementos de "Permiso"
-            IList<BEPermiso> todosLosPermisos = Listarpermisos();
+            List<BEPermiso> todosLosPermisos = Listarpermisos();
 
             var todosLosPermisosAsociados = conexion.LeerTodos("Permiso_Permiso");
 
@@ -209,18 +214,7 @@ namespace MPP
         }
 
 
-        public void BuscarRolComponents(BERol rol)
-        {
-            rol.VaciarHijos();
-
-            // Obtener todos los permisos asociados con el rol
-            var permisosRol = ObternerPermisosRol(rol);
-
-            foreach (var permiso in permisosRol)
-            {
-                rol.AgregarHijo(permiso);
-            }
-        }
+      
 
     }
 

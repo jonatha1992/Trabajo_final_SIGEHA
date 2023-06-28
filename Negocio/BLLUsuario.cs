@@ -20,6 +20,11 @@ namespace Negocio
         {
             return mpPUsuario.ListarTodo();
         }
+        public BEUsuario ListarObjeto(BEUsuario bEUsuario)
+        {
+            return mpPUsuario.ListarObjeto(bEUsuario);
+        }
+
 
         public BEUsuario ControlPasswword(string nombre, string pass)
         {
@@ -35,6 +40,52 @@ namespace Negocio
         {
             return mpPUsuario.ObtenerElementosReporte(ursa, unidad);
         }
+
+
+        public BEUsuario ListarUsuarioConPermisos(BEUsuario bEUsuario)
+        {
+            bEUsuario = mpPpermiso.ObternerPermisoUsuario(bEUsuario);
+
+            return bEUsuario;
+        }
+
+
+        public bool verificarol(BEUsuario usuario)
+        {
+            foreach (var item in usuario.Permisos)
+            {
+                if (VerificarRolUsuario(item))
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        bool VerificarRolUsuario(BEComponente componente)
+        {
+
+            if (componente is BERol)
+            {
+                // Verificar si el rol es "Instructor" o "Supervisor"
+                if (componente.Nombre == "Instructor" || componente.Nombre == "Supervisor")
+                {
+                    return true;
+                }
+
+                // Verificar los roles de los hijos recursivamente
+                foreach (BEComponente hijo in componente.Hijos)
+                {
+                    if (VerificarRolUsuario(hijo))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }
 

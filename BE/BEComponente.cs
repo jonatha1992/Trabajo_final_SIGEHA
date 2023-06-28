@@ -12,11 +12,16 @@ namespace BE
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public abstract IList<BEComponente> Hijos { get; }
+        public abstract List<BEComponente> Hijos { get; }
         public abstract void AgregarHijo(BEComponente c);
         public abstract void VaciarHijos();
 
 
+
+        public override string ToString()
+        {
+            return Nombre.ToString();
+        }
     }
 
 

@@ -19,61 +19,74 @@ namespace Negocio
 
         //método para sabner si existe
 
-        public bool Existe(BEComponente c, int id)
+        public bool ExistePermiso(BEComponente Contenedor, BEComponente Nuevo)
         {
             bool existe = false;
 
-            if (c.Id.Equals(id))
+            if (Contenedor.Id.Equals(Nuevo.Id))
                 existe = true;
             else
 
-                foreach (var item in c.Hijos)
+                foreach (var item in Contenedor.Hijos)
                 {
 
-                    existe = Existe(item, id);
+                    existe = ExistePermiso(item, Nuevo);
                     if (existe) return true;
                 }
             return existe;
         }
 
-        
 
-        //método para guardar  los permisosm en la rol
-        public BEComponente GuardarComponente(BEComponente p, bool esrol)
+
+
+        //método para crear Roles y permisos
+        public BEComponente CrearComponente(BEComponente p, bool esrol)
         {
-            return oMPPPermiso.GuardarComponente(p, esrol);
+            return oMPPPermiso.CrearComponente(p, esrol);
         }
 
         //método para guardar  rols
-        public void Guardarrol(BERol c)
+        public void GuardaRol(BERol c)
         {
-            oMPPPermiso.Guardarrol(c);
+            oMPPPermiso.GuardarRol(c);
         }
 
         //método para taer todas las permisos
-        public IList<BEPermiso> Listarpermisos()
+        public List<BEPermiso> Listarpermisos()
         {
+
             return oMPPPermiso.Listarpermisos();
         }
 
         //método para taer todas las rols
-        public IList<BERol> ListaRoles()
+        public List<BERol> ListaRoles()
         {
-            return oMPPPermiso.ListarRoles();
+            var roles = oMPPPermiso.ListarRoles();
+            foreach (var rol in roles)
+            {
+                var permisos = ObternerPermisosRol(rol);
+
+                foreach (var permiso in permisos)
+                {
+                    rol.AgregarHijo(permiso);
+                }
+            }
+
+            return roles;
         }
 
         //método para taer todas las permisos
-        public IList<BEComponente> ObternerPermisosRol(BERol  rol)
+        public List<BEComponente> ObternerPermisosRol(BERol rol)
         {
-            return oMPPPermiso.ObternerPermisosRol(rol );
+            return oMPPPermiso.ObternerPermisosRol(rol);
 
         }
 
 
-        //método para taer los permisos de un usuario
-        public List<string> ObternerPermisosUsuario(BEUsuario user)
+        //método para taer los permisos de un usuario para el menu
+        public List<string> ObternerPermisosMenu(BEUsuario user)
         {
-            user =  oMPPPermiso.ObternerPermisoUsuario(user);
+            user = oMPPPermiso.ObternerPermisoUsuario(user);
             List<string> nombresPermisos = new List<string>();
 
             foreach (var permiso in user.Permisos)
@@ -97,11 +110,8 @@ namespace Negocio
             }
         }
 
-        //método para taer todos las rols con sus permisos
-        public void BuscarRolComponents(BERol rol)
-        {
-            oMPPPermiso.BuscarRolComponents(rol);
-        }
+
+
 
     }
 

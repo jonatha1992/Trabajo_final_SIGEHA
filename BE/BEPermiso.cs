@@ -9,7 +9,7 @@ namespace BE
 {
     public class BEPermiso : BEComponente
     {
-        public override IList<BEComponente> Hijos
+        public override List<BEComponente> Hijos
         {
             get
             {

@@ -143,6 +143,16 @@ namespace Presentacion_UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_visible_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-visible-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap impresora__2_ {
             get {
                 object obj = ResourceManager.GetObject("impresora__2_", resourceCulture);
@@ -183,6 +193,16 @@ namespace Presentacion_UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap No_Visible {
+            get {
+                object obj = ResourceManager.GetObject("No Visible", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pregunta {
             get {
                 object obj = ResourceManager.GetObject("pregunta", resourceCulture);
@@ -196,6 +216,16 @@ namespace Presentacion_UI.Properties {
         internal static System.Drawing.Bitmap sobresalir {
             get {
                 object obj = ResourceManager.GetObject("sobresalir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Visible {
+            get {
+                object obj = ResourceManager.GetObject("Visible", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

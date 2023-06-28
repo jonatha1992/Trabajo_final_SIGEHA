@@ -407,7 +407,7 @@
             this.buttonCambiarEstado.UseVisualStyleBackColor = false;
             this.buttonCambiarEstado.Click += new System.EventHandler(this.buttonCambiarEstado_Click);
             // 
-            // label2
+            // label
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -415,7 +415,7 @@
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(148, 670);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Name = "label2";
+            this.label2.Name = "label";
             this.label2.Size = new System.Drawing.Size(66, 18);
             this.label2.TabIndex = 84;
             this.label2.Text = "Estado:";

@@ -46,15 +46,15 @@ namespace Presentacion_UI
         public static BEUrsa Ursa { get; set; }
         public static BEUnidad Unidad { get; set; }
 
+        private Form_Login form_login;
 
-       
 
 
         public void CargarMenu()
         {
 
             List<string> listaToolStrip = ObternerTodosMenuStripItems(menuStrip1);
-            List<string> permisosDelUsuario = bLLPermiso.ObternerPermisosUsuario(usuario);
+            List<string> permisosDelUsuario = bLLPermiso.ObternerPermisosMenu(usuario);
 
             foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
             {
@@ -83,6 +83,8 @@ namespace Presentacion_UI
                     menuItem.Visible = false;
                 }
             }
+            LoginToolStripMenuItem.Visible = true;
+
         }
 
         public List<string> ObternerTodosMenuStripItems(MenuStrip menuStrip)
@@ -133,12 +135,11 @@ namespace Presentacion_UI
                 EstadosElementos = bLLEstado_Elemento.ListarTodo();
                 Ursas = bLLUrsa.ListarTodo();
                 Unidades = bLLUnidad.ListarTodo();
-                //Articulos = Categorias.SelectMany(categoria => categoria.Articulos).ToList(); 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //Application.Exit();
+                Application.Exit();
             }
         }
 
@@ -211,47 +212,104 @@ namespace Presentacion_UI
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            usuario = null;
-
-            Form_Login form_login = new Form_Login();
-            var result = form_login.ShowDialog();
-
-            if (result == DialogResult.OK)
+            try
             {
-                usuario = form_login.Usuario;
-                CargarMenu();
+
+                usuario = null;
+                form_login = new Form_Login();
+                form_login.MdiParent = this;
+                form_login.FormClosed += Form_Login_FormClosed;
+                form_login.Show();
+
+
 
             }
-            else
+            catch (Exception ex)
             {
-                Application.Exit();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
+        private void Form_Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            try
+            {
+                if (form_login.Usuario != null)
+                {
+                    usuario = form_login.Usuario;
+                    menuStrip1.Enabled = true;
+                    CargarMenu();
+                }
+                else
+                {
+                   Application.Exit();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
         private void CrearHallazgo_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void GestionUsuarios_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+
+                Form_Usuarios form_Usuarios = new Form_Usuarios();
+                form_Usuarios.MdiParent = this;
+                form_Usuarios.Show();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GestionPermisos_Click(object sender, EventArgs e)
         {
-            Form_Permiso form_Permiso = new Form_Permiso();
-            form_Permiso.Show();
-            form_Permiso.MdiParent = this;
 
+            try
+            {
+                Form_Permiso form_Permiso = new Form_Permiso();
+                form_Permiso.MdiParent = this;
+                form_Permiso.Show();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Reporte_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        
     }
 }

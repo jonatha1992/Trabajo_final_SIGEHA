@@ -101,6 +101,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TextBoxPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TextBoxPassword.Designer.cs">
+      <DependentUpon>TextBoxPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Contraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Contraseña.Designer.cs">
+      <DependentUpon>Form_Contraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,12 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="ActaEntrega.rdlc" />
     <EmbeddedResource Include="ActaHallazgo.rdlc" />
+    <EmbeddedResource Include="TextBoxPassword.resx">
+      <DependentUpon>TextBoxPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Contraseña.resx">
+      <DependentUpon>Form_Contraseña.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Usuarios.resx">
       <DependentUpon>Form_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +319,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo-PSA.ico" />
+    <None Include="Resources\icons8-visible-16.png" />
+    <None Include="Resources\icons8-visible-16 %281%29.png" />
+    <None Include="Resources\icons8-no-visible-16.png" />
     <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

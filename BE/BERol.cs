@@ -7,13 +7,15 @@ namespace BE
 {
     public class BERol : BEComponente
     {
-        private IList<BEComponente> _hijos;
+        private List<BEComponente> _hijos;
         public BERol()
         {
             _hijos = new List<BEComponente>();
         }
 
-        public override IList<BEComponente> Hijos
+
+
+        public override List<BEComponente> Hijos
         {
             get
             {
