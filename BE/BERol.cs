@@ -25,9 +25,16 @@ namespace BE
         }
 
 
+
+
         public override void AgregarHijo(BEComponente c)
         {
             _hijos.Add(c);
+        }
+
+        public override void EliminarHijo(BEComponente c)
+        {
+            _hijos.RemoveAll(x => x.Id == c.Id);
         }
 
         public override void VaciarHijos()

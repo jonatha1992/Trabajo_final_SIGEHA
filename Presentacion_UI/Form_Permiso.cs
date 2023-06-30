@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,7 +45,7 @@ namespace Presentacion_UI
 
                 labelRol.Text = "";
                 labelRol.Text += beRol.Nombre;
-                MostrarRol();
+                MostrarArbolEnTreeView(beRol);
             }
             catch (Exception ex)
             {
@@ -53,43 +54,37 @@ namespace Presentacion_UI
 
         }
 
-        void MostrarRol()
+
+        void MostrarArbolEnTreeView(BEComponente raiz)
         {
-            if (beRol == null) return;
-
-            List<BEComponente> permiso = null;
-
-            permiso = beRol.Hijos;
-
+            if (raiz == null) return;
 
             this.treeRol.Nodes.Clear();
 
-            TreeNode root = new TreeNode(beRol.Nombre);
-            root.Tag = beRol;
+            TreeNode root = new TreeNode(raiz.Nombre);
+            root.Tag = raiz;
             this.treeRol.Nodes.Add(root);
 
-            foreach (var item in permiso)
-            {
-                MostrarEnTreeView(root, item);
-            }
+            MostrarHijosEnTreeView(root, raiz.Hijos);
 
             treeRol.ExpandAll();
         }
 
-
-        void MostrarEnTreeView(TreeNode tn, BEComponente c)
+        void MostrarHijosEnTreeView(TreeNode padre, List<BEComponente> hijos)
         {
-            //muetro en el treeview los componenes sean familia con sus patentes
-            TreeNode n = new TreeNode(c.Nombre);
-            tn.Tag = c;
-            tn.Nodes.Add(n);
-            if (c.Hijos != null)
-                foreach (var item in c.Hijos)
-                {  //funcion recursiva
-                    MostrarEnTreeView(n, item);
-                }
+            if (hijos != null)
+            {
+                foreach (var hijo in hijos)
+                {
+                    TreeNode nodo = new TreeNode(hijo.Nombre);
+                    nodo.Tag = hijo;
+                    padre.Nodes.Add(nodo);
 
+                    MostrarHijosEnTreeView(nodo, hijo.Hijos); // Llamada recursiva
+                }
+            }
         }
+
 
         private void btnAgregarPermiso_Click(object sender, EventArgs e)
         {
@@ -105,7 +100,7 @@ namespace Presentacion_UI
                     else
                     {
                         beRol.AgregarHijo(cboPermisos.SelectedItem as BEPermiso);
-                        MostrarRol();
+                        MostrarArbolEnTreeView(beRol);
                     }
                 }
                 else
@@ -141,10 +136,14 @@ namespace Presentacion_UI
 
             try
             {
+
                 bllpermiso.GuardaRol(beRol);
+
+
                 treeRol.Nodes.Clear();
                 labelRol.Text = "";
                 beRol = null;
+                cboRol.DataSource = bllpermiso.ListaRoles();
 
                 MessageBox.Show("Se guardo el Rol con los permisos Referenciados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -162,17 +161,35 @@ namespace Presentacion_UI
                 // Obtener el nodo seleccionado y su nodo padre
                 TreeNode nodoSeleccionado = treeRol.SelectedNode;
                 TreeNode nodoPadre = nodoSeleccionado.Parent;
-
+                BEPermiso permiso = nodoSeleccionado.Tag as BEPermiso;
                 // Verificar si el nodo tiene un nodo padre
                 if (nodoPadre != null)
                 {
                     // Eliminar el nodo seleccionado del nodo padre
                     nodoPadre.Nodes.Remove(nodoSeleccionado);
+                    beRol.EliminarHijo(permiso);
+                }
+                else
+                {
+                    var result = MessageBox.Show($"¿Desea eliminar el Rol {beRol.Nombre} ? \n\nTenga en cuenta que se eliminaran todos los permisos de los usuarios que esten asociados al Rol {beRol.Nombre}", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        bllpermiso.EliminarRol(beRol);
+
+                        MessageBox.Show($"El Rol {beRol.Nombre} se ha borrado de la base de datos Satisfactoriamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        treeRol.Nodes.Clear();
+                        labelRol.Text = "";
+                        beRol = null;
+                        cboRol.DataSource = bllpermiso.ListaRoles();
+
+                    }
+
                 }
             }
+
             else
             {
-                MessageBox.Show("No se puede eliminar el nodo Raiz", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Seleccione un nodo para eliminar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

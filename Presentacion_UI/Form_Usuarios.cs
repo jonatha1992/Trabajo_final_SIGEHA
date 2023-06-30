@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using BE;
 using Negocio;
 using Seguridad;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Presentacion_UI
 {
@@ -19,7 +20,6 @@ namespace Presentacion_UI
         BLLUsuario oBLLUsu;
         BLLPermiso oBLLPermiso;
         BEUsuario seleccion;
-        BEUsuario tmp;
 
 
 
@@ -29,6 +29,7 @@ namespace Presentacion_UI
             oBLLPermiso = new BLLPermiso();
             comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
             comboBoxRoles.DataSource = oBLLPermiso.ListaRoles();
+            comboBoxDestino.DataSource = Form_Contenedor.Ursas;
             groupBoxDatosUsuario.Visible = false;
         }
 
@@ -61,7 +62,6 @@ namespace Presentacion_UI
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 groupBoxDatosUsuario.Visible = true;
@@ -75,8 +75,8 @@ namespace Presentacion_UI
                 textBoxNombre.Text = seleccion.NombreCompleto;
                 textBoxDNI.Text = seleccion.DNI;
                 textBoxUsuario.Text = seleccion.NombreUsuario;
-                textBoxPassword1.Texto = seleccion.Password;
-                textBoxPassword2.Texto = seleccion.Password;
+                textBoxPassword1.Texto = Encriptacion.Desinciptar(seleccion.Password);
+                textBoxPassword2.Texto = Encriptacion.Desinciptar(seleccion.Password);
                 var rol = seleccion.Permisos.First();
 
                 foreach (BEComponente item in comboBoxRoles.Items)
@@ -87,9 +87,7 @@ namespace Presentacion_UI
                         break;
                     }
                 }
-
-
-
+                comboBoxRoles_SelectedIndexChanged(null, null);
             }
             catch (Exception ex)
             {
@@ -112,22 +110,22 @@ namespace Presentacion_UI
 
         private void buttonAsignarRol_Click(object sender, EventArgs e)
         {
-
             try
             {
-
-
                 var existe = seleccion.Permisos.Exists(x => x.Id == (comboBoxRoles.SelectedItem as BERol).Id);
-
                 if (!existe)
                 {
-                    seleccion.Permisos.Add(comboBoxRoles.SelectedItem as BERol);
+                    if (seleccion.NombreUsuario == "")
+                    {
+                        seleccion.NombreUsuario = textBoxUsuario.Text;
+                    }
 
+                    seleccion.Permisos.Add(comboBoxRoles.SelectedItem as BERol);
                     MostrarPermisos(seleccion);
+                    comboBoxRoles_SelectedIndexChanged(null, null);
                 }
                 else
                 {
-
                     MessageBox.Show("El usuario ya posee es rol", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -139,20 +137,20 @@ namespace Presentacion_UI
 
         private void buttonAsignarDestino_Click(object sender, EventArgs e)
         {
-
             try
             {
-
                 if (rbtnUrsa.Checked)
                 {
-                    seleccion.Ursa = comboBoxDestino.SelectedItem as BEUrsa;
-                    seleccion.Unidad = null;
+
+                    seleccion.Destino = comboBoxDestino.SelectedItem as BEUrsa;
                 }
                 else
                 {
-                    seleccion.Unidad = comboBoxDestino.SelectedItem as BEUnidad;
-                    seleccion.Ursa = null;
+                    seleccion.Destino = comboBoxDestino.SelectedItem as BEUnidad;
+
                 }
+
+                MessageBox.Show($"Al usuario {seleccion.NombreUsuario} tiene como destino {comboBoxDestino.Text} ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -164,6 +162,7 @@ namespace Presentacion_UI
         {
             try
             {
+                LimpiarFormulario();
                 groupBoxDatosUsuario.Visible = true;
                 seleccion = new BEUsuario();
             }
@@ -178,12 +177,16 @@ namespace Presentacion_UI
 
             try
             {
-                //groupBoxDatosUsuario.Visible = false;
-                seleccion = null;
-                labelUsuario.Text = "";
-                Utilidades.LimpiarControlesEnGroupBox(groupBoxDatosUsuario);
+                if (VerficarCamposUsuario())
+                {
+                    oBLLUsu.GuardarUsuario(seleccion);
+                    LimpiarFormulario();
+                    groupBoxDatosUsuario.Visible = false;
+                    comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
 
-                MessageBox.Show("Se ha Guardado los cambios con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se ha Guardado los cambios con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
             catch (Exception ex)
             {
@@ -198,21 +201,124 @@ namespace Presentacion_UI
                 if (oBLLUsu.verificarol(seleccion))
                 {
                     groupBoxDestino.Visible = true;
-                    if (seleccion.Ursa != null)
-                    {
-                        comboBoxDestino.SelectedItem = seleccion.Ursa;
-                    }
-                    else // pertenece a una unidad 
-                    {
-                        comboBoxDestino.SelectedItem = seleccion.Unidad;
-                    }
+                    comboBoxDestino.SelectedItem = seleccion.Destino;
                 }
                 else
                 {
-                    groupBoxDestino.Visible = true;
+                    groupBoxDestino.Visible = false;
                 }
             }
 
+        }
+
+        private void buttonEliminarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (oBLLUsu.Eliminar(seleccion))
+                {
+                    LimpiarFormulario();
+                    groupBoxDatosUsuario.Visible = false;
+                    comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
+                    MessageBox.Show($"El Usuario {seleccion.NombreUsuario} se ha eliminado de la base de datos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void LimpiarFormulario()
+        {
+            seleccion = null;
+            textBoxNombre.Text = "";
+            textBoxDNI.Text = "";
+            textBoxUsuario.Text = "";
+            textBoxPassword1.Texto = "";
+            textBoxPassword2.Texto = "";
+            labelUsuario.Text = "";
+            treeViewPermisos.Nodes.Clear();
+
+        }
+
+
+        bool VerficarCamposUsuario()
+        {
+
+            if (seleccion.Permisos.Count == 0)
+            {
+                MessageBox.Show("El usuario no tiene un rol asignado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (textBoxPassword1.Texto != textBoxPassword2.Texto)
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (textBoxUsuario.Text == "" || textBoxNombre.Text == "" || textBoxPassword1.Texto == "" || textBoxPassword2.Texto == "" || textBoxDNI.Text == "")
+            {
+                MessageBox.Show("Complete todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            seleccion.NombreUsuario = textBoxUsuario.Text;
+            seleccion.NombreCompleto = textBoxNombre.Text;
+            seleccion.Password = Encriptacion.Encriptar(textBoxPassword1.Texto);
+            seleccion.DNI = textBoxDNI.Text;
+
+            return true;
+
+        }
+        private void buttonDesagsinarRol_Click(object sender, EventArgs e)
+        {
+
+            BERol rolSeleccionado = treeViewPermisos.SelectedNode.Tag  as BERol;
+            
+            int cantidadEliminada = seleccion.Permisos.RemoveAll(x => x.Id == rolSeleccionado.Id);
+
+            if (cantidadEliminada > 0)
+            {
+                MessageBox.Show("El rol se desasignó exitosamente.", "Desasignación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarPermisos(seleccion);
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el rol en los permisos del usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void buttonDesagniarUnidad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                seleccion.Destino = null;
+                MessageBox.Show("El usuario ya NO posee destino asignado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void treeViewPermisos_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node != null)
+            {
+                if (e.Node.Tag is BERol)
+                {
+                    BERol rol= e.Node.Tag as BERol;
+                    buttonDesagsinarRol.Visible = true;
+                }
+                else
+                {
+                    buttonDesagsinarRol.Visible = false;
+                }
+            }
         }
     }
 }

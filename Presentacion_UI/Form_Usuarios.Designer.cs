@@ -43,9 +43,10 @@
             this.treeViewPermisos = new System.Windows.Forms.TreeView();
             this.labelPermisosDe = new System.Windows.Forms.Label();
             this.groupBoxPermisos = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxRoles = new System.Windows.Forms.ComboBox();
+            this.buttonDesagsinarRol = new System.Windows.Forms.Button();
             this.buttonAsignarRol = new System.Windows.Forms.Button();
+            this.comboBoxRoles = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.buttonAsignarDestino = new System.Windows.Forms.Button();
             this.rbtnUrsa = new System.Windows.Forms.RadioButton();
             this.comboBoxDestino = new System.Windows.Forms.ComboBox();
@@ -53,11 +54,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.groupBoxDatosUsuario = new System.Windows.Forms.GroupBox();
+            this.labelUsuario = new System.Windows.Forms.Label();
+            this.buttonEliminarUsuario = new System.Windows.Forms.Button();
+            this.groupBoxDestino = new System.Windows.Forms.GroupBox();
+            this.buttonDesagniarUnidad = new System.Windows.Forms.Button();
             this.textBoxPassword2 = new Presentacion_UI.TextBoxPassword();
             this.textBoxPassword1 = new Presentacion_UI.TextBoxPassword();
-            this.groupBoxDestino = new System.Windows.Forms.GroupBox();
-            this.buttonEliminarUsuario = new System.Windows.Forms.Button();
-            this.labelUsuario = new System.Windows.Forms.Label();
             this.groupBoxPermisos.SuspendLayout();
             this.groupBoxDatosUsuario.SuspendLayout();
             this.groupBoxDestino.SuspendLayout();
@@ -66,10 +68,10 @@
             // buttonGuardarUsuario
             // 
             this.buttonGuardarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonGuardarUsuario.Location = new System.Drawing.Point(341, 22);
+            this.buttonGuardarUsuario.Location = new System.Drawing.Point(307, 22);
             this.buttonGuardarUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGuardarUsuario.Name = "buttonGuardarUsuario";
-            this.buttonGuardarUsuario.Size = new System.Drawing.Size(91, 32);
+            this.buttonGuardarUsuario.Size = new System.Drawing.Size(75, 42);
             this.buttonGuardarUsuario.TabIndex = 25;
             this.buttonGuardarUsuario.Text = "Nuevo Usuario";
             this.buttonGuardarUsuario.UseVisualStyleBackColor = true;
@@ -78,15 +80,15 @@
             // comboBoxUsuarios
             // 
             this.comboBoxUsuarios.FormattingEnabled = true;
-            this.comboBoxUsuarios.Location = new System.Drawing.Point(12, 29);
+            this.comboBoxUsuarios.Location = new System.Drawing.Point(30, 29);
             this.comboBoxUsuarios.Name = "comboBoxUsuarios";
-            this.comboBoxUsuarios.Size = new System.Drawing.Size(230, 21);
+            this.comboBoxUsuarios.Size = new System.Drawing.Size(162, 21);
             this.comboBoxUsuarios.TabIndex = 26;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 9);
+            this.label2.Location = new System.Drawing.Point(29, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
@@ -96,19 +98,19 @@
             // buttonSeleccionar
             // 
             this.buttonSeleccionar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonSeleccionar.Location = new System.Drawing.Point(254, 22);
+            this.buttonSeleccionar.Location = new System.Drawing.Point(215, 22);
             this.buttonSeleccionar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
-            this.buttonSeleccionar.Size = new System.Drawing.Size(76, 32);
+            this.buttonSeleccionar.Size = new System.Drawing.Size(76, 42);
             this.buttonSeleccionar.TabIndex = 31;
-            this.buttonSeleccionar.Text = "Seleccionar";
+            this.buttonSeleccionar.Text = "Configurar";
             this.buttonSeleccionar.UseVisualStyleBackColor = true;
             this.buttonSeleccionar.Click += new System.EventHandler(this.buttonSeleccionar_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 23);
+            this.label4.Location = new System.Drawing.Point(15, 67);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 13);
@@ -117,7 +119,7 @@
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(19, 39);
+            this.textBoxNombre.Location = new System.Drawing.Point(18, 83);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(195, 20);
             this.textBoxNombre.TabIndex = 25;
@@ -125,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 107);
+            this.label3.Location = new System.Drawing.Point(15, 23);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
@@ -134,15 +136,15 @@
             // 
             // textBoxUsuario
             // 
-            this.textBoxUsuario.Location = new System.Drawing.Point(19, 123);
+            this.textBoxUsuario.Location = new System.Drawing.Point(18, 38);
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.Size = new System.Drawing.Size(195, 20);
-            this.textBoxUsuario.TabIndex = 27;
+            this.textBoxUsuario.TabIndex = 24;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 62);
+            this.label6.Location = new System.Drawing.Point(15, 106);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
@@ -151,10 +153,10 @@
             // 
             // textBoxDNI
             // 
-            this.textBoxDNI.Location = new System.Drawing.Point(19, 78);
+            this.textBoxDNI.Location = new System.Drawing.Point(18, 122);
             this.textBoxDNI.Name = "textBoxDNI";
             this.textBoxDNI.Size = new System.Drawing.Size(195, 20);
-            this.textBoxDNI.TabIndex = 29;
+            this.textBoxDNI.TabIndex = 26;
             // 
             // label7
             // 
@@ -173,6 +175,7 @@
             this.treeViewPermisos.Name = "treeViewPermisos";
             this.treeViewPermisos.Size = new System.Drawing.Size(239, 464);
             this.treeViewPermisos.TabIndex = 0;
+            this.treeViewPermisos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewPermisos_AfterSelect);
             // 
             // labelPermisosDe
             // 
@@ -185,6 +188,7 @@
             // 
             // groupBoxPermisos
             // 
+            this.groupBoxPermisos.Controls.Add(this.buttonDesagsinarRol);
             this.groupBoxPermisos.Controls.Add(this.buttonAsignarRol);
             this.groupBoxPermisos.Controls.Add(this.comboBoxRoles);
             this.groupBoxPermisos.Controls.Add(this.label5);
@@ -196,23 +200,18 @@
             this.groupBoxPermisos.TabStop = false;
             this.groupBoxPermisos.Text = "Permisos";
             // 
-            // label5
+            // buttonDesagsinarRol
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Roles";
-            // 
-            // comboBoxRoles
-            // 
-            this.comboBoxRoles.FormattingEnabled = true;
-            this.comboBoxRoles.Location = new System.Drawing.Point(17, 39);
-            this.comboBoxRoles.Name = "comboBoxRoles";
-            this.comboBoxRoles.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxRoles.TabIndex = 0;
-            this.comboBoxRoles.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoles_SelectedIndexChanged);
+            this.buttonDesagsinarRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonDesagsinarRol.Location = new System.Drawing.Point(140, 65);
+            this.buttonDesagsinarRol.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDesagsinarRol.Name = "buttonDesagsinarRol";
+            this.buttonDesagsinarRol.Size = new System.Drawing.Size(72, 32);
+            this.buttonDesagsinarRol.TabIndex = 25;
+            this.buttonDesagsinarRol.Text = "Desagsinar";
+            this.buttonDesagsinarRol.UseVisualStyleBackColor = true;
+            this.buttonDesagsinarRol.Visible = false;
+            this.buttonDesagsinarRol.Click += new System.EventHandler(this.buttonDesagsinarRol_Click);
             // 
             // buttonAsignarRol
             // 
@@ -225,6 +224,24 @@
             this.buttonAsignarRol.Text = "Asignar";
             this.buttonAsignarRol.UseVisualStyleBackColor = true;
             this.buttonAsignarRol.Click += new System.EventHandler(this.buttonAsignarRol_Click);
+            // 
+            // comboBoxRoles
+            // 
+            this.comboBoxRoles.FormattingEnabled = true;
+            this.comboBoxRoles.Location = new System.Drawing.Point(17, 39);
+            this.comboBoxRoles.Name = "comboBoxRoles";
+            this.comboBoxRoles.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxRoles.TabIndex = 30;
+            this.comboBoxRoles.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoles_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Roles";
             // 
             // buttonAsignarDestino
             // 
@@ -257,7 +274,7 @@
             this.comboBoxDestino.Location = new System.Drawing.Point(19, 50);
             this.comboBoxDestino.Name = "comboBoxDestino";
             this.comboBoxDestino.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxDestino.TabIndex = 26;
+            this.comboBoxDestino.TabIndex = 31;
             // 
             // rbtnUnidad
             // 
@@ -283,10 +300,10 @@
             // buttonGuardar
             // 
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonGuardar.Location = new System.Drawing.Point(35, 513);
+            this.buttonGuardar.Location = new System.Drawing.Point(24, 513);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(62, 32);
+            this.buttonGuardar.Size = new System.Drawing.Size(56, 32);
             this.buttonGuardar.TabIndex = 37;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -319,13 +336,61 @@
             this.groupBoxDatosUsuario.TabStop = false;
             this.groupBoxDatosUsuario.Text = "Datos de Usuario";
             // 
+            // labelUsuario
+            // 
+            this.labelUsuario.AutoSize = true;
+            this.labelUsuario.Location = new System.Drawing.Point(415, 16);
+            this.labelUsuario.Name = "labelUsuario";
+            this.labelUsuario.Size = new System.Drawing.Size(0, 13);
+            this.labelUsuario.TabIndex = 39;
+            // 
+            // buttonEliminarUsuario
+            // 
+            this.buttonEliminarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonEliminarUsuario.Location = new System.Drawing.Point(176, 513);
+            this.buttonEliminarUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEliminarUsuario.Name = "buttonEliminarUsuario";
+            this.buttonEliminarUsuario.Size = new System.Drawing.Size(54, 32);
+            this.buttonEliminarUsuario.TabIndex = 38;
+            this.buttonEliminarUsuario.Text = "Eliminar";
+            this.buttonEliminarUsuario.UseVisualStyleBackColor = true;
+            this.buttonEliminarUsuario.Click += new System.EventHandler(this.buttonEliminarUsuario_Click);
+            // 
+            // groupBoxDestino
+            // 
+            this.groupBoxDestino.Controls.Add(this.buttonDesagniarUnidad);
+            this.groupBoxDestino.Controls.Add(this.rbtnUnidad);
+            this.groupBoxDestino.Controls.Add(this.comboBoxDestino);
+            this.groupBoxDestino.Controls.Add(this.buttonAsignarDestino);
+            this.groupBoxDestino.Controls.Add(this.rbtnUrsa);
+            this.groupBoxDestino.ForeColor = System.Drawing.Color.White;
+            this.groupBoxDestino.Location = new System.Drawing.Point(18, 379);
+            this.groupBoxDestino.Name = "groupBoxDestino";
+            this.groupBoxDestino.Size = new System.Drawing.Size(229, 121);
+            this.groupBoxDestino.TabIndex = 32;
+            this.groupBoxDestino.TabStop = false;
+            this.groupBoxDestino.Text = "Destino";
+            this.groupBoxDestino.Visible = false;
+            // 
+            // buttonDesagniarUnidad
+            // 
+            this.buttonDesagniarUnidad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonDesagniarUnidad.Location = new System.Drawing.Point(140, 84);
+            this.buttonDesagniarUnidad.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDesagniarUnidad.Name = "buttonDesagniarUnidad";
+            this.buttonDesagniarUnidad.Size = new System.Drawing.Size(72, 32);
+            this.buttonDesagniarUnidad.TabIndex = 26;
+            this.buttonDesagniarUnidad.Text = "Desagsinar";
+            this.buttonDesagniarUnidad.UseVisualStyleBackColor = true;
+            this.buttonDesagniarUnidad.Click += new System.EventHandler(this.buttonDesagniarUnidad_Click);
+            // 
             // textBoxPassword2
             // 
             this.textBoxPassword2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textBoxPassword2.Location = new System.Drawing.Point(20, 218);
             this.textBoxPassword2.Name = "textBoxPassword2";
             this.textBoxPassword2.Size = new System.Drawing.Size(195, 37);
-            this.textBoxPassword2.TabIndex = 35;
+            this.textBoxPassword2.TabIndex = 29;
             this.textBoxPassword2.Texto = "";
             // 
             // textBoxPassword1
@@ -334,42 +399,8 @@
             this.textBoxPassword1.Location = new System.Drawing.Point(18, 166);
             this.textBoxPassword1.Name = "textBoxPassword1";
             this.textBoxPassword1.Size = new System.Drawing.Size(195, 32);
-            this.textBoxPassword1.TabIndex = 33;
+            this.textBoxPassword1.TabIndex = 28;
             this.textBoxPassword1.Texto = "";
-            // 
-            // groupBoxDestino
-            // 
-            this.groupBoxDestino.Controls.Add(this.rbtnUnidad);
-            this.groupBoxDestino.Controls.Add(this.comboBoxDestino);
-            this.groupBoxDestino.Controls.Add(this.buttonAsignarDestino);
-            this.groupBoxDestino.Controls.Add(this.rbtnUrsa);
-            this.groupBoxDestino.ForeColor = System.Drawing.Color.White;
-            this.groupBoxDestino.Location = new System.Drawing.Point(18, 382);
-            this.groupBoxDestino.Name = "groupBoxDestino";
-            this.groupBoxDestino.Size = new System.Drawing.Size(229, 121);
-            this.groupBoxDestino.TabIndex = 32;
-            this.groupBoxDestino.TabStop = false;
-            this.groupBoxDestino.Text = "Destino";
-            this.groupBoxDestino.Visible = false;
-            // 
-            // buttonEliminarUsuario
-            // 
-            this.buttonEliminarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEliminarUsuario.Location = new System.Drawing.Point(193, 513);
-            this.buttonEliminarUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonEliminarUsuario.Name = "buttonEliminarUsuario";
-            this.buttonEliminarUsuario.Size = new System.Drawing.Size(54, 32);
-            this.buttonEliminarUsuario.TabIndex = 38;
-            this.buttonEliminarUsuario.Text = "Eliminar";
-            this.buttonEliminarUsuario.UseVisualStyleBackColor = true;
-            // 
-            // labelUsuario
-            // 
-            this.labelUsuario.AutoSize = true;
-            this.labelUsuario.Location = new System.Drawing.Point(415, 16);
-            this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(0, 13);
-            this.labelUsuario.TabIndex = 39;
             // 
             // Form_Usuarios
             // 
@@ -431,5 +462,7 @@
         private System.Windows.Forms.GroupBox groupBoxDestino;
         private System.Windows.Forms.Button buttonEliminarUsuario;
         private System.Windows.Forms.Label labelUsuario;
+        private System.Windows.Forms.Button buttonDesagsinarRol;
+        private System.Windows.Forms.Button buttonDesagniarUnidad;
     }
 }

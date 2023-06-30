@@ -69,7 +69,6 @@ namespace DAL
             }
         }
 
-
         public bool Agregar(string NodoPadre, XElement elemento)
         {
             try
@@ -143,49 +142,6 @@ namespace DAL
             }
         }
 
-
-        public bool Eliminar(string NodoPadre, string idElemento, string elementocontenedor = "")
-        {
-            try
-            {
-                XDocument xmlDoc = XDocument.Load(XmlFilePath);
-                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
-                XElement elementoAEliminar;
-               
-                if (elementoPadre == null)
-                {
-                    throw new Exception($"No se encontró el nodo: {NodoPadre}");
-                }
-
-                if (elementocontenedor == "") // si es una tabla normal
-                {
-                    elementoAEliminar = elementoPadre.Elements().FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
-                }
-                else //si es una tabla de muchos a muchos
-                {
-                    elementoAEliminar = elementoPadre.Elements().FirstOrDefault(e => e.Element(elementocontenedor)?.Value == idElemento);
-                }
-
-
-                if (elementoAEliminar == null)
-                {
-                    throw new Exception($"No se encontró el elemento con el Id: {idElemento} en el nodo: {NodoPadre}");
-                }
-
-                // Elimina el elemento
-                elementoAEliminar.Remove();
-
-                xmlDoc.Save(XmlFilePath);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"{ex.Message}");
-            }
-        }
-
-
         public int ObtenerUltimoID(string elementoPadre)
         {
             try
@@ -206,7 +162,6 @@ namespace DAL
                 throw new Exception($"{ex.Message}");
             }
         }
-
 
         public bool EliminarConCriterio(string NodoPadre, Func<XElement, bool> criterioEliminacion)
         {
@@ -237,6 +192,58 @@ namespace DAL
                 throw new Exception($"{ex.Message}");
             }
         }
+
+        public bool Eliminar(string NodoPadre, string idElemento, string elementocontenedor = "", bool eliminarTodos = false)
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
+
+                if (elementoPadre == null)
+                {
+                    throw new Exception($"No se encontró el nodo: {NodoPadre}");
+                }
+
+                IEnumerable<XElement> elementosAEliminar;
+
+                if (elementocontenedor == "") // si es una tabla normal
+                {
+                    elementosAEliminar = elementoPadre.Elements().Where(e => e.Element("Id")?.Value == idElemento);
+                }
+                else //si es una tabla de muchos a muchos
+                {
+                    elementosAEliminar = elementoPadre.Elements().Where(e => e.Element(elementocontenedor)?.Value == idElemento);
+                }
+
+                if (!elementosAEliminar.Any())
+                {
+                    throw new Exception($"No se encontró el elemento con el Id: {idElemento} en el nodo: {NodoPadre}");
+                }
+
+                // Elimina el elemento o los elementos
+                if (eliminarTodos)
+                {
+                    foreach (var elemento in elementosAEliminar.ToList())
+                    {
+                        elemento.Remove();
+                    }
+                }
+                else
+                {
+                    elementosAEliminar.First().Remove();
+                }
+
+                xmlDoc.Save(XmlFilePath);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
 
     }
 }

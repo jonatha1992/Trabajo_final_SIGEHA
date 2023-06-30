@@ -12,44 +12,94 @@ namespace MPP
     public class MPPUsuario
     {
         Conexion conexion = new Conexion();
+        string NodoPadre = "Usuarios";
+        string NodoContenedor = "Usuario";
 
-        public bool Agregar(BEUsuario pUsuario)
+
+
+        public BEUsuario Agregar(BEUsuario NuevoUser)
         {
-            throw new NotImplementedException();
+            var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
+
+            XElement Usuario = new XElement("Usuario",
+          new XElement("Id", NuevoID),
+          new XElement("NombreUsuario", NuevoUser.NombreUsuario),
+          new XElement("NombreCompleto", NuevoUser.NombreCompleto),
+          new XElement("DNI", NuevoUser.DNI),
+          new XElement("Password", NuevoUser.Password));
+
+            if (NuevoUser.Destino is BEUnidad)
+            {
+                Usuario.Add(new XElement("IdUnidad", NuevoUser.Destino.Id));
+
+            }
+            if (NuevoUser.Destino is BEUrsa)
+            {
+                Usuario.Add(new XElement("IdUrsa", NuevoUser.Destino.Id));
+            }
+
+
+
+
+
+
+            NuevoUser.Id = NuevoID;
+            conexion.Agregar(NodoPadre, Usuario);
+            return NuevoUser;
 
         }
         public bool Actualizar(BEUsuario pUsuario)
         {
-            throw new NotImplementedException();
+            XElement usuarioXml = new XElement("Usuario",
+               new XElement("Id", pUsuario.Id),
+               new XElement("NombreUsuario", pUsuario.NombreUsuario),
+               new XElement("NombreCompleto", pUsuario.NombreCompleto),
+               new XElement("DNI", pUsuario.DNI),
+               new XElement("Password", pUsuario.Password));
+
+    
+            if (pUsuario.Destino is BEUnidad)
+            {
+                usuarioXml.Add(new XElement("IdUnidad", pUsuario.Destino.Id));
+
+            }
+            if (pUsuario.Destino is BEUrsa)
+            {
+                usuarioXml.Add(new XElement("IdUrsa", pUsuario.Destino.Id));
+            }
+
+
+            return conexion.Actualizar(NodoPadre, pUsuario.Id.ToString(), usuarioXml);
         }
 
-        public bool Eliminar(BEUsuario Object)
+
+        public bool Eliminar(BEUsuario user)
         {
-            throw new NotImplementedException();
+            return conexion.Eliminar(NodoPadre, user.Id.ToString());
         }
 
-        public bool GuardarPermisos(BEUsuario oBEUsu)
+        public bool GuardarPermisosUsuario(BEUsuario oBEUsu)
         {
             try
             {
                 // Elimina los permisos existentes del usuario
-                conexion.Eliminar("UsuariosPermisos", oBEUsu.Id.ToString(), "IdUsuario");
+                conexion.Eliminar("Usuario_Permisos", oBEUsu.Id.ToString(), "IdUsuario");
 
                 // Agrega los nuevos permisos
                 foreach (var permiso in oBEUsu.Permisos)
                 {
-                    var permisoUsuarioElement = new XElement("UsuarioPermiso",
+                    var permisoUsuarioElement = new XElement("Usuario_Permiso",
                         new XElement("IdUsuario", oBEUsu.Id),
                         new XElement("IdPermiso", permiso.Id));
 
-                    conexion.Agregar("UsuariosPermisos", permisoUsuarioElement);
+                    conexion.Agregar("Usuario_Permisos", permisoUsuarioElement);
                 }
 
                 return true;
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -63,17 +113,17 @@ namespace MPP
 
             if (Consulta.Count() > 0)
             {
-                 lista = (from x in Consulta
-                             select new BEUsuario
-                             {
-                                 Id =  Convert.ToInt32((x.Element("Id").Value)),
-                                 NombreUsuario = Convert.ToString(x.Element("NombreUsuario")?.Value),
-                                 NombreCompleto = Convert.ToString(x.Element("NombreCompleto")?.Value),
-                                 Password = Convert.ToString(x.Element("Password")?.Value),
-                                 DNI = Convert.ToString(x.Element("DNI")?.Value),
-                                 Ursa = new BEUrsa( Convert.ToInt32(Convert.ToString(x.Element("IdUrsa")?.Value))),
-                                 Unidad = new BEUnidad( Convert.ToInt32(Convert.ToString(x.Element("IdUnidad")?.Value)))
-                             }).ToList();
+                lista = (from x in Consulta
+                         select new BEUsuario
+                         {
+                             Id = Convert.ToInt32((x.Element("Id").Value)),
+                             NombreUsuario = Convert.ToString(x.Element("NombreUsuario")?.Value),
+                             NombreCompleto = Convert.ToString(x.Element("NombreCompleto")?.Value),
+                             Password = Convert.ToString(x.Element("Password")?.Value),
+                             DNI = Convert.ToString(x.Element("DNI")?.Value),
+                             Destino = ObtenerDestino(x)
+
+                         }).ToList();
             }
             else
             {
@@ -81,6 +131,26 @@ namespace MPP
             }
             return lista;
         }
+
+        private BEDestino ObtenerDestino(XElement elemento)
+        {
+            XElement elementoIdUrsa = elemento.Element("IdUrsa");
+            XElement elementoIdUnidad = elemento.Element("IdUnidad");
+
+            if (elementoIdUrsa != null)
+            {
+                return new BEUrsa(Convert.ToInt32(elementoIdUrsa.Value));
+            }
+            else if (elementoIdUnidad != null)
+            {
+                return new BEUnidad(Convert.ToInt32(elementoIdUnidad.Value));
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         public BEUsuario ListarObjeto(BEUsuario Usuario)
         {

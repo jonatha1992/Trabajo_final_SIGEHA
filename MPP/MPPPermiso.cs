@@ -49,7 +49,6 @@ namespace MPP
             }
         }
 
-
         public bool GuardarRol(BERol oBErol)
         {
             try
@@ -88,7 +87,6 @@ namespace MPP
             }
         }
 
-
         public List<BEPermiso> Listarpermisos()
         {
 
@@ -115,7 +113,6 @@ namespace MPP
         }
 
         // GetAllrols
-
         public List<BERol> ListarRoles()
         {  //instancio un objeto de la clase datos para operar con la BD
             List<BERol> Listarol = new List<BERol>();
@@ -168,7 +165,6 @@ namespace MPP
             return permisosLista;
         }
 
-
         public BEUsuario ObternerPermisoUsuario(BEUsuario user)
         {
             // Usar LeerTodos para obtener todos los elementos de "usuarios_permisos"
@@ -179,7 +175,7 @@ namespace MPP
                 .Where(up => up.Element("IdUsuario").Value == user.Id.ToString());
 
             // Limpiar la lista de permisos del usuario
-            //user.Permisos.Clear();
+            user.Permisos.Clear();
 
             // Iterar sobre cada rol del usuario
             foreach (var permisoUsuario in permisosUsuarios)
@@ -213,9 +209,14 @@ namespace MPP
             return user;
         }
 
-
-      
-
+        public bool EliminarRol(BERol bERol )
+        {
+     
+            conexion.Eliminar("Permisos_Permisos", bERol.Id.ToString(), "IdPermisoPadre",true);
+            conexion.Eliminar("Permisos", bERol.Id.ToString(), "Id");
+            conexion.Eliminar("Usuario_Permisos", bERol.Id.ToString(), "IdPermiso",true);
+            return true;
+        }
     }
 
 }

@@ -81,7 +81,10 @@ namespace Negocio
             return oMPPPermiso.ObternerPermisosRol(rol);
 
         }
-
+        public bool EliminarRol(BERol rol)
+        {
+            return oMPPPermiso.EliminarRol(rol);
+        }
 
         //método para taer los permisos de un usuario para el menu
         public List<string> ObternerPermisosMenu(BEUsuario user)
@@ -96,8 +99,7 @@ namespace Negocio
             return nombresPermisos;
 
         }
-
-
+    
         private void AgregarNombresPermisos(BEComponente permiso, List<string> nombresPermisos)
         {
             nombresPermisos.Add(permiso.Nombre);

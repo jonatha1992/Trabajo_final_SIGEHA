@@ -15,7 +15,7 @@ namespace BE
         public abstract List<BEComponente> Hijos { get; }
         public abstract void AgregarHijo(BEComponente c);
         public abstract void VaciarHijos();
-
+        public abstract void EliminarHijo(BEComponente c);
 
 
         public override string ToString()

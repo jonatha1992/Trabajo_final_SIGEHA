@@ -6,8 +6,7 @@ namespace BE
     {
         public string Password { get; set; }
         public string NombreUsuario { get; set; }
-        public BEUnidad Unidad { get; set; }
-        public BEUrsa Ursa{ get; set; }
+        public BEDestino Destino{ get; set; }
         public List<BEComponente> Permisos { get; set; }
 
 

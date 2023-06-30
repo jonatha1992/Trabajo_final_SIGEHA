@@ -44,6 +44,7 @@ namespace Negocio
 
         public BEUsuario ListarUsuarioConPermisos(BEUsuario bEUsuario)
         {
+
             bEUsuario = mpPpermiso.ObternerPermisoUsuario(bEUsuario);
 
             return bEUsuario;
@@ -86,6 +87,31 @@ namespace Negocio
             return false;
         }
 
+
+        public bool CambiarContraseña(BEUsuario oBEUsu)
+        {
+            return true;
+        }
+        public bool Eliminar(BEUsuario oBEUsu)
+        {
+            return mpPUsuario.Eliminar(oBEUsu);
+        }
+
+        public bool GuardarUsuario(BEUsuario oBEUsu)
+        {
+            if (oBEUsu.Id == 0)
+            {
+                mpPUsuario.Agregar(oBEUsu);
+            }
+            else
+            {
+                mpPUsuario.Actualizar(oBEUsu);
+            }
+
+            mpPUsuario.GuardarPermisosUsuario(oBEUsu);
+
+            return true;
+        }
     }
 }
 

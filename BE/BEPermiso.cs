@@ -23,6 +23,11 @@ namespace BE
             throw new NotImplementedException();
         }
 
+        public override void EliminarHijo(BEComponente c)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void VaciarHijos()
         {
             throw new NotImplementedException();
