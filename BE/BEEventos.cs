@@ -12,5 +12,7 @@ namespace BE
         public BEUsuario Usuario { get; set; }
         public string Mensaje { get; set; }
 
+
+
     }
 }

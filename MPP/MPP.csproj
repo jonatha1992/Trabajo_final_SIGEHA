@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MPPBitacora.cs" />
     <Compile Include="MPPComponente.cs" />
     <Compile Include="MPPPermiso.cs" />
     <Compile Include="MPPUsuario.cs" />
