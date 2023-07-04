@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Bitacora>
+  <Evento>
+    <Id>1</Id>
+    <Fecha>01-07-2023 08:47:46</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>2</Id>
+    <Fecha>01-07-2023 08:50:49</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>3</Id>
+    <Fecha>01-07-2023 08:58:41</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>4</Id>
+    <Fecha>01-07-2023 09:08:20</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>5</Id>
+    <Fecha>01-07-2023 09:39:22</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierre de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>6</Id>
+    <Fecha>01-07-2023 09:40:23</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>7</Id>
+    <Fecha>01-07-2023 11:42:59</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>8</Id>
+    <Fecha>01-07-2023 11:44:38</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>9</Id>
+    <Fecha>01-07-2023 11:45:07</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>10</Id>
+    <Fecha>01-07-2023 13:40:28</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>11</Id>
+    <Fecha>01-07-2023 13:42:06</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>12</Id>
+    <Fecha>01-07-2023 20:56:26</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>13</Id>
+    <Fecha>01-07-2023 20:57:29</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Genero el BackUp BackUp_01-07-2023 20-56-46</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>14</Id>
+    <Fecha>01-07-2023 21:10:16</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>15</Id>
+    <Fecha>01-07-2023 21:10:22</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Genero el BackUp BackUp_01-07-2023 21-10-22.xml</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>16</Id>
+    <Fecha>01-07-2023 21:21:50</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>17</Id>
+    <Fecha>01-07-2023 21:29:53</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>18</Id>
+    <Fecha>01-07-2023 21:30:01</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Genero el BackUp BackUp_01-07-2023 21-30-00.xml</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>19</Id>
+    <Fecha>01-07-2023 21:31:38</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Restauro BackUp BackUp_01-07-2023 21-30-00.xml</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>20</Id>
+    <Fecha>01-07-2023 21:33:51</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>21</Id>
+    <Fecha>01-07-2023 21:33:58</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Restauro BackUp BackUp_01-07-2023 21-30-00.xml</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>22</Id>
+    <Fecha>02-07-2023 17:42:43</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>23</Id>
+    <Fecha>02-07-2023 17:43:30</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>24</Id>
+    <Fecha>02-07-2023 17:43:51</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>25</Id>
+    <Fecha>02-07-2023 17:45:22</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>26</Id>
+    <Fecha>02-07-2023 17:47:09</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>27</Id>
+    <Fecha>02-07-2023 17:48:28</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>28</Id>
+    <Fecha>02-07-2023 17:48:58</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>29</Id>
+    <Fecha>02-07-2023 17:57:12</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>30</Id>
+    <Fecha>02-07-2023 18:14:09</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>31</Id>
+    <Fecha>02-07-2023 18:26:28</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>32</Id>
+    <Fecha>02-07-2023 18:29:37</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>33</Id>
+    <Fecha>02-07-2023 18:30:27</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>34</Id>
+    <Fecha>02-07-2023 18:32:10</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>35</Id>
+    <Fecha>02-07-2023 18:36:03</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>36</Id>
+    <Fecha>02-07-2023 18:36:51</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>37</Id>
+    <Fecha>02-07-2023 18:38:31</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>38</Id>
+    <Fecha>02-07-2023 18:42:27</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>39</Id>
+    <Fecha>02-07-2023 18:43:14</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>40</Id>
+    <Fecha>02-07-2023 18:47:24</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>41</Id>
+    <Fecha>02-07-2023 19:33:18</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>42</Id>
+    <Fecha>02-07-2023 19:33:42</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>43</Id>
+    <Fecha>02-07-2023 19:35:04</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>44</Id>
+    <Fecha>02-07-2023 19:35:20</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>45</Id>
+    <Fecha>03-07-2023 08:03:49</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>46</Id>
+    <Fecha>03-07-2023 08:24:27</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>47</Id>
+    <Fecha>03-07-2023 08:32:58</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>48</Id>
+    <Fecha>03-07-2023 08:36:30</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>49</Id>
+    <Fecha>03-07-2023 08:37:53</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>50</Id>
+    <Fecha>03-07-2023 08:39:49</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>51</Id>
+    <Fecha>03-07-2023 08:44:23</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>52</Id>
+    <Fecha>03-07-2023 08:45:24</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>53</Id>
+    <Fecha>03-07-2023 08:47:41</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>54</Id>
+    <Fecha>03-07-2023 08:49:09</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>55</Id>
+    <Fecha>03-07-2023 08:53:46</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>56</Id>
+    <Fecha>03-07-2023 08:56:15</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>57</Id>
+    <Fecha>03-07-2023 08:57:52</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>58</Id>
+    <Fecha>03-07-2023 09:01:51</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>59</Id>
+    <Fecha>03-07-2023 09:03:14</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>60</Id>
+    <Fecha>03-07-2023 09:04:40</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>61</Id>
+    <Fecha>03-07-2023 09:05:04</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>62</Id>
+    <Fecha>03-07-2023 09:05:41</Fecha>
+    <Usuario>jcorrea</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>63</Id>
+    <Fecha>03-07-2023 09:08:20</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>64</Id>
+    <Fecha>03-07-2023 09:08:23</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>65</Id>
+    <Fecha>03-07-2023 14:53:25</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>66</Id>
+    <Fecha>03-07-2023 15:00:02</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>67</Id>
+    <Fecha>03-07-2023 15:02:55</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Inicio de sesión</Mensaje>
+  </Evento>
+</Bitacora>
