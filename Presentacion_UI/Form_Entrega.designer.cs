@@ -476,7 +476,7 @@
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(101, 38);
             this.buttonAgregar.TabIndex = 88;
-            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.Text = "AgregarEvento";
             this.buttonAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAgregar.UseVisualStyleBackColor = false;
             this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);

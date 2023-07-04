@@ -96,7 +96,7 @@
             this.btndAgregarPermiso.Name = "btndAgregarPermiso";
             this.btndAgregarPermiso.Size = new System.Drawing.Size(66, 32);
             this.btndAgregarPermiso.TabIndex = 8;
-            this.btndAgregarPermiso.Text = "Agregar ";
+            this.btndAgregarPermiso.Text = "AgregarEvento ";
             this.btndAgregarPermiso.UseVisualStyleBackColor = true;
             this.btndAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click);
             // 

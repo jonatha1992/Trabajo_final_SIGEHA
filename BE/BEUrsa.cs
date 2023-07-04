@@ -16,9 +16,6 @@ namespace BE
         public List<BEUnidad> Unidades { get; set; }
         
         //ahora ver si modifico algo 
-        public override string ToString()
-        {
-            return Nombre;
-        }
+ 
     }
 }

@@ -19,6 +19,7 @@ namespace Presentacion_UI
 
         BLLUsuario oBLLUsu;
         BLLPermiso oBLLPermiso;
+        
         BEUsuario seleccion;
 
 
@@ -49,7 +50,15 @@ namespace Presentacion_UI
         }
         void LlenarTreeView(TreeNode padre, BEComponente c)
         {
-            TreeNode hijo = new TreeNode(c.Nombre);
+            TreeNode hijo;
+            if (c is BEPermiso)
+            {
+                hijo = new TreeNode(c.Descripcion);
+            }
+            else
+            {
+                hijo = new TreeNode(c.Nombre);
+            }
             hijo.Tag = c;
             padre.Nodes.Add(hijo);
 
@@ -60,34 +69,40 @@ namespace Presentacion_UI
 
         }
 
+
+
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
             try
             {
                 groupBoxDatosUsuario.Visible = true;
                 seleccion = (BEUsuario)comboBoxUsuarios.SelectedItem;
-                labelUsuario.Text = seleccion.NombreUsuario;
-
-                seleccion = oBLLUsu.ListarUsuarioConPermisos(seleccion);
-
-                MostrarPermisos(seleccion);
+                seleccion = oBLLUsu.ListarObjeto(seleccion);
+                labelDestino.Text = seleccion.Destino != null ? seleccion.Destino.ToString() : "No tiene asginada";
 
                 textBoxNombre.Text = seleccion.NombreCompleto;
                 textBoxDNI.Text = seleccion.DNI;
                 textBoxUsuario.Text = seleccion.NombreUsuario;
                 textBoxPassword1.Texto = Encriptacion.Desinciptar(seleccion.Password);
                 textBoxPassword2.Texto = Encriptacion.Desinciptar(seleccion.Password);
-                var rol = seleccion.Permisos.First();
 
-                foreach (BEComponente item in comboBoxRoles.Items)
+
+                if (seleccion.Permisos.Count > 0)
                 {
-                    if (item.Id == rol.Id)
+                    MostrarPermisos(seleccion);
+
+                    var rol = seleccion.Permisos.First();
+
+                    foreach (BEComponente item in comboBoxRoles.Items)
                     {
-                        comboBoxRoles.SelectedItem = item;
-                        break;
+                        if (item.Id == rol.Id)
+                        {
+                            comboBoxRoles.SelectedItem = item;
+                            break;
+                        }
                     }
+                    comboBoxRoles_SelectedIndexChanged(null, null);
                 }
-                comboBoxRoles_SelectedIndexChanged(null, null);
             }
             catch (Exception ex)
             {
@@ -141,15 +156,13 @@ namespace Presentacion_UI
             {
                 if (rbtnUrsa.Checked)
                 {
-
                     seleccion.Destino = comboBoxDestino.SelectedItem as BEUrsa;
                 }
                 else
                 {
                     seleccion.Destino = comboBoxDestino.SelectedItem as BEUnidad;
-
                 }
-
+                labelDestino.Text = seleccion.Destino.ToString();
                 MessageBox.Show($"Al usuario {seleccion.NombreUsuario} tiene como destino {comboBoxDestino.Text} ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -179,12 +192,18 @@ namespace Presentacion_UI
             {
                 if (VerficarCamposUsuario())
                 {
-                    oBLLUsu.GuardarUsuario(seleccion);
-                    LimpiarFormulario();
-                    groupBoxDatosUsuario.Visible = false;
-                    comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
+                    if (oBLLUsu.GuardarUsuario(seleccion))
+                    {
+                        LimpiarFormulario();
+                        groupBoxDatosUsuario.Visible = false;
+                        comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
+                        MessageBox.Show("Se ha Guardado los cambios con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario no tiene asignado ningun destino", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
 
-                    MessageBox.Show("Se ha Guardado los cambios con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -238,7 +257,7 @@ namespace Presentacion_UI
             textBoxUsuario.Text = "";
             textBoxPassword1.Texto = "";
             textBoxPassword2.Texto = "";
-            labelUsuario.Text = "";
+            labelDestino.Text = "";
             treeViewPermisos.Nodes.Clear();
 
         }
@@ -275,8 +294,8 @@ namespace Presentacion_UI
         private void buttonDesagsinarRol_Click(object sender, EventArgs e)
         {
 
-            BERol rolSeleccionado = treeViewPermisos.SelectedNode.Tag  as BERol;
-            
+            BERol rolSeleccionado = treeViewPermisos.SelectedNode.Tag as BERol;
+
             int cantidadEliminada = seleccion.Permisos.RemoveAll(x => x.Id == rolSeleccionado.Id);
 
             if (cantidadEliminada > 0)
@@ -297,6 +316,7 @@ namespace Presentacion_UI
             try
             {
                 seleccion.Destino = null;
+                labelDestino.Text = "No tiene asignada";
                 MessageBox.Show("El usuario ya NO posee destino asignado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -311,7 +331,7 @@ namespace Presentacion_UI
             {
                 if (e.Node.Tag is BERol)
                 {
-                    BERol rol= e.Node.Tag as BERol;
+                    BERol rol = e.Node.Tag as BERol;
                     buttonDesagsinarRol.Visible = true;
                 }
                 else
@@ -319,6 +339,11 @@ namespace Presentacion_UI
                     buttonDesagsinarRol.Visible = false;
                 }
             }
+        }
+
+        private void groupBoxDatosUsuario_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -41,5 +41,10 @@ namespace BE
         {
             _hijos = new List<BEComponente>();
         }
+
+        public override string ToString()
+        {
+            return Nombre.ToString();
+        }
     }
 }

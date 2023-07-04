@@ -18,12 +18,12 @@ namespace Negocio
         }
         public BEHallazgo Agregar(BEHallazgo pHallazgo)
         {
-            var verificarExisteNroActa = ListarTodo().Exists(x => x.NroActa == pHallazgo.NroActa);
-            if (!verificarExisteNroActa) // SI NO EXISTE QUE LO AGREGUE
+            var Existe = ListarTodo().Exists(x => x.NroActa == pHallazgo.NroActa);
+            if (Existe) // SI NO EXISTE QUE LO AGREGUE
             {
                 return null;
             }
-                return mPPHallazgo.Agregar(pHallazgo);
+            return mPPHallazgo.Agregar(pHallazgo);
         }
         public bool Actualizar(BEHallazgo Phallazgo)
         {
@@ -33,7 +33,6 @@ namespace Negocio
 
         public List<BEHallazgo> ListarTodo()
         {
-
             return mPPHallazgo.ListarTodo();
         }
         public BEHallazgo ListarObjeto(BEHallazgo Phallazgo)
@@ -57,16 +56,15 @@ namespace Negocio
 
         public override string ObtenerNroActa(BEUnidad unidad, int anio)
         {
-            string nroHallazgo = "";
             var hallazgos = ListarTodo();
 
-             nroHallazgo = hallazgos.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
-                            .OrderByDescending(h => h.NroActa)
+            string nroHallazgo = hallazgos.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+                                 .OrderByDescending(h => h.NroActa)
                             .FirstOrDefault()?.NroActa;
 
             //nroHallazgo = mPPHallazgo.ObtenerNroHallazgo(unidad, anio);
 
-            if (nroHallazgo == "")
+            if (nroHallazgo == "" || nroHallazgo == null)
             {
                 nroHallazgo = $"0001{unidad.Cod}/{anio}";
             }
@@ -93,7 +91,7 @@ namespace Negocio
         }
 
 
-   
+
 
         public List<BEHallazgo> ListarTodo(BEUnidad bEUnidad, DateTime fecha)
         {
@@ -102,6 +100,12 @@ namespace Negocio
 
             List<BEHallazgo> lista = ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.FechaHallazgo.Month == Mes)
                                      .OrderByDescending(x => x.FechaHallazgo).ToList();
+
+            foreach (var hallazgo in lista)
+            {
+                hallazgo.Unidad = bEUnidad;
+            }
+
             return lista;
         }
 

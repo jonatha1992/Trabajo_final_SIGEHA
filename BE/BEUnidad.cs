@@ -13,9 +13,6 @@ namespace BE
         public string Cod { get; set; }
         public BEUrsa Ursa { get; set; }
 
-        public override string ToString()
-        {
-            return Nombre;
-        }
+
     }
 }

@@ -5,6 +5,7 @@ using Seguridad;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
@@ -19,8 +20,16 @@ namespace Presentacion_UI
             InitializeComponent();
 
             bLLElemento = new BLLElemento();
+            bLLcategorias = new BLLCategoria();
+            bLLArticulos = new BLLArticulo();
             bLLHallazgo = new BLLHallazgo();
+            bLLEstado_elementos = new BLLEstado_Elemento();
             Usuario = bEUsuario;
+
+
+            listaCategorias = bLLcategorias.ListarTodo();
+            listaArticulos = bLLArticulos.ListarTodo();
+            ListabEEstadoElementos = bLLEstado_elementos.ListarTodo().FindAll(x => x.Nombre != "Entregado");
         }
 
 
@@ -28,11 +37,8 @@ namespace Presentacion_UI
         {
             try
             {
-                listaCategorias = Form_Contenedor.Categorias;
-                ListabEEstadoElementos = Form_Contenedor.EstadosElementos.FindAll(x => x.Nombre != "Entregado");
-                comboBoxCategoria.DataSource = Form_Contenedor.Categorias;
+                comboBoxCategoria.DataSource = listaCategorias;
                 comboBoxEstado.DataSource = ListabEEstadoElementos;
-                //dateTimePickerFechaHallazgo.Value = DateTime.Now;
                 CargarCombo();
                 CargarGrillaHallazgos();
                 Habilitar();
@@ -56,16 +62,18 @@ namespace Presentacion_UI
 
         BEHallazgo bEHallazgo;
         BEElemento bEElemento;
+        List<BECategoria> listaCategorias;
+        List<BEArticulo> listaArticulos;
+        List<BEEstado_Elemento> ListabEEstadoElementos;
 
 
 
         BLLHallazgo bLLHallazgo;
         BLLElemento bLLElemento;
+        BLLCategoria bLLcategorias;
+        BLLArticulo bLLArticulos;
+        BLLEstado_Elemento bLLEstado_elementos;
 
-        List<BECategoria> listaCategorias;
-        List<BEUrsa> ListaUrsas;
-        List<BEUnidad> ListaUnidades;
-        List<BEEstado_Elemento> ListabEEstadoElementos;
 
 
 
@@ -81,20 +89,21 @@ namespace Presentacion_UI
 
         void CargarCombo()
         {
-            //if (Usuario.Rol == "REGION")
-            //{
-            //    bEUrsa = Form_Contenedor.Ursa;
-            //    comboBoxUrsa.Text = bEUrsa.Nombre;
-            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            //}
-            //else if (Usuario.Rol == "UNIDAD")
-            //{
-            //    bEUnidad = Form_Contenedor.Unidad;
-            //    bEUrsa = Form_Contenedor.Ursas.Find(x => x.Id == bEUnidad.Ursa.Id);
-            //    comboBoxUnidad.Text = bEUnidad.Nombre;
-            //    comboBoxUrsa.Text = bEUrsa.Nombre;
-            //}
-            //else
+            if (Usuario.Destino is BEUnidad)//destino unidad
+            {
+                bEUnidad = Usuario.Destino as BEUnidad;
+                bEUrsa = bEUnidad.Ursa;
+                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUrsa.Text = bEUrsa.Nombre;
+            }
+            if (Usuario.Destino is BEUrsa) //destino region
+            {
+                bEUrsa = Usuario.Destino as BEUrsa;
+                bEUnidad = bEUrsa.Unidades.First();
+                comboBoxUrsa.Text = bEUrsa.Nombre;
+                comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            }
+            //else //CEAC
             //{
             //    ListaUnidades = Form_Contenedor.Unidades;
             //    ListaUrsas = Form_Contenedor.Ursas;
@@ -110,7 +119,7 @@ namespace Presentacion_UI
                 {
                     if (textBoxDescripcion.Text != "")
                     {
-                       // if (textBoxCantidad.Text != "")
+                        // if (textBoxCantidad.Text != "")
                         if (NUPCantidad.Text != "0")
                         {
                             if (comboBoxEstado.Text != "Seleccione") { return true; }
@@ -169,7 +178,7 @@ namespace Presentacion_UI
                 comboBoxCategoria.Text = "Seleccione";
                 comboBoxArticulo.Text = "Seleccione";
                 comboBoxEstado.Text = "Seleccione";
-             //   textBoxCantidad.Text = "";
+                //   textBoxCantidad.Text = "";
                 textBoxDescripcion.Text = "";
                 NUPCantidad.Text = "1";
 
@@ -184,7 +193,7 @@ namespace Presentacion_UI
             try
             {
                 DgvElementos.DataSource = null;
-                this.DgvElementos.Columns["Sel"].Visible = false;
+                DgvElementos.Columns["Sel"].Visible = false;
 
                 if (SeleccionHallazgo)
                 {
@@ -440,9 +449,9 @@ namespace Presentacion_UI
         }
         void CargarGrillaHallazgos()
         {
+            
             this.dgvHallazgos.DataSource = null;
 
-           // List<BEHallazgo> Lista = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
             List<BEHallazgo> Lista = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
 
             if (Lista != null && Lista.Count > 0)
@@ -534,21 +543,15 @@ namespace Presentacion_UI
             if (!SeleccionHallazgo)// agregar
             {
                 bEHallazgo = new BEHallazgo();
-                bEHallazgo.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
-                bEHallazgo.NroActa = textBoxNroActa.Text;
-                bEHallazgo.Unidad = bEUnidad;
-                bEHallazgo.Anio = dateTimePickerFechaHallazgo.Value.Year;
-                bEHallazgo.LugarHallazgo = textBoxLugar.Text;
+            }
+            bEHallazgo.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
+            bEHallazgo.FechaActa = DateTime.Now;
+            bEHallazgo.NroActa = textBoxNroActa.Text;
+            bEHallazgo.Unidad = bEUnidad;
+            bEHallazgo.Anio = dateTimePickerFechaHallazgo.Value.Year;
+            bEHallazgo.LugarHallazgo = textBoxLugar.Text;
+            bEHallazgo.Observacion = textBoxObservacion.Text;
 
-            }
-            else //MODificar o eliminar
-            {
-                bEHallazgo.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
-                bEHallazgo.NroActa = textBoxNroActa.Text;
-                bEHallazgo.Unidad = bEUnidad;
-                bEHallazgo.Anio = dateTimePickerFechaHallazgo.Value.Year;
-                bEHallazgo.LugarHallazgo = textBoxLugar.Text;
-            }
             return bEHallazgo;
         }
         #endregion
@@ -569,7 +572,7 @@ namespace Presentacion_UI
                     {
                         ModoCreacion = true;
                         SeleccionHallazgo = true;
-                        bEHallazgo = bLLHallazgo.ListarObjeto(bEHallazgo);
+                        //bEHallazgo = bLLHallazgo.ListarObjeto(bEHallazgo);
                         Habilitar();
                         CargarGrillaHallazgos();
                         BuscarHallazgo();
@@ -604,7 +607,6 @@ namespace Presentacion_UI
                         MessageBox.Show("El Hallazgo se modifico correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -832,8 +834,8 @@ namespace Presentacion_UI
             //if (Usuario.Rol == "ADMIN")
             //{
 
-            //    bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
-            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
+            //bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
+            //comboBoxUnidad.DataSource = bEUrsa.Unidades;
             //}
             //else if (Usuario.Rol == "REGION")
             //{
@@ -845,12 +847,12 @@ namespace Presentacion_UI
         {
             //if (Usuario.Rol == "ADMIN")
             //{
-            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-            //    bEHallazgo = null;
-            //    limpiarCamposHallazgos();
-            //    CargarGrillaHallazgos();
-            //    CargarGrillaElementos();
-            //    Habilitar();
+            //bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            //bEHallazgo = null;
+            //limpiarCamposHallazgos();
+            //CargarGrillaHallazgos();
+            //CargarGrillaElementos();
+            //Habilitar();
             //}
             //else if (Usuario.Rol == "REGION")
             //{

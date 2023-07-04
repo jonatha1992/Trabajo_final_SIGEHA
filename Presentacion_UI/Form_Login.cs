@@ -50,11 +50,12 @@ namespace Presentacion_UI
                         
                         if (Usuario != null)
                         {
+                            Usuario = bLLUsuario.ListarObjeto(Usuario);
                             return true;
                         }
                         else
                         {
-                            MessageBox.Show("No coinciden la contrseña o NombreUsuario");
+                            MessageBox.Show("No coinciden la contrseña y el Usuario");
                             return false;
                         }
                     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Xml;
+using BE;
 using System.Xml.Linq;
 
 namespace DAL
@@ -12,35 +12,143 @@ namespace DAL
     public class Conexion
     {
 
-        static string ConexionsString { get; set; }
-        static string XmlFilePath { get; set; }
+        string XmlFilePathBaseDatos = "BaseDatos/Base de datos.xml";
+        string XmlFilePathBitacora = "BaseDatos/Bitacora.xml";
+        string XmlFolderPathBackup = "BackUps";
+
+
+        public bool GenerarBackUp(BEBackUp bEBackUp )
+        {
+
+            try
+            {
+                string rutaDestino = Path.Combine(XmlFolderPathBackup, bEBackUp.NombreArchivo);
+                File.Copy(XmlFilePathBaseDatos, rutaDestino);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool RestaurarBackUp(BEBackUp bEBackUp)
+        {
+            try
+            {
+                string rutaBackup = Path.Combine(XmlFolderPathBackup, bEBackUp.NombreArchivo);
+
+                // Restaurar el backup copiando el archivo al archivo de base de datos
+               
+                string rutaDestino = Path.Combine(Path.GetDirectoryName(XmlFilePathBaseDatos), "Base de datos.xml");
+                File.Copy(rutaBackup, rutaDestino, true);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir durante la restauración del backup
+                Console.WriteLine($"Error al restaurar el backup: {ex.Message}");
+                return false;
+            }
+        }
+
+        public string[] ListarBackups()
+        {
+            string[] rutasArchivos = Directory.GetFiles(XmlFolderPathBackup);
+            return rutasArchivos;
+        }
+
+        public IEnumerable<XElement> LeerTodosEventos(string Nodopadre)
+        {
+            try
+            {
+                XDocument xdoc = XDocument.Load(XmlFilePathBitacora);
+
+                IEnumerable<XElement> ElementosGenericos = xdoc.Descendants(Nodopadre);
+
+                return ElementosGenericos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public bool AgregarEvento(string NodoPadre, XElement elemento)
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBitacora);
+                XElement elementoPadre = xmlDoc.Descendants(NodoPadre).First();
+
+                if (elementoPadre == null)
+                {
+                    elementoPadre = new XElement(NodoPadre);
+                    xmlDoc.Root.Add(elementoPadre);
+                }
+
+
+                elementoPadre.Add(elemento);
+
+                xmlDoc.Save(XmlFilePathBitacora);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
+        public int ObtenerUltimoIDBitacora(string elementoPadre)
+        {
+            try
+            {
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBitacora);
+                IEnumerable<XElement> elementos = xmlDoc.Descendants(elementoPadre).Elements();
+
+                if (elementos.Any())
+                {
+                    int ultimoId = elementos.Max(x => (int)x.Element("Id"));
+                    return ultimoId + 1;
+                }
+
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
 
         public bool TestConection()
         {
-            using (StreamReader archivo = new StreamReader(@"ConexionString.txt"))
-            {
-                ConexionsString = archivo.ReadLine();
-            }
+            //using (StreamReader archivo = new StreamReader(@"ConexionString.txt"))
+            //{
+            //    ConexionsString = archivo.ReadLine();
+            //}
 
-            bool fileExist = File.Exists(ConexionsString);
+            //bool fileExist = File.Exists(ConexionsString);
 
-            if (fileExist)
-            {
-                XmlFilePath = ConexionsString;
-            }
-            else
-            {
-                XmlFilePath = "Base de datos.xml";
-            }
+            //if (fileExist)
+            //{
+            //    XmlFilePathBaseDatos = ConexionsString;
+            //}
+            //else
+            //{
+            //    XmlFilePathBaseDatos = "BaseDatos/Base de datos.xml";
+            //}
 
-            return File.Exists(XmlFilePath);
+            return File.Exists(XmlFilePathBaseDatos);
         }
 
         public IEnumerable<XElement> LeerTodos(string Nodopadre)
         {
             try
             {
-                XDocument xdoc = XDocument.Load(XmlFilePath);
+                XDocument xdoc = XDocument.Load(XmlFilePathBaseDatos);
 
                 IEnumerable<XElement> ElementosGenericos = xdoc.Descendants(Nodopadre);
 
@@ -56,7 +164,7 @@ namespace DAL
         {
             try
             {
-                XDocument xdoc = XDocument.Load(XmlFilePath);
+                XDocument xdoc = XDocument.Load(XmlFilePathBaseDatos);
 
                 XElement ElementoGenerico = xdoc.Descendants(NodoContenedor)
                                                  .FirstOrDefault(e => e.Element("Id")?.Value == idElemento);
@@ -73,7 +181,7 @@ namespace DAL
         {
             try
             {
-                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBaseDatos);
                 XElement elementoPadre = xmlDoc.Descendants(NodoPadre).First();
 
                 if (elementoPadre == null)
@@ -85,7 +193,7 @@ namespace DAL
 
                 elementoPadre.Add(elemento);
 
-                xmlDoc.Save(XmlFilePath);
+                xmlDoc.Save(XmlFilePathBaseDatos);
 
                 return true;
             }
@@ -99,7 +207,7 @@ namespace DAL
         {
             try
             {
-                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBaseDatos);
                 XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
 
                 if (elementoPadre == null)
@@ -132,7 +240,7 @@ namespace DAL
                     }
                 }
 
-                xmlDoc.Save(XmlFilePath);
+                xmlDoc.Save(XmlFilePathBaseDatos);
 
                 return true;
             }
@@ -146,7 +254,7 @@ namespace DAL
         {
             try
             {
-                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBaseDatos);
                 IEnumerable<XElement> elementos = xmlDoc.Descendants(elementoPadre).Elements();
 
                 if (elementos.Any())
@@ -155,7 +263,7 @@ namespace DAL
                     return ultimoId + 1;
                 }
 
-                return 0;
+                return 1;
             }
             catch (Exception ex)
             {
@@ -167,7 +275,7 @@ namespace DAL
         {
             try
             {
-                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBaseDatos);
                 XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
 
                 if (elementoPadre == null)
@@ -183,7 +291,7 @@ namespace DAL
                 }
 
                 elementoAEliminar.Remove();
-                xmlDoc.Save(XmlFilePath);
+                xmlDoc.Save(XmlFilePathBaseDatos);
 
                 return true;
             }
@@ -197,12 +305,12 @@ namespace DAL
         {
             try
             {
-                XDocument xmlDoc = XDocument.Load(XmlFilePath);
+                XDocument xmlDoc = XDocument.Load(XmlFilePathBaseDatos);
                 XElement elementoPadre = xmlDoc.Descendants(NodoPadre).FirstOrDefault();
 
                 if (elementoPadre == null)
                 {
-                    throw new Exception($"No se encontró el nodo: {NodoPadre}");
+                    return false;
                 }
 
                 IEnumerable<XElement> elementosAEliminar;
@@ -218,7 +326,7 @@ namespace DAL
 
                 if (!elementosAEliminar.Any())
                 {
-                    throw new Exception($"No se encontró el elemento con el Id: {idElemento} en el nodo: {NodoPadre}");
+                    return false;
                 }
 
                 // Elimina el elemento o los elementos
@@ -234,7 +342,7 @@ namespace DAL
                     elementosAEliminar.First().Remove();
                 }
 
-                xmlDoc.Save(XmlFilePath);
+                xmlDoc.Save(XmlFilePathBaseDatos);
 
                 return true;
             }

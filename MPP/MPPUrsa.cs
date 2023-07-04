@@ -43,22 +43,20 @@ namespace MPP
                                   Nombre = Convert.ToString(x.Element("Nombre")?.Value),
                               }).FirstOrDefault();
 
-                Nodo = "Unidades";
-                Consulta = conexion.LeerTodos(Nodo).Descendants("Unidad");
+                Consulta = conexion.LeerTodos("Unidad");
                 if (Consulta.Count() > 0)
                 {
-
                     pursa.Unidades= new List<BEUnidad>();
 
                     pursa.Unidades = (from x in Consulta
-                                            where Convert.ToInt32(x.Element("Id_categoria")?.Value) == pursa.Id
+                                            where Convert.ToInt32(x.Element("IdUrsa")?.Value) == pursa.Id
                                             select new BEUnidad
                                             {
                                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                                                 Nombre = Convert.ToString(x.Element("Nombre")?.Value),
                                                 Cod = Convert.ToString(x.Element("Cod")?.Value),
                                                 Ursa= new BEUrsa(pursa.Id)
-                                            }).ToList<BEUnidad>();
+                                            }).ToList();
                 }
             }
             else
@@ -81,7 +79,7 @@ namespace MPP
                              {
                                  Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                                  Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             }).ToList<BEUrsa>(); ;
+                             }).ToList(); ;
             }
             else
             {

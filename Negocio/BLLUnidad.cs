@@ -29,16 +29,14 @@ namespace Negocio
             throw new System.NotImplementedException();
         }
 
-        public BEUnidad ListarObjeto(BEUnidad Object)
+        public BEUnidad ListarObjeto(BEUnidad unidad)
         {
-            throw new System.NotImplementedException();
+            BLLUrsa bLLUrsa = new BLLUrsa();
+            unidad = mPPUnidad.ListarObjeto(unidad);
+            unidad.Ursa = bLLUrsa.ListarTodo().Find(x => x.Id == unidad.Ursa.Id);
+            return unidad;
         }
-        //public BEUnidad ListarObjeto(BEUsuario bEUsuario)
-        //{
-        //    var unidad = mPPUnidad.ListarTodo().Find(x => x.Cod == bEUsuario.Id);
 
-        //    return unidad;
-        //}
         public List<BEUnidad> ListarTodo()
         {
             return mPPUnidad.ListarTodo();

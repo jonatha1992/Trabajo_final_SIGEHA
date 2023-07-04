@@ -23,31 +23,28 @@ namespace Presentacion_UI
             bLLUrsa = new BLLUrsa();
             bLLEstado_Elemento = new BLLEstado_Elemento();
             bLLPermiso = new BLLPermiso();
+            bLLBitacora = new BLLBitacora();
         }
 
         Form_Hallazgo form_Hallazgo;
         Form_Entrega form_Entrega;
-        //BEUsuario usuario;
-        BEUsuario usuario;
-
         BLLCategoria bLLCategoria;
         BLLPermiso bLLPermiso;
-
+        BLLBitacora bLLBitacora;
         BLLArticulo bLLArticulo;
         BLLUnidad bLLUnidad;
         BLLUrsa bLLUrsa;
         BLLEstado_Elemento bLLEstado_Elemento;
 
+        public static BEUsuario usuario;
         public static List<BECategoria> Categorias { get; set; }
         public static List<BEArticulo> Articulos { get; set; }
         public static List<BEEstado_Elemento> EstadosElementos { get; set; }
         public static List<BEUrsa> Ursas { get; set; }
         public static List<BEUnidad> Unidades { get; set; }
-        public static BEUrsa Ursa { get; set; }
-        public static BEUnidad Unidad { get; set; }
+    
 
         private Form_Login form_login;
-
 
 
         public void CargarMenu()
@@ -83,7 +80,8 @@ namespace Presentacion_UI
                     menuItem.Visible = false;
                 }
             }
-            LoginToolStripMenuItem.Visible = true;
+            Login.Visible = true;
+            Configuracion.Visible = true;
 
         }
 
@@ -130,11 +128,9 @@ namespace Presentacion_UI
                 {
                     loginToolStripMenuItem_Click(null, null);
                 }
-                Categorias = bLLCategoria.ListarTodo();
-                Articulos = bLLArticulo.ListarTodo();
-                EstadosElementos = bLLEstado_Elemento.ListarTodo();
-                Ursas = bLLUrsa.ListarTodo();
-                Unidades = bLLUnidad.ListarTodo();
+
+            
+
             }
             catch (Exception ex)
             {
@@ -145,22 +141,7 @@ namespace Presentacion_UI
 
 
 
-        private void hallazgoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                form_Hallazgo = new Form_Hallazgo(usuario);
-                form_Hallazgo.ShowDialog();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
+   
         private void entregaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
@@ -241,10 +222,17 @@ namespace Presentacion_UI
                     usuario = form_login.Usuario;
                     menuStrip1.Enabled = true;
                     CargarMenu();
+                    Ursas = bLLUrsa.ListarTodo();
+                    Unidades = bLLUnidad.ListarTodo();
+
                 }
                 else
                 {
-                   Application.Exit();
+                    if (usuario != null)
+                    {
+                        bLLBitacora.RegistrarEvento(usuario, "Cierre de sesión");
+                    }
+                    Application.Exit();
                 }
             }
             catch (Exception ex)
@@ -255,9 +243,11 @@ namespace Presentacion_UI
         }
         private void CrearHallazgo_Click(object sender, EventArgs e)
         {
-
             try
             {
+                Form_Hallazgo form_Hallazgo = new Form_Hallazgo(usuario);
+                form_Hallazgo.MdiParent = this;
+                form_Hallazgo.Show();
 
             }
             catch (Exception ex)
@@ -306,10 +296,36 @@ namespace Presentacion_UI
 
         }
 
-        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void configuración_Click(object sender, EventArgs e)
         {
         }
 
-        
+        private void BackUp_Click(object sender, EventArgs e)
+        {
+            Form_BackUp form_backUp = new Form_BackUp();
+            form_backUp.MdiParent = this;
+            form_backUp.Show();
+        }
+
+        private void bitacora_Click(object sender, EventArgs e)
+        {
+            Form_Bitacora form_bitacora = new Form_Bitacora();
+            form_bitacora.MdiParent = this;
+            form_bitacora.Show();
+
+        }
+
+        private void Form_Contenedor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (usuario != null)
+            {
+                bLLBitacora.RegistrarEvento(usuario, "Cierra sesión");
+            }
+        }
+
+        private void GestionHallazgo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

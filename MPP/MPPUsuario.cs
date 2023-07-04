@@ -57,7 +57,7 @@ namespace MPP
                new XElement("DNI", pUsuario.DNI),
                new XElement("Password", pUsuario.Password));
 
-    
+
             if (pUsuario.Destino is BEUnidad)
             {
                 usuarioXml.Add(new XElement("IdUnidad", pUsuario.Destino.Id));
@@ -84,6 +84,7 @@ namespace MPP
             {
                 // Elimina los permisos existentes del usuario
                 conexion.Eliminar("Usuario_Permisos", oBEUsu.Id.ToString(), "IdUsuario");
+
 
                 // Agrega los nuevos permisos
                 foreach (var permiso in oBEUsu.Permisos)
@@ -140,6 +141,7 @@ namespace MPP
             if (elementoIdUrsa != null)
             {
                 return new BEUrsa(Convert.ToInt32(elementoIdUrsa.Value));
+
             }
             else if (elementoIdUnidad != null)
             {

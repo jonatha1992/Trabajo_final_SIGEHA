@@ -66,7 +66,7 @@ namespace MPP
                 // Eliminar todos los elementos de Permiso_Permiso con id_permiso_padre igual al Id del rol
 
 
-                // Agregar nuevos elementos de Permiso_Permiso para cada hijo del rol
+                // AgregarEvento nuevos elementos de Permiso_Permiso para cada hijo del rol
                 foreach (var permiso in oBErol.Hijos)
                 {
                     XElement nuevoElemento = new XElement("Permiso_Permiso",
@@ -104,8 +104,9 @@ namespace MPP
                     {
                         Id = int.Parse(permisoElement.Element("Id").Value),
                         Nombre = permisoElement.Element("Nombre").Value,
+                        Descripcion = permisoElement.Element("Descripcion").Value,
                     };
-                    // Agregar el permiso a la lista.
+                    // AgregarEvento el permiso a la lista.
                     Listapermiso.Add(permiso);
                 }
             }
@@ -130,7 +131,7 @@ namespace MPP
                         Id = int.Parse(permisoElement.Element("Id").Value),
                         Nombre = permisoElement.Element("Nombre").Value,
                     };
-                    // Agregar el rol a la lista.
+                    // AgregarEvento el rol a la lista.
                  
                     Listarol.Add(rol);
                 }

@@ -144,11 +144,11 @@
             this.label6.TabIndex = 28;
             this.label6.Text = "DNI";
             // 
-            // textBoxUsuario
+            // textBoxCriterio
             // 
             this.textBoxUsuario.Enabled = false;
             this.textBoxUsuario.Location = new System.Drawing.Point(54, 123);
-            this.textBoxUsuario.Name = "textBoxUsuario";
+            this.textBoxUsuario.Name = "textBoxCriterio";
             this.textBoxUsuario.Size = new System.Drawing.Size(182, 20);
             this.textBoxUsuario.TabIndex = 27;
             // 

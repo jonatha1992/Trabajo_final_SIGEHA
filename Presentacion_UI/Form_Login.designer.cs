@@ -81,11 +81,11 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Usuario:";
             // 
-            // textBoxUsuario
+            // textBoxCriterio
             // 
             this.textBoxUsuario.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUsuario.Location = new System.Drawing.Point(125, 29);
-            this.textBoxUsuario.Name = "textBoxUsuario";
+            this.textBoxUsuario.Name = "textBoxCriterio";
             this.textBoxUsuario.Size = new System.Drawing.Size(152, 25);
             this.textBoxUsuario.TabIndex = 12;
             // 

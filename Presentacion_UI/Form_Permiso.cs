@@ -76,7 +76,7 @@ namespace Presentacion_UI
             {
                 foreach (var hijo in hijos)
                 {
-                    TreeNode nodo = new TreeNode(hijo.Nombre);
+                    TreeNode nodo = new TreeNode(hijo.Descripcion);
                     nodo.Tag = hijo;
                     padre.Nodes.Add(nodo);
 

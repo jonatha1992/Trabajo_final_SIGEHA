@@ -25,6 +25,7 @@ namespace MPP
 
             XElement Hallazgo = new XElement("Hallazgo",
                 new XElement("Id", NuevoID),
+                new XElement("FechaActa", pHallazgo.FechaActa),
                 new XElement("Nroacta", pHallazgo.NroActa),
                 new XElement("IdUnidad", pHallazgo.Unidad.Id),
                 new XElement("Lugarhallazgo", pHallazgo.LugarHallazgo),
@@ -57,11 +58,13 @@ namespace MPP
 
                 XElement HallazgoActualizado = new XElement("Hallazgo",
                     new XElement("Id", pHallazgo.Id),
+                    new XElement("FechaActa", pHallazgo.FechaActa),
                     new XElement("Nroacta", pHallazgo.NroActa),
                     new XElement("IdUnidad", pHallazgo.Unidad.Id),
                     new XElement("Lugarhallazgo", pHallazgo.LugarHallazgo),
                     new XElement("Anio", pHallazgo.Anio),
-                    new XElement("Fechahallazgo", pHallazgo.FechaHallazgo)
+                    new XElement("Fechahallazgo", pHallazgo.FechaHallazgo),
+                    new XElement("Observacion", pHallazgo.FechaHallazgo)
                 );
 
                 return conexion.Actualizar(NodoPadre, pHallazgo.Id.ToString(), HallazgoActualizado);
@@ -78,7 +81,7 @@ namespace MPP
         {
             List<BEHallazgo> list = new List<BEHallazgo>();
 
-            var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Hallazgo");
+            var Consulta = conexion.LeerTodos("Hallazgo");
 
             if (Consulta.Count() > 0)
             {
@@ -86,11 +89,13 @@ namespace MPP
                         select new BEHallazgo
                         {
                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                            Unidad = new BEUnidad(Convert.ToInt32(Convert.ToString(x.Element("IdUnidad")?.Value))),
                             NroActa = Convert.ToString(x.Element("Nroacta")?.Value),
                             FechaHallazgo = Convert.ToDateTime(x.Element("Fechahallazgo")?.Value),
+                            FechaActa = Convert.ToDateTime(x.Element("FechaActa")?.Value),
                             LugarHallazgo = Convert.ToString(x.Element("Lugarhallazgo")?.Value),
-                            Anio = Convert.ToInt32(x.Element("Anio")?.Value),
-                            Unidad = new BEUnidad(Convert.ToInt32(x.Element("Anio")?.Value))
+                            Observacion = Convert.ToString(x.Element("Observacion")?.Value),
+                            Anio = Convert.ToInt32(x.Element("Anio")?.Value)
                         }).ToList();
             }
 
@@ -110,7 +115,8 @@ namespace MPP
                 bEHallazgo.FechaHallazgo = Convert.ToDateTime(x.Element("Fechahallazgo")?.Value);
                 bEHallazgo.LugarHallazgo = Convert.ToString(x.Element("Lugarhallazgo")?.Value);
                 bEHallazgo.Anio = Convert.ToInt32(x.Element("Anio")?.Value);
-                bEHallazgo.Unidad = new BEUnidad(Convert.ToInt32(x.Element("Anio")?.Value));
+                bEHallazgo.Observacion = Convert.ToString(x.Element("Observacion")?.Value);
+                bEHallazgo.Unidad = new BEUnidad(Convert.ToInt32(x.Element("IdUnidad")?.Value));
 
             }
             else

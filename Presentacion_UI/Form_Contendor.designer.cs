@@ -31,20 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Contenedor));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Hallazgo = new System.Windows.Forms.ToolStripMenuItem();
-            this.CrearHallazgo = new System.Windows.Forms.ToolStripMenuItem();
+            this.GenerarHallazgo = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionHallazgo = new System.Windows.Forms.ToolStripMenuItem();
             this.Entrega = new System.Windows.Forms.ToolStripMenuItem();
-            this.CrearEntrega = new System.Windows.Forms.ToolStripMenuItem();
+            this.GenerarEntrega = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionEntrega = new System.Windows.Forms.ToolStripMenuItem();
             this.Administracion = new System.Windows.Forms.ToolStripMenuItem();
-            this.Reporte = new System.Windows.Forms.ToolStripMenuItem();
             this.Informe = new System.Windows.Forms.ToolStripMenuItem();
             this.BackUp = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionPermisos = new System.Windows.Forms.ToolStripMenuItem();
             this.ABMCategorias = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Bitacora = new System.Windows.Forms.ToolStripMenuItem();
+            this.Login = new System.Windows.Forms.ToolStripMenuItem();
+            this.Configuracion = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,8 +57,8 @@
             this.Hallazgo,
             this.Entrega,
             this.Administracion,
-            this.LoginToolStripMenuItem,
-            this.configuraciónToolStripMenuItem});
+            this.Login,
+            this.Configuracion});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -69,67 +69,60 @@
             // Hallazgo
             // 
             this.Hallazgo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CrearHallazgo,
+            this.GenerarHallazgo,
             this.GestionHallazgo});
             this.Hallazgo.Name = "Hallazgo";
-            this.Hallazgo.Size = new System.Drawing.Size(81, 22);
-            this.Hallazgo.Text = "Hallazgo";
-            this.Hallazgo.Click += new System.EventHandler(this.hallazgoToolStripMenuItem_Click);
+            this.Hallazgo.Size = new System.Drawing.Size(125, 22);
+            this.Hallazgo.Text = "Menú Hallazgo";
             // 
-            // CrearHallazgo
+            // GenerarHallazgo
             // 
-            this.CrearHallazgo.Name = "CrearHallazgo";
-            this.CrearHallazgo.Size = new System.Drawing.Size(197, 22);
-            this.CrearHallazgo.Text = "Crear Hallazgo";
-            this.CrearHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
+            this.GenerarHallazgo.Name = "GenerarHallazgo";
+            this.GenerarHallazgo.Size = new System.Drawing.Size(200, 22);
+            this.GenerarHallazgo.Text = "Generar Hallazgo";
+            this.GenerarHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
             // 
             // GestionHallazgo
             // 
             this.GestionHallazgo.Name = "GestionHallazgo";
-            this.GestionHallazgo.Size = new System.Drawing.Size(197, 22);
+            this.GestionHallazgo.Size = new System.Drawing.Size(200, 22);
             this.GestionHallazgo.Text = "Gestion Hallazgo";
+            this.GestionHallazgo.Click += new System.EventHandler(this.GestionHallazgo_Click);
             // 
             // Entrega
             // 
             this.Entrega.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CrearEntrega,
+            this.GenerarEntrega,
             this.GestionEntrega});
             this.Entrega.Name = "Entrega";
-            this.Entrega.Size = new System.Drawing.Size(76, 22);
-            this.Entrega.Text = "Entrega";
+            this.Entrega.Size = new System.Drawing.Size(120, 22);
+            this.Entrega.Text = "Menú Entrega";
             this.Entrega.Click += new System.EventHandler(this.entregaToolStripMenuItem1_Click);
             // 
-            // CrearEntrega
+            // GenerarEntrega
             // 
-            this.CrearEntrega.Name = "CrearEntrega";
-            this.CrearEntrega.Size = new System.Drawing.Size(192, 22);
-            this.CrearEntrega.Text = "Crear Entrega";
+            this.GenerarEntrega.Name = "GenerarEntrega";
+            this.GenerarEntrega.Size = new System.Drawing.Size(195, 22);
+            this.GenerarEntrega.Text = "Generar Entrega";
             // 
             // GestionEntrega
             // 
             this.GestionEntrega.Name = "GestionEntrega";
-            this.GestionEntrega.Size = new System.Drawing.Size(192, 22);
+            this.GestionEntrega.Size = new System.Drawing.Size(195, 22);
             this.GestionEntrega.Text = "Gestion Entrega";
             // 
             // Administracion
             // 
             this.Administracion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Reporte,
             this.Informe,
             this.BackUp,
             this.GestionUsuarios,
             this.GestionPermisos,
-            this.ABMCategorias});
+            this.ABMCategorias,
+            this.Bitacora});
             this.Administracion.Name = "Administracion";
-            this.Administracion.Size = new System.Drawing.Size(124, 22);
-            this.Administracion.Text = "Administracion";
-            // 
-            // Reporte
-            // 
-            this.Reporte.Name = "Reporte";
-            this.Reporte.Size = new System.Drawing.Size(202, 22);
-            this.Reporte.Text = "Reporte Excel";
-            this.Reporte.Click += new System.EventHandler(this.Reporte_Click);
+            this.Administracion.Size = new System.Drawing.Size(167, 22);
+            this.Administracion.Text = "Menú Administración";
             // 
             // Informe
             // 
@@ -142,6 +135,7 @@
             this.BackUp.Name = "BackUp";
             this.BackUp.Size = new System.Drawing.Size(202, 22);
             this.BackUp.Text = "Back Up";
+            this.BackUp.Click += new System.EventHandler(this.BackUp_Click);
             // 
             // GestionUsuarios
             // 
@@ -163,22 +157,28 @@
             this.ABMCategorias.Size = new System.Drawing.Size(202, 22);
             this.ABMCategorias.Text = "ABM Categorias";
             // 
-            // LoginToolStripMenuItem
+            // Bitacora
             // 
-            this.LoginToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
-            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.LoginToolStripMenuItem.Text = "Iniciar sesión";
-            this.LoginToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.LoginToolStripMenuItem.Visible = true;
-            this.LoginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            this.Bitacora.Name = "Bitacora";
+            this.Bitacora.Size = new System.Drawing.Size(202, 22);
+            this.Bitacora.Text = "Bitacora";
+            this.Bitacora.Click += new System.EventHandler(this.bitacora_Click);
             // 
-            // configuraciónToolStripMenuItem
+            // Login
             // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.configuraciónToolStripMenuItem.Text = "Configuracion";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            this.Login.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.Login.Name = "Login";
+            this.Login.Size = new System.Drawing.Size(114, 22);
+            this.Login.Text = "Iniciar sesión";
+            this.Login.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.Login.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            // 
+            // Configuracion
+            // 
+            this.Configuracion.Name = "Configuracion";
+            this.Configuracion.Size = new System.Drawing.Size(120, 22);
+            this.Configuracion.Text = "Configuracion";
+            this.Configuracion.Click += new System.EventHandler(this.configuración_Click);
             // 
             // Form_Contenedor
             // 
@@ -199,6 +199,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIGEHA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Contenedor_FormClosing);
             this.Load += new System.EventHandler(this.Form_Contenedor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -212,19 +213,19 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem Hallazgo;
         private System.Windows.Forms.ToolStripMenuItem Entrega;
-        private System.Windows.Forms.ToolStripMenuItem LoginToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem CrearHallazgo;
+        private System.Windows.Forms.ToolStripMenuItem Login;
+        private System.Windows.Forms.ToolStripMenuItem GenerarHallazgo;
         private System.Windows.Forms.ToolStripMenuItem GestionHallazgo;
-        private System.Windows.Forms.ToolStripMenuItem CrearEntrega;
+        private System.Windows.Forms.ToolStripMenuItem GenerarEntrega;
         private System.Windows.Forms.ToolStripMenuItem GestionEntrega;
         private System.Windows.Forms.ToolStripMenuItem Administracion;
-        private System.Windows.Forms.ToolStripMenuItem Reporte;
         private System.Windows.Forms.ToolStripMenuItem Informe;
         private System.Windows.Forms.ToolStripMenuItem BackUp;
         private System.Windows.Forms.ToolStripMenuItem GestionUsuarios;
         private System.Windows.Forms.ToolStripMenuItem GestionPermisos;
         private System.Windows.Forms.ToolStripMenuItem ABMCategorias;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Configuracion;
+        private System.Windows.Forms.ToolStripMenuItem Bitacora;
     }
 
     

@@ -9,20 +9,42 @@ namespace Negocio
     {
         MPPUsuario mpPUsuario;
         MPPPermiso mpPpermiso;
+        BLLUnidad bllUnidad;
+        BLLUrsa blllUrsa;
 
         public BLLUsuario()
         {
             mpPUsuario = new MPPUsuario();
             mpPpermiso = new MPPPermiso();
+            bllUnidad = new BLLUnidad();
+            blllUrsa = new BLLUrsa();
         }
 
         public List<BEUsuario> ListarTodo()
         {
-            return mpPUsuario.ListarTodo();
+            return mpPUsuario.ListarTodo(); ;
         }
         public BEUsuario ListarObjeto(BEUsuario bEUsuario)
         {
-            return mpPUsuario.ListarObjeto(bEUsuario);
+            
+            bEUsuario = mpPpermiso.ObternerPermisoUsuario(bEUsuario);
+
+            if (bEUsuario != null)
+            {
+                if (bEUsuario.Destino is BEUnidad)
+                {
+                    bEUsuario.Destino = bllUnidad.ListarObjeto(bEUsuario.Destino as BEUnidad);
+                }
+                if (bEUsuario.Destino is BEUrsa)
+                {
+                    bEUsuario.Destino = blllUrsa.ListarObjeto(bEUsuario.Destino as BEUrsa);
+                }
+            }
+
+            return bEUsuario;
+
+
+           
         }
 
 
@@ -39,15 +61,6 @@ namespace Negocio
         public DataSet ObtenerElementosReporte(BEUrsa ursa, BEUnidad unidad = null)
         {
             return mpPUsuario.ObtenerElementosReporte(ursa, unidad);
-        }
-
-
-        public BEUsuario ListarUsuarioConPermisos(BEUsuario bEUsuario)
-        {
-
-            bEUsuario = mpPpermiso.ObternerPermisoUsuario(bEUsuario);
-
-            return bEUsuario;
         }
 
 
@@ -99,16 +112,22 @@ namespace Negocio
 
         public bool GuardarUsuario(BEUsuario oBEUsu)
         {
-            if (oBEUsu.Id == 0)
+            if (verificarol(oBEUsu) && oBEUsu.Destino == null)
             {
-                mpPUsuario.Agregar(oBEUsu);
+                return false;
             }
             else
             {
-                mpPUsuario.Actualizar(oBEUsu);
+                if (oBEUsu.Id == 0)
+                {
+                    mpPUsuario.Agregar(oBEUsu);
+                }
+                else
+                {
+                    mpPUsuario.Actualizar(oBEUsu);
+                }
+                mpPUsuario.GuardarPermisosUsuario(oBEUsu);
             }
-
-            mpPUsuario.GuardarPermisosUsuario(oBEUsu);
 
             return true;
         }

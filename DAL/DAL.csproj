@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DALBitacora.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,6 +49,10 @@
     <ProjectReference Include="..\Abstraccion\Abstraccion.csproj">
       <Project>{48FC9BF5-E60A-4B10-96B5-C7540019C356}</Project>
       <Name>Abstraccion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{88ad99e0-cdc6-4110-8e06-3b4ac0a336f1}</Project>
+      <Name>BE</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

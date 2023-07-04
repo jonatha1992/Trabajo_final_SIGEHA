@@ -41,7 +41,6 @@
             this.textBoxDNI = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.treeViewPermisos = new System.Windows.Forms.TreeView();
-            this.labelPermisosDe = new System.Windows.Forms.Label();
             this.groupBoxPermisos = new System.Windows.Forms.GroupBox();
             this.buttonDesagsinarRol = new System.Windows.Forms.Button();
             this.buttonAsignarRol = new System.Windows.Forms.Button();
@@ -54,10 +53,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.groupBoxDatosUsuario = new System.Windows.Forms.GroupBox();
-            this.labelUsuario = new System.Windows.Forms.Label();
+            this.labelDestino = new System.Windows.Forms.Label();
             this.buttonEliminarUsuario = new System.Windows.Forms.Button();
             this.groupBoxDestino = new System.Windows.Forms.GroupBox();
             this.buttonDesagniarUnidad = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBoxPassword2 = new Presentacion_UI.TextBoxPassword();
             this.textBoxPassword1 = new Presentacion_UI.TextBoxPassword();
             this.groupBoxPermisos.SuspendLayout();
@@ -170,21 +170,12 @@
             // 
             // treeViewPermisos
             // 
-            this.treeViewPermisos.Location = new System.Drawing.Point(280, 39);
+            this.treeViewPermisos.Location = new System.Drawing.Point(280, 38);
             this.treeViewPermisos.Margin = new System.Windows.Forms.Padding(1);
             this.treeViewPermisos.Name = "treeViewPermisos";
-            this.treeViewPermisos.Size = new System.Drawing.Size(239, 464);
+            this.treeViewPermisos.Size = new System.Drawing.Size(273, 465);
             this.treeViewPermisos.TabIndex = 0;
             this.treeViewPermisos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewPermisos_AfterSelect);
-            // 
-            // labelPermisosDe
-            // 
-            this.labelPermisosDe.AutoSize = true;
-            this.labelPermisosDe.Location = new System.Drawing.Point(350, 16);
-            this.labelPermisosDe.Name = "labelPermisosDe";
-            this.labelPermisosDe.Size = new System.Drawing.Size(70, 13);
-            this.labelPermisosDe.TabIndex = 3;
-            this.labelPermisosDe.Text = "Permisos de: ";
             // 
             // groupBoxPermisos
             // 
@@ -311,7 +302,8 @@
             // 
             // groupBoxDatosUsuario
             // 
-            this.groupBoxDatosUsuario.Controls.Add(this.labelUsuario);
+            this.groupBoxDatosUsuario.Controls.Add(this.label8);
+            this.groupBoxDatosUsuario.Controls.Add(this.labelDestino);
             this.groupBoxDatosUsuario.Controls.Add(this.buttonEliminarUsuario);
             this.groupBoxDatosUsuario.Controls.Add(this.groupBoxDestino);
             this.groupBoxDatosUsuario.Controls.Add(this.buttonGuardar);
@@ -319,7 +311,6 @@
             this.groupBoxDatosUsuario.Controls.Add(this.label1);
             this.groupBoxDatosUsuario.Controls.Add(this.groupBoxPermisos);
             this.groupBoxDatosUsuario.Controls.Add(this.textBoxPassword1);
-            this.groupBoxDatosUsuario.Controls.Add(this.labelPermisosDe);
             this.groupBoxDatosUsuario.Controls.Add(this.treeViewPermisos);
             this.groupBoxDatosUsuario.Controls.Add(this.label7);
             this.groupBoxDatosUsuario.Controls.Add(this.textBoxDNI);
@@ -331,18 +322,18 @@
             this.groupBoxDatosUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxDatosUsuario.Location = new System.Drawing.Point(12, 69);
             this.groupBoxDatosUsuario.Name = "groupBoxDatosUsuario";
-            this.groupBoxDatosUsuario.Size = new System.Drawing.Size(539, 554);
+            this.groupBoxDatosUsuario.Size = new System.Drawing.Size(570, 554);
             this.groupBoxDatosUsuario.TabIndex = 25;
             this.groupBoxDatosUsuario.TabStop = false;
             this.groupBoxDatosUsuario.Text = "Datos de Usuario";
             // 
-            // labelUsuario
+            // labelDestino
             // 
-            this.labelUsuario.AutoSize = true;
-            this.labelUsuario.Location = new System.Drawing.Point(415, 16);
-            this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(0, 13);
-            this.labelUsuario.TabIndex = 39;
+            this.labelDestino.AutoSize = true;
+            this.labelDestino.Location = new System.Drawing.Point(422, 16);
+            this.labelDestino.Name = "labelDestino";
+            this.labelDestino.Size = new System.Drawing.Size(0, 13);
+            this.labelDestino.TabIndex = 39;
             // 
             // buttonEliminarUsuario
             // 
@@ -384,6 +375,15 @@
             this.buttonDesagniarUnidad.UseVisualStyleBackColor = true;
             this.buttonDesagniarUnidad.Click += new System.EventHandler(this.buttonDesagniarUnidad_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(369, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Destino: ";
+            // 
             // textBoxPassword2
             // 
             this.textBoxPassword2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -407,7 +407,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(575, 635);
+            this.ClientSize = new System.Drawing.Size(594, 635);
             this.Controls.Add(this.buttonSeleccionar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxUsuarios);
@@ -445,7 +445,6 @@
         private System.Windows.Forms.TextBox textBoxDNI;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TreeView treeViewPermisos;
-        private System.Windows.Forms.Label labelPermisosDe;
         private TextBoxPassword textBoxPassword1;
         private System.Windows.Forms.GroupBox groupBoxPermisos;
         private System.Windows.Forms.RadioButton rbtnUnidad;
@@ -461,8 +460,9 @@
         private System.Windows.Forms.GroupBox groupBoxDatosUsuario;
         private System.Windows.Forms.GroupBox groupBoxDestino;
         private System.Windows.Forms.Button buttonEliminarUsuario;
-        private System.Windows.Forms.Label labelUsuario;
+        private System.Windows.Forms.Label labelDestino;
         private System.Windows.Forms.Button buttonDesagsinarRol;
         private System.Windows.Forms.Button buttonDesagniarUnidad;
+        private System.Windows.Forms.Label label8;
     }
 }

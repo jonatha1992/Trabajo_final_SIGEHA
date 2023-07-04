@@ -39,6 +39,7 @@ namespace MPP
             {
                 Punidad.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
                 Punidad.Nombre = Convert.ToString(Consulta.Element("Nombre")?.Value);
+                Punidad.Cod = Convert.ToString(Consulta.Element("Cod")?.Value);
                 Punidad.Ursa = new BEUrsa(Convert.ToInt32(Consulta.Element("IdUrsa")?.Value));
             }
             else

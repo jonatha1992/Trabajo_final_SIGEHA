@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BEEvento
+    public class BEBackUp
     {
-        public int Id { get; set; }
         public DateTime Fecha { get; set; }
-        public string Usuario { get; set; }
-        public string Mensaje { get; set; }
+        public string NombreArchivo { get; set; }
 
     }
 }

@@ -89,7 +89,11 @@ namespace Negocio
         //método para taer los permisos de un usuario para el menu
         public List<string> ObternerPermisosMenu(BEUsuario user)
         {
-            user = oMPPPermiso.ObternerPermisoUsuario(user);
+            if (user.Permisos.Count == 0)
+            {
+                user = oMPPPermiso.ObternerPermisoUsuario(user);
+            }
+
             List<string> nombresPermisos = new List<string>();
 
             foreach (var permiso in user.Permisos)
@@ -99,7 +103,7 @@ namespace Negocio
             return nombresPermisos;
 
         }
-    
+
         private void AgregarNombresPermisos(BEComponente permiso, List<string> nombresPermisos)
         {
             nombresPermisos.Add(permiso.Nombre);

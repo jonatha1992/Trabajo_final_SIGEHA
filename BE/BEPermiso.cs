@@ -32,5 +32,11 @@ namespace BE
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return Descripcion.ToString();
+        }
+
     }
 }
