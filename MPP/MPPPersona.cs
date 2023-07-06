@@ -20,26 +20,28 @@ namespace MPP
 
             XElement Persona = new XElement("Persona",
           new XElement("Id", NuevoID),
+          new XElement("NombreCompleto", bEPersona.NombreCompleto),
+          new XElement("DNI", bEPersona.DNI),
           new XElement("Domcicilio", bEPersona.Domicilio),
-          new XElement("Nombrecompleto", bEPersona.NombreCompleto),
           new XElement("Ocupacion", bEPersona.Ocupacion),
           new XElement("Telefono", bEPersona.Telefono)
 
           );
 
-     
-
             conexion.Agregar(NodoPadre, Persona);
+
+            bEPersona.Id = NuevoID;
             return bEPersona;
         }
 
         public bool Actualizar(BEPersona pPersona)
         {
-           
+
             XElement bEPersona = new XElement("Persona",
                      new XElement("Id", pPersona.Id),
+                     new XElement("DNI", pPersona.DNI),
+                     new XElement("NombreCompleto", pPersona.NombreCompleto),
                      new XElement("Domicilio", pPersona.Domicilio),
-                     new XElement("Nombrecompleto", pPersona.NombreCompleto),
                      new XElement("Ocupacion", pPersona.Ocupacion),
                      new XElement("Telefono", pPersona.Telefono)
                      );
@@ -65,7 +67,7 @@ namespace MPP
                          select new BEPersona
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                             NombreCompleto = Convert.ToString(x.Element("Nombrecompleto")?.Value),
+                             NombreCompleto = Convert.ToString(x.Element("NombreCompleto")?.Value),
                              DNI = Convert.ToString(x.Element("DNI")?.Value),
                              Telefono = Convert.ToString(x.Element("Telefono")?.Value),
                              Domicilio = Convert.ToString(x.Element("Domicilio")?.Value),
@@ -79,23 +81,16 @@ namespace MPP
 
         public BEPersona ListarObjeto(BEPersona pPersona)
         {
-            string Nodo = "Personas";
-            var Consulta = conexion.LeerTodos(Nodo).Descendants("Persona");
+            var Consulta = conexion.LeerObjeto(NodoContenedor, pPersona.Id.ToString());
 
-
-            if (Consulta.Count() > 0)
+            if (Consulta != null)
             {
-                pPersona = (from x in Consulta
-                            where Convert.ToInt32(x.Element("Id")?.Value) == pPersona.Id
-                            select new BEPersona
-                            {
-                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                NombreCompleto = Convert.ToString(x.Element("Nombrecompleto")?.Value),
-                                DNI = Convert.ToString(x.Element("DNI")?.Value),
-                                Telefono = Convert.ToString(x.Element("Telefono")?.Value),
-                                Domicilio = Convert.ToString(x.Element("Domicilio")?.Value),
-                                Ocupacion = Convert.ToString(x.Element("Ocupacion")?.Value),
-                            }).FirstOrDefault();
+                pPersona.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
+                pPersona.NombreCompleto = Convert.ToString(Consulta.Element("NombreCompleto")?.Value);
+                pPersona.DNI = Convert.ToString(Consulta.Element("DNI")?.Value);
+                pPersona.Telefono = Convert.ToString(Consulta.Element("Telefono")?.Value);
+                pPersona.Domicilio = Convert.ToString(Consulta.Element("Domicilio")?.Value);
+                pPersona.Ocupacion = Convert.ToString(Consulta.Element("Ocupacion")?.Value);
             }
             else
             { pPersona = null; }

@@ -13,7 +13,6 @@ namespace MPP
     {
         Conexion conexion = new Conexion();
         string NodoPadre = "Usuarios";
-        string NodoContenedor = "Usuario";
 
 
 

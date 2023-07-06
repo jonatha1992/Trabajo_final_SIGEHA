@@ -1,6 +1,5 @@
 ﻿using BE;
 using Negocio;
-//using ClosedXML.Excel;
 using Seguridad;
 using System;
 using System.Collections.Generic;
@@ -40,10 +39,8 @@ namespace Presentacion_UI
                 comboBoxCategoria.DataSource = listaCategorias;
                 comboBoxEstado.DataSource = ListabEEstadoElementos;
                 CargarCombo();
-                CargarGrillaHallazgos();
                 Habilitar();
                 HabilitarElemento();
-                ColocarNumero();
 
             }
             catch (Exception ex)
@@ -60,8 +57,8 @@ namespace Presentacion_UI
         BEUnidad bEUnidad;
         BEUrsa bEUrsa;
 
-        BEHallazgo bEHallazgo;
-        BEElemento bEElemento;
+        BEHallazgo bEHallazgoSeleccionado;
+        BEElemento bEElementoSeleccionado;
         List<BECategoria> listaCategorias;
         List<BEArticulo> listaArticulos;
         List<BEEstado_Elemento> ListabEEstadoElementos;
@@ -110,6 +107,10 @@ namespace Presentacion_UI
             //    comboBoxUrsa.DataSource = ListaUrsas;
             //    comboBoxUnidad.DataSource = ListaUnidades;
             //}
+
+
+
+
         }
         bool VerificarCamposElementos()
         {
@@ -157,16 +158,16 @@ namespace Presentacion_UI
 
         void HabilitarElemento()
         {
+
             if (SeleccionElemento)
             {
-                if (bEElemento != null)
+                if (bEElementoSeleccionado != null)
                 {
-                    comboBoxCategoria.Text = bEElemento.Articulo.Categoria.Nombre;
-                    comboBoxArticulo.Text = bEElemento.Articulo.Nombre;
-                    comboBoxEstado.Text = bEElemento.Estado.Nombre;
-                    //textBoxCantidad.Text = bEElemento.Cantidad.ToString();
-                    NUPCantidad.Text = bEElemento.Cantidad.ToString();
-                    textBoxDescripcion.Text = bEElemento.Descripcion;
+                    comboBoxCategoria.Text = listaCategorias.Find(x => x.Id == bEElementoSeleccionado.Articulo.Categoria.Id).Nombre;
+                    comboBoxArticulo.Text = bEElementoSeleccionado.Articulo.Nombre;
+                    comboBoxEstado.Text = bEElementoSeleccionado.Estado.Nombre;
+                    NUPCantidad.Text = bEElementoSeleccionado.Cantidad.ToString();
+                    textBoxDescripcion.Text = bEElementoSeleccionado.Descripcion;
                 }
 
                 btnAgregarElemento.Visible = false;
@@ -178,14 +179,13 @@ namespace Presentacion_UI
                 comboBoxCategoria.Text = "Seleccione";
                 comboBoxArticulo.Text = "Seleccione";
                 comboBoxEstado.Text = "Seleccione";
-                //   textBoxCantidad.Text = "";
                 textBoxDescripcion.Text = "";
                 NUPCantidad.Text = "1";
 
                 btnAgregarElemento.Visible = true;
                 btnModificarElemento.Visible = false;
                 btnEliminarElemento.Visible = false;
-                bEElemento = null;
+                bEElementoSeleccionado = null;
             }
         }
         void CargarGrillaElementos()
@@ -199,13 +199,13 @@ namespace Presentacion_UI
                 {
                     if (ModoCreacion)
                     {
-                        DgvElementos.DataSource = bLLHallazgo.ListarObjetoElementos(bEHallazgo).listaElementos;
+                        DgvElementos.DataSource = bLLHallazgo.ListarHallazgoElementos(bEHallazgoSeleccionado).listaElementos;
                         this.DgvElementos.Columns["Sel"].Visible = true;
                         this.DgvElementos.Columns["Sel"].Width = 30;
                     }
                     else
                     {
-                        DgvElementos.DataSource = bEHallazgo.listaElementos;
+                        DgvElementos.DataSource = bEHallazgoSeleccionado.listaElementos;
                         this.DgvElementos.Columns["Sel"].Visible = false;
                     }
 
@@ -219,33 +219,32 @@ namespace Presentacion_UI
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                         this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
 
-                        foreach (DataGridViewRow row in DgvElementos.Rows)
-                        {
-                            if (row.Cells[0].Value == null)
-                            {
-                                row.Cells["Sel"].Value = false;
-                            }
-                        }
+                        //foreach (DataGridViewRow row in DgvElementos.Rows)
+                        //{
+                        //    if (row.Cells[0].Value == null)
+                        //    {
+                        //        row.Cells["Sel"].Value = false;
+                        //    }
+                        //}
                     }
-                    else
-                    {
-                        this.DgvElementos.Columns["Sel"].Visible = false;
-                        if (!ModoCreacion)
-                        {
-                            var result = MessageBox.Show("El Hallazgo no contiene elementos\n\n¿Desea eliminar el Hallazgo?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                            if (result == DialogResult.Yes)
-                            {
-                                if (bLLHallazgo.Eliminar(bEHallazgo))
-                                {
-                                    MessageBox.Show("El Hallazgo se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    CargarGrillaHallazgos();
-                                    limpiarCamposHallazgos();
-                                    Habilitar();
-                                }
-                            }
-
-                        }
-                    }
+                    //else
+                    //{
+                    //    this.DgvElementos.Columns["Sel"].Visible = false;
+                    //    if (!ModoCreacion)
+                    //    {
+                    //        var result = MessageBox.Show("El Hallazgo no contiene elementos\n\n¿Desea eliminar el Hallazgo?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    //        if (result == DialogResult.Yes)
+                    //        {
+                    //            if (bLLHallazgo.Eliminar(bEHallazgoSeleccionado))
+                    //            {
+                    //                MessageBox.Show("El Hallazgo se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //                CargarGrillaHallazgos();
+                    //                limpiarCamposHallazgos();
+                    //                Habilitar();
+                    //            }
+                    //        }
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -254,38 +253,38 @@ namespace Presentacion_UI
             }
         }
 
-        void BuscarHallazgo()
+        void SeleccionarHallazgo()  // lo que hace la funcion es recorrer el dgv y seleccioonar el hallazgo
         {
             foreach (DataGridViewRow item in dgvHallazgos.Rows)
             {
-                if (item.Cells["NroActa"].Value.ToString() == bEHallazgo.NroActa)
+                if (item.Cells["NroActa"].Value.ToString() == bEHallazgoSeleccionado.NroActa)
                 {
                     item.Cells["Seleccion"].Value = true;
                     item.Selected = true;
                 }
             }
         }
-        private BEElemento CrearElemento()
+        BEElemento CrearElemento()
         {
             if (!SeleccionElemento)
             {
-                bEElemento = new BEElemento();
-                bEElemento.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
-                bEElemento.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
-                //bEElemento.Cantidad = double.Parse(textBoxCantidad.Text);
-                bEElemento.Cantidad = double.Parse(NUPCantidad.Text);
-                bEElemento.Descripcion = textBoxDescripcion.Text;
+                bEElementoSeleccionado = new BEElemento();
+                bEElementoSeleccionado.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
+                bEElementoSeleccionado.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
+                //bEElementoSeleccionado.Cantidad = double.Parse(textBoxCantidad.Text);
+                bEElementoSeleccionado.Cantidad = double.Parse(NUPCantidad.Text);
+                bEElementoSeleccionado.Descripcion = textBoxDescripcion.Text;
             }
             else
             {
-                bEElemento.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
-                bEElemento.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
-                // bEElemento.Cantidad = double.Parse(textBoxCantidad.Text);
-                bEElemento.Cantidad = double.Parse(NUPCantidad.Text);
-                bEElemento.Descripcion = textBoxDescripcion.Text;
+                bEElementoSeleccionado.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
+                bEElementoSeleccionado.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
+                // bEElementoSeleccionado.Cantidad = double.Parse(textBoxCantidad.Text);
+                bEElementoSeleccionado.Cantidad = double.Parse(NUPCantidad.Text);
+                bEElementoSeleccionado.Descripcion = textBoxDescripcion.Text;
             }
 
-            return bEElemento;
+            return bEElementoSeleccionado;
         }
         #endregion
 
@@ -309,7 +308,7 @@ namespace Presentacion_UI
         {
             if (SeleccionHallazgo)
             {
-                comboBoxUnidad.Text = bEHallazgo.Unidad.Nombre;
+                comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
                 comboBoxUnidad.Enabled = false;
                 comboBoxUrsa.Enabled = false;
             }
@@ -327,13 +326,13 @@ namespace Presentacion_UI
         {
             bool cumple = false;
 
-            if (bEHallazgo.listaPersonas != null)
+            if (bEHallazgoSeleccionado.listaPersonas != null)
             {
-                if (bEHallazgo.listaPersonas?.Count == 4)
+                if (bEHallazgoSeleccionado.listaPersonas?.Count == 4)
                 {
                     cumple = true;
                 }
-                if (bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Descubridor") && bEHallazgo.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
+                if (bEHallazgoSeleccionado.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEHallazgoSeleccionado.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Descubridor") && bEHallazgoSeleccionado.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
                 {
                     cumple = true;
                 }
@@ -345,41 +344,31 @@ namespace Presentacion_UI
         {
             if (SeleccionHallazgo)
             {
-                //if (Usuario.Rol == "UNIDAD") //UNIDAD
-                //{
-                //    buttonEliminar.Visible = false;
 
-                //    if (ModoCreacion)// SI ESTA EN MODO CREACION
-                //    {
-                //        button_Agregar.Visible = false;
-                //        button_Modificar.Visible = true;
-                //        buttonFinalizarHallazgo.Visible = true;
-                //        groupBoxDatosElementos.Enabled = true;
-                //        buttonCargarPersonas.Visible = true;
+                if (ModoCreacion)// SI ESTA EN MODO CREACION
+                {
+                    button_Agregar.Visible = false;
+                    buttonEliminar.Visible = true;
+                    button_Modificar.Visible = true;
+                    buttonFinalizarHallazgo.Visible = true;
+                    groupBoxDatosElementos.Enabled = true;
+                    buttonCargarPersonas.Visible = true;
 
-                //    }
-                //    else //SI NO ESTA EN MODO CREACION
-                //    {
-                //        groupBoxDatosElementos.Enabled = false;
-                //        groupBoxDatosHallazgo.Enabled = false;
-                //        buttonImprimir.Visible = false;
+                }
+                else //SI NO ESTA EN MODO CREACION
+                {
+                    groupBoxDatosElementos.Enabled = false;
+                    groupBoxDatosHallazgo.Enabled = false;
+                    buttonImprimir.Visible = false;
 
-                //    }
-                //}
-                //else //REGION O ADMIN
-                //{
-                //    button_Modificar.Visible = true;
-                //    buttonEliminar.Visible = true;
-                //    button_Agregar.Visible = false;
-                //    buttonFinalizarHallazgo.Visible = false;
-                //}
+                }
 
 
                 if (VerificarCantidadPersonas())
                 {
                     buttonCargarPersonas.BackColor = Color.Green;
 
-                    if (bEHallazgo.listaElementos?.Count > 0)
+                    if (bEHallazgoSeleccionado.listaElementos?.Count > 0)
                     {
                         buttonImprimir.Visible = true;
 
@@ -390,7 +379,8 @@ namespace Presentacion_UI
                     buttonCargarPersonas.BackColor = Color.Red;
                 }
 
-                if (bEHallazgo?.listaElementos?.Count > 0)
+
+                if (bEHallazgoSeleccionado?.listaElementos?.Count > 0)
                 {
                     buttonImprimir.Visible = true;
                 }
@@ -403,15 +393,8 @@ namespace Presentacion_UI
             }
             else // si no se selecciono ningun hallazgo
             {
-                //if (Usuario.Rol == "UNIDAD")
-                //{
-                //    button_Agregar.Visible = true;
-                //}
-                //else // ADMIN O REGION
-                //{
-                //    button_Agregar.Visible = false;
-                //}
 
+                button_Agregar.Visible = true;
                 groupBoxDatosHallazgo.Enabled = true;
                 groupBoxDatosElementos.Enabled = false;
                 button_Modificar.Visible = false;
@@ -426,6 +409,7 @@ namespace Presentacion_UI
         {
             if (ModoCreacion)
             {
+                dgvHallazgos.Enabled = false;
                 DgvElementos.Enabled = true;
             }
             else
@@ -433,23 +417,16 @@ namespace Presentacion_UI
                 dgvHallazgos.Enabled = true;
             }
         }
-        void Label()
-        {
-            if (SeleccionHallazgo)
-                labelHallazgo.Text = $"N° Hallazgo: {bEHallazgo.NroActa}";
-            else
-                labelHallazgo.Text = "";
-        }
+ 
         void Habilitar()
         {
             Botones();
             ComboBox();
-            Label();
             Dgv();
         }
         void CargarGrillaHallazgos()
         {
-            
+
             this.dgvHallazgos.DataSource = null;
 
             List<BEHallazgo> Lista = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
@@ -470,13 +447,13 @@ namespace Presentacion_UI
                 this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
 
-                foreach (DataGridViewRow row in dgvHallazgos.Rows)
-                {
-                    if (row.Cells[0].Value == null)
-                    {
-                        row.Cells["Seleccion"].Value = false;
-                    }
-                }
+                //foreach (DataGridViewRow row in dgvHallazgos.Rows)
+                //{
+                //    if (row.Cells[0].Value == null)
+                //    {
+                //        row.Cells["Seleccion"].Value = false;
+                //    }
+                //}
                 this.dgvHallazgos.ClearSelection();
             }
             else
@@ -492,17 +469,19 @@ namespace Presentacion_UI
 
             foreach (DataGridViewRow row in dgvHallazgos.Rows)
             {
-                if ((bool)row.Cells[0].Value != false)
+                var valorCelda = row.Cells[0].Value;
+                var valor = valorCelda as bool? ?? false; 
+
+                if (valor)
                 {
                     SeleccionHallazgo = true;
-                    if (bEHallazgo?.Id != ((BEHallazgo)row.DataBoundItem).Id) // SI YA ESTA SELECCIONADO
+                    if (bEHallazgoSeleccionado?.Id != ((BEHallazgo)row.DataBoundItem).Id) // SI YA ESTA SELECCIONADO
                     {
-
-                        bEHallazgo = bLLHallazgo.ListarObjeto((BEHallazgo)row.DataBoundItem);
+                        bEHallazgoSeleccionado = bLLHallazgo.ListarObjeto((BEHallazgo)row.DataBoundItem);
                     }
-                    textBoxLugar.Text = bEHallazgo.LugarHallazgo;
-                    textBoxNroActa.Text = bEHallazgo.NroActa;
-                    dateTimePickerFechaHallazgo.Value = bEHallazgo.FechaHallazgo;
+                    textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
+                    textBoxNroActa.Text = bEHallazgoSeleccionado.NroActa;
+                    dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     CargarGrillaElementos();
 
                     break;
@@ -510,13 +489,11 @@ namespace Presentacion_UI
             }
             if (!SeleccionHallazgo)
             {
-                bEHallazgo = null;
+                bEHallazgoSeleccionado = null;
                 CargarGrillaHallazgos();
                 CargarGrillaElementos();
                 limpiarCamposHallazgos();
             }
-            Habilitar();
-
         }
 
         bool VerficarCampos()
@@ -542,17 +519,17 @@ namespace Presentacion_UI
         {
             if (!SeleccionHallazgo)// agregar
             {
-                bEHallazgo = new BEHallazgo();
+                bEHallazgoSeleccionado = new BEHallazgo();
             }
-            bEHallazgo.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
-            bEHallazgo.FechaActa = DateTime.Now;
-            bEHallazgo.NroActa = textBoxNroActa.Text;
-            bEHallazgo.Unidad = bEUnidad;
-            bEHallazgo.Anio = dateTimePickerFechaHallazgo.Value.Year;
-            bEHallazgo.LugarHallazgo = textBoxLugar.Text;
-            bEHallazgo.Observacion = textBoxObservacion.Text;
+            bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
+            bEHallazgoSeleccionado.FechaActa = DateTime.Now;
+            bEHallazgoSeleccionado.NroActa = textBoxNroActa.Text;
+            bEHallazgoSeleccionado.Unidad = bEUnidad;
+            bEHallazgoSeleccionado.Anio = dateTimePickerFechaHallazgo.Value.Year;
+            bEHallazgoSeleccionado.LugarHallazgo = textBoxLugar.Text;
+            bEHallazgoSeleccionado.Observacion = textBoxObservacion.Text;
 
-            return bEHallazgo;
+            return bEHallazgoSeleccionado;
         }
         #endregion
 
@@ -566,16 +543,15 @@ namespace Presentacion_UI
             {
                 if (VerficarCampos())
                 {
-                    bEHallazgo = bLLHallazgo.Agregar(CrearHallazgo());
+                    bEHallazgoSeleccionado = bLLHallazgo.Agregar(CrearHallazgo());
 
-                    if (bEHallazgo.Id != 0)
+                    if (bEHallazgoSeleccionado != null)
                     {
                         ModoCreacion = true;
                         SeleccionHallazgo = true;
-                        //bEHallazgo = bLLHallazgo.ListarObjeto(bEHallazgo);
                         Habilitar();
                         CargarGrillaHallazgos();
-                        BuscarHallazgo();
+                        SeleccionarHallazgo();
                         MessageBox.Show($"El Hallazgo se creo {textBoxNroActa.Text} correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -602,7 +578,7 @@ namespace Presentacion_UI
                     {
                         Habilitar();
                         CargarGrillaHallazgos();
-                        BuscarHallazgo();
+                        SeleccionarHallazgo();
 
                         MessageBox.Show("El Hallazgo se modifico correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -613,7 +589,6 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -649,7 +624,7 @@ namespace Presentacion_UI
                 if (VerificarCamposElementos())
                 {
                     CrearElemento();
-                    if (bLLElemento.AgregarElementoHallazgo(bEHallazgo, bEElemento))
+                    if (bLLElemento.AgregarElementoHallazgo(bEHallazgoSeleccionado, bEElementoSeleccionado))
                     {
                         CargarGrillaElementos();
                         HabilitarElemento();
@@ -663,7 +638,6 @@ namespace Presentacion_UI
                 MessageBox.Show($"{ex.Message} ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnModificarElemento_Click(object sender, EventArgs e)
         {
             try
@@ -673,7 +647,7 @@ namespace Presentacion_UI
                     if (VerificarCamposElementos())
                     {
                         CrearElemento();
-                        if (bLLElemento.Actualizar(bEElemento))
+                        if (bLLElemento.Actualizar(bEElementoSeleccionado))
                         {
                             SeleccionElemento = false;
                             CargarGrillaElementos();
@@ -690,7 +664,6 @@ namespace Presentacion_UI
 
             }
         }
-
         private void btnEliminarElemento_Click(object sender, EventArgs e)
         {
             try
@@ -726,9 +699,9 @@ namespace Presentacion_UI
         {
             try
             {
-                if (bEHallazgo.listaPersonas?.Count >= 3 && bEHallazgo.listaElementos?.Count > 0)
+                if (bEHallazgoSeleccionado.listaPersonas?.Count >= 3 && bEHallazgoSeleccionado.listaElementos?.Count > 0)
                 {
-                    Form_Impresion form_Impresion = new Form_Impresion(bEHallazgo);
+                    Form_Impresion form_Impresion = new Form_Impresion(bEHallazgoSeleccionado);
                     form_Impresion.ShowDialog();
                 }
                 else
@@ -743,26 +716,16 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void buttonCargarPersonas_Click(object sender, EventArgs e)
         {
             try
             {
                 Form_Persona formPersonas;
-                formPersonas = new Form_Persona(bEHallazgo);
-
+                formPersonas = new Form_Persona(bEHallazgoSeleccionado);
                 formPersonas.ShowDialog();
+                
+                bEHallazgoSeleccionado = (BEHallazgo)formPersonas.BePAdreHallazgo;
 
-                bEHallazgo = (BEHallazgo)formPersonas.BePAdreHallazgo;
-
-                //if (bEHallazgo.listaPersonas?.Count > 2)
-                //{
-                //    buttonCargarPersonas.BackColor = Color.Green;
-                //}
-                //else
-                //{
-                //    buttonCargarPersonas.BackColor = Color.Red;
-                //}
                 Habilitar();
 
             }
@@ -775,6 +738,64 @@ namespace Presentacion_UI
 
 
         }
+        private void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (bEHallazgoSeleccionado.listaElementos == null || bEHallazgoSeleccionado.listaElementos?.Count == 0)
+                {
+                    var result = MessageBox.Show("El Hallazgo no contiene elementos \n\n¿Desea finalizar la carga?\n\n Si decide finalizar, ¡se borrara el Hallazgo creado!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        bLLHallazgo.Eliminar(bEHallazgoSeleccionado);
+                        ModoCreacion = false;
+                        bEHallazgoSeleccionado = null;
+                        SeleccionHallazgo = false;
+                        SeleccionElemento = false;
+                        Habilitar();
+                        CargarGrillaHallazgos();
+                        CargarGrillaElementos();
+                        limpiarCamposHallazgos();
+                    }
+                }
+                else if (bEHallazgoSeleccionado.listaPersonas == null || bEHallazgoSeleccionado.listaPersonas?.Count == 0)
+                {
+                    var result = MessageBox.Show("El Hallazgo no contiene el minimo de intervinientes para imprimir el Acta\n\n¿Desea finalizar la carga?\n\n Si decide finalizar, ¡No podra imprimir el Hallazgo!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        ModoCreacion = false;
+                        bEHallazgoSeleccionado = null;
+                        SeleccionHallazgo = false;
+                        SeleccionElemento = false;
+                        Habilitar();
+                        CargarGrillaHallazgos();
+                        CargarGrillaElementos();
+                        limpiarCamposHallazgos();
+                    }
+                }
+
+                else
+                {
+                    var result = MessageBox.Show("¿Desea finalizar el Hallazgo?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        ModoCreacion = false;
+                        bEHallazgoSeleccionado = null;
+                        SeleccionHallazgo = false;
+                        SeleccionElemento = false;
+                        Habilitar();
+                        CargarGrillaHallazgos();
+                        CargarGrillaElementos();
+                        limpiarCamposHallazgos();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
 
         #endregion
         #region "Combobox Funciones"
@@ -782,17 +803,32 @@ namespace Presentacion_UI
 
         private void comboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
+            try
+            {
+                comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
         private void dataGridViewElementos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (ModoCreacion)
+            if (ModoCreacion) // Verifica si estamos en modo de creación
             {
+                // Verifica si se hizo clic en la columna "Sel"
                 if (e.ColumnIndex == this.DgvElementos.Columns["Sel"].Index)
                 {
-                    var Valor = (bool)DgvElementos.Rows[e.RowIndex].Cells["Sel"].Value;
+
+                    // Obtiene el valor actual de la celda "Sel"
+                    var valorCelda = DgvElementos.Rows[e.RowIndex].Cells["Sel"].Value;
+                    var Valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
+
+                    // Obtiene el índice de la fila actual
                     var Index = DgvElementos.CurrentRow.Index;
+
+                    // Invierte el valor de la celda "Sel"
                     if (Valor == false)
                     {
                         DgvElementos.Rows[Index].Cells["Sel"].Value = true;
@@ -801,6 +837,8 @@ namespace Presentacion_UI
                     {
                         DgvElementos.Rows[Index].Cells["Sel"].Value = false;
                     }
+
+                    // Llama a un método para verificar los elementos seleccionados
                     VerificarElementosSeleccionados();
                 }
             }
@@ -814,14 +852,13 @@ namespace Presentacion_UI
                 if ((bool)row.Cells[0].Value != false)
                 {
                     SeleccionElemento = true;
-                    bEElemento = (BEElemento)row.DataBoundItem;
+                    bEElementoSeleccionado = (BEElemento)row.DataBoundItem;
                     break;
                 }
             }
             if (!SeleccionElemento)
             {
-                bEElemento = null;
-
+                bEElementoSeleccionado = null;
             }
             HabilitarElemento();
         }
@@ -841,33 +878,19 @@ namespace Presentacion_UI
             //{
             //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
             //}
-
         }
         private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (Usuario.Rol == "ADMIN")
-            //{
-            //bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-            //bEHallazgo = null;
-            //limpiarCamposHallazgos();
-            //CargarGrillaHallazgos();
-            //CargarGrillaElementos();
-            //Habilitar();
-            //}
-            //else if (Usuario.Rol == "REGION")
-            //{
-            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-            //    bEHallazgo = null;
-            //    limpiarCamposHallazgos();
-            //    CargarGrillaHallazgos();
-            //    CargarGrillaElementos();
-            //    Habilitar();
-            //}
+  
+                bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+                bEHallazgoSeleccionado = null;
+                limpiarCamposHallazgos();
+                CargarGrillaHallazgos();
+                Habilitar();
 
         }
         private void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
-
 
             if (!ModoCreacion && !SeleccionHallazgo) // SI NO ESTA EN MODO CREACION 
             {
@@ -892,27 +915,23 @@ namespace Presentacion_UI
             {
                 if (!ModoCreacion)
                 {
+                    // Verifica si se hizo clic en la columna "Seleccion"
                     if (e.ColumnIndex == this.dgvHallazgos.Columns["Seleccion"].Index)
                     {
-                        var Valor = (bool)dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value;
-                        if (!Valor) // SI SELECCIONO CON EL TILDE
+                        // Obtiene el valor actual de la celda "Seleccion"
+                        var valorCelda = dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value;
+                        var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
+
+                        if (!valor) // Si se seleccionó con el tilde
                         {
-                            //if (!ModoCreacion) // SI NO ESTA EN MODO CREACION
-                            //{
                             var index = dgvHallazgos.CurrentRow.Index;
                             dgvHallazgos.Rows[index].Cells["Seleccion"].Value = true;
                             VerificarHallazgosSeleccionados();
-                            //}
-
                         }
-                        else  // SACAR LA SELECCION 
+                        else  // Si se quiere deseleccionar
                         {
-                            //if (!ModoCreacion)
-                            //{
                             dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
                             VerificarHallazgosSeleccionados();
-
-                            //}
                         }
                     }
                 }
@@ -938,79 +957,19 @@ namespace Presentacion_UI
 
         #endregion
 
-        private void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                if (bEHallazgo.listaElementos == null || bEHallazgo.listaElementos?.Count == 0)
-                {
-                    var result = MessageBox.Show("El Hallazgo no contiene elementos \n\n¿Desea finalizar la carga?\n\n Si decide finalizar, ¡se borrara el Hallazgo creado!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        bLLHallazgo.Eliminar(bEHallazgo);
-                        ModoCreacion = false;
-                        bEHallazgo = null;
-                        SeleccionHallazgo = false;
-                        SeleccionElemento = false;
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        CargarGrillaElementos();
-                        limpiarCamposHallazgos();
-                    }
-                }
-                else if (bEHallazgo.listaPersonas == null || bEHallazgo.listaPersonas?.Count == 0)
-                {
-                    var result = MessageBox.Show("El Hallazgo no contiene el minimo de intervinientes para imprimir el Acta\n\n¿Desea finalizar la carga?\n\n Si decide finalizar, ¡No podra imprimir el Hallazgo!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        ModoCreacion = false;
-                        bEHallazgo = null;
-                        SeleccionHallazgo = false;
-                        SeleccionElemento = false;
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        CargarGrillaElementos();
-                        limpiarCamposHallazgos();
-                    }
-                }
-
-                else
-                {
-                    var result = MessageBox.Show("¿Desea finalizar el Hallazgo?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        ModoCreacion = false;
-                        bEHallazgo = null;
-                        SeleccionHallazgo = false;
-                        SeleccionElemento = false;
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        CargarGrillaElementos();
-                        limpiarCamposHallazgos();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         private void Form_Hallazgo_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
                 if (ModoCreacion)
                 {
-                    if (bEHallazgo.listaElementos == null || bEHallazgo.listaElementos?.Count == 0)
+                    if (bEHallazgoSeleccionado.listaElementos == null || bEHallazgoSeleccionado.listaElementos?.Count == 0)
                     {
                         var result = MessageBox.Show("El Hallazgo no contiene elementos \n¿Desea finalizar la carga? \n Si decide salir se borrara el Hallazgo", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
                             ModoCreacion = false;
-                            bLLHallazgo.Eliminar(bEHallazgo);
+                            bLLHallazgo.Eliminar(bEHallazgoSeleccionado);
                             this.Close();
                         }
                         else
@@ -1040,5 +999,6 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+     
     }
 }

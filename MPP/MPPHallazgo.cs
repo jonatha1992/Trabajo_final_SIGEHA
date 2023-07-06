@@ -30,7 +30,8 @@ namespace MPP
                 new XElement("IdUnidad", pHallazgo.Unidad.Id),
                 new XElement("Lugarhallazgo", pHallazgo.LugarHallazgo),
                 new XElement("Anio", pHallazgo.Anio),
-                new XElement("Fechahallazgo", pHallazgo.FechaHallazgo)
+                new XElement("Fechahallazgo", pHallazgo.FechaHallazgo),
+                new XElement("Observacion", pHallazgo.Observacion)
                 );
 
             conexion.Agregar(NodoPadre, Hallazgo);
@@ -64,7 +65,7 @@ namespace MPP
                     new XElement("Lugarhallazgo", pHallazgo.LugarHallazgo),
                     new XElement("Anio", pHallazgo.Anio),
                     new XElement("Fechahallazgo", pHallazgo.FechaHallazgo),
-                    new XElement("Observacion", pHallazgo.FechaHallazgo)
+                    new XElement("Observacion", pHallazgo.Observacion)
                 );
 
                 return conexion.Actualizar(NodoPadre, pHallazgo.Id.ToString(), HallazgoActualizado);
@@ -118,6 +119,7 @@ namespace MPP
                 bEHallazgo.Observacion = Convert.ToString(x.Element("Observacion")?.Value);
                 bEHallazgo.Unidad = new BEUnidad(Convert.ToInt32(x.Element("IdUnidad")?.Value));
 
+
             }
             else
             { bEHallazgo = null; }
@@ -126,7 +128,7 @@ namespace MPP
 
         }
 
-        public BEHallazgo ListarObjetoPersonas(BEHallazgo bEHallazgo)
+        public BEHallazgo ListarHallazgoPersonas(BEHallazgo bEHallazgo)
         {
 
 
@@ -164,11 +166,13 @@ namespace MPP
             return bEHallazgo;
         }
 
-        public BEHallazgo ListarObjetoElementos(BEHallazgo bEHallazgo)
+        public BEHallazgo ListarHallazgoElementos(BEHallazgo bEHallazgo)
         {
+           
 
             MPPArticulo mPPArticulo = new MPPArticulo();
             MPPEstado_Elemento mPPEstados = new MPPEstado_Elemento();
+
             var articulos = mPPArticulo.ListarTodo();
             var Estados = mPPEstados.ListarTodo();
 
@@ -190,10 +194,10 @@ namespace MPP
                     BEElemento elemento = new BEElemento(Convert.ToInt32(e.Element("Id").Value));
 
                     // Configuramos las propiedades de BEElemento a partir de los elementos XML.
-                    elemento.Cantidad = double.Parse(e.Element("Cantidad").Value);
-                    elemento.Descripcion = e.Element("Descripcion").Value;
-                    elemento.Estado = Estados.Find(x => x.Id == Convert.ToInt32(e.Element("IdEstadoElemento").Value));
-                    elemento.Articulo = articulos.Find(x => x.Id == Convert.ToInt32(e.Element("IdArticulo").Value));
+                    elemento.Cantidad = double.Parse(e.Element("Cantidad")?.Value);
+                    elemento.Descripcion = e.Element("Descripcion")?.Value;
+                    elemento.Estado = Estados.Find(x => x.Id == Convert.ToInt32(e.Element("IdEstadoElemento")?.Value));
+                    elemento.Articulo = articulos.Find(x => x.Id == Convert.ToInt32(e.Element("IdArticulo")?.Value));
                     bEHallazgo.listaElementos.Add(elemento); // Añade el elemento a la lista
                 }
             }

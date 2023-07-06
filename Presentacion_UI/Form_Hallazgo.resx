@@ -129,10 +129,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvHallazgos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 42</value>
+    <value>656, 35</value>
   </data>
   <data name="dgvHallazgos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 228</value>
+    <value>587, 228</value>
   </data>
   <data name="dgvHallazgos.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -292,7 +292,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonFinalizarHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>471, 234</value>
+    <value>483, 234</value>
   </data>
   <data name="buttonFinalizarHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -409,13 +409,13 @@
     <value>NoControl</value>
   </data>
   <data name="button_Modificar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 234</value>
+    <value>174, 234</value>
   </data>
   <data name="button_Modificar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="button_Modificar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 38</value>
+    <value>105, 38</value>
   </data>
   <data name="button_Modificar.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -799,25 +799,25 @@
     <value>True</value>
   </data>
   <data name="labelHallazgo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Rounded MT Bold, 14.25pt</value>
+    <value>Arial Rounded MT Bold, 12pt</value>
   </data>
   <data name="labelHallazgo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="labelHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>865, 309</value>
+    <value>900, 312</value>
   </data>
   <data name="labelHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="labelHallazgo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>92, 18</value>
   </data>
   <data name="labelHallazgo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="labelHallazgo.Text" xml:space="preserve">
-    <value>Nro Hallazgo</value>
+    <value>Elementos</value>
   </data>
   <data name="&gt;&gt;labelHallazgo.Name" xml:space="preserve">
     <value>labelHallazgo</value>
@@ -1183,7 +1183,7 @@
     <value>True</value>
   </data>
   <data name="textBoxDescripcion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 78</value>
+    <value>344, 78</value>
   </data>
   <data name="textBoxDescripcion.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1441,7 +1441,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="DgvElementos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 219</value>
+    <value>603, 219</value>
   </data>
   <data name="DgvElementos.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -1462,19 +1462,19 @@
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>915, 12</value>
+    <value>899, 10</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 1, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 16</value>
+    <value>88, 20</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>

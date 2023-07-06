@@ -19,7 +19,6 @@ namespace BE
         public BEUnidad Unidad{ get; set; }
         public BEUrsa Ursa { get; set; }
 
-        public List<BEComponente>  permisos { get; set; }
         public string Password{ get; set; }
         public string Mail { get; set; }
 

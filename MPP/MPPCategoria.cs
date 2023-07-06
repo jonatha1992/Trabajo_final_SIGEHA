@@ -56,8 +56,8 @@ namespace MPP
                                   Nombre = Convert.ToString(x.Element("Nombre")?.Value),
                               }).FirstOrDefault();
 
-
-                    var articulos = mPPArticulo.ListarTodo();
+            
+                var articulos = mPPArticulo.ListarTodo();
 
 
                 bCategoria.Articulos = articulos.Where(art => art.Categoria.Id == bCategoria.Id).ToList();
@@ -71,6 +71,8 @@ namespace MPP
         public List<BECategoria> ListarTodo()
         {
             var Consulta = conexion.LeerTodos(Nodo).Descendants("Categoria");
+            MPPArticulo mPPArticulo = new MPPArticulo();
+            var articulos = mPPArticulo.ListarTodo();
 
             List<BECategoria> lista = new List<BECategoria>();
 
@@ -82,8 +84,8 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                             Articulos = articulos.Where(art => art.Categoria.Id == Convert.ToInt32(x.Element("Id")?.Value)).ToList()
                          }).ToList();
-
 
             }
             else

@@ -1,11 +1,14 @@
 ﻿using Abstraccion;
 using System;
+using System.Collections.Generic;
 
 namespace BE
 {
     public class BEEntrega : BEPAdreHallazgo, IEntidad, IComparable<BEEntrega>
     {
-        public BEEntrega() { }
+        public BEEntrega() {
+            listaElementos = new List<BEElemento>();
+        }
         public BEEntrega(int id)
         {
             Id = id;

@@ -33,9 +33,8 @@ namespace Presentacion_UI
             else
             { BePAdreHallazgo = bEPAdreHallazgo as BEEntrega; }
 
-
-
         }
+
 
         #region "Campos"
 
@@ -51,7 +50,6 @@ namespace Presentacion_UI
         List<BEJerarquia> jerarquias;
         bool Hallazgo = false;
         bool Seleccion = false;
-        bool Conversion = false;
         #endregion
 
 
@@ -77,6 +75,7 @@ namespace Presentacion_UI
         void CargarCombo()
         {
 
+            comboBoxJerarquia.DataSource = jerarquias;
             if (Hallazgo)
             {
                 comboBoxTipoPersona.DataSource = bLLEstado_Persona.ListarTodo().FindAll(x => x.Nombre != "Propietario");
@@ -87,58 +86,61 @@ namespace Presentacion_UI
             }
         }
 
-        void Label()
+        void Panel()
         {
             if (comboBoxTipoPersona.Text == "Instructor")
             {
-                label_DNI_PAS.Visible = false;
-                labelOcupacion.Visible = false;
-                labelTelefono.Visible = false;
-                labelDomicilio.Visible = false;
-                labelJerarquia.Visible = true;
-                labelLegajo.Visible = true;
-                labelDNI.Visible = true;
+
+                panelInstructor.Visible = true;
+                panelDescubridor.Visible = false;
+                panelTestigo.Visible = false;
+
             }
             else if (comboBoxTipoPersona.Text == "Testigo")
             {
-                label_DNI_PAS.Visible = true;
-                labelTelefono.Visible = false;
-                labelDomicilio.Visible = false;
-                labelJerarquia.Visible = false;
-                labelLegajo.Visible = false;
-                labelOcupacion.Visible = false;
-                labelDNI.Visible = false;
+                panelInstructor.Visible = false;
+                panelDescubridor.Visible = false;
+                panelTestigo.Visible = true;
             }
-            else
+            else // si es descubridor o propietario
             {
-                label_DNI_PAS.Visible = true;
-                labelOcupacion.Visible = true;
-                labelTelefono.Visible = true;
-                labelDomicilio.Visible = true;
-                labelJerarquia.Visible = false;
-                labelLegajo.Visible = false;
-                labelDNI.Visible = false;
+                panelInstructor.Visible = false;
+                panelDescubridor.Visible = true;
+                panelTestigo.Visible = false;
+
             }
         }
-        void TextBox()
+        private void AgregarNoInstructor()
         {
-            if (comboBoxTipoPersona.Text == "Instructor")
+            if (persona == null)
             {
-                textBoxOcupacion.Visible = false;
-                textBoxDomicilio.Visible = false;
-                textBoxTelefono_DNI.Visible = true;
+                persona = bllPersonas.Agregar(CrearPersona());
+                MessageBox.Show("El/La Interviniente se Agrego Correctamente a la Base de datos", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (comboBoxTipoPersona.Text == "Testigo")
+        }
+        private void AgregarInstructor()
+        {
+            if (persona == null) // SI LA PERSONA NO SE ENCUENTRA EN LA BASE DE DATOS
             {
-                textBoxOcupacion.Visible = false;
-                textBoxDomicilio.Visible = false;
-                textBoxTelefono_DNI.Visible = false;
+                persona = bLLInstructor.Agregar(CrearInstructor()); // SE AGREGA AL INSTRUCTOR
+                MessageBox.Show("El/La Interviniente se Agrego Correctamente a la Base de datos", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+        }
+
+        private void AgregarPersonaHallazgo_Entrega()
+        {
+            if (persona.Id != 0)
             {
-                textBoxOcupacion.Visible = true;
-                textBoxDomicilio.Visible = true;
-                textBoxTelefono_DNI.Visible = true;
+                persona.EstadoPersona = (BEEstado_Persona)comboBoxTipoPersona.SelectedItem;
+
+                if (Hallazgo) // SI ES HALLAZGO
+                    bllPersonas.AgregarPersonaHallazgo((BEHallazgo)BePAdreHallazgo, persona);
+                else
+                    bllPersonas.AgregarPersonaEntrega((BEEntrega)BePAdreHallazgo, persona);
+
+                MostrarPersonas();
+                LimpiarCampos();
+                Habilitar();
             }
         }
         void Button()
@@ -158,33 +160,10 @@ namespace Presentacion_UI
                 buttonEleminar.Visible = false;
             }
         }
-        void ComboBox()
-        {
-            if (comboBoxTipoPersona.Text == "Instructor")
-            {
-                comboBoxJerarquia.Visible = true;
-                comboBoxJerarquia.DataSource = jerarquias;
-                comboBoxJerarquia.Text = persona == null ? "" : ((BEInstructor)persona).Jerarquia.Jerarquia;
-
-            }
-            else
-            {
-                comboBoxJerarquia.Visible = false;
-                comboBoxJerarquia.DataSource = null;
-            }
-
-            if (Seleccion)
-                comboBoxTipoPersona.Enabled = false;
-            else
-                comboBoxTipoPersona.Enabled = true;
-
-        }
         void Habilitar()
         {
             Button();
-            ComboBox();
-            Label();
-            TextBox();
+            Panel();
         }
         void MostrarPersonas()
         {
@@ -192,7 +171,7 @@ namespace Presentacion_UI
 
             if (Hallazgo)
             {
-                BePAdreHallazgo.listaPersonas = bLLHallazgo.ListarObjetoPersonas((BEHallazgo)BePAdreHallazgo).listaPersonas;
+                BePAdreHallazgo.listaPersonas = bLLHallazgo.ListarHallazgoPersonas((BEHallazgo)BePAdreHallazgo).listaPersonas;
             }
             else
             {
@@ -230,20 +209,39 @@ namespace Presentacion_UI
         }
         void LimpiarCampos()
         {
-            textBoxDomicilio.Text = "";
-            textBoxNombreApellido.Text = "";
-            textBoxOcupacion.Text = "";
-            textBoxTelefono_DNI.Text = "";
-            comboBoxTipoPersona.Text = Seleccion ? comboBoxTipoPersona.Text : "Seleccione";
-            comboBoxJerarquia.Text = comboBoxTipoPersona.Text == "Instructor" ? "Seleccione" : "";
-            textBoxId.Text = "";
-            comboBoxJerarquia.Text = "";
+            switch (comboBoxTipoPersona.Text)
+            {
+                case "Instructor":
+                    LimpiarControles(panelInstructor);
+                    break;
+                case "Testigo":
+                    LimpiarControles(panelTestigo);
+                    break;
+                default:
+                    LimpiarControles(panelDescubridor);
+                    break;
+            }
+            Seleccion = false;
             persona = null;
-            Conversion = false;
         }
 
-
-        private bool VerificarPersonas()
+        void LimpiarControles(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                // Si el control es un TextBox, limpia su contenido
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                // Si el control tiene controles hijos, llama a la función de manera recursiva
+                else if (c.Controls.Count > 0)
+                {
+                    LimpiarControles(c);
+                }
+            }
+        }
+        bool VerificarPersonas()
         {
 
             if (BePAdreHallazgo.listaPersonas?.Count >= 4)
@@ -252,13 +250,13 @@ namespace Presentacion_UI
                 return false;
             }
             else
-            { //todo: verificar la carga de personas
+            {
                 if (BePAdreHallazgo.listaPersonas != null)
                 {
 
                     if (BePAdreHallazgo.listaPersonas.Exists(x => x.Id == persona?.Id))
                     {
-                        MessageBox.Show($"La persona {textBoxId.Text} ya se encuentra asignada como interviniente ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"La persona  ya se encuentra asignada como interviniente ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
                     else
@@ -293,65 +291,68 @@ namespace Presentacion_UI
             }
         }
 
-        void CargarPersona()
+        void CargarDatos()
         {
 
             if (comboBoxTipoPersona.Text == "Instructor")
             {
-                textBoxId.Text = ((BEInstructor)persona).Legajo.ToString();
-                textBoxNombreApellido.Text = persona.NombreCompleto;
+                textBoxLegajo.Text = ((BEInstructor)persona).Legajo.ToString();
+                textBoxNombreInstructor.Text = persona.NombreCompleto;
                 comboBoxJerarquia.Text = ((BEInstructor)persona).Jerarquia.Jerarquia;
-                textBoxTelefono_DNI.Text = persona.DNI;
+                textBoxDniInstructor.Text = persona.DNI;
             }
             else if (comboBoxTipoPersona.Text == "Testigo")
             {
-                textBoxId.Text = persona.DNI;
-                textBoxNombreApellido.Text = persona.NombreCompleto;
+                textBoxDniTestigo.Text = persona.DNI;
+                textBoxNombreTestigo.Text = persona.NombreCompleto;
             }
             else // si es descubridor
             {
-                textBoxTelefono_DNI.Text = persona.Telefono;
-                textBoxId.Text = persona.DNI;
-                textBoxNombreApellido.Text = persona.NombreCompleto;
+                textBoxDniTestigo.Text = persona.DNI;
+                textBoxNombreDescr_Prop.Text = persona.NombreCompleto;
+                textBoxTelefono.Text = persona.Telefono;
                 textBoxOcupacion.Text = persona.Ocupacion;
                 textBoxDomicilio.Text = persona.Domicilio;
-                textBoxTelefono_DNI.Text = persona.Telefono;
             }
         }
-        private bool BuscarDatosPersona()
+
+
+
+
+        bool BuscarDatosPersona()
         {
             bool Encontrado = false;
 
-            if (comboBoxTipoPersona.Text == "Instructor")
+            switch (comboBoxTipoPersona.Text)
             {
-                persona = bLLInstructor.ListarTodo().Find(x => x.Legajo == Convert.ToInt32(textBoxId.Text));
-
-                if (persona == null) // si no se encuentra el legajo busca el dni si esta registrado anteriormente
-                {
-                    persona = bllPersonas.ListarTodo().Find(x => x.DNI == textBoxTelefono_DNI.Text);
-
-                    if (persona != null)
+                case "Instructor":
+                    persona = bLLInstructor.BuscarPorDNI_legajo(textBoxLegajo.Text);
+                    if (persona == null)
                     {
-                        var result = MessageBox.Show("El DNI consultado se encuentra en la base de datos\n\n¿Desea registrarlo como Oficial? ", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (result == DialogResult.Yes)
+                        persona = bllPersonas.BuscarPorDNI(textBoxDniInstructor.Text);
+                        if (persona != null)
                         {
-
-                            textBoxNombreApellido.Text = persona.NombreCompleto;
-                            Conversion = true;
-                            return true;
+                            var result = MessageBox.Show("La persona se encuentra en la base de datos\n\n ¿Desea convertirla en oficial?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (result == DialogResult.Yes)
+                            {
+                                bLLInstructor.Actualizar(CrearInstructor());
+                                persona = bLLInstructor.BuscarPorDNI_legajo(textBoxLegajo.Text);
+                            }
                         }
-
                     }
-                }
-            }
-            else
-            {
-                persona = bllPersonas.ListarTodo().Find(x => x.DNI == textBoxId.Text);
+                    break;
+                case "Testigo":
+                    persona = bllPersonas.BuscarPorDNI(textBoxDniTestigo.Text);
+                    break;
+                default: //descubridor o Instructor
+                    persona = bllPersonas.BuscarPorDNI(textBoxDniDescubridor.Text);
+                    break;
+
             }
 
             if (persona != null)
             {
-                CargarPersona();
+                CargarDatos();
                 Encontrado = true;
             }
             else
@@ -361,48 +362,25 @@ namespace Presentacion_UI
             }
             return Encontrado;
         }
-        public bool VerificarCampos()
+
+        bool ValidarCampos(string tipoPersona)
         {
-            if (comboBoxTipoPersona.Text == "Instructor")
+            if (tipoPersona == "Instructor")
             {
-                if (textBoxId.Text == "" || !Validar.SoloEnteros(textBoxId.Text) || textBoxNombreApellido.Text == "" || textBoxTelefono_DNI.Text == "" || comboBoxJerarquia.Text == "")
-                {
-                    MessageBox.Show("Llene todos los campos para agregar al Oficial Correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return textBoxLegajo.Text != "" && Validar.SoloEnteros(textBoxLegajo.Text) && textBoxNombreInstructor.Text != "" && textBoxDniInstructor.Text != "" && comboBoxJerarquia.Text != "";
             }
-            else if (comboBoxTipoPersona.Text == "Testigo")
+            else if (tipoPersona == "Testigo")
             {
-                if (textBoxId.Text == "" || textBoxNombreApellido.Text == "")
-                {
-                    MessageBox.Show("Llene todos los campos para agregar al Testigo Correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return textBoxDniTestigo.Text != "" && textBoxNombreTestigo.Text != "";
             }
-
-            else
+            else // caso por propietario o descurridor  
             {
-                if (textBoxId.Text == "" || textBoxNombreApellido.Text == "" || textBoxOcupacion.Text == "" || textBoxDomicilio.Text == "")
-                {
-                    MessageBox.Show("Llene todos los campos Correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-
+                return textBoxDniDescubridor.Text != "" && textBoxNombreDescr_Prop.Text != "" && textBoxOcupacion.Text != "" && textBoxDomicilio.Text != "";
             }
         }
-        private BEPersona ObtenerPersona()
+
+
+        BEPersona CrearPersona()
         {
             if (!Seleccion)
             {
@@ -413,14 +391,14 @@ namespace Presentacion_UI
 
             if (comboBoxTipoPersona.Text == "Testigo")
             {
-                persona.DNI = textBoxId.Text.Trim();
-                persona.NombreCompleto = textBoxNombreApellido.Text.Trim();
+                persona.DNI = textBoxDniTestigo.Text.Trim();
+                persona.NombreCompleto = textBoxNombreTestigo.Text.Trim();
             }
-            else
+            else //Descrubridor / propietario
             {
-                persona.DNI = textBoxId.Text.Trim();
-                persona.NombreCompleto = textBoxNombreApellido.Text.Trim();
-                persona.Telefono = textBoxTelefono_DNI.Text.Trim();
+                persona.DNI = textBoxDniDescubridor.Text.Trim();
+                persona.NombreCompleto = textBoxNombreDescr_Prop.Text.Trim();
+                persona.Telefono = textBoxTelefono.Text.Trim();
                 persona.Domicilio = textBoxDomicilio.Text.Trim();
                 persona.Ocupacion = textBoxOcupacion.Text.Trim();
             }
@@ -428,35 +406,21 @@ namespace Presentacion_UI
             return persona;
         }
 
-        private BEInstructor ObtenerInstructor()
+        BEInstructor CrearInstructor()
         {
             if (!Seleccion)
             {
                 persona = new BEInstructor();
             }
-            persona.DNI = textBoxTelefono_DNI.Text.Trim();
+            persona.DNI = textBoxDniInstructor.Text.Trim();
             persona.EstadoPersona = (BEEstado_Persona)comboBoxTipoPersona.SelectedItem;
-            persona.NombreCompleto = textBoxNombreApellido.Text.Trim();
-            ((BEInstructor)persona).Legajo = Convert.ToInt32(textBoxId.Text.Trim());
+            persona.NombreCompleto = textBoxNombreInstructor.Text.Trim();
+            ((BEInstructor)persona).Legajo = Convert.ToInt32(textBoxLegajo.Text.Trim());
             ((BEInstructor)persona).Jerarquia = ((BEJerarquia)comboBoxJerarquia.SelectedItem);
 
             return (BEInstructor)persona;
         }
 
-        private BEInstructor ConvertirPersona_A_Instructor(BEPersona bEPersona)
-        {
-            int ID = bEPersona.Id;
-
-            bEPersona = new BEInstructor();
-            bEPersona.Id = ID;
-            bEPersona.DNI = textBoxTelefono_DNI.Text.Trim();
-            bEPersona.EstadoPersona = (BEEstado_Persona)comboBoxTipoPersona.SelectedItem;
-            bEPersona.NombreCompleto = textBoxNombreApellido.Text.Trim();
-            ((BEInstructor)bEPersona).Legajo = Convert.ToInt32(textBoxId.Text.Trim());
-            ((BEInstructor)bEPersona).Jerarquia = ((BEJerarquia)comboBoxJerarquia.SelectedItem);
-
-            return (BEInstructor)bEPersona;
-        }
         void VerificarPersonasSeleccionados()
         {
             Seleccion = false;
@@ -478,14 +442,13 @@ namespace Presentacion_UI
             else
             {
                 comboBoxTipoPersona.Text = persona.EstadoPersona.Nombre;
-                CargarPersona();
+                CargarDatos();
             }
             Habilitar();
         }
 
         private void DgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 if (e.ColumnIndex == this.DgvPersonas.Columns["Sel"].Index)
@@ -518,83 +481,32 @@ namespace Presentacion_UI
         {
             try
             {
-                if (VerificarCampos())
+                if (ValidarCampos(comboBoxTipoPersona.Text))
                 {
                     if (VerificarPersonas())
                     {
-                        if (comboBoxTipoPersona.Text == "Instructor")
+                        switch (comboBoxTipoPersona.Text)
                         {
-                            if (Conversion) //pasar de persona a instructor
-                            {
-                                bLLInstructor.Conversion(ConvertirPersona_A_Instructor(persona));
-                                Conversion = false;
-                            }
-
-                            persona = bLLInstructor.ListarTodo().Find(x => x.Legajo == Convert.ToInt32(textBoxId.Text));
-
-                            if (persona == null) // SI LA PERSONA NO SE ENCUENTRA EN LA BASE DE DATOS
-                            {
-                                persona = bLLInstructor.Agregar(ObtenerInstructor()); // SE AGREGA AL INSTRUCTOR
-
-                                if (persona.Id != 0)
-                                {
-                                    MessageBox.Show("El/La Interviniente se Agrego Correctamente a la Base de datos", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-
-                            else // se actualizan los datos que ya tiene la persona cargada
-                            {
-                                Seleccion = true;
-                                bLLInstructor.Actualizar(ObtenerInstructor());
-                            }
-
-
-                        }
-                        else // si es NO es instructor
-                        {
-                            persona = bllPersonas.ListarTodo().Find(x => x.DNI == textBoxId.Text);
-
-                            if (persona == null)
-                            {
-                                persona = bllPersonas.Agregar(ObtenerPersona());
-                                if (persona.Id != 0)
-                                {
-                                    MessageBox.Show("El/La Interviniente se Agrego Correctamente a la Base de datos", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                            else
-                            {
-                                Seleccion = true;
-                                bllPersonas.Actualizar(ObtenerPersona());
-                            }
+                            case "Instructor":
+                                AgregarInstructor();
+                                break;
+                            default: //Descubridor o Propietario //propietario
+                                AgregarNoInstructor();
+                                break;
                         }
 
-
-                        if (persona.Id != 0)
-                        {
-                            if (Hallazgo) // SI ES HALLAZGO
-                            {
-                                persona.EstadoPersona = (BEEstado_Persona)comboBoxTipoPersona.SelectedItem;
-                                bllPersonas.AgregarPersonaHallazgo((BEHallazgo)BePAdreHallazgo, persona);
-                            }
-                            else
-                            {
-                                persona.EstadoPersona = (BEEstado_Persona)comboBoxTipoPersona.SelectedItem;
-                                bllPersonas.AgregarPersonaEntrega((BEEntrega)BePAdreHallazgo, persona);
-                            }
-                            Seleccion = false;
-                            MostrarPersonas();
-                            LimpiarCampos();
-                            Habilitar();
-                        }
+                        AgregarPersonaHallazgo_Entrega();
 
 
                     }
                     else
                     {
-                        Seleccion = false;
                         LimpiarCampos();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Llene todos los campos Correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -603,31 +515,35 @@ namespace Presentacion_UI
 
             }
         }
+
         private void buttonModificar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (Seleccion)
                 {
-                    if (VerificarCampos())
+                    if (ValidarCampos(comboBoxTipoPersona.Text))
                     {
-                        DialogResult result = MessageBox.Show($"¿Desea Modificar el {comboBoxTipoPersona.Text} {textBoxNombreApellido.Text}?", "Modificar", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
+                        DialogResult result = MessageBox.Show($"¿Desea Modificar el {comboBoxTipoPersona.Text} ?", "Modificar", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
                         if (result == DialogResult.Yes)
                         {
                             if (comboBoxTipoPersona.Text == "Instructor")
                             {
-                                bLLInstructor.Actualizar(ObtenerInstructor());
+                                bLLInstructor.Actualizar(CrearInstructor());
                             }
                             else
                             {
-                                bllPersonas.Actualizar(ObtenerPersona());
-                                MessageBox.Show("El Interviniente se Modificó Correctamente", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                bllPersonas.Actualizar(CrearPersona());
                             }
-                            Seleccion = false;
+                            MessageBox.Show("El Interviniente se Modificó Correctamente", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimpiarCampos();
                             MostrarPersonas();
                             Habilitar();
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Llene todos los campos Correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
@@ -640,10 +556,9 @@ namespace Presentacion_UI
         {
             try
             {
-
                 if (Seleccion)
                 {
-                    DialogResult result = MessageBox.Show($"¿Desea Eliminar el {comboBoxTipoPersona.Text} {textBoxNombreApellido.Text}?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
+                    DialogResult result = MessageBox.Show($"¿Desea Eliminar el {comboBoxTipoPersona.Text} ?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
                     if (result == DialogResult.Yes)
                     {
                         if (Hallazgo)
@@ -775,29 +690,15 @@ namespace Presentacion_UI
         }
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-
-            if (comboBoxTipoPersona.Text == "Seleccione")
-            {
-                MessageBox.Show("Elija el categoria de la persona para realizar busqueda", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCampos();
-            }
-            else if (textBoxId.Text == "")
-            {
-                if (comboBoxTipoPersona.Text == "Instructor")
-                {
-                    MessageBox.Show("Coloque el Legajo a buscar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-                else
-                {
-                    MessageBox.Show("Coloque el DNI a buscar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                LimpiarCampos();
-            }
-            else
+            try
             {
                 BuscarDatosPersona();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void comboBoxTipoPersona_SelectedIndexChanged(object sender, EventArgs e)
@@ -807,15 +708,13 @@ namespace Presentacion_UI
                 Habilitar();
                 LimpiarCampos();
             }
-
-
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            Seleccion = false;
             Habilitar();
             LimpiarCampos();
+
         }
     }
 }

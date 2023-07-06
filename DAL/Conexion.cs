@@ -250,12 +250,12 @@ namespace DAL
             }
         }
 
-        public int ObtenerUltimoID(string elementoPadre)
+        public int ObtenerUltimoID(string NodoPadre)
         {
             try
             {
                 XDocument xmlDoc = XDocument.Load(XmlFilePathBaseDatos);
-                IEnumerable<XElement> elementos = xmlDoc.Descendants(elementoPadre).Elements();
+                IEnumerable<XElement> elementos = xmlDoc.Descendants(NodoPadre).Elements();
 
                 if (elementos.Any())
                 {

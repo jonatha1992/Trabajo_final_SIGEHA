@@ -37,17 +37,20 @@ namespace Negocio
         }
         public BEHallazgo ListarObjeto(BEHallazgo Phallazgo)
         {
-            return mPPHallazgo.ListarObjeto(Phallazgo);
+          
+            Phallazgo = ListarHallazgoElementos(Phallazgo);
+            Phallazgo = ListarHallazgoPersonas(Phallazgo);
+            return Phallazgo;
         }
 
-        public BEHallazgo ListarObjetoPersonas(BEHallazgo Phallazgo)
+        public BEHallazgo ListarHallazgoPersonas(BEHallazgo Phallazgo)
         {
-            return mPPHallazgo.ListarObjetoPersonas(Phallazgo);
+            return mPPHallazgo.ListarHallazgoPersonas(Phallazgo);
         }
 
-        public BEHallazgo ListarObjetoElementos(BEHallazgo Phallazgo)
+        public BEHallazgo ListarHallazgoElementos(BEHallazgo Phallazgo)
         {
-            return mPPHallazgo.ListarObjetoElementos(Phallazgo);
+            return mPPHallazgo.ListarHallazgoElementos(Phallazgo);
         }
         public bool Eliminar(BEHallazgo pHallazgo)
         {

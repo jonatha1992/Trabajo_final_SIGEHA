@@ -129,7 +129,6 @@ namespace Presentacion_UI
                     loginToolStripMenuItem_Click(null, null);
                 }
 
-            
 
             }
             catch (Exception ex)

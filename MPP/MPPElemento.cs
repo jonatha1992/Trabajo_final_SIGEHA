@@ -26,7 +26,7 @@ namespace MPP
             XElement Elemento = new XElement("Elemento",
              new XElement("Id", NuevoID),
              new XElement("IdArticulo", elemento.Articulo.Id),
-             new XElement("IdArticulo", elemento.Articulo.Id),
+             new XElement("IdEstadoElemento", elemento.Estado.Id),
              new XElement("IdHallazgo", hallazgo.Id),
              new XElement("Descripcion", elemento.Descripcion),
              new XElement("Cantidad", elemento.Cantidad)
@@ -34,9 +34,6 @@ namespace MPP
 
             return conexion.Agregar(NodoPadre, Elemento);
         }
-
-
-
 
         public bool Agregar_Elemento_Entrega(BEEntrega entrega, BEElemento elemento)
         {
@@ -150,11 +147,11 @@ namespace MPP
                 lista = (from x in Consulta
                          select new BEElemento
                          {
-                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Id = Convert.ToInt32((x.Element("Id")?.Value)),
                              Articulo = new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)),
                              Descripcion = Convert.ToString(x.Element("Descripcion")?.Value),
                              Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value),
-                             Estado = new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstado")?.Value))
+                             Estado = new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstado")?.Value)),
                          }).ToList();
             }
 
@@ -175,13 +172,13 @@ namespace MPP
                 bElemento.Descripcion = Convert.ToString(x.Element("Descripcion")?.Value);
                 bElemento.Articulo = mPPArticulo.ListarObjeto(new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)));
                 bElemento.Estado = mPPEstado_Articulo.ListarObjeto(new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstadoElemento")?.Value)));
+           
             }
             else
             { bElemento = null; }
             return bElemento;
 
         }
-
 
         public List<ElementoBusqueda> BusquedaElementos(BEArticulo bEArticulo, string PDescripcion, string LugarHallazgo, DateTime? pDia, int anio, BEUnidad unidad)
         {
@@ -242,7 +239,7 @@ namespace MPP
             var Estado_Elementos = mPPEstado_Elemento.ListarTodo();
             var Articulos = mPPArticulo.ListarTodo();
             var Entregas = mPPEntrega.ListarTodo();
-            var Hallazgo = mPPHallazgo.ListarTodo().Find(x => x.NroActa == nroActa );
+            var Hallazgo = mPPHallazgo.ListarTodo().Find(x => x.NroActa == nroActa);
 
 
 
@@ -255,7 +252,7 @@ namespace MPP
                     bElemento.Id = elemento.Id;
                     bElemento.Cantidad = elemento.Cantidad.ToString();
                     bElemento.Descripcion = elemento.Descripcion;
-                    bElemento.Articulo = Articulos.Find(x=>x.Id == elemento.Articulo.Id).Nombre;
+                    bElemento.Articulo = Articulos.Find(x => x.Id == elemento.Articulo.Id).Nombre;
                     bElemento.Estado = Estado_Elementos.Find(x => x.Id == elemento.Estado.Id).Nombre;
                     bElemento.Hallazgo = Hallazgo.NroActa;
                     bElemento.Lugar = Hallazgo.LugarHallazgo;
@@ -293,7 +290,7 @@ namespace MPP
         //        if (entregaEncontrada != null)
         //        {
         //            return (string)entregaEncontrada.Element("NroActa");
-                    
+
         //        }
         //        else
         //        {
