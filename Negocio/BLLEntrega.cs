@@ -2,6 +2,7 @@
 using BE;
 using MPP;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,15 +23,14 @@ namespace Negocio
         {
 
 
-            string NroEntrega = "";
             var Entregas = ListarTodo();
 
-            NroEntrega = Entregas.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+            string NroEntrega = Entregas.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
                            .OrderByDescending(h => h.NroActa)
                            .FirstOrDefault()?.NroActa;
 
 
-            if (NroEntrega == "")
+            if (NroEntrega == "" || NroEntrega == null)
             {
 
                 NroEntrega = $"0001{unidad.Cod}/{anio}";
@@ -70,7 +70,10 @@ namespace Negocio
         }
         public BEEntrega ListarObjeto(BEEntrega entrega)
         {
-            return mmPEntrega.ListarObjeto(entrega);
+            entrega = ListarObjetoElementos(entrega);
+            entrega = ListarObjetoPersonas(entrega);
+            return entrega;
+
         }
 
         public BEEntrega ListarObjetoPersonas(BEEntrega entrega)
@@ -86,9 +89,19 @@ namespace Negocio
             return mmPEntrega.Actualizar(entrega);
         }
 
-        public bool Eliminar(BEEntrega entrega)
+        public bool Eliminar(BEEntrega pEntrega)
         {
-            return mmPEntrega.Eliminar(entrega);
+            BLLElemento bLLElemento = new BLLElemento();
+           
+            if (pEntrega.listaElementos != null)
+            {
+                foreach (var item in pEntrega.listaElementos)
+                {
+                    bLLElemento.EliminarElementoEntrega(pEntrega, item);
+                }
+            }
+
+            return mmPEntrega.Eliminar(pEntrega);
         }
 
         public List<BEEntrega> ListarTodo()
@@ -102,7 +115,12 @@ namespace Negocio
             int Anio = Fecha.Year;
             int Mes = Fecha.Month;
             var Lista = mmPEntrega.ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.Fecha_entrega.Month == Mes)
-                                     .OrderByDescending(x => x.Fecha_entrega).ToList(); ;
+                                     .OrderByDescending(x => x.Fecha_entrega).ToList();
+
+            foreach (var entrega in Lista)
+            {
+                entrega.Unidad = bEUnidad;
+            }
             return Lista;
         }
 

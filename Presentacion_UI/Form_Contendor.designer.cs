@@ -97,13 +97,13 @@
             this.Entrega.Name = "Entrega";
             this.Entrega.Size = new System.Drawing.Size(120, 22);
             this.Entrega.Text = "Menú Entrega";
-            this.Entrega.Click += new System.EventHandler(this.entregaToolStripMenuItem1_Click);
             // 
             // GenerarEntrega
             // 
             this.GenerarEntrega.Name = "GenerarEntrega";
             this.GenerarEntrega.Size = new System.Drawing.Size(195, 22);
             this.GenerarEntrega.Text = "Generar Entrega";
+            this.GenerarEntrega.Click += new System.EventHandler(this.GenerarEntrega_Click);
             // 
             // GestionEntrega
             // 

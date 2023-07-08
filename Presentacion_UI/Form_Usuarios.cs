@@ -19,7 +19,6 @@ namespace Presentacion_UI
 
         BLLUsuario oBLLUsu;
         BLLPermiso oBLLPermiso;
-        
         BEUsuario seleccion;
 
 
@@ -130,11 +129,10 @@ namespace Presentacion_UI
                 var existe = seleccion.Permisos.Exists(x => x.Id == (comboBoxRoles.SelectedItem as BERol).Id);
                 if (!existe)
                 {
-                    if (seleccion.NombreUsuario == "")
+                    if (seleccion.NombreUsuario == "" || seleccion.NombreUsuario == null)
                     {
                         seleccion.NombreUsuario = textBoxUsuario.Text;
                     }
-
                     seleccion.Permisos.Add(comboBoxRoles.SelectedItem as BERol);
                     MostrarPermisos(seleccion);
                     comboBoxRoles_SelectedIndexChanged(null, null);
@@ -239,7 +237,7 @@ namespace Presentacion_UI
                     LimpiarFormulario();
                     groupBoxDatosUsuario.Visible = false;
                     comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
-                    MessageBox.Show($"El Usuario {seleccion.NombreUsuario} se ha eliminado de la base de datos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"El Usuario  se ha eliminado de la base de datos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }

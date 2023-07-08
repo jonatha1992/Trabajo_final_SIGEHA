@@ -51,12 +51,12 @@ namespace MPP
         public BEArticulo ListarObjeto(BEArticulo pArticulo)
         {
             var Consulta = conexion.LeerObjeto(NodoContenedor, pArticulo.Id.ToString());
-
+            MPPCategoria mPPCategoria = new MPPCategoria();
             if (Consulta != null)
             {
                 pArticulo.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
                 pArticulo.Nombre = Convert.ToString(Consulta.Element("Nombre")?.Value);
-                pArticulo.Categoria = new BECategoria(Convert.ToInt32(Consulta.Element("IdCategoria")?.Value));
+                pArticulo.Categoria = mPPCategoria.ListarObjeto(new BECategoria(Convert.ToInt32(Consulta.Element("IdCategoria")?.Value)));
             }
             else
             { pArticulo = null; }
@@ -65,9 +65,9 @@ namespace MPP
 
         public List<BEArticulo> ListarTodo()
         {
+            MPPCategoria mPPCategoria = new MPPCategoria(); 
             var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Articulo");
-
-
+            
             List<BEArticulo> lista = new List<BEArticulo>();
 
             if (Consulta.Count() > 0)
@@ -78,14 +78,15 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             Categoria = new BECategoria(Convert.ToInt32(x.Element("IdCategoria")?.Value))
+                             Categoria =  new BECategoria(Convert.ToInt32(x.Element("IdCategoria")?.Value))
                          }).ToList();
+
+
             }
             else
             {
                 lista = null;
             }
-
             return lista;
         }
     }

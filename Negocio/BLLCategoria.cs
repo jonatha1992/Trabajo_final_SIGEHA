@@ -56,7 +56,7 @@ namespace Negocio
 
         public List<BECategoria> ListarTodo()
         {
-            return mPPCateroria.ListarTodo();
+            return  mPPCateroria.ListarTodo();
         }
 
 

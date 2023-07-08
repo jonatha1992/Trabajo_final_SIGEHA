@@ -1,4 +1,6 @@
 ﻿using BE;
+using DocumentFormat.OpenXml.InkML;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Negocio;
 using Seguridad;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
 
@@ -27,12 +30,12 @@ namespace Presentacion_UI
 
 
             listaCategorias = bLLcategorias.ListarTodo();
-            listaArticulos = bLLArticulos.ListarTodo();
-            ListabEEstadoElementos = bLLEstado_elementos.ListarTodo().FindAll(x => x.Nombre != "Entregado");
+            listaArticulos = bLLArticulos.ListarTodo(listaCategorias);
+            ListabEEstadoElementos = bLLEstado_elementos.ListarEstadoHallazgo();
         }
 
 
-        private void FormularioPrincipal_Load(object sender, EventArgs e)
+        void FormularioPrincipal_Load(object sender, EventArgs e)
         {
             try
             {
@@ -90,26 +93,22 @@ namespace Presentacion_UI
             {
                 bEUnidad = Usuario.Destino as BEUnidad;
                 bEUrsa = bEUnidad.Ursa;
-                comboBoxUnidad.Text = bEUnidad.Nombre;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
+                comboBoxUnidad.SelectedItem = bEUnidad;
+                comboBoxUrsa.Enabled = false;
+                comboBoxUnidad.Enabled = false;
             }
             if (Usuario.Destino is BEUrsa) //destino region
             {
                 bEUrsa = Usuario.Destino as BEUrsa;
                 bEUnidad = bEUrsa.Unidades.First();
-                comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUnidad.DataSource = bEUrsa.Unidades;
+                comboBoxUrsa.Text = bEUrsa.Nombre;
+                comboBoxUrsa.Enabled = false;
             }
-            //else //CEAC
-            //{
-            //    ListaUnidades = Form_Contenedor.Unidades;
-            //    ListaUrsas = Form_Contenedor.Ursas;
-            //    comboBoxUrsa.DataSource = ListaUrsas;
-            //    comboBoxUnidad.DataSource = ListaUnidades;
-            //}
-
-
-
+            comboBoxArticulo.DataSource = listaArticulos;
+            comboBoxCategoria.DataSource = listaCategorias;
+            comboBoxArticulo = Utilidades.SetAutoCompleteCombo(comboBoxArticulo, listaArticulos, articulo => articulo.Nombre);
 
         }
         bool VerificarCamposElementos()
@@ -219,32 +218,8 @@ namespace Presentacion_UI
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                         this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
 
-                        //foreach (DataGridViewRow row in DgvElementos.Rows)
-                        //{
-                        //    if (row.Cells[0].Value == null)
-                        //    {
-                        //        row.Cells["Sel"].Value = false;
-                        //    }
-                        //}
                     }
-                    //else
-                    //{
-                    //    this.DgvElementos.Columns["Sel"].Visible = false;
-                    //    if (!ModoCreacion)
-                    //    {
-                    //        var result = MessageBox.Show("El Hallazgo no contiene elementos\n\n¿Desea eliminar el Hallazgo?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    //        if (result == DialogResult.Yes)
-                    //        {
-                    //            if (bLLHallazgo.Eliminar(bEHallazgoSeleccionado))
-                    //            {
-                    //                MessageBox.Show("El Hallazgo se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //                CargarGrillaHallazgos();
-                    //                limpiarCamposHallazgos();
-                    //                Habilitar();
-                    //            }
-                    //        }
-                    //    }
-                    //}
+
                 }
             }
             catch (Exception ex)
@@ -269,20 +244,12 @@ namespace Presentacion_UI
             if (!SeleccionElemento)
             {
                 bEElementoSeleccionado = new BEElemento();
-                bEElementoSeleccionado.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
-                bEElementoSeleccionado.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
-                //bEElementoSeleccionado.Cantidad = double.Parse(textBoxCantidad.Text);
-                bEElementoSeleccionado.Cantidad = double.Parse(NUPCantidad.Text);
-                bEElementoSeleccionado.Descripcion = textBoxDescripcion.Text;
             }
-            else
-            {
-                bEElementoSeleccionado.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
-                bEElementoSeleccionado.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
-                // bEElementoSeleccionado.Cantidad = double.Parse(textBoxCantidad.Text);
-                bEElementoSeleccionado.Cantidad = double.Parse(NUPCantidad.Text);
-                bEElementoSeleccionado.Descripcion = textBoxDescripcion.Text;
-            }
+
+            bEElementoSeleccionado.Articulo = comboBoxArticulo.SelectedItem as BEArticulo;
+            bEElementoSeleccionado.Estado = comboBoxEstado.SelectedItem as BEEstado_Elemento;
+            bEElementoSeleccionado.Cantidad = double.Parse(NUPCantidad.Text);
+            bEElementoSeleccionado.Descripcion = textBoxDescripcion.Text;
 
             return bEElementoSeleccionado;
         }
@@ -293,6 +260,7 @@ namespace Presentacion_UI
         {
             textBoxLugar.Text = "";
             textBoxNroActa.Text = "";
+            textBoxObservacion.Text = "";
             dateTimePickerFechaHallazgo.Value = DateTime.Now;
             SeleccionHallazgo = false;
             ColocarNumero();
@@ -309,18 +277,7 @@ namespace Presentacion_UI
             if (SeleccionHallazgo)
             {
                 comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
-                comboBoxUnidad.Enabled = false;
-                comboBoxUrsa.Enabled = false;
             }
-            else
-            {
-                comboBoxUrsa.Enabled = true;
-                comboBoxUnidad.Enabled = true;
-            }
-
-
-            //comboBoxUrsa.Enabled = Usuario.Rol == "REGION" || Usuario.Rol == "UNIDAD" ? false : true;
-            //comboBoxUnidad.Enabled = Usuario.Rol == "UNIDAD" ? false : true;
         }
         bool VerificarCantidadPersonas()
         {
@@ -417,7 +374,7 @@ namespace Presentacion_UI
                 dgvHallazgos.Enabled = true;
             }
         }
- 
+
         void Habilitar()
         {
             Botones();
@@ -442,18 +399,15 @@ namespace Presentacion_UI
                 this.dgvHallazgos.Columns["FechaActa"].Visible = false;
                 this.dgvHallazgos.Columns["Id"].Visible = false;
                 this.dgvHallazgos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                this.dgvHallazgos.RowTemplate.Height = 30;
+                this.dgvHallazgos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                 this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
 
-                //foreach (DataGridViewRow row in dgvHallazgos.Rows)
-                //{
-                //    if (row.Cells[0].Value == null)
-                //    {
-                //        row.Cells["Seleccion"].Value = false;
-                //    }
-                //}
+
                 this.dgvHallazgos.ClearSelection();
             }
             else
@@ -470,7 +424,7 @@ namespace Presentacion_UI
             foreach (DataGridViewRow row in dgvHallazgos.Rows)
             {
                 var valorCelda = row.Cells[0].Value;
-                var valor = valorCelda as bool? ?? false; 
+                var valor = valorCelda as bool? ?? false;
 
                 if (valor)
                 {
@@ -483,7 +437,7 @@ namespace Presentacion_UI
                     textBoxNroActa.Text = bEHallazgoSeleccionado.NroActa;
                     dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     CargarGrillaElementos();
-
+                    Habilitar();
                     break;
                 }
             }
@@ -493,6 +447,7 @@ namespace Presentacion_UI
                 CargarGrillaHallazgos();
                 CargarGrillaElementos();
                 limpiarCamposHallazgos();
+                Habilitar();
             }
         }
 
@@ -537,7 +492,7 @@ namespace Presentacion_UI
         #region "Botones"
 
         #region "Hallazgo"
-        private void button_Agregar_Click(object sender, EventArgs e)
+        void button_Agregar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -552,7 +507,7 @@ namespace Presentacion_UI
                         Habilitar();
                         CargarGrillaHallazgos();
                         SeleccionarHallazgo();
-                        MessageBox.Show($"El Hallazgo se creo {textBoxNroActa.Text} correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"El Hallazgo  {textBoxNroActa.Text} se creo correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -568,7 +523,7 @@ namespace Presentacion_UI
                 MessageBox.Show($"{ex.Message}");
             }
         }
-        private void button_Modificar_Click(object sender, EventArgs e)
+        void button_Modificar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -589,13 +544,17 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        void buttonEliminar_Click(object sender, EventArgs e)
         {
             try
             {
                 foreach (DataGridViewRow fila in dgvHallazgos.Rows)
                 {
-                    if ((bool)fila.Cells[0].Value == true)
+                    var valorCelda = (bool)fila.Cells[0].Value;
+
+                    var valor = valorCelda as bool? ?? false;
+
+                    if (valor)
                     {
                         bLLHallazgo.Eliminar((BEHallazgo)fila.DataBoundItem);
                     }
@@ -617,7 +576,7 @@ namespace Presentacion_UI
         #endregion
 
         #region "Elemento"
-        private void btnAgregarElemento_Click(object sender, EventArgs e)
+        void btnAgregarElemento_Click(object sender, EventArgs e)
         {
             try
             {
@@ -629,7 +588,6 @@ namespace Presentacion_UI
                         CargarGrillaElementos();
                         HabilitarElemento();
                         Habilitar();
-
                     }
                 }
             }
@@ -638,7 +596,7 @@ namespace Presentacion_UI
                 MessageBox.Show($"{ex.Message} ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnModificarElemento_Click(object sender, EventArgs e)
+        void btnModificarElemento_Click(object sender, EventArgs e)
         {
             try
             {
@@ -664,7 +622,7 @@ namespace Presentacion_UI
 
             }
         }
-        private void btnEliminarElemento_Click(object sender, EventArgs e)
+        void btnEliminarElemento_Click(object sender, EventArgs e)
         {
             try
             {
@@ -693,9 +651,7 @@ namespace Presentacion_UI
             }
         }
         #endregion
-
-
-        private void buttonImprimir_Click(object sender, EventArgs e)
+        void buttonImprimir_Click(object sender, EventArgs e)
         {
             try
             {
@@ -716,14 +672,14 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void buttonCargarPersonas_Click(object sender, EventArgs e)
+        void buttonCargarPersonas_Click(object sender, EventArgs e)
         {
             try
             {
                 Form_Persona formPersonas;
                 formPersonas = new Form_Persona(bEHallazgoSeleccionado);
                 formPersonas.ShowDialog();
-                
+
                 bEHallazgoSeleccionado = (BEHallazgo)formPersonas.BePAdreHallazgo;
 
                 Habilitar();
@@ -738,7 +694,7 @@ namespace Presentacion_UI
 
 
         }
-        private void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
+        void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
         {
             try
             {
@@ -799,21 +755,11 @@ namespace Presentacion_UI
 
         #endregion
         #region "Combobox Funciones"
+
+
         #region "Elemento"
 
-        private void comboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-        private void dataGridViewElementos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void dataGridViewElementos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (ModoCreacion) // Verifica si estamos en modo de creación
             {
@@ -866,7 +812,7 @@ namespace Presentacion_UI
         #endregion
 
         #region "Hallazgo"
-        private void comboBoxUrsa_SelectedIndexChanged(object sender, EventArgs e)
+        void comboBoxUrsa_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (Usuario.Rol == "ADMIN")
             //{
@@ -879,17 +825,17 @@ namespace Presentacion_UI
             //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
             //}
         }
-        private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-  
-                bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-                bEHallazgoSeleccionado = null;
-                limpiarCamposHallazgos();
-                CargarGrillaHallazgos();
-                Habilitar();
+
+            bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            bEHallazgoSeleccionado = null;
+            limpiarCamposHallazgos();
+            CargarGrillaHallazgos();
+            Habilitar();
 
         }
-        private void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
+        void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
             if (!ModoCreacion && !SeleccionHallazgo) // SI NO ESTA EN MODO CREACION 
@@ -909,7 +855,7 @@ namespace Presentacion_UI
 
         #region "Datagridview funciones"
 
-        private void dgvHallazgos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void dgvHallazgos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -946,18 +892,18 @@ namespace Presentacion_UI
         #endregion
 
         #region "Texto box funciones"
-        private void textBoxNroActa_KeyPress(object sender, KeyPressEventArgs e)
+        void textBoxNroActa_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validar.SoloEnterossSinEspacios(e);
         }
-        private void textBoxLugar_KeyPress(object sender, KeyPressEventArgs e)
+        void textBoxLugar_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validar.NoSaltosDelinea(e);
         }
 
         #endregion
 
-        private void Form_Hallazgo_FormClosing(object sender, FormClosingEventArgs e)
+        void Form_Hallazgo_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
@@ -999,6 +945,67 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-     
+
+        void comboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comboBoxCategoria.SelectedItem is BECategoria selectedCategoria)
+                {
+                    // Filtrar los artículos por la categoría seleccionada
+                    var articulosFiltrados = listaArticulos.Where(a => a.Categoria.Id == selectedCategoria.Id).ToList();
+
+                    // Configurar el DataSource del ComboBox de artículos con los artículos filtrados
+                    comboBoxArticulo.DataSource = articulosFiltrados;
+                }
+
+                //comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        void RealizarBusqueda(string sugerencia)
+        {
+            if (listaArticulos.Exists(x => x.Nombre == sugerencia))
+            {
+                BECategoria categoriaDelArticulo = listaCategorias.FirstOrDefault(c => c.Articulos.Any(a => a.Nombre == sugerencia));
+
+                if (categoriaDelArticulo != null)
+                {
+                    //Establecer la categoría en el ComboBox de categorías
+                    comboBoxCategoria.SelectedItem = categoriaDelArticulo;
+                    comboBoxCategoria.Text = categoriaDelArticulo.Nombre;
+                    comboBoxArticulo.Text = sugerencia;
+                }
+            }
+        }
+
+        void comboBoxArticulo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Obtener la sugerencia seleccionada en el ComboBox de artículos
+                string sugerenciaSeleccionada = comboBoxArticulo.Text;
+
+                // Realizar las acciones necesarias cuando se selecciona una sugerencia
+                RealizarBusqueda(sugerenciaSeleccionada);
+            }
+        }
+
+        void checkBoxObservacion_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxObservacion.Checked)
+            {
+                textBoxObservacion.Visible = true;
+            }
+            else
+            {
+                textBoxObservacion.Visible = false;
+                textBoxObservacion.Text = "";
+            }
+        }
     }
 }

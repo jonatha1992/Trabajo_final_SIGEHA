@@ -26,12 +26,14 @@ namespace MPP
         {
             var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
 
-            XElement Entrega = new XElement("Hallazgo",
+            XElement Entrega = new XElement("Entrega",
                 new XElement("Id", NuevoID),
                 new XElement("Nroacta", entrega.NroActa),
                 new XElement("IdUnidad", entrega.Unidad.Id),
                 new XElement("Anio", entrega.Anio),
-                new XElement("FechaEntrega", entrega.Fecha_entrega)
+                new XElement("FechaEntrega", entrega.Fecha_entrega),
+                new XElement("Observacion", entrega.Observacion)
+
                 );
 
             conexion.Agregar(NodoPadre, Entrega);
@@ -43,12 +45,13 @@ namespace MPP
         public bool Actualizar(BEEntrega entrega)
         {
 
-            XElement EntegaActualizado = new XElement("Hallazgo",
+            XElement EntegaActualizado = new XElement("Entrega",
            new XElement("Id", entrega.Id),
            new XElement("Nroacta", entrega.NroActa),
            new XElement("IdUnidad", entrega.Unidad.Id),
            new XElement("Anio", entrega.Anio),
-           new XElement("FechaEntrega", entrega.Fecha_entrega));
+           new XElement("FechaEntrega", entrega.Fecha_entrega),
+           new XElement("Observacion", entrega.Observacion));
 
             return conexion.Actualizar(NodoPadre, entrega.Id.ToString(), EntegaActualizado);
 
@@ -80,20 +83,18 @@ namespace MPP
         }
 
         public BEEntrega ListarObjeto(BEEntrega pEntrega)
-
         {
+            var Consulta = conexion.LeerObjeto(NodoContenedor, pEntrega.Id.ToString());
+            MPPUnidad mPPUnidad = new MPPUnidad();
 
-            var x = conexion.LeerObjeto(NodoContenedor, pEntrega.Id.ToString());
-
-            if (x != null)
+            if (Consulta != null)
             {
-                pEntrega.Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value));
-                pEntrega.NroActa = Convert.ToString(x.Element("Nroacta")?.Value);
-                pEntrega.Fecha_entrega = Convert.ToDateTime(x.Element("FechaEntrega")?.Value);
-                pEntrega.Anio = Convert.ToInt32(x.Element("Anio")?.Value);
-                pEntrega.Unidad = new BEUnidad(Convert.ToInt32(x.Element("Anio")?.Value));
-
-
+                pEntrega.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
+                pEntrega.NroActa = Convert.ToString(Consulta.Element("Nroacta")?.Value);
+                pEntrega.Fecha_entrega = Convert.ToDateTime(Consulta.Element("FechaEntrega")?.Value);
+                pEntrega.Anio = Convert.ToInt32(Consulta.Element("Anio")?.Value);
+                pEntrega.Unidad =  new BEUnidad(Convert.ToInt32(Consulta.Element("IdUnidad")?.Value));
+                pEntrega.Observacion = Convert.ToString(Consulta.Element("Observacion")?.Value);
 
             }
             else
@@ -179,7 +180,7 @@ namespace MPP
 
             List<BEEntrega> list = new List<BEEntrega>();
 
-            var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Hallazgo");
+            var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Entrega");
 
             if (Consulta.Count() > 0)
             {
@@ -190,7 +191,8 @@ namespace MPP
                             NroActa = Convert.ToString(x.Element("Nroacta")?.Value),
                             Fecha_entrega = Convert.ToDateTime(x.Element("FechaEntrega")?.Value),
                             Anio = Convert.ToInt32(x.Element("Anio")?.Value),
-                            Unidad = new BEUnidad(Convert.ToInt32(x.Element("IdUnidad")?.Value))
+                            Unidad = new BEUnidad(Convert.ToInt32(x.Element("IdUnidad")?.Value)),
+                            Observacion  = Convert.ToString(x.Element("Observacion")?.Value)
                         }).ToList();
             }
 

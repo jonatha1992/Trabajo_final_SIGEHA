@@ -37,7 +37,6 @@ namespace Negocio
         }
         public BEHallazgo ListarObjeto(BEHallazgo Phallazgo)
         {
-          
             Phallazgo = ListarHallazgoElementos(Phallazgo);
             Phallazgo = ListarHallazgoPersonas(Phallazgo);
             return Phallazgo;
@@ -45,7 +44,7 @@ namespace Negocio
 
         public BEHallazgo ListarHallazgoPersonas(BEHallazgo Phallazgo)
         {
-            return mPPHallazgo.ListarHallazgoPersonas(Phallazgo);
+            return mPPHallazgo.ListarHallazgoPersonas(Phallazgo); 
         }
 
         public BEHallazgo ListarHallazgoElementos(BEHallazgo Phallazgo)
@@ -63,9 +62,8 @@ namespace Negocio
 
             string nroHallazgo = hallazgos.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
                                  .OrderByDescending(h => h.NroActa)
-                            .FirstOrDefault()?.NroActa;
+                                 .FirstOrDefault()?.NroActa;
 
-            //nroHallazgo = mPPHallazgo.ObtenerNroHallazgo(unidad, anio);
 
             if (nroHallazgo == "" || nroHallazgo == null)
             {

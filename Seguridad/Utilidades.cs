@@ -30,5 +30,29 @@ namespace Seguridad
             return control;
         }
 
+
+        public static TextBox SetAutoCompleteTextBox<T>(TextBox textBox, IEnumerable<T> items, Func<T, string> selector)
+        {
+            AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+            source.AddRange(items.Select(selector).ToArray());
+
+            textBox.AutoCompleteCustomSource = source;
+            textBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            textBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            return textBox;
+        }
+
+
+        public static ComboBox SetAutoCompleteCombo<T>(ComboBox comboBox, IEnumerable<T> items, Func<T, string> selector)
+        {
+            AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+            source.AddRange(items.Select(selector).ToArray());
+
+            comboBox.AutoCompleteCustomSource = source;
+            comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            return comboBox;
+        }
+
     }
 }

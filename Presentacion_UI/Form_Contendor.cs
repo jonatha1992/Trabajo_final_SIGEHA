@@ -17,29 +17,20 @@ namespace Presentacion_UI
         {
             InitializeComponent();
 
-            bLLCategoria = new BLLCategoria();
-            bLLArticulo = new BLLArticulo();
             bLLUnidad = new BLLUnidad();
             bLLUrsa = new BLLUrsa();
-            bLLEstado_Elemento = new BLLEstado_Elemento();
             bLLPermiso = new BLLPermiso();
             bLLBitacora = new BLLBitacora();
         }
 
         Form_Hallazgo form_Hallazgo;
         Form_Entrega form_Entrega;
-        BLLCategoria bLLCategoria;
         BLLPermiso bLLPermiso;
         BLLBitacora bLLBitacora;
-        BLLArticulo bLLArticulo;
         BLLUnidad bLLUnidad;
         BLLUrsa bLLUrsa;
-        BLLEstado_Elemento bLLEstado_Elemento;
 
         public static BEUsuario usuario;
-        public static List<BECategoria> Categorias { get; set; }
-        public static List<BEArticulo> Articulos { get; set; }
-        public static List<BEEstado_Elemento> EstadosElementos { get; set; }
         public static List<BEUrsa> Ursas { get; set; }
         public static List<BEUnidad> Unidades { get; set; }
     
@@ -140,21 +131,6 @@ namespace Presentacion_UI
 
 
 
-   
-        private void entregaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                //form_Entrega = new Form_Entrega(usuario);
-                //form_Entrega.ShowDialog();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void reporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -325,6 +301,22 @@ namespace Presentacion_UI
         private void GestionHallazgo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void GenerarEntrega_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form_Entrega = new Form_Entrega(usuario);
+                form_Entrega.MdiParent = this;
+                form_Entrega.Show();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

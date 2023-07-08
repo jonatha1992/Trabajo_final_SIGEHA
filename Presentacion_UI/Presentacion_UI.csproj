@@ -113,6 +113,7 @@
     <Compile Include="Form_BackUp.designer.cs">
       <DependentUpon>Form_BackUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="BEActa.cs" />
     <Compile Include="TextBoxPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -173,7 +174,7 @@
     <Compile Include="Form_Persona.designer.cs">
       <DependentUpon>Form_Persona.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reporte.cs" />
+    <Compile Include="BEReporte.cs" />
     <Compile Include="Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -42,7 +42,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelEstado = new System.Windows.Forms.Label();
             this.groupBoxDatosHallazgo = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxObservacion = new System.Windows.Forms.CheckBox();
             this.textBoxObservacion = new System.Windows.Forms.TextBox();
             this.buttonFinalizarHallazgo = new System.Windows.Forms.Button();
             this.button_Agregar = new System.Windows.Forms.Button();
@@ -92,7 +92,7 @@
             this.dgvHallazgos.AllowUserToDeleteRows = false;
             this.dgvHallazgos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHallazgos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvHallazgos.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvHallazgos.BackgroundColor = System.Drawing.Color.CadetBlue;
             this.dgvHallazgos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
@@ -159,7 +159,7 @@
             // groupBoxDatosHallazgo
             // 
             this.groupBoxDatosHallazgo.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxDatosHallazgo.Controls.Add(this.label1);
+            this.groupBoxDatosHallazgo.Controls.Add(this.checkBoxObservacion);
             this.groupBoxDatosHallazgo.Controls.Add(this.textBoxObservacion);
             this.groupBoxDatosHallazgo.Controls.Add(this.buttonFinalizarHallazgo);
             this.groupBoxDatosHallazgo.Controls.Add(this.button_Agregar);
@@ -180,11 +180,12 @@
             this.groupBoxDatosHallazgo.Name = "groupBoxDatosHallazgo";
             this.groupBoxDatosHallazgo.TabStop = false;
             // 
-            // label1
+            // checkBoxObservacion
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.checkBoxObservacion, "checkBoxObservacion");
+            this.checkBoxObservacion.Name = "checkBoxObservacion";
+            this.checkBoxObservacion.UseVisualStyleBackColor = true;
+            this.checkBoxObservacion.CheckedChanged += new System.EventHandler(this.checkBoxObservacion_CheckedChanged);
             // 
             // textBoxObservacion
             // 
@@ -458,6 +459,7 @@
             resources.ApplyResources(this.comboBoxArticulo, "comboBoxArticulo");
             this.comboBoxArticulo.FormattingEnabled = true;
             this.comboBoxArticulo.Name = "comboBoxArticulo";
+            this.comboBoxArticulo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxArticulo_KeyDown);
             // 
             // DgvElementos
             // 
@@ -466,7 +468,7 @@
             resources.ApplyResources(this.DgvElementos, "DgvElementos");
             this.DgvElementos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvElementos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.DgvElementos.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DgvElementos.BackgroundColor = System.Drawing.Color.CadetBlue;
             this.DgvElementos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
@@ -598,13 +600,13 @@
         private System.Windows.Forms.Button buttonFinalizarHallazgo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
         private System.Windows.Forms.NumericUpDown NUPCantidad;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxObservacion;
         private System.Windows.Forms.ComboBox comboBoxUrsa;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox checkBoxObservacion;
     }
 }
 

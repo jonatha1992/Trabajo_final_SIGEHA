@@ -55,13 +55,7 @@ namespace MPP
                                   Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                                   Nombre = Convert.ToString(x.Element("Nombre")?.Value),
                               }).FirstOrDefault();
-
-            
-                var articulos = mPPArticulo.ListarTodo();
-
-
-                bCategoria.Articulos = articulos.Where(art => art.Categoria.Id == bCategoria.Id).ToList();
-
+       
 
             }
             else
@@ -84,9 +78,19 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             Articulos = articulos.Where(art => art.Categoria.Id == Convert.ToInt32(x.Element("Id")?.Value)).ToList()
                          }).ToList();
 
+
+                foreach (var categoria in lista)
+                {
+                    categoria.Articulos = articulos.FindAll(x=>x.Categoria.Id == categoria.Id);
+                    
+                    foreach (var art in categoria.Articulos)
+                    {
+                        art.Categoria.Nombre = categoria.Nombre;
+                    }
+                }
+       
             }
             else
             {

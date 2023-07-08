@@ -37,13 +37,13 @@ namespace MPP
 
         public bool Agregar_Elemento_Entrega(BEEntrega entrega, BEElemento elemento)
         {
-            XElement Elemento = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            XElement Elementoxml = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
 
-            if (Elemento != null)
+            if (Elementoxml != null)
             {
-                Elemento.Add(new XElement("IdEntrega", entrega.Id)); // Añade IdEntrega al Elemento
-
-                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
+                Elementoxml.Add(new XElement("IdEntrega", entrega.Id));  // Añade IdEntrega al Elemento
+               
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el Elemento entrega el XML
             }
 
             return false; // No se encontró el Elemento
@@ -51,15 +51,13 @@ namespace MPP
 
         public bool Eliminar_Elemento_Entrega(BEElemento elemento)
         {
-            XElement Elemento = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            XElement Elementoxml = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
 
-            if (Elemento != null)
+            if (Elementoxml != null)
             {
-                Elemento.Element("IdEntrega")?.Remove(); // Elimina el nodo IdEntrega si existe
-
-                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
+                Elementoxml.Element("IdEntrega")?.Remove(); // Elimina el nodo IdEntrega si existe
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el Elemento entrega el XML
             }
-
             return false;
         }
 
@@ -72,7 +70,6 @@ namespace MPP
                 Elemento.SetElementValue("IdEstadoElemento", pElemento.Estado.Id);
                 Elemento.SetElementValue("Descripcion", pElemento.Descripcion);
                 Elemento.SetElementValue("Cantidad", pElemento.Cantidad);
-
                 return conexion.Actualizar("Elementos", pElemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
             }
             return false; // No se encontró el Elemento
@@ -136,8 +133,6 @@ namespace MPP
 
         public List<BEElemento> ListarTodo()
         {
-
-
             List<BEElemento> lista = new List<BEElemento>();
 
             var Consulta = conexion.LeerTodos(NodoPadre).Descendants(NodoContenedor);
@@ -152,6 +147,8 @@ namespace MPP
                              Descripcion = Convert.ToString(x.Element("Descripcion")?.Value),
                              Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value),
                              Estado = new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstado")?.Value)),
+                             Hallazgo= new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value)),
+                             Entrega = new BEEntrega(Convert.ToInt32(x.Element("IdEntrega")?.Value))
                          }).ToList();
             }
 
@@ -172,62 +169,14 @@ namespace MPP
                 bElemento.Descripcion = Convert.ToString(x.Element("Descripcion")?.Value);
                 bElemento.Articulo = mPPArticulo.ListarObjeto(new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)));
                 bElemento.Estado = mPPEstado_Articulo.ListarObjeto(new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstadoElemento")?.Value)));
-           
+                bElemento.Hallazgo = new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value));
+                bElemento.Entrega = new BEEntrega (Convert.ToInt32(x.Element("IdEntrega")?.Value));
             }
             else
             { bElemento = null; }
             return bElemento;
 
         }
-
-        public List<ElementoBusqueda> BusquedaElementos(BEArticulo bEArticulo, string PDescripcion, string LugarHallazgo, DateTime? pDia, int anio, BEUnidad unidad)
-        {
-
-            // Obtén todos los nodos de cada tipo
-            var elementosXml = conexion.LeerTodos("Elemento");
-            var hallazgosXml = conexion.LeerTodos("Hallazgo");
-            var entregasXml = conexion.LeerTodos("Entrega");
-            var articulosXml = conexion.LeerTodos("Articulo");
-            var estadosElementoXml = conexion.LeerTodos("Estado_Elemento");
-
-            // Aquí puedes usar tu lógica de filtrado y combinación como antes, pero usando los XElementos directamente.
-            // Nota: Asegúrate de convertir correctamente los valores articulo su tipo correspondiente.
-            var hallazgosFiltrados = hallazgosXml
-                .Where(h => (int)h.Element("Unidad").Element("Id") == unidad.Id &&
-                            (int)h.Element("Anio") == anio &&
-                            (pDia == null || Convert.ToDateTime(h.Element("FechaHallazgo").Value) == pDia.Value.Date) &&
-                            (LugarHallazgo == "" || ((string)h.Element("LugarHallazgo")).Contains(LugarHallazgo)))
-                .ToList();
-
-            var elementosFiltrados = elementosXml
-                .Where(e => (bEArticulo == null || (int)e.Element("Articulo").Element("Id") == bEArticulo.Id) &&
-                            (PDescripcion == "" || ((string)e.Element("Descripcion")).Contains(PDescripcion)))
-                .ToList();
-
-            var busquedas = from hallazgo in hallazgosFiltrados
-                            join elemento in elementosFiltrados on (int)hallazgo.Element("Id") equals (int)elemento.Element("Hallazgo").Element("Id")
-                            join articulo in articulosXml on (int)elemento.Element("Articulo").Element("Id") equals (int)articulo.Element("Id")
-                            join estado in estadosElementoXml on (int)elemento.Element("Estado").Element("Id") equals (int)estado.Element("Id")
-                            join entrega in entregasXml on (int)elemento.Element("Entrega").Element("Id") equals (int)entrega.Element("Id") into grupoEntrega
-                            from en in grupoEntrega.DefaultIfEmpty()
-                            select new ElementoBusqueda
-                            {
-                                Id = (int)elemento.Element("Id"),
-                                Cantidad = (string)elemento.Element("Cantidad"),
-                                Descripcion = (string)elemento.Element("Descripcion"),
-                                Articulo = (string)articulo.Element("Nombre"),
-                                Estado = (string)estado.Element("Nombre"),
-                                Hallazgo = (string)hallazgo.Element("NroActa"),
-                                Lugar = (string)hallazgo.Element("LugarHallazgo"),
-                                Entrega = (string)en?.Element("NroActa"),
-                                Fecha_hallazgo = (string)hallazgo.Element("FechaHallazgo")
-                            };
-
-            return busquedas.ToList();
-
-        }
-
-
         public List<ElementoBusqueda> BusquedaElementosHallazgo(string nroActa)
         {
             List<ElementoBusqueda> lista = new List<ElementoBusqueda>();

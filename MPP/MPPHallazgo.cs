@@ -28,9 +28,9 @@ namespace MPP
                 new XElement("FechaActa", pHallazgo.FechaActa),
                 new XElement("Nroacta", pHallazgo.NroActa),
                 new XElement("IdUnidad", pHallazgo.Unidad.Id),
-                new XElement("Lugarhallazgo", pHallazgo.LugarHallazgo),
+                new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
                 new XElement("Anio", pHallazgo.Anio),
-                new XElement("Fechahallazgo", pHallazgo.FechaHallazgo),
+                new XElement("FechaHallazgo", pHallazgo.FechaHallazgo),
                 new XElement("Observacion", pHallazgo.Observacion)
                 );
 
@@ -62,9 +62,9 @@ namespace MPP
                     new XElement("FechaActa", pHallazgo.FechaActa),
                     new XElement("Nroacta", pHallazgo.NroActa),
                     new XElement("IdUnidad", pHallazgo.Unidad.Id),
-                    new XElement("Lugarhallazgo", pHallazgo.LugarHallazgo),
+                    new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
                     new XElement("Anio", pHallazgo.Anio),
-                    new XElement("Fechahallazgo", pHallazgo.FechaHallazgo),
+                    new XElement("FechaHallazgo", pHallazgo.FechaHallazgo),
                     new XElement("Observacion", pHallazgo.Observacion)
                 );
 
@@ -92,9 +92,9 @@ namespace MPP
                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                             Unidad = new BEUnidad(Convert.ToInt32(Convert.ToString(x.Element("IdUnidad")?.Value))),
                             NroActa = Convert.ToString(x.Element("Nroacta")?.Value),
-                            FechaHallazgo = Convert.ToDateTime(x.Element("Fechahallazgo")?.Value),
+                            FechaHallazgo = Convert.ToDateTime(x.Element("FechaHallazgo")?.Value),
                             FechaActa = Convert.ToDateTime(x.Element("FechaActa")?.Value),
-                            LugarHallazgo = Convert.ToString(x.Element("Lugarhallazgo")?.Value),
+                            LugarHallazgo = Convert.ToString(x.Element("LugarHallazgo")?.Value),
                             Observacion = Convert.ToString(x.Element("Observacion")?.Value),
                             Anio = Convert.ToInt32(x.Element("Anio")?.Value)
                         }).ToList();
@@ -113,13 +113,11 @@ namespace MPP
             {
                 bEHallazgo.Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value));
                 bEHallazgo.NroActa = Convert.ToString(x.Element("Nroacta")?.Value);
-                bEHallazgo.FechaHallazgo = Convert.ToDateTime(x.Element("Fechahallazgo")?.Value);
-                bEHallazgo.LugarHallazgo = Convert.ToString(x.Element("Lugarhallazgo")?.Value);
+                bEHallazgo.FechaHallazgo = Convert.ToDateTime(x.Element("FechaHallazgo")?.Value);
+                bEHallazgo.LugarHallazgo = Convert.ToString(x.Element("LugarHallazgo")?.Value);
                 bEHallazgo.Anio = Convert.ToInt32(x.Element("Anio")?.Value);
                 bEHallazgo.Observacion = Convert.ToString(x.Element("Observacion")?.Value);
                 bEHallazgo.Unidad = new BEUnidad(Convert.ToInt32(x.Element("IdUnidad")?.Value));
-
-
             }
             else
             { bEHallazgo = null; }
@@ -136,8 +134,7 @@ namespace MPP
             MPPInstructor mPPInstructor = new MPPInstructor();
             MPPEstado_Persona mPPEstado_Persona = new MPPEstado_Persona();
             var EstadosPersona = mPPEstado_Persona.ListarTodo();
-            var personas = mPPPersona.ListarTodo();
-            var jerarquias = mPPEstado_Persona.ListarTodo();
+
 
 
             IEnumerable<XElement> hallazgoPersonasXml = conexion.LeerTodos("Hallazgo_Persona")
@@ -152,14 +149,20 @@ namespace MPP
                     int idPersona = Convert.ToInt32(e.Element("IdPersona").Value);
                     int idEstado = Convert.ToInt32(e.Element("IdEstado").Value);
 
-                    BEPersona persona = personas.Find(p => p.Id == idPersona);
-                    BEEstado_Persona estado = EstadosPersona.Find(ep => ep.Id == idEstado);
-
-                    if (persona != null && estado != null)
+                    if (idEstado == 1)
                     {
-                        persona.EstadoPersona = estado;
-                        bEHallazgo.listaPersonas.Add(persona);
+                        BEInstructor instructor = mPPInstructor.ListarObjeto(new BEInstructor(idPersona));
+                        instructor.EstadoPersona = EstadosPersona.Find(ep => ep.Id == idEstado);
+                        bEHallazgo.listaPersonas.Add(instructor);
+
                     }
+                    else
+                    {
+                        BEPersona ePersona = mPPPersona.ListarObjeto(new BEPersona(idPersona));
+                        ePersona.EstadoPersona = EstadosPersona.Find(ep => ep.Id == idEstado);
+                        bEHallazgo.listaPersonas.Add(ePersona);
+                    }
+
                 }
             }
 
@@ -168,14 +171,15 @@ namespace MPP
 
         public BEHallazgo ListarHallazgoElementos(BEHallazgo bEHallazgo)
         {
-           
+
+            bEHallazgo.listaElementos.Clear();
 
             MPPArticulo mPPArticulo = new MPPArticulo();
             MPPEstado_Elemento mPPEstados = new MPPEstado_Elemento();
+       
 
             var articulos = mPPArticulo.ListarTodo();
             var Estados = mPPEstados.ListarTodo();
-
 
             IEnumerable<XElement> elementosXml = conexion.LeerTodos("Elemento")
                                                .Where(e => e.Element("IdHallazgo")?.Value == bEHallazgo.Id.ToString());

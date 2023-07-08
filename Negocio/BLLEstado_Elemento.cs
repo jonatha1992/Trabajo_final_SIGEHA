@@ -37,5 +37,16 @@ namespace Negocio
         {
             return mPPEstado_Elemento.ListarTodo();
         }
+
+        public List<BEEstado_Elemento> ListarEstadoHallazgo()
+        {
+            var estados = mPPEstado_Elemento.ListarTodo();
+            return  estados.FindAll(x => x.Nombre == "Resguardo" || x.Nombre == "Destruido" );
+        }
+        public List<BEEstado_Elemento> ListarEstadoEntrega()
+        {
+            return mPPEstado_Elemento.ListarTodo().FindAll(x => x.Nombre != "Resguardo" );
+        }
+
     }
 }

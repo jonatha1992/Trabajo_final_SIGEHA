@@ -129,10 +129,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvHallazgos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>656, 35</value>
+    <value>653, 33</value>
   </data>
   <data name="dgvHallazgos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>587, 228</value>
+    <value>587, 276</value>
   </data>
   <data name="dgvHallazgos.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -213,40 +213,31 @@
   <data name="&gt;&gt;labelEstado.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxObservacion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Rounded MT Bold, 10pt</value>
+  <data name="checkBoxObservacion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 183</value>
   </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="checkBoxObservacion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 19</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 188</value>
+  <data name="checkBoxObservacion.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
   </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 1, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 16</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="checkBoxObservacion.Text" xml:space="preserve">
     <value>Observacion:</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;checkBoxObservacion.Name" xml:space="preserve">
+    <value>checkBoxObservacion</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkBoxObservacion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxObservacion.Parent" xml:space="preserve">
     <value>groupBoxDatosHallazgo</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxObservacion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="textBoxObservacion.Font" type="System.Drawing.Font, System.Drawing">
@@ -258,11 +249,17 @@
   <data name="textBoxObservacion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
+  <data name="textBoxObservacion.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="textBoxObservacion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 23</value>
+    <value>418, 50</value>
   </data>
   <data name="textBoxObservacion.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="textBoxObservacion.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;textBoxObservacion.Name" xml:space="preserve">
     <value>textBoxObservacion</value>
@@ -292,7 +289,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonFinalizarHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 234</value>
+    <value>483, 242</value>
   </data>
   <data name="buttonFinalizarHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -331,7 +328,7 @@
     <value>NoControl</value>
   </data>
   <data name="button_Agregar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 234</value>
+    <value>51, 242</value>
   </data>
   <data name="button_Agregar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -370,7 +367,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonEliminar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 234</value>
+    <value>321, 242</value>
   </data>
   <data name="buttonEliminar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -409,7 +406,7 @@
     <value>NoControl</value>
   </data>
   <data name="button_Modificar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 234</value>
+    <value>174, 242</value>
   </data>
   <data name="button_Modificar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -805,7 +802,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>900, 312</value>
+    <value>900, 316</value>
   </data>
   <data name="labelHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1435,13 +1432,13 @@
     <value>False</value>
   </data>
   <data name="DgvElementos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 349</value>
+    <value>653, 338</value>
   </data>
   <data name="DgvElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="DgvElementos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 219</value>
+    <value>588, 238</value>
   </data>
   <data name="DgvElementos.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>

@@ -22,7 +22,7 @@ namespace MPP
           new XElement("Id", NuevoID),
           new XElement("NombreCompleto", bEPersona.NombreCompleto),
           new XElement("DNI", bEPersona.DNI),
-          new XElement("Domcicilio", bEPersona.Domicilio),
+          new XElement("Domicilio", bEPersona.Domicilio),
           new XElement("Ocupacion", bEPersona.Ocupacion),
           new XElement("Telefono", bEPersona.Telefono)
 

@@ -15,7 +15,11 @@ namespace Presentacion_UI
             InitializeComponent();
 
         }
-
+        void cargarGrilla()
+        {
+            DgvBackups.DataSource = null;
+            DgvBackups.DataSource = bLLBackUp.ListarTodo();
+        }
 
 
         BLLBitacora bLLBitacora = new BLLBitacora();
@@ -24,6 +28,7 @@ namespace Presentacion_UI
         {
             var nombre = bLLBackUp.GenerarBackup();
             bLLBitacora.RegistrarEvento(Form_Contenedor.usuario, $"Genero el BackUp {nombre}");
+            cargarGrilla();
             MessageBox.Show($"Se genero el {nombre} con exito ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -40,7 +45,9 @@ namespace Presentacion_UI
 
                 // Registrar el evento de restauración en la bitácora
                 bLLBitacora.RegistrarEvento(Form_Contenedor.usuario, $"Restauro BackUp {bEBackUp.NombreArchivo}");
+                cargarGrilla() ;
                 MessageBox.Show($"Se restauro el {bEBackUp.NombreArchivo} con exito ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             }
         }

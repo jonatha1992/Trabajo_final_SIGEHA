@@ -25,37 +25,41 @@ namespace Negocio
 
         public BEInstructor Agregar(BEInstructor pinstructor)
         {
-            //Verificar el legajo SI EXISTE EN LA BASE DE DATOS
-            var instructor = ListarTodo().Find((x => x.DNI == pinstructor.DNI || x.Legajo == pinstructor.Legajo));
-            if (instructor != null)
-            {
-                pinstructor.Id = instructor.Id;
-                Actualizar(pinstructor);
-                return pinstructor;
-            }
-            else
-            {
-                return mpPinstructor.Agregar(pinstructor);
-            }
+
+            return mpPinstructor.Agregar(pinstructor);
         }
 
         public bool Actualizar(BEInstructor instructor)
         {
             return mpPinstructor.Actualizar(instructor);
         }
-     
 
-        public BEInstructor BuscarPorDNI_legajo(string legajo)
+
+        public BEInstructor BuscarPor_legajo(string legajo)
         {
-            var instructor =  ListarTodo().Find(x => x.Legajo == Convert.ToInt32(legajo));
-            if (instructor != null)
+            int legajoInt;
+            if (int.TryParse(legajo, out legajoInt))
             {
-                instructor = ListarObjeto(instructor);
+                var instructores = ListarTodo();
+                if (instructores != null)
+                {
+                    var instructor = instructores.Find(x => x.Legajo == legajoInt);
+                    if (instructor != null)
+                        instructor = ListarObjeto(instructor);
+                    return instructor;
+                }
             }
-            return instructor;
-
+            return null;
         }
-
+        public bool VerficarExiste_DNI_Legajo(int legajo, string dni)
+        {
+            var instructores = ListarTodo();
+            if (instructores != null)
+            {
+                return instructores.Exists(x => x.Legajo == legajo || x.DNI == dni);
+            }
+            return false;
+        }
 
         public bool Eliminar(BEInstructor instructor)
         {

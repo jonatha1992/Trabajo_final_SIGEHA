@@ -7,6 +7,8 @@ namespace BE
         public BEElemento() { }
         public BEElemento(int id) { Id = id; }
 
+        public BEHallazgo Hallazgo;
+        public BEEntrega Entrega;
 
         public int Id { get; set; }
 

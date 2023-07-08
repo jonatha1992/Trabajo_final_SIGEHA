@@ -61,7 +61,7 @@ namespace MPP
         {
             try
             {
-                var Consulta = conexion.LeerTodos(NodoContenedor);
+                var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Persona");
 
                 List<BEInstructor> lista = new List<BEInstructor>();
 
@@ -75,7 +75,7 @@ namespace MPP
                                  NombreCompleto = Convert.ToString(x.Element("NombreCompleto")?.Value),
                                  DNI = Convert.ToString(x.Element("DNI")?.Value),
                                  Legajo = Convert.ToInt32(x.Element("Legajo")?.Value),
-                                 Jerarquia = new BEJerarquia(Convert.ToInt32(Convert.ToString(x.Element("IdJerarquia")?.Value))),
+                                 Jerarquia = new BEJerarquia(Convert.ToInt32(x.Element("IdJerarquia")?.Value)),
                              }).ToList();
                 }
                 else
@@ -94,16 +94,22 @@ namespace MPP
         public BEInstructor ListarObjeto(BEInstructor instructor)
         {
             MPPJerarquia mPPJerarquia = new MPPJerarquia();
-            MPPPersona mPPPersona = new MPPPersona();
 
-            var persona = mPPPersona.ListarObjeto(instructor);
-            instructor.NombreCompleto = persona.NombreCompleto;
-            instructor.DNI = persona.DNI;
-            instructor.Telefono = persona.Telefono;
-            instructor.Domicilio = persona.Domicilio;
-            instructor.Ocupacion = persona.Ocupacion;
-            instructor.Jerarquia = mPPJerarquia.ListarObjeto(instructor.Jerarquia);
+            var Consulta = conexion.LeerObjeto(NodoContenedor, instructor.Id.ToString());
 
+            if (Consulta != null)
+            {
+                instructor.Id = Convert.ToInt32(Convert.ToString(Consulta.Element("Id")?.Value));
+                instructor.Legajo = Convert.ToInt32(Consulta.Element("Legajo")?.Value);
+                instructor.NombreCompleto = Convert.ToString(Consulta.Element("NombreCompleto")?.Value);
+                instructor.DNI = Convert.ToString(Consulta.Element("DNI")?.Value);
+                instructor.Telefono = Convert.ToString(Consulta.Element("Telefono")?.Value);
+                instructor.Domicilio = Convert.ToString(Consulta.Element("Domicilio")?.Value);
+                instructor.Ocupacion = Convert.ToString(Consulta.Element("Ocupacion")?.Value);
+                instructor.Jerarquia = mPPJerarquia.ListarObjeto(new BEJerarquia(Convert.ToInt32(Consulta.Element("IdJerarquia")?.Value)));
+            }
+            else
+            { instructor = null; }
             return instructor;
         }
     }

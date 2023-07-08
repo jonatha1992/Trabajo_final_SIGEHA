@@ -141,16 +141,9 @@ namespace Seguridad
             {
                 V.Handled = true;
                 MessageBox.Show("No se permiten saltos de linea", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-
             else
-            {
                 V.Handled = false;
-
-
-            }
-
         }
 
         static public string generarCodigo(string Categoria)

@@ -23,7 +23,7 @@ namespace Presentacion_UI
         }
 
         BEPAdreHallazgo ePAdreHallazgo;
-        Acta acta;
+        BEActa acta;
         private void FormImpresion_Load(object sender, EventArgs e)
         {
             try
@@ -35,12 +35,12 @@ namespace Presentacion_UI
                 if (ePAdreHallazgo is BEHallazgo)
                 {
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "Presentacion_UI.ActaHallazgo.rdlc";
-                    acta = new Acta((BEHallazgo)ePAdreHallazgo);
+                    acta = new BEActa((BEHallazgo)ePAdreHallazgo);
                 }
                 else
                 {
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "Presentacion_UI.ActaEntrega.rdlc";
-                    acta = new Acta((BEEntrega)ePAdreHallazgo);
+                    acta = new BEActa((BEEntrega)ePAdreHallazgo);
                 }
 
 

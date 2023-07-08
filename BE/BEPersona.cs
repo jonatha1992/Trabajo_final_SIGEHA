@@ -16,6 +16,12 @@ namespace BE
             DNI = dNI;
         }
 
+        public BEPersona(int id, BEEstado_Persona estado_Persona)
+        {
+            Id = id;
+            EstadoPersona = estado_Persona;
+        }
+
         public int Id { get; set; }
         public string NombreCompleto { get; set; }
         public string DNI { get; set; }

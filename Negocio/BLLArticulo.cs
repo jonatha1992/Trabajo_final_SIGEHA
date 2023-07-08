@@ -2,6 +2,7 @@
 using BE;
 using MPP;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Negocio
 {
@@ -50,22 +51,29 @@ namespace Negocio
 
         public BEArticulo ListarObjeto(BEArticulo Object)
         {
-
             if (Object.Id == 0)
             {
                 return null;
             }
-
             return mpParticulo.ListarObjeto(Object);
         }
 
 
         public List<BEArticulo> ListarTodo()
         {
+      
             return mpParticulo.ListarTodo();
         }
+        public List<BEArticulo> ListarTodo(List<BECategoria> categorias)
+        {
+            List<BEArticulo> articulos = new List<BEArticulo>();
+            foreach (var categoria in categorias)
+            {
+                articulos.AddRange(categoria.Articulos);
+            }
 
-
+            return articulos;
+        }
     }
 }
 

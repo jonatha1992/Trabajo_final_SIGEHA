@@ -114,7 +114,6 @@
             this.textBoxOcupacion.Name = "textBoxOcupacion";
             this.textBoxOcupacion.Size = new System.Drawing.Size(267, 27);
             this.textBoxOcupacion.TabIndex = 4;
-            this.textBoxOcupacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxOcupacion_KeyPress);
             // 
             // labelOcupacion
             // 
@@ -138,7 +137,6 @@
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(191, 25);
             this.textBoxTelefono.TabIndex = 6;
-            this.textBoxTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelefono_KeyPress);
             // 
             // labelTelefono
             // 
@@ -177,7 +175,6 @@
             this.textBoxDomicilio.Name = "textBoxDomicilio";
             this.textBoxDomicilio.Size = new System.Drawing.Size(267, 25);
             this.textBoxDomicilio.TabIndex = 5;
-            this.textBoxDomicilio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDomicilio_KeyPress);
             // 
             // labelDomicilio
             // 
@@ -269,7 +266,7 @@
             this.labelDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDNI.ForeColor = System.Drawing.Color.White;
             this.labelDNI.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDNI.Location = new System.Drawing.Point(106, 15);
+            this.labelDNI.Location = new System.Drawing.Point(111, 13);
             this.labelDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDNI.Name = "labelDNI";
             this.labelDNI.Size = new System.Drawing.Size(35, 15);
@@ -373,7 +370,6 @@
             this.label1.Size = new System.Drawing.Size(107, 18);
             this.label1.TabIndex = 89;
             this.label1.Text = "Intervinientes";
-            this.label1.Visible = false;
             // 
             // panelInstructor
             // 
@@ -569,7 +565,7 @@
             this.panelTestigo.Controls.Add(this.labelDNI);
             this.panelTestigo.Location = new System.Drawing.Point(3, 315);
             this.panelTestigo.Name = "panelTestigo";
-            this.panelTestigo.Size = new System.Drawing.Size(413, 73);
+            this.panelTestigo.Size = new System.Drawing.Size(465, 73);
             this.panelTestigo.TabIndex = 93;
             // 
             // label4
@@ -578,7 +574,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(18, 46);
+            this.label4.Location = new System.Drawing.Point(21, 44);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 15);
@@ -591,7 +587,7 @@
             this.textBoxNombreTestigo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxNombreTestigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxNombreTestigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombreTestigo.Location = new System.Drawing.Point(146, 37);
+            this.textBoxNombreTestigo.Location = new System.Drawing.Point(149, 34);
             this.textBoxNombreTestigo.Multiline = true;
             this.textBoxNombreTestigo.Name = "textBoxNombreTestigo";
             this.textBoxNombreTestigo.Size = new System.Drawing.Size(253, 25);
@@ -603,7 +599,7 @@
             this.textBoxDniTestigo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxDniTestigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxDniTestigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDniTestigo.Location = new System.Drawing.Point(146, 6);
+            this.textBoxDniTestigo.Location = new System.Drawing.Point(149, 3);
             this.textBoxDniTestigo.MaxLength = 10;
             this.textBoxDniTestigo.Multiline = true;
             this.textBoxDniTestigo.Name = "textBoxDniTestigo";
@@ -617,7 +613,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panelTestigo);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 57);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 178);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 176);
             this.flowLayoutPanel1.TabIndex = 95;
             // 
             // Form_Persona
@@ -626,7 +622,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1020, 286);
+            this.ClientSize = new System.Drawing.Size(1020, 287);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonLimpiar);

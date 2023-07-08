@@ -32,7 +32,7 @@ namespace BE
         public List<Elemento> CrearListaElementos(List<BEElemento> bEElementos)
         {
             List<Elemento> lista = new List<Elemento>();
-
+            
             foreach (BEElemento item in bEElementos)
             {
                 Elemento elemento = new Elemento();

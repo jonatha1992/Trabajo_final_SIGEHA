@@ -3,6 +3,8 @@ using BE;
 using MPP;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Negocio
 {
@@ -15,35 +17,51 @@ namespace Negocio
             mpPPersonas = new MPPPersona();
         }
 
+        public bool VerficarSiExisteDni(string dni)
+        {
+            var personas = ListarTodo();
+            if (personas != null)
+            {
+                return personas.Exists(x => x.DNI == dni);
+            }
+
+            return false;
+        }
+
         public bool AgregarPersonaHallazgo(BEHallazgo hallazgo, BEPersona ePersona)
         {
-            if (ePersona.Id == 0)
+            if (ePersona.Id != 0)
             {
-                var personas = ListarTodo();
-                if (personas != null)
-                {
-                    if (personas.Exists(x => x.DNI == ePersona.DNI))
-                    {
-                        ePersona.Id = ListarTodo().Find(x => x.DNI == ePersona.DNI).Id;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                }
+                return mpPPersonas.AgregarPersonaHallazgo(hallazgo, ePersona);
+                //var personas = ListarTodo();
+                //if (personas != null)
+                //{
+                //    if (personas.Exists(x => x.DNI == ePersona.DNI))
+                //    {
+                //        ePersona.Id = personas.Find(x => x.DNI == ePersona.DNI).Id;
+                //    }
+                //    else
+                //    {
+                //        return false;
+                //    }
+                //}
             }
-            return mpPPersonas.AgregarPersonaHallazgo(hallazgo, ePersona);
+            return false; ;
         }
 
         public bool AgregarPersonaEntrega(BEEntrega entrega, BEPersona ePersona)
         {
-
-            if (ePersona.Id == 0)
+            if (ePersona.Id != 0)
             {
-                ePersona.Id = ListarTodo().Find(x => x.DNI == ePersona.DNI).Id;
+                //var personas = ListarTodo();
+                //if (personas != null)
+                //{
+                //    ePersona.Id = personas.Find(x => x.DNI == ePersona.DNI).Id;
+
+                //}
+                return mpPPersonas.AgregarPersonaEntrega(entrega, ePersona);
             }
-            return mpPPersonas.AgregarPersonaEntrega(entrega, ePersona);
+            return false;
         }
 
         public bool ElimnarPersonaHallazgo(BEHallazgo hallazgo, BEPersona persona)
@@ -58,21 +76,7 @@ namespace Negocio
 
         public BEPersona Agregar(BEPersona persona)
         {
-
-            //Verificar el legajo SI EXISTE EN LA BASE DE DATOS
-            var Personabuscada = ListarTodo().Find((x => x.DNI == persona.DNI ));
-        
-            if (Personabuscada != null)
-            {
-                persona.Id = Personabuscada.Id;
-                Actualizar(persona);
-                return persona;
-
-            }
-            else
-            {
-                return mpPPersonas.Agregar(persona); //AGREGAR
-            }
+            return mpPPersonas.Agregar(persona);
         }
 
         public bool Actualizar(BEPersona Object)
@@ -98,7 +102,13 @@ namespace Negocio
 
         public BEPersona BuscarPorDNI(string dni)
         {
-            return ListarTodo().Find(x => x.DNI == dni);
+            var personas = ListarTodo();
+            if (personas != null)
+            {
+                var persona = personas.Find(x => x.DNI == dni);
+                return persona;
+            }
+            return null;
         }
         public BEInstructor ConvertirPersona_A_Instructor(BEPersona bEPersona, int legajo, BEJerarquia bEJerarquia)
         {
