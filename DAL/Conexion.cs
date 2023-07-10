@@ -245,14 +245,14 @@ namespace DAL
                     }
                 }
 
-                //// Elimina los elementos existentes que no se encuentren en el nuevoElemento
-                //foreach (XElement existingElement in elementoAActualizar.Elements().ToList())
-                //{
-                //    if (!nuevoElemento.Elements().Any(e => e.Name == existingElement.Name))
-                //    {
-                //        existingElement.Remove();
-                //    }
-                //}
+                // Elimina los elementos existentes que no se encuentren en el nuevoElemento
+                foreach (XElement existingElement in elementoAActualizar.Elements().ToList())
+                {
+                    if (!nuevoElemento.Elements().Any(e => e.Name == existingElement.Name))
+                    {
+                        existingElement.Remove();
+                    }
+                }
 
                 xmlDoc.Save(XmlFilePathBaseDatos);
 
