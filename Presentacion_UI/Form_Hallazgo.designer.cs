@@ -387,6 +387,7 @@
             // 
             // comboBoxEstado
             // 
+            this.comboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxEstado, "comboBoxEstado");
             this.comboBoxEstado.FormattingEnabled = true;
             this.comboBoxEstado.Name = "comboBoxEstado";

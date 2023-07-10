@@ -110,9 +110,8 @@
             this.textBoxOcupacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxOcupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxOcupacion.Location = new System.Drawing.Point(151, 64);
-            this.textBoxOcupacion.Multiline = true;
             this.textBoxOcupacion.Name = "textBoxOcupacion";
-            this.textBoxOcupacion.Size = new System.Drawing.Size(267, 27);
+            this.textBoxOcupacion.Size = new System.Drawing.Size(267, 21);
             this.textBoxOcupacion.TabIndex = 4;
             // 
             // labelOcupacion
@@ -121,7 +120,7 @@
             this.labelOcupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelOcupacion.ForeColor = System.Drawing.Color.White;
             this.labelOcupacion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelOcupacion.Location = new System.Drawing.Point(62, 74);
+            this.labelOcupacion.Location = new System.Drawing.Point(62, 69);
             this.labelOcupacion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelOcupacion.Name = "labelOcupacion";
             this.labelOcupacion.Size = new System.Drawing.Size(79, 15);
@@ -133,9 +132,8 @@
             this.textBoxTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTelefono.Location = new System.Drawing.Point(151, 130);
-            this.textBoxTelefono.Multiline = true;
             this.textBoxTelefono.Name = "textBoxTelefono";
-            this.textBoxTelefono.Size = new System.Drawing.Size(191, 25);
+            this.textBoxTelefono.Size = new System.Drawing.Size(191, 21);
             this.textBoxTelefono.TabIndex = 6;
             // 
             // labelTelefono
@@ -144,7 +142,7 @@
             this.labelTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTelefono.ForeColor = System.Drawing.Color.White;
             this.labelTelefono.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelTelefono.Location = new System.Drawing.Point(74, 138);
+            this.labelTelefono.Location = new System.Drawing.Point(74, 133);
             this.labelTelefono.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTelefono.Name = "labelTelefono";
             this.labelTelefono.Size = new System.Drawing.Size(67, 15);
@@ -171,9 +169,8 @@
             this.textBoxDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDomicilio.Location = new System.Drawing.Point(150, 98);
-            this.textBoxDomicilio.Multiline = true;
             this.textBoxDomicilio.Name = "textBoxDomicilio";
-            this.textBoxDomicilio.Size = new System.Drawing.Size(267, 25);
+            this.textBoxDomicilio.Size = new System.Drawing.Size(267, 21);
             this.textBoxDomicilio.TabIndex = 5;
             // 
             // labelDomicilio
@@ -182,7 +179,7 @@
             this.labelDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDomicilio.ForeColor = System.Drawing.Color.White;
             this.labelDomicilio.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDomicilio.Location = new System.Drawing.Point(69, 106);
+            this.labelDomicilio.Location = new System.Drawing.Point(69, 103);
             this.labelDomicilio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDomicilio.Name = "labelDomicilio";
             this.labelDomicilio.Size = new System.Drawing.Size(72, 15);
@@ -266,7 +263,7 @@
             this.labelDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDNI.ForeColor = System.Drawing.Color.White;
             this.labelDNI.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDNI.Location = new System.Drawing.Point(111, 13);
+            this.labelDNI.Location = new System.Drawing.Point(111, 8);
             this.labelDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDNI.Name = "labelDNI";
             this.labelDNI.Size = new System.Drawing.Size(35, 15);
@@ -392,7 +389,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(21, 75);
+            this.label3.Location = new System.Drawing.Point(21, 71);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 15);
@@ -407,9 +404,8 @@
             this.textBoxDniInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDniInstructor.Location = new System.Drawing.Point(150, 34);
             this.textBoxDniInstructor.MaxLength = 10;
-            this.textBoxDniInstructor.Multiline = true;
             this.textBoxDniInstructor.Name = "textBoxDniInstructor";
-            this.textBoxDniInstructor.Size = new System.Drawing.Size(170, 25);
+            this.textBoxDniInstructor.Size = new System.Drawing.Size(170, 21);
             this.textBoxDniInstructor.TabIndex = 10;
             // 
             // label6
@@ -418,7 +414,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(107, 44);
+            this.label6.Location = new System.Drawing.Point(107, 38);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 15);
@@ -431,7 +427,7 @@
             this.labelJerarquia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelJerarquia.ForeColor = System.Drawing.Color.White;
             this.labelJerarquia.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelJerarquia.Location = new System.Drawing.Point(74, 106);
+            this.labelJerarquia.Location = new System.Drawing.Point(74, 104);
             this.labelJerarquia.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelJerarquia.Name = "labelJerarquia";
             this.labelJerarquia.Size = new System.Drawing.Size(72, 15);
@@ -458,9 +454,8 @@
             this.textBoxNombreInstructor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxNombreInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNombreInstructor.Location = new System.Drawing.Point(149, 67);
-            this.textBoxNombreInstructor.Multiline = true;
             this.textBoxNombreInstructor.Name = "textBoxNombreInstructor";
-            this.textBoxNombreInstructor.Size = new System.Drawing.Size(286, 25);
+            this.textBoxNombreInstructor.Size = new System.Drawing.Size(286, 21);
             this.textBoxNombreInstructor.TabIndex = 11;
             // 
             // label2
@@ -469,7 +464,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(87, 12);
+            this.label2.Location = new System.Drawing.Point(87, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
@@ -484,9 +479,8 @@
             this.textBoxLegajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLegajo.Location = new System.Drawing.Point(151, 2);
             this.textBoxLegajo.MaxLength = 10;
-            this.textBoxLegajo.Multiline = true;
             this.textBoxLegajo.Name = "textBoxLegajo";
-            this.textBoxLegajo.Size = new System.Drawing.Size(170, 25);
+            this.textBoxLegajo.Size = new System.Drawing.Size(170, 21);
             this.textBoxLegajo.TabIndex = 9;
             // 
             // panelDescubridor
@@ -512,7 +506,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(18, 42);
+            this.label8.Location = new System.Drawing.Point(18, 36);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(125, 15);
@@ -526,9 +520,8 @@
             this.textBoxNombreDescr_Prop.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxNombreDescr_Prop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNombreDescr_Prop.Location = new System.Drawing.Point(151, 32);
-            this.textBoxNombreDescr_Prop.Multiline = true;
             this.textBoxNombreDescr_Prop.Name = "textBoxNombreDescr_Prop";
-            this.textBoxNombreDescr_Prop.Size = new System.Drawing.Size(267, 25);
+            this.textBoxNombreDescr_Prop.Size = new System.Drawing.Size(267, 21);
             this.textBoxNombreDescr_Prop.TabIndex = 3;
             // 
             // textBoxDniDescubridor
@@ -539,9 +532,8 @@
             this.textBoxDniDescubridor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDniDescubridor.Location = new System.Drawing.Point(151, 0);
             this.textBoxDniDescubridor.MaxLength = 10;
-            this.textBoxDniDescubridor.Multiline = true;
             this.textBoxDniDescubridor.Name = "textBoxDniDescubridor";
-            this.textBoxDniDescubridor.Size = new System.Drawing.Size(170, 25);
+            this.textBoxDniDescubridor.Size = new System.Drawing.Size(170, 21);
             this.textBoxDniDescubridor.TabIndex = 2;
             // 
             // label7
@@ -550,7 +542,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(68, 10);
+            this.label7.Location = new System.Drawing.Point(68, 6);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 15);
@@ -574,7 +566,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(21, 44);
+            this.label4.Location = new System.Drawing.Point(21, 39);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 15);
@@ -588,9 +580,8 @@
             this.textBoxNombreTestigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxNombreTestigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNombreTestigo.Location = new System.Drawing.Point(149, 34);
-            this.textBoxNombreTestigo.Multiline = true;
             this.textBoxNombreTestigo.Name = "textBoxNombreTestigo";
-            this.textBoxNombreTestigo.Size = new System.Drawing.Size(253, 25);
+            this.textBoxNombreTestigo.Size = new System.Drawing.Size(253, 21);
             this.textBoxNombreTestigo.TabIndex = 8;
             // 
             // textBoxDniTestigo
@@ -601,9 +592,8 @@
             this.textBoxDniTestigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDniTestigo.Location = new System.Drawing.Point(149, 3);
             this.textBoxDniTestigo.MaxLength = 10;
-            this.textBoxDniTestigo.Multiline = true;
             this.textBoxDniTestigo.Name = "textBoxDniTestigo";
-            this.textBoxDniTestigo.Size = new System.Drawing.Size(170, 25);
+            this.textBoxDniTestigo.Size = new System.Drawing.Size(170, 21);
             this.textBoxDniTestigo.TabIndex = 7;
             // 
             // flowLayoutPanel1
@@ -613,7 +603,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panelTestigo);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 57);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 176);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 175);
             this.flowLayoutPanel1.TabIndex = 95;
             // 
             // Form_Persona
@@ -622,7 +612,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1020, 287);
+            this.ClientSize = new System.Drawing.Size(1020, 289);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonLimpiar);

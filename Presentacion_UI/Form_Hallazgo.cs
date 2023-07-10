@@ -1,6 +1,4 @@
 ﻿using BE;
-using DocumentFormat.OpenXml.InkML;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Negocio;
 using Seguridad;
 using System;
@@ -30,7 +28,7 @@ namespace Presentacion_UI
 
 
             listaCategorias = bLLcategorias.ListarTodo();
-            listaArticulos = bLLArticulos.ListarTodo(listaCategorias);
+            listaArticulos = bLLArticulos.ListarTodo();
             ListabEEstadoElementos = bLLEstado_elementos.ListarEstadoHallazgo();
         }
 
@@ -111,54 +109,50 @@ namespace Presentacion_UI
             comboBoxArticulo = Utilidades.SetAutoCompleteCombo(comboBoxArticulo, listaArticulos, articulo => articulo.Nombre);
 
         }
+
         bool VerificarCamposElementos()
         {
-            if (comboBoxCategoria.Text != "Seleccione")
+            if (comboBoxCategoria.Text == "Seleccione" || !listaCategorias.Exists( x=>x.Nombre == comboBoxCategoria.Text))
             {
-                if (comboBoxArticulo.Text != "Seleccione")
-                {
-                    if (textBoxDescripcion.Text != "")
-                    {
-                        // if (textBoxCantidad.Text != "")
-                        if (NUPCantidad.Text != "0")
-                        {
-                            if (comboBoxEstado.Text != "Seleccione") { return true; }
-                            else
-                            {
-                                MessageBox.Show("Seleccione el estado del elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return false;
-
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Complete la cantidad ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Complete la descripción del elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Seleccione el Articulo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccione el Categoria de elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione la Categoría de elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
+
+            if (comboBoxArticulo.Text == "Seleccione" || !listaArticulos.Exists(x => x.Nombre == comboBoxArticulo.Text))
+            {
+                MessageBox.Show("Seleccione el Articulo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (textBoxDescripcion.Text == "")
+            {
+                MessageBox.Show("Complete la descripción del elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (NUPCantidad.Text == "0")
+            {
+                MessageBox.Show("Ingrese una cantidad válida", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (comboBoxEstado.Text == "Seleccione")
+            {
+                MessageBox.Show("Seleccione el estado del elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            return true;
         }
+
+
+
+        
 
         void HabilitarElemento()
         {
 
-            if (SeleccionElemento)
+            if (SeleccionElemento) // modo creacion
             {
                 if (bEElementoSeleccionado != null)
                 {
@@ -274,9 +268,18 @@ namespace Presentacion_UI
         }
         void ComboBox()
         {
-            if (SeleccionHallazgo)
+            if (SeleccionHallazgo) // si esta en modo creacion
             {
                 comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
+            }
+            else 
+            {
+                comboBoxCategoria.Text = "Seleccione";
+                comboBoxArticulo.Text = "Seleccione";
+                comboBoxEstado.Text = "Seleccione";
+                textBoxDescripcion.Text = "";
+                NUPCantidad.Text = "1";
+
             }
         }
         bool VerificarCantidadPersonas()
@@ -301,25 +304,25 @@ namespace Presentacion_UI
         {
             if (SeleccionHallazgo)
             {
-
-                if (ModoCreacion)// SI ESTA EN MODO CREACION
+                if (ModoCreacion)
                 {
+                    // Modo de creación
                     button_Agregar.Visible = false;
                     buttonEliminar.Visible = true;
                     button_Modificar.Visible = true;
                     buttonFinalizarHallazgo.Visible = true;
                     groupBoxDatosElementos.Enabled = true;
                     buttonCargarPersonas.Visible = true;
-
                 }
-                else //SI NO ESTA EN MODO CREACION
+                else
                 {
+                    // Modo de visualización
                     groupBoxDatosElementos.Enabled = false;
                     groupBoxDatosHallazgo.Enabled = false;
                     buttonImprimir.Visible = false;
-
+                    button_Modificar.Visible = false;
+                    buttonEliminar.Visible = false;
                 }
-
 
                 if (VerificarCantidadPersonas())
                 {
@@ -328,29 +331,15 @@ namespace Presentacion_UI
                     if (bEHallazgoSeleccionado.listaElementos?.Count > 0)
                     {
                         buttonImprimir.Visible = true;
-
                     }
                 }
                 else
                 {
                     buttonCargarPersonas.BackColor = Color.Red;
                 }
-
-
-                if (bEHallazgoSeleccionado?.listaElementos?.Count > 0)
-                {
-                    buttonImprimir.Visible = true;
-                }
-                else
-                {
-                    buttonImprimir.Visible = false;
-                }
-
-
             }
-            else // si no se selecciono ningun hallazgo
+            else // vuelve a estado inicial
             {
-
                 button_Agregar.Visible = true;
                 groupBoxDatosHallazgo.Enabled = true;
                 groupBoxDatosElementos.Enabled = false;
@@ -359,8 +348,12 @@ namespace Presentacion_UI
                 buttonCargarPersonas.Visible = false;
                 buttonImprimir.Visible = false;
                 buttonFinalizarHallazgo.Visible = false;
+                btnEliminarElemento.Visible = false;
+                btnModificarElemento.Visible = false;
             }
         }
+
+
 
         void Dgv()
         {
@@ -399,7 +392,7 @@ namespace Presentacion_UI
                 this.dgvHallazgos.Columns["FechaActa"].Visible = false;
                 this.dgvHallazgos.Columns["Id"].Visible = false;
                 this.dgvHallazgos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                this.dgvHallazgos.RowTemplate.Height = 30;
+                this.dgvHallazgos.RowTemplate.Height = 32;
                 this.dgvHallazgos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
 
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
@@ -453,7 +446,7 @@ namespace Presentacion_UI
 
         bool VerficarCampos()
         {
-            if (comboBoxUnidad.Text == "" || comboBoxUrsa.Text == "" || dateTimePickerFechaHallazgo.Text == "" || textBoxLugar.Text == "" || textBoxNroActa.Text == "")
+            if (comboBoxUnidad.Text == "" || comboBoxUrsa.Text == "" || dateTimePickerFechaHallazgo.Text == "" || textBoxLugar.Text == "" || textBoxNroActa.Text == "" || !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -694,64 +687,60 @@ namespace Presentacion_UI
 
 
         }
+        
+
         void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
         {
             try
             {
-                if (bEHallazgoSeleccionado.listaElementos == null || bEHallazgoSeleccionado.listaElementos?.Count == 0)
+                if (bEHallazgoSeleccionado.listaElementos == null || bEHallazgoSeleccionado.listaElementos.Count == 0)
                 {
-                    var result = MessageBox.Show("El Hallazgo no contiene elementos \n\n¿Desea finalizar la carga?\n\n Si decide finalizar, ¡se borrara el Hallazgo creado!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var result = MessageBox.Show("El Hallazgo no contiene elementos.\n\n¿Desea finalizar la carga?\n\nSi decide finalizar, ¡se borrará el Hallazgo creado!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         bLLHallazgo.Eliminar(bEHallazgoSeleccionado);
-                        ModoCreacion = false;
-                        bEHallazgoSeleccionado = null;
-                        SeleccionHallazgo = false;
-                        SeleccionElemento = false;
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        CargarGrillaElementos();
-                        limpiarCamposHallazgos();
+                        FinalizarCarga();
                     }
                 }
-                else if (bEHallazgoSeleccionado.listaPersonas == null || bEHallazgoSeleccionado.listaPersonas?.Count == 0)
+                else if (bEHallazgoSeleccionado.listaPersonas == null || bEHallazgoSeleccionado.listaPersonas.Count == 0)
                 {
-                    var result = MessageBox.Show("El Hallazgo no contiene el minimo de intervinientes para imprimir el Acta\n\n¿Desea finalizar la carga?\n\n Si decide finalizar, ¡No podra imprimir el Hallazgo!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var result = MessageBox.Show("El Hallazgo no contiene el mínimo de intervinientes para imprimir el Acta.\n\n¿Desea finalizar la carga?\n\nSi decide finalizar, ¡No podrá imprimir el Hallazgo!", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        ModoCreacion = false;
-                        bEHallazgoSeleccionado = null;
-                        SeleccionHallazgo = false;
-                        SeleccionElemento = false;
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        CargarGrillaElementos();
-                        limpiarCamposHallazgos();
+                        FinalizarCarga();
                     }
                 }
-
                 else
                 {
                     var result = MessageBox.Show("¿Desea finalizar el Hallazgo?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        ModoCreacion = false;
-                        bEHallazgoSeleccionado = null;
-                        SeleccionHallazgo = false;
-                        SeleccionElemento = false;
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        CargarGrillaElementos();
-                        limpiarCamposHallazgos();
+                        FinalizarCarga();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha surgido un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        void FinalizarCarga()
+        {
+            ModoCreacion = false;
+            bEHallazgoSeleccionado = null;
+            bEElementoSeleccionado = null;
+            SeleccionHallazgo = false;
+            SeleccionElemento = false;
+            Habilitar();
+            CargarGrillaHallazgos();
+            CargarGrillaElementos();
+            limpiarCamposHallazgos();
 
         }
+
+
+
 
         #endregion
         #region "Combobox Funciones"

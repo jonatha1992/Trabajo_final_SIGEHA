@@ -1,0 +1,22 @@
+Hacer 
+
+combobox de articulos hallazgos colocarlo en dropdown
+cuandos se realiza el mapeo del hallazgo y la entrega siempre conversion de la hora de 24 hs con el formato español
+verificar cuando esten vacios el combo box de articulo verificar que tenga un nombre de un articulo vigente
+verificacion de nombres completos en formulario de personas para que sean solo letras y no caracteres especiales
+agrandar el dgv de hallazgos para que se vea en una fila bien 2cm mas 
+verificacion de DNI Y PASSPORTE EN LOS TEXTOS DE LAS PERSONAS Y CANTIDAD DE CARACTERES
+el mes en el report viewer tiene que el nombre del mes en hallazgo
+el articulo en la categoria  el nombre no se puede ver en el hallazgo
+limpiar controles en los datos de elementos una vez que se finaliza el hallazgo, se muestra el boton modificar y eliminar de datos de elemento
+el boton de sacar de entrega tiene que aparecer una vez que esten seleccionar los elementos en la busqueda y ver en la entrega que cuando se seleecione dos veces la celda del hallazgo me tiene que traer todos los elementos del hallazgo o buscar el hallazgo o ver como  vincular 
+en el formulario contenedor general que cuando este abierto un formulario y cierre el que esta abierto
+si esta coloca de nuevo buscar tiene que seleccionar los elementos que estan dentro de la entrega buscarlo el datagridview de busquedas y seleccionarlo
+
+por que el datagrid view  primero se coloca mas alta las filas y luego se coloca mas chicas
+
+
+
+
+
+

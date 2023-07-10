@@ -402,4 +402,88 @@
     <Usuario>admin</Usuario>
     <Mensaje>Inicio de sesión</Mensaje>
   </Evento>
+  <Evento>
+    <Id>68</Id>
+    <Fecha>09-07-2023 01:56:22</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Genero el BackUp BackUp_09-07-2023 01-56-10.xml</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>69</Id>
+    <Fecha>09-07-2023 02:44:19</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>70</Id>
+    <Fecha>09-07-2023 04:29:37</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>71</Id>
+    <Fecha>09-07-2023 04:56:59</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>72</Id>
+    <Fecha>09-07-2023 14:30:53</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>73</Id>
+    <Fecha>09-07-2023 14:32:10</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>74</Id>
+    <Fecha>09-07-2023 14:38:01</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>75</Id>
+    <Fecha>09-07-2023 14:45:59</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>76</Id>
+    <Fecha>09-07-2023 14:50:38</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>77</Id>
+    <Fecha>09-07-2023 20:36:18</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>78</Id>
+    <Fecha>09-07-2023 22:17:48</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>79</Id>
+    <Fecha>09-07-2023 22:24:52</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>80</Id>
+    <Fecha>09-07-2023 22:45:18</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
+  <Evento>
+    <Id>81</Id>
+    <Fecha>09-07-2023 23:47:28</Fecha>
+    <Usuario>admin</Usuario>
+    <Mensaje>Cierra sesión</Mensaje>
+  </Evento>
 </Bitacora>

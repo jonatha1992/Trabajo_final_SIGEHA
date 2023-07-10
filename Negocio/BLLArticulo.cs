@@ -64,16 +64,7 @@ namespace Negocio
       
             return mpParticulo.ListarTodo();
         }
-        public List<BEArticulo> ListarTodo(List<BECategoria> categorias)
-        {
-            List<BEArticulo> articulos = new List<BEArticulo>();
-            foreach (var categoria in categorias)
-            {
-                articulos.AddRange(categoria.Articulos);
-            }
-
-            return articulos;
-        }
+        
     }
 }
 

@@ -1,6 +1,4 @@
 ﻿using BE;
-using ClosedXML.Excel;
-using DocumentFormat.OpenXml.InkML;
 using Negocio;
 using Seguridad;
 using System;
@@ -24,7 +22,7 @@ namespace Presentacion_UI
             Usuario = User;
 
             ListaCategorias = bLLCategorias.ListarTodo();
-            ListaArticulos = bLLArticulo.ListarTodo(ListaCategorias);
+            ListaArticulos = bLLArticulo.ListarTodo();
 
         }
 
@@ -42,7 +40,7 @@ namespace Presentacion_UI
 
 
         bool SeleccionEntrega = false;
-        bool SeleccionElementoBusqueda = false;
+        bool SeleccionElementoEntrega = false;
         bool ModoCreacion = false;
 
         BLLEntrega bLLEntrega;
@@ -135,6 +133,7 @@ namespace Presentacion_UI
                     buttonFinalizar.Visible = true;
                     buttonCargarPersonas.Visible = true;
                     buttonAgregarEntrega.Visible = true;
+                    buttonEliminarDeEntrega.Visible = true;
                     dataGridViewEntregas.Enabled = false;
 
                 }
@@ -142,9 +141,10 @@ namespace Presentacion_UI
                 {
                     buttonAgregar.Visible = false;
                     buttonEliminar.Visible = false;
-                    buttonAgregarEntrega.Visible = false;
                     buttonFinalizar.Visible = false;
                     buttonModificar.Visible = false;
+                    buttonAgregarEntrega.Visible = false;
+                    buttonEliminarDeEntrega.Visible = false;
                     dataGridViewEntregas.Enabled = true;
                 }
 
@@ -163,12 +163,6 @@ namespace Presentacion_UI
                     buttonCargarPersonas.BackColor = Color.Red;
                 }
 
-                //if (bEEntregaSeleccionada?.listaElementos?.Count > 0)
-                //{
-                //    buttonImprimir.Visible = true;
-                //}
-                //else buttonImprimir.Visible = false;
-
             }
             else
             {
@@ -176,6 +170,7 @@ namespace Presentacion_UI
                 buttonModificar.Visible = false;
                 buttonEliminar.Visible = false;
                 buttonAgregarEntrega.Visible = false;
+                buttonEliminarDeEntrega.Visible = false;
                 buttonCargarPersonas.Visible = false;
                 buttonImprimir.Visible = false;
                 buttonFinalizar.Visible = false;
@@ -239,8 +234,6 @@ namespace Presentacion_UI
                 DgvBusqueda.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                 DgvBusqueda.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
                 DgvBusqueda.ClearSelection();
-
-
             }
             else
             {
@@ -251,6 +244,7 @@ namespace Presentacion_UI
         void CargarGrillaElementosEntrega()
         {
             DgvElementosEntrega.DataSource = null;
+            DgvElementosEntrega.Columns["Sel"].Visible = ModoCreacion;
 
             if (SeleccionEntrega)
             {
@@ -267,17 +261,18 @@ namespace Presentacion_UI
 
                 if (bEEntregaSeleccionada != null && bEEntregaSeleccionada.listaElementos?.Count > 0)
                 {
+                    //DgvElementosEntrega.Columns["Sel"].Visible = ModoCreacion;
+                    DgvElementosEntrega.Columns["Sel"].Width = 20;
                     DgvElementosEntrega.Columns["Id"].Width = 30;
                     DgvElementosEntrega.Columns["Cantidad"].Width = 45;
                     DgvElementosEntrega.Columns["Estado"].Width = 60;
                     DgvElementosEntrega.Columns["Articulo"].Width = 80;
-                    this.DgvElementosEntrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    this.DgvElementosEntrega.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-                    this.DgvElementosEntrega.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                    this.DgvElementosEntrega.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
-                    this.DgvElementosEntrega.DefaultCellStyle.Font = new Font("Arial", 8F);
-
-                    this.DgvElementosEntrega.ClearSelection();
+                    DgvElementosEntrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    DgvElementosEntrega.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                    DgvElementosEntrega.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+                    DgvElementosEntrega.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
+                    DgvElementosEntrega.DefaultCellStyle.Font = new Font("Arial", 8F);
+                    DgvElementosEntrega.ClearSelection();
                 }
                 else
                 {
@@ -295,6 +290,7 @@ namespace Presentacion_UI
                             }
                         }
                     }
+
 
                 }
             }
@@ -451,6 +447,7 @@ namespace Presentacion_UI
 
         }
 
+
         #endregion
 
         #region "Botones"
@@ -509,6 +506,7 @@ namespace Presentacion_UI
                 {
                     Habilitar();
                     CargarGrillaEntregas();
+                    SeleccionarEntrega();    
                     MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -590,19 +588,18 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         private void buttonFinalizar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (bEEntregaSeleccionada.listaElementos == null || bEEntregaSeleccionada.listaElementos?.Count == 0)
+                if (bEEntregaSeleccionada.listaElementos == null || bEEntregaSeleccionada.listaElementos.Count == 0)
                 {
-                    var result = MessageBox.Show("La Entrega no contiene elementos \n\n¿Desea finalizar la carga? \n\n Si decide finalizar se borrara la Entrega", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var result = MessageBox.Show("La Entrega no contiene elementos.\n\n¿Desea finalizar la carga?\n\nSi decide finalizar, se borrará la Entrega", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        bLLEntrega.Eliminar(bEEntregaSeleccionada);
                         ModoCreacion = false;
-                        //bEEntregaSeleccionada = null;
-                        //SeleccionEntrega = false;
+                        bLLEntrega.Eliminar(bEEntregaSeleccionada);
                         LimpiarCamposEntrega();
                         Habilitar();
                         CargarGrillaEntregas();
@@ -612,62 +609,32 @@ namespace Presentacion_UI
                 }
                 else
                 {
-                    var result = MessageBox.Show("¿Desea finalizar el Entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var result = MessageBox.Show("¿Desea finalizar la Entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         ModoCreacion = false;
-                        //bEEntregaSeleccionada = null;
-                        //SeleccionEntrega = false;
                         LimpiarCamposEntrega();
                         Habilitar();
                         CargarGrillaEntregas();
                         CargarGrillaElementosEntrega();
                         LimpiarbBusqueda();
-
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha surgido un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         #endregion
 
         #region "Acciones Datagrid y Combobox"
 
-        private void comboBoxUrsa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (Usuario.Rol == "ADMIN")
-            //{
 
-            //    bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
-            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            //}
-            //else if (Usuario.Rol == "REGION")
-            //{
-            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            //}
-
-
-        }
         private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (Usuario.Rol == "ADMIN")
-            //{
-            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-            //    LimpiarCamposEntrega();
-            //    CargarGrillaEntregas();
-            //    Habilitar();
-            //}
-            //else if (Usuario.Rol == "REGION")
-            //{
-            //    bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-            //    LimpiarCamposEntrega();
-            //    CargarGrillaEntregas();
-            //    Habilitar();
-            //}
 
             bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
             LimpiarCamposEntrega();
@@ -683,10 +650,7 @@ namespace Presentacion_UI
             {
                 CargarGrillaEntregas();
             }
-            //if (!SeleccionEntrega && Usuario.Rol == "UNIDAD")
-            //{
-            //    ColocarNumero();
-            //}
+
         }
 
         #endregion
@@ -803,6 +767,7 @@ namespace Presentacion_UI
         private void checkBoxLugar_CheckedChanged(object sender, EventArgs e)
         {
             textBoxLugar.Enabled = checkBoxLugar.Checked;
+            textBoxLugar.Text = checkBoxLugar.Checked ? textBoxLugar.Text : string.Empty;
         }
 
         private void checkBoxCatetegoria_CheckedChanged(object sender, EventArgs e)
@@ -817,7 +782,9 @@ namespace Presentacion_UI
 
         private void checkBoxDescripcion_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxDescripcion.Enabled = checkBoxDescripcion.Enabled;
+            textBoxDescripcion.Enabled = checkBoxDescripcion.Checked;
+            textBoxDescripcion.Text = checkBoxDescripcion.Checked ? textBoxDescripcion.Text : string.Empty;
+
         }
 
         private void buttonAgregarAEntrega_Click(object sender, EventArgs e)
@@ -833,43 +800,54 @@ namespace Presentacion_UI
                     ElementoBusqueda elemento = (ElementoBusqueda)row.DataBoundItem;
                     var bEElemento = bLLElemento.ListarObjeto(new BEElemento(elemento.Id));
 
-                    if (bLLElemento.AgregarElementoEntrega(bEEntregaSeleccionada, bEElemento))
-                    {
-                        CargarGrillaElementosEntrega();
-                    }
-                    else
+                    if (!bLLElemento.AgregarElementoEntrega(bEEntregaSeleccionada, bEElemento))
                     {
                         row.Cells[0].Value = false;
                     }
-                }
-                
-            }
 
+                }
+            }
+            CargarGrillaElementosEntrega();
         }
 
         private void buttonEliminarDeEntrega_Click(object sender, EventArgs e)
         {
             // Crea una nueva lista para almacenar los elementos seleccionados
-            foreach (DataGridViewRow row in DgvBusqueda.Rows)
+            foreach (DataGridViewRow row in DgvElementosEntrega.Rows)
             {
                 var valorCelda = row.Cells[0].Value;
                 var valor = valorCelda as bool? ?? false;
                 // Verifica si el CheckBox en la primera columna está marcado
                 if (valor)
                 {
-                    ElementoBusqueda elemento = (ElementoBusqueda)row.DataBoundItem;
-                    var bEElemento = bLLElemento.ListarObjeto(new BEElemento(elemento.Id));
+                    var bEElemento = (BEElemento)row.DataBoundItem;
+                    bLLElemento.EliminarElementoEntrega(bEEntregaSeleccionada, bEElemento);
 
-                    if (bLLElemento.EliminarElementoEntrega( bEEntregaSeleccionada ,bEElemento))
-                    {
-                        CargarGrillaElementosEntrega();
-                    }
-                    else
-                    {
-                        row.Cells[0].Value = false;
-                    }
                 }
 
+            }
+            CargarGrillaElementosEntrega();
+        }
+
+        private void DgvElementosEntrega_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == this.DgvElementosEntrega.Columns["Sel"].Index)
+            {
+                // Obtiene el valor actual de la celda "Seleccion"
+                var valorCelda = DgvElementosEntrega.Rows[e.RowIndex].Cells["Sel"].Value;
+                var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
+
+                if (!valor) // SI SELECCIONO CON EL TILDE
+                {
+                    var index = DgvElementosEntrega.CurrentRow.Index;
+                    DgvElementosEntrega.Rows[index].Cells["Sel"].Value = true;
+                
+                }
+                else  // SACAR LA SELECCION 
+                {
+                    dataGridViewEntregas.Rows[e.RowIndex].Cells["Sel"].Value = false;
+                }
             }
         }
     }

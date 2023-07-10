@@ -216,5 +216,15 @@ namespace Seguridad
             bool respuesta = Regex.IsMatch(text, "^(([0-9]{4}[A-Z]{3}/[0-9]{4})+$)");
             return respuesta;
         }
+
+        static public bool VerificarNroDocumento(string text)
+        {
+            // Expresión regular para verificar un número de pasaporte o DNI
+            bool esPasaporte = Regex.IsMatch(text, "^[A-Z0-9]{6,9}$");
+            bool esDNI = Regex.IsMatch(text, "^[0-9]{7,8}$");
+
+            return esPasaporte || esDNI;
+        }
+
     }
 }

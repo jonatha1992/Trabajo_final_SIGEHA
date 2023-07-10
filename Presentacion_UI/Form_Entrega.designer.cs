@@ -86,6 +86,7 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBoxBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBusqueda)).BeginInit();
             this.groupBoxEntrega.SuspendLayout();
@@ -194,14 +195,12 @@
             this.comboBoxUrsa.Name = "comboBoxUrsa";
             this.comboBoxUrsa.Size = new System.Drawing.Size(152, 20);
             this.comboBoxUrsa.TabIndex = 1;
-            this.comboBoxUrsa.SelectedIndexChanged += new System.EventHandler(this.comboBoxUrsa_SelectedIndexChanged);
             // 
             // groupBoxBusqueda
             // 
             this.groupBoxBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxBusqueda.Controls.Add(this.buttonAgregarEntrega);
             this.groupBoxBusqueda.Controls.Add(this.checkBoxDescripcion);
-            this.groupBoxBusqueda.Controls.Add(this.buttonEliminarDeEntrega);
             this.groupBoxBusqueda.Controls.Add(this.label7);
             this.groupBoxBusqueda.Controls.Add(this.label3);
             this.groupBoxBusqueda.Controls.Add(this.dateTimePickerHasta);
@@ -234,10 +233,10 @@
             this.buttonAgregarEntrega.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonAgregarEntrega.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAgregarEntrega.ForeColor = System.Drawing.Color.Black;
-            this.buttonAgregarEntrega.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
+            this.buttonAgregarEntrega.Image = global::Presentacion_UI.Properties.Resources.boton_agregar_Elemento;
             this.buttonAgregarEntrega.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAgregarEntrega.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAgregarEntrega.Location = new System.Drawing.Point(11, 565);
+            this.buttonAgregarEntrega.Location = new System.Drawing.Point(11, 564);
             this.buttonAgregarEntrega.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAgregarEntrega.Name = "buttonAgregarEntrega";
             this.buttonAgregarEntrega.Size = new System.Drawing.Size(104, 44);
@@ -265,18 +264,18 @@
             // buttonEliminarDeEntrega
             // 
             this.buttonEliminarDeEntrega.BackColor = System.Drawing.Color.Tomato;
-            this.buttonEliminarDeEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminarDeEntrega.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminarDeEntrega.ForeColor = System.Drawing.Color.Black;
             this.buttonEliminarDeEntrega.Image = global::Presentacion_UI.Properties.Resources.basura;
             this.buttonEliminarDeEntrega.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonEliminarDeEntrega.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEliminarDeEntrega.Location = new System.Drawing.Point(122, 565);
+            this.buttonEliminarDeEntrega.Location = new System.Drawing.Point(413, 562);
             this.buttonEliminarDeEntrega.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEliminarDeEntrega.Name = "buttonEliminarDeEntrega";
-            this.buttonEliminarDeEntrega.Size = new System.Drawing.Size(113, 44);
+            this.buttonEliminarDeEntrega.Size = new System.Drawing.Size(103, 44);
             this.buttonEliminarDeEntrega.TabIndex = 106;
             this.buttonEliminarDeEntrega.Text = "Eliminar de Entrega";
-            this.buttonEliminarDeEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonEliminarDeEntrega.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonEliminarDeEntrega.UseVisualStyleBackColor = false;
             this.buttonEliminarDeEntrega.Visible = false;
             this.buttonEliminarDeEntrega.Click += new System.EventHandler(this.buttonEliminarDeEntrega_Click);
@@ -412,7 +411,7 @@
             this.DgvBusqueda.RowTemplate.Height = 60;
             this.DgvBusqueda.RowTemplate.ReadOnly = true;
             this.DgvBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DgvBusqueda.Size = new System.Drawing.Size(732, 297);
+            this.DgvBusqueda.Size = new System.Drawing.Size(732, 308);
             this.DgvBusqueda.TabIndex = 63;
             this.DgvBusqueda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBusqueda_CellContentClick);
             this.DgvBusqueda.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBusqueda_CellContentDoubleClick);
@@ -533,6 +532,7 @@
             // 
             this.groupBoxEntrega.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxEntrega.Controls.Add(this.dataGridViewEntregas);
+            this.groupBoxEntrega.Controls.Add(this.buttonEliminarDeEntrega);
             this.groupBoxEntrega.Controls.Add(this.label8);
             this.groupBoxEntrega.Controls.Add(this.label11);
             this.groupBoxEntrega.Controls.Add(this.checkBoxObservacion);
@@ -693,6 +693,8 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvElementosEntrega.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DgvElementosEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvElementosEntrega.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Sel});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
@@ -726,6 +728,7 @@
             this.DgvElementosEntrega.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvElementosEntrega.Size = new System.Drawing.Size(510, 148);
             this.DgvElementosEntrega.TabIndex = 64;
+            this.DgvElementosEntrega.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvElementosEntrega_CellContentClick);
             // 
             // buttonCargarPersonas
             // 
@@ -894,6 +897,13 @@
             this.splitContainer1.SplitterDistance = 543;
             this.splitContainer1.TabIndex = 97;
             // 
+            // Sel
+            // 
+            this.Sel.HeaderText = "Sel";
+            this.Sel.Name = "Sel";
+            this.Sel.ReadOnly = true;
+            this.Sel.Visible = false;
+            // 
             // Form_Entrega
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -973,5 +983,6 @@
         private System.Windows.Forms.Button buttonAgregarEntrega;
         private System.Windows.Forms.DataGridView dataGridViewEntregas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
     }
 }

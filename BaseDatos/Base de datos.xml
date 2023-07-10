@@ -705,63 +705,143 @@
   <Elementos>
     <Elemento>
       <Id>1</Id>
-      <IdArticulo>41</IdArticulo>
-      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdArticulo>1</IdArticulo>
+      <IdEstadoElemento>3</IdEstadoElemento>
       <IdHallazgo>1</IdHallazgo>
-      <Descripcion>NEGRO MARCA CVNTG CHAPELARIA VINTAGE</Descripcion>
+      <Descripcion>SONIC </Descripcion>
       <Cantidad>1</Cantidad>
+      <IdEntrega>3</IdEntrega>
     </Elemento>
     <Elemento>
       <Id>2</Id>
-      <IdArticulo>63</IdArticulo>
-      <IdEstadoElemento>5</IdEstadoElemento>
-      <IdHallazgo>1</IdHallazgo>
-      <Descripcion>RECTANGULARES COLOR NEGRO </Descripcion>
+      <IdArticulo>123</IdArticulo>
+      <IdEstadoElemento>3</IdEstadoElemento>
+      <IdHallazgo>2</IdHallazgo>
+      <Descripcion>UNA DESCRIPCION</Descripcion>
       <Cantidad>1</Cantidad>
+      <IdEntrega>3</IdEntrega>
     </Elemento>
     <Elemento>
       <Id>3</Id>
-      <IdArticulo>31</IdArticulo>
-      <IdEstadoElemento>5</IdEstadoElemento>
-      <IdHallazgo>2</IdHallazgo>
-      <Descripcion>COLOR VERDE MARCA ZUNE DENIM</Descripcion>
+      <IdArticulo>123</IdArticulo>
+      <IdEstadoElemento>3</IdEstadoElemento>
+      <IdHallazgo>5</IdHallazgo>
+      <Descripcion>ADAS</Descripcion>
       <Cantidad>1</Cantidad>
+      <IdEntrega>3</IdEntrega>
     </Elemento>
     <Elemento>
       <Id>4</Id>
-      <IdArticulo>32</IdArticulo>
+      <IdArticulo>1</IdArticulo>
       <IdEstadoElemento>5</IdEstadoElemento>
-      <IdHallazgo>2</IdHallazgo>
-      <Descripcion>DE TELA COLOR GRIS CON PASADOR</Descripcion>
+      <IdHallazgo>6</IdHallazgo>
+      <Descripcion>SONIC</Descripcion>
       <Cantidad>1</Cantidad>
     </Elemento>
     <Elemento>
       <Id>5</Id>
-      <IdArticulo>30</IdArticulo>
-      <IdEstadoElemento>5</IdEstadoElemento>
-      <IdHallazgo>3</IdHallazgo>
-      <Descripcion>CULLO DE VIAJE COLO ROSA --CUELLO GRIS-- - AR 1303</Descripcion>
-      <Cantidad>3</Cantidad>
+      <IdArticulo>9</IdArticulo>
+      <IdEstadoElemento>3</IdEstadoElemento>
+      <IdHallazgo>7</IdHallazgo>
+      <Descripcion>ADAS</Descripcion>
+      <Cantidad>1</Cantidad>
+      <IdEntrega>4</IdEntrega>
     </Elemento>
     <Elemento>
       <Id>6</Id>
-      <IdArticulo>1</IdArticulo>
-      <IdEstadoElemento>5</IdEstadoElemento>
-      <IdHallazgo>3</IdHallazgo>
-      <Descripcion>AURICULAES DE COLOR BLANCO--- AR1303</Descripcion>
+      <IdArticulo>123</IdArticulo>
+      <IdEstadoElemento>3</IdEstadoElemento>
+      <IdHallazgo>8</IdHallazgo>
+      <Descripcion>ADASD</Descripcion>
       <Cantidad>1</Cantidad>
+      <IdEntrega>2</IdEntrega>
     </Elemento>
     <Elemento>
       <Id>7</Id>
-      <IdArticulo>5</IdArticulo>
+      <IdArticulo>123</IdArticulo>
       <IdEstadoElemento>3</IdEstadoElemento>
+      <IdHallazgo>9</IdHallazgo>
+      <Descripcion>ADSA</Descripcion>
+      <Cantidad>1</Cantidad>
       <IdEntrega>2</IdEntrega>
-      <IdHallazgo>3</IdHallazgo>
-      <Descripcion>TSBLET SAMSUNG PANTALLA ROTA CON FUNDA CELESTE--AR1020</Descripcion>
+    </Elemento>
+    <Elemento>
+      <Id>8</Id>
+      <IdArticulo>123</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>11</IdHallazgo>
+      <Descripcion>SADAS</Descripcion>
+      <Cantidad>1</Cantidad>
+      <IdEntrega>5</IdEntrega>
+    </Elemento>
+    <Elemento>
+      <Id>9</Id>
+      <IdArticulo>84</IdArticulo>
+      <IdEstadoElemento>3</IdEstadoElemento>
+      <IdHallazgo>14</IdHallazgo>
+      <Descripcion>50 BILLETES DE 100</Descripcion>
+      <Cantidad>3222</Cantidad>
+      <IdEntrega>7</IdEntrega>
+    </Elemento>
+    <Elemento>
+      <Id>10</Id>
+      <IdArticulo>8</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>15</IdHallazgo>
+      <Descripcion>SAMSUN</Descripcion>
       <Cantidad>1</Cantidad>
     </Elemento>
   </Elementos>
-  <Entregas></Entregas>
+  <Entregas>
+    <Entrega>
+      <Id>2</Id>
+      <Nroacta>0002AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <Anio>2023</Anio>
+      <FechaEntrega>09/07/2023 22:23</FechaEntrega>
+      <Observacion></Observacion>
+    </Entrega>
+    <Entrega>
+      <Id>3</Id>
+      <Nroacta>0003AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <Anio>2023</Anio>
+      <FechaEntrega>09/07/2023 22:42</FechaEntrega>
+      <Observacion>DASD</Observacion>
+    </Entrega>
+    <Entrega>
+      <Id>4</Id>
+      <Nroacta>0004AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <Anio>2023</Anio>
+      <FechaEntrega>09/07/2023 22:44</FechaEntrega>
+      <Observacion></Observacion>
+    </Entrega>
+    <Entrega>
+      <Id>5</Id>
+      <Nroacta>0005AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <Anio>2023</Anio>
+      <FechaEntrega>09/07/2023 22:46</FechaEntrega>
+      <Observacion></Observacion>
+    </Entrega>
+    <Entrega>
+      <Id>6</Id>
+      <Nroacta>0006AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <Anio>2023</Anio>
+      <FechaEntrega>09/07/2023 23:00</FechaEntrega>
+      <Observacion>OBSERVACIONES</Observacion>
+    </Entrega>
+    <Entrega>
+      <Id>7</Id>
+      <Nroacta>0007AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <Anio>2023</Anio>
+      <FechaEntrega>09/07/2023 23:15</FechaEntrega>
+      <Observacion></Observacion>
+    </Entrega>
+  </Entregas>
   <Jerarquias>
     <Jerarquia>
       <Id>1</Id>
@@ -808,7 +888,7 @@
     <Persona>
       <Id>1</Id>
       <Domicilio></Domicilio>
-      <Nombrecompleto>SANTIAGO FERNANDO JOSE</Nombrecompleto>
+      <NombreCompleto>SANTIAGO FERNANDO JOSE</NombreCompleto>
       <Ocupacion></Ocupacion>
       <Telefono></Telefono>
       <Legajo>507793</Legajo>
@@ -817,14 +897,14 @@
     </Persona>
     <Persona>
       <Id>2</Id>
-      <Nombrecompleto>RIBEIRO BERNARDO</Nombrecompleto>
+      <NombreCompleto>RIBEIRO BERNARDO</NombreCompleto>
       <Legajo>502875</Legajo>
       <IdJerarquia>7</IdJerarquia>
       <DNI>25370429</DNI>
     </Persona>
     <Persona>
       <Id>4</Id>
-      <Nombrecompleto>AGUILERA VERA SABRINA MAYRA</Nombrecompleto>
+      <NombreCompleto>AGUILERA VERA SABRINA MAYRA</NombreCompleto>
       <Ocupacion>POLICIA</Ocupacion>
       <Legajo>508239</Legajo>
       <IdJerarquia>1</IdJerarquia>
@@ -832,7 +912,7 @@
     </Persona>
     <Persona>
       <Id>8</Id>
-      <Nombrecompleto>CARRERAS TATIANA FERNANDA</Nombrecompleto>
+      <NombreCompleto>CARRERAS TATIANA FERNANDA</NombreCompleto>
       <Ocupacion>POLICIA</Ocupacion>
       <Legajo>505408</Legajo>
       <IdJerarquia>3</IdJerarquia>
@@ -841,7 +921,7 @@
     <Persona>
       <Id>15</Id>
       <Domicilio>PAREJA 6542</Domicilio>
-      <Nombrecompleto>CORREA JONATHAN GABRIEL</Nombrecompleto>
+      <NombreCompleto>CORREA JONATHAN GABRIEL</NombreCompleto>
       <Ocupacion>POLICIA</Ocupacion>
       <Telefono>1159910666</Telefono>
       <Legajo>506896</Legajo>
@@ -850,21 +930,21 @@
     </Persona>
     <Persona>
       <Id>16</Id>
-      <Nombrecompleto>DENEGRIS MARIA DEL CARMEN</Nombrecompleto>
+      <NombreCompleto>DENEGRIS MARIA DEL CARMEN</NombreCompleto>
       <Legajo>505965</Legajo>
       <IdJerarquia>3</IdJerarquia>
       <DNI>35340086</DNI>
     </Persona>
     <Persona>
       <Id>17</Id>
-      <Nombrecompleto>DOMINGUEZ MONICA ELISABET</Nombrecompleto>
+      <NombreCompleto>DOMINGUEZ MONICA ELISABET</NombreCompleto>
       <Legajo>505190</Legajo>
       <IdJerarquia>3</IdJerarquia>
       <DNI>31823745</DNI>
     </Persona>
     <Persona>
       <Id>18</Id>
-      <Nombrecompleto>GARCIA JOSE MANUEL</Nombrecompleto>
+      <NombreCompleto>GARCIA JOSE MANUEL</NombreCompleto>
       <Legajo>503189</Legajo>
       <IdJerarquia>5</IdJerarquia>
       <DNI>25681276</DNI>
@@ -872,7 +952,7 @@
     <Persona>
       <Id>19</Id>
       <Domicilio>245 EZEIZA</Domicilio>
-      <Nombrecompleto>GNOCCHI ALEJANDRO CARLOS</Nombrecompleto>
+      <NombreCompleto>GNOCCHI ALEJANDRO CARLOS</NombreCompleto>
       <Ocupacion>POLICIA</Ocupacion>
       <Telefono>111111111</Telefono>
       <Legajo>503244</Legajo>
@@ -882,7 +962,7 @@
     <Persona>
       <Id>20</Id>
       <Domicilio></Domicilio>
-      <Nombrecompleto>IGLESIA MAYRA LUCIANA GERALDINE</Nombrecompleto>
+      <NombreCompleto>IGLESIA MAYRA LUCIANA GERALDINE</NombreCompleto>
       <Ocupacion></Ocupacion>
       <Telefono></Telefono>
       <Legajo>506601</Legajo>
@@ -891,10 +971,34 @@
     </Persona>
     <Persona>
       <Id>21</Id>
-      <Nombrecompleto>MEDINA BRENDA YAMILA</Nombrecompleto>
+      <NombreCompleto>MEDINA BRENDA YAMILA</NombreCompleto>
       <Legajo>507901</Legajo>
       <IdJerarquia>1</IdJerarquia>
       <DNI>38127506</DNI>
+    </Persona>
+    <Persona>
+      <Id>22</Id>
+      <NombreCompleto>NOELIA SOLEDAD PICEDA</NombreCompleto>
+      <DNI>35998353</DNI>
+      <Domicilio>PAREJA 6542</Domicilio>
+      <Ocupacion>POLICIA</Ocupacion>
+      <Telefono>115991066</Telefono>
+    </Persona>
+    <Persona>
+      <Id>23</Id>
+      <NombreCompleto>JONATHAN</NombreCompleto>
+      <DNI>12345678</DNI>
+      <Domicilio />
+      <Ocupacion />
+      <Telefono />
+    </Persona>
+    <Persona>
+      <Id>24</Id>
+      <NombreCompleto>JONI</NombreCompleto>
+      <DNI>12345678</DNI>
+      <Domicilio></Domicilio>
+      <Ocupacion></Ocupacion>
+      <Telefono></Telefono>
     </Persona>
   </Personas>
   <Unidades>
@@ -1353,160 +1457,233 @@
       <IdPermisoPadre>15</IdPermisoPadre>
       <IdPermisoHijo>5</IdPermisoHijo>
     </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoHijo>2</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoHijo>4</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoHijo>6</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoHijo>7</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoHijo>8</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoHijo>9</IdPermisoHijo>
+    </Permiso_Permiso>
   </Permisos_Permisos>
   <Hallazgos>
     <Hallazgo>
       <Id>1</Id>
-      <Nroacta>0015EZE/2023</Nroacta>
-      <IdUnidad>4</IdUnidad>
-      <Lugarhallazgo>TERMINAL A</Lugarhallazgo>
+      <FechaActa>2023-07-09T02:09:30.6821395-03:00</FechaActa>
+      <Nroacta>0001AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>HALL A</LugarHallazgo>
       <Anio>2023</Anio>
-      <Fechahallazgo>2023-01-02T19:45:00</Fechahallazgo>
+      <FechaHallazgo>2023-07-09T02:06:26.5272453-03:00</FechaHallazgo>
+      <Observacion>PASO POR GEDEX</Observacion>
     </Hallazgo>
     <Hallazgo>
       <Id>2</Id>
-      <Nroacta>0016EZE/2023</Nroacta>
-      <IdUnidad>4</IdUnidad>
-      <Lugarhallazgo>PRE-C</Lugarhallazgo>
+      <FechaActa>2023-07-09T02:37:29.1076763-03:00</FechaActa>
+      <Nroacta>0002AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>SADSADA</LugarHallazgo>
       <Anio>2023</Anio>
-      <Fechahallazgo>2023-01-02T19:45:00</Fechahallazgo>
+      <FechaHallazgo>2023-07-09T02:37:21.7126684-03:00</FechaHallazgo>
+      <Observacion></Observacion>
     </Hallazgo>
     <Hallazgo>
       <Id>3</Id>
-      <Nroacta>0017EZE/2023</Nroacta>
-      <IdUnidad>4</IdUnidad>
-      <Lugarhallazgo>GPS VUELOS AR</Lugarhallazgo>
+      <FechaActa>09/07/2023 03:14</FechaActa>
+      <Nroacta>0003AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>SDASD</LugarHallazgo>
       <Anio>2023</Anio>
-      <Fechahallazgo>2023-01-02T19:45:00</Fechahallazgo>
+      <FechaHallazgo>09/07/2023 03:14</FechaHallazgo>
+      <Observacion></Observacion>
     </Hallazgo>
     <Hallazgo>
       <Id>4</Id>
-      <Nroacta>0018EZE/2023</Nroacta>
-      <IdUnidad>4</IdUnidad>
-      <Lugarhallazgo>ARRIBOS TERMINAL C</Lugarhallazgo>
+      <FechaActa>09/07/2023 03:17</FechaActa>
+      <Nroacta>0004AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>SADSAD</LugarHallazgo>
       <Anio>2023</Anio>
-      <Fechahallazgo>2023-01-03T00:59:00</Fechahallazgo>
+      <FechaHallazgo>09/07/2023 03:17</FechaHallazgo>
+      <Observacion></Observacion>
     </Hallazgo>
     <Hallazgo>
       <Id>5</Id>
-      <FechaActa>2023-07-03T18:42:29.4785935-03:00</FechaActa>
-      <Nroacta>0001AER/2023</Nroacta>
+      <FechaActa>09/07/2023 03:52</FechaActa>
+      <Nroacta>0005AER/2023</Nroacta>
       <IdUnidad>1</IdUnidad>
-      <Lugarhallazgo>HALL A</Lugarhallazgo>
+      <LugarHallazgo>DASDA</LugarHallazgo>
       <Anio>2023</Anio>
-      <Fechahallazgo>2023-07-02T17:06:30.441</Fechahallazgo>
+      <FechaHallazgo>09/07/2023 03:52</FechaHallazgo>
+      <Observacion></Observacion>
     </Hallazgo>
     <Hallazgo>
       <Id>6</Id>
-      <FechaActa>2023-07-03T19:00:47.6695631-03:00</FechaActa>
-      <Nroacta>0002AER/2023</Nroacta>
-      <IdUnidad>1</IdUnidad>
-      <Lugarhallazgo>HALL3</Lugarhallazgo>
+      <FechaActa>09/07/2023 03:57</FechaActa>
+      <Nroacta>0001EPA/2023</Nroacta>
+      <IdUnidad>3</IdUnidad>
+      <LugarHallazgo>ASA</LugarHallazgo>
       <Anio>2023</Anio>
-      <Fechahallazgo>2023-07-02T17:06:30.441</Fechahallazgo>
+      <FechaHallazgo>09/07/2023 03:57</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>7</Id>
+      <FechaActa>09/07/2023 04:18</FechaActa>
+      <Nroacta>0006AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>CATEGORIA</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 04:18</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>8</Id>
+      <FechaActa>09/07/2023 04:26</FechaActa>
+      <Nroacta>0007AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>ASDASD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 04:26</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>9</Id>
+      <FechaActa>09/07/2023 04:33</FechaActa>
+      <Nroacta>0008AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>DASD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 04:33</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>10</Id>
+      <FechaActa>09/07/2023 04:42</FechaActa>
+      <Nroacta>0001SFO/2023</Nroacta>
+      <IdUnidad>6</IdUnidad>
+      <LugarHallazgo>SADSAD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 04:42</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>11</Id>
+      <FechaActa>09/07/2023 14:29</FechaActa>
+      <Nroacta>0009AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>SDASD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 14:29</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>12</Id>
+      <FechaActa>09/07/2023 14:33</FechaActa>
+      <Nroacta>0010AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>DSAD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 14:33</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>13</Id>
+      <FechaActa>09/07/2023 22:57</FechaActa>
+      <Nroacta>0011AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>ADSADA</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 22:57</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>14</Id>
+      <FechaActa>09/07/2023 22:59</FechaActa>
+      <Nroacta>0012AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>SADASD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 22:59</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>15</Id>
+      <FechaActa>09/07/2023 23:28</FechaActa>
+      <Nroacta>0013AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>SADASDA</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>09/07/2023 23:27</FechaHallazgo>
+      <Observacion></Observacion>
     </Hallazgo>
   </Hallazgos>
-  <Entrega_Personas>
-    <Entrega_Persona>
-      <IdEntrega>2</IdEntrega>
-      <IdPersona>153</IdPersona>
-      <IdEstado>1</IdEstado>
-    </Entrega_Persona>
-    <Entrega_Persona>
-      <IdEntrega>2</IdEntrega>
-      <IdPersona>168</IdPersona>
-      <IdEstado>4</IdEstado>
-    </Entrega_Persona>
-    <Entrega_Persona>
-      <IdEntrega>2</IdEntrega>
-      <IdPersona>164</IdPersona>
-      <IdEstado>3</IdEstado>
-    </Entrega_Persona>
-    <Entrega_Persona>
-      <IdEntrega>2</IdEntrega>
-      <IdPersona>169</IdPersona>
-      <IdEstado>3</IdEstado>
-    </Entrega_Persona>
-  </Entrega_Personas>
+  <Entrega_Personas />
   <Hallazgo_Personas>
     <Hallazgo_Persona>
       <IdHallazgo>1</IdHallazgo>
-      <IdPersona>123</IdPersona>
+      <IdPersona>15</IdPersona>
       <IdEstado>1</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
       <IdHallazgo>1</IdHallazgo>
-      <IdPersona>124</IdPersona>
+      <IdPersona>22</IdPersona>
       <IdEstado>2</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
       <IdHallazgo>1</IdHallazgo>
-      <IdPersona>125</IdPersona>
+      <IdPersona>23</IdPersona>
       <IdEstado>3</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
       <IdHallazgo>1</IdHallazgo>
-      <IdPersona>126</IdPersona>
+      <IdPersona>24</IdPersona>
       <IdEstado>3</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
-      <IdHallazgo>2</IdHallazgo>
-      <IdPersona>123</IdPersona>
+      <IdHallazgo>5</IdHallazgo>
+      <IdPersona>15</IdPersona>
       <IdEstado>1</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
-      <IdHallazgo>2</IdHallazgo>
-      <IdPersona>127</IdPersona>
+      <IdHallazgo>6</IdHallazgo>
+      <IdPersona>22</IdPersona>
       <IdEstado>2</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
-      <IdHallazgo>2</IdHallazgo>
-      <IdPersona>128</IdPersona>
-      <IdEstado>3</IdEstado>
-    </Hallazgo_Persona>
-    <Hallazgo_Persona>
-      <IdHallazgo>2</IdHallazgo>
-      <IdPersona>129</IdPersona>
-      <IdEstado>3</IdEstado>
-    </Hallazgo_Persona>
-    <Hallazgo_Persona>
-      <IdHallazgo>3</IdHallazgo>
-      <IdPersona>130</IdPersona>
+      <IdHallazgo>6</IdHallazgo>
+      <IdPersona>15</IdPersona>
       <IdEstado>1</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
-      <IdHallazgo>3</IdHallazgo>
-      <IdPersona>131</IdPersona>
-      <IdEstado>2</IdEstado>
-    </Hallazgo_Persona>
-    <Hallazgo_Persona>
-      <IdHallazgo>3</IdHallazgo>
-      <IdPersona>132</IdPersona>
+      <IdHallazgo>6</IdHallazgo>
+      <IdPersona>24</IdPersona>
       <IdEstado>3</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
-      <IdHallazgo>3</IdHallazgo>
-      <IdPersona>133</IdPersona>
-      <IdEstado>3</IdEstado>
-    </Hallazgo_Persona>
-    <Hallazgo_Persona>
-      <IdHallazgo>4</IdHallazgo>
-      <IdPersona>130</IdPersona>
+      <IdHallazgo>7</IdHallazgo>
+      <IdPersona>15</IdPersona>
       <IdEstado>1</IdEstado>
     </Hallazgo_Persona>
     <Hallazgo_Persona>
-      <IdHallazgo>4</IdHallazgo>
-      <IdPersona>134</IdPersona>
-      <IdEstado>2</IdEstado>
-    </Hallazgo_Persona>
-    <Hallazgo_Persona>
-      <IdHallazgo>4</IdHallazgo>
-      <IdPersona>135</IdPersona>
-      <IdEstado>3</IdEstado>
-    </Hallazgo_Persona>
-    <Hallazgo_Persona>
-      <IdHallazgo>4</IdHallazgo>
-      <IdPersona>136</IdPersona>
+      <IdHallazgo>7</IdHallazgo>
+      <IdPersona>22</IdPersona>
       <IdEstado>3</IdEstado>
     </Hallazgo_Persona>
   </Hallazgo_Personas>

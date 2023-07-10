@@ -25,12 +25,12 @@ namespace MPP
 
             XElement Hallazgo = new XElement("Hallazgo",
                 new XElement("Id", NuevoID),
-                new XElement("FechaActa", pHallazgo.FechaActa),
+                new XElement("FechaActa", pHallazgo.FechaActa?.ToString("dd/MM/yyyy HH:mm")),
                 new XElement("Nroacta", pHallazgo.NroActa),
                 new XElement("IdUnidad", pHallazgo.Unidad.Id),
                 new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
                 new XElement("Anio", pHallazgo.Anio),
-                new XElement("FechaHallazgo", pHallazgo.FechaHallazgo),
+                new XElement("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm")),
                 new XElement("Observacion", pHallazgo.Observacion)
                 );
 
@@ -59,12 +59,12 @@ namespace MPP
 
                 XElement HallazgoActualizado = new XElement("Hallazgo",
                     new XElement("Id", pHallazgo.Id),
-                    new XElement("FechaActa", pHallazgo.FechaActa),
+                    new XElement("FechaActa", pHallazgo.FechaActa?.ToString("dd/MM/yyyy HH:mm")),
                     new XElement("Nroacta", pHallazgo.NroActa),
                     new XElement("IdUnidad", pHallazgo.Unidad.Id),
                     new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
                     new XElement("Anio", pHallazgo.Anio),
-                    new XElement("FechaHallazgo", pHallazgo.FechaHallazgo),
+                    new XElement("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm")),
                     new XElement("Observacion", pHallazgo.Observacion)
                 );
 
@@ -176,7 +176,6 @@ namespace MPP
 
             MPPArticulo mPPArticulo = new MPPArticulo();
             MPPEstado_Elemento mPPEstados = new MPPEstado_Elemento();
-       
 
             var articulos = mPPArticulo.ListarTodo();
             var Estados = mPPEstados.ListarTodo();

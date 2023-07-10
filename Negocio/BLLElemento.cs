@@ -30,16 +30,15 @@ namespace Negocio
         public bool AgregarElementoEntrega(BEEntrega eEntrega, BEElemento elemento)
         {
             BLLEstado_Elemento bLLEstado_Elemento = new BLLEstado_Elemento();
-            var estadoElemento = bLLEstado_Elemento.ListarTodo().Find(x => x.Nombre == "Entregado");
+            var estadoEntregado = bLLEstado_Elemento.ListarTodo().Find(x => x.Nombre == "Entregado");
 
-            if (elemento.Estado.Id == estadoElemento.Id)
+            if (elemento.Estado.Id == estadoEntregado.Id)
             {
                 return false;
             }
-            elemento.Estado = estadoElemento;
+            elemento.Estado = estadoEntregado;
 
-            mPPElemento.Agregar_Elemento_Entrega(eEntrega, elemento);
-            return Actualizar(elemento);
+            return mPPElemento.Agregar_Elemento_Entrega(eEntrega, elemento);
         }
         public bool EliminarElementoEntrega(BEEntrega eEntrega, BEElemento elemento)
         {
@@ -48,9 +47,8 @@ namespace Negocio
 
             if (eEntrega.listaElementos.Exists(x => x.Id == elemento.Id))
             {
-                mPPElemento.Eliminar_Elemento_Entrega(elemento);
                 elemento.Estado = estadoResguardo;
-                return Actualizar(elemento);
+                mPPElemento.Eliminar_Elemento_Entrega(elemento);
             }
             return false;
         }
@@ -89,76 +87,8 @@ namespace Negocio
 
         public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad)
         {
-            List<ElementoBusqueda> elementoBusquedas = new List<ElementoBusqueda>();
-
-            BLLCategoria bLLCategoria = new BLLCategoria();
-            BLLArticulo bLLArticulo = new BLLArticulo();
-            BLLHallazgo bLLHallazgo = new BLLHallazgo();
-            BLLEntrega bllEntregas = new BLLEntrega();
-            BLLElemento bLLElemento = new BLLElemento();
-
-            var categorias = bLLCategoria.ListarTodo();
-            var articulos = bLLArticulo.ListarTodo(categorias);
-            var hallazgos = bLLHallazgo.ListarTodo();
-            var Entregas = bLLHallazgo.ListarTodo();
-            var elementos = bLLElemento.ListarTodo();
-
-            // Filtra por fechas
-            if (desde != null && hasta != null)
-            {
-                hallazgos = hallazgos.Where(h => h.FechaHallazgo >= desde && h.FechaHallazgo <= hasta).ToList();
-            }
-
-            // Filtra por categoría
-            if (bECategoria != null)
-            {
-                articulos = articulos.Where(a => a.Categoria.Id == bECategoria.Id).ToList();
-            }
-
-            // Filtra por artículo
-            if (bEArticulo != null)
-            {
-                elementos = elementos.Where(e => e.Articulo.Id == bEArticulo.Id).ToList();
-            }
-
-            // Filtra por lugar
-            if (!string.IsNullOrEmpty(lugar))
-            {
-                hallazgos = hallazgos.Where(h => h.LugarHallazgo.Contains(lugar)).ToList();
-            }
-
-            // Filtra por descripción
-            if (!string.IsNullOrEmpty(descripcion))
-            {
-                elementos = elementos.Where(e => e.Descripcion.Contains(descripcion)).ToList();
-            }
-
-            // Filtra por unidad
-            if (unidad != null)
-            {
-                hallazgos = hallazgos.Where(h => h.Unidad.Id == unidad.Id).ToList();
-            }
-
-
-            // Genera la lista de resultados
-            elementoBusquedas = (from elemento in elementos
-                                 join articulo in articulos on elemento.Articulo.Id equals articulo.Id
-                                 join hallazgo in hallazgos on elemento.Hallazgo.Id equals hallazgo.Id
-                                 join entrega in Entregas on elemento.Entrega.Id equals entrega.Id into entregasJoin
-                                 from entrega in entregasJoin.DefaultIfEmpty()
-                                 select new ElementoBusqueda
-                                 {
-                                     Id = elemento.Id,
-                                     Fecha_hallazgo = hallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm "),
-                                     Hallazgo = hallazgo.NroActa,
-                                     Lugar = hallazgo.LugarHallazgo,
-                                     Articulo = articulo.Nombre,
-                                     Cantidad = elemento.Cantidad.ToString(),
-                                     Descripcion = elemento.Descripcion,
-                                     Estado = elemento.Estado.Nombre,
-                                     Entrega = entrega != null ? entrega.NroActa : "No entregado"
-                                 }).ToList();
-            return elementoBusquedas;
+            
+            return mPPElemento.BusquedaElementos( desde,  hasta, bECategoria, bEArticulo, lugar, descripcion, unidad);
         }
 
 

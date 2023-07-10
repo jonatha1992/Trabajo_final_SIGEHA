@@ -96,7 +96,7 @@
             this.btndAgregarPermiso.Name = "btndAgregarPermiso";
             this.btndAgregarPermiso.Size = new System.Drawing.Size(66, 32);
             this.btndAgregarPermiso.TabIndex = 8;
-            this.btndAgregarPermiso.Text = "AgregarEvento ";
+            this.btndAgregarPermiso.Text = "Agregar";
             this.btndAgregarPermiso.UseVisualStyleBackColor = true;
             this.btndAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click);
             // 
@@ -167,12 +167,12 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Nombre";
             // 
-            // label
+            // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(11, 101);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label";
+            this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Todos los Permisos";

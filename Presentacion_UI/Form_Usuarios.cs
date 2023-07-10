@@ -266,18 +266,23 @@ namespace Presentacion_UI
 
             if (seleccion.Permisos.Count == 0)
             {
-                MessageBox.Show("El usuario no tiene un rol asignado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El usuario no tiene un rol asignado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (textBoxPassword1.Texto != textBoxPassword2.Texto)
             {
-                MessageBox.Show("Las contraseñas no coinciden", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Las contraseñas no coinciden", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (textBoxUsuario.Text == "" || textBoxNombre.Text == "" || textBoxPassword1.Texto == "" || textBoxPassword2.Texto == "" || textBoxDNI.Text == "")
             {
-                MessageBox.Show("Complete todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Complete todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validar.VerificarNroDocumento(textBoxDNI.Text))
+            {
+                MessageBox.Show("Complete bien el Nro de documento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

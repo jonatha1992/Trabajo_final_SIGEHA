@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Xml.Linq;
 
 namespace MPP
@@ -216,6 +218,79 @@ namespace MPP
             return lista;
         }
 
+
+        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad)
+        {
+            List<ElementoBusqueda> elementoBusquedas = new List<ElementoBusqueda>();
+
+            
+
+            var categorias = conexion.LeerTodos("Categoria");
+            var articulos = conexion.LeerTodos("Articulo"); 
+            var hallazgos = conexion.LeerTodos("Hallazgo"); 
+            var Entregas = conexion.LeerTodos("Entrega");
+            var elementos = conexion.LeerTodos("Elemento");
+            var Estados = conexion.LeerTodos("Estado_Elemento");
+
+            // Filtra por fechas
+            if (desde != null && hasta != null)
+            {
+                hallazgos = hallazgos.Where(h => Convert.ToDateTime(h.Element("FechaHallazgo").Value) 
+                       >= desde && Convert.ToDateTime(h.Element("FechaHallazgo").Value) <= hasta).ToList();
+            }
+
+            // Filtra por categoría
+            if (bECategoria != null)
+            {
+                articulos = articulos.Where(a => Convert.ToInt32(a.Element("IdCategoria").Value) == bECategoria.Id).ToList();
+            }
+
+            // Filtra por artículo
+            if (bEArticulo != null)
+            {
+                elementos = elementos.Where(e => Convert.ToInt32(e.Element("IdArticulo").Value) == bEArticulo.Id).ToList();
+            }
+
+            // Filtra por lugar
+            if (!string.IsNullOrEmpty(lugar))
+            {
+                hallazgos = hallazgos.Where(h => Convert.ToString(h.Element("LugarHallazgo").Value).Contains(lugar)).ToList();
+            }
+
+            // Filtra por descripción
+            if (!string.IsNullOrEmpty(descripcion))
+            {
+                elementos = elementos.Where(e => Convert.ToString(e.Element("Descripcion").Value).Contains(descripcion)).ToList();
+            }
+
+            // Filtra por unidad
+            if (unidad != null)
+            {
+                hallazgos = hallazgos.Where(h => Convert.ToInt32(h.Element("IdUnidad").Value) == unidad.Id).ToList();
+            }
+
+            // Genera la lista de resultados
+            elementoBusquedas = (from elemento in elementos
+                                 join articulo in articulos on Convert.ToInt32(elemento.Element("IdArticulo").Value) equals Convert.ToInt32(articulo.Element("Id").Value)
+                                 join hallazgo in hallazgos on Convert.ToInt32(elemento.Element("IdHallazgo").Value) equals Convert.ToInt32(hallazgo.Element("Id").Value)
+                                 join estado in Estados on Convert.ToInt32(elemento.Element("IdEstadoElemento").Value) equals Convert.ToInt32(estado.Element("Id").Value)
+                                 join entrega in Entregas on Convert.ToInt32(elemento.Element("IdEntrega")?.Value) equals Convert.ToInt32(entrega.Element("Id").Value) into entregasJoin
+                                 from entrega in entregasJoin.DefaultIfEmpty()
+                                 select new ElementoBusqueda
+                                 {
+                                     Id = Convert.ToInt32(elemento.Element("Id").Value),
+                                     Fecha_hallazgo = DateTime.Parse(hallazgo.Element("FechaHallazgo").Value).ToString("dd/MM/yyyy HH:mm"),
+                                     Hallazgo = hallazgo.Element("Nroacta").Value,
+                                     Lugar = hallazgo.Element("LugarHallazgo").Value,
+                                     Articulo = articulo.Element("Nombre").Value,
+                                     Cantidad = elemento.Element("Cantidad").Value,
+                                     Descripcion = elemento.Element("Descripcion").Value,
+                                     Estado = estado.Element("Nombre").Value,
+                                     Entrega = entrega != null ? entrega.Element("Nroacta").Value : "No entregado"
+                                 }).ToList();
+
+            return elementoBusquedas;
+        }
         //public string ObtenerEntregaPorElemento(BEElemento elemento)
         //{
         //    MPPElemento mPPElementos = new MPPElemento();

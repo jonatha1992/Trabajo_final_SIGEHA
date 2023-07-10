@@ -95,7 +95,7 @@ namespace Presentacion_UI
                     var existe = bllpermiso.ExistePermiso(beRol, cboPermisos.SelectedItem as BEPermiso);
                     if (existe)
                     {
-                        MessageBox.Show("El Rol ya contiene ese Permiso");
+                        MessageBox.Show("El Rol ya contiene ese Permiso", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {

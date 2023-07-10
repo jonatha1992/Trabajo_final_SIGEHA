@@ -23,7 +23,11 @@ namespace Presentacion_UI
             bLLJerarquia = new BLLJerarquia();
             jerarquias = bLLJerarquia.ListarTodo();
 
+            llenarSugerencias();
             SuscrpcionEventos();
+
+
+
             Type TipoObjeto = bEPAdreHallazgo.GetType();
 
             if (TipoObjeto == typeof(BEHallazgo))
@@ -34,6 +38,15 @@ namespace Presentacion_UI
             else
             { BePAdreHallazgo = bEPAdreHallazgo as BEEntrega; }
 
+        }
+
+        void llenarSugerencias()
+        {
+            var personas = bllPersonas.ListarTodo();
+            var Instructores = bLLInstructor.ListarTodo();
+            textBoxLegajo = Utilidades.SetAutoCompleteTextBox(textBoxLegajo, Instructores, instructor => instructor.Legajo.ToString());
+            textBoxDniDescubridor = Utilidades.SetAutoCompleteTextBox(textBoxDniDescubridor, personas, persona => persona.DNI);
+            textBoxDniTestigo = Utilidades.SetAutoCompleteTextBox(textBoxDniTestigo, personas, persona => persona.DNI);
         }
 
 
@@ -340,7 +353,7 @@ namespace Presentacion_UI
             switch (comboBoxTipoPersona.Text)
             {
                 case "Instructor":
-                    personaSeleccionada = bLLInstructor.BuscarPor_legajo(textBoxLegajo.Text);
+                    personaSeleccionada = bLLInstructor.BuscarPor_legajo_dni(textBoxLegajo.Text, textBoxDniInstructor.Text);
                     if (personaSeleccionada == null)
                     {
                         personaSeleccionada = bllPersonas.BuscarPorDNI(textBoxDniInstructor.Text);
@@ -351,11 +364,11 @@ namespace Presentacion_UI
                             {
                                 if (ValidarCampos(comboBoxTipoPersona.Text))
                                 {
-                                    if (bLLInstructor.BuscarPor_legajo(textBoxLegajo.Text) == null)
+                                    if (bLLInstructor.BuscarPor_legajo_dni(textBoxLegajo.Text) == null)
                                     {
                                         Seleccion = true; //esto es para que no me cree una nueva instancia
                                         bLLInstructor.Actualizar(CoversionPersonaInstructor());
-                                        personaSeleccionada = bLLInstructor.BuscarPor_legajo(textBoxLegajo.Text);
+                                        personaSeleccionada = bLLInstructor.BuscarPor_legajo_dni(textBoxLegajo.Text);
                                         MessageBox.Show("El cambio se realizo con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
@@ -383,27 +396,44 @@ namespace Presentacion_UI
             }
             else
             {
-                personaSeleccionada = null;
+                LimpiarCampos();
                 MessageBox.Show("La Persona no se encuentra en la Base de datos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return Encontrado;
         }
 
+
         bool ValidarCampos(string tipoPersona)
         {
-            if (tipoPersona == "Instructor")
+            switch (tipoPersona)
             {
-                return textBoxLegajo.Text != "" && Validar.SoloEnteros(textBoxLegajo.Text) && textBoxNombreInstructor.Text != "" && textBoxDniInstructor.Text != "" && comboBoxJerarquia.Text != "";
-            }
-            else if (tipoPersona == "Testigo")
-            {
-                return textBoxDniTestigo.Text != "" && textBoxNombreTestigo.Text != "";
-            }
-            else // caso por propietario o descurridor  
-            {
-                return textBoxDniDescubridor.Text != "" && textBoxNombreDescr_Prop.Text != "" && textBoxOcupacion.Text != "" && textBoxDomicilio.Text != "";
+                case "Instructor":
+                    return !string.IsNullOrEmpty(textBoxLegajo.Text) &&
+                        !string.IsNullOrEmpty(textBoxNombreInstructor.Text) &&
+                        !string.IsNullOrEmpty(textBoxDniInstructor.Text) &&
+                        !string.IsNullOrEmpty(comboBoxJerarquia.Text) &&
+                        Validar.SoloAlfabetico_Con_Espacios(textBoxNombreInstructor.Text) &&
+                        Validar.SoloEnteros(textBoxLegajo.Text) &&
+                        Validar.VerificarNroDocumento(textBoxDniInstructor.Text);
+
+
+                case "Testigo":
+                    return !string.IsNullOrEmpty(textBoxDniTestigo.Text) &&
+                        !string.IsNullOrEmpty(textBoxNombreTestigo.Text) &&
+                        Validar.SoloAlfabetico_Con_Espacios(textBoxNombreTestigo.Text) &&
+                        Validar.VerificarNroDocumento(textBoxDniTestigo.Text);
+
+                default: // caso por propietario o descubridor
+                    return !string.IsNullOrEmpty(textBoxDniDescubridor.Text) &&
+                        !string.IsNullOrEmpty(textBoxNombreDescr_Prop.Text) &&
+                        !string.IsNullOrEmpty(textBoxOcupacion.Text) &&
+                        !string.IsNullOrEmpty(textBoxDomicilio.Text) &&
+                        Validar.SoloAlfabetico_Con_Espacios(textBoxNombreDescr_Prop.Text) &&
+                        Validar.VerificarNroDocumento(textBoxDniDescubridor.Text);
             }
         }
+
+
         BEPersona CrearPersona()
         {
             if (!Seleccion)
@@ -632,15 +662,10 @@ namespace Presentacion_UI
         {
             try
             {
-
                 DialogResult = DialogResult.OK;
-
-
-
             }
             catch (Exception ex)
             {
-
                 throw new Exception($"{ex.Message}");
             }
         }
@@ -691,22 +716,14 @@ namespace Presentacion_UI
         #endregion
 
         #region "TextBox"
-        void textBoxId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-                buttonBuscar_Click(null, null);
-            }
-        }
 
 
 
         void SuscrpcionEventos()
         {
-            textBoxLegajo.KeyPress += TextBox_Buscar;
-            textBoxDniDescubridor.KeyPress += TextBox_Buscar;
-            textBoxDniTestigo.KeyPress += TextBox_Buscar;
+            textBoxLegajo.KeyDown += TextBox_Buscar;
+            textBoxDniDescubridor.KeyDown += TextBox_Buscar;
+            textBoxDniTestigo.KeyDown += TextBox_Buscar;
             textBoxNombreInstructor.KeyPress += TextBox_KeyPress;
             textBoxNombreTestigo.KeyPress += TextBox_KeyPress;
             textBoxNombreDescr_Prop.KeyPress += TextBox_KeyPress;
@@ -719,9 +736,9 @@ namespace Presentacion_UI
             Validar.NoSaltosDelinea(e);
         }
 
-        void TextBox_Buscar(object sender, KeyPressEventArgs e)
+        void TextBox_Buscar(object sender, KeyEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
                 buttonBuscar_Click(null, null);

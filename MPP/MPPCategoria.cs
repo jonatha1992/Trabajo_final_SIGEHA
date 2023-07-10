@@ -43,8 +43,7 @@ namespace MPP
 
         public BECategoria ListarObjeto(BECategoria bCategoria)
         {
-            var Consulta = conexion.LeerTodos(Nodo).Descendants("Categoria");
-            MPPArticulo mPPArticulo = new MPPArticulo();
+            var Consulta = conexion.LeerTodos("Categoria");
 
             if (Consulta.Count() > 0)
             {

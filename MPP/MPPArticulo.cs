@@ -66,19 +66,24 @@ namespace MPP
         public List<BEArticulo> ListarTodo()
         {
             MPPCategoria mPPCategoria = new MPPCategoria(); 
-            var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Articulo");
-            
+            var Articulos = conexion.LeerTodos(NodoContenedor);
+            var categorias = conexion.LeerTodos("Categoria");
+
             List<BEArticulo> lista = new List<BEArticulo>();
 
-            if (Consulta.Count() > 0)
+            if (Articulos.Count() > 0)
             {
-                lista = (from x in Consulta
-                         where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                lista = (from Articulo in Articulos
+                         join categoria in categorias on Articulo.Element("IdCategoria")?.Value equals categoria.Element("Id")?.Value into articulosCategoria
                          select new BEArticulo
                          {
-                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             Categoria =  new BECategoria(Convert.ToInt32(x.Element("IdCategoria")?.Value))
+                             Id = Convert.ToInt32(Articulo.Element("Id")?.Value),
+                             Nombre = Articulo.Element("Nombre")?.Value,
+                             Categoria = new BECategoria
+                             {
+                                 Id = Convert.ToInt32(Articulo.Element("IdCategoria")?.Value),
+                                 Nombre = articulosCategoria.FirstOrDefault()?.Element("Nombre")?.Value
+                             }
                          }).ToList();
 
 

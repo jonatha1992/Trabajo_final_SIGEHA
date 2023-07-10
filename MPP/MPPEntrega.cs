@@ -31,7 +31,7 @@ namespace MPP
                 new XElement("Nroacta", entrega.NroActa),
                 new XElement("IdUnidad", entrega.Unidad.Id),
                 new XElement("Anio", entrega.Anio),
-                new XElement("FechaEntrega", entrega.Fecha_entrega),
+                new XElement("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm")),
                 new XElement("Observacion", entrega.Observacion)
 
                 );
@@ -50,7 +50,7 @@ namespace MPP
            new XElement("Nroacta", entrega.NroActa),
            new XElement("IdUnidad", entrega.Unidad.Id),
            new XElement("Anio", entrega.Anio),
-           new XElement("FechaEntrega", entrega.Fecha_entrega),
+           new XElement("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm")),
            new XElement("Observacion", entrega.Observacion));
 
             return conexion.Actualizar(NodoPadre, entrega.Id.ToString(), EntegaActualizado);
@@ -147,6 +147,7 @@ namespace MPP
             var articulos = mPPArticulo.ListarTodo();
             var Estados = mPPEstados.ListarTodo();
 
+            pEntrega.listaElementos.Clear();
 
             IEnumerable<XElement> elementosXml = conexion.LeerTodos("Elemento")
                                                .Where(e => e.Element("IdEntrega")?.Value == pEntrega.Id.ToString());
