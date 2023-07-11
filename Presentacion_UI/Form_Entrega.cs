@@ -137,7 +137,7 @@ namespace Presentacion_UI
                     buttonFinalizar.Visible = true;
                     buttonEliminarDeEntrega.Visible = true;
                     dataGridViewEntregas.Enabled = false;
-
+                    buttonCargarPersonas.Visible = true;   
                     buttonAgregarEntrega.Visible = listaElementosAgregarEntrega?.Count > 0 ? true : false;
                     buttonEliminarDeEntrega.Visible = listaElementoEliminarEntrega?.Count > 0 ? true : false;
                 }
@@ -147,6 +147,7 @@ namespace Presentacion_UI
                     buttonEliminar.Visible = false;
                     buttonFinalizar.Visible = false;
                     buttonModificar.Visible = false;
+                    buttonCargarPersonas.Visible = false;   
                     buttonAgregarEntrega.Visible = false;
                     buttonEliminarDeEntrega.Visible = false;
                     dataGridViewEntregas.Enabled = true;
@@ -819,6 +820,7 @@ namespace Presentacion_UI
             CargarGrillaElementosEntrega();
             CargariGriilaElementosBusqueda();
             listaElementosAgregarEntrega.Clear();
+            Habilitar();
         }
 
         private void buttonEliminarDeEntrega_Click(object sender, EventArgs e)
@@ -832,6 +834,7 @@ namespace Presentacion_UI
             CargarGrillaElementosEntrega();
             CargariGriilaElementosBusqueda();
             listaElementoEliminarEntrega.Clear();
+            Habilitar();
         }
 
         private void DgvElementosEntrega_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -862,5 +865,6 @@ namespace Presentacion_UI
                 Habilitar();
             }
         }
+
     }
 }

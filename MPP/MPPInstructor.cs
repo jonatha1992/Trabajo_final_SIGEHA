@@ -42,8 +42,8 @@ namespace MPP
             XElement Instructor = conexion.LeerObjeto("Persona", pinstructor.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
             if (Instructor != null)
             {
-                Instructor.SetElementValue("NombreCompleto", pinstructor.DNI);
-                Instructor.SetElementValue("Legajo", pinstructor.NombreCompleto);
+                Instructor.SetElementValue("NombreCompleto", pinstructor.NombreCompleto);
+                Instructor.SetElementValue("Legajo", pinstructor.Legajo);
                 Instructor.SetElementValue("IdJerarquia", pinstructor.Jerarquia.Id);
                 Instructor.SetElementValue("DNI", pinstructor.DNI);
             }

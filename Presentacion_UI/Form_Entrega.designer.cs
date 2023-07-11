@@ -52,7 +52,6 @@
             this.groupBoxBusqueda = new System.Windows.Forms.GroupBox();
             this.buttonAgregarEntrega = new System.Windows.Forms.Button();
             this.checkBoxDescripcion = new System.Windows.Forms.CheckBox();
-            this.buttonEliminarDeEntrega = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerHasta = new System.Windows.Forms.DateTimePicker();
@@ -68,6 +67,7 @@
             this.comboBoxArticulo = new System.Windows.Forms.ComboBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
+            this.buttonEliminarDeEntrega = new System.Windows.Forms.Button();
             this.groupBoxEntrega = new System.Windows.Forms.GroupBox();
             this.dataGridViewEntregas = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -76,6 +76,7 @@
             this.checkBoxObservacion = new System.Windows.Forms.CheckBox();
             this.textBoxObservacion = new System.Windows.Forms.TextBox();
             this.DgvElementosEntrega = new System.Windows.Forms.DataGridView();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.buttonCargarPersonas = new System.Windows.Forms.Button();
             this.buttonFinalizar = new System.Windows.Forms.Button();
             this.buttonImprimir = new System.Windows.Forms.Button();
@@ -86,7 +87,6 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBoxBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBusqueda)).BeginInit();
             this.groupBoxEntrega.SuspendLayout();
@@ -260,25 +260,6 @@
             this.checkBoxDescripcion.Text = "Descripcion:";
             this.checkBoxDescripcion.UseVisualStyleBackColor = true;
             this.checkBoxDescripcion.CheckedChanged += new System.EventHandler(this.checkBoxDescripcion_CheckedChanged);
-            // 
-            // buttonEliminarDeEntrega
-            // 
-            this.buttonEliminarDeEntrega.BackColor = System.Drawing.Color.Tomato;
-            this.buttonEliminarDeEntrega.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEliminarDeEntrega.ForeColor = System.Drawing.Color.Black;
-            this.buttonEliminarDeEntrega.Image = global::Presentacion_UI.Properties.Resources.basura;
-            this.buttonEliminarDeEntrega.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEliminarDeEntrega.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEliminarDeEntrega.Location = new System.Drawing.Point(413, 562);
-            this.buttonEliminarDeEntrega.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonEliminarDeEntrega.Name = "buttonEliminarDeEntrega";
-            this.buttonEliminarDeEntrega.Size = new System.Drawing.Size(103, 44);
-            this.buttonEliminarDeEntrega.TabIndex = 106;
-            this.buttonEliminarDeEntrega.Text = "Eliminar de Entrega";
-            this.buttonEliminarDeEntrega.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonEliminarDeEntrega.UseVisualStyleBackColor = false;
-            this.buttonEliminarDeEntrega.Visible = false;
-            this.buttonEliminarDeEntrega.Click += new System.EventHandler(this.buttonEliminarDeEntrega_Click);
             // 
             // label7
             // 
@@ -528,6 +509,25 @@
             this.textBoxDescripcion.Size = new System.Drawing.Size(482, 51);
             this.textBoxDescripcion.TabIndex = 14;
             // 
+            // buttonEliminarDeEntrega
+            // 
+            this.buttonEliminarDeEntrega.BackColor = System.Drawing.Color.Tomato;
+            this.buttonEliminarDeEntrega.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminarDeEntrega.ForeColor = System.Drawing.Color.Black;
+            this.buttonEliminarDeEntrega.Image = global::Presentacion_UI.Properties.Resources.basura;
+            this.buttonEliminarDeEntrega.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonEliminarDeEntrega.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonEliminarDeEntrega.Location = new System.Drawing.Point(413, 562);
+            this.buttonEliminarDeEntrega.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEliminarDeEntrega.Name = "buttonEliminarDeEntrega";
+            this.buttonEliminarDeEntrega.Size = new System.Drawing.Size(103, 44);
+            this.buttonEliminarDeEntrega.TabIndex = 106;
+            this.buttonEliminarDeEntrega.Text = "Eliminar de Entrega";
+            this.buttonEliminarDeEntrega.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonEliminarDeEntrega.UseVisualStyleBackColor = false;
+            this.buttonEliminarDeEntrega.Visible = false;
+            this.buttonEliminarDeEntrega.Click += new System.EventHandler(this.buttonEliminarDeEntrega_Click);
+            // 
             // groupBoxEntrega
             // 
             this.groupBoxEntrega.BackColor = System.Drawing.Color.Transparent;
@@ -730,6 +730,13 @@
             this.DgvElementosEntrega.TabIndex = 64;
             this.DgvElementosEntrega.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvElementosEntrega_CellContentClick);
             // 
+            // Sel
+            // 
+            this.Sel.HeaderText = "Sel";
+            this.Sel.Name = "Sel";
+            this.Sel.ReadOnly = true;
+            this.Sel.Visible = false;
+            // 
             // buttonCargarPersonas
             // 
             this.buttonCargarPersonas.BackColor = System.Drawing.Color.Red;
@@ -752,13 +759,13 @@
             // buttonFinalizar
             // 
             this.buttonFinalizar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFinalizar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFinalizar.ForeColor = System.Drawing.Color.White;
             this.buttonFinalizar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonFinalizar.Location = new System.Drawing.Point(430, 179);
+            this.buttonFinalizar.Location = new System.Drawing.Point(441, 179);
             this.buttonFinalizar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonFinalizar.Name = "buttonFinalizar";
-            this.buttonFinalizar.Size = new System.Drawing.Size(87, 34);
+            this.buttonFinalizar.Size = new System.Drawing.Size(76, 34);
             this.buttonFinalizar.TabIndex = 91;
             this.buttonFinalizar.Text = "Finalizar";
             this.buttonFinalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -789,7 +796,7 @@
             // 
             this.buttonAgregar.AutoEllipsis = true;
             this.buttonAgregar.BackColor = System.Drawing.Color.LimeGreen;
-            this.buttonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAgregar.ForeColor = System.Drawing.Color.Black;
             this.buttonAgregar.Image = global::Presentacion_UI.Properties.Resources.boton_agregar_Elemento;
             this.buttonAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -807,7 +814,7 @@
             // buttonEliminar
             // 
             this.buttonEliminar.BackColor = System.Drawing.Color.Tomato;
-            this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.ForeColor = System.Drawing.Color.Black;
             this.buttonEliminar.Image = global::Presentacion_UI.Properties.Resources.basura;
             this.buttonEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -815,7 +822,7 @@
             this.buttonEliminar.Location = new System.Drawing.Point(305, 178);
             this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(91, 36);
+            this.buttonEliminar.Size = new System.Drawing.Size(85, 36);
             this.buttonEliminar.TabIndex = 89;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -853,7 +860,7 @@
             // buttonModificar
             // 
             this.buttonModificar.BackColor = System.Drawing.Color.Yellow;
-            this.buttonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonModificar.ForeColor = System.Drawing.Color.Black;
             this.buttonModificar.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
             this.buttonModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -861,7 +868,7 @@
             this.buttonModificar.Location = new System.Drawing.Point(172, 177);
             this.buttonModificar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(102, 36);
+            this.buttonModificar.Size = new System.Drawing.Size(94, 36);
             this.buttonModificar.TabIndex = 84;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -896,13 +903,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1305, 615);
             this.splitContainer1.SplitterDistance = 543;
             this.splitContainer1.TabIndex = 97;
-            // 
-            // Sel
-            // 
-            this.Sel.HeaderText = "Sel";
-            this.Sel.Name = "Sel";
-            this.Sel.ReadOnly = true;
-            this.Sel.Visible = false;
             // 
             // Form_Entrega
             // 

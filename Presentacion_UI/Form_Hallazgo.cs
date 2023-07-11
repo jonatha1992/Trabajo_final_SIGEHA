@@ -1,4 +1,5 @@
 ﻿using BE;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Negocio;
 using Seguridad;
 using System;
@@ -63,6 +64,7 @@ namespace Presentacion_UI
         List<BECategoria> listaCategorias;
         List<BEArticulo> listaArticulos;
         List<BEEstado_Elemento> ListabEEstadoElementos;
+        List<BEElemento> ListaDeElementosSeleccionados;
 
 
 
@@ -77,7 +79,6 @@ namespace Presentacion_UI
 
         //BANDERAS
         bool SeleccionHallazgo = false;
-        bool SeleccionElemento = false;
         bool ModoCreacion = false;
         #endregion
 
@@ -152,8 +153,11 @@ namespace Presentacion_UI
         void HabilitarElemento()
         {
 
-            if (SeleccionElemento) // modo creacion
+
+            if (ListaDeElementosSeleccionados?.Count > 0) // modo creacion
             {
+                bEElementoSeleccionado = ListaDeElementosSeleccionados.First();
+
                 if (bEElementoSeleccionado != null)
                 {
                     comboBoxCategoria.Text = listaCategorias.Find(x => x.Id == bEElementoSeleccionado.Articulo.Categoria.Id).Nombre;
@@ -242,7 +246,7 @@ namespace Presentacion_UI
         }
         BEElemento CrearElemento()
         {
-            if (!SeleccionElemento)
+            if (bEElementoSeleccionado == null)
             {
                 bEElementoSeleccionado = new BEElemento();
             }
@@ -504,6 +508,7 @@ namespace Presentacion_UI
                     {
                         ModoCreacion = true;
                         SeleccionHallazgo = true;
+                        ListaDeElementosSeleccionados = new List<BEElemento>();
                         Habilitar();
                         CargarGrillaHallazgos();
                         SeleccionarHallazgo();
@@ -600,19 +605,18 @@ namespace Presentacion_UI
         {
             try
             {
-                if (SeleccionElemento)
-                {
-                    if (VerificarCamposElementos())
-                    {
-                        CrearElemento();
-                        if (bLLElemento.Actualizar(bEElementoSeleccionado))
-                        {
-                            SeleccionElemento = false;
-                            CargarGrillaElementos();
-                            HabilitarElemento();
-                            Habilitar();
 
-                        }
+                if (VerificarCamposElementos())
+                {
+                    CrearElemento();
+                    if (bLLElemento.Actualizar(bEElementoSeleccionado))
+                    {
+                        ListaDeElementosSeleccionados.RemoveAll(x => x.Id == bEElementoSeleccionado.Id);
+                        CargarGrillaElementos();
+                        HabilitarElemento();
+                        VerificarElementosSeleccionados();
+                        Habilitar();
+
                     }
                 }
             }
@@ -626,23 +630,15 @@ namespace Presentacion_UI
         {
             try
             {
-                if (SeleccionElemento)
+                foreach (var item in ListaDeElementosSeleccionados)
                 {
-
-                    foreach (DataGridViewRow fila in DgvElementos.Rows)
-                    {
-                        if ((bool)fila.Cells[0].Value == true)
-                        {
-                            bLLElemento.Eliminar((BEElemento)fila.DataBoundItem);
-                        }
-                    }
-
-                    SeleccionElemento = false;
-                    CargarGrillaElementos();
-                    HabilitarElemento();
-                    Habilitar();
-
+                    bLLElemento.Eliminar(item);
                 }
+                ListaDeElementosSeleccionados.Clear();
+                CargarGrillaElementos();
+                HabilitarElemento();
+                Habilitar();
+
             }
             catch (Exception ex)
             {
@@ -738,7 +734,7 @@ namespace Presentacion_UI
             bEHallazgoSeleccionado = null;
             bEElementoSeleccionado = null;
             SeleccionHallazgo = false;
-            SeleccionElemento = false;
+            ListaDeElementosSeleccionados= null;
             Habilitar();
             CargarGrillaHallazgos();
             CargarGrillaElementos();
@@ -771,43 +767,40 @@ namespace Presentacion_UI
                     var Index = DgvElementos.CurrentRow.Index;
 
                     // Invierte el valor de la celda "Sel"
-                    if (Valor == false)
+                    if (!Valor)
                     {
                         DgvElementos.Rows[Index].Cells["Sel"].Value = true;
+                        bEElementoSeleccionado = (BEElemento)DgvElementos.Rows[Index].DataBoundItem;
+                        ListaDeElementosSeleccionados.Add(bEElementoSeleccionado);
+
                     }
                     else
                     {
                         DgvElementos.Rows[Index].Cells["Sel"].Value = false;
-                    }
 
-                    // Llama a un método para verificar los elementos seleccionados
-                    VerificarElementosSeleccionados();
+                        // Eliminar el elemento de la lista
+                        bEElementoSeleccionado = (BEElemento)DgvElementos.Rows[Index].DataBoundItem;
+                        ListaDeElementosSeleccionados.RemoveAll(elemento => elemento.Id == bEElementoSeleccionado.Id);
+
+                    }
+                    HabilitarElemento();
                 }
             }
         }
         void VerificarElementosSeleccionados()
         {
-            SeleccionElemento = false;
-
-            foreach (DataGridViewRow row in DgvElementos.Rows)
+            if (ListaDeElementosSeleccionados?.Count> 0) 
             {
-                // Obtiene el valor actual de la celda "Seleccion"
-                var valorCelda = row.Cells["Sel"].Value;
-                var valor = valorCelda as bool? ?? false; // A
-                                                        
-                if (!valor)
+                foreach (DataGridViewRow row in DgvElementos.Rows)
                 {
-                    SeleccionElemento = true;
-                    bEElementoSeleccionado = (BEElemento)row.DataBoundItem;
-                    break;
+                    var valorID = (int)row.Cells["Id"].Value; 
+                    var valor = row.Cells["Sel"].Value as bool? ?? false; 
+                    if ( ListaDeElementosSeleccionados.Exists(x=> x.Id == valorID))
+                    {
+                        row.Cells["Sel"].Value = true;
+                    }
                 }
             }
-           
-            if (!SeleccionElemento)
-            {
-                bEElementoSeleccionado = null;
-            }
-            HabilitarElemento();
         }
 
         #endregion

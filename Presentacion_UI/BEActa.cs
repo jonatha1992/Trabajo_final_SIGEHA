@@ -84,7 +84,7 @@ namespace Presentacion_UI
                     new ReportParameter("HoraHallazgo", hallazgo.FechaHallazgo.ToShortTimeString()),
                     new ReportParameter("LugarHallazgo", hallazgo.LugarHallazgo.ToUpper()),
                     new ReportParameter("DiaActa", hallazgo.FechaActa?.Day.ToString() ?? DateTime.Now.Day.ToString()),
-                    new ReportParameter("MesActa", hallazgo.FechaActa?.Month.ToString("MMM") ?? DateTime.Now.Month.ToString("MMM")),
+                    new ReportParameter("MesActa", hallazgo.FechaActa?.ToString("MMMM") ?? DateTime.Now.ToString("MMMM")),
                     new ReportParameter("AnoActa", hallazgo.FechaActa?.Year.ToString() ?? DateTime.Now.Year.ToString()),
                     new ReportParameter("HoraActa", hallazgo.FechaActa?.ToString("HH:mm") ?? DateTime.Now.ToString("HH:mm")),
                 };
