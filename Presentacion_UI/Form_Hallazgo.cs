@@ -112,7 +112,7 @@ namespace Presentacion_UI
 
         bool VerificarCamposElementos()
         {
-            if (comboBoxCategoria.Text == "Seleccione" || !listaCategorias.Exists( x=>x.Nombre == comboBoxCategoria.Text))
+            if (comboBoxCategoria.Text == "Seleccione" || !listaCategorias.Exists(x => x.Nombre == comboBoxCategoria.Text))
             {
                 MessageBox.Show("Seleccione la Categoría de elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -147,7 +147,7 @@ namespace Presentacion_UI
 
 
 
-        
+
 
         void HabilitarElemento()
         {
@@ -203,15 +203,22 @@ namespace Presentacion_UI
                     }
 
 
-                    if (DgvElementos.DataSource != null)
+                    if (DgvElementos.DataSource != null || bEHallazgoSeleccionado.listaElementos.Count > 0)
                     {
-
                         this.DgvElementos.Columns["Id"].Width = 35;
                         this.DgvElementos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                         this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
 
+                    }
+                    if (DgvElementos.DataSource == null || DgvElementos.Rows.Count == 0)
+                    {
+                        DgvElementos.ColumnHeadersVisible = false;
+                    }
+                    else
+                    {
+                        DgvElementos.ColumnHeadersVisible = true;
                     }
 
                 }
@@ -272,7 +279,7 @@ namespace Presentacion_UI
             {
                 comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
             }
-            else 
+            else
             {
                 comboBoxCategoria.Text = "Seleccione";
                 comboBoxArticulo.Text = "Seleccione";
@@ -687,7 +694,7 @@ namespace Presentacion_UI
 
 
         }
-        
+
 
         void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
         {
@@ -784,13 +791,18 @@ namespace Presentacion_UI
 
             foreach (DataGridViewRow row in DgvElementos.Rows)
             {
-                if ((bool)row.Cells[0].Value != false)
+                // Obtiene el valor actual de la celda "Seleccion"
+                var valorCelda = row.Cells["Sel"].Value;
+                var valor = valorCelda as bool? ?? false; // A
+                                                        
+                if (!valor)
                 {
                     SeleccionElemento = true;
                     bEElementoSeleccionado = (BEElemento)row.DataBoundItem;
                     break;
                 }
             }
+           
             if (!SeleccionElemento)
             {
                 bEElementoSeleccionado = null;
@@ -861,13 +873,12 @@ namespace Presentacion_UI
                         {
                             var index = dgvHallazgos.CurrentRow.Index;
                             dgvHallazgos.Rows[index].Cells["Seleccion"].Value = true;
-                            VerificarHallazgosSeleccionados();
                         }
                         else  // Si se quiere deseleccionar
                         {
                             dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
-                            VerificarHallazgosSeleccionados();
                         }
+                        VerificarHallazgosSeleccionados();
                     }
                 }
 

@@ -47,28 +47,61 @@ namespace MPP
             return NuevoUser;
 
         }
+        //public bool Actualizar(BEUsuario pUsuario)
+        //{
+        //    XElement usuarioXml = new XElement("Usuario",
+        //       new XElement("Id", pUsuario.Id),
+        //       new XElement("NombreUsuario", pUsuario.NombreUsuario),
+        //       new XElement("NombreCompleto", pUsuario.NombreCompleto),
+        //       new XElement("DNI", pUsuario.DNI),
+        //       new XElement("Password", pUsuario.Password));
+
+
+        //    if (pUsuario.Destino is BEUnidad)
+        //    {
+        //        usuarioXml.Add(new XElement("IdUnidad", pUsuario.Destino.Id));
+
+        //    }
+        //    if (pUsuario.Destino is BEUrsa)
+        //    {
+        //        usuarioXml.Add(new XElement("IdUrsa", pUsuario.Destino.Id));
+        //    }
+
+
+        //    return conexion.Actualizar(NodoPadre, pUsuario.Id.ToString(), usuarioXml);
+        //}
         public bool Actualizar(BEUsuario pUsuario)
         {
-            XElement usuarioXml = new XElement("Usuario",
-               new XElement("Id", pUsuario.Id),
-               new XElement("NombreUsuario", pUsuario.NombreUsuario),
-               new XElement("NombreCompleto", pUsuario.NombreCompleto),
-               new XElement("DNI", pUsuario.DNI),
-               new XElement("Password", pUsuario.Password));
-
-
-            if (pUsuario.Destino is BEUnidad)
+            try
             {
-                usuarioXml.Add(new XElement("IdUnidad", pUsuario.Destino.Id));
+                XElement UsuarioExistente = conexion.LeerObjeto("Usuario", pUsuario.Id.ToString());
+
+                if (UsuarioExistente != null)
+                {
+                    UsuarioExistente.SetElementValue("NombreUsuario", pUsuario.NombreUsuario);
+                    UsuarioExistente.SetElementValue("NombreCompleto", pUsuario.NombreCompleto);
+                    UsuarioExistente.SetElementValue("DNI", pUsuario.DNI);
+                    UsuarioExistente.SetElementValue("Password", pUsuario.Password);
+
+                    if (pUsuario.Destino is BEUnidad)
+                    {
+                        UsuarioExistente.SetElementValue("IdUnidad", pUsuario.Destino.Id);
+                        UsuarioExistente.Element("IdUrsa")?.Remove();
+                    }
+                    else if (pUsuario.Destino is BEUrsa)
+                    {
+                        UsuarioExistente.SetElementValue("IdUrsa", pUsuario.Destino.Id);
+                        UsuarioExistente.Element("IdUnidad")?.Remove();
+                    }
+
+                }
+                return conexion.Actualizar(NodoPadre, pUsuario.Id.ToString(), UsuarioExistente);
 
             }
-            if (pUsuario.Destino is BEUrsa)
+            catch (Exception ex)
             {
-                usuarioXml.Add(new XElement("IdUrsa", pUsuario.Destino.Id));
+                throw new Exception($"{ex.Message}");
             }
-
-
-            return conexion.Actualizar(NodoPadre, pUsuario.Id.ToString(), usuarioXml);
         }
 
 

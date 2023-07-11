@@ -32,12 +32,7 @@ namespace Negocio
             BLLEstado_Elemento bLLEstado_Elemento = new BLLEstado_Elemento();
             var estadoEntregado = bLLEstado_Elemento.ListarTodo().Find(x => x.Nombre == "Entregado");
 
-            if (elemento.Estado.Id == estadoEntregado.Id)
-            {
-                return false;
-            }
             elemento.Estado = estadoEntregado;
-
             return mPPElemento.Agregar_Elemento_Entrega(eEntrega, elemento);
         }
         public bool EliminarElementoEntrega(BEEntrega eEntrega, BEElemento elemento)
@@ -45,12 +40,8 @@ namespace Negocio
             BLLEstado_Elemento bLLEstado_Elemento = new BLLEstado_Elemento();
             var estadoResguardo = bLLEstado_Elemento.ListarTodo().Find(x => x.Nombre == "Resguardo");
 
-            if (eEntrega.listaElementos.Exists(x => x.Id == elemento.Id))
-            {
-                elemento.Estado = estadoResguardo;
-                mPPElemento.Eliminar_Elemento_Entrega(elemento);
-            }
-            return false;
+            elemento.Estado = estadoResguardo;
+            return mPPElemento.Eliminar_Elemento_Entrega(elemento);
         }
 
 
@@ -87,24 +78,16 @@ namespace Negocio
 
         public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad)
         {
-            
-            return mPPElemento.BusquedaElementos( desde,  hasta, bECategoria, bEArticulo, lugar, descripcion, unidad);
+
+            return mPPElemento.BusquedaElementos(desde, hasta, bECategoria, bEArticulo, lugar, descripcion, unidad);
         }
 
 
         public BEElemento CovertirElemento(ElementoBusqueda elementoBusqueda)
         {
-            BLLArticulo bLLArticulo = new BLLArticulo();
-            var articulos = bLLArticulo.ListarTodo();
+            BEElemento bEElemento = ListarObjeto(new BEElemento(elementoBusqueda.Id));
+            return bEElemento;
 
-            BEElemento Elemento = new BEElemento(elementoBusqueda.Id);
-            Elemento = new BEElemento(elementoBusqueda.Id);
-            Elemento.Estado = new BEEstado_Elemento();
-            Elemento.Descripcion = elementoBusqueda.Descripcion.ToUpper();
-            Elemento.Estado.Nombre = elementoBusqueda.Estado;
-            Elemento.Cantidad = Convert.ToDouble(elementoBusqueda.Cantidad);
-            Elemento.Articulo = articulos.Find(x => x.Nombre == elementoBusqueda.Articulo);
-            return Elemento;
         }
 
         public List<ElementoBusqueda> BusquedaElementosHallazgo(string NroActa, string Lugar)

@@ -1,4 +1,5 @@
 ﻿using BE;
+using Microsoft.VisualBasic;
 using Negocio;
 using Seguridad;
 using System;
@@ -40,14 +41,13 @@ namespace Presentacion_UI
 
 
         bool SeleccionEntrega = false;
-        bool SeleccionElementoEntrega = false;
+
         bool ModoCreacion = false;
 
         BLLEntrega bLLEntrega;
         BLLElemento bLLElemento;
         BLLCategoria bLLCategorias;
         BLLArticulo bLLArticulo;
-
 
         BEEntrega bEEntregaSeleccionada;
 
@@ -61,6 +61,10 @@ namespace Presentacion_UI
         List<BECategoria> ListaCategorias;
         List<ElementoBusqueda> listaElementosBusqueda;
         List<BEEntrega> listaEntregas;
+
+
+        List<BEElemento> listaElementosAgregarEntrega;
+        List<BEElemento> listaElementoEliminarEntrega;
         #endregion
 
         #region "Metodos"
@@ -131,11 +135,11 @@ namespace Presentacion_UI
                     buttonModificar.Visible = true;
                     buttonEliminar.Visible = true;
                     buttonFinalizar.Visible = true;
-                    buttonCargarPersonas.Visible = true;
-                    buttonAgregarEntrega.Visible = true;
                     buttonEliminarDeEntrega.Visible = true;
                     dataGridViewEntregas.Enabled = false;
 
+                    buttonAgregarEntrega.Visible = listaElementosAgregarEntrega?.Count > 0 ? true : false;
+                    buttonEliminarDeEntrega.Visible = listaElementoEliminarEntrega?.Count > 0 ? true : false;
                 }
                 else
                 {
@@ -163,8 +167,8 @@ namespace Presentacion_UI
                     buttonCargarPersonas.BackColor = Color.Red;
                 }
 
-            }
-            else
+            } //SE SELECCIONO ALGO EN DGV ENTREGAS
+            else  //MODO INICIAL
             {
                 buttonAgregar.Visible = true;
                 buttonModificar.Visible = false;
@@ -174,7 +178,6 @@ namespace Presentacion_UI
                 buttonCargarPersonas.Visible = false;
                 buttonImprimir.Visible = false;
                 buttonFinalizar.Visible = false;
-
             }
 
         }
@@ -271,9 +274,10 @@ namespace Presentacion_UI
                     DgvElementosEntrega.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                     DgvElementosEntrega.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                     DgvElementosEntrega.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
-                    DgvElementosEntrega.DefaultCellStyle.Font = new Font("Arial", 8F);
+                    DgvElementosEntrega.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 8F);
                     DgvElementosEntrega.ClearSelection();
                 }
+                    
                 else
                 {
                     if (!ModoCreacion)
@@ -290,9 +294,19 @@ namespace Presentacion_UI
                             }
                         }
                     }
-
-
                 }
+
+                if (DgvElementosEntrega.DataSource == null || DgvElementosEntrega.Rows.Count == 0)
+                {
+                    DgvElementosEntrega.ColumnHeadersVisible = false;
+                }
+                else
+                {
+                    DgvElementosEntrega.ColumnHeadersVisible = true;
+                }
+
+
+
             }
         }
         void CargarGrillaEntregas()
@@ -392,6 +406,8 @@ namespace Presentacion_UI
             dateTimePickerFechaEntrega.Value = DateTime.Now;
             bEEntregaSeleccionada = null;
             DgvElementosEntrega.DataSource = null;
+            listaElementosAgregarEntrega = null;
+            listaElementoEliminarEntrega = null;
             ColocarNumero();
         }
         void ColocarNumero()
@@ -410,6 +426,8 @@ namespace Presentacion_UI
             bEEntregaSeleccionada.Anio = dateTimePickerFechaEntrega.Value.Year;
             bEEntregaSeleccionada.Observacion = textBoxObservacion.Text;
 
+            listaElementoEliminarEntrega = new List<BEElemento>();
+            listaElementosAgregarEntrega = new List<BEElemento>();
             return bEEntregaSeleccionada;
         }
         void VerificarEntregaSeleccionados()
@@ -506,7 +524,7 @@ namespace Presentacion_UI
                 {
                     Habilitar();
                     CargarGrillaEntregas();
-                    SeleccionarEntrega();    
+                    SeleccionarEntrega();
                     MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -588,7 +606,7 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void buttonFinalizar_Click(object sender, EventArgs e)
         {
             try
@@ -667,18 +685,24 @@ namespace Presentacion_UI
                 if (e.ColumnIndex == this.DgvBusqueda.Columns["Select"].Index)
                 {
                     var valorCelda = DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value;
+                    var valorEntrega = (string) DgvBusqueda.Rows[e.RowIndex].Cells["Entrega"].Value;
                     var valor = valorCelda as bool? ?? false;
-                    if (!valor) // SI SELECCIONO CON EL TILDE
+                    if (!valor && valorEntrega == "No entregado" ) // SI SELECCIONO CON EL TILDE
                     {
-                        var index = DgvBusqueda.CurrentRow.Index;
+                    
+                        var index = e.RowIndex;
                         DgvBusqueda.Rows[index].Cells["Select"].Value = true;
-                        //VerificarElementoSeleccionados();
+                        var elemento = (ElementoBusqueda)DgvBusqueda.Rows[index].DataBoundItem;
+                        listaElementosAgregarEntrega.Add(bLLElemento.CovertirElemento(elemento));
                     }
                     else  // SACAR LA SELECCION 
                     {
                         DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value = false;
-                        //VerificarElementoSeleccionados();
+                        var elementoBusqueda = (ElementoBusqueda)DgvBusqueda.Rows[e.RowIndex].DataBoundItem;
+                        listaElementosAgregarEntrega.RemoveAll(elemento => elemento.Id == elementoBusqueda.Id);
+
                     }
+                    Habilitar();
                 }
             }
             catch (Exception ex)
@@ -713,14 +737,13 @@ namespace Presentacion_UI
                     {
                         var index = dataGridViewEntregas.CurrentRow.Index;
                         dataGridViewEntregas.Rows[index].Cells["Seleccion"].Value = true;
-                        VerificarEntregaSeleccionados();
                     }
                     else  // SACAR LA SELECCION 
                     {
                         SeleccionEntrega = false;
                         dataGridViewEntregas.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
-                        VerificarEntregaSeleccionados();
                     }
+                    VerificarEntregaSeleccionados();
                 }
             }
         }
@@ -789,44 +812,26 @@ namespace Presentacion_UI
 
         private void buttonAgregarAEntrega_Click(object sender, EventArgs e)
         {
-            // Crea una nueva lista para almacenar los elementos seleccionados
-            foreach (DataGridViewRow row in DgvBusqueda.Rows)
+            foreach (var elemento in listaElementosAgregarEntrega)
             {
-                var valorCelda = row.Cells[0].Value;
-                var valor = valorCelda as bool? ?? false;
-                // Verifica si el CheckBox en la primera columna está marcado
-                if (valor)
-                {
-                    ElementoBusqueda elemento = (ElementoBusqueda)row.DataBoundItem;
-                    var bEElemento = bLLElemento.ListarObjeto(new BEElemento(elemento.Id));
-
-                    if (!bLLElemento.AgregarElementoEntrega(bEEntregaSeleccionada, bEElemento))
-                    {
-                        row.Cells[0].Value = false;
-                    }
-
-                }
+                bLLElemento.AgregarElementoEntrega(bEEntregaSeleccionada, elemento);
             }
             CargarGrillaElementosEntrega();
+            CargariGriilaElementosBusqueda();
+            listaElementosAgregarEntrega.Clear();
         }
 
         private void buttonEliminarDeEntrega_Click(object sender, EventArgs e)
         {
-            // Crea una nueva lista para almacenar los elementos seleccionados
-            foreach (DataGridViewRow row in DgvElementosEntrega.Rows)
+            
+            foreach (var elemento in listaElementoEliminarEntrega)
             {
-                var valorCelda = row.Cells[0].Value;
-                var valor = valorCelda as bool? ?? false;
-                // Verifica si el CheckBox en la primera columna está marcado
-                if (valor)
-                {
-                    var bEElemento = (BEElemento)row.DataBoundItem;
-                    bLLElemento.EliminarElementoEntrega(bEEntregaSeleccionada, bEElemento);
-
-                }
-
+                bLLElemento.EliminarElementoEntrega(bEEntregaSeleccionada, elemento);
             }
+
             CargarGrillaElementosEntrega();
+            CargariGriilaElementosBusqueda();
+            listaElementoEliminarEntrega.Clear();
         }
 
         private void DgvElementosEntrega_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -842,12 +847,19 @@ namespace Presentacion_UI
                 {
                     var index = DgvElementosEntrega.CurrentRow.Index;
                     DgvElementosEntrega.Rows[index].Cells["Sel"].Value = true;
-                
+                    listaElementoEliminarEntrega.Add((BEElemento)DgvElementosEntrega.Rows[index].DataBoundItem);
+
                 }
                 else  // SACAR LA SELECCION 
                 {
-                    dataGridViewEntregas.Rows[e.RowIndex].Cells["Sel"].Value = false;
+
+                    DgvElementosEntrega.Rows[e.RowIndex].Cells["Sel"].Value = false;
+
+                    // Eliminar el elemento de la lista
+                    var elemento = (BEElemento)DgvElementosEntrega.Rows[e.RowIndex].DataBoundItem;
+                    listaElementoEliminarEntrega.Remove(elemento);
                 }
+                Habilitar();
             }
         }
     }

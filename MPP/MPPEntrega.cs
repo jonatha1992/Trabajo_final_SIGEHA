@@ -42,19 +42,55 @@ namespace MPP
         }
 
 
+        //public bool Actualizar(BEEntrega entrega)
+        //{
+
+        //    XElement EntegaActualizado = new XElement("Entrega",
+        //   new XElement("Id", entrega.Id),
+        //   new XElement("Nroacta", entrega.NroActa),
+        //   new XElement("IdUnidad", entrega.Unidad.Id),
+        //   new XElement("Anio", entrega.Anio),
+        //   new XElement("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm")),
+        //   new XElement("Observacion", entrega.Observacion));
+
+        //    return conexion.Actualizar(NodoPadre, entrega.Id.ToString(), EntegaActualizado);
+
+        //}
+
         public bool Actualizar(BEEntrega entrega)
         {
+            try
+            {
+                XElement EntregaExistente = conexion.LeerObjeto(NodoPadre, entrega.Id.ToString());
 
-            XElement EntegaActualizado = new XElement("Entrega",
-           new XElement("Id", entrega.Id),
-           new XElement("Nroacta", entrega.NroActa),
-           new XElement("IdUnidad", entrega.Unidad.Id),
-           new XElement("Anio", entrega.Anio),
-           new XElement("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm")),
-           new XElement("Observacion", entrega.Observacion));
+                if (EntregaExistente != null)
+                {
+                    EntregaExistente.SetElementValue("Nroacta", entrega.NroActa);
+                    EntregaExistente.SetElementValue("IdUnidad", entrega.Unidad.Id);
+                    EntregaExistente.SetElementValue("Anio", entrega.Anio);
+                    EntregaExistente.SetElementValue("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm"));
+                   
+                    // Verifica si el campo "Observacion" está presente en el objeto entrega
+                    if (!string.IsNullOrEmpty(entrega.Observacion))
+                    {
+                        // Si el campo "Observacion" tiene un valor, lo agrega al XElement
+                        EntregaExistente.SetElementValue("Observacion", entrega.Observacion);
+                    }
+                    else
+                    {
+                        // Si el campo "Observacion" está vacío, se asegura de que no haya un elemento "Observacion" en el XElement
+                        EntregaExistente.Element("Observacion")?.Remove();
+                    }
 
-            return conexion.Actualizar(NodoPadre, entrega.Id.ToString(), EntegaActualizado);
+                    return conexion.Actualizar(NodoPadre, entrega.Id.ToString(), EntregaExistente);
+                }
 
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
         }
 
         public bool Eliminar(BEEntrega pEntrega)

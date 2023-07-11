@@ -52,30 +52,66 @@ namespace MPP
 
         }
 
+        //public bool Actualizar(BEHallazgo pHallazgo)
+        //{
+        //    try
+        //    {
+
+        //        XElement HallazgoActualizado = new XElement("Hallazgo",
+        //            new XElement("Id", pHallazgo.Id),
+        //            new XElement("FechaActa", pHallazgo.FechaActa?.ToString("dd/MM/yyyy HH:mm")),
+        //            new XElement("Nroacta", pHallazgo.NroActa),
+        //            new XElement("IdUnidad", pHallazgo.Unidad.Id),
+        //            new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
+        //            new XElement("Anio", pHallazgo.Anio),
+        //            new XElement("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm")),
+        //            new XElement("Observacion", pHallazgo.Observacion)
+        //        );
+
+        //        return conexion.Actualizar(NodoPadre, pHallazgo.Id.ToString(), HallazgoActualizado);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"{ex.Message}");
+        //    }
+        //}
+
         public bool Actualizar(BEHallazgo pHallazgo)
         {
             try
             {
+                XElement HallazgoExistente = conexion.LeerObjeto("Hallazgo", pHallazgo.Id.ToString());
 
-                XElement HallazgoActualizado = new XElement("Hallazgo",
-                    new XElement("Id", pHallazgo.Id),
-                    new XElement("FechaActa", pHallazgo.FechaActa?.ToString("dd/MM/yyyy HH:mm")),
-                    new XElement("Nroacta", pHallazgo.NroActa),
-                    new XElement("IdUnidad", pHallazgo.Unidad.Id),
-                    new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
-                    new XElement("Anio", pHallazgo.Anio),
-                    new XElement("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm")),
-                    new XElement("Observacion", pHallazgo.Observacion)
-                );
+                if (HallazgoExistente != null)
+                {
+                    HallazgoExistente.SetElementValue("FechaActa", pHallazgo.FechaActa?.ToString("dd/MM/yyyy HH:mm"));
+                    HallazgoExistente.SetElementValue("Nroacta", pHallazgo.NroActa);
+                    HallazgoExistente.SetElementValue("IdUnidad", pHallazgo.Unidad.Id);
+                    HallazgoExistente.SetElementValue("LugarHallazgo", pHallazgo.LugarHallazgo);
+                    HallazgoExistente.SetElementValue("Anio", pHallazgo.Anio);
+                    HallazgoExistente.SetElementValue("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm"));
+                    
+                    // Verifica si el campo "Observacion" está presente en el objeto entrega
+                    if (!string.IsNullOrEmpty(pHallazgo.Observacion))
+                    {
+                        // Si el campo "Observacion" tiene un valor, lo agrega al XElement
+                        HallazgoExistente.SetElementValue("Observacion", pHallazgo.Observacion);
+                    }
+                    else
+                    {
+                        // Si el campo "Observacion" está vacío, se asegura de que no haya un elemento "Observacion" en el XElement
+                        HallazgoExistente.Element("Observacion")?.Remove();
+                    }
 
-                return conexion.Actualizar(NodoPadre, pHallazgo.Id.ToString(), HallazgoActualizado);
+                }
+                return conexion.Actualizar(NodoPadre, pHallazgo.Id.ToString(), HallazgoExistente);
+
             }
             catch (Exception ex)
             {
                 throw new Exception($"{ex.Message}");
             }
         }
-
 
 
         public List<BEHallazgo> ListarTodo()

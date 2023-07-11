@@ -39,16 +39,16 @@ namespace MPP
         public bool Actualizar(BEInstructor pinstructor)
         {
 
-            // Crear un nuevo elemento XML con los datos actualizados.
-            XElement elementoActualizado = new XElement("Persona",
-                new XElement("NombreCompleto", pinstructor.NombreCompleto),
-                new XElement("Legajo", pinstructor.Legajo),
-                new XElement("IdJerarquia", pinstructor.Jerarquia.Id),
-                new XElement("DNI", pinstructor.DNI)
-            );
+            XElement Instructor = conexion.LeerObjeto("Persona", pinstructor.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            if (Instructor != null)
+            {
+                Instructor.SetElementValue("NombreCompleto", pinstructor.DNI);
+                Instructor.SetElementValue("Legajo", pinstructor.NombreCompleto);
+                Instructor.SetElementValue("IdJerarquia", pinstructor.Jerarquia.Id);
+                Instructor.SetElementValue("DNI", pinstructor.DNI);
+            }
 
-            // Llamar a la función de actualización con el elemento actualizado.
-            return conexion.Actualizar(NodoPadre, pinstructor.Id.ToString(), elementoActualizado);
+            return conexion.Actualizar(NodoPadre, pinstructor.Id.ToString(), Instructor);
 
 
         }

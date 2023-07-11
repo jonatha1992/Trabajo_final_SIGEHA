@@ -44,6 +44,7 @@ namespace MPP
             if (Elementoxml != null)
             {
                 Elementoxml.Add(new XElement("IdEntrega", entrega.Id));  // Añade IdEntrega al Elemento
+                Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al Elemento
                
                 return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el Elemento entrega el XML
             }
@@ -57,7 +58,8 @@ namespace MPP
 
             if (Elementoxml != null)
             {
-                Elementoxml.Element("IdEntrega")?.Remove(); // Elimina el nodo IdEntrega si existe
+                Elementoxml.Element("IdEntrega")?.Remove();
+                Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al Elemento
                 return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el Elemento entrega el XML
             }
             return false;

@@ -36,17 +36,18 @@ namespace MPP
 
         public bool Actualizar(BEPersona pPersona)
         {
+            XElement persona = conexion.LeerObjeto("Persona", pPersona.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            if (persona != null)
+            {
+                persona.SetElementValue("DNI", pPersona.DNI);
+                persona.SetElementValue("NombreCompleto", pPersona.NombreCompleto);
+                persona.SetElementValue("Domicilio", pPersona.Domicilio);
+                persona.SetElementValue("Ocupacion", pPersona.Ocupacion);
+                persona.SetElementValue("Telefono", pPersona.Telefono);
+            }
+           
+            return conexion.Actualizar(NodoPadre, pPersona.Id.ToString(), persona);
 
-            XElement bEPersona = new XElement("Persona",
-                     new XElement("Id", pPersona.Id),
-                     new XElement("DNI", pPersona.DNI),
-                     new XElement("NombreCompleto", pPersona.NombreCompleto),
-                     new XElement("Domicilio", pPersona.Domicilio),
-                     new XElement("Ocupacion", pPersona.Ocupacion),
-                     new XElement("Telefono", pPersona.Telefono)
-                     );
-
-            return conexion.Actualizar(NodoPadre, pPersona.Id.ToString(), bEPersona);
         }
 
         public bool Eliminar(BEPersona pPersona)
