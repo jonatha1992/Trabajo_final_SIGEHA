@@ -145,8 +145,6 @@ namespace MPP
             MPPInstructor mPPInstructor = new MPPInstructor();
             MPPEstado_Persona mPPEstado_Persona = new MPPEstado_Persona();
             var EstadosPersona = mPPEstado_Persona.ListarTodo();
-            var personas = mPPPersona.ListarTodo();
-            var jerarquias = mPPEstado_Persona.ListarTodo();
 
 
             IEnumerable<XElement> EntregaPersonasXml = conexion.LeerTodos("Entrega_Persona")
@@ -161,14 +159,20 @@ namespace MPP
                     int idPersona = Convert.ToInt32(e.Element("IdPersona").Value);
                     int idEstado = Convert.ToInt32(e.Element("IdEstado").Value);
 
-                    BEPersona persona = personas.Find(p => p.Id == idPersona);
-                    BEEstado_Persona estado = EstadosPersona.Find(ep => ep.Id == idEstado);
-
-                    if (persona != null && estado != null)
+                    if (idEstado == 1)
                     {
-                        persona.EstadoPersona = estado;
-                        pEntrega.listaPersonas.Add(persona);
+                        BEInstructor instructor = mPPInstructor.ListarObjeto(new BEInstructor(idPersona));
+                        instructor.EstadoPersona = EstadosPersona.Find(ep => ep.Id == idEstado);
+                        pEntrega.listaPersonas.Add(instructor);
+
                     }
+                    else
+                    {
+                        BEPersona ePersona = mPPPersona.ListarObjeto(new BEPersona(idPersona));
+                        ePersona.EstadoPersona = EstadosPersona.Find(ep => ep.Id == idEstado);
+                        pEntrega.listaPersonas.Add(ePersona);
+                    }
+
                 }
             }
 

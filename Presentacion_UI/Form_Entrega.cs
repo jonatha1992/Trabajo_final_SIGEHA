@@ -137,7 +137,7 @@ namespace Presentacion_UI
                     buttonFinalizar.Visible = true;
                     buttonEliminarDeEntrega.Visible = true;
                     dataGridViewEntregas.Enabled = false;
-                    buttonCargarPersonas.Visible = true;   
+                    buttonCargarPersonas.Visible = true;
                     buttonAgregarEntrega.Visible = listaElementosAgregarEntrega?.Count > 0 ? true : false;
                     buttonEliminarDeEntrega.Visible = listaElementoEliminarEntrega?.Count > 0 ? true : false;
                 }
@@ -147,7 +147,7 @@ namespace Presentacion_UI
                     buttonEliminar.Visible = false;
                     buttonFinalizar.Visible = false;
                     buttonModificar.Visible = false;
-                    buttonCargarPersonas.Visible = false;   
+                    buttonCargarPersonas.Visible = false;
                     buttonAgregarEntrega.Visible = false;
                     buttonEliminarDeEntrega.Visible = false;
                     dataGridViewEntregas.Enabled = true;
@@ -190,6 +190,7 @@ namespace Presentacion_UI
             }
 
         }
+
         void Habilitar()
         {
             Botones();
@@ -206,7 +207,7 @@ namespace Presentacion_UI
                 {
                     cumple = true;
                 }
-                if (bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Descubridor") && bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
+                if (bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Propietario") && bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
                 {
                     cumple = true;
                 }
@@ -265,7 +266,6 @@ namespace Presentacion_UI
 
                 if (bEEntregaSeleccionada != null && bEEntregaSeleccionada.listaElementos?.Count > 0)
                 {
-                    //DgvElementosEntrega.Columns["Sel"].Visible = ModoCreacion;
                     DgvElementosEntrega.Columns["Sel"].Width = 20;
                     DgvElementosEntrega.Columns["Id"].Width = 30;
                     DgvElementosEntrega.Columns["Cantidad"].Width = 45;
@@ -278,7 +278,7 @@ namespace Presentacion_UI
                     DgvElementosEntrega.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 8F);
                     DgvElementosEntrega.ClearSelection();
                 }
-                    
+
                 else
                 {
                     if (!ModoCreacion)
@@ -541,22 +541,14 @@ namespace Presentacion_UI
         {
             try
             {
-                foreach (DataGridViewRow fila in dataGridViewEntregas.Rows)
+                if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
                 {
-                    var valorCelda = (bool)fila.Cells[0].Value;
-
-                    var valor = valorCelda as bool? ?? false;
-
-                    if (valor)
-                    {
-                        bLLEntrega.Eliminar((BEEntrega)fila.DataBoundItem);
-                    }
+                    MessageBox.Show("La Entrega se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarCamposEntrega();
+                    CargarGrillaEntregas();
+                    CargarGrillaElementosEntrega();
+                    Habilitar();
                 }
-                MessageBox.Show("La Entrega se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCamposEntrega();
-                CargarGrillaEntregas();
-                Habilitar();
-
 
             }
             catch (Exception ex)
@@ -571,9 +563,7 @@ namespace Presentacion_UI
             {
                 Form_Persona form_Personas = new Form_Persona(bEEntregaSeleccionada);
                 form_Personas.ShowDialog();
-
                 bEEntregaSeleccionada = (BEEntrega)form_Personas.BePAdreHallazgo;
-
                 Habilitar();
             }
             catch (Exception ex)
@@ -589,17 +579,17 @@ namespace Presentacion_UI
         {
             try
             {
-                if (bEEntregaSeleccionada.listaPersonas?.Count >= 3 && bEEntregaSeleccionada.listaElementos?.Count > 0)
-                {
-                    Form_Impresion form_Impresion = new Form_Impresion(bEEntregaSeleccionada);
-                    form_Impresion.ShowDialog();
+                //if (bEEntregaSeleccionada.listaPersonas?.Count >= 3 && bEEntregaSeleccionada.listaElementos?.Count > 0)
+                //{
+                Form_Impresion form_Impresion = new Form_Impresion(bEEntregaSeleccionada);
+                form_Impresion.ShowDialog();
 
-                }
-                else
-                {
-                    MessageBox.Show($"No posee la cantidad de intervinientes para imprimir el acta", "Requisitos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //{
+                //    MessageBox.Show($"No posee la cantidad de intervinientes para imprimir el acta", "Requisitos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                }
+                //}
 
             }
             catch (Exception ex)
@@ -622,7 +612,7 @@ namespace Presentacion_UI
                         LimpiarCamposEntrega();
                         Habilitar();
                         CargarGrillaEntregas();
-                        CargarGrillaElementosEntrega();
+                        //CargarGrillaElementosEntrega();
                         LimpiarbBusqueda();
                     }
                 }
@@ -635,7 +625,7 @@ namespace Presentacion_UI
                         LimpiarCamposEntrega();
                         Habilitar();
                         CargarGrillaEntregas();
-                        CargarGrillaElementosEntrega();
+                        //CargarGrillaElementosEntrega();
                         LimpiarbBusqueda();
                     }
                 }
@@ -686,11 +676,11 @@ namespace Presentacion_UI
                 if (e.ColumnIndex == this.DgvBusqueda.Columns["Select"].Index)
                 {
                     var valorCelda = DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value;
-                    var valorEntrega = (string) DgvBusqueda.Rows[e.RowIndex].Cells["Entrega"].Value;
+                    var valorEntrega = (string)DgvBusqueda.Rows[e.RowIndex].Cells["Entrega"].Value;
                     var valor = valorCelda as bool? ?? false;
-                    if (!valor && valorEntrega == "No entregado" ) // SI SELECCIONO CON EL TILDE
+                    if (!valor && valorEntrega == "No entregado") // SI SELECCIONO CON EL TILDE
                     {
-                    
+
                         var index = e.RowIndex;
                         DgvBusqueda.Rows[index].Cells["Select"].Value = true;
                         var elemento = (ElementoBusqueda)DgvBusqueda.Rows[index].DataBoundItem;
@@ -825,7 +815,7 @@ namespace Presentacion_UI
 
         private void buttonEliminarDeEntrega_Click(object sender, EventArgs e)
         {
-            
+
             foreach (var elemento in listaElementoEliminarEntrega)
             {
                 bLLElemento.EliminarElementoEntrega(bEEntregaSeleccionada, elemento);

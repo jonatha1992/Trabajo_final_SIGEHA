@@ -1014,7 +1014,7 @@ Legajo: </Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Firma Propietario</Value>
+                    <Value>Firma Propietario /Autorizado</Value>
                     <Style>
                       <FontSize>11pt</FontSize>
                     </Style>
@@ -1029,7 +1029,7 @@ Legajo: </Value>
             <Top>10.0053cm</Top>
             <Left>12.34993cm</Left>
             <Height>0.65293cm</Height>
-            <Width>3.72921cm</Width>
+            <Width>5.43313cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>

@@ -101,7 +101,7 @@ namespace MPP
                     // Si el Hallazgo existe, retornar el número
                     if (hallazgoXml != null)
                     {
-                        return hallazgoXml.Element("NroActa")?.Value;
+                        return hallazgoXml.Element("Nroacta")?.Value;
                     }
                 }
             }

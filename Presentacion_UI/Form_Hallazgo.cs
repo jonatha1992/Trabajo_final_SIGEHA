@@ -113,13 +113,13 @@ namespace Presentacion_UI
 
         bool VerificarCamposElementos()
         {
-            if (comboBoxCategoria.Text == "Seleccione" || !listaCategorias.Exists(x => x.Nombre == comboBoxCategoria.Text))
+            if (comboBoxCategoria.Text == "SELECCIONE" || !listaCategorias.Exists(x => x.Nombre == comboBoxCategoria.Text))
             {
                 MessageBox.Show("Seleccione la Categoría de elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
-            if (comboBoxArticulo.Text == "Seleccione" || !listaArticulos.Exists(x => x.Nombre == comboBoxArticulo.Text))
+            if (comboBoxArticulo.Text == "SELECCIONE" || !listaArticulos.Exists(x => x.Nombre == comboBoxArticulo.Text))
             {
                 MessageBox.Show("Seleccione el Articulo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -137,7 +137,7 @@ namespace Presentacion_UI
                 return false;
             }
 
-            if (comboBoxEstado.Text == "Seleccione")
+            if (comboBoxEstado.Text == "SELECCIONE")
             {
                 MessageBox.Show("Seleccione el estado del elemento", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -173,9 +173,9 @@ namespace Presentacion_UI
             }
             else
             {
-                comboBoxCategoria.Text = "Seleccione";
-                comboBoxArticulo.Text = "Seleccione";
-                comboBoxEstado.Text = "Seleccione";
+                comboBoxCategoria.Text = "SELECCIONE";
+                comboBoxArticulo.Text = "SELECCIONE";
+                comboBoxEstado.Text = "SELECCIONE";
                 textBoxDescripcion.Text = "";
                 NUPCantidad.Text = "1";
 
@@ -285,9 +285,9 @@ namespace Presentacion_UI
             }
             else
             {
-                comboBoxCategoria.Text = "Seleccione";
-                comboBoxArticulo.Text = "Seleccione";
-                comboBoxEstado.Text = "Seleccione";
+                comboBoxCategoria.Text = "SELECCIONE";
+                comboBoxArticulo.Text = "SELECCIONE";
+                comboBoxEstado.Text = "SELECCIONE";
                 textBoxDescripcion.Text = "";
                 NUPCantidad.Text = "1";
 

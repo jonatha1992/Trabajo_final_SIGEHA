@@ -87,10 +87,13 @@ namespace Presentacion_UI
                     new ReportParameter("MesActa", hallazgo.FechaActa?.ToString("MMMM") ?? DateTime.Now.ToString("MMMM")),
                     new ReportParameter("AnoActa", hallazgo.FechaActa?.Year.ToString() ?? DateTime.Now.Year.ToString()),
                     new ReportParameter("HoraActa", hallazgo.FechaActa?.ToString("HH:mm") ?? DateTime.Now.ToString("HH:mm")),
+                    new ReportParameter("NombreDescubridor", Desc_Propie.NombreCompleto),
+                    new ReportParameter("DNIDescubridor", Desc_Propie.DNI),
+                    new ReportParameter("Ocupacion", Desc_Propie.Ocupacion),
                 };
             if (!string.IsNullOrEmpty(hallazgo.Observacion))
             {
-                Parametros.Add(new ReportParameter("Observacion","Observacion: " + hallazgo.Observacion));
+                Parametros.Add(new ReportParameter("Observacion", "Observacion: " + hallazgo.Observacion));
             }
 
             AgregarParametrosComunes();
@@ -106,7 +109,9 @@ namespace Presentacion_UI
                 new ReportParameter("Mes", entrega.Fecha_entrega.ToString("MMMM")),
                 new ReportParameter("Ano", entrega.Fecha_entrega.Year.ToString()),
                 new ReportParameter("Hora", entrega.Fecha_entrega.ToShortTimeString()),
-                new ReportParameter("ActaHallazgo", bLLElemento.ObtenerNroHallazgo(entrega.listaElementos.First()))
+                new ReportParameter("ActaHallazgo", bLLElemento.ObtenerNroHallazgo(entrega.listaElementos.First())),
+                new ReportParameter("NombrePropietario", Desc_Propie.NombreCompleto),
+                new ReportParameter("DNIPropietario", Desc_Propie.DNI),
             };
 
             AgregarParametrosComunes();
@@ -115,9 +120,6 @@ namespace Presentacion_UI
         {
             if (Desc_Propie != null)
             {
-                Parametros.Add(new ReportParameter("NombreDescubridor", Desc_Propie.NombreCompleto));
-                Parametros.Add(new ReportParameter("DNIDescubridor", Desc_Propie.DNI));
-                Parametros.Add(new ReportParameter("Ocupacion", Desc_Propie.Ocupacion));
                 Parametros.Add(new ReportParameter("Telefono", Desc_Propie.Telefono));
                 Parametros.Add(new ReportParameter("Domicilio", Desc_Propie.Domicilio));
             }
