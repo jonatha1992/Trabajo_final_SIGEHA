@@ -12,12 +12,11 @@ namespace Negocio
     {
         MPPElemento mPPElemento;
 
-
         public BLLElemento()
         {
             mPPElemento = new MPPElemento();
-
         }
+
         public bool Actualizar(BEElemento pElemento)
         {
             return mPPElemento.Actualizar(pElemento);
@@ -95,5 +94,7 @@ namespace Negocio
             return mPPElemento.BusquedaElementosHallazgo(NroActa);
         }
 
+
+    
     }
 }

@@ -53,11 +53,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.groupBoxDatosUsuario = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.labelDestino = new System.Windows.Forms.Label();
             this.buttonEliminarUsuario = new System.Windows.Forms.Button();
             this.groupBoxDestino = new System.Windows.Forms.GroupBox();
             this.buttonDesagniarUnidad = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.textBoxPassword2 = new Presentacion_UI.TextBoxPassword();
             this.textBoxPassword1 = new Presentacion_UI.TextBoxPassword();
             this.groupBoxPermisos.SuspendLayout();
@@ -327,6 +327,15 @@
             this.groupBoxDatosUsuario.TabStop = false;
             this.groupBoxDatosUsuario.Text = "Datos de Usuario";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(369, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Destino: ";
+            // 
             // labelDestino
             // 
             this.labelDestino.AutoSize = true;
@@ -361,7 +370,6 @@
             this.groupBoxDestino.TabIndex = 32;
             this.groupBoxDestino.TabStop = false;
             this.groupBoxDestino.Text = "Destino";
-            this.groupBoxDestino.Visible = false;
             // 
             // buttonDesagniarUnidad
             // 
@@ -374,15 +382,6 @@
             this.buttonDesagniarUnidad.Text = "Desagsinar";
             this.buttonDesagniarUnidad.UseVisualStyleBackColor = true;
             this.buttonDesagniarUnidad.Click += new System.EventHandler(this.buttonDesagniarUnidad_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(369, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "Destino: ";
             // 
             // textBoxPassword2
             // 

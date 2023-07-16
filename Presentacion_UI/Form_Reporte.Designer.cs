@@ -29,78 +29,64 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Reporte));
-            this.comboBoxUrsa = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.comboBoxUnidad = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSemestral = new System.Windows.Forms.RadioButton();
+            this.radioButtonTrimestral = new System.Windows.Forms.RadioButton();
+            this.radioButtonMensual = new System.Windows.Forms.RadioButton();
+            this.radioButtonAnual = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartHallazgos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelTotalHallazgos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelTotalEntregas = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelElementosResguardados = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelElementosEntregados = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.chartEntregas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartCategoria = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHallazgos)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEntregas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCategoria)).BeginInit();
             this.SuspendLayout();
-            // 
-            // comboBoxUrsa
-            // 
-            this.comboBoxUrsa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxUrsa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxUrsa.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
-            this.comboBoxUrsa.FormattingEnabled = true;
-            this.comboBoxUrsa.Location = new System.Drawing.Point(105, 20);
-            this.comboBoxUrsa.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxUrsa.Name = "comboBoxUrsa";
-            this.comboBoxUrsa.Size = new System.Drawing.Size(196, 20);
-            this.comboBoxUrsa.TabIndex = 38;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(18, 23);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 12);
-            this.label5.TabIndex = 41;
-            this.label5.Text = "Regional:";
             // 
             // comboBoxUnidad
             // 
             this.comboBoxUnidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxUnidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxUnidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUnidad.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
             this.comboBoxUnidad.FormattingEnabled = true;
-            this.comboBoxUnidad.Location = new System.Drawing.Point(105, 52);
+            this.comboBoxUnidad.Location = new System.Drawing.Point(102, 20);
             this.comboBoxUnidad.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxUnidad.Name = "comboBoxUnidad";
             this.comboBoxUnidad.Size = new System.Drawing.Size(196, 20);
@@ -112,7 +98,7 @@
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(28, 59);
+            this.label4.Location = new System.Drawing.Point(25, 27);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 12);
@@ -121,21 +107,62 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.radioButton3);
-            this.groupBox4.Controls.Add(this.radioButton2);
-            this.groupBox4.Controls.Add(this.radioButton1);
+            this.groupBox4.Controls.Add(this.radioButtonSemestral);
+            this.groupBox4.Controls.Add(this.radioButtonTrimestral);
+            this.groupBox4.Controls.Add(this.radioButtonMensual);
+            this.groupBox4.Controls.Add(this.radioButtonAnual);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.comboBoxUnidad);
-            this.groupBox4.Controls.Add(this.comboBoxUrsa);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
+            this.groupBox4.Location = new System.Drawing.Point(26, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(337, 145);
+            this.groupBox4.Size = new System.Drawing.Size(337, 121);
             this.groupBox4.TabIndex = 45;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filtros";
+            // 
+            // radioButtonSemestral
+            // 
+            this.radioButtonSemestral.AutoSize = true;
+            this.radioButtonSemestral.Location = new System.Drawing.Point(93, 86);
+            this.radioButtonSemestral.Name = "radioButtonSemestral";
+            this.radioButtonSemestral.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonSemestral.TabIndex = 99;
+            this.radioButtonSemestral.Text = "Semestral";
+            this.radioButtonSemestral.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTrimestral
+            // 
+            this.radioButtonTrimestral.AutoSize = true;
+            this.radioButtonTrimestral.Location = new System.Drawing.Point(169, 86);
+            this.radioButtonTrimestral.Name = "radioButtonTrimestral";
+            this.radioButtonTrimestral.Size = new System.Drawing.Size(70, 17);
+            this.radioButtonTrimestral.TabIndex = 98;
+            this.radioButtonTrimestral.Text = "Trimestral";
+            this.radioButtonTrimestral.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMensual
+            // 
+            this.radioButtonMensual.AutoSize = true;
+            this.radioButtonMensual.Location = new System.Drawing.Point(255, 86);
+            this.radioButtonMensual.Name = "radioButtonMensual";
+            this.radioButtonMensual.Size = new System.Drawing.Size(65, 17);
+            this.radioButtonMensual.TabIndex = 97;
+            this.radioButtonMensual.Text = "Mensual";
+            this.radioButtonMensual.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAnual
+            // 
+            this.radioButtonAnual.AutoSize = true;
+            this.radioButtonAnual.Checked = true;
+            this.radioButtonAnual.Location = new System.Drawing.Point(25, 86);
+            this.radioButtonAnual.Name = "radioButtonAnual";
+            this.radioButtonAnual.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonAnual.TabIndex = 96;
+            this.radioButtonAnual.TabStop = true;
+            this.radioButtonAnual.Text = "Anual";
+            this.radioButtonAnual.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -143,160 +170,122 @@
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(128, 83);
+            this.label2.Location = new System.Drawing.Point(134, 59);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 48;
             this.label2.Text = "Tiempo";
             // 
-            // chart1
+            // chartHallazgos
             // 
+            this.chartHallazgos.BackSecondaryColor = System.Drawing.SystemColors.ActiveCaptionText;
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX.Title = "Tiempo";
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisY.Title = "Cantidad de Entregas";
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(595, 176);
-            this.chart1.Name = "chart1";
+            this.chartHallazgos.ChartAreas.Add(chartArea1);
+            this.chartHallazgos.Location = new System.Drawing.Point(26, 151);
+            this.chartHallazgos.Name = "chartHallazgos";
+            this.chartHallazgos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(560, 281);
-            this.chart1.TabIndex = 100;
-            this.chart1.Text = "chart1";
-            // 
-            // chart2
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(12, 176);
-            this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(559, 281);
-            this.chart2.TabIndex = 101;
-            this.chart2.Text = "chart2";
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = System.Drawing.Color.MidnightBlue;
+            series1.Name = "Serie";
+            series1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            this.chartHallazgos.Series.Add(series1);
+            this.chartHallazgos.Size = new System.Drawing.Size(589, 244);
+            this.chartHallazgos.TabIndex = 101;
+            this.chartHallazgos.Text = "chart2";
+            title1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Hallazgos";
+            title1.Text = "Hallazgos por tiempo";
+            this.chartHallazgos.Titles.Add(title1);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
-            this.panel1.Controls.Add(this.label7);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.labelTotalHallazgos);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(364, 32);
+            this.panel1.Location = new System.Drawing.Point(376, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 101);
+            this.panel1.Size = new System.Drawing.Size(221, 101);
             this.panel1.TabIndex = 102;
             // 
-            // radioButton1
+            // labelTotalHallazgos
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(44, 114);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(52, 17);
-            this.radioButton1.TabIndex = 96;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Anual";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(200, 114);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(65, 17);
-            this.radioButton2.TabIndex = 97;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Mensual";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(115, 114);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(70, 17);
-            this.radioButton3.TabIndex = 98;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Trimestral";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(125, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(101, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.labelTotalHallazgos.AutoSize = true;
+            this.labelTotalHallazgos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalHallazgos.ForeColor = System.Drawing.Color.White;
+            this.labelTotalHallazgos.Location = new System.Drawing.Point(20, 39);
+            this.labelTotalHallazgos.Name = "labelTotalHallazgos";
+            this.labelTotalHallazgos.Size = new System.Drawing.Size(93, 37);
+            this.labelTotalHallazgos.TabIndex = 2;
+            this.labelTotalHallazgos.Text = "1500";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(31, 13);
+            this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 15);
+            this.label1.Size = new System.Drawing.Size(135, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Usuarios";
+            this.label1.Text = "Hallazgo realizados";
             // 
-            // label7
+            // pictureBox1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(17, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 32);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "1500";
+            this.pictureBox1.Image = global::Presentacion_UI.Properties.Resources.Hallazgo;
+            this.pictureBox1.Location = new System.Drawing.Point(135, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(73, 58);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.labelTotalEntregas);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(643, 32);
+            this.panel2.Location = new System.Drawing.Point(618, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(261, 101);
+            this.panel2.Size = new System.Drawing.Size(212, 101);
             this.panel2.TabIndex = 103;
             // 
-            // label8
+            // labelTotalEntregas
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(31, 44);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 32);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "1500";
+            this.labelTotalEntregas.AutoSize = true;
+            this.labelTotalEntregas.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalEntregas.ForeColor = System.Drawing.Color.White;
+            this.labelTotalEntregas.Location = new System.Drawing.Point(19, 39);
+            this.labelTotalEntregas.Name = "labelTotalEntregas";
+            this.labelTotalEntregas.Size = new System.Drawing.Size(93, 37);
+            this.labelTotalEntregas.TabIndex = 3;
+            this.labelTotalEntregas.Text = "1500";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(20, 13);
+            this.label9.Location = new System.Drawing.Point(3, 7);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 15);
+            this.label9.Size = new System.Drawing.Size(137, 15);
             this.label9.TabIndex = 1;
-            this.label9.Text = "Total de Entregas";
+            this.label9.Text = "Entregas realizadas";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(147, 13);
+            this.pictureBox2.Image = global::Presentacion_UI.Properties.Resources.Oficial_Entrega;
+            this.pictureBox2.Location = new System.Drawing.Point(125, 25);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 70);
+            this.pictureBox2.Size = new System.Drawing.Size(73, 58);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -304,58 +293,158 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.labelElementosResguardados);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(916, 32);
+            this.panel3.Location = new System.Drawing.Point(846, 31);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(261, 101);
+            this.panel3.Size = new System.Drawing.Size(212, 101);
             this.panel3.TabIndex = 104;
             // 
-            // label3
+            // labelElementosResguardados
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(45, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 32);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "1500";
+            this.labelElementosResguardados.AutoSize = true;
+            this.labelElementosResguardados.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelElementosResguardados.ForeColor = System.Drawing.Color.White;
+            this.labelElementosResguardados.Location = new System.Drawing.Point(19, 39);
+            this.labelElementosResguardados.Name = "labelElementosResguardados";
+            this.labelElementosResguardados.Size = new System.Drawing.Size(93, 37);
+            this.labelElementosResguardados.TabIndex = 4;
+            this.labelElementosResguardados.Text = "1500";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(34, 13);
+            this.label10.Location = new System.Drawing.Point(3, 7);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 15);
+            this.label10.Size = new System.Drawing.Size(172, 15);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Total de Entregas";
+            this.label10.Text = "Elementos Resguardados";
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(165, 23);
+            this.pictureBox3.Image = global::Presentacion_UI.Properties.Resources.Elememtos;
+            this.pictureBox3.Location = new System.Drawing.Point(131, 31);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(101, 70);
+            this.pictureBox3.Size = new System.Drawing.Size(73, 58);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(23, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 15);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Elementos Entregados";
+            // 
+            // labelElementosEntregados
+            // 
+            this.labelElementosEntregados.AutoSize = true;
+            this.labelElementosEntregados.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelElementosEntregados.ForeColor = System.Drawing.Color.White;
+            this.labelElementosEntregados.Location = new System.Drawing.Point(19, 39);
+            this.labelElementosEntregados.Name = "labelElementosEntregados";
+            this.labelElementosEntregados.Size = new System.Drawing.Size(93, 37);
+            this.labelElementosEntregados.TabIndex = 4;
+            this.labelElementosEntregados.Text = "1500";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
+            this.panel4.Controls.Add(this.labelElementosEntregados);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Location = new System.Drawing.Point(1075, 31);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(212, 101);
+            this.panel4.TabIndex = 105;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Presentacion_UI.Properties.Resources.Entrega;
+            this.pictureBox4.Location = new System.Drawing.Point(130, 29);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(73, 58);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // chartEntregas
+            // 
+            this.chartEntregas.BackSecondaryColor = System.Drawing.SystemColors.ActiveCaptionText;
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.Title = "Tiempo";
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisY.Title = "Cantidad de Entregas";
+            chartArea2.Name = "ChartArea1";
+            this.chartEntregas.ChartAreas.Add(chartArea2);
+            this.chartEntregas.Location = new System.Drawing.Point(26, 401);
+            this.chartEntregas.Name = "chartEntregas";
+            this.chartEntregas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series2.ChartArea = "ChartArea1";
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = System.Drawing.Color.MidnightBlue;
+            series2.Name = "Serie";
+            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            this.chartEntregas.Series.Add(series2);
+            this.chartEntregas.Size = new System.Drawing.Size(589, 250);
+            this.chartEntregas.TabIndex = 107;
+            this.chartEntregas.Text = "chart2";
+            title2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Entregas";
+            title2.Text = "Entregas por tiempo";
+            this.chartEntregas.Titles.Add(title2);
+            // 
+            // chartCategoria
+            // 
+            this.chartCategoria.BackSecondaryColor = System.Drawing.SystemColors.ActiveCaptionText;
+            chartArea3.AxisX.Interval = 1D;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea3.AxisX.Title = "Categorias";
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea3.AxisY.Title = "Cantidad de elementos";
+            chartArea3.Name = "ChartArea1";
+            this.chartCategoria.ChartAreas.Add(chartArea3);
+            this.chartCategoria.Location = new System.Drawing.Point(624, 151);
+            this.chartCategoria.Name = "chartCategoria";
+            this.chartCategoria.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series3.IsValueShownAsLabel = true;
+            series3.LabelForeColor = System.Drawing.Color.MidnightBlue;
+            series3.Name = "Serie";
+            series3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            this.chartCategoria.Series.Add(series3);
+            this.chartCategoria.Size = new System.Drawing.Size(655, 500);
+            this.chartCategoria.TabIndex = 108;
+            this.chartCategoria.Text = "chart2";
+            title3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "Categorias";
+            title3.Text = "Elementos en reguardo";
+            this.chartCategoria.Titles.Add(title3);
             // 
             // Form_Reporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1191, 480);
+            this.ClientSize = new System.Drawing.Size(1300, 663);
+            this.Controls.Add(this.chartCategoria);
+            this.Controls.Add(this.chartEntregas);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chartHallazgos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "Form_Reporte";
@@ -364,8 +453,7 @@
             this.Load += new System.EventHandler(this.Form_Reporte_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHallazgos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -375,34 +463,42 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEntregas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCategoria)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxUrsa;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxUnidad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.RadioButton radioButtonAnual;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartHallazgos;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton radioButtonTrimestral;
+        private System.Windows.Forms.RadioButton radioButtonMensual;
+        private System.Windows.Forms.Label labelTotalHallazgos;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.RadioButton radioButtonSemestral;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelTotalEntregas;
+        private System.Windows.Forms.Label labelElementosResguardados;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelElementosEntregados;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartEntregas;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartCategoria;
     }
 }

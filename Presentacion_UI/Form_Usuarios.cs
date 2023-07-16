@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using BE;
@@ -19,18 +20,25 @@ namespace Presentacion_UI
 
         BLLUsuario oBLLUsu;
         BLLPermiso oBLLPermiso;
+        BLLUnidad bLLUnidad ;
+        BLLUrsa bLLUrsa;
         BEUsuario seleccion;
-
-
+        List<BEUnidad> Unidades { get; set; }
+        List<BEUrsa> Ursas { get; set; }
 
         private void FormPermisos_Load(object sender, EventArgs e)
         {
             oBLLUsu = new BLLUsuario();
             oBLLPermiso = new BLLPermiso();
+            bLLUnidad = new BLLUnidad();
+            bLLUrsa = new BLLUrsa();
+
+            Unidades = bLLUnidad.ListarTodo();
+            Ursas = bLLUrsa.ListarTodo();
             comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
             comboBoxRoles.DataSource = oBLLPermiso.ListaRoles();
-            comboBoxDestino.DataSource = Form_Contenedor.Ursas;
-            groupBoxDatosUsuario.Visible = false;
+            comboBoxDestino.DataSource = Ursas;
+            groupBoxDatosUsuario.Enabled = false;
         }
 
 
@@ -74,7 +82,7 @@ namespace Presentacion_UI
         {
             try
             {
-                groupBoxDatosUsuario.Visible = true;
+                groupBoxDatosUsuario.Enabled = true;
                 seleccion = (BEUsuario)comboBoxUsuarios.SelectedItem;
                 seleccion = oBLLUsu.ListarObjeto(seleccion);
                 labelDestino.Text = seleccion.Destino != null ? seleccion.Destino.ToString() : "No tiene asginada";
@@ -113,13 +121,13 @@ namespace Presentacion_UI
         private void rbtnUrsa_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxDestino.DataSource = null;
-            comboBoxDestino.DataSource = Form_Contenedor.Ursas;
+            comboBoxDestino.DataSource = Ursas;
         }
 
         private void rbtnUnidad_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxDestino.DataSource = null;
-            comboBoxDestino.DataSource = Form_Contenedor.Unidades;
+            comboBoxDestino.DataSource = Unidades;
         }
 
         private void buttonAsignarRol_Click(object sender, EventArgs e)
@@ -174,7 +182,7 @@ namespace Presentacion_UI
             try
             {
                 LimpiarFormulario();
-                groupBoxDatosUsuario.Visible = true;
+                groupBoxDatosUsuario.Enabled = true;
                 seleccion = new BEUsuario();
             }
             catch (Exception ex)
@@ -193,7 +201,7 @@ namespace Presentacion_UI
                     if (oBLLUsu.GuardarUsuario(seleccion))
                     {
                         LimpiarFormulario();
-                        groupBoxDatosUsuario.Visible = false;
+                        groupBoxDatosUsuario.Enabled = false;
                         comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
                         MessageBox.Show("Se ha Guardado los cambios con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -217,12 +225,12 @@ namespace Presentacion_UI
             {
                 if (oBLLUsu.verificarol(seleccion))
                 {
-                    groupBoxDestino.Visible = true;
+                    groupBoxDestino.Enabled = true;
                     comboBoxDestino.SelectedItem = seleccion.Destino;
                 }
                 else
                 {
-                    groupBoxDestino.Visible = false;
+                    groupBoxDestino.Enabled = false;
                 }
             }
 
@@ -235,7 +243,7 @@ namespace Presentacion_UI
                 if (oBLLUsu.Eliminar(seleccion))
                 {
                     LimpiarFormulario();
-                    groupBoxDatosUsuario.Visible = false;
+                    groupBoxDatosUsuario.Enabled = false;
                     comboBoxUsuarios.DataSource = oBLLUsu.ListarTodo();
                     MessageBox.Show($"El Usuario  se ha eliminado de la base de datos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -304,6 +312,7 @@ namespace Presentacion_UI
             if (cantidadEliminada > 0)
             {
                 MessageBox.Show("El rol se desasignó exitosamente.", "Desasignación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                buttonDesagsinarRol.Visible = false;
                 MostrarPermisos(seleccion);
             }
             else
@@ -344,9 +353,5 @@ namespace Presentacion_UI
             }
         }
 
-        private void groupBoxDatosUsuario_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

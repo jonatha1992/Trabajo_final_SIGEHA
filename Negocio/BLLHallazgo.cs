@@ -91,9 +91,6 @@ namespace Negocio
             return nroHallazgo;
         }
 
-
-
-
         public List<BEHallazgo> ListarTodo(BEUnidad bEUnidad, DateTime fecha)
         {
             int Anio = fecha.Year;
@@ -110,6 +107,7 @@ namespace Negocio
             return lista;
         }
 
+   
 
     }
 }

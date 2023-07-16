@@ -241,7 +241,6 @@
             resources.ApplyResources(this.comboBoxUrsa, "comboBoxUrsa");
             this.comboBoxUrsa.FormattingEnabled = true;
             this.comboBoxUrsa.Name = "comboBoxUrsa";
-            this.comboBoxUrsa.SelectedIndexChanged += new System.EventHandler(this.comboBoxUrsa_SelectedIndexChanged);
             // 
             // label5
             // 

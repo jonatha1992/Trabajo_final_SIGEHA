@@ -37,14 +37,14 @@
             this.GenerarEntrega = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionEntrega = new System.Windows.Forms.ToolStripMenuItem();
             this.Administracion = new System.Windows.Forms.ToolStripMenuItem();
-            this.Informe = new System.Windows.Forms.ToolStripMenuItem();
+            this.Reporte = new System.Windows.Forms.ToolStripMenuItem();
             this.BackUp = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionPermisos = new System.Windows.Forms.ToolStripMenuItem();
             this.ABMCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.Bitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.Login = new System.Windows.Forms.ToolStripMenuItem();
-            this.Configuracion = new System.Windows.Forms.ToolStripMenuItem();
+            this.CambiarContrasena = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             this.Entrega,
             this.Administracion,
             this.Login,
-            this.Configuracion});
+            this.CambiarContrasena});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -114,7 +114,7 @@
             // Administracion
             // 
             this.Administracion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Informe,
+            this.Reporte,
             this.BackUp,
             this.GestionUsuarios,
             this.GestionPermisos,
@@ -124,11 +124,12 @@
             this.Administracion.Size = new System.Drawing.Size(167, 22);
             this.Administracion.Text = "Menú Administración";
             // 
-            // Informe
+            // Reporte
             // 
-            this.Informe.Name = "Informe";
-            this.Informe.Size = new System.Drawing.Size(202, 22);
-            this.Informe.Text = "Informe";
+            this.Reporte.Name = "Reporte";
+            this.Reporte.Size = new System.Drawing.Size(202, 22);
+            this.Reporte.Text = "Reporte";
+            this.Reporte.Click += new System.EventHandler(this.Informe_Click);
             // 
             // BackUp
             // 
@@ -173,12 +174,13 @@
             this.Login.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.Login.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
-            // Configuracion
+            // CambiarContrasena
             // 
-            this.Configuracion.Name = "Configuracion";
-            this.Configuracion.Size = new System.Drawing.Size(120, 22);
-            this.Configuracion.Text = "Configuracion";
-            this.Configuracion.Click += new System.EventHandler(this.configuración_Click);
+            this.CambiarContrasena.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.CambiarContrasena.Name = "CambiarContrasena";
+            this.CambiarContrasena.Size = new System.Drawing.Size(164, 22);
+            this.CambiarContrasena.Text = "Cambiar Contraseña";
+            this.CambiarContrasena.Click += new System.EventHandler(this.CambiarContrasena_Click);
             // 
             // Form_Contenedor
             // 
@@ -218,12 +220,12 @@
         private System.Windows.Forms.ToolStripMenuItem GenerarEntrega;
         private System.Windows.Forms.ToolStripMenuItem GestionEntrega;
         private System.Windows.Forms.ToolStripMenuItem Administracion;
-        private System.Windows.Forms.ToolStripMenuItem Informe;
+        private System.Windows.Forms.ToolStripMenuItem Reporte;
         private System.Windows.Forms.ToolStripMenuItem BackUp;
         private System.Windows.Forms.ToolStripMenuItem GestionUsuarios;
         private System.Windows.Forms.ToolStripMenuItem GestionPermisos;
         private System.Windows.Forms.ToolStripMenuItem ABMCategorias;
-        private System.Windows.Forms.ToolStripMenuItem Configuracion;
+        private System.Windows.Forms.ToolStripMenuItem CambiarContrasena;
         private System.Windows.Forms.ToolStripMenuItem Bitacora;
     }
 

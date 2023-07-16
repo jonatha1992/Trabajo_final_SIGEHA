@@ -133,9 +133,39 @@ namespace Presentacion_UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Elememtos {
+            get {
+                object obj = ResourceManager.GetObject("Elememtos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enlace_roto {
             get {
                 object obj = ResourceManager.GetObject("enlace_roto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Entrega {
+            get {
+                object obj = ResourceManager.GetObject("Entrega", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hallazgo {
+            get {
+                object obj = ResourceManager.GetObject("Hallazgo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +226,16 @@ namespace Presentacion_UI.Properties {
         internal static System.Drawing.Bitmap No_Visible {
             get {
                 object obj = ResourceManager.GetObject("No Visible", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Oficial_Entrega {
+            get {
+                object obj = ResourceManager.GetObject("Oficial_Entrega", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

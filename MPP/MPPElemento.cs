@@ -135,29 +135,86 @@ namespace MPP
 
         }
 
+     
+
+        //public List<BEElemento> ListarTodo()
+        //{
+        //    List<BEElemento> lista = new List<BEElemento>();
+
+        //    var Estadoxml = conexion.LeerTodos("Estado_Elemento");
+        //    var elementosxml = conexion.LeerTodos("Elemento");
+        //    var articulosxml = conexion.LeerTodos("Articulo");
+
+        //    if (elementosxml.Count() > 0)
+        //    {
+        //        lista = (from x in elementosxml
+        //                 join Estado in Estadoxml on Convert.ToInt32(x.Element("IdEstadoElemento")?.Value) equals Convert.ToInt32(Estado.Element("Id")?.Value) into estadoJoin
+        //                 from estado in estadoJoin.DefaultIfEmpty()
+        //                 join articulo in articulosxml on Convert.ToInt32(x.Element("IdArticulo")?.Value) equals Convert.ToInt32(articulo.Element("Id")?.Value) into articuloJoin
+        //                 from articulo in articuloJoin.DefaultIfEmpty()
+        //                 select new BEElemento
+        //                 {
+        //                     Id = Convert.ToInt32(x.Element("Id")?.Value),
+        //                     Articulo = new BEArticulo(Convert.ToInt32(articulo.Element("Id")?.Value), articulo.Element("Nombre")?.Value),
+        //                     Descripcion = Convert.ToString(x.Element("Descripcion")?.Value),
+        //                     Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value),
+        //                     Estado = new BEEstado_Elemento(Convert.ToInt32(estado.Element("Id")?.Value), estado.Element("Nombre")?.Value) ,
+        //                     Hallazgo = new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value)),
+        //                     Entrega = new BEEntrega(Convert.ToInt32(x.Element("IdEntrega")?.Value))
+        //                 }).ToList();
+        //    }
+
+        //    return lista;
+        //}
         public List<BEElemento> ListarTodo()
         {
             List<BEElemento> lista = new List<BEElemento>();
 
-            var Consulta = conexion.LeerTodos(NodoPadre).Descendants(NodoContenedor);
+            var Estadoxml = conexion.LeerTodos("Estado_Elemento");
+            var elementosxml = conexion.LeerTodos("Elemento");
+            var articulosxml = conexion.LeerTodos("Articulo");
+            var categoriasxml = conexion.LeerTodos("Categoria");
 
-            if (Consulta.Count() > 0)
+            if (elementosxml.Count() > 0)
             {
-                lista = (from x in Consulta
+                lista = (from x in elementosxml
+                         join Estado in Estadoxml on Convert.ToInt32(x.Element("IdEstadoElemento")?.Value) equals Convert.ToInt32(Estado.Element("Id")?.Value) into estadoJoin
+                         from estado in estadoJoin.DefaultIfEmpty()
+                         join articulo in articulosxml on Convert.ToInt32(x.Element("IdArticulo")?.Value) equals Convert.ToInt32(articulo.Element("Id")?.Value) into articuloJoin
+                         from articulo in articuloJoin.DefaultIfEmpty()
+                         join categoria in categoriasxml on Convert.ToInt32(articulo.Element("IdCategoria")?.Value) equals Convert.ToInt32(categoria.Element("Id")?.Value) into categoriaJoin
+                         from categoria in categoriaJoin.DefaultIfEmpty()
                          select new BEElemento
                          {
-                             Id = Convert.ToInt32((x.Element("Id")?.Value)),
-                             Articulo = new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)),
+                             Id = Convert.ToInt32(x.Element("Id")?.Value),
+                             Articulo = new BEArticulo(
+                                 Convert.ToInt32(articulo.Element("Id")?.Value),
+                                 articulo.Element("Nombre")?.Value,
+                                 new BECategoria(
+                                     Convert.ToInt32(categoria.Element("Id")?.Value),
+                                     categoria.Element("Nombre")?.Value
+                                 )
+                             ),
                              Descripcion = Convert.ToString(x.Element("Descripcion")?.Value),
                              Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value),
-                             Estado = new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstado")?.Value)),
-                             Hallazgo= new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value)),
+                             Estado = new BEEstado_Elemento(
+                                 Convert.ToInt32(estado.Element("Id")?.Value),
+                                 estado.Element("Nombre")?.Value
+                             ),
+                             Hallazgo = new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value)),
                              Entrega = new BEEntrega(Convert.ToInt32(x.Element("IdEntrega")?.Value))
                          }).ToList();
             }
 
             return lista;
         }
+
+
+
+
+
+
+
         public BEElemento ListarObjeto(BEElemento bElemento)
         {
 

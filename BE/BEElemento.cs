@@ -18,6 +18,5 @@ namespace BE
         public double Cantidad { get; set; }
         public BEEstado_Elemento Estado { get; set; }
 
-
     }
 }

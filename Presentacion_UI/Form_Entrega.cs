@@ -12,15 +12,16 @@ namespace Presentacion_UI
 {
     public partial class Form_Entrega : Form
     {
-        public Form_Entrega(BEUsuario User)
+        public Form_Entrega()
         {
             InitializeComponent();
 
             bLLElemento = new BLLElemento();
+            bllbitacora = new BLLBitacora();
             bLLEntrega = new BLLEntrega();
             bLLCategorias = new BLLCategoria();
             bLLArticulo = new BLLArticulo();
-            Usuario = User;
+            Usuario = Form_Contenedor.usuario;
 
             ListaCategorias = bLLCategorias.ListarTodo();
             ListaArticulos = bLLArticulo.ListarTodo();
@@ -48,6 +49,7 @@ namespace Presentacion_UI
         BLLElemento bLLElemento;
         BLLCategoria bLLCategorias;
         BLLArticulo bLLArticulo;
+        BLLBitacora bllbitacora;
 
         BEEntrega bEEntregaSeleccionada;
 
@@ -494,6 +496,7 @@ namespace Presentacion_UI
 
                     if (bEEntregaSeleccionada.Id != 0)
                     {
+                        bllbitacora.RegistrarEvento(Usuario, $"Se genero el nro Acta de Entrega {bEEntregaSeleccionada.NroActa}");
                         ModoCreacion = true;
                         SeleccionEntrega = true;
                         CargarGrillaEntregas();
@@ -543,6 +546,7 @@ namespace Presentacion_UI
             {
                 if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
                 {
+                    bllbitacora.RegistrarEvento(Usuario, $"Se elimino el nro Acta de Entrega {bEEntregaSeleccionada.NroActa}");
                     MessageBox.Show("La Entrega se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarCamposEntrega();
                     CargarGrillaEntregas();

@@ -819,7 +819,7 @@
             this.buttonEliminar.Image = global::Presentacion_UI.Properties.Resources.basura;
             this.buttonEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonEliminar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEliminar.Location = new System.Drawing.Point(305, 178);
+            this.buttonEliminar.Location = new System.Drawing.Point(304, 178);
             this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(85, 36);
@@ -865,7 +865,7 @@
             this.buttonModificar.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
             this.buttonModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonModificar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonModificar.Location = new System.Drawing.Point(172, 177);
+            this.buttonModificar.Location = new System.Drawing.Point(177, 177);
             this.buttonModificar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(94, 36);

@@ -15,7 +15,7 @@ namespace Presentacion_UI
 {
     public partial class Form_Hallazgo : Form
     {
-        public Form_Hallazgo(BEUsuario bEUsuario)
+        public Form_Hallazgo()
         {
 
             InitializeComponent();
@@ -25,9 +25,9 @@ namespace Presentacion_UI
             bLLArticulos = new BLLArticulo();
             bLLHallazgo = new BLLHallazgo();
             bLLEstado_elementos = new BLLEstado_Elemento();
-            Usuario = bEUsuario;
+            bLLBitacora = new BLLBitacora();
 
-
+            Usuario = Form_Contenedor.usuario;
             listaCategorias = bLLcategorias.ListarTodo();
             listaArticulos = bLLArticulos.ListarTodo();
             ListabEEstadoElementos = bLLEstado_elementos.ListarEstadoHallazgo();
@@ -43,6 +43,8 @@ namespace Presentacion_UI
                 CargarCombo();
                 Habilitar();
                 HabilitarElemento();
+                CargarGrillaHallazgos();
+                ColocarNumero();
 
             }
             catch (Exception ex)
@@ -73,11 +75,10 @@ namespace Presentacion_UI
         BLLCategoria bLLcategorias;
         BLLArticulo bLLArticulos;
         BLLEstado_Elemento bLLEstado_elementos;
+        BLLBitacora bLLBitacora;
 
 
-
-
-        //BANDERAS
+    
         bool SeleccionHallazgo = false;
         bool ModoCreacion = false;
         #endregion
@@ -91,9 +92,10 @@ namespace Presentacion_UI
             if (Usuario.Destino is BEUnidad)//destino unidad
             {
                 bEUnidad = Usuario.Destino as BEUnidad;
-                bEUrsa = bEUnidad.Ursa;
+                bEUrsa =  bEUnidad.Ursa;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUnidad.SelectedItem = bEUnidad;
+                comboBoxUnidad.Text = bEUnidad.Nombre;
                 comboBoxUrsa.Enabled = false;
                 comboBoxUnidad.Enabled = false;
             }
@@ -364,8 +366,6 @@ namespace Presentacion_UI
             }
         }
 
-
-
         void Dgv()
         {
             if (ModoCreacion)
@@ -457,7 +457,12 @@ namespace Presentacion_UI
 
         bool VerficarCampos()
         {
-            if (comboBoxUnidad.Text == "" || comboBoxUrsa.Text == "" || dateTimePickerFechaHallazgo.Text == "" || textBoxLugar.Text == "" || textBoxNroActa.Text == "" || !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text))
+            if (comboBoxUnidad.Text == "" 
+                || comboBoxUrsa.Text == "" 
+                || dateTimePickerFechaHallazgo.Text == "" 
+                || textBoxLugar.Text == "" 
+                || textBoxNroActa.Text == "" 
+                || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -506,6 +511,7 @@ namespace Presentacion_UI
 
                     if (bEHallazgoSeleccionado != null)
                     {
+                        bLLBitacora.RegistrarEvento(Usuario, $"Genero el nro Acta de Hallazgo  {bEHallazgoSeleccionado.NroActa}");
                         ModoCreacion = true;
                         SeleccionHallazgo = true;
                         ListaDeElementosSeleccionados = new List<BEElemento>();
@@ -553,23 +559,16 @@ namespace Presentacion_UI
         {
             try
             {
-                foreach (DataGridViewRow fila in dgvHallazgos.Rows)
+                if (bLLHallazgo.Eliminar(bEHallazgoSeleccionado))
                 {
-                    var valorCelda = (bool)fila.Cells[0].Value;
-
-                    var valor = valorCelda as bool? ?? false;
-
-                    if (valor)
-                    {
-                        bLLHallazgo.Eliminar((BEHallazgo)fila.DataBoundItem);
-                    }
+                    bLLBitacora.RegistrarEvento(Usuario, $"Se elimino el nro Acta  de Hallazgo {bEHallazgoSeleccionado.NroActa}");
+                    limpiarCamposHallazgos();
+                    CargarGrillaHallazgos();
+                    CargarGrillaElementos();
+                    Habilitar();
+                    MessageBox.Show("El Hallazgo se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                limpiarCamposHallazgos();
-                CargarGrillaHallazgos();
-                CargarGrillaElementos();
-                Habilitar();
-                MessageBox.Show("El Hallazgo se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
@@ -691,7 +690,6 @@ namespace Presentacion_UI
 
         }
 
-
         void buttonFinalizarHallazgo_Click(object sender, EventArgs e)
         {
             try
@@ -734,7 +732,7 @@ namespace Presentacion_UI
             bEHallazgoSeleccionado = null;
             bEElementoSeleccionado = null;
             SeleccionHallazgo = false;
-            ListaDeElementosSeleccionados= null;
+            ListaDeElementosSeleccionados = null;
             Habilitar();
             CargarGrillaHallazgos();
             CargarGrillaElementos();
@@ -742,12 +740,8 @@ namespace Presentacion_UI
 
         }
 
-
-
-
         #endregion
         #region "Combobox Funciones"
-
 
         #region "Elemento"
 
@@ -789,13 +783,13 @@ namespace Presentacion_UI
         }
         void VerificarElementosSeleccionados()
         {
-            if (ListaDeElementosSeleccionados?.Count> 0) 
+            if (ListaDeElementosSeleccionados?.Count > 0)
             {
                 foreach (DataGridViewRow row in DgvElementos.Rows)
                 {
-                    var valorID = (int)row.Cells["Id"].Value; 
-                    var valor = row.Cells["Sel"].Value as bool? ?? false; 
-                    if ( ListaDeElementosSeleccionados.Exists(x=> x.Id == valorID))
+                    var valorID = (int)row.Cells["Id"].Value;
+                    var valor = row.Cells["Sel"].Value as bool? ?? false;
+                    if (ListaDeElementosSeleccionados.Exists(x => x.Id == valorID))
                     {
                         row.Cells["Sel"].Value = true;
                     }
@@ -806,19 +800,7 @@ namespace Presentacion_UI
         #endregion
 
         #region "Hallazgo"
-        void comboBoxUrsa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (Usuario.Rol == "ADMIN")
-            //{
-
-            //bEUrsa = (BEUrsa)comboBoxUrsa.SelectedItem;
-            //comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            //}
-            //else if (Usuario.Rol == "REGION")
-            //{
-            //    comboBoxUnidad.DataSource = bEUrsa.Unidades;
-            //}
-        }
+  
         void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -827,6 +809,7 @@ namespace Presentacion_UI
             limpiarCamposHallazgos();
             CargarGrillaHallazgos();
             Habilitar();
+            ColocarNumero();
 
         }
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)

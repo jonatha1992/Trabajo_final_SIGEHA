@@ -37,7 +37,6 @@ namespace Presentacion_UI
         BLLUsuario bLLUsuario;
         public BEUsuario Usuario;
         private bool loginExitoso = false;
-        bool visible = false;
         public bool Verificar()
         {
             try
