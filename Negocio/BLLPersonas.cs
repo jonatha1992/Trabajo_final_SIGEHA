@@ -33,18 +33,6 @@ namespace Negocio
             if (ePersona.Id != 0)
             {
                 return mpPPersonas.AgregarPersonaHallazgo(hallazgo, ePersona);
-                //var personas = ListarTodo();
-                //if (personas != null)
-                //{
-                //    if (personas.Exists(x => x.DNI == ePersona.DNI))
-                //    {
-                //        ePersona.Id = personas.Find(x => x.DNI == ePersona.DNI).Id;
-                //    }
-                //    else
-                //    {
-                //        return false;
-                //    }
-                //}
             }
             return false; ;
         }
@@ -53,12 +41,6 @@ namespace Negocio
         {
             if (ePersona.Id != 0)
             {
-                //var personas = ListarTodo();
-                //if (personas != null)
-                //{
-                //    ePersona.Id = personas.Find(x => x.DNI == ePersona.DNI).Id;
-
-                //}
                 return mpPPersonas.AgregarPersonaEntrega(entrega, ePersona);
             }
             return false;

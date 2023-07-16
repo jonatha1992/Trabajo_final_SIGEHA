@@ -42,21 +42,6 @@ namespace MPP
         }
 
 
-        //public bool Actualizar(BEEntrega entrega)
-        //{
-
-        //    XElement EntegaActualizado = new XElement("Entrega",
-        //   new XElement("Id", entrega.Id),
-        //   new XElement("Nroacta", entrega.NroActa),
-        //   new XElement("IdUnidad", entrega.Unidad.Id),
-        //   new XElement("Anio", entrega.Anio),
-        //   new XElement("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm")),
-        //   new XElement("Observacion", entrega.Observacion));
-
-        //    return conexion.Actualizar(NodoPadre, entrega.Id.ToString(), EntegaActualizado);
-
-        //}
-
         public bool Actualizar(BEEntrega entrega)
         {
             try
@@ -69,7 +54,7 @@ namespace MPP
                     EntregaExistente.SetElementValue("IdUnidad", entrega.Unidad.Id);
                     EntregaExistente.SetElementValue("Anio", entrega.Anio);
                     EntregaExistente.SetElementValue("FechaEntrega", entrega.Fecha_entrega.ToString("dd/MM/yyyy HH:mm"));
-                   
+
                     // Verifica si el campo "Observacion" está presente en el objeto entrega
                     if (!string.IsNullOrEmpty(entrega.Observacion))
                     {
@@ -98,11 +83,16 @@ namespace MPP
 
             if (pEntrega.listaPersonas != null)
             {
-                MPPPersona mPPPersona = new MPPPersona();
+                //MPPPersona mPPPersona = new MPPPersona();
                 foreach (BEPersona item in pEntrega.listaPersonas)
                 {
-                    mPPPersona.EliminarPersonaEntrega(pEntrega, item);
+                    //mPPPersona.EliminarPersonaEntrega(pEntrega, item);
+
+                    conexion.Eliminar("Entrega_Persona", pEntrega.Id.ToString(), "IdEntrega", true);
+
                 }
+
+
             }
 
             if (pEntrega.listaElementos != null)
@@ -111,6 +101,7 @@ namespace MPP
                 foreach (var item in pEntrega.listaElementos)
                 {
                     mPPElemento.Eliminar_Elemento_Entrega(item);
+
                 }
             }
 
@@ -129,7 +120,7 @@ namespace MPP
                 pEntrega.NroActa = Convert.ToString(Consulta.Element("Nroacta")?.Value);
                 pEntrega.Fecha_entrega = Convert.ToDateTime(Consulta.Element("FechaEntrega")?.Value);
                 pEntrega.Anio = Convert.ToInt32(Consulta.Element("Anio")?.Value);
-                pEntrega.Unidad =  new BEUnidad(Convert.ToInt32(Consulta.Element("IdUnidad")?.Value));
+                pEntrega.Unidad = new BEUnidad(Convert.ToInt32(Consulta.Element("IdUnidad")?.Value));
                 pEntrega.Observacion = Convert.ToString(Consulta.Element("Observacion")?.Value);
 
             }
@@ -233,7 +224,7 @@ namespace MPP
                             Fecha_entrega = Convert.ToDateTime(x.Element("FechaEntrega")?.Value),
                             Anio = Convert.ToInt32(x.Element("Anio")?.Value),
                             Unidad = new BEUnidad(Convert.ToInt32(x.Element("IdUnidad")?.Value)),
-                            Observacion  = Convert.ToString(x.Element("Observacion")?.Value)
+                            Observacion = Convert.ToString(x.Element("Observacion")?.Value)
                         }).ToList();
             }
 

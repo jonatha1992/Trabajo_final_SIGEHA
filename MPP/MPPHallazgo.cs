@@ -43,38 +43,19 @@ namespace MPP
         public bool Eliminar(BEHallazgo pHallazgo)
         {
 
-            if (pHallazgo.listaPersonas != null)
+            if (pHallazgo.listaPersonas != null || pHallazgo.listaPersonas?.Count > 0)
             {
-                conexion.Eliminar("Hallazgo_Persona", pHallazgo.Id.ToString(), "IdHallazgo");
+                conexion.Eliminar("Hallazgo_Personas", pHallazgo.Id.ToString(), "IdHallazgo", true);
+            }
+            if (pHallazgo.listaElementos != null || pHallazgo.listaElementos?.Count > 0)
+            {
+                conexion.Eliminar("Elementos", pHallazgo.Id.ToString(), "IdHallazgo", true);
             }
 
             return conexion.Eliminar(NodoPadre, pHallazgo.Id.ToString());
 
         }
 
-        //public bool Actualizar(BEHallazgo pHallazgo)
-        //{
-        //    try
-        //    {
-
-        //        XElement HallazgoActualizado = new XElement("Hallazgo",
-        //            new XElement("Id", pHallazgo.Id),
-        //            new XElement("FechaActa", pHallazgo.FechaActa?.ToString("dd/MM/yyyy HH:mm")),
-        //            new XElement("Nroacta", pHallazgo.NroActa),
-        //            new XElement("IdUnidad", pHallazgo.Unidad.Id),
-        //            new XElement("LugarHallazgo", pHallazgo.LugarHallazgo),
-        //            new XElement("Anio", pHallazgo.Anio),
-        //            new XElement("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm")),
-        //            new XElement("Observacion", pHallazgo.Observacion)
-        //        );
-
-        //        return conexion.Actualizar(NodoPadre, pHallazgo.Id.ToString(), HallazgoActualizado);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"{ex.Message}");
-        //    }
-        //}
 
         public bool Actualizar(BEHallazgo pHallazgo)
         {

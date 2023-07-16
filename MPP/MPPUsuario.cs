@@ -115,8 +115,7 @@ namespace MPP
             try
             {
                 // Elimina los permisos existentes del usuario
-                conexion.Eliminar("Usuario_Permisos", oBEUsu.Id.ToString(), "IdUsuario");
-
+                conexion.Eliminar("Usuario_Permisos", oBEUsu.Id.ToString(), "IdUsuario", true);
 
                 // Agrega los nuevos permisos
                 foreach (var permiso in oBEUsu.Permisos)

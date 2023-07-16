@@ -129,22 +129,25 @@ namespace Presentacion_UI
             if (personaSeleccionada == null) //significa que no lo busco 
             {
                 var person = CrearPersona();
-                if (bllPersonas.VerficarSiExisteDni(person.DNI))
-                {
-                    var result = MessageBox.Show("La persona seleccionada ya se encuentra registrada \n ¿desea cambiar sus datos con la informacion nueva?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (result == DialogResult.Yes)
-                    {
-                        bllPersonas.Actualizar(person);
-                        personaSeleccionada = bllPersonas.ListarObjeto(person);
-                        MessageBox.Show("Se cambiaron los datos con exito", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
+                if (!bllPersonas.VerficarSiExisteDni(person.DNI))
                 {
                     personaSeleccionada = bllPersonas.Agregar(personaSeleccionada);
                     MessageBox.Show("El/La Interviniente se Agrego Correctamente a la Base de datos", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            {
+                var person =CrearPersona();
+                var result = MessageBox.Show("La persona seleccionada ya se encuentra registrada \n ¿desea cambiar sus datos con la informacion nueva?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    bllPersonas.Actualizar(person);
+                    personaSeleccionada = bllPersonas.ListarObjeto(person);
+                    MessageBox.Show("Se cambiaron los datos con exito", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+
         }
         void AgregarInstructorBase() //agregar  instructor a la base 
         {
@@ -158,6 +161,18 @@ namespace Presentacion_UI
                 }
                 else
                     MessageBox.Show("Ya existe oficiales con esos datos busquelo primero", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                var instructor = CrearInstructor();
+                var result = MessageBox.Show("La persona seleccionada ya se encuentra registrada \n ¿desea cambiar sus datos con la informacion nueva?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    bllPersonas.Actualizar(instructor);
+                    personaSeleccionada = bllPersonas.ListarObjeto(instructor);
+                    MessageBox.Show("Se cambiaron los datos con exito", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
         }
         void AgregarPersonaHallazgo_Entrega() //AGREGACION DE LA PERSONA A LA ENTREGA O HALLAZGO SEGUN CORRESPONDA

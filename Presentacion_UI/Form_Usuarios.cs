@@ -20,13 +20,13 @@ namespace Presentacion_UI
 
         BLLUsuario oBLLUsu;
         BLLPermiso oBLLPermiso;
-        BLLUnidad bLLUnidad ;
+        BLLUnidad bLLUnidad;
         BLLUrsa bLLUrsa;
         BEUsuario seleccion;
         List<BEUnidad> Unidades { get; set; }
         List<BEUrsa> Ursas { get; set; }
 
-        private void FormPermisos_Load(object sender, EventArgs e)
+        void FormPermisos_Load(object sender, EventArgs e)
         {
             oBLLUsu = new BLLUsuario();
             oBLLPermiso = new BLLPermiso();
@@ -51,7 +51,6 @@ namespace Presentacion_UI
             {
                 LlenarTreeView(root, item);
             }
-
             this.treeViewPermisos.Nodes.Add(root);
             this.treeViewPermisos.ExpandAll();
         }
@@ -73,12 +72,10 @@ namespace Presentacion_UI
             {
                 LlenarTreeView(hijo, item);
             }
-
         }
 
 
-
-        private void buttonSeleccionar_Click(object sender, EventArgs e)
+        void buttonSeleccionar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -118,19 +115,19 @@ namespace Presentacion_UI
 
         }
 
-        private void rbtnUrsa_CheckedChanged(object sender, EventArgs e)
+        void rbtnUrsa_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxDestino.DataSource = null;
             comboBoxDestino.DataSource = Ursas;
         }
 
-        private void rbtnUnidad_CheckedChanged(object sender, EventArgs e)
+        void rbtnUnidad_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxDestino.DataSource = null;
             comboBoxDestino.DataSource = Unidades;
         }
 
-        private void buttonAsignarRol_Click(object sender, EventArgs e)
+        void buttonAsignarRol_Click(object sender, EventArgs e)
         {
             try
             {
@@ -156,7 +153,7 @@ namespace Presentacion_UI
             }
         }
 
-        private void buttonAsignarDestino_Click(object sender, EventArgs e)
+        void buttonAsignarDestino_Click(object sender, EventArgs e)
         {
             try
             {
@@ -177,7 +174,7 @@ namespace Presentacion_UI
             }
         }
 
-        private void buttonGenerarUsuario_Click(object sender, EventArgs e)
+        void buttonGenerarUsuario_Click(object sender, EventArgs e)
         {
             try
             {
@@ -191,7 +188,7 @@ namespace Presentacion_UI
             }
         }
 
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        void buttonGuardar_Click(object sender, EventArgs e)
         {
 
             try
@@ -219,7 +216,7 @@ namespace Presentacion_UI
             }
         }
 
-        private void comboBoxRoles_SelectedIndexChanged(object sender, EventArgs e)
+        void comboBoxRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (seleccion != null)
             {
@@ -236,7 +233,7 @@ namespace Presentacion_UI
 
         }
 
-        private void buttonEliminarUsuario_Click(object sender, EventArgs e)
+        void buttonEliminarUsuario_Click(object sender, EventArgs e)
         {
             try
             {
@@ -302,7 +299,7 @@ namespace Presentacion_UI
             return true;
 
         }
-        private void buttonDesagsinarRol_Click(object sender, EventArgs e)
+        void buttonDesagsinarRol_Click(object sender, EventArgs e)
         {
 
             BERol rolSeleccionado = treeViewPermisos.SelectedNode.Tag as BERol;
@@ -323,7 +320,7 @@ namespace Presentacion_UI
 
         }
 
-        private void buttonDesagniarUnidad_Click(object sender, EventArgs e)
+        void buttonDesagniarUnidad_Click(object sender, EventArgs e)
         {
             try
             {
@@ -337,7 +334,7 @@ namespace Presentacion_UI
             }
         }
 
-        private void treeViewPermisos_AfterSelect(object sender, TreeViewEventArgs e)
+        void treeViewPermisos_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node != null)
             {

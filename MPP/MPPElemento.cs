@@ -136,36 +136,6 @@ namespace MPP
         }
 
      
-
-        //public List<BEElemento> ListarTodo()
-        //{
-        //    List<BEElemento> lista = new List<BEElemento>();
-
-        //    var Estadoxml = conexion.LeerTodos("Estado_Elemento");
-        //    var elementosxml = conexion.LeerTodos("Elemento");
-        //    var articulosxml = conexion.LeerTodos("Articulo");
-
-        //    if (elementosxml.Count() > 0)
-        //    {
-        //        lista = (from x in elementosxml
-        //                 join Estado in Estadoxml on Convert.ToInt32(x.Element("IdEstadoElemento")?.Value) equals Convert.ToInt32(Estado.Element("Id")?.Value) into estadoJoin
-        //                 from estado in estadoJoin.DefaultIfEmpty()
-        //                 join articulo in articulosxml on Convert.ToInt32(x.Element("IdArticulo")?.Value) equals Convert.ToInt32(articulo.Element("Id")?.Value) into articuloJoin
-        //                 from articulo in articuloJoin.DefaultIfEmpty()
-        //                 select new BEElemento
-        //                 {
-        //                     Id = Convert.ToInt32(x.Element("Id")?.Value),
-        //                     Articulo = new BEArticulo(Convert.ToInt32(articulo.Element("Id")?.Value), articulo.Element("Nombre")?.Value),
-        //                     Descripcion = Convert.ToString(x.Element("Descripcion")?.Value),
-        //                     Cantidad = Convert.ToDouble(x.Element("Cantidad")?.Value),
-        //                     Estado = new BEEstado_Elemento(Convert.ToInt32(estado.Element("Id")?.Value), estado.Element("Nombre")?.Value) ,
-        //                     Hallazgo = new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value)),
-        //                     Entrega = new BEEntrega(Convert.ToInt32(x.Element("IdEntrega")?.Value))
-        //                 }).ToList();
-        //    }
-
-        //    return lista;
-        //}
         public List<BEElemento> ListarTodo()
         {
             List<BEElemento> lista = new List<BEElemento>();
@@ -208,10 +178,6 @@ namespace MPP
 
             return lista;
         }
-
-
-
-
 
 
 
@@ -268,7 +234,6 @@ namespace MPP
                     bElemento.Lugar = Hallazgo.LugarHallazgo;
                     bElemento.Fecha_hallazgo = Hallazgo.FechaHallazgo.ToString();
                     bElemento.Entrega = ObtenerNroEntrega(new BEElemento(bElemento.Id));
-                    //bElemento.Entrega = ObtenerEntregaPorElemento(elemento);
 
                     lista.Add(bElemento);
                 }
@@ -350,40 +315,7 @@ namespace MPP
 
             return elementoBusquedas;
         }
-        //public string ObtenerEntregaPorElemento(BEElemento elemento)
-        //{
-        //    MPPElemento mPPElementos = new MPPElemento();
 
-        //    IEnumerable<XElement> todosElementos = conexion.LeerTodos(NodoPadre);
-
-        //    XElement elementoEncontrado = todosElementos.FirstOrDefault(x => (int)x.Element("Id") == elemento.Id);
-
-        //    // Realizamos un chequeo de null para asegurarnos de que se encontró un Elemento con el Id
-        //    if (elementoEncontrado != null)
-        //    {
-        //        // Ahora buscamos la entrega basada entrega el IdEntrega de elementoEncontrado
-        //        MPPEntrega mPPEntrega = new MPPEntrega();
-        //        IEnumerable<XElement> todasEntregas = conexion.LeerTodos("Entregas");
-
-        //        int IdEntrega = (int)elementoEncontrado.Element("IdEntrega");
-
-        //        XElement entregaEncontrada = todasEntregas.FirstOrDefault(x => (int)x.Element("Id") == IdEntrega);
-
-        //        // Realizamos un chequeo de null para asegurarnos de que se encontró una Entrega con el Id
-        //        if (entregaEncontrada != null)
-        //        {
-        //            return (string)entregaEncontrada.Element("NroActa");
-
-        //        }
-        //        else
-        //        {
-        //            throw new Exception($"No se encontró una Entrega con el Id: {IdEntrega}");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        throw new Exception($"No se encontró un Elemento con el Id: {elemento.Id}");
-        //    }
-        //}
+        
     }
 }
