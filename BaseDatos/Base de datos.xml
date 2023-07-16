@@ -346,307 +346,307 @@
       <Nombre>RELOJ</Nombre>
       <IdCategoria>8</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>70</Id>
       <Nombre>CASCO</Nombre>
       <IdCategoria>8</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>71</Id>
       <Nombre>ALMOHADA</Nombre>
       <IdCategoria>8</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>72</Id>
       <Nombre>CORREA / CINTURÓN</Nombre>
       <IdCategoria>8</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>73</Id>
       <Nombre>SORDINAS</Nombre>
       <IdCategoria>8</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>74</Id>
       <Nombre>OTRO</Nombre>
       <IdCategoria>8</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>75</Id>
       <Nombre>MEDIDORES DE GLUCOSA</Nombre>
       <IdCategoria>9</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>76</Id>
       <Nombre>MEDICAMENTOS</Nombre>
       <IdCategoria>9</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>77</Id>
       <Nombre>INSULINA</Nombre>
       <IdCategoria>9</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>78</Id>
       <Nombre>KIT SANITARIO</Nombre>
       <IdCategoria>9</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>79</Id>
       <Nombre>TUBO DE OXÍGENO</Nombre>
       <IdCategoria>9</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>80</Id>
       <Nombre>OTRO</Nombre>
       <IdCategoria>9</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>81</Id>
       <Nombre>DÓLAR ESTADOUNIDENSE</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>82</Id>
       <Nombre>PESO ARGENTINO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>83</Id>
       <Nombre>ORO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>84</Id>
       <Nombre>EURO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>85</Id>
       <Nombre>REAL BRASILEÑO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>86</Id>
       <Nombre>PESO CHILENO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>87</Id>
       <Nombre>PESO COLOMBIANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>88</Id>
       <Nombre>DÓLAR CANADIENSE</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>89</Id>
       <Nombre>PESO URUGUAYO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>90</Id>
       <Nombre>LIBRA ESTERLINA</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>91</Id>
       <Nombre>GUARANÍ</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>92</Id>
       <Nombre>PESO BOLIVIANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>93</Id>
       <Nombre>LIRA TURCA</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>94</Id>
       <Nombre>PESO MEXICANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>95</Id>
       <Nombre>SOLES</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>96</Id>
       <Nombre>DÓLAR NEOZELANDÉS</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>97</Id>
       <Nombre>DÓLAR AUSTRALIANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>98</Id>
       <Nombre>RUBLO RUSO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>99</Id>
       <Nombre>DÓLAR SINGAPUR</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>100</Id>
       <Nombre>BOLIVIANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>101</Id>
       <Nombre>YUAN CHINO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>102</Id>
       <Nombre>LEMPIRA</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>103</Id>
       <Nombre>FRANCOS DEL PACÍFICO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>104</Id>
       <Nombre>SHEQUEL</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>105</Id>
       <Nombre>WONS COREANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>106</Id>
       <Nombre>RAND</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>107</Id>
       <Nombre>LEUS RUMANOS</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>108</Id>
       <Nombre>PESO CUBANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>109</Id>
       <Nombre>ZLOTI</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>110</Id>
       <Nombre>BOLÍVAR FUERTE</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>111</Id>
       <Nombre>LIBRAS DEL LÍBANO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>112</Id>
       <Nombre>FRANCOS SUIZOS</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>113</Id>
       <Nombre>FRANCOS</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>114</Id>
       <Nombre>NUEVO SOL</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>115</Id>
       <Nombre>OTRO</Nombre>
       <IdCategoria>10</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>116</Id>
       <Nombre>D.N.I</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>117</Id>
       <Nombre>PASAPORTE</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>118</Id>
       <Nombre>TARJETA DE CRÉDITO/DÉBITO</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>119</Id>
       <Nombre>CÉDULA</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>120</Id>
       <Nombre>LICENCIA</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>121</Id>
       <Nombre>CARNET</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>122</Id>
       <Nombre>OTRO</Nombre>
       <IdCategoria>11</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>123</Id>
       <Nombre>GOLOSINAS</Nombre>
       <IdCategoria>12</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>124</Id>
       <Nombre>BEBIDAS</Nombre>
       <IdCategoria>12</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>125</Id>
       <Nombre>ALMACEN</Nombre>
       <IdCategoria>12</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>126</Id>
       <Nombre>OTRO</Nombre>
       <IdCategoria>12</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>127</Id>
       <Nombre>CHOCOLATE</Nombre>
       <IdCategoria>12</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>128</Id>
       <Nombre>CALZADO</Nombre>
       <IdCategoria>4</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>129</Id>
       <Nombre>DRON</Nombre>
       <IdCategoria>1</IdCategoria>
     </Articulo>
-  <Articulo>
+    <Articulo>
       <Id>130</Id>
       <Nombre>VIDEOJUEGO</Nombre>
       <IdCategoria>1</IdCategoria>
@@ -655,7 +655,7 @@
   <Categorias>
     <Categoria>
       <Id>1</Id>
-      <Nombre>Electronico</Nombre>
+      <Nombre>ELECTRONICO</Nombre>
     </Categoria>
     <Categoria>
       <Id>2</Id>
@@ -829,7 +829,7 @@
       <IdEstadoElemento>5</IdEstadoElemento>
       <IdHallazgo>19</IdHallazgo>
       <Descripcion>BLACK DECKER 2</Descripcion>
-      <Cantidad>1</Cantidad>
+      <Cantidad>100</Cantidad>
     </Elemento>
     <Elemento>
       <Id>16</Id>
@@ -1033,6 +1033,70 @@
       <IdHallazgo>28</IdHallazgo>
       <Descripcion>1000 BILLETES DE 100 DOLARES</Descripcion>
       <Cantidad>10000</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>42</Id>
+      <IdArticulo>123</IdArticulo>
+      <IdEstadoElemento>1</IdEstadoElemento>
+      <IdHallazgo>29</IdHallazgo>
+      <Descripcion>CHUPETIN</Descripcion>
+      <Cantidad>1</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>43</Id>
+      <IdArticulo>58</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>29</IdHallazgo>
+      <Descripcion>BLACK DECKER</Descripcion>
+      <Cantidad>1</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>44</Id>
+      <IdArticulo>26</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>29</IdHallazgo>
+      <Descripcion>ASDASDAS</Descripcion>
+      <Cantidad>1</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>45</Id>
+      <IdArticulo>14</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>29</IdHallazgo>
+      <Descripcion>ASDAS</Descripcion>
+      <Cantidad>1</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>46</Id>
+      <IdArticulo>127</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>29</IdHallazgo>
+      <Descripcion>ASDASD</Descripcion>
+      <Cantidad>1</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>47</Id>
+      <IdArticulo>116</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>30</IdHallazgo>
+      <Descripcion>CORREA JONATHAN</Descripcion>
+      <Cantidad>12</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>48</Id>
+      <IdArticulo>75</IdArticulo>
+      <IdEstadoElemento>1</IdEstadoElemento>
+      <IdHallazgo>31</IdHallazgo>
+      <Descripcion>ASDADS</Descripcion>
+      <Cantidad>23</Cantidad>
+    </Elemento>
+    <Elemento>
+      <Id>49</Id>
+      <IdArticulo>52</IdArticulo>
+      <IdEstadoElemento>5</IdEstadoElemento>
+      <IdHallazgo>32</IdHallazgo>
+      <Descripcion>ASDSADAS</Descripcion>
+      <Cantidad>1</Cantidad>
     </Elemento>
   </Elementos>
   <Entregas>
@@ -1546,36 +1610,36 @@
     <Usuario>
       <Id>1</Id>
       <NombreUsuario>admin</NombreUsuario>
-      <NombreCompleto>Jonathan Correa</NombreCompleto>
+      <NombreCompleto>admin</NombreCompleto>
       <DNI>37216265</DNI>
       <Password>AJSiNvvjAYGDnfkv6Slv6Q==</Password>
-      <IdUrsa>6</IdUrsa>
+      <IdUnidad>1</IdUnidad>
     </Usuario>
     <Usuario>
       <Id>2</Id>
       <NombreUsuario>jcorrea</NombreUsuario>
-      <NombreCompleto>Jonathan Correa</NombreCompleto>
+      <NombreCompleto>jonathan</NombreCompleto>
       <DNI>37216265</DNI>
       <Password>AJSiNvvjAYGDnfkv6Slv6Q==</Password>
-      <IdUnidad>1</IdUnidad>
+      <IdUrsa>1</IdUrsa>
     </Usuario>
   </Usuarios>
   <Usuario_Permisos>
     <Usuario_Permiso>
       <IdUsuario>1</IdUsuario>
-      <IdPermiso>13</IdPermiso>
+      <IdPermiso>18</IdPermiso>
     </Usuario_Permiso>
     <Usuario_Permiso>
       <IdUsuario>1</IdUsuario>
-      <IdPermiso>15</IdPermiso>
-    </Usuario_Permiso>
-    <Usuario_Permiso>
-      <IdUsuario>1</IdUsuario>
-      <IdPermiso>13</IdPermiso>
+      <IdPermiso>16</IdPermiso>
     </Usuario_Permiso>
     <Usuario_Permiso>
       <IdUsuario>2</IdUsuario>
-      <IdPermiso>13</IdPermiso>
+      <IdPermiso>16</IdPermiso>
+    </Usuario_Permiso>
+    <Usuario_Permiso>
+      <IdUsuario>2</IdUsuario>
+      <IdPermiso>17</IdPermiso>
     </Usuario_Permiso>
   </Usuario_Permisos>
   <Permisos>
@@ -1653,94 +1717,102 @@
     </Permiso>
     <Permiso>
       <Id>13</Id>
-      <Nombre>Instructor</Nombre>
-      <EsPermiso>false</EsPermiso>
-    </Permiso>
-    <Permiso>
-      <Id>14</Id>
-      <Nombre>Supervisor</Nombre>
-      <EsPermiso>false</EsPermiso>
-    </Permiso>
-    <Permiso>
-      <Id>15</Id>
-      <Nombre>Administrador</Nombre>
-      <EsPermiso>false</EsPermiso>
-    </Permiso>
-    <Permiso>
-      <Id>16</Id>
       <Nombre>Bitacora</Nombre>
       <EsPermiso>true</EsPermiso>
       <Descripcion>Ver Bitacora</Descripcion>
     </Permiso>
+    <Permiso>
+      <Id>14</Id>
+      <Nombre>GestionHallazgo</Nombre>
+      <EsPermiso>true</EsPermiso>
+      <Descripcion>Gestionar Hallazgos</Descripcion>
+    </Permiso>
+    <Permiso>
+      <Id>15</Id>
+      <Nombre>GestionEntrega</Nombre>
+      <EsPermiso>true</EsPermiso>
+      <Descripcion>Gestionar Entregas</Descripcion>
+    </Permiso>
+    <Permiso>
+      <Id>16</Id>
+      <Nombre>Instructor</Nombre>
+      <EsPermiso>false</EsPermiso>
+    </Permiso>
+    <Permiso>
+      <Id>17</Id>
+      <Nombre>Supervisor</Nombre>
+      <EsPermiso>false</EsPermiso>
+    </Permiso>
+    <Permiso>
+      <Id>18</Id>
+      <Nombre>Administrador</Nombre>
+      <EsPermiso>false</EsPermiso>
+    </Permiso>
   </Permisos>
   <Permisos_Permisos>
     <Permiso_Permiso>
-      <IdPermisoPadre>13</IdPermisoPadre>
-      <IdPermisoHijo>9</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>13</IdPermisoPadre>
-      <IdPermisoHijo>3</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>13</IdPermisoPadre>
-      <IdPermisoHijo>8</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>13</IdPermisoPadre>
+      <IdPermisoPadre>16</IdPermisoPadre>
       <IdPermisoHijo>2</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>10</IdPermisoHijo>
+      <IdPermisoPadre>16</IdPermisoPadre>
+      <IdPermisoHijo>9</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>12</IdPermisoHijo>
+      <IdPermisoPadre>16</IdPermisoPadre>
+      <IdPermisoHijo>3</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoPadre>16</IdPermisoPadre>
+      <IdPermisoHijo>8</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>17</IdPermisoPadre>
+      <IdPermisoHijo>8</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>17</IdPermisoPadre>
+      <IdPermisoHijo>15</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>17</IdPermisoPadre>
       <IdPermisoHijo>1</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>3</IdPermisoHijo>
+      <IdPermisoPadre>17</IdPermisoPadre>
+      <IdPermisoHijo>14</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoPadre>17</IdPermisoPadre>
+      <IdPermisoHijo>9</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>18</IdPermisoPadre>
+      <IdPermisoHijo>1</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>18</IdPermisoPadre>
+      <IdPermisoHijo>12</IdPermisoHijo>
+    </Permiso_Permiso>
+    <Permiso_Permiso>
+      <IdPermisoPadre>18</IdPermisoPadre>
       <IdPermisoHijo>11</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>16</IdPermisoHijo>
+      <IdPermisoPadre>18</IdPermisoPadre>
+      <IdPermisoHijo>10</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>5</IdPermisoHijo>
+      <IdPermisoPadre>18</IdPermisoPadre>
+      <IdPermisoHijo>13</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>2</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>4</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
+      <IdPermisoPadre>18</IdPermisoPadre>
       <IdPermisoHijo>6</IdPermisoHijo>
     </Permiso_Permiso>
     <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>7</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>8</IdPermisoHijo>
-    </Permiso_Permiso>
-    <Permiso_Permiso>
-      <IdPermisoPadre>15</IdPermisoPadre>
-      <IdPermisoHijo>9</IdPermisoHijo>
+      <IdPermisoPadre>18</IdPermisoPadre>
+      <IdPermisoHijo>5</IdPermisoHijo>
     </Permiso_Permiso>
   </Permisos_Permisos>
   <Hallazgos>
@@ -2022,6 +2094,46 @@
       <LugarHallazgo>HALL</LugarHallazgo>
       <Anio>2023</Anio>
       <FechaHallazgo>12/07/2023 08:25</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>29</Id>
+      <FechaActa>15/07/2023 18:08</FechaActa>
+      <Nroacta>0026AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>HALL A</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>15/07/2023 18:07</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>30</Id>
+      <FechaActa>15/07/2023 18:22</FechaActa>
+      <Nroacta>0027AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>ASDAS</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>02/07/2023 17:06</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>31</Id>
+      <FechaActa>15/07/2023 18:58</FechaActa>
+      <Nroacta>0028AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>DSADAS</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>02/07/2023 17:06</FechaHallazgo>
+      <Observacion></Observacion>
+    </Hallazgo>
+    <Hallazgo>
+      <Id>32</Id>
+      <FechaActa>15/07/2023 19:00</FechaActa>
+      <Nroacta>0029AER/2023</Nroacta>
+      <IdUnidad>1</IdUnidad>
+      <LugarHallazgo>ASDASD</LugarHallazgo>
+      <Anio>2023</Anio>
+      <FechaHallazgo>02/07/2023 17:06</FechaHallazgo>
       <Observacion></Observacion>
     </Hallazgo>
   </Hallazgos>
