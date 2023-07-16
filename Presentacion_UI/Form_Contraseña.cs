@@ -24,7 +24,6 @@ namespace Presentacion_UI
         BLLUsuario oBLLUsu;
         BLLPermiso oBLLPermiso;
         BEUsuario seleccion;
-        BEUsuario tmp;
 
 
 
@@ -34,45 +33,6 @@ namespace Presentacion_UI
         }
 
 
-        //private void buttonConfigurar_Click(object sender, EventArgs e)
-        //{
-        //    seleccion = (BEUsuario)comboBoxUsuarios.SelectedItem;
-
-        //    //hago una copia del objeto para no modificr el que esta en el combo.
-        //    tmp = new BEUsuario();
-        //    tmp.Id = seleccion.Id;
-        //    tmp.NombreCompleto = seleccion.NombreCompleto;
-        //    oBLLPermiso.ObternerPermisosMenu(tmp);
-
-        //    MostrarPermisos(tmp);
-        //}
-
-
-        //void MostrarPermisos(BEUsuario u)
-        //{
-        //    this.treeViewPermisos.Nodes.Clear();
-        //    TreeNode root = new TreeNode(u.NombreUsuario);
-
-        //    foreach (var item in u.Permisos)
-        //    {
-        //        LlenarTreeView(root, item);
-        //    }
-
-        //    this.treeViewPermisos.Nodes.Add(root);
-        //    this.treeViewPermisos.ExpandAll();
-        //}
-        //void LlenarTreeView(TreeNode padre, BEComponente c)
-        //{
-        //    TreeNode hijo = new TreeNode(c.Nombre);
-        //    hijo.Tag = c;
-        //    padre.Nodes.Add(hijo);
-
-        //    foreach (var item in c.Hijos)
-        //    {
-        //        LlenarTreeView(hijo, item);
-        //    }
-
-        //}
 
 
     }
