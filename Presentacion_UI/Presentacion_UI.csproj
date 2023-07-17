@@ -359,6 +359,9 @@
     <None Include="Resources\camping %281%29.png" />
     <None Include="Resources\pesado.png" />
     <None Include="Resources\despacho-de-aduana.png" />
+    <None Include="Resources\settings %281%29.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\configuration.png" />
     <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -75,46 +75,6 @@ namespace Presentacion_UI
         }
 
 
-        void buttonSeleccionar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                groupBoxDatosUsuario.Enabled = true;
-                seleccion = (BEUsuario)comboBoxUsuarios.SelectedItem;
-                seleccion = oBLLUsu.ListarObjeto(seleccion);
-                labelDestino.Text = seleccion.Destino != null ? seleccion.Destino.ToString() : "No tiene asginada";
-
-                textBoxNombre.Text = seleccion.NombreCompleto;
-                textBoxDNI.Text = seleccion.DNI;
-                textBoxUsuario.Text = seleccion.NombreUsuario;
-                textBoxPassword1.Texto = Encriptacion.Desinciptar(seleccion.Password);
-                textBoxPassword2.Texto = Encriptacion.Desinciptar(seleccion.Password);
-
-
-                if (seleccion.Permisos.Count > 0)
-                {
-                    MostrarPermisos(seleccion);
-
-                    var rol = seleccion.Permisos.First();
-
-                    foreach (BEComponente item in comboBoxRoles.Items)
-                    {
-                        if (item.Id == rol.Id)
-                        {
-                            comboBoxRoles.SelectedItem = item;
-                            break;
-                        }
-                    }
-                    comboBoxRoles_SelectedIndexChanged(null, null);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         void rbtnUrsa_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxDestino.DataSource = null;
@@ -167,20 +127,6 @@ namespace Presentacion_UI
                 }
                 labelDestino.Text = seleccion.Destino.ToString();
                 MessageBox.Show($"Al usuario {seleccion.NombreUsuario} tiene como destino {comboBoxDestino.Text} ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        void buttonGenerarUsuario_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                LimpiarFormulario();
-                groupBoxDatosUsuario.Enabled = true;
-                seleccion = new BEUsuario();
             }
             catch (Exception ex)
             {
@@ -280,7 +226,11 @@ namespace Presentacion_UI
                 return false;
             }
 
-            if (textBoxUsuario.Text == "" || textBoxNombre.Text == "" || textBoxPassword1.Texto == "" || textBoxPassword2.Texto == "" || textBoxDNI.Text == "")
+            if (textBoxUsuario.Text == "" 
+                || textBoxNombre.Text == "" 
+                || textBoxPassword1.Texto == "" 
+                || textBoxPassword2.Texto == "" 
+                || textBoxDNI.Text == "")
             {
                 MessageBox.Show("Complete todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -350,9 +300,58 @@ namespace Presentacion_UI
             }
         }
 
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
 
+        private void ButtonConfiguracion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                groupBoxDatosUsuario.Enabled = true;
+                seleccion = (BEUsuario)comboBoxUsuarios.SelectedItem;
+                seleccion = oBLLUsu.ListarObjeto(seleccion);
+                labelDestino.Text = seleccion.Destino != null ? seleccion.Destino.ToString() : "No tiene asginada";
+
+                textBoxNombre.Text = seleccion.NombreCompleto;
+                textBoxDNI.Text = seleccion.DNI;
+                textBoxUsuario.Text = seleccion.NombreUsuario;
+                textBoxPassword1.Texto = Encriptacion.Desinciptar(seleccion.Password);
+                textBoxPassword2.Texto = Encriptacion.Desinciptar(seleccion.Password);
+
+
+                if (seleccion.Permisos.Count > 0)
+                {
+                    MostrarPermisos(seleccion);
+
+                    var rol = seleccion.Permisos.First();
+
+                    foreach (BEComponente item in comboBoxRoles.Items)
+                    {
+                        if (item.Id == rol.Id)
+                        {
+                            comboBoxRoles.SelectedItem = item;
+                            break;
+                        }
+                    }
+                    comboBoxRoles_SelectedIndexChanged(null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ButtonGenerarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LimpiarFormulario();
+                groupBoxDatosUsuario.Enabled = true;
+                seleccion = new BEUsuario();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

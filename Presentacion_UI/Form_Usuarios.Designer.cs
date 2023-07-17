@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Usuarios));
-            this.buttonGuardarUsuario = new System.Windows.Forms.Button();
             this.comboBoxUsuarios = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonSeleccionar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,24 +58,12 @@
             this.buttonDesagniarUnidad = new System.Windows.Forms.Button();
             this.textBoxPassword2 = new Presentacion_UI.TextBoxPassword();
             this.textBoxPassword1 = new Presentacion_UI.TextBoxPassword();
-            this.rjButton1 = new Seguridad.RJButton();
+            this.ButtonConfiguracion = new Seguridad.RJButton();
+            this.ButtonGenerarUsuario = new Seguridad.RJButton();
             this.groupBoxPermisos.SuspendLayout();
             this.groupBoxDatosUsuario.SuspendLayout();
             this.groupBoxDestino.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonGuardarUsuario
-            // 
-            this.buttonGuardarUsuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGuardarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonGuardarUsuario.Location = new System.Drawing.Point(421, 24);
-            this.buttonGuardarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonGuardarUsuario.Name = "buttonGuardarUsuario";
-            this.buttonGuardarUsuario.Size = new System.Drawing.Size(112, 45);
-            this.buttonGuardarUsuario.TabIndex = 25;
-            this.buttonGuardarUsuario.Text = "Nuevo Usuario";
-            this.buttonGuardarUsuario.UseVisualStyleBackColor = true;
-            this.buttonGuardarUsuario.Click += new System.EventHandler(this.buttonGenerarUsuario_Click);
             // 
             // comboBoxUsuarios
             // 
@@ -98,19 +84,6 @@
             this.label2.Size = new System.Drawing.Size(59, 14);
             this.label2.TabIndex = 36;
             this.label2.Text = "Usuarios";
-            // 
-            // buttonSeleccionar
-            // 
-            this.buttonSeleccionar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSeleccionar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonSeleccionar.Location = new System.Drawing.Point(287, 24);
-            this.buttonSeleccionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonSeleccionar.Name = "buttonSeleccionar";
-            this.buttonSeleccionar.Size = new System.Drawing.Size(117, 45);
-            this.buttonSeleccionar.TabIndex = 31;
-            this.buttonSeleccionar.Text = "Configurar";
-            this.buttonSeleccionar.UseVisualStyleBackColor = true;
-            this.buttonSeleccionar.Click += new System.EventHandler(this.buttonSeleccionar_Click);
             // 
             // label4
             // 
@@ -181,7 +154,7 @@
             // treeViewPermisos
             // 
             this.treeViewPermisos.Location = new System.Drawing.Point(355, 41);
-            this.treeViewPermisos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.treeViewPermisos.Margin = new System.Windows.Forms.Padding(1);
             this.treeViewPermisos.Name = "treeViewPermisos";
             this.treeViewPermisos.Size = new System.Drawing.Size(379, 500);
             this.treeViewPermisos.TabIndex = 0;
@@ -437,23 +410,47 @@
             this.textBoxPassword1.TabIndex = 28;
             this.textBoxPassword1.Texto = "";
             // 
-            // rjButton1
+            // ButtonConfiguracion
             // 
-            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(575, 24);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(150, 40);
-            this.rjButton1.TabIndex = 37;
-            this.rjButton1.Text = "Configurar";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
+            this.ButtonConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ButtonConfiguracion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ButtonConfiguracion.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonConfiguracion.BorderRadius = 20;
+            this.ButtonConfiguracion.BorderSize = 0;
+            this.ButtonConfiguracion.FlatAppearance.BorderSize = 0;
+            this.ButtonConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonConfiguracion.ForeColor = System.Drawing.Color.White;
+            this.ButtonConfiguracion.Image = ((System.Drawing.Image)(resources.GetObject("ButtonConfiguracion.Image")));
+            this.ButtonConfiguracion.Location = new System.Drawing.Point(287, 23);
+            this.ButtonConfiguracion.Name = "ButtonConfiguracion";
+            this.ButtonConfiguracion.Size = new System.Drawing.Size(125, 40);
+            this.ButtonConfiguracion.TabIndex = 37;
+            this.ButtonConfiguracion.Text = "Configurar";
+            this.ButtonConfiguracion.TextColor = System.Drawing.Color.White;
+            this.ButtonConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonConfiguracion.UseVisualStyleBackColor = false;
+            this.ButtonConfiguracion.Click += new System.EventHandler(this.ButtonConfiguracion_Click);
+            // 
+            // ButtonGenerarUsuario
+            // 
+            this.ButtonGenerarUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.ButtonGenerarUsuario.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.ButtonGenerarUsuario.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonGenerarUsuario.BorderRadius = 20;
+            this.ButtonGenerarUsuario.BorderSize = 0;
+            this.ButtonGenerarUsuario.FlatAppearance.BorderSize = 0;
+            this.ButtonGenerarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonGenerarUsuario.ForeColor = System.Drawing.Color.White;
+            this.ButtonGenerarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("ButtonGenerarUsuario.Image")));
+            this.ButtonGenerarUsuario.Location = new System.Drawing.Point(431, 23);
+            this.ButtonGenerarUsuario.Name = "ButtonGenerarUsuario";
+            this.ButtonGenerarUsuario.Size = new System.Drawing.Size(119, 40);
+            this.ButtonGenerarUsuario.TabIndex = 38;
+            this.ButtonGenerarUsuario.Text = "Nuevo Usuario";
+            this.ButtonGenerarUsuario.TextColor = System.Drawing.Color.White;
+            this.ButtonGenerarUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonGenerarUsuario.UseVisualStyleBackColor = false;
+            this.ButtonGenerarUsuario.Click += new System.EventHandler(this.ButtonGenerarUsuario_Click);
             // 
             // Form_Usuarios
             // 
@@ -461,16 +458,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(792, 675);
-            this.Controls.Add(this.rjButton1);
-            this.Controls.Add(this.buttonSeleccionar);
+            this.Controls.Add(this.ButtonGenerarUsuario);
+            this.Controls.Add(this.ButtonConfiguracion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxUsuarios);
             this.Controls.Add(this.groupBoxDatosUsuario);
-            this.Controls.Add(this.buttonGuardarUsuario);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.Name = "Form_Usuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -488,10 +484,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonGuardarUsuario;
         private System.Windows.Forms.ComboBox comboBoxUsuarios;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonSeleccionar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Label label3;
@@ -519,6 +513,7 @@
         private System.Windows.Forms.Button buttonDesagsinarRol;
         private System.Windows.Forms.Button buttonDesagniarUnidad;
         private System.Windows.Forms.Label label8;
-        private Seguridad.RJButton rjButton1;
+        private Seguridad.RJButton ButtonConfiguracion;
+        private Seguridad.RJButton ButtonGenerarUsuario;
     }
 }

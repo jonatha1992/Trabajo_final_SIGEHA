@@ -886,7 +886,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonCargarPersonas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 591</value>
+    <value>653, 591</value>
   </data>
   <data name="buttonCargarPersonas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

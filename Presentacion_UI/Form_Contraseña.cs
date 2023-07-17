@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Negocio;
 using Seguridad;
 
@@ -22,27 +23,53 @@ namespace Presentacion_UI
         }
 
 
-        BEUsuario eUsuario ;   
+        BEUsuario eUsuario;
         BLLUsuario bLLUsuario;
 
 
 
         private void FormPermisos_Load(object sender, EventArgs e)
         {
-            bLLUsuario = new BLLUsuario();  
+            bLLUsuario = new BLLUsuario();
             eUsuario = Form_Contenedor.usuario;
 
-            textBoxNombre.Text = eUsuario.NombreCompleto;   
-            textBoxUsuario.Text = eUsuario.NombreUsuario;   
-            textBoxDNI.Text = eUsuario.DNI;  
-            textBoxPassword1.Texto = Encriptacion.Desinciptar(eUsuario.Password);  
-            textBoxPassword2.Texto = Encriptacion.Desinciptar(eUsuario.Password);  
+            textBoxNombre.Text = eUsuario.NombreCompleto;
+            textBoxUsuario.Text = eUsuario.NombreUsuario;
+            textBoxDNI.Text = eUsuario.DNI;
+            textBoxPassword1.Texto = Encriptacion.Desinciptar(eUsuario.Password);
+            textBoxPassword2.Texto = Encriptacion.Desinciptar(eUsuario.Password);
 
         }
 
-        private void buttonGuardarUsuario_Click(object sender, EventArgs e)
+
+        bool VerficarCamposUsuario()
         {
-            bLLUsuario.CambiarContraseña(eUsuario);
+
+            if (textBoxPassword1.Texto != textBoxPassword2.Texto)
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if ( textBoxPassword1.Texto == ""  || textBoxPassword2.Texto == "")
+            {
+                MessageBox.Show("Complete todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            eUsuario.Password = Encriptacion.Encriptar(textBoxPassword1.Texto);
+            eUsuario.DNI = textBoxDNI.Text;
+
+            return true;
+
+        }
+
+        private void ButtonGuardar_Click(object sender, EventArgs e)
+        {
+            if (VerficarCamposUsuario())
+            {
+                bLLUsuario.CambiarContraseña(eUsuario);
+            }
         }
     }
 }
