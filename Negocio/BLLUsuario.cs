@@ -46,8 +46,6 @@ namespace Negocio
 
            
         }
-
-
         public BEUsuario ControlPasswword(string nombre, string pass)
         {
             var usuario = ListarTodo().Find(x => x.NombreUsuario == nombre && x.Password == pass);
@@ -57,12 +55,10 @@ namespace Negocio
                 return usuario;
         }
 
-
         public DataSet ObtenerElementosReporte(BEUrsa ursa, BEUnidad unidad = null)
         {
             return mpPUsuario.ObtenerElementosReporte(ursa, unidad);
         }
-
 
         public bool verificarol(BEUsuario usuario)
         {
@@ -76,7 +72,6 @@ namespace Negocio
             }
             return false;
         }
-
         bool VerificarRolUsuario(BEComponente componente)
         {
 
@@ -100,10 +95,9 @@ namespace Negocio
             return false;
         }
 
-
         public bool CambiarContraseña(BEUsuario oBEUsu)
         {
-            return true;
+           return mpPUsuario.Actualizar(oBEUsu);
         }
         public bool Eliminar(BEUsuario oBEUsu)
         {

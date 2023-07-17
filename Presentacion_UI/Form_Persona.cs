@@ -85,7 +85,6 @@ namespace Presentacion_UI
 
         #region "Funciones"
 
-        public BEPAdreHallazgo ObtenerIntervinientes() => BePAdreHallazgo;
         void CargarCombo()
         {
 
@@ -99,7 +98,6 @@ namespace Presentacion_UI
                 comboBoxTipoPersona.DataSource = bLLEstado_Persona.ListarTodo().FindAll(x => x.Nombre != "Descubridor");
             }
         }
-
         void Panel()
         {
             if (comboBoxTipoPersona.Text == "Instructor")
@@ -135,9 +133,9 @@ namespace Presentacion_UI
                     MessageBox.Show("El/La Interviniente se Agrego Correctamente a la Base de datos", "Informaciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            else //se busco la persona  y se va actualizar si lo desea si no 
             {
-                var person =CrearPersona();
+                var person = CrearPersona();
                 var result = MessageBox.Show("La persona seleccionada ya se encuentra registrada \n ¿desea cambiar sus datos con la informacion nueva?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
@@ -416,8 +414,6 @@ namespace Presentacion_UI
             }
             return Encontrado;
         }
-
-
         bool ValidarCampos(string tipoPersona)
         {
             switch (tipoPersona)
@@ -447,8 +443,18 @@ namespace Presentacion_UI
                         Validar.VerificarNroDocumento(textBoxDniDescubridor.Text);
             }
         }
-
-
+        void SuscrpcionEventos()
+        {
+            textBoxLegajo.KeyDown += TextBox_Buscar;
+            textBoxDniDescubridor.KeyDown += TextBox_Buscar;
+            textBoxDniTestigo.KeyDown += TextBox_Buscar;
+            textBoxNombreInstructor.KeyPress += TextBox_KeyPress;
+            textBoxNombreTestigo.KeyPress += TextBox_KeyPress;
+            textBoxNombreDescr_Prop.KeyPress += TextBox_KeyPress;
+            textBoxOcupacion.KeyPress += TextBox_KeyPress;
+            textBoxTelefono.KeyPress += TextBox_KeyPress;
+            textBoxDomicilio.KeyPress += TextBox_KeyPress;
+        }
         BEPersona CrearPersona()
         {
             if (!Seleccion)
@@ -525,30 +531,6 @@ namespace Presentacion_UI
             }
             Habilitar();
         }
-        void DgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.ColumnIndex == this.DgvPersonas.Columns["Sel"].Index)
-                {
-                    var Valor = (bool)DgvPersonas.Rows[e.RowIndex].Cells["Sel"].Value;
-
-                    if (!Valor)
-                    {
-                        DgvPersonas.Rows[e.RowIndex].Cells["Sel"].Value = true;
-                    }
-                    else
-                    {
-                        DgvPersonas.Rows[e.RowIndex].Cells["Sel"].Value = false;
-                    }
-                    VerificarPersonasSeleccionados();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         #endregion
 
@@ -587,7 +569,6 @@ namespace Presentacion_UI
 
             }
         }
-
         void buttonModificar_Click(object sender, EventArgs e)
         {
             try
@@ -705,7 +686,7 @@ namespace Presentacion_UI
 
         #endregion
 
-        #region "Datagrid"
+        #region "Eventos"
         void DgvPersonas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             if (DgvPersonas.Rows.Count == 4)
@@ -720,37 +701,40 @@ namespace Presentacion_UI
                 buttonAgregar.Visible = true;
             }
         }
+        void DgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == this.DgvPersonas.Columns["Sel"].Index)
+                {
+                    var Valor = (bool)DgvPersonas.Rows[e.RowIndex].Cells["Sel"].Value;
 
-        #endregion
+                    if (!Valor)
+                    {
+                        DgvPersonas.Rows[e.RowIndex].Cells["Sel"].Value = true;
+                    }
+                    else
+                    {
+                        DgvPersonas.Rows[e.RowIndex].Cells["Sel"].Value = false;
+                    }
+                    VerificarPersonasSeleccionados();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-        #region "ComboBox"
         void comboBoxCategoria_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-        #endregion
-
-        #region "TextBox"
-
-
-
-        void SuscrpcionEventos()
-        {
-            textBoxLegajo.KeyDown += TextBox_Buscar;
-            textBoxDniDescubridor.KeyDown += TextBox_Buscar;
-            textBoxDniTestigo.KeyDown += TextBox_Buscar;
-            textBoxNombreInstructor.KeyPress += TextBox_KeyPress;
-            textBoxNombreTestigo.KeyPress += TextBox_KeyPress;
-            textBoxNombreDescr_Prop.KeyPress += TextBox_KeyPress;
-            textBoxOcupacion.KeyPress += TextBox_KeyPress;
-            textBoxTelefono.KeyPress += TextBox_KeyPress;
-            textBoxDomicilio.KeyPress += TextBox_KeyPress;
-        }
+       
         void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validar.NoSaltosDelinea(e);
         }
-
         void TextBox_Buscar(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -760,7 +744,6 @@ namespace Presentacion_UI
             }
         }
 
-        #endregion
         void FormPersonas_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -784,6 +767,8 @@ namespace Presentacion_UI
                 LimpiarCampos();
             }
         }
+       
+        #endregion
     }
 }
 

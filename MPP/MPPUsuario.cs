@@ -14,8 +14,6 @@ namespace MPP
         Conexion conexion = new Conexion();
         string NodoPadre = "Usuarios";
 
-
-
         public BEUsuario Agregar(BEUsuario NuevoUser)
         {
             var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
@@ -47,29 +45,6 @@ namespace MPP
             return NuevoUser;
 
         }
-        //public bool Actualizar(BEUsuario pUsuario)
-        //{
-        //    XElement usuarioXml = new XElement("Usuario",
-        //       new XElement("Id", pUsuario.Id),
-        //       new XElement("NombreUsuario", pUsuario.NombreUsuario),
-        //       new XElement("NombreCompleto", pUsuario.NombreCompleto),
-        //       new XElement("DNI", pUsuario.DNI),
-        //       new XElement("Password", pUsuario.Password));
-
-
-        //    if (pUsuario.Destino is BEUnidad)
-        //    {
-        //        usuarioXml.Add(new XElement("IdUnidad", pUsuario.Destino.Id));
-
-        //    }
-        //    if (pUsuario.Destino is BEUrsa)
-        //    {
-        //        usuarioXml.Add(new XElement("IdUrsa", pUsuario.Destino.Id));
-        //    }
-
-
-        //    return conexion.Actualizar(NodoPadre, pUsuario.Id.ToString(), usuarioXml);
-        //}
         public bool Actualizar(BEUsuario pUsuario)
         {
             try
@@ -103,8 +78,6 @@ namespace MPP
                 throw new Exception($"{ex.Message}");
             }
         }
-
-
         public bool Eliminar(BEUsuario user)
         {
             return conexion.Eliminar(NodoPadre, user.Id.ToString());
@@ -134,7 +107,6 @@ namespace MPP
                 throw new Exception(ex.Message);
             }
         }
-
 
         public List<BEUsuario> ListarTodo()
         {

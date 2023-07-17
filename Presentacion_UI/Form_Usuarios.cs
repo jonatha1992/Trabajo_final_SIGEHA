@@ -350,5 +350,9 @@ namespace Presentacion_UI
             }
         }
 
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
