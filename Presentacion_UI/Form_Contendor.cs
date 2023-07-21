@@ -19,6 +19,7 @@ namespace Presentacion_UI
 
             bLLPermiso = new BLLPermiso();
             bLLBitacora = new BLLBitacora();
+
         }
 
         Form_Hallazgo form_Hallazgo;

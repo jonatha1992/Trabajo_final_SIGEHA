@@ -45,13 +45,15 @@
             this.Bitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.Login = new System.Windows.Forms.ToolStripMenuItem();
             this.CambiarContrasena = new System.Windows.Forms.ToolStripMenuItem();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.Enabled = false;
-            this.menuStrip1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Hallazgo,
@@ -59,10 +61,10 @@
             this.Administracion,
             this.Login,
             this.CambiarContrasena});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 29);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1227, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1306, 26);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -182,30 +184,43 @@
             this.CambiarContrasena.Text = "Cambiar Contraseña";
             this.CambiarContrasena.Click += new System.EventHandler(this.CambiarContrasena_Click);
             // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = true;
+            this.customTitleBar1.MinimizeButtonVisible = true;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(1306, 29);
+            this.customTitleBar1.TabIndex = 3;
+            this.customTitleBar1.Title = "Principal";
+            // 
             // Form_Contenedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1227, 473);
+            this.ClientSize = new System.Drawing.Size(1306, 635);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.customTitleBar1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form_Contenedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIGEHA";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Contenedor_FormClosing);
             this.Load += new System.EventHandler(this.Form_Contenedor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -227,6 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem ABMCategorias;
         private System.Windows.Forms.ToolStripMenuItem CambiarContrasena;
         private System.Windows.Forms.ToolStripMenuItem Bitacora;
+        private Seguridad.CustomTitleBar customTitleBar1;
     }
 
     

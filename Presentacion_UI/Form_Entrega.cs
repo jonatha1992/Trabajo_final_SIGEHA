@@ -380,6 +380,7 @@ namespace Presentacion_UI
             BEArticulo bEArticulo = null;
             string LugarHallazgo = "";
             string PDescripcion = "";
+            string NroHallazgo = "";
 
             if (checkBoxFecha.Checked)
             {
@@ -401,6 +402,12 @@ namespace Presentacion_UI
             if (checkBoxLugar.Checked && textBoxLugar.Enabled)
             {
                 LugarHallazgo = textBoxLugar.Text;
+            }
+
+            if (checkBoxNroHallazgo.Checked && numericUpDown1.Enabled && numericUpDown1.Value != 0)
+            {
+                NroHallazgo = numericUpDown1.Text;
+
             }
             listaElementosBusqueda = bLLElemento.BusquedaElementos(Desde, Hasta, bEcategoria, bEArticulo, LugarHallazgo, PDescripcion, bEUnidad);
         }
@@ -759,7 +766,11 @@ namespace Presentacion_UI
                 textBoxObservacion.Text = "";
             }
         }
+        private void checkBoxNroHallazgo_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown1.Enabled = checkBoxNroHallazgo.Checked;
 
+        }
         private void comboBoxArticulo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -864,9 +875,6 @@ namespace Presentacion_UI
             }
         }
 
-       
       
-
-
     }
 }
