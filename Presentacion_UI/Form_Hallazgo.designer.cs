@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Hallazgo));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Hallazgo));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,12 +42,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelEstado = new System.Windows.Forms.Label();
             this.groupBoxDatosHallazgo = new System.Windows.Forms.GroupBox();
+            this.buttonFinalizarHallazgo = new Seguridad.RJButton();
+            this.buttonEliminar = new Seguridad.RJButton();
             this.checkBoxObservacion = new System.Windows.Forms.CheckBox();
+            this.button_Modificar = new Seguridad.RJButton();
+            this.button_Agregar = new Seguridad.RJButton();
             this.textBoxObservacion = new System.Windows.Forms.TextBox();
-            this.buttonFinalizarHallazgo = new System.Windows.Forms.Button();
-            this.button_Agregar = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
-            this.button_Modificar = new System.Windows.Forms.Button();
             this.comboBoxUrsa = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxNroActa = new System.Windows.Forms.TextBox();
@@ -59,15 +59,13 @@
             this.textBoxLugar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelHallazgo = new System.Windows.Forms.Label();
-            this.buttonImprimir = new System.Windows.Forms.Button();
-            this.buttonCargarPersonas = new System.Windows.Forms.Button();
             this.groupBoxDatosElementos = new System.Windows.Forms.GroupBox();
+            this.btnEliminarElemento = new Seguridad.RJButton();
+            this.btnModificarElemento = new Seguridad.RJButton();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnAgregarElemento = new Seguridad.RJButton();
             this.NUPCantidad = new System.Windows.Forms.NumericUpDown();
-            this.btnEliminarElemento = new System.Windows.Forms.Button();
             this.comboBoxEstado = new System.Windows.Forms.ComboBox();
-            this.btnModificarElemento = new System.Windows.Forms.Button();
-            this.btnAgregarElemento = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -79,6 +77,9 @@
             this.DgvElementos = new System.Windows.Forms.DataGridView();
             this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
+            this.buttonCargarPersonas = new Seguridad.RJButton();
+            this.buttonImprimir = new Seguridad.RJButton();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHallazgos)).BeginInit();
             this.groupBoxDatosHallazgo.SuspendLayout();
             this.groupBoxDatosElementos.SuspendLayout();
@@ -91,29 +92,30 @@
             this.dgvHallazgos.AllowUserToAddRows = false;
             this.dgvHallazgos.AllowUserToDeleteRows = false;
             this.dgvHallazgos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHallazgos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvHallazgos.BackgroundColor = System.Drawing.Color.CadetBlue;
-            this.dgvHallazgos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvHallazgos.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvHallazgos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvHallazgos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvHallazgos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvHallazgos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvHallazgos, "dgvHallazgos");
+            this.dgvHallazgos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvHallazgos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvHallazgos.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.dgvHallazgos, "dgvHallazgos");
+            this.dgvHallazgos.EnableHeadersVisualStyles = false;
             this.dgvHallazgos.MultiSelect = false;
             this.dgvHallazgos.Name = "dgvHallazgos";
             this.dgvHallazgos.ReadOnly = true;
@@ -132,7 +134,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.dgvHallazgos.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvHallazgos.RowTemplate.Height = 60;
+            this.dgvHallazgos.RowTemplate.Height = 32;
             this.dgvHallazgos.RowTemplate.ReadOnly = true;
             this.dgvHallazgos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvHallazgos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHallazgos_CellContentClick);
@@ -159,12 +161,12 @@
             // groupBoxDatosHallazgo
             // 
             this.groupBoxDatosHallazgo.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxDatosHallazgo.Controls.Add(this.checkBoxObservacion);
-            this.groupBoxDatosHallazgo.Controls.Add(this.textBoxObservacion);
             this.groupBoxDatosHallazgo.Controls.Add(this.buttonFinalizarHallazgo);
-            this.groupBoxDatosHallazgo.Controls.Add(this.button_Agregar);
             this.groupBoxDatosHallazgo.Controls.Add(this.buttonEliminar);
+            this.groupBoxDatosHallazgo.Controls.Add(this.checkBoxObservacion);
             this.groupBoxDatosHallazgo.Controls.Add(this.button_Modificar);
+            this.groupBoxDatosHallazgo.Controls.Add(this.button_Agregar);
+            this.groupBoxDatosHallazgo.Controls.Add(this.textBoxObservacion);
             this.groupBoxDatosHallazgo.Controls.Add(this.comboBoxUrsa);
             this.groupBoxDatosHallazgo.Controls.Add(this.label5);
             this.groupBoxDatosHallazgo.Controls.Add(this.textBoxNroActa);
@@ -180,6 +182,36 @@
             this.groupBoxDatosHallazgo.Name = "groupBoxDatosHallazgo";
             this.groupBoxDatosHallazgo.TabStop = false;
             // 
+            // buttonFinalizarHallazgo
+            // 
+            this.buttonFinalizarHallazgo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonFinalizarHallazgo.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonFinalizarHallazgo.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonFinalizarHallazgo.BorderRadius = 20;
+            this.buttonFinalizarHallazgo.BorderSize = 2;
+            this.buttonFinalizarHallazgo.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.buttonFinalizarHallazgo, "buttonFinalizarHallazgo");
+            this.buttonFinalizarHallazgo.ForeColor = System.Drawing.Color.White;
+            this.buttonFinalizarHallazgo.Name = "buttonFinalizarHallazgo";
+            this.buttonFinalizarHallazgo.TextColor = System.Drawing.Color.White;
+            this.buttonFinalizarHallazgo.UseVisualStyleBackColor = false;
+            this.buttonFinalizarHallazgo.Click += new System.EventHandler(this.buttonFinalizarHallazgo_Click);
+            // 
+            // buttonEliminar
+            // 
+            this.buttonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonEliminar.BorderColor = System.Drawing.Color.White;
+            this.buttonEliminar.BorderRadius = 20;
+            this.buttonEliminar.BorderSize = 1;
+            this.buttonEliminar.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.buttonEliminar, "buttonEliminar");
+            this.buttonEliminar.ForeColor = System.Drawing.Color.White;
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.TextColor = System.Drawing.Color.White;
+            this.buttonEliminar.UseVisualStyleBackColor = false;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            // 
             // checkBoxObservacion
             // 
             resources.ApplyResources(this.checkBoxObservacion, "checkBoxObservacion");
@@ -187,52 +219,42 @@
             this.checkBoxObservacion.UseVisualStyleBackColor = true;
             this.checkBoxObservacion.CheckedChanged += new System.EventHandler(this.checkBoxObservacion_CheckedChanged);
             // 
+            // button_Modificar
+            // 
+            this.button_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.button_Modificar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.button_Modificar.BorderColor = System.Drawing.Color.White;
+            this.button_Modificar.BorderRadius = 20;
+            this.button_Modificar.BorderSize = 1;
+            this.button_Modificar.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button_Modificar, "button_Modificar");
+            this.button_Modificar.ForeColor = System.Drawing.Color.Black;
+            this.button_Modificar.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
+            this.button_Modificar.Name = "button_Modificar";
+            this.button_Modificar.TextColor = System.Drawing.Color.Black;
+            this.button_Modificar.UseVisualStyleBackColor = false;
+            this.button_Modificar.Click += new System.EventHandler(this.button_Modificar_Click);
+            // 
+            // button_Agregar
+            // 
+            this.button_Agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.button_Agregar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.button_Agregar.BorderColor = System.Drawing.Color.White;
+            this.button_Agregar.BorderRadius = 20;
+            this.button_Agregar.BorderSize = 1;
+            this.button_Agregar.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button_Agregar, "button_Agregar");
+            this.button_Agregar.ForeColor = System.Drawing.Color.White;
+            this.button_Agregar.Name = "button_Agregar";
+            this.button_Agregar.TextColor = System.Drawing.Color.White;
+            this.button_Agregar.UseVisualStyleBackColor = false;
+            this.button_Agregar.Click += new System.EventHandler(this.button_Agregar_Click);
+            // 
             // textBoxObservacion
             // 
             this.textBoxObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             resources.ApplyResources(this.textBoxObservacion, "textBoxObservacion");
             this.textBoxObservacion.Name = "textBoxObservacion";
-            // 
-            // buttonFinalizarHallazgo
-            // 
-            resources.ApplyResources(this.buttonFinalizarHallazgo, "buttonFinalizarHallazgo");
-            this.buttonFinalizarHallazgo.AutoEllipsis = true;
-            this.buttonFinalizarHallazgo.BackColor = System.Drawing.Color.Black;
-            this.buttonFinalizarHallazgo.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonFinalizarHallazgo.Name = "buttonFinalizarHallazgo";
-            this.buttonFinalizarHallazgo.UseVisualStyleBackColor = false;
-            this.buttonFinalizarHallazgo.Click += new System.EventHandler(this.buttonFinalizarHallazgo_Click);
-            // 
-            // button_Agregar
-            // 
-            this.button_Agregar.AutoEllipsis = true;
-            this.button_Agregar.BackColor = System.Drawing.Color.LimeGreen;
-            resources.ApplyResources(this.button_Agregar, "button_Agregar");
-            this.button_Agregar.ForeColor = System.Drawing.Color.Black;
-            this.button_Agregar.Image = global::Presentacion_UI.Properties.Resources.boton_agregar_Elemento;
-            this.button_Agregar.Name = "button_Agregar";
-            this.button_Agregar.UseVisualStyleBackColor = false;
-            this.button_Agregar.Click += new System.EventHandler(this.button_Agregar_Click);
-            // 
-            // buttonEliminar
-            // 
-            this.buttonEliminar.BackColor = System.Drawing.Color.Tomato;
-            resources.ApplyResources(this.buttonEliminar, "buttonEliminar");
-            this.buttonEliminar.ForeColor = System.Drawing.Color.Black;
-            this.buttonEliminar.Image = global::Presentacion_UI.Properties.Resources.basura;
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = false;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
-            // 
-            // button_Modificar
-            // 
-            this.button_Modificar.BackColor = System.Drawing.Color.Yellow;
-            resources.ApplyResources(this.button_Modificar, "button_Modificar");
-            this.button_Modificar.ForeColor = System.Drawing.Color.Black;
-            this.button_Modificar.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
-            this.button_Modificar.Name = "button_Modificar";
-            this.button_Modificar.UseVisualStyleBackColor = false;
-            this.button_Modificar.Click += new System.EventHandler(this.button_Modificar_Click);
             // 
             // comboBoxUrsa
             // 
@@ -310,37 +332,16 @@
             this.labelHallazgo.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.labelHallazgo.Name = "labelHallazgo";
             // 
-            // buttonImprimir
-            // 
-            resources.ApplyResources(this.buttonImprimir, "buttonImprimir");
-            this.buttonImprimir.AutoEllipsis = true;
-            this.buttonImprimir.BackColor = System.Drawing.Color.Black;
-            this.buttonImprimir.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonImprimir.Image = global::Presentacion_UI.Properties.Resources.impresora__2_;
-            this.buttonImprimir.Name = "buttonImprimir";
-            this.buttonImprimir.UseVisualStyleBackColor = false;
-            this.buttonImprimir.Click += new System.EventHandler(this.buttonImprimir_Click);
-            // 
-            // buttonCargarPersonas
-            // 
-            this.buttonCargarPersonas.BackColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.buttonCargarPersonas, "buttonCargarPersonas");
-            this.buttonCargarPersonas.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonCargarPersonas.Image = global::Presentacion_UI.Properties.Resources.AgregarUsuario;
-            this.buttonCargarPersonas.Name = "buttonCargarPersonas";
-            this.buttonCargarPersonas.UseVisualStyleBackColor = false;
-            this.buttonCargarPersonas.Click += new System.EventHandler(this.buttonCargarPersonas_Click);
-            // 
             // groupBoxDatosElementos
             // 
             resources.ApplyResources(this.groupBoxDatosElementos, "groupBoxDatosElementos");
             this.groupBoxDatosElementos.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxDatosElementos.Controls.Add(this.label6);
-            this.groupBoxDatosElementos.Controls.Add(this.NUPCantidad);
             this.groupBoxDatosElementos.Controls.Add(this.btnEliminarElemento);
-            this.groupBoxDatosElementos.Controls.Add(this.comboBoxEstado);
             this.groupBoxDatosElementos.Controls.Add(this.btnModificarElemento);
+            this.groupBoxDatosElementos.Controls.Add(this.label6);
             this.groupBoxDatosElementos.Controls.Add(this.btnAgregarElemento);
+            this.groupBoxDatosElementos.Controls.Add(this.NUPCantidad);
+            this.groupBoxDatosElementos.Controls.Add(this.comboBoxEstado);
             this.groupBoxDatosElementos.Controls.Add(this.label11);
             this.groupBoxDatosElementos.Controls.Add(this.textBoxDescripcion);
             this.groupBoxDatosElementos.Controls.Add(this.label10);
@@ -353,10 +354,56 @@
             this.groupBoxDatosElementos.Name = "groupBoxDatosElementos";
             this.groupBoxDatosElementos.TabStop = false;
             // 
+            // btnEliminarElemento
+            // 
+            this.btnEliminarElemento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnEliminarElemento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnEliminarElemento.BorderColor = System.Drawing.Color.White;
+            this.btnEliminarElemento.BorderRadius = 20;
+            this.btnEliminarElemento.BorderSize = 1;
+            this.btnEliminarElemento.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnEliminarElemento, "btnEliminarElemento");
+            this.btnEliminarElemento.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarElemento.Name = "btnEliminarElemento";
+            this.btnEliminarElemento.TextColor = System.Drawing.Color.White;
+            this.btnEliminarElemento.UseVisualStyleBackColor = false;
+            this.btnEliminarElemento.Click += new System.EventHandler(this.btnEliminarElemento_Click);
+            // 
+            // btnModificarElemento
+            // 
+            this.btnModificarElemento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnModificarElemento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnModificarElemento.BorderColor = System.Drawing.Color.White;
+            this.btnModificarElemento.BorderRadius = 20;
+            this.btnModificarElemento.BorderSize = 1;
+            this.btnModificarElemento.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnModificarElemento, "btnModificarElemento");
+            this.btnModificarElemento.ForeColor = System.Drawing.Color.Black;
+            this.btnModificarElemento.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
+            this.btnModificarElemento.Name = "btnModificarElemento";
+            this.btnModificarElemento.TextColor = System.Drawing.Color.Black;
+            this.btnModificarElemento.UseVisualStyleBackColor = false;
+            this.btnModificarElemento.Click += new System.EventHandler(this.btnModificarElemento_Click);
+            // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            // 
+            // btnAgregarElemento
+            // 
+            this.btnAgregarElemento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.btnAgregarElemento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.btnAgregarElemento.BorderColor = System.Drawing.Color.White;
+            this.btnAgregarElemento.BorderRadius = 20;
+            this.btnAgregarElemento.BorderSize = 1;
+            this.btnAgregarElemento.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnAgregarElemento, "btnAgregarElemento");
+            this.btnAgregarElemento.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarElemento.Name = "btnAgregarElemento";
+            this.btnAgregarElemento.TextColor = System.Drawing.Color.White;
+            this.btnAgregarElemento.UseVisualStyleBackColor = false;
+            this.btnAgregarElemento.Click += new System.EventHandler(this.btnAgregarElemento_Click);
             // 
             // NUPCantidad
             // 
@@ -374,43 +421,12 @@
             0,
             0});
             // 
-            // btnEliminarElemento
-            // 
-            this.btnEliminarElemento.BackColor = System.Drawing.Color.Tomato;
-            resources.ApplyResources(this.btnEliminarElemento, "btnEliminarElemento");
-            this.btnEliminarElemento.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarElemento.Image = global::Presentacion_UI.Properties.Resources.basura;
-            this.btnEliminarElemento.Name = "btnEliminarElemento";
-            this.btnEliminarElemento.UseVisualStyleBackColor = false;
-            this.btnEliminarElemento.Click += new System.EventHandler(this.btnEliminarElemento_Click);
-            // 
             // comboBoxEstado
             // 
             this.comboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxEstado, "comboBoxEstado");
             this.comboBoxEstado.FormattingEnabled = true;
             this.comboBoxEstado.Name = "comboBoxEstado";
-            // 
-            // btnModificarElemento
-            // 
-            this.btnModificarElemento.BackColor = System.Drawing.Color.Yellow;
-            resources.ApplyResources(this.btnModificarElemento, "btnModificarElemento");
-            this.btnModificarElemento.ForeColor = System.Drawing.Color.Black;
-            this.btnModificarElemento.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
-            this.btnModificarElemento.Name = "btnModificarElemento";
-            this.btnModificarElemento.UseVisualStyleBackColor = false;
-            this.btnModificarElemento.Click += new System.EventHandler(this.btnModificarElemento_Click);
-            // 
-            // btnAgregarElemento
-            // 
-            this.btnAgregarElemento.AutoEllipsis = true;
-            this.btnAgregarElemento.BackColor = System.Drawing.Color.LimeGreen;
-            resources.ApplyResources(this.btnAgregarElemento, "btnAgregarElemento");
-            this.btnAgregarElemento.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarElemento.Image = global::Presentacion_UI.Properties.Resources.boton_agregar_Elemento;
-            this.btnAgregarElemento.Name = "btnAgregarElemento";
-            this.btnAgregarElemento.UseVisualStyleBackColor = false;
-            this.btnAgregarElemento.Click += new System.EventHandler(this.btnAgregarElemento_Click);
             // 
             // label11
             // 
@@ -467,9 +483,9 @@
             this.DgvElementos.AllowUserToDeleteRows = false;
             resources.ApplyResources(this.DgvElementos, "DgvElementos");
             this.DgvElementos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DgvElementos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.DgvElementos.BackgroundColor = System.Drawing.Color.CadetBlue;
-            this.DgvElementos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.DgvElementos.BackgroundColor = System.Drawing.Color.Black;
+            this.DgvElementos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DgvElementos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
@@ -478,7 +494,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.DgvElementos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvElementos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvElementos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Sel});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -489,6 +505,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvElementos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DgvElementos.EnableHeadersVisualStyles = false;
             this.DgvElementos.MultiSelect = false;
             this.DgvElementos.Name = "DgvElementos";
             this.DgvElementos.ReadOnly = true;
@@ -507,7 +524,7 @@
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             this.DgvElementos.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.DgvElementos.RowTemplate.Height = 60;
+            this.DgvElementos.RowTemplate.Height = 30;
             this.DgvElementos.RowTemplate.ReadOnly = true;
             this.DgvElementos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DgvElementos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewElementos_CellContentClick);
@@ -528,25 +545,67 @@
             this.label7.ForeColor = System.Drawing.Color.Snow;
             this.label7.Name = "label7";
             // 
+            // buttonCargarPersonas
+            // 
+            this.buttonCargarPersonas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonCargarPersonas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonCargarPersonas.BorderColor = System.Drawing.Color.White;
+            this.buttonCargarPersonas.BorderRadius = 20;
+            this.buttonCargarPersonas.BorderSize = 1;
+            this.buttonCargarPersonas.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.buttonCargarPersonas, "buttonCargarPersonas");
+            this.buttonCargarPersonas.ForeColor = System.Drawing.Color.White;
+            this.buttonCargarPersonas.Name = "buttonCargarPersonas";
+            this.buttonCargarPersonas.TextColor = System.Drawing.Color.White;
+            this.buttonCargarPersonas.UseVisualStyleBackColor = false;
+            this.buttonCargarPersonas.Click += new System.EventHandler(this.buttonCargarPersonas_Click);
+            // 
+            // buttonImprimir
+            // 
+            this.buttonImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonImprimir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonImprimir.BorderColor = System.Drawing.Color.White;
+            this.buttonImprimir.BorderRadius = 20;
+            this.buttonImprimir.BorderSize = 1;
+            this.buttonImprimir.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.buttonImprimir, "buttonImprimir");
+            this.buttonImprimir.ForeColor = System.Drawing.Color.White;
+            this.buttonImprimir.Image = global::Presentacion_UI.Properties.Resources.impresora__2_;
+            this.buttonImprimir.Name = "buttonImprimir";
+            this.buttonImprimir.TextColor = System.Drawing.Color.White;
+            this.buttonImprimir.UseVisualStyleBackColor = false;
+            this.buttonImprimir.Click += new System.EventHandler(this.buttonImprimir_Click);
+            // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            resources.ApplyResources(this.customTitleBar1, "customTitleBar1");
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.MaximizeButtonVisible = true;
+            this.customTitleBar1.MinimizeButtonVisible = true;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Title = "Creación Hallazgos";
+            // 
             // Form_Hallazgo
             // 
-            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.Controls.Add(this.customTitleBar1);
+            this.Controls.Add(this.buttonImprimir);
+            this.Controls.Add(this.buttonCargarPersonas);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DgvElementos);
             this.Controls.Add(this.groupBoxDatosElementos);
             this.Controls.Add(this.labelHallazgo);
             this.Controls.Add(this.groupBoxDatosHallazgo);
-            this.Controls.Add(this.buttonImprimir);
             this.Controls.Add(this.labelEstado);
-            this.Controls.Add(this.buttonCargarPersonas);
             this.Controls.Add(this.dgvHallazgos);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Form_Hallazgo";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -568,12 +627,7 @@
         private System.Windows.Forms.DataGridView dgvHallazgos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelEstado;
-        private System.Windows.Forms.Button buttonCargarPersonas;
-        private System.Windows.Forms.Button buttonImprimir;
         private System.Windows.Forms.GroupBox groupBoxDatosHallazgo;
-        private System.Windows.Forms.Button button_Agregar;
-        private System.Windows.Forms.Button buttonEliminar;
-        private System.Windows.Forms.Button button_Modificar;
         private System.Windows.Forms.TextBox textBoxNroActa;
         private System.Windows.Forms.ComboBox comboBoxUnidad;
         private System.Windows.Forms.Label label13;
@@ -585,8 +639,6 @@
         private System.Windows.Forms.Label labelHallazgo;
         private System.Windows.Forms.GroupBox groupBoxDatosElementos;
         private System.Windows.Forms.ComboBox comboBoxEstado;
-        private System.Windows.Forms.Button btnModificarElemento;
-        private System.Windows.Forms.Button btnAgregarElemento;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxDescripcion;
         private System.Windows.Forms.Label label10;
@@ -596,17 +648,25 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxArticulo;
         private System.Windows.Forms.DataGridView DgvElementos;
-        private System.Windows.Forms.Button btnEliminarElemento;
-        private System.Windows.Forms.Button buttonFinalizarHallazgo;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
         private System.Windows.Forms.NumericUpDown NUPCantidad;
         private System.Windows.Forms.TextBox textBoxObservacion;
         private System.Windows.Forms.ComboBox comboBoxUrsa;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBoxObservacion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
+        private Seguridad.RJButton buttonEliminar;
+        private Seguridad.RJButton button_Modificar;
+        private Seguridad.RJButton button_Agregar;
+        private Seguridad.RJButton buttonFinalizarHallazgo;
+        private Seguridad.RJButton btnEliminarElemento;
+        private Seguridad.RJButton btnModificarElemento;
+        private Seguridad.RJButton btnAgregarElemento;
+        private Seguridad.RJButton buttonCargarPersonas;
+        private Seguridad.RJButton buttonImprimir;
+        private Seguridad.CustomTitleBar customTitleBar1;
     }
 }
 

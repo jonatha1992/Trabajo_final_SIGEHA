@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Spreadsheet;
+
 using Negocio;
 
 namespace Presentacion_UI
@@ -21,6 +13,8 @@ namespace Presentacion_UI
         {
             InitializeComponent();
             bllpermiso = new BLLPermiso();
+            customTitleBar1.MaximizeButtonVisible = false;
+            customTitleBar1.MinimizeButtonVisible = false;
         }
 
 
@@ -39,6 +33,8 @@ namespace Presentacion_UI
 
             try
             {
+                groupBoxConfig.Enabled = true;
+
                 beRol = (BERol)this.cboRol.SelectedItem;
                 beRol.Id = beRol.Id;
                 beRol.Nombre = beRol.Nombre;
@@ -118,6 +114,7 @@ namespace Presentacion_UI
         {
             try
             {
+                
                 BERol nuevoRol = new BERol();
                 nuevoRol.Nombre = txtNombreRol.Text;
                 bllpermiso.CrearComponente(nuevoRol, true);
@@ -136,10 +133,8 @@ namespace Presentacion_UI
 
             try
             {
-
+                groupBoxConfig.Enabled = false;
                 bllpermiso.GuardaRol(beRol);
-
-
                 treeRol.Nodes.Clear();
                 labelRol.Text = "";
                 beRol = null;
@@ -175,12 +170,12 @@ namespace Presentacion_UI
                     if (result == DialogResult.Yes)
                     {
                         bllpermiso.EliminarRol(beRol);
-
                         MessageBox.Show($"El Rol {beRol.Nombre} se ha borrado de la base de datos Satisfactoriamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         treeRol.Nodes.Clear();
                         labelRol.Text = "";
                         beRol = null;
                         cboRol.DataSource = bllpermiso.ListaRoles();
+                        groupBoxConfig.Enabled = false;
 
                     }
 
@@ -191,6 +186,46 @@ namespace Presentacion_UI
             {
                 MessageBox.Show("Seleccione un nodo para eliminar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void ButtonConfiguracion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjButton4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeRol_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void customTitleBar1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

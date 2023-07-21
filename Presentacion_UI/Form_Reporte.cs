@@ -61,10 +61,10 @@ namespace Presentacion_UI
 
         public void SucripcionEventos()
         {
-            radioButtonAnual.Click += RadiocButtonClick;
-            radioButtonSemestral.Click += RadiocButtonClick;
-            radioButtonTrimestral.Click += RadiocButtonClick;
-            radioButtonMensual.Click += RadiocButtonClick;
+            RadioButtonAnual.Click += RadiocButtonClick;
+            RadioButtonMensual.Click += RadiocButtonClick;
+            RadioButtonSemestral.Click += RadiocButtonClick;
+            RadioButtonTrimestral.Click += RadiocButtonClick;
             comboBoxUnidad.SelectedIndexChanged += RadiocButtonClick;
             comboBoxUnidad.SelectedIndexChanged += RadiocButtonClick;
 
@@ -86,25 +86,25 @@ namespace Presentacion_UI
 
         private void ActualizarGraficos()
         {
-            if (radioButtonAnual.Checked)
+            if (RadioButtonAnual.Checked)
             {
                 chartHallazgos = Reporte.HacerReporteHallazgos(bEUnidad, "anual", chartHallazgos);
                 chartEntregas = Reporte.HacerReporteEntregas(bEUnidad, "anual", chartEntregas);
                 chartCategoria = Reporte.HacerReporteCategorias(bEUnidad, "anual", chartCategoria);
             }
-            else if (radioButtonSemestral.Checked)
+            else if (RadioButtonSemestral.Checked)
             {
                 chartHallazgos = Reporte.HacerReporteHallazgos(bEUnidad, "semestral", chartHallazgos);
                 chartEntregas = Reporte.HacerReporteEntregas(bEUnidad, "semestral", chartEntregas);
                 chartCategoria = Reporte.HacerReporteCategorias(bEUnidad, "semestral", chartCategoria);
             }
-            else if (radioButtonTrimestral.Checked)
+            else if (RadioButtonTrimestral.Checked)
             {
                 chartHallazgos = Reporte.HacerReporteHallazgos(bEUnidad, "trimestral", chartHallazgos);
                 chartEntregas = Reporte.HacerReporteEntregas(bEUnidad, "trimestral", chartEntregas);
                 chartCategoria = Reporte.HacerReporteCategorias(bEUnidad, "trimestral", chartCategoria);
             }
-            else if (radioButtonMensual.Checked)
+            else if (RadioButtonMensual.Checked)
             {
                 chartHallazgos = Reporte.HacerReporteHallazgos(bEUnidad, "mensual", chartHallazgos);
                 chartEntregas = Reporte.HacerReporteEntregas(bEUnidad, "mensual", chartEntregas);

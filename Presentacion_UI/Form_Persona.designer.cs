@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Persona));
             this.comboBoxTipoPersona = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,17 +39,11 @@
             this.labelOcupacion = new System.Windows.Forms.Label();
             this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.labelTelefono = new System.Windows.Forms.Label();
-            this.button_Aceptar = new System.Windows.Forms.Button();
             this.textBoxDomicilio = new System.Windows.Forms.TextBox();
             this.labelDomicilio = new System.Windows.Forms.Label();
-            this.buttonEleminar = new System.Windows.Forms.Button();
-            this.buttonModificar = new System.Windows.Forms.Button();
-            this.buttonAgregar = new System.Windows.Forms.Button();
-            this.buttonBuscar = new System.Windows.Forms.Button();
             this.labelDNI = new System.Windows.Forms.Label();
             this.DgvPersonas = new System.Windows.Forms.DataGridView();
             this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.buttonLimpiar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelInstructor = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,6 +64,13 @@
             this.textBoxNombreTestigo = new System.Windows.Forms.TextBox();
             this.textBoxDniTestigo = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
+            this.buttonAgregar = new Seguridad.RJButton();
+            this.buttonLimpiar = new Seguridad.RJButton();
+            this.buttonBuscar = new Seguridad.RJButton();
+            this.buttonModificar = new Seguridad.RJButton();
+            this.buttonEliminar = new Seguridad.RJButton();
+            this.button_Aceptar = new Seguridad.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPersonas)).BeginInit();
             this.panelInstructor.SuspendLayout();
             this.panelDescubridor.SuspendLayout();
@@ -84,7 +85,7 @@
             this.comboBoxTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoPersona.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTipoPersona.FormattingEnabled = true;
-            this.comboBoxTipoPersona.Location = new System.Drawing.Point(166, 28);
+            this.comboBoxTipoPersona.Location = new System.Drawing.Point(167, 50);
             this.comboBoxTipoPersona.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTipoPersona.Name = "comboBoxTipoPersona";
             this.comboBoxTipoPersona.Size = new System.Drawing.Size(170, 23);
@@ -98,7 +99,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(60, 36);
+            this.label5.Location = new System.Drawing.Point(61, 58);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 15);
@@ -149,21 +150,6 @@
             this.labelTelefono.TabIndex = 64;
             this.labelTelefono.Text = "Teléfono:";
             // 
-            // button_Aceptar
-            // 
-            this.button_Aceptar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_Aceptar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
-            this.button_Aceptar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button_Aceptar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button_Aceptar.Location = new System.Drawing.Point(901, 247);
-            this.button_Aceptar.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Aceptar.Name = "button_Aceptar";
-            this.button_Aceptar.Size = new System.Drawing.Size(108, 34);
-            this.button_Aceptar.TabIndex = 18;
-            this.button_Aceptar.Text = "Finalizar";
-            this.button_Aceptar.UseVisualStyleBackColor = false;
-            this.button_Aceptar.Click += new System.EventHandler(this.button_Aceptar_Click);
-            // 
             // textBoxDomicilio
             // 
             this.textBoxDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -185,77 +171,6 @@
             this.labelDomicilio.Size = new System.Drawing.Size(72, 15);
             this.labelDomicilio.TabIndex = 68;
             this.labelDomicilio.Text = "Domicilio:";
-            // 
-            // buttonEleminar
-            // 
-            this.buttonEleminar.BackColor = System.Drawing.Color.Tomato;
-            this.buttonEleminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEleminar.ForeColor = System.Drawing.Color.Black;
-            this.buttonEleminar.Image = global::Presentacion_UI.Properties.Resources.basura;
-            this.buttonEleminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEleminar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEleminar.Location = new System.Drawing.Point(321, 237);
-            this.buttonEleminar.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonEleminar.Name = "buttonEleminar";
-            this.buttonEleminar.Size = new System.Drawing.Size(93, 35);
-            this.buttonEleminar.TabIndex = 15;
-            this.buttonEleminar.Text = "Eliminar";
-            this.buttonEleminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonEleminar.UseVisualStyleBackColor = false;
-            this.buttonEleminar.Click += new System.EventHandler(this.buttonEliminar_Click);
-            // 
-            // buttonModificar
-            // 
-            this.buttonModificar.BackColor = System.Drawing.Color.Yellow;
-            this.buttonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModificar.ForeColor = System.Drawing.Color.Black;
-            this.buttonModificar.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
-            this.buttonModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonModificar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonModificar.Location = new System.Drawing.Point(188, 238);
-            this.buttonModificar.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(100, 35);
-            this.buttonModificar.TabIndex = 14;
-            this.buttonModificar.Text = "Modificar";
-            this.buttonModificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonModificar.UseVisualStyleBackColor = false;
-            this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
-            // 
-            // buttonAgregar
-            // 
-            this.buttonAgregar.BackColor = System.Drawing.Color.LimeGreen;
-            this.buttonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAgregar.ForeColor = System.Drawing.Color.Black;
-            this.buttonAgregar.Image = global::Presentacion_UI.Properties.Resources.boton_agregar_Elemento;
-            this.buttonAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAgregar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAgregar.Location = new System.Drawing.Point(63, 238);
-            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAgregar.Name = "buttonAgregar";
-            this.buttonAgregar.Size = new System.Drawing.Size(90, 35);
-            this.buttonAgregar.TabIndex = 13;
-            this.buttonAgregar.Text = "Agregar";
-            this.buttonAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAgregar.UseVisualStyleBackColor = false;
-            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
-            // 
-            // buttonBuscar
-            // 
-            this.buttonBuscar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonBuscar.Image = global::Presentacion_UI.Properties.Resources.lupa;
-            this.buttonBuscar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonBuscar.Location = new System.Drawing.Point(351, 21);
-            this.buttonBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(92, 34);
-            this.buttonBuscar.TabIndex = 16;
-            this.buttonBuscar.Text = "Buscar";
-            this.buttonBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonBuscar.UseVisualStyleBackColor = false;
-            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // labelDNI
             // 
@@ -279,50 +194,52 @@
             this.DgvPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DgvPersonas.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DgvPersonas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvPersonas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DgvPersonas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Sel});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvPersonas.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvPersonas.Location = new System.Drawing.Point(521, 50);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvPersonas.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DgvPersonas.EnableHeadersVisualStyles = false;
+            this.DgvPersonas.Location = new System.Drawing.Point(510, 70);
             this.DgvPersonas.Margin = new System.Windows.Forms.Padding(2);
             this.DgvPersonas.MultiSelect = false;
             this.DgvPersonas.Name = "DgvPersonas";
             this.DgvPersonas.ReadOnly = true;
             this.DgvPersonas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvPersonas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvPersonas.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DgvPersonas.RowHeadersVisible = false;
             this.DgvPersonas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.DgvPersonas.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.DgvPersonas.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.DgvPersonas.RowTemplate.Height = 60;
             this.DgvPersonas.RowTemplate.ReadOnly = true;
             this.DgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvPersonas.Size = new System.Drawing.Size(488, 194);
+            this.DgvPersonas.Size = new System.Drawing.Size(498, 175);
             this.DgvPersonas.TabIndex = 87;
             this.DgvPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPersonas_CellContentClick);
             this.DgvPersonas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DgvPersonas_RowsAdded);
@@ -331,7 +248,7 @@
             // Sel
             // 
             this.Sel.FalseValue = "";
-            this.Sel.HeaderText = "Sel";
+            this.Sel.HeaderText = "";
             this.Sel.IndeterminateValue = "";
             this.Sel.Name = "Sel";
             this.Sel.ReadOnly = true;
@@ -339,29 +256,13 @@
             this.Sel.TrueValue = "";
             this.Sel.Visible = false;
             // 
-            // buttonLimpiar
-            // 
-            this.buttonLimpiar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLimpiar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonLimpiar.Image = global::Presentacion_UI.Properties.Resources.volver_flecha;
-            this.buttonLimpiar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonLimpiar.Location = new System.Drawing.Point(448, 22);
-            this.buttonLimpiar.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonLimpiar.Name = "buttonLimpiar";
-            this.buttonLimpiar.Size = new System.Drawing.Size(32, 33);
-            this.buttonLimpiar.TabIndex = 17;
-            this.buttonLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonLimpiar.UseVisualStyleBackColor = false;
-            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(703, 19);
+            this.label1.Location = new System.Drawing.Point(704, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 18);
@@ -601,10 +502,158 @@
             this.flowLayoutPanel1.Controls.Add(this.panelDescubridor);
             this.flowLayoutPanel1.Controls.Add(this.panelInstructor);
             this.flowLayoutPanel1.Controls.Add(this.panelTestigo);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 57);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 79);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 175);
             this.flowLayoutPanel1.TabIndex = 95;
+            // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = false;
+            this.customTitleBar1.MinimizeButtonVisible = false;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(1020, 25);
+            this.customTitleBar1.TabIndex = 96;
+            this.customTitleBar1.Title = "Interinientes";
+            // 
+            // buttonAgregar
+            // 
+            this.buttonAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.buttonAgregar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.buttonAgregar.BorderColor = System.Drawing.Color.White;
+            this.buttonAgregar.BorderRadius = 20;
+            this.buttonAgregar.BorderSize = 0;
+            this.buttonAgregar.FlatAppearance.BorderSize = 0;
+            this.buttonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAgregar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregar.ForeColor = System.Drawing.Color.White;
+            this.buttonAgregar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAgregar.Image")));
+            this.buttonAgregar.Location = new System.Drawing.Point(63, 261);
+            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(98, 33);
+            this.buttonAgregar.TabIndex = 45;
+            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.TextColor = System.Drawing.Color.White;
+            this.buttonAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonAgregar.UseVisualStyleBackColor = false;
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
+            // 
+            // buttonLimpiar
+            // 
+            this.buttonLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonLimpiar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonLimpiar.BorderColor = System.Drawing.Color.Transparent;
+            this.buttonLimpiar.BorderRadius = 20;
+            this.buttonLimpiar.BorderSize = 0;
+            this.buttonLimpiar.FlatAppearance.BorderSize = 0;
+            this.buttonLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLimpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLimpiar.ForeColor = System.Drawing.Color.White;
+            this.buttonLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("buttonLimpiar.Image")));
+            this.buttonLimpiar.Location = new System.Drawing.Point(433, 41);
+            this.buttonLimpiar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonLimpiar.Name = "buttonLimpiar";
+            this.buttonLimpiar.Size = new System.Drawing.Size(65, 31);
+            this.buttonLimpiar.TabIndex = 45;
+            this.buttonLimpiar.TextColor = System.Drawing.Color.White;
+            this.buttonLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonLimpiar.UseVisualStyleBackColor = false;
+            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
+            // 
+            // buttonBuscar
+            // 
+            this.buttonBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonBuscar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonBuscar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.buttonBuscar.BorderRadius = 20;
+            this.buttonBuscar.BorderSize = 0;
+            this.buttonBuscar.FlatAppearance.BorderSize = 0;
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBuscar.ForeColor = System.Drawing.Color.White;
+            this.buttonBuscar.Image = global::Presentacion_UI.Properties.Resources.lupa;
+            this.buttonBuscar.Location = new System.Drawing.Point(346, 41);
+            this.buttonBuscar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(86, 31);
+            this.buttonBuscar.TabIndex = 44;
+            this.buttonBuscar.Text = "Buscar";
+            this.buttonBuscar.TextColor = System.Drawing.Color.White;
+            this.buttonBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBuscar.UseVisualStyleBackColor = false;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
+            // 
+            // buttonModificar
+            // 
+            this.buttonModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.buttonModificar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.buttonModificar.BorderColor = System.Drawing.Color.White;
+            this.buttonModificar.BorderRadius = 20;
+            this.buttonModificar.BorderSize = 0;
+            this.buttonModificar.FlatAppearance.BorderSize = 0;
+            this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificar.ForeColor = System.Drawing.Color.Black;
+            this.buttonModificar.Image = global::Presentacion_UI.Properties.Resources.boton_editar;
+            this.buttonModificar.Location = new System.Drawing.Point(196, 261);
+            this.buttonModificar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonModificar.Name = "buttonModificar";
+            this.buttonModificar.Size = new System.Drawing.Size(105, 33);
+            this.buttonModificar.TabIndex = 97;
+            this.buttonModificar.Text = "Modificar";
+            this.buttonModificar.TextColor = System.Drawing.Color.Black;
+            this.buttonModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonModificar.UseVisualStyleBackColor = false;
+            this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
+            // 
+            // buttonEliminar
+            // 
+            this.buttonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonEliminar.BorderColor = System.Drawing.Color.White;
+            this.buttonEliminar.BorderRadius = 20;
+            this.buttonEliminar.BorderSize = 0;
+            this.buttonEliminar.FlatAppearance.BorderSize = 0;
+            this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminar.ForeColor = System.Drawing.Color.White;
+            this.buttonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("buttonEliminar.Image")));
+            this.buttonEliminar.Location = new System.Drawing.Point(335, 261);
+            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(108, 33);
+            this.buttonEliminar.TabIndex = 98;
+            this.buttonEliminar.Text = "Quitar";
+            this.buttonEliminar.TextColor = System.Drawing.Color.White;
+            this.buttonEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonEliminar.UseVisualStyleBackColor = false;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            // 
+            // button_Aceptar
+            // 
+            this.button_Aceptar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_Aceptar.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_Aceptar.BorderColor = System.Drawing.SystemColors.Control;
+            this.button_Aceptar.BorderRadius = 20;
+            this.button_Aceptar.BorderSize = 2;
+            this.button_Aceptar.FlatAppearance.BorderSize = 0;
+            this.button_Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Aceptar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Aceptar.ForeColor = System.Drawing.Color.White;
+            this.button_Aceptar.Location = new System.Drawing.Point(897, 259);
+            this.button_Aceptar.Name = "button_Aceptar";
+            this.button_Aceptar.Size = new System.Drawing.Size(111, 40);
+            this.button_Aceptar.TabIndex = 99;
+            this.button_Aceptar.Text = "Finalizar";
+            this.button_Aceptar.TextColor = System.Drawing.Color.White;
+            this.button_Aceptar.UseVisualStyleBackColor = false;
+            this.button_Aceptar.Click += new System.EventHandler(this.button_Aceptar_Click);
             // 
             // Form_Persona
             // 
@@ -612,19 +661,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1020, 289);
+            this.ClientSize = new System.Drawing.Size(1020, 303);
+            this.Controls.Add(this.button_Aceptar);
+            this.Controls.Add(this.buttonEliminar);
+            this.Controls.Add(this.buttonModificar);
+            this.Controls.Add(this.buttonBuscar);
+            this.Controls.Add(this.buttonLimpiar);
+            this.Controls.Add(this.buttonAgregar);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.DgvPersonas);
-            this.Controls.Add(this.buttonBuscar);
-            this.Controls.Add(this.buttonEleminar);
-            this.Controls.Add(this.buttonModificar);
-            this.Controls.Add(this.buttonAgregar);
-            this.Controls.Add(this.button_Aceptar);
             this.Controls.Add(this.comboBoxTipoPersona);
             this.Controls.Add(this.label5);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -653,17 +703,10 @@
         private System.Windows.Forms.Label labelOcupacion;
         private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.Label labelTelefono;
-        private System.Windows.Forms.Button button_Aceptar;
         private System.Windows.Forms.TextBox textBoxDomicilio;
         private System.Windows.Forms.Label labelDomicilio;
-        private System.Windows.Forms.Button buttonEleminar;
-        private System.Windows.Forms.Button buttonModificar;
-        private System.Windows.Forms.Button buttonAgregar;
-        private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Label labelDNI;
         private System.Windows.Forms.DataGridView DgvPersonas;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
-        private System.Windows.Forms.Button buttonLimpiar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelInstructor;
         private System.Windows.Forms.TextBox textBoxNombreInstructor;
@@ -684,5 +727,13 @@
         private System.Windows.Forms.TextBox textBoxDniInstructor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Seguridad.CustomTitleBar customTitleBar1;
+        private Seguridad.RJButton buttonAgregar;
+        private Seguridad.RJButton buttonLimpiar;
+        private Seguridad.RJButton buttonBuscar;
+        private Seguridad.RJButton buttonModificar;
+        private Seguridad.RJButton buttonEliminar;
+        private Seguridad.RJButton button_Aceptar;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
     }
 }

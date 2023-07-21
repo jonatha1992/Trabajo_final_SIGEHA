@@ -131,7 +131,7 @@ namespace MPP
                 }
             }
             // Si no se encontró el Elemento o el Hallazgo, retornar un string vacío
-            return "";
+            return "No entregado";
 
         }
 
@@ -207,17 +207,13 @@ namespace MPP
         public List<ElementoBusqueda> BusquedaElementosHallazgo(string nroActa)
         {
             List<ElementoBusqueda> lista = new List<ElementoBusqueda>();
-            MPPArticulo mPPArticulo = new MPPArticulo();
-            MPPEstado_Elemento mPPEstado_Elemento = new MPPEstado_Elemento();
             MPPHallazgo mPPHallazgo = new MPPHallazgo();
-            MPPEntrega mPPEntrega = new MPPEntrega();
 
-            var Estado_Elementos = mPPEstado_Elemento.ListarTodo();
-            var Articulos = mPPArticulo.ListarTodo();
-            var Entregas = mPPEntrega.ListarTodo();
+         
             var Hallazgo = mPPHallazgo.ListarTodo().Find(x => x.NroActa == nroActa);
 
-
+            Hallazgo = mPPHallazgo.ListarHallazgoElementos(Hallazgo);
+            
 
 
             if (Hallazgo != null)
@@ -228,8 +224,8 @@ namespace MPP
                     bElemento.Id = elemento.Id;
                     bElemento.Cantidad = elemento.Cantidad.ToString();
                     bElemento.Descripcion = elemento.Descripcion;
-                    bElemento.Articulo = Articulos.Find(x => x.Id == elemento.Articulo.Id).Nombre;
-                    bElemento.Estado = Estado_Elementos.Find(x => x.Id == elemento.Estado.Id).Nombre;
+                    bElemento.Articulo = elemento.Articulo.Nombre;
+                    bElemento.Estado = elemento.Estado.Nombre;
                     bElemento.Hallazgo = Hallazgo.NroActa;
                     bElemento.Lugar = Hallazgo.LugarHallazgo;
                     bElemento.Fecha_hallazgo = Hallazgo.FechaHallazgo.ToString();

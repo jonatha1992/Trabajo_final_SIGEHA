@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
-using Microsoft.Reporting.Map.WebForms.BingMaps;
 using Negocio;
 using Seguridad;
 
@@ -18,7 +11,12 @@ namespace Presentacion_UI
     {
         public Form_Login()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
+            customTitleBar1.MaximizeButtonVisible = false;
+            customTitleBar1.MinimizeButtonVisible = false;
+            customTitleBar1.CloseButtonVisible = false;
+
         }
         private void buttonIngresar_Click(object sender, EventArgs e)
         {

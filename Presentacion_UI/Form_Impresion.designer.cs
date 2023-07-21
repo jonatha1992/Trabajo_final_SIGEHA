@@ -30,16 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Impresion));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Presentacion_UI.ActaHallazgo.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 30);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(775, 738);
+            this.reportViewer1.Size = new System.Drawing.Size(775, 708);
             this.reportViewer1.TabIndex = 37;
+            // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.ForeColor = System.Drawing.SystemColors.Window;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = false;
+            this.customTitleBar1.MinimizeButtonVisible = false;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(775, 30);
+            this.customTitleBar1.TabIndex = 38;
+            this.customTitleBar1.Title = "Vista previa ";
             // 
             // Form_Impresion
             // 
@@ -47,8 +63,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(775, 738);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.reportViewer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -63,5 +80,6 @@
 
         #endregion
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Seguridad.CustomTitleBar customTitleBar1;
     }
 }

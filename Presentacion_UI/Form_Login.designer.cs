@@ -1,4 +1,6 @@
-﻿namespace Presentacion_UI
+﻿using Seguridad;
+
+namespace Presentacion_UI
 {
     partial class Form_Login
     {
@@ -29,89 +31,131 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Login));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUsuario = new System.Windows.Forms.TextBox();
-            this.TextBoxPassword1 = new Presentacion_UI.TextBoxPassword();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
+            this.ButtonSalir = new Seguridad.RJButton();
+            this.ButtonIngresar = new Seguridad.RJButton();
+            this.TextBoxPassword1 = new Seguridad.TextBoxPassword();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(56, 137);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 29);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Ingresar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonIngresar_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(199, 137);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 29);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(21, 83);
+            this.label2.Location = new System.Drawing.Point(13, 87);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 18);
+            this.label2.Size = new System.Drawing.Size(89, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "Contraseña:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(48, 30);
+            this.label1.Location = new System.Drawing.Point(41, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 18);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 13;
             this.label1.Text = "Usuario:";
             // 
-            // textBoxCriterio
+            // textBoxUsuario
             // 
-            this.textBoxUsuario.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsuario.Location = new System.Drawing.Point(125, 29);
-            this.textBoxUsuario.Name = "textBoxCriterio";
-            this.textBoxUsuario.Size = new System.Drawing.Size(152, 25);
+            this.textBoxUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsuario.Location = new System.Drawing.Point(120, 43);
+            this.textBoxUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxUsuario.Name = "textBoxUsuario";
+            this.textBoxUsuario.Size = new System.Drawing.Size(177, 23);
             this.textBoxUsuario.TabIndex = 12;
+            // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = true;
+            this.customTitleBar1.MinimizeButtonVisible = true;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(359, 26);
+            this.customTitleBar1.TabIndex = 20;
+            this.customTitleBar1.Title = "Login";
+            // 
+            // ButtonSalir
+            // 
+            this.ButtonSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(65)))), ((int)(((byte)(91)))));
+            this.ButtonSalir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(65)))), ((int)(((byte)(91)))));
+            this.ButtonSalir.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonSalir.BorderRadius = 20;
+            this.ButtonSalir.BorderSize = 0;
+            this.ButtonSalir.FlatAppearance.BorderSize = 0;
+            this.ButtonSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSalir.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonSalir.ForeColor = System.Drawing.Color.White;
+            this.ButtonSalir.Location = new System.Drawing.Point(206, 121);
+            this.ButtonSalir.Name = "ButtonSalir";
+            this.ButtonSalir.Size = new System.Drawing.Size(91, 40);
+            this.ButtonSalir.TabIndex = 19;
+            this.ButtonSalir.Text = "Salir";
+            this.ButtonSalir.TextColor = System.Drawing.Color.White;
+            this.ButtonSalir.UseVisualStyleBackColor = false;
+            this.ButtonSalir.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
+            // ButtonIngresar
+            // 
+            this.ButtonIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(65)))), ((int)(((byte)(91)))));
+            this.ButtonIngresar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(65)))), ((int)(((byte)(91)))));
+            this.ButtonIngresar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonIngresar.BorderRadius = 20;
+            this.ButtonIngresar.BorderSize = 0;
+            this.ButtonIngresar.FlatAppearance.BorderSize = 0;
+            this.ButtonIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonIngresar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonIngresar.ForeColor = System.Drawing.Color.White;
+            this.ButtonIngresar.Location = new System.Drawing.Point(67, 121);
+            this.ButtonIngresar.Name = "ButtonIngresar";
+            this.ButtonIngresar.Size = new System.Drawing.Size(91, 40);
+            this.ButtonIngresar.TabIndex = 18;
+            this.ButtonIngresar.Text = "Ingresar";
+            this.ButtonIngresar.TextColor = System.Drawing.Color.White;
+            this.ButtonIngresar.UseVisualStyleBackColor = false;
+            this.ButtonIngresar.Click += new System.EventHandler(this.buttonIngresar_Click);
             // 
             // TextBoxPassword1
             // 
             this.TextBoxPassword1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.TextBoxPassword1.Location = new System.Drawing.Point(121, 73);
+            this.TextBoxPassword1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxPassword1.Location = new System.Drawing.Point(115, 73);
+            this.TextBoxPassword1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TextBoxPassword1.Name = "TextBoxPassword1";
-            this.TextBoxPassword1.Size = new System.Drawing.Size(190, 37);
+            this.TextBoxPassword1.Size = new System.Drawing.Size(226, 43);
             this.TextBoxPassword1.TabIndex = 17;
             this.TextBoxPassword1.Texto = "";
             // 
             // Form_Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(344, 194);
+            this.ClientSize = new System.Drawing.Size(359, 173);
+            this.Controls.Add(this.customTitleBar1);
+            this.Controls.Add(this.ButtonSalir);
+            this.Controls.Add(this.ButtonIngresar);
             this.Controls.Add(this.TextBoxPassword1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxUsuario);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Login";
@@ -124,11 +168,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxUsuario;
         private TextBoxPassword TextBoxPassword1;
+        private RJButton ButtonIngresar;
+        private RJButton ButtonSalir;
+        private CustomTitleBar customTitleBar1;
     }
 }

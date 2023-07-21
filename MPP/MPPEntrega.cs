@@ -46,7 +46,7 @@ namespace MPP
         {
             try
             {
-                XElement EntregaExistente = conexion.LeerObjeto(NodoPadre, entrega.Id.ToString());
+                XElement EntregaExistente = conexion.LeerObjeto("Entrega", entrega.Id.ToString());
 
                 if (EntregaExistente != null)
                 {
@@ -136,7 +136,7 @@ namespace MPP
             MPPInstructor mPPInstructor = new MPPInstructor();
             MPPEstado_Persona mPPEstado_Persona = new MPPEstado_Persona();
             var EstadosPersona = mPPEstado_Persona.ListarTodo();
-
+            pEntrega.listaPersonas?.Clear();
 
             IEnumerable<XElement> EntregaPersonasXml = conexion.LeerTodos("Entrega_Persona")
                                                       .Where(e => e.Element("IdEntrega")?.Value == pEntrega.Id.ToString());

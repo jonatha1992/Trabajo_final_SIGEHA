@@ -224,7 +224,7 @@ namespace Presentacion_UI
             {
                 DgvBusqueda.DataSource = null;
                 DgvBusqueda.DataSource = listaElementosBusqueda;
-                DgvBusqueda.Columns["Select"].Visible = true;
+                DgvBusqueda.Columns["Select"].Visible = ModoCreacion;
                 DgvBusqueda.Columns["Id"].Width = 30;
                 DgvBusqueda.Columns["Cantidad"].Width = 30;
                 DgvBusqueda.Columns["Cantidad"].HeaderText = "Cant";
@@ -244,7 +244,7 @@ namespace Presentacion_UI
             }
             else
             {
-                DgvBusqueda.Columns["Select"].Visible = false;
+                //DgvBusqueda.Columns["Select"].Visible = false;
                 MessageBox.Show("¡No existen elementos con esa descripción!\n\n\tRealicé una nueva busqueda", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -353,6 +353,7 @@ namespace Presentacion_UI
             textBoxLugar.Text = "";
             checkBoxArticulo.Checked = false;
             checkBoxFecha.Checked = false;
+            DgvBusqueda.DataSource = null;
         }
         bool VerficarCampos()
         {
@@ -677,28 +678,32 @@ namespace Presentacion_UI
         {
             try
             {
-                if (e.ColumnIndex == this.DgvBusqueda.Columns["Select"].Index)
+                if (ModoCreacion)
                 {
-                    var valorCelda = DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value;
-                    var valorEntrega = (string)DgvBusqueda.Rows[e.RowIndex].Cells["Entrega"].Value;
-                    var valor = valorCelda as bool? ?? false;
-                    if (!valor && valorEntrega == "No entregado") // SI SELECCIONO CON EL TILDE
+                    if (e.ColumnIndex == this.DgvBusqueda.Columns["Select"].Index)
                     {
+                        var valorCelda = DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value;
+                        var valorEntrega = (string)DgvBusqueda.Rows[e.RowIndex].Cells["Entrega"].Value;
+                        var valor = valorCelda as bool? ?? false;
+                        if (!valor && valorEntrega == "No entregado") // SI SELECCIONO CON EL TILDE
+                        {
 
-                        var index = e.RowIndex;
-                        DgvBusqueda.Rows[index].Cells["Select"].Value = true;
-                        var elemento = (ElementoBusqueda)DgvBusqueda.Rows[index].DataBoundItem;
-                        listaElementosAgregarEntrega.Add(bLLElemento.CovertirElemento(elemento));
-                    }
-                    else  // SACAR LA SELECCION 
-                    {
-                        DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value = false;
-                        var elementoBusqueda = (ElementoBusqueda)DgvBusqueda.Rows[e.RowIndex].DataBoundItem;
-                        listaElementosAgregarEntrega.RemoveAll(elemento => elemento.Id == elementoBusqueda.Id);
+                            var index = e.RowIndex;
+                            DgvBusqueda.Rows[index].Cells["Select"].Value = true;
+                            var elemento = (ElementoBusqueda)DgvBusqueda.Rows[index].DataBoundItem;
+                            listaElementosAgregarEntrega.Add(bLLElemento.CovertirElemento(elemento));
+                        }
+                        else  // SACAR LA SELECCION 
+                        {
+                            DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value = false;
+                            var elementoBusqueda = (ElementoBusqueda)DgvBusqueda.Rows[e.RowIndex].DataBoundItem;
+                            listaElementosAgregarEntrega.RemoveAll(elemento => elemento.Id == elementoBusqueda.Id);
 
+                        }
+                        Habilitar();
                     }
-                    Habilitar();
                 }
+
             }
             catch (Exception ex)
             {
@@ -709,9 +714,8 @@ namespace Presentacion_UI
         {
             if (e.ColumnIndex == this.DgvBusqueda.Columns["Hallazgo"].Index)
             {
-                string Lugar = DgvBusqueda.Rows[e.RowIndex].Cells["Lugar"].Value.ToString();
                 string Nroacta = DgvBusqueda.Rows[e.RowIndex].Cells["Hallazgo"].Value.ToString();
-                listaElementosBusqueda = bLLElemento.BusquedaElementosHallazgo(Nroacta, Lugar);
+                listaElementosBusqueda = bLLElemento.BusquedaElementosHallazgo(Nroacta);
                 CargariGriilaElementosBusqueda();
                 MessageBox.Show($"¡Usted ah ingresado a los elementos del hallazgo\n\t\t{Nroacta} !", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -859,6 +863,10 @@ namespace Presentacion_UI
                 Habilitar();
             }
         }
+
+       
+      
+
 
     }
 }

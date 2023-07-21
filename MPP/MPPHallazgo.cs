@@ -151,7 +151,7 @@ namespace MPP
             MPPInstructor mPPInstructor = new MPPInstructor();
             MPPEstado_Persona mPPEstado_Persona = new MPPEstado_Persona();
             var EstadosPersona = mPPEstado_Persona.ListarTodo();
-
+            bEHallazgo.listaPersonas?.Clear();
 
 
             IEnumerable<XElement> hallazgoPersonasXml = conexion.LeerTodos("Hallazgo_Persona")

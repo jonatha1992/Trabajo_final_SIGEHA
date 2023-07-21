@@ -29,254 +29,343 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Permiso));
-            this.cmdGuardarRol = new System.Windows.Forms.Button();
             this.treeRol = new System.Windows.Forms.TreeView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btndAgregarPermiso = new System.Windows.Forms.Button();
-            this.btnConfigurarRol = new System.Windows.Forms.Button();
-            this.cboPermisos = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonCrearRol = new System.Windows.Forms.Button();
+            this.ButtonCreaRol = new Seguridad.RJButton();
+            this.ButtonEliminarRol = new Seguridad.RJButton();
+            this.ButtonGuardarRol = new Seguridad.RJButton();
+            this.labelRol = new System.Windows.Forms.Label();
+            this.ButtonAgregarPermiso = new Seguridad.RJButton();
             this.txtNombreRol = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.ButtonConfiguracion = new Seguridad.RJButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboPermisos = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonEliminarPermiso = new System.Windows.Forms.Button();
-            this.labelRol = new System.Windows.Forms.Label();
+            this.groupBoxConfig = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
+            this.groupBoxConfig.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cmdGuardarRol
-            // 
-            this.cmdGuardarRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cmdGuardarRol.Location = new System.Drawing.Point(787, 687);
-            this.cmdGuardarRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.cmdGuardarRol.Name = "cmdGuardarRol";
-            this.cmdGuardarRol.Size = new System.Drawing.Size(184, 62);
-            this.cmdGuardarRol.TabIndex = 1;
-            this.cmdGuardarRol.Text = "Guardar";
-            this.cmdGuardarRol.UseVisualStyleBackColor = true;
-            this.cmdGuardarRol.Click += new System.EventHandler(this.btnGuardarRol_Click);
             // 
             // treeRol
             // 
-            this.treeRol.Location = new System.Drawing.Point(787, 88);
-            this.treeRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.treeRol.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeRol.Location = new System.Drawing.Point(266, 37);
+            this.treeRol.Margin = new System.Windows.Forms.Padding(2);
             this.treeRol.Name = "treeRol";
-            this.treeRol.Size = new System.Drawing.Size(692, 560);
+            this.treeRol.Size = new System.Drawing.Size(253, 193);
             this.treeRol.TabIndex = 0;
             // 
-            // groupBox2
+            // ButtonCreaRol
             // 
-            this.groupBox2.Controls.Add(this.btndAgregarPermiso);
-            this.groupBox2.Controls.Add(this.btnConfigurarRol);
-            this.groupBox2.Controls.Add(this.cboPermisos);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.cboRol);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(29, 5);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.groupBox2.Size = new System.Drawing.Size(688, 744);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Roles";
+            this.ButtonCreaRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.ButtonCreaRol.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.ButtonCreaRol.BorderColor = System.Drawing.Color.Transparent;
+            this.ButtonCreaRol.BorderRadius = 20;
+            this.ButtonCreaRol.BorderSize = 0;
+            this.ButtonCreaRol.FlatAppearance.BorderSize = 0;
+            this.ButtonCreaRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonCreaRol.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonCreaRol.ForeColor = System.Drawing.Color.White;
+            this.ButtonCreaRol.Image = ((System.Drawing.Image)(resources.GetObject("ButtonCreaRol.Image")));
+            this.ButtonCreaRol.Location = new System.Drawing.Point(7, 183);
+            this.ButtonCreaRol.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonCreaRol.Name = "ButtonCreaRol";
+            this.ButtonCreaRol.Size = new System.Drawing.Size(101, 35);
+            this.ButtonCreaRol.TabIndex = 43;
+            this.ButtonCreaRol.Text = " Crear";
+            this.ButtonCreaRol.TextColor = System.Drawing.Color.White;
+            this.ButtonCreaRol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonCreaRol.UseVisualStyleBackColor = false;
+            this.ButtonCreaRol.Click += new System.EventHandler(this.buttonCrearRol_Click);
             // 
-            // btndAgregarPermiso
+            // ButtonEliminarRol
             // 
-            this.btndAgregarPermiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btndAgregarPermiso.Location = new System.Drawing.Point(35, 334);
-            this.btndAgregarPermiso.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btndAgregarPermiso.Name = "btndAgregarPermiso";
-            this.btndAgregarPermiso.Size = new System.Drawing.Size(176, 76);
-            this.btndAgregarPermiso.TabIndex = 8;
-            this.btndAgregarPermiso.Text = "Agregar";
-            this.btndAgregarPermiso.UseVisualStyleBackColor = true;
-            this.btndAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click);
+            this.ButtonEliminarRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.ButtonEliminarRol.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.ButtonEliminarRol.BorderColor = System.Drawing.Color.Transparent;
+            this.ButtonEliminarRol.BorderRadius = 20;
+            this.ButtonEliminarRol.BorderSize = 0;
+            this.ButtonEliminarRol.FlatAppearance.BorderSize = 0;
+            this.ButtonEliminarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonEliminarRol.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonEliminarRol.ForeColor = System.Drawing.Color.White;
+            this.ButtonEliminarRol.Image = ((System.Drawing.Image)(resources.GetObject("ButtonEliminarRol.Image")));
+            this.ButtonEliminarRol.Location = new System.Drawing.Point(137, 91);
+            this.ButtonEliminarRol.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonEliminarRol.Name = "ButtonEliminarRol";
+            this.ButtonEliminarRol.Size = new System.Drawing.Size(113, 35);
+            this.ButtonEliminarRol.TabIndex = 44;
+            this.ButtonEliminarRol.Text = "Quitar";
+            this.ButtonEliminarRol.TextColor = System.Drawing.Color.White;
+            this.ButtonEliminarRol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonEliminarRol.UseVisualStyleBackColor = false;
+            this.ButtonEliminarRol.Click += new System.EventHandler(this.buttonEliminarPermiso_Click);
             // 
-            // btnConfigurarRol
+            // ButtonGuardarRol
             // 
-            this.btnConfigurarRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnConfigurarRol.Location = new System.Drawing.Point(27, 141);
-            this.btnConfigurarRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnConfigurarRol.Name = "btnConfigurarRol";
-            this.btnConfigurarRol.Size = new System.Drawing.Size(189, 76);
-            this.btnConfigurarRol.TabIndex = 11;
-            this.btnConfigurarRol.Text = "Configurar";
-            this.btnConfigurarRol.UseVisualStyleBackColor = true;
-            this.btnConfigurarRol.Click += new System.EventHandler(this.btnSeleccionarRol_Click);
+            this.ButtonGuardarRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ButtonGuardarRol.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ButtonGuardarRol.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonGuardarRol.BorderRadius = 20;
+            this.ButtonGuardarRol.BorderSize = 0;
+            this.ButtonGuardarRol.FlatAppearance.BorderSize = 0;
+            this.ButtonGuardarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonGuardarRol.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonGuardarRol.ForeColor = System.Drawing.Color.White;
+            this.ButtonGuardarRol.Location = new System.Drawing.Point(27, 192);
+            this.ButtonGuardarRol.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonGuardarRol.Name = "ButtonGuardarRol";
+            this.ButtonGuardarRol.Size = new System.Drawing.Size(207, 38);
+            this.ButtonGuardarRol.TabIndex = 41;
+            this.ButtonGuardarRol.Text = "Guardar Rol";
+            this.ButtonGuardarRol.TextColor = System.Drawing.Color.White;
+            this.ButtonGuardarRol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ButtonGuardarRol.UseVisualStyleBackColor = false;
+            this.ButtonGuardarRol.Click += new System.EventHandler(this.btnGuardarRol_Click);
             // 
-            // cboPermisos
+            // labelRol
             // 
-            this.cboPermisos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPermisos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboPermisos.FormattingEnabled = true;
-            this.cboPermisos.Location = new System.Drawing.Point(35, 279);
-            this.cboPermisos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.cboPermisos.Name = "cboPermisos";
-            this.cboPermisos.Size = new System.Drawing.Size(617, 46);
-            this.cboPermisos.TabIndex = 6;
+            this.labelRol.AutoSize = true;
+            this.labelRol.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRol.Location = new System.Drawing.Point(433, 19);
+            this.labelRol.Name = "labelRol";
+            this.labelRol.Size = new System.Drawing.Size(0, 16);
+            this.labelRol.TabIndex = 11;
             // 
-            // groupBox3
+            // ButtonAgregarPermiso
             // 
-            this.groupBox3.Controls.Add(this.buttonCrearRol);
-            this.groupBox3.Controls.Add(this.txtNombreRol);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(35, 451);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.groupBox3.Size = new System.Drawing.Size(619, 269);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Nuevo Rol";
-            // 
-            // buttonCrearRol
-            // 
-            this.buttonCrearRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonCrearRol.Location = new System.Drawing.Point(32, 169);
-            this.buttonCrearRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.buttonCrearRol.Name = "buttonCrearRol";
-            this.buttonCrearRol.Size = new System.Drawing.Size(181, 76);
-            this.buttonCrearRol.TabIndex = 4;
-            this.buttonCrearRol.Text = "Crear";
-            this.buttonCrearRol.UseVisualStyleBackColor = true;
-            this.buttonCrearRol.Click += new System.EventHandler(this.buttonCrearRol_Click);
+            this.ButtonAgregarPermiso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.ButtonAgregarPermiso.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.ButtonAgregarPermiso.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonAgregarPermiso.BorderRadius = 20;
+            this.ButtonAgregarPermiso.BorderSize = 0;
+            this.ButtonAgregarPermiso.FlatAppearance.BorderSize = 0;
+            this.ButtonAgregarPermiso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonAgregarPermiso.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonAgregarPermiso.ForeColor = System.Drawing.Color.White;
+            this.ButtonAgregarPermiso.Image = ((System.Drawing.Image)(resources.GetObject("ButtonAgregarPermiso.Image")));
+            this.ButtonAgregarPermiso.Location = new System.Drawing.Point(16, 91);
+            this.ButtonAgregarPermiso.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonAgregarPermiso.Name = "ButtonAgregarPermiso";
+            this.ButtonAgregarPermiso.Size = new System.Drawing.Size(105, 35);
+            this.ButtonAgregarPermiso.TabIndex = 44;
+            this.ButtonAgregarPermiso.Text = "Asignar ";
+            this.ButtonAgregarPermiso.TextColor = System.Drawing.Color.White;
+            this.ButtonAgregarPermiso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonAgregarPermiso.UseVisualStyleBackColor = false;
+            this.ButtonAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click);
             // 
             // txtNombreRol
             // 
             this.txtNombreRol.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreRol.Location = new System.Drawing.Point(32, 98);
-            this.txtNombreRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtNombreRol.Location = new System.Drawing.Point(7, 154);
+            this.txtNombreRol.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreRol.Name = "txtNombreRol";
-            this.txtNombreRol.Size = new System.Drawing.Size(529, 46);
+            this.txtNombreRol.Size = new System.Drawing.Size(182, 23);
             this.txtNombreRol.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 48);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(4, 133);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 32);
+            this.label5.Size = new System.Drawing.Size(98, 16);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Nombre";
+            this.label5.Text = "Nombre del Rol";
+            // 
+            // ButtonConfiguracion
+            // 
+            this.ButtonConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ButtonConfiguracion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ButtonConfiguracion.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonConfiguracion.BorderRadius = 20;
+            this.ButtonConfiguracion.BorderSize = 0;
+            this.ButtonConfiguracion.FlatAppearance.BorderSize = 0;
+            this.ButtonConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonConfiguracion.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonConfiguracion.ForeColor = System.Drawing.Color.White;
+            this.ButtonConfiguracion.Image = ((System.Drawing.Image)(resources.GetObject("ButtonConfiguracion.Image")));
+            this.ButtonConfiguracion.Location = new System.Drawing.Point(7, 71);
+            this.ButtonConfiguracion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonConfiguracion.Name = "ButtonConfiguracion";
+            this.ButtonConfiguracion.Size = new System.Drawing.Size(120, 35);
+            this.ButtonConfiguracion.TabIndex = 38;
+            this.ButtonConfiguracion.Text = "Configurar";
+            this.ButtonConfiguracion.TextColor = System.Drawing.Color.White;
+            this.ButtonConfiguracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonConfiguracion.UseVisualStyleBackColor = false;
+            this.ButtonConfiguracion.Click += new System.EventHandler(this.btnSeleccionarRol_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(346, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 16);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Permisos de: ";
+            // 
+            // cboPermisos
+            // 
+            this.cboPermisos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPermisos.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPermisos.FormattingEnabled = true;
+            this.cboPermisos.Location = new System.Drawing.Point(16, 52);
+            this.cboPermisos.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPermisos.Name = "cboPermisos";
+            this.cboPermisos.Size = new System.Drawing.Size(234, 24);
+            this.cboPermisos.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 241);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(262, 32);
+            this.label2.Size = new System.Drawing.Size(58, 16);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Todos los Permisos";
+            this.label2.Text = "Permisos";
             // 
             // cboRol
             // 
             this.cboRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRol.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboRol.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRol.FormattingEnabled = true;
-            this.cboRol.Location = new System.Drawing.Point(29, 83);
-            this.cboRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cboRol.Location = new System.Drawing.Point(7, 41);
+            this.cboRol.Margin = new System.Windows.Forms.Padding(2);
             this.cboRol.Name = "cboRol";
-            this.cboRol.Size = new System.Drawing.Size(617, 46);
+            this.cboRol.Size = new System.Drawing.Size(182, 24);
             this.cboRol.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 45);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 22);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(217, 32);
+            this.label4.Size = new System.Drawing.Size(38, 16);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Todos los Roles";
+            this.label4.Text = "Roles";
             // 
-            // label1
+            // groupBoxConfig
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1005, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 32);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Permisos de: ";
+            this.groupBoxConfig.Controls.Add(this.treeRol);
+            this.groupBoxConfig.Controls.Add(this.cboPermisos);
+            this.groupBoxConfig.Controls.Add(this.ButtonEliminarRol);
+            this.groupBoxConfig.Controls.Add(this.label1);
+            this.groupBoxConfig.Controls.Add(this.label2);
+            this.groupBoxConfig.Controls.Add(this.ButtonGuardarRol);
+            this.groupBoxConfig.Controls.Add(this.labelRol);
+            this.groupBoxConfig.Controls.Add(this.ButtonAgregarPermiso);
+            this.groupBoxConfig.Enabled = false;
+            this.groupBoxConfig.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxConfig.ForeColor = System.Drawing.Color.White;
+            this.groupBoxConfig.Location = new System.Drawing.Point(242, 31);
+            this.groupBoxConfig.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxConfig.Name = "groupBoxConfig";
+            this.groupBoxConfig.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxConfig.Size = new System.Drawing.Size(534, 241);
+            this.groupBoxConfig.TabIndex = 45;
+            this.groupBoxConfig.TabStop = false;
+            this.groupBoxConfig.Text = "Config Rol";
             // 
-            // buttonEliminarPermiso
+            // groupBox2
             // 
-            this.buttonEliminarPermiso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEliminarPermiso.Location = new System.Drawing.Point(1256, 687);
-            this.buttonEliminarPermiso.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.buttonEliminarPermiso.Name = "buttonEliminarPermiso";
-            this.buttonEliminarPermiso.Size = new System.Drawing.Size(200, 62);
-            this.buttonEliminarPermiso.TabIndex = 10;
-            this.buttonEliminarPermiso.Text = "Eliminar";
-            this.buttonEliminarPermiso.UseVisualStyleBackColor = true;
-            this.buttonEliminarPermiso.Click += new System.EventHandler(this.buttonEliminarPermiso_Click);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.ButtonCreaRol);
+            this.groupBox2.Controls.Add(this.txtNombreRol);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.cboRol);
+            this.groupBox2.Controls.Add(this.ButtonConfiguracion);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(13, 31);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(221, 241);
+            this.groupBox2.TabIndex = 46;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rol";
             // 
-            // labelRol
+            // label8
             // 
-            this.labelRol.AutoSize = true;
-            this.labelRol.Location = new System.Drawing.Point(1181, 33);
-            this.labelRol.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.labelRol.Name = "labelRol";
-            this.labelRol.Size = new System.Drawing.Size(0, 32);
-            this.labelRol.TabIndex = 11;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(490, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 16);
+            this.label8.TabIndex = 11;
+            // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = true;
+            this.customTitleBar1.MinimizeButtonVisible = true;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(788, 24);
+            this.customTitleBar1.TabIndex = 47;
+            this.customTitleBar1.Title = "Roles y permisos";
             // 
             // Form_Permiso
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1557, 775);
-            this.Controls.Add(this.labelRol);
-            this.Controls.Add(this.buttonEliminarPermiso);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmdGuardarRol);
-            this.Controls.Add(this.treeRol);
+            this.ClientSize = new System.Drawing.Size(788, 278);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxConfig);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.Name = "Form_Permiso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Permisos";
             this.Load += new System.EventHandler(this.FormPermisos_Load);
+            this.groupBoxConfig.ResumeLayout(false);
+            this.groupBoxConfig.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button cmdGuardarRol;
         private System.Windows.Forms.TreeView treeRol;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnConfigurarRol;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button buttonCrearRol;
         private System.Windows.Forms.TextBox txtNombreRol;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btndAgregarPermiso;
         private System.Windows.Forms.ComboBox cboPermisos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonEliminarPermiso;
         private System.Windows.Forms.Label labelRol;
+        private Seguridad.RJButton ButtonConfiguracion;
+        private Seguridad.RJButton ButtonEliminarRol;
+        private Seguridad.RJButton ButtonAgregarPermiso;
+        private Seguridad.RJButton ButtonGuardarRol;
+        private Seguridad.RJButton ButtonCreaRol;
+        private System.Windows.Forms.GroupBox groupBoxConfig;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label8;
+        private Seguridad.CustomTitleBar customTitleBar1;
     }
 }

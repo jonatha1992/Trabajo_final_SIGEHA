@@ -38,20 +38,34 @@ namespace Negocio
         public BEInstructor BuscarPor_legajo_dni(string legajo,string dni="")
         {
             int legajoInt;
-            if (int.TryParse(legajo, out legajoInt) || !string.IsNullOrEmpty(dni))
+            if (int.TryParse(legajo, out legajoInt))
             {
                 var instructores = ListarTodo();
                 if (instructores != null)
                 {
-                    var instructor = instructores.Find(x => x.Legajo == legajoInt || x.DNI == dni);
+                    var instructor = instructores.Find(x => x.Legajo == legajoInt);
                     if (instructor != null)
-                        instructor = ListarObjeto(instructor);
-                    return instructor;
+                    {
+                        return ListarObjeto(instructor);
+                    }
                 }
             }
 
-            
+            if (!string.IsNullOrEmpty(dni))
+            {
+                var instructores = ListarTodo();
+                if (instructores != null)
+                {
+                    var instructor = instructores.Find(x => x.DNI == dni);
+                    if (instructor != null)
+                    {
+                        return ListarObjeto(instructor);
+                    }
+                }
+            }
+
             return null;
+
         }
         public bool VerficarExiste_DNI_Legajo(int legajo, string dni)
         {

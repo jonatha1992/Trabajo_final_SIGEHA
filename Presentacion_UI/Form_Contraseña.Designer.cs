@@ -1,4 +1,6 @@
-﻿namespace Presentacion_UI
+﻿using Seguridad;
+
+namespace Presentacion_UI
 {
     partial class Form_Contraseña
     {
@@ -31,8 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Contraseña));
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxPassword2 = new Presentacion_UI.TextBoxPassword();
-            this.textBoxPassword1 = new Presentacion_UI.TextBoxPassword();
+            this.ButtonGuardar = new Seguridad.RJButton();
+            this.textBoxPassword2 = new Seguridad.TextBoxPassword();
+            this.textBoxPassword1 = new Seguridad.TextBoxPassword();
             this.textBoxUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -40,18 +43,18 @@
             this.textBoxDNI = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.ButtonGuardar = new Seguridad.RJButton();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 109);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(33, 111);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 14);
+            this.label4.Size = new System.Drawing.Size(116, 16);
             this.label4.TabIndex = 23;
             this.label4.Text = "Nombre Completo";
             // 
@@ -68,19 +71,40 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 327);
+            this.groupBox1.Size = new System.Drawing.Size(265, 327);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Usuario";
             // 
+            // ButtonGuardar
+            // 
+            this.ButtonGuardar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ButtonGuardar.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ButtonGuardar.BorderColor = System.Drawing.Color.White;
+            this.ButtonGuardar.BorderRadius = 20;
+            this.ButtonGuardar.BorderSize = 1;
+            this.ButtonGuardar.FlatAppearance.BorderSize = 0;
+            this.ButtonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonGuardar.ForeColor = System.Drawing.Color.White;
+            this.ButtonGuardar.Location = new System.Drawing.Point(22, 273);
+            this.ButtonGuardar.Name = "ButtonGuardar";
+            this.ButtonGuardar.Size = new System.Drawing.Size(207, 40);
+            this.ButtonGuardar.TabIndex = 35;
+            this.ButtonGuardar.Text = "Cambiar Contraseña";
+            this.ButtonGuardar.TextColor = System.Drawing.Color.White;
+            this.ButtonGuardar.UseVisualStyleBackColor = false;
+            this.ButtonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
+            // 
             // textBoxPassword2
             // 
             this.textBoxPassword2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxPassword2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword2.Location = new System.Drawing.Point(51, 228);
+            this.textBoxPassword2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword2.Location = new System.Drawing.Point(30, 230);
             this.textBoxPassword2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxPassword2.Name = "textBoxPassword2";
             this.textBoxPassword2.Size = new System.Drawing.Size(213, 37);
@@ -90,8 +114,8 @@
             // textBoxPassword1
             // 
             this.textBoxPassword1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxPassword1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword1.Location = new System.Drawing.Point(51, 171);
+            this.textBoxPassword1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword1.Location = new System.Drawing.Point(30, 173);
             this.textBoxPassword1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxPassword1.Name = "textBoxPassword1";
             this.textBoxPassword1.Size = new System.Drawing.Size(215, 31);
@@ -101,102 +125,98 @@
             // textBoxUsuario
             // 
             this.textBoxUsuario.Enabled = false;
-            this.textBoxUsuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsuario.Location = new System.Drawing.Point(54, 81);
+            this.textBoxUsuario.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsuario.Location = new System.Drawing.Point(33, 83);
             this.textBoxUsuario.Name = "textBoxUsuario";
-            this.textBoxUsuario.Size = new System.Drawing.Size(196, 21);
+            this.textBoxUsuario.Size = new System.Drawing.Size(175, 22);
             this.textBoxUsuario.TabIndex = 27;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 65);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(33, 67);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 14);
+            this.label3.Size = new System.Drawing.Size(101, 16);
             this.label3.TabIndex = 26;
             this.label3.Text = "Nombre Usuario";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(54, 20);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(33, 22);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 14);
+            this.label6.Size = new System.Drawing.Size(28, 16);
             this.label6.TabIndex = 28;
             this.label6.Text = "DNI";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 211);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(33, 213);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 14);
+            this.label1.Size = new System.Drawing.Size(118, 16);
             this.label1.TabIndex = 32;
             this.label1.Text = "Repetir Contraseña";
             // 
             // textBoxDNI
             // 
             this.textBoxDNI.Enabled = false;
-            this.textBoxDNI.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDNI.Location = new System.Drawing.Point(54, 36);
+            this.textBoxDNI.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDNI.Location = new System.Drawing.Point(33, 38);
             this.textBoxDNI.Name = "textBoxDNI";
-            this.textBoxDNI.Size = new System.Drawing.Size(196, 21);
+            this.textBoxDNI.Size = new System.Drawing.Size(175, 22);
             this.textBoxDNI.TabIndex = 29;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(54, 154);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(33, 156);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 14);
+            this.label7.Size = new System.Drawing.Size(74, 16);
             this.label7.TabIndex = 30;
             this.label7.Text = "Contraseña";
             // 
             // textBoxNombre
             // 
             this.textBoxNombre.Enabled = false;
-            this.textBoxNombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombre.Location = new System.Drawing.Point(54, 125);
+            this.textBoxNombre.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombre.Location = new System.Drawing.Point(33, 127);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(196, 21);
+            this.textBoxNombre.Size = new System.Drawing.Size(175, 22);
             this.textBoxNombre.TabIndex = 25;
             // 
-            // ButtonGuardar
+            // customTitleBar1
             // 
-            this.ButtonGuardar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.ButtonGuardar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.ButtonGuardar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.ButtonGuardar.BorderRadius = 20;
-            this.ButtonGuardar.BorderSize = 0;
-            this.ButtonGuardar.FlatAppearance.BorderSize = 0;
-            this.ButtonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonGuardar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonGuardar.ForeColor = System.Drawing.Color.White;
-            this.ButtonGuardar.Location = new System.Drawing.Point(38, 278);
-            this.ButtonGuardar.Name = "ButtonGuardar";
-            this.ButtonGuardar.Size = new System.Drawing.Size(226, 40);
-            this.ButtonGuardar.TabIndex = 35;
-            this.ButtonGuardar.Text = "Cambiar Contraseña";
-            this.ButtonGuardar.TextColor = System.Drawing.Color.White;
-            this.ButtonGuardar.UseVisualStyleBackColor = false;
-            this.ButtonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = false;
+            this.customTitleBar1.MinimizeButtonVisible = false;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(294, 24);
+            this.customTitleBar1.TabIndex = 26;
+            this.customTitleBar1.Title = "Contraseña";
             // 
             // Form_Contraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(336, 351);
+            this.ClientSize = new System.Drawing.Size(294, 368);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
@@ -223,5 +243,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private Seguridad.RJButton ButtonGuardar;
+        private CustomTitleBar customTitleBar1;
     }
 }

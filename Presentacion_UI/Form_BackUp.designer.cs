@@ -36,8 +36,9 @@
             this.DgvBackups = new System.Windows.Forms.DataGridView();
             this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnGenerarBackUP = new System.Windows.Forms.Button();
-            this.buttonRestaurar = new System.Windows.Forms.Button();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
+            this.btnGenerarBackUP = new Seguridad.RJButton();
+            this.buttonRestaurar = new Seguridad.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBackups)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvBackups.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvBackups.Location = new System.Drawing.Point(128, 60);
+            this.DgvBackups.Location = new System.Drawing.Point(150, 60);
             this.DgvBackups.Margin = new System.Windows.Forms.Padding(2);
             this.DgvBackups.MultiSelect = false;
             this.DgvBackups.Name = "DgvBackups";
@@ -94,7 +95,7 @@
             this.DgvBackups.RowTemplate.Height = 60;
             this.DgvBackups.RowTemplate.ReadOnly = true;
             this.DgvBackups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvBackups.Size = new System.Drawing.Size(490, 247);
+            this.DgvBackups.Size = new System.Drawing.Size(510, 247);
             this.DgvBackups.TabIndex = 87;
             // 
             // Sel
@@ -114,35 +115,73 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.1F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(327, 32);
+            this.label5.Location = new System.Drawing.Point(382, 33);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 18);
             this.label5.TabIndex = 90;
             this.label5.Text = "BackUps";
             // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = false;
+            this.customTitleBar1.MinimizeButtonVisible = false;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(671, 25);
+            this.customTitleBar1.TabIndex = 93;
+            this.customTitleBar1.Title = "Backup";
+            // 
             // btnGenerarBackUP
             // 
-            this.btnGenerarBackUP.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGenerarBackUP.Location = new System.Drawing.Point(28, 107);
-            this.btnGenerarBackUP.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarBackUP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnGenerarBackUP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnGenerarBackUP.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnGenerarBackUP.BorderRadius = 20;
+            this.btnGenerarBackUP.BorderSize = 0;
+            this.btnGenerarBackUP.FlatAppearance.BorderSize = 0;
+            this.btnGenerarBackUP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarBackUP.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnGenerarBackUP.ForeColor = System.Drawing.Color.White;
+            this.btnGenerarBackUP.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarBackUP.Image")));
+            this.btnGenerarBackUP.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnGenerarBackUP.Location = new System.Drawing.Point(19, 105);
+            this.btnGenerarBackUP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGenerarBackUP.Name = "btnGenerarBackUP";
-            this.btnGenerarBackUP.Size = new System.Drawing.Size(84, 38);
-            this.btnGenerarBackUP.TabIndex = 91;
-            this.btnGenerarBackUP.Text = "Generar BackUp";
-            this.btnGenerarBackUP.UseVisualStyleBackColor = true;
+            this.btnGenerarBackUP.Size = new System.Drawing.Size(115, 44);
+            this.btnGenerarBackUP.TabIndex = 94;
+            this.btnGenerarBackUP.Text = "Generar";
+            this.btnGenerarBackUP.TextColor = System.Drawing.Color.White;
+            this.btnGenerarBackUP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarBackUP.UseVisualStyleBackColor = false;
             this.btnGenerarBackUP.Click += new System.EventHandler(this.btnGenerarBackUP_Click);
             // 
             // buttonRestaurar
             // 
-            this.buttonRestaurar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRestaurar.Location = new System.Drawing.Point(28, 167);
-            this.buttonRestaurar.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonRestaurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonRestaurar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonRestaurar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.buttonRestaurar.BorderRadius = 20;
+            this.buttonRestaurar.BorderSize = 0;
+            this.buttonRestaurar.FlatAppearance.BorderSize = 0;
+            this.buttonRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRestaurar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.buttonRestaurar.ForeColor = System.Drawing.Color.White;
+            this.buttonRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("buttonRestaurar.Image")));
+            this.buttonRestaurar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonRestaurar.Location = new System.Drawing.Point(19, 182);
+            this.buttonRestaurar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonRestaurar.Name = "buttonRestaurar";
-            this.buttonRestaurar.Size = new System.Drawing.Size(84, 38);
-            this.buttonRestaurar.TabIndex = 92;
-            this.buttonRestaurar.Text = "Restaurar BackUp";
-            this.buttonRestaurar.UseVisualStyleBackColor = true;
+            this.buttonRestaurar.Size = new System.Drawing.Size(115, 44);
+            this.buttonRestaurar.TabIndex = 95;
+            this.buttonRestaurar.Text = "Restaurar";
+            this.buttonRestaurar.TextColor = System.Drawing.Color.White;
+            this.buttonRestaurar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonRestaurar.UseVisualStyleBackColor = false;
             this.buttonRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
             // 
             // Form_BackUp
@@ -151,11 +190,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(629, 328);
+            this.ClientSize = new System.Drawing.Size(671, 328);
             this.Controls.Add(this.buttonRestaurar);
             this.Controls.Add(this.btnGenerarBackUP);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.DgvBackups);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -173,7 +214,8 @@
         private System.Windows.Forms.DataGridView DgvBackups;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnGenerarBackUP;
-        private System.Windows.Forms.Button buttonRestaurar;
+        private Seguridad.CustomTitleBar customTitleBar1;
+        private Seguridad.RJButton btnGenerarBackUP;
+        private Seguridad.RJButton buttonRestaurar;
     }
 }

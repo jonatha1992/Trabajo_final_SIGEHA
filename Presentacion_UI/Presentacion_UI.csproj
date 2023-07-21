@@ -119,17 +119,23 @@
       <DependentUpon>Form_BackUp.cs</DependentUpon>
     </Compile>
     <Compile Include="BEActa.cs" />
+    <Compile Include="Form_GestionEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_GestionEntrega.designer.cs">
+      <DependentUpon>Form_GestionEntrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_GestionHallazgo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_GestionHallazgo.designer.cs">
+      <DependentUpon>Form_GestionHallazgo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Reporte.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Reporte.Designer.cs">
       <DependentUpon>Form_Reporte.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TextBoxPassword.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TextBoxPassword.Designer.cs">
-      <DependentUpon>TextBoxPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Contraseña.cs">
       <SubType>Form</SubType>
@@ -208,11 +214,17 @@
     <EmbeddedResource Include="Form_BackUp.resx">
       <DependentUpon>Form_BackUp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_GestionEntrega.resx">
+      <DependentUpon>Form_GestionEntrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_GestionHallazgo.aa-ER.resx">
+      <DependentUpon>Form_GestionHallazgo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_GestionHallazgo.resx">
+      <DependentUpon>Form_GestionHallazgo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Reporte.resx">
       <DependentUpon>Form_Reporte.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TextBoxPassword.resx">
-      <DependentUpon>TextBoxPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Contraseña.resx">
       <DependentUpon>Form_Contraseña.cs</DependentUpon>
@@ -362,6 +374,7 @@
     <None Include="Resources\settings %281%29.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\configuration.png" />
+    <None Include="Resources\maximizar-tamano.png" />
     <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

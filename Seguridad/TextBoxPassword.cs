@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Presentacion_UI
+namespace Seguridad
 {
     public partial class TextBoxPassword : UserControl
     {
@@ -19,13 +19,13 @@ namespace Presentacion_UI
         {
             if (!visible) // Si está oculto, se muestra
             {
-                pictureBox1raContrasena.Image = Properties.Resources.Visible;
+                pictureBox1raContrasena.Image = Properties.Resources.icons_visible;
                 textBoxContraseña.UseSystemPasswordChar = false;
                 visible = true;
             }
             else // Si está visible, se oculta
             {
-                pictureBox1raContrasena.Image = Properties.Resources.No_Visible;
+                pictureBox1raContrasena.Image = Properties.Resources.icons_no_visible_16;
                 textBoxContraseña.UseSystemPasswordChar = true;
                 visible = false;
             }

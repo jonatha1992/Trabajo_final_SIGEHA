@@ -212,10 +212,9 @@ namespace Presentacion_UI
                     if (DgvElementos.DataSource != null || bEHallazgoSeleccionado.listaElementos.Count > 0)
                     {
                         this.DgvElementos.Columns["Id"].Width = 35;
-                        this.DgvElementos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                        this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
+                        this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
 
                     }
                     if (DgvElementos.DataSource == null || DgvElementos.Rows.Count == 0)
@@ -402,13 +401,9 @@ namespace Presentacion_UI
                 this.dgvHallazgos.Columns["Unidad"].Visible = false;
                 this.dgvHallazgos.Columns["FechaActa"].Visible = false;
                 this.dgvHallazgos.Columns["Id"].Visible = false;
-                this.dgvHallazgos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                this.dgvHallazgos.RowTemplate.Height = 32;
-                this.dgvHallazgos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
+                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
 
 
@@ -983,5 +978,7 @@ namespace Presentacion_UI
                 textBoxObservacion.Text = "";
             }
         }
+
+      
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Presentacion_UI
+﻿namespace Seguridad
 {
     partial class TextBoxPassword
     {
@@ -35,7 +35,7 @@
             // 
             // pictureBox1raContrasena
             // 
-            this.pictureBox1raContrasena.Image = global::Presentacion_UI.Properties.Resources.No_Visible;
+            this.pictureBox1raContrasena.Image = global::Seguridad.Properties.Resources.icons_no_visible_16;
             this.pictureBox1raContrasena.Location = new System.Drawing.Point(164, 9);
             this.pictureBox1raContrasena.Name = "pictureBox1raContrasena";
             this.pictureBox1raContrasena.Size = new System.Drawing.Size(18, 19);

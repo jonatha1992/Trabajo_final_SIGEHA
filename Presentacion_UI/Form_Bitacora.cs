@@ -41,6 +41,7 @@ namespace Presentacion_UI
         {
             cargarGrilla(listaEventos);
         }
+
     }
 }
 

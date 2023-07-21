@@ -46,8 +46,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encriptar.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RJRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RJbutton.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextBoxPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TextBoxPassword.Designer.cs">
+      <DependentUpon>TextBoxPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTitleBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomTitleBar.Designer.cs">
+      <DependentUpon>CustomTitleBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +75,45 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomTitleBar.resx">
+      <DependentUpon>CustomTitleBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextBoxPassword.resx">
+      <DependentUpon>TextBoxPassword.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-visible-16 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-no-visible-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimizar-signo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizar-tamano.png" />
+    <None Include="Resources\Logo-PSA.png" />
+    <None Include="Resources\minimizar-signo %282%29.png" />
+    <None Include="Resources\minimizar-signo %283%29.png" />
+    <None Include="Resources\opcion-de-maximizar-tamano.png" />
+    <None Include="Resources\maximizar %282%29.png" />
+    <None Include="Resources\maximizar %281%29.png" />
+    <None Include="Resources\minimizar-signo %281%29.png" />
+    <None Include="Resources\cerrar %281%29.png" />
+    <Content Include="Resources\Logo-PSA.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

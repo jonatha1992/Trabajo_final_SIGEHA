@@ -41,11 +41,10 @@
             this.comboBoxUnidad = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSemestral = new System.Windows.Forms.RadioButton();
-            this.radioButtonTrimestral = new System.Windows.Forms.RadioButton();
-            this.radioButtonMensual = new System.Windows.Forms.RadioButton();
-            this.radioButtonAnual = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.RadioButtonMensual = new Seguridad.RJRadioButton();
+            this.RadioButtonTrimestral = new Seguridad.RJRadioButton();
+            this.RadioButtonSemestral = new Seguridad.RJRadioButton();
+            this.RadioButtonAnual = new Seguridad.RJRadioButton();
             this.chartHallazgos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTotalHallazgos = new System.Windows.Forms.Label();
@@ -65,6 +64,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.chartEntregas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartCategoria = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartHallazgos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -86,7 +86,7 @@
             this.comboBoxUnidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUnidad.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
             this.comboBoxUnidad.FormattingEnabled = true;
-            this.comboBoxUnidad.Location = new System.Drawing.Point(102, 20);
+            this.comboBoxUnidad.Location = new System.Drawing.Point(94, 28);
             this.comboBoxUnidad.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxUnidad.Name = "comboBoxUnidad";
             this.comboBoxUnidad.Size = new System.Drawing.Size(196, 20);
@@ -98,7 +98,7 @@
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F);
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(25, 27);
+            this.label4.Location = new System.Drawing.Point(43, 36);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 12);
@@ -107,75 +107,86 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.radioButtonSemestral);
-            this.groupBox4.Controls.Add(this.radioButtonTrimestral);
-            this.groupBox4.Controls.Add(this.radioButtonMensual);
-            this.groupBox4.Controls.Add(this.radioButtonAnual);
+            this.groupBox4.Controls.Add(this.RadioButtonMensual);
+            this.groupBox4.Controls.Add(this.RadioButtonTrimestral);
             this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.RadioButtonSemestral);
             this.groupBox4.Controls.Add(this.comboBoxUnidad);
-            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.RadioButtonAnual);
+            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(26, 12);
+            this.groupBox4.Location = new System.Drawing.Point(26, 27);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(337, 121);
+            this.groupBox4.Size = new System.Drawing.Size(344, 121);
             this.groupBox4.TabIndex = 45;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Filtros";
+            this.groupBox4.Text = "Criterio";
             // 
-            // radioButtonSemestral
+            // RadioButtonMensual
             // 
-            this.radioButtonSemestral.AutoSize = true;
-            this.radioButtonSemestral.Location = new System.Drawing.Point(93, 86);
-            this.radioButtonSemestral.Name = "radioButtonSemestral";
-            this.radioButtonSemestral.Size = new System.Drawing.Size(71, 17);
-            this.radioButtonSemestral.TabIndex = 99;
-            this.radioButtonSemestral.Text = "Semestral";
-            this.radioButtonSemestral.UseVisualStyleBackColor = true;
+            this.RadioButtonMensual.AutoSize = true;
+            this.RadioButtonMensual.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.RadioButtonMensual.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioButtonMensual.ForeColor = System.Drawing.Color.White;
+            this.RadioButtonMensual.Location = new System.Drawing.Point(185, 93);
+            this.RadioButtonMensual.MinimumSize = new System.Drawing.Size(0, 21);
+            this.RadioButtonMensual.Name = "RadioButtonMensual";
+            this.RadioButtonMensual.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.RadioButtonMensual.Size = new System.Drawing.Size(84, 21);
+            this.RadioButtonMensual.TabIndex = 112;
+            this.RadioButtonMensual.Text = "Mensual";
+            this.RadioButtonMensual.UnCheckedColor = System.Drawing.Color.Gray;
+            this.RadioButtonMensual.UseVisualStyleBackColor = true;
             // 
-            // radioButtonTrimestral
+            // RadioButtonTrimestral
             // 
-            this.radioButtonTrimestral.AutoSize = true;
-            this.radioButtonTrimestral.Location = new System.Drawing.Point(169, 86);
-            this.radioButtonTrimestral.Name = "radioButtonTrimestral";
-            this.radioButtonTrimestral.Size = new System.Drawing.Size(70, 17);
-            this.radioButtonTrimestral.TabIndex = 98;
-            this.radioButtonTrimestral.Text = "Trimestral";
-            this.radioButtonTrimestral.UseVisualStyleBackColor = true;
+            this.RadioButtonTrimestral.AutoSize = true;
+            this.RadioButtonTrimestral.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.RadioButtonTrimestral.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioButtonTrimestral.ForeColor = System.Drawing.Color.White;
+            this.RadioButtonTrimestral.Location = new System.Drawing.Point(66, 93);
+            this.RadioButtonTrimestral.MinimumSize = new System.Drawing.Size(0, 21);
+            this.RadioButtonTrimestral.Name = "RadioButtonTrimestral";
+            this.RadioButtonTrimestral.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.RadioButtonTrimestral.Size = new System.Drawing.Size(90, 21);
+            this.RadioButtonTrimestral.TabIndex = 111;
+            this.RadioButtonTrimestral.Text = "Trimestral";
+            this.RadioButtonTrimestral.UnCheckedColor = System.Drawing.Color.Gray;
+            this.RadioButtonTrimestral.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMensual
+            // RadioButtonSemestral
             // 
-            this.radioButtonMensual.AutoSize = true;
-            this.radioButtonMensual.Location = new System.Drawing.Point(255, 86);
-            this.radioButtonMensual.Name = "radioButtonMensual";
-            this.radioButtonMensual.Size = new System.Drawing.Size(65, 17);
-            this.radioButtonMensual.TabIndex = 97;
-            this.radioButtonMensual.Text = "Mensual";
-            this.radioButtonMensual.UseVisualStyleBackColor = true;
+            this.RadioButtonSemestral.AutoSize = true;
+            this.RadioButtonSemestral.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.RadioButtonSemestral.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioButtonSemestral.ForeColor = System.Drawing.Color.White;
+            this.RadioButtonSemestral.Location = new System.Drawing.Point(185, 66);
+            this.RadioButtonSemestral.MinimumSize = new System.Drawing.Size(0, 21);
+            this.RadioButtonSemestral.Name = "RadioButtonSemestral";
+            this.RadioButtonSemestral.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.RadioButtonSemestral.Size = new System.Drawing.Size(91, 21);
+            this.RadioButtonSemestral.TabIndex = 110;
+            this.RadioButtonSemestral.Text = "Semestral";
+            this.RadioButtonSemestral.UnCheckedColor = System.Drawing.Color.Gray;
+            this.RadioButtonSemestral.UseVisualStyleBackColor = true;
             // 
-            // radioButtonAnual
+            // RadioButtonAnual
             // 
-            this.radioButtonAnual.AutoSize = true;
-            this.radioButtonAnual.Checked = true;
-            this.radioButtonAnual.Location = new System.Drawing.Point(25, 86);
-            this.radioButtonAnual.Name = "radioButtonAnual";
-            this.radioButtonAnual.Size = new System.Drawing.Size(52, 17);
-            this.radioButtonAnual.TabIndex = 96;
-            this.radioButtonAnual.TabStop = true;
-            this.radioButtonAnual.Text = "Anual";
-            this.radioButtonAnual.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(134, 59);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Tiempo";
+            this.RadioButtonAnual.AutoSize = true;
+            this.RadioButtonAnual.Checked = true;
+            this.RadioButtonAnual.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.RadioButtonAnual.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioButtonAnual.ForeColor = System.Drawing.Color.White;
+            this.RadioButtonAnual.Location = new System.Drawing.Point(66, 66);
+            this.RadioButtonAnual.MinimumSize = new System.Drawing.Size(0, 21);
+            this.RadioButtonAnual.Name = "RadioButtonAnual";
+            this.RadioButtonAnual.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.RadioButtonAnual.Size = new System.Drawing.Size(69, 21);
+            this.RadioButtonAnual.TabIndex = 109;
+            this.RadioButtonAnual.TabStop = true;
+            this.RadioButtonAnual.Text = "Anual";
+            this.RadioButtonAnual.UnCheckedColor = System.Drawing.Color.Gray;
+            this.RadioButtonAnual.UseVisualStyleBackColor = true;
             // 
             // chartHallazgos
             // 
@@ -210,7 +221,8 @@
             this.panel1.Controls.Add(this.labelTotalHallazgos);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(376, 28);
+            this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(376, 40);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(221, 101);
             this.panel1.TabIndex = 102;
@@ -218,22 +230,23 @@
             // labelTotalHallazgos
             // 
             this.labelTotalHallazgos.AutoSize = true;
-            this.labelTotalHallazgos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalHallazgos.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalHallazgos.ForeColor = System.Drawing.Color.White;
             this.labelTotalHallazgos.Location = new System.Drawing.Point(20, 39);
             this.labelTotalHallazgos.Name = "labelTotalHallazgos";
-            this.labelTotalHallazgos.Size = new System.Drawing.Size(93, 37);
+            this.labelTotalHallazgos.Size = new System.Drawing.Size(74, 32);
             this.labelTotalHallazgos.TabIndex = 2;
             this.labelTotalHallazgos.Text = "1500";
+            this.labelTotalHallazgos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 15);
+            this.label1.Size = new System.Drawing.Size(153, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Hallazgo realizados";
             // 
@@ -253,7 +266,8 @@
             this.panel2.Controls.Add(this.labelTotalEntregas);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(618, 29);
+            this.panel2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(618, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(212, 101);
             this.panel2.TabIndex = 103;
@@ -261,22 +275,23 @@
             // labelTotalEntregas
             // 
             this.labelTotalEntregas.AutoSize = true;
-            this.labelTotalEntregas.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalEntregas.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalEntregas.ForeColor = System.Drawing.Color.White;
             this.labelTotalEntregas.Location = new System.Drawing.Point(19, 39);
             this.labelTotalEntregas.Name = "labelTotalEntregas";
-            this.labelTotalEntregas.Size = new System.Drawing.Size(93, 37);
+            this.labelTotalEntregas.Size = new System.Drawing.Size(74, 32);
             this.labelTotalEntregas.TabIndex = 3;
             this.labelTotalEntregas.Text = "1500";
+            this.labelTotalEntregas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(3, 7);
+            this.label9.Location = new System.Drawing.Point(12, 7);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 15);
+            this.label9.Size = new System.Drawing.Size(150, 18);
             this.label9.TabIndex = 1;
             this.label9.Text = "Entregas realizadas";
             // 
@@ -296,7 +311,8 @@
             this.panel3.Controls.Add(this.labelElementosResguardados);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(846, 31);
+            this.panel3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(846, 43);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(212, 101);
             this.panel3.TabIndex = 104;
@@ -304,29 +320,30 @@
             // labelElementosResguardados
             // 
             this.labelElementosResguardados.AutoSize = true;
-            this.labelElementosResguardados.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelElementosResguardados.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelElementosResguardados.ForeColor = System.Drawing.Color.White;
-            this.labelElementosResguardados.Location = new System.Drawing.Point(19, 39);
+            this.labelElementosResguardados.Location = new System.Drawing.Point(10, 39);
             this.labelElementosResguardados.Name = "labelElementosResguardados";
-            this.labelElementosResguardados.Size = new System.Drawing.Size(93, 37);
+            this.labelElementosResguardados.Size = new System.Drawing.Size(119, 32);
             this.labelElementosResguardados.TabIndex = 4;
-            this.labelElementosResguardados.Text = "1500";
+            this.labelElementosResguardados.Text = "1000000";
+            this.labelElementosResguardados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(3, 7);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(172, 15);
+            this.label10.Size = new System.Drawing.Size(192, 18);
             this.label10.TabIndex = 1;
             this.label10.Text = "Elementos Resguardados";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Presentacion_UI.Properties.Resources.Elememtos;
-            this.pictureBox3.Location = new System.Drawing.Point(131, 31);
+            this.pictureBox3.Location = new System.Drawing.Point(135, 29);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(73, 58);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -336,24 +353,25 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(23, 7);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(154, 15);
+            this.label5.Size = new System.Drawing.Size(169, 18);
             this.label5.TabIndex = 1;
             this.label5.Text = "Elementos Entregados";
             // 
             // labelElementosEntregados
             // 
             this.labelElementosEntregados.AutoSize = true;
-            this.labelElementosEntregados.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelElementosEntregados.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelElementosEntregados.ForeColor = System.Drawing.Color.White;
             this.labelElementosEntregados.Location = new System.Drawing.Point(19, 39);
             this.labelElementosEntregados.Name = "labelElementosEntregados";
-            this.labelElementosEntregados.Size = new System.Drawing.Size(93, 37);
+            this.labelElementosEntregados.Size = new System.Drawing.Size(74, 32);
             this.labelElementosEntregados.TabIndex = 4;
             this.labelElementosEntregados.Text = "1500";
+            this.labelElementosEntregados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel4
             // 
@@ -361,7 +379,8 @@
             this.panel4.Controls.Add(this.labelElementosEntregados);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(1075, 31);
+            this.panel4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(1075, 43);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(212, 101);
             this.panel4.TabIndex = 105;
@@ -431,12 +450,27 @@
             title3.Text = "Elementos en reguardo";
             this.chartCategoria.Titles.Add(title3);
             // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = true;
+            this.customTitleBar1.MinimizeButtonVisible = true;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(1300, 25);
+            this.customTitleBar1.TabIndex = 109;
+            this.customTitleBar1.Title = "Reporte";
+            // 
             // Form_Reporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1300, 663);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.chartCategoria);
             this.Controls.Add(this.chartEntregas);
             this.Controls.Add(this.panel4);
@@ -445,6 +479,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chartHallazgos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "Form_Reporte";
@@ -476,11 +511,8 @@
         private System.Windows.Forms.ComboBox comboBoxUnidad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton radioButtonAnual;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartHallazgos;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButtonTrimestral;
-        private System.Windows.Forms.RadioButton radioButtonMensual;
         private System.Windows.Forms.Label labelTotalHallazgos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
@@ -489,7 +521,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.RadioButton radioButtonSemestral;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelTotalEntregas;
         private System.Windows.Forms.Label labelElementosResguardados;
@@ -497,8 +528,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelElementosEntregados;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEntregas;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCategoria;
+        private Seguridad.RJRadioButton RadioButtonAnual;
+        private Seguridad.RJRadioButton RadioButtonSemestral;
+        private Seguridad.RJRadioButton RadioButtonTrimestral;
+        private Seguridad.RJRadioButton RadioButtonMensual;
+        private Seguridad.CustomTitleBar customTitleBar1;
     }
 }
