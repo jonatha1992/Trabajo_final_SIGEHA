@@ -274,7 +274,7 @@ namespace MPP
             // Filtra por lugar
             if (!string.IsNullOrEmpty(lugar))
             {
-                hallazgos = hallazgos.Where(h => Convert.ToString(h.Element("LugarHallazgo").Value).Contains(lugar)).ToList();
+                hallazgos = hallazgos.Where(h => Convert.ToString(h.Element("LugarHallazgo").Value).Contains(lugar) || h.Element("NroActa").ToList();
             }
 
             // Filtra por descripción
