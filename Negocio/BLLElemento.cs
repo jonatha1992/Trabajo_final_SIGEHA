@@ -75,10 +75,10 @@ namespace Negocio
             return NroActa;
         }
 
-        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad)
+        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad ,string nrohallazgo)
         {
 
-            return mPPElemento.BusquedaElementos(desde, hasta, bECategoria, bEArticulo, lugar, descripcion, unidad);
+            return mPPElemento.BusquedaElementos(desde, hasta, bECategoria, bEArticulo, lugar, descripcion, unidad,nrohallazgo);
         }
 
 

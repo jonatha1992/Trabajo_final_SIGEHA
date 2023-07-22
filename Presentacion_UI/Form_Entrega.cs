@@ -348,8 +348,10 @@ namespace Presentacion_UI
         }
         void limpiarCamposBusqueda()
         {
-            textBoxDescripcion.Text = "";
             dateTimePickerDesde.Value = DateTime.Now;
+            dateTimePickerHasta.Value = DateTime.Now;
+            numericUpDownHallazgo.Text = "0";
+            textBoxDescripcion.Text = "";
             textBoxLugar.Text = "";
             checkBoxArticulo.Checked = false;
             checkBoxFecha.Checked = false;
@@ -404,12 +406,12 @@ namespace Presentacion_UI
                 LugarHallazgo = textBoxLugar.Text;
             }
 
-            if (checkBoxNroHallazgo.Checked && numericUpDown1.Enabled && numericUpDown1.Value != 0)
+            if (checkBoxNroHallazgo.Checked && numericUpDownHallazgo.Enabled && numericUpDownHallazgo.Value != 0)
             {
-                NroHallazgo = numericUpDown1.Text;
+                NroHallazgo = numericUpDownHallazgo.Text;
 
             }
-            listaElementosBusqueda = bLLElemento.BusquedaElementos(Desde, Hasta, bEcategoria, bEArticulo, LugarHallazgo, PDescripcion, bEUnidad);
+            listaElementosBusqueda = bLLElemento.BusquedaElementos(Desde, Hasta, bEcategoria, bEArticulo, LugarHallazgo, PDescripcion, bEUnidad, NroHallazgo);
         }
         void LimpiarCamposEntrega()
         {
@@ -768,7 +770,10 @@ namespace Presentacion_UI
         }
         private void checkBoxNroHallazgo_CheckedChanged(object sender, EventArgs e)
         {
-            numericUpDown1.Enabled = checkBoxNroHallazgo.Checked;
+
+            numericUpDownHallazgo.Enabled = checkBoxNroHallazgo.Checked;
+            numericUpDownHallazgo.Value = checkBoxNroHallazgo.Checked ? numericUpDownHallazgo.Value : 0;
+
 
         }
         private void comboBoxArticulo_KeyDown(object sender, KeyEventArgs e)
@@ -875,6 +880,6 @@ namespace Presentacion_UI
             }
         }
 
-      
+
     }
 }

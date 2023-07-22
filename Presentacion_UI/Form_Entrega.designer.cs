@@ -88,7 +88,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.customTitleBar1 = new Seguridad.CustomTitleBar();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownHallazgo = new System.Windows.Forms.NumericUpDown();
             this.groupBoxBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBusqueda)).BeginInit();
             this.groupBoxEntrega.SuspendLayout();
@@ -98,7 +98,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHallazgo)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxLugar
@@ -202,7 +202,7 @@
             // groupBoxBusqueda
             // 
             this.groupBoxBusqueda.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxBusqueda.Controls.Add(this.numericUpDown1);
+            this.groupBoxBusqueda.Controls.Add(this.numericUpDownHallazgo);
             this.groupBoxBusqueda.Controls.Add(this.checkBoxNroHallazgo);
             this.groupBoxBusqueda.Controls.Add(this.buttonAgregarEntrega);
             this.groupBoxBusqueda.Controls.Add(this.buttonBuscar);
@@ -994,19 +994,19 @@
             this.customTitleBar1.TabIndex = 98;
             this.customTitleBar1.Title = "Busqueda y Entrega";
             // 
-            // numericUpDown1
+            // numericUpDownHallazgo
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(195, 60);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numericUpDownHallazgo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownHallazgo.Location = new System.Drawing.Point(195, 60);
+            this.numericUpDownHallazgo.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(82, 22);
-            this.numericUpDown1.TabIndex = 104;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownHallazgo.Name = "numericUpDownHallazgo";
+            this.numericUpDownHallazgo.Size = new System.Drawing.Size(82, 22);
+            this.numericUpDownHallazgo.TabIndex = 104;
+            this.numericUpDownHallazgo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form_Entrega
             // 
@@ -1036,7 +1036,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHallazgo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1089,6 +1089,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
         private System.Windows.Forms.CheckBox checkBoxNroHallazgo;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownHallazgo;
     }
 }

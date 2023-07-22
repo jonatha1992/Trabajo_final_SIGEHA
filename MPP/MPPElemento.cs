@@ -239,7 +239,7 @@ namespace MPP
         }
 
 
-        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad)
+        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad ,string nroHallazgo)
         {
             List<ElementoBusqueda> elementoBusquedas = new List<ElementoBusqueda>();
 
