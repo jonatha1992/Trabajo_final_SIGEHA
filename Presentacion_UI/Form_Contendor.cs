@@ -31,6 +31,8 @@ namespace Presentacion_UI
         Form_Permiso form_Permiso;
         Form_BackUp form_backUp;
         Form_Bitacora form_bitacora;
+        Form_GestionHallazgo form_gestionHallazgo;
+        Form_GestionEntrega form_GestionEntrega;
 
         BLLPermiso bLLPermiso;
         BLLBitacora bLLBitacora;
@@ -189,6 +191,7 @@ namespace Presentacion_UI
                 {
                     if (form_login == null || form_login.IsDisposed )
                     {
+                        this.WindowState = FormWindowState.Maximized;
                         usuario = null;
                         form_login = new Form_Login();
                         form_login.MdiParent = this;
@@ -267,7 +270,6 @@ namespace Presentacion_UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void GestionPermisos_Click(object sender, EventArgs e)
         {
 
@@ -286,7 +288,6 @@ namespace Presentacion_UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void CambiarContrasena_Click(object sender, EventArgs e)
         {
@@ -353,7 +354,20 @@ namespace Presentacion_UI
 
         private void GestionHallazgo_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (form_gestionHallazgo == null || form_gestionHallazgo.IsDisposed)
+                {
+                    form_gestionHallazgo = new Form_GestionHallazgo();
+                    form_gestionHallazgo.MdiParent = this;
+                    form_gestionHallazgo.Show();
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GenerarEntrega_Click(object sender, EventArgs e)
@@ -373,10 +387,25 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void Informe_Click(object sender, EventArgs e)
+        private void GestionEntrega_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (form_GestionEntrega == null || form_GestionEntrega.IsDisposed)
+                {
+                    form_GestionEntrega = new Form_GestionEntrega();
+                    form_GestionEntrega.MdiParent = this;
+                    form_GestionEntrega.Show();
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void Reporte_Click(object sender, EventArgs e)
+        {
             try
             {
                 if (form_Reporte == null || form_Reporte.IsDisposed)
@@ -385,13 +414,11 @@ namespace Presentacion_UI
                     form_Reporte.MdiParent = this;
                     form_Reporte.Show();
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
     }

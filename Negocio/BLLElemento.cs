@@ -75,10 +75,15 @@ namespace Negocio
             return NroActa;
         }
 
-        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad ,string nrohallazgo)
+        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad, string nrohallazgo)
         {
 
-            return mPPElemento.BusquedaElementos(desde, hasta, bECategoria, bEArticulo, lugar, descripcion, unidad,nrohallazgo);
+            if (!string.IsNullOrEmpty(nrohallazgo))
+            {
+                // Asegurarse de que nrohallazgo tenga siempre cuatro cifras con ceros a la izquierda
+                nrohallazgo = nrohallazgo.PadLeft(4, '0').Substring(0, 4);
+            }
+            return mPPElemento.BusquedaElementos(desde, hasta, bECategoria, bEArticulo, lugar, descripcion, unidad, nrohallazgo);
         }
 
 
@@ -95,6 +100,6 @@ namespace Negocio
         }
 
 
-    
+
     }
 }

@@ -69,6 +69,8 @@ namespace Presentacion_UI
             if (VerficarCamposUsuario())
             {
                 bLLUsuario.CambiarContraseña(eUsuario);
+                MessageBox.Show("Se cambio la contraseña correctamente","Mensaje",MessageBoxButtons.OK,MessageBoxIcon.Information); 
+                this.Close();
             }
         }
     }

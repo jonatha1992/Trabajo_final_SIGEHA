@@ -93,6 +93,7 @@
             this.dgvHallazgos.AllowUserToDeleteRows = false;
             this.dgvHallazgos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHallazgos.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvHallazgos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvHallazgos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvHallazgos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -484,6 +485,7 @@
             resources.ApplyResources(this.DgvElementos, "DgvElementos");
             this.DgvElementos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvElementos.BackgroundColor = System.Drawing.Color.Black;
+            this.DgvElementos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvElementos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DgvElementos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;

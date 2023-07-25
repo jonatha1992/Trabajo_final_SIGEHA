@@ -271,11 +271,18 @@ namespace MPP
                 elementos = elementos.Where(e => Convert.ToInt32(e.Element("IdArticulo").Value) == bEArticulo.Id).ToList();
             }
 
+            // Filtra nro Hallazgo
+            if (!string.IsNullOrEmpty(nroHallazgo))
+            {
+                hallazgos = hallazgos.Where(h => Convert.ToString(h.Element("Nroacta").Value).Contains(nroHallazgo)).ToList();
+            }
+
             // Filtra por lugar
             if (!string.IsNullOrEmpty(lugar))
             {
-                hallazgos = hallazgos.Where(h => Convert.ToString(h.Element("LugarHallazgo").Value).Contains(lugar) || h.Element("NroActa").ToList();
+                hallazgos = hallazgos.Where(h => Convert.ToString(h.Element("LugarHallazgo").Value).Contains(lugar)).ToList();
             }
+
 
             // Filtra por descripción
             if (!string.IsNullOrEmpty(descripcion))

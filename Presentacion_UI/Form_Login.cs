@@ -22,7 +22,6 @@ namespace Presentacion_UI
         {
             if (Verificar()) 
             {
-                loginExitoso = true;
                 this.Close();
             } 
         }
@@ -34,7 +33,6 @@ namespace Presentacion_UI
 
         BLLUsuario bLLUsuario;
         public BEUsuario Usuario;
-        private bool loginExitoso = false;
         public bool Verificar()
         {
             try

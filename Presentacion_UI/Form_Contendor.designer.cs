@@ -61,10 +61,10 @@
             this.Administracion,
             this.Login,
             this.CambiarContrasena});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 29);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 36);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1306, 26);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1416, 32);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,21 +74,21 @@
             this.GenerarHallazgo,
             this.GestionHallazgo});
             this.Hallazgo.Name = "Hallazgo";
-            this.Hallazgo.Size = new System.Drawing.Size(125, 22);
+            this.Hallazgo.Size = new System.Drawing.Size(163, 28);
             this.Hallazgo.Text = "Menú Hallazgo";
             // 
             // GenerarHallazgo
             // 
             this.GenerarHallazgo.Name = "GenerarHallazgo";
-            this.GenerarHallazgo.Size = new System.Drawing.Size(200, 22);
-            this.GenerarHallazgo.Text = "Generar Hallazgo";
+            this.GenerarHallazgo.Size = new System.Drawing.Size(224, 28);
+            this.GenerarHallazgo.Text = "Generar";
             this.GenerarHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
             // 
             // GestionHallazgo
             // 
             this.GestionHallazgo.Name = "GestionHallazgo";
-            this.GestionHallazgo.Size = new System.Drawing.Size(200, 22);
-            this.GestionHallazgo.Text = "Gestion Hallazgo";
+            this.GestionHallazgo.Size = new System.Drawing.Size(224, 28);
+            this.GestionHallazgo.Text = "Gestión";
             this.GestionHallazgo.Click += new System.EventHandler(this.GestionHallazgo_Click);
             // 
             // Entrega
@@ -97,21 +97,22 @@
             this.GenerarEntrega,
             this.GestionEntrega});
             this.Entrega.Name = "Entrega";
-            this.Entrega.Size = new System.Drawing.Size(120, 22);
+            this.Entrega.Size = new System.Drawing.Size(151, 28);
             this.Entrega.Text = "Menú Entrega";
             // 
             // GenerarEntrega
             // 
             this.GenerarEntrega.Name = "GenerarEntrega";
-            this.GenerarEntrega.Size = new System.Drawing.Size(195, 22);
-            this.GenerarEntrega.Text = "Generar Entrega";
+            this.GenerarEntrega.Size = new System.Drawing.Size(224, 28);
+            this.GenerarEntrega.Text = "Generar";
             this.GenerarEntrega.Click += new System.EventHandler(this.GenerarEntrega_Click);
             // 
             // GestionEntrega
             // 
             this.GestionEntrega.Name = "GestionEntrega";
-            this.GestionEntrega.Size = new System.Drawing.Size(195, 22);
-            this.GestionEntrega.Text = "Gestion Entrega";
+            this.GestionEntrega.Size = new System.Drawing.Size(224, 28);
+            this.GestionEntrega.Text = "Gestión";
+            this.GestionEntrega.Click += new System.EventHandler(this.GestionEntrega_Click);
             // 
             // Administracion
             // 
@@ -123,47 +124,47 @@
             this.ABMCategorias,
             this.Bitacora});
             this.Administracion.Name = "Administracion";
-            this.Administracion.Size = new System.Drawing.Size(167, 22);
+            this.Administracion.Size = new System.Drawing.Size(219, 28);
             this.Administracion.Text = "Menú Administración";
             // 
             // Reporte
             // 
             this.Reporte.Name = "Reporte";
-            this.Reporte.Size = new System.Drawing.Size(202, 22);
+            this.Reporte.Size = new System.Drawing.Size(249, 28);
             this.Reporte.Text = "Reporte";
-            this.Reporte.Click += new System.EventHandler(this.Informe_Click);
+            this.Reporte.Click += new System.EventHandler(this.Reporte_Click);
             // 
             // BackUp
             // 
             this.BackUp.Name = "BackUp";
-            this.BackUp.Size = new System.Drawing.Size(202, 22);
+            this.BackUp.Size = new System.Drawing.Size(249, 28);
             this.BackUp.Text = "Back Up";
             this.BackUp.Click += new System.EventHandler(this.BackUp_Click);
             // 
             // GestionUsuarios
             // 
             this.GestionUsuarios.Name = "GestionUsuarios";
-            this.GestionUsuarios.Size = new System.Drawing.Size(202, 22);
+            this.GestionUsuarios.Size = new System.Drawing.Size(249, 28);
             this.GestionUsuarios.Text = "Gestion Usuarios";
             this.GestionUsuarios.Click += new System.EventHandler(this.GestionUsuarios_Click);
             // 
             // GestionPermisos
             // 
             this.GestionPermisos.Name = "GestionPermisos";
-            this.GestionPermisos.Size = new System.Drawing.Size(202, 22);
+            this.GestionPermisos.Size = new System.Drawing.Size(249, 28);
             this.GestionPermisos.Text = "Gestion Permisos";
             this.GestionPermisos.Click += new System.EventHandler(this.GestionPermisos_Click);
             // 
             // ABMCategorias
             // 
             this.ABMCategorias.Name = "ABMCategorias";
-            this.ABMCategorias.Size = new System.Drawing.Size(202, 22);
+            this.ABMCategorias.Size = new System.Drawing.Size(249, 28);
             this.ABMCategorias.Text = "ABM Categorias";
             // 
             // Bitacora
             // 
             this.Bitacora.Name = "Bitacora";
-            this.Bitacora.Size = new System.Drawing.Size(202, 22);
+            this.Bitacora.Size = new System.Drawing.Size(249, 28);
             this.Bitacora.Text = "Bitacora";
             this.Bitacora.Click += new System.EventHandler(this.bitacora_Click);
             // 
@@ -171,7 +172,7 @@
             // 
             this.Login.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(114, 22);
+            this.Login.Size = new System.Drawing.Size(142, 28);
             this.Login.Text = "Iniciar sesión";
             this.Login.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.Login.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
@@ -180,7 +181,7 @@
             // 
             this.CambiarContrasena.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.CambiarContrasena.Name = "CambiarContrasena";
-            this.CambiarContrasena.Size = new System.Drawing.Size(164, 22);
+            this.CambiarContrasena.Size = new System.Drawing.Size(219, 28);
             this.CambiarContrasena.Text = "Cambiar Contraseña";
             this.CambiarContrasena.Click += new System.EventHandler(this.CambiarContrasena_Click);
             // 
@@ -191,20 +192,21 @@
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.Margin = new System.Windows.Forms.Padding(4);
             this.customTitleBar1.MaximizeButtonVisible = true;
             this.customTitleBar1.MinimizeButtonVisible = true;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(1306, 29);
+            this.customTitleBar1.Size = new System.Drawing.Size(1416, 36);
             this.customTitleBar1.TabIndex = 3;
-            this.customTitleBar1.Title = "Principal";
+            this.customTitleBar1.Title = "SIGEHA";
             // 
             // Form_Contenedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1306, 635);
+            this.ClientSize = new System.Drawing.Size(1416, 550);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.customTitleBar1);
             this.DoubleBuffered = true;
@@ -213,6 +215,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_Contenedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIGEHA";

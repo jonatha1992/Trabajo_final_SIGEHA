@@ -132,10 +132,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvHallazgos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 51</value>
+    <value>638, 62</value>
   </data>
   <data name="dgvHallazgos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 277</value>
+    <value>602, 266</value>
   </data>
   <data name="dgvHallazgos.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -802,19 +802,19 @@
     <value>True</value>
   </data>
   <data name="labelHallazgo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Rounded MT Bold, 12pt</value>
+    <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
   <data name="labelHallazgo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="labelHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>905, 339</value>
+    <value>900, 342</value>
   </data>
   <data name="labelHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="labelHallazgo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 18</value>
+    <value>83, 18</value>
   </data>
   <data name="labelHallazgo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1375,13 +1375,13 @@
     <value>False</value>
   </data>
   <data name="DgvElementos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>622, 361</value>
+    <value>638, 372</value>
   </data>
   <data name="DgvElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="DgvElementos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 242</value>
+    <value>602, 231</value>
   </data>
   <data name="DgvElementos.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -1402,19 +1402,19 @@
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+    <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>904, 28</value>
+    <value>904, 33</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 1, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
+    <value>79, 18</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>

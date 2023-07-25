@@ -194,13 +194,14 @@
             this.DgvPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvPersonas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DgvPersonas.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DgvPersonas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvPersonas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DgvPersonas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvPersonas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -250,6 +251,7 @@
             this.Sel.FalseValue = "";
             this.Sel.HeaderText = "";
             this.Sel.IndeterminateValue = "";
+            this.Sel.MinimumWidth = 6;
             this.Sel.Name = "Sel";
             this.Sel.ReadOnly = true;
             this.Sel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -525,9 +527,9 @@
             // 
             this.buttonAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             this.buttonAgregar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.buttonAgregar.BorderColor = System.Drawing.Color.White;
+            this.buttonAgregar.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonAgregar.BorderRadius = 20;
-            this.buttonAgregar.BorderSize = 0;
+            this.buttonAgregar.BorderSize = 1;
             this.buttonAgregar.FlatAppearance.BorderSize = 0;
             this.buttonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAgregar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -548,9 +550,9 @@
             // 
             this.buttonLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.buttonLimpiar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.buttonLimpiar.BorderColor = System.Drawing.Color.Transparent;
+            this.buttonLimpiar.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonLimpiar.BorderRadius = 20;
-            this.buttonLimpiar.BorderSize = 0;
+            this.buttonLimpiar.BorderSize = 1;
             this.buttonLimpiar.FlatAppearance.BorderSize = 0;
             this.buttonLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLimpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -570,9 +572,9 @@
             // 
             this.buttonBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.buttonBuscar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.buttonBuscar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.buttonBuscar.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonBuscar.BorderRadius = 20;
-            this.buttonBuscar.BorderSize = 0;
+            this.buttonBuscar.BorderSize = 1;
             this.buttonBuscar.FlatAppearance.BorderSize = 0;
             this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -593,9 +595,9 @@
             // 
             this.buttonModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.buttonModificar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
-            this.buttonModificar.BorderColor = System.Drawing.Color.White;
+            this.buttonModificar.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonModificar.BorderRadius = 20;
-            this.buttonModificar.BorderSize = 0;
+            this.buttonModificar.BorderSize = 1;
             this.buttonModificar.FlatAppearance.BorderSize = 0;
             this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -616,9 +618,9 @@
             // 
             this.buttonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.buttonEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.buttonEliminar.BorderColor = System.Drawing.Color.White;
+            this.buttonEliminar.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonEliminar.BorderRadius = 20;
-            this.buttonEliminar.BorderSize = 0;
+            this.buttonEliminar.BorderSize = 1;
             this.buttonEliminar.FlatAppearance.BorderSize = 0;
             this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEliminar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
