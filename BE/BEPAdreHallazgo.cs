@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BE
 {
-    public class BEPAdreHallazgo
+    public class BEPadreHallazgo
     {
 
         public string NroActa { get; set; }

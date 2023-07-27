@@ -257,7 +257,7 @@ namespace Presentacion_UI
             {
                 if (ModoCreacion)
                 {
-                    bEEntregaSeleccionada = bLLEntrega.ListarObjetoElementos(bEEntregaSeleccionada);
+                    bEEntregaSeleccionada = bLLEntrega.ListarEntregaElementos(bEEntregaSeleccionada);
                     DgvElementosEntrega.DataSource = bEEntregaSeleccionada.listaElementos;
                 }
                 else
@@ -281,23 +281,23 @@ namespace Presentacion_UI
                     DgvElementosEntrega.ClearSelection();
                 }
 
-                else
-                {
-                    if (!ModoCreacion)
-                    {
-                        var result = MessageBox.Show("La Entrega no contiene elementos\n\n¿Desea eliminar la entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (result == DialogResult.Yes)
-                        {
-                            if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
-                            {
-                                MessageBox.Show("La Entrega se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LimpiarCamposEntrega();
-                                CargarGrillaEntregas();
-                                Habilitar();
-                            }
-                        }
-                    }
-                }
+                //else
+                //{
+                //    if (!ModoCreacion)
+                //    {
+                //        var result = MessageBox.Show("La Entrega no contiene elementos\n\n¿Desea eliminar la entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                //        if (result == DialogResult.Yes)
+                //        {
+                //            if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
+                //            {
+                //                MessageBox.Show("La Entrega se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //                LimpiarCamposEntrega();
+                //                CargarGrillaEntregas();
+                //                Habilitar();
+                //            }
+                //        }
+                //    }
+                //}
 
                 if (DgvElementosEntrega.DataSource == null || DgvElementosEntrega.Rows.Count == 0)
                 {
@@ -364,7 +364,7 @@ namespace Presentacion_UI
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroHallazgo(textBoxNroActa.Text))
+            if (!Validar.VerificarNroActa(textBoxNroActa.Text,bEUnidad.Cod))
             {
                 MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

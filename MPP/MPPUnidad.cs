@@ -62,6 +62,7 @@ namespace MPP
                          {
                              Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                             Cod = Convert.ToString(x.Element("Cod")?.Value),
                              Ursa = new BEUrsa(Convert.ToInt32(Convert.ToString(x.Element("IdUrsa")?.Value)))
                            }).ToList();
 

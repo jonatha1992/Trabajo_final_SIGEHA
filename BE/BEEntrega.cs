@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BE
 {
-    public class BEEntrega : BEPAdreHallazgo, IEntidad, IComparable<BEEntrega>
+    public class BEEntrega : BEPadreHallazgo, IEntidad, IComparable<BEEntrega>
     {
         public BEEntrega() {
             listaElementos = new List<BEElemento>();

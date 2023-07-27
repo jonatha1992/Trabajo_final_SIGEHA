@@ -19,43 +19,37 @@ namespace Negocio
             mmPEntrega = new MPPEntrega();
             mPPElemento = new MPPElemento();
         }
+
         public override string ObtenerNroActa(BEUnidad unidad, int anio)
         {
+            var entregas = ListarTodo();
 
+            string nroEntrega = entregas
+                .Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+                .OrderByDescending(h => h.NroActa)
+                .FirstOrDefault()?.NroActa;
 
-            var Entregas = ListarTodo();
+            int numeroSecuencial = 0;
 
-            string NroEntrega = Entregas.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
-                           .OrderByDescending(h => h.NroActa)
-                           .FirstOrDefault()?.NroActa;
-
-
-            if (NroEntrega == "" || NroEntrega == null)
+            if (nroEntrega == "" || nroEntrega == null)
             {
-
-                NroEntrega = $"0001{unidad.Cod}/{anio}";
+                numeroSecuencial = 1;
             }
             else
             {
+                // Extraer solo el número secuencial sin incluir el código de unidad y el año
+                string numeroSecuencialStr = nroEntrega.Substring(0, nroEntrega.IndexOf(unidad.Cod));
 
-                string aux = (int.Parse(NroEntrega.Substring(0, 4)) + 1).ToString();
-
-                if (aux.Length == 1)
+                if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
                 {
-                    aux = "000" + aux;
+                    numeroSecuencial = numeroParseado + 1;
                 }
-                if (aux.Length == 2)
-                {
-                    aux = "00" + aux;
-                }
-                if (aux.Length == 3)
-                {
-                    aux = "0" + aux;
-                }
-                NroEntrega = $"{(aux)}{unidad.Cod}/{anio}";
             }
 
-            return NroEntrega;
+            // Crear el nuevo número de Acta con el formato "XXXXCCC/YYYY"
+            nroEntrega= $"{numeroSecuencial:D4}{unidad.Cod}/{anio}";
+
+            return nroEntrega;
         }
 
         public BEEntrega Agregar(BEEntrega entrega)
@@ -70,19 +64,19 @@ namespace Negocio
         }
         public BEEntrega ListarObjeto(BEEntrega entrega)
         {
-            entrega = ListarObjetoElementos(entrega);
-            entrega = ListarObjetoPersonas(entrega);
+            entrega = ListarEntregaElementos(entrega);
+            entrega = ListarEntregaPersonas(entrega);
             return entrega;
 
         }
 
-        public BEEntrega ListarObjetoPersonas(BEEntrega entrega)
+        public BEEntrega ListarEntregaPersonas(BEEntrega entrega)
         {
-            return mmPEntrega.ListarObjetoPersonas(entrega);
+            return mmPEntrega.ListarEntregaPersonas(entrega);
         }
-        public BEEntrega ListarObjetoElementos(BEEntrega entrega)
+        public BEEntrega ListarEntregaElementos(BEEntrega entrega)
         {
-            return mmPEntrega.ListarObjetoElementos(entrega);
+            return mmPEntrega.ListarEntregaElementos(entrega);
         }
         public bool Actualizar(BEEntrega entrega)
         {

@@ -55,11 +55,7 @@ namespace Negocio
                 return usuario;
         }
 
-        public DataSet ObtenerElementosReporte(BEUrsa ursa, BEUnidad unidad = null)
-        {
-            return mpPUsuario.ObtenerElementosReporte(ursa, unidad);
-        }
-
+   
         public bool verificarol(BEUsuario usuario)
         {
             foreach (var item in usuario.Permisos)

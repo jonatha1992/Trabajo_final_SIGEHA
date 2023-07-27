@@ -60,33 +60,30 @@ namespace Negocio
         {
             var hallazgos = ListarTodo();
 
-            string nroHallazgo = hallazgos.Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
-                                 .OrderByDescending(h => h.NroActa)
-                                 .FirstOrDefault()?.NroActa;
+            string nroHallazgo = hallazgos
+                .Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+                .OrderByDescending(h => h.NroActa)
+                .FirstOrDefault()?.NroActa;
 
+            int numeroSecuencial = 0;
 
             if (nroHallazgo == "" || nroHallazgo == null)
             {
-                nroHallazgo = $"0001{unidad.Cod}/{anio}";
+                numeroSecuencial = 1;
             }
             else
             {
-                string aux = (int.Parse(nroHallazgo.Substring(0, 4)) + 1).ToString();
+                // Extraer solo el número secuencial sin incluir el código de unidad y el año
+                string numeroSecuencialStr = nroHallazgo.Substring(0, nroHallazgo.IndexOf(unidad.Cod));
 
-                if (aux.Length == 1)
+                if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
                 {
-                    aux = "000" + aux;
+                    numeroSecuencial = numeroParseado + 1;
                 }
-                if (aux.Length == 2)
-                {
-                    aux = "00" + aux;
-                }
-                if (aux.Length == 3)
-                {
-                    aux = "0" + aux;
-                }
-                nroHallazgo = $"{(aux)}{unidad.Cod}/{anio}";
             }
+
+            // Crear el nuevo número de Acta con el formato "XXXXCCC/YYYY"
+            nroHallazgo = $"{numeroSecuencial:D4}{unidad.Cod}/{anio}";
 
             return nroHallazgo;
         }

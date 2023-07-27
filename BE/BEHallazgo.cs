@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BE
 {
-    public class BEHallazgo : BEPAdreHallazgo, IEntidad, IComparable<BEHallazgo>
+    public class BEHallazgo : BEPadreHallazgo, IEntidad, IComparable<BEHallazgo>
     {
         public BEHallazgo() {
 

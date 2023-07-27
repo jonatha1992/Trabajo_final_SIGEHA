@@ -54,7 +54,7 @@
     <Compile Include="BEEventos.cs" />
     <Compile Include="BEHallazgo.cs" />
     <Compile Include="BEJerarquia.cs" />
-    <Compile Include="BEPAdreHallazgo.cs" />
+    <Compile Include="BEPadreHallazgo.cs" />
     <Compile Include="BEPermiso.cs" />
     <Compile Include="BERol.cs" />
     <Compile Include="BEUrsa.cs" />

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
+using ClosedXML.Excel;
 using Negocio;
 
 namespace Presentacion_UI
@@ -112,6 +114,35 @@ namespace Presentacion_UI
             }
         }
 
-     
+        private void buttonReporteExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                XLWorkbook wb = new XLWorkbook();
+                string esc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                SaveFileDialog file = new SaveFileDialog();
+
+                wb.AddWorksheet(Reporte.GenerarReporteExcel(Form_Contenedor.usuario ));
+
+                file.Filter = "Excel Files | *.xlsx";
+                file.FileName = $"Reporte {DateTime.Today.Day + DateTime.Today.ToString("MMMM").ToUpper() + DateTime.Now.Year.ToString()}";
+
+
+                wb.Worksheet("Elementos").Columns().AdjustToContents();
+                //wb.Worksheet("Hallazgos - Actores").Columns().AdjustToContents();
+                //wb.Worksheet("Entrega - Actores").Columns().AdjustToContents();
+                if (file.ShowDialog() == DialogResult.OK)
+                {
+                    wb.SaveAs(file.FileName);
+                    Process.Start(file.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

@@ -462,7 +462,7 @@ namespace Presentacion_UI
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroHallazgo(textBoxNroActa.Text))
+            if (!Validar.VerificarNroActa(textBoxNroActa.Text, bEUnidad.Cod))
             {
                 MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -814,7 +814,7 @@ namespace Presentacion_UI
             {
                 CargarGrillaHallazgos();
             }
-            //if (!SeleccionHallazgo && Usuario.Rol == "UNIDAD")
+            //if (!SeleccionEntrega && Usuario.Rol == "UNIDAD")
             //{
             //    ColocarNumero();
             //}

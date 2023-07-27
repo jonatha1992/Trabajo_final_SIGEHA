@@ -208,6 +208,9 @@
     <EmbeddedResource Include="Form_BackUp.resx">
       <DependentUpon>Form_BackUp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_GestionEntrega.aa-ER.resx">
+      <DependentUpon>Form_GestionEntrega.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_GestionEntrega.resx">
       <DependentUpon>Form_GestionEntrega.cs</DependentUpon>
     </EmbeddedResource>

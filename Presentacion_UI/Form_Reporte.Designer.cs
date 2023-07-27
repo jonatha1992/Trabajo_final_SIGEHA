@@ -65,6 +65,7 @@
             this.chartEntregas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartCategoria = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.customTitleBar1 = new Seguridad.CustomTitleBar();
+            this.buttonAgregar = new Seguridad.RJButton();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartHallazgos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -464,12 +465,36 @@
             this.customTitleBar1.TabIndex = 109;
             this.customTitleBar1.Title = "Reporte";
             // 
+            // buttonAgregar
+            // 
+            this.buttonAgregar.BackColor = System.Drawing.Color.Green;
+            this.buttonAgregar.BackgroundColor = System.Drawing.Color.Green;
+            this.buttonAgregar.BorderColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAgregar.BorderRadius = 20;
+            this.buttonAgregar.BorderSize = 1;
+            this.buttonAgregar.FlatAppearance.BorderSize = 0;
+            this.buttonAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAgregar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregar.ForeColor = System.Drawing.Color.White;
+            this.buttonAgregar.Image = global::Presentacion_UI.Properties.Resources.sobresalir;
+            this.buttonAgregar.Location = new System.Drawing.Point(1180, 610);
+            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(87, 41);
+            this.buttonAgregar.TabIndex = 110;
+            this.buttonAgregar.Text = "Excel";
+            this.buttonAgregar.TextColor = System.Drawing.Color.White;
+            this.buttonAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonAgregar.UseVisualStyleBackColor = false;
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonReporteExcel_Click);
+            // 
             // Form_Reporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1300, 663);
+            this.Controls.Add(this.buttonAgregar);
             this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.chartCategoria);
             this.Controls.Add(this.chartEntregas);
@@ -535,5 +560,6 @@
         private Seguridad.RJRadioButton RadioButtonTrimestral;
         private Seguridad.RJRadioButton RadioButtonMensual;
         private Seguridad.CustomTitleBar customTitleBar1;
+        private Seguridad.RJButton buttonAgregar;
     }
 }

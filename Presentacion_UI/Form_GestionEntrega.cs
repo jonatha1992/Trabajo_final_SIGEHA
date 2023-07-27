@@ -1,4 +1,5 @@
 ﻿using BE;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.VisualBasic;
 using Negocio;
 using Seguridad;
@@ -7,6 +8,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
+using Color = System.Drawing.Color;
+using Font = System.Drawing.Font;
 
 namespace Presentacion_UI
 {
@@ -14,62 +18,54 @@ namespace Presentacion_UI
     {
         public Form_GestionEntrega()
         {
+
             InitializeComponent();
 
-            bLLElemento = new BLLElemento();
-            bllbitacora = new BLLBitacora();
             bLLEntrega = new BLLEntrega();
-            bLLCategorias = new BLLCategoria();
-            bLLArticulo = new BLLArticulo();
+            bLLBitacora = new BLLBitacora();
+
             Usuario = Form_Contenedor.usuario;
-
-            ListaCategorias = bLLCategorias.ListarTodo();
-            ListaArticulos = bLLArticulo.ListarTodo();
-
         }
 
 
-        private void Form_Entrega_Load(object sender, EventArgs e)
+        void FormularioPrincipal_Load(object sender, EventArgs e)
         {
+            try
+            {
+                CargarCombo();
+                Habilitar();
 
-            CargarCombo();
-            CargarGrillaEntregas();
-            Habilitar();
-            ColocarNumero();
+                ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+                CargarGrillaEntregas();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
-        #region "Campos y Banderas"
+
+        #region "Propiedades"
+
+        BEUsuario Usuario;
+        BEUnidad bEUnidad;
+        BEUrsa bEUrsa;
+
+        BEEntrega BEEntregaSeleccionado;
+        List<BEEntrega> ListaEntregas;
+        BLLEntrega bLLEntrega;
+        BLLBitacora bLLBitacora;
+
 
 
         bool SeleccionEntrega = false;
-
-        bool ModoCreacion = false;
-
-        BLLEntrega bLLEntrega;
-        BLLElemento bLLElemento;
-        BLLCategoria bLLCategorias;
-        BLLArticulo bLLArticulo;
-        BLLBitacora bllbitacora;
-
-        BEEntrega bEEntregaSeleccionada;
-
-
-        BEUrsa bEUrsa;
-        BEUnidad bEUnidad;
-        BEUsuario Usuario;
-
-
-        List<BEArticulo> ListaArticulos;
-        List<BECategoria> ListaCategorias;
-        List<ElementoBusqueda> listaElementosBusqueda;
-        List<BEEntrega> listaEntregas;
-
-
-        List<BEElemento> listaElementosAgregarEntrega;
-        List<BEElemento> listaElementoEliminarEntrega;
         #endregion
 
         #region "Metodos"
+
+        #region "MetodosElementos"
 
         void CargarCombo()
         {
@@ -91,363 +87,172 @@ namespace Presentacion_UI
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUrsa.Enabled = false;
             }
+        }
 
+        void CargarGrillaElementos()
+        {
+            try
+            {
+                DgvElementos.DataSource = null;
 
-            comboBoxCategoria.DataSource = ListaCategorias;
-            comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
-            comboBoxArticulo = Utilidades.SetAutoCompleteCombo(comboBoxArticulo, ListaArticulos, articulo => articulo.Nombre);
+                if (SeleccionEntrega)
+                {
+
+                    DgvElementos.DataSource = bLLEntrega.ListarEntregaElementos(BEEntregaSeleccionado).listaElementos;
+
+                    if (DgvElementos.DataSource != null || BEEntregaSeleccionado.listaElementos.Count > 0)
+                    {
+                        this.DgvElementos.Columns["Id"].Width = 35;
+                        this.DgvElementos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                        this.DgvElementos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+                        this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+
+                    }
+                    if (DgvElementos.DataSource == null || DgvElementos.Rows.Count == 0)
+                    {
+                        DgvElementos.ColumnHeadersVisible = false;
+                    }
+                    else
+                    {
+                        DgvElementos.ColumnHeadersVisible = true;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error {ex.Message}"); ;
+            }
+        }
+
+        void CargarGrillaPersonas()
+        {
+            DgvPersonas.DataSource = null;
+
+            if (SeleccionEntrega)
+            {
+                BEEntregaSeleccionado.listaPersonas = bLLEntrega.ListarEntregaPersonas(BEEntregaSeleccionado).listaPersonas;
+                DgvPersonas.DataSource = BEEntregaSeleccionado.listaPersonas;
+
+                if (BEEntregaSeleccionado.listaPersonas != null || BEEntregaSeleccionado.listaPersonas?.Count > 0)
+                {
+
+                    this.DgvPersonas.Columns["Id"].Visible = false;
+                    this.DgvPersonas.Columns["Telefono"].Visible = false;
+                    this.DgvPersonas.Columns["Ocupacion"].Visible = false;
+                    this.DgvPersonas.Columns["Domicilio"].Visible = false;
+                    this.DgvPersonas.Columns["NombreCompleto"].HeaderText = "Apellido y Nombre";
+                    this.DgvPersonas.Columns["EstadoPersona"].HeaderText = "Estado";
+                    this.DgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    this.DgvPersonas.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                    this.DgvPersonas.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+                    this.DgvPersonas.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
+
+                }
+            }
+
+            if (DgvPersonas.DataSource == null || DgvPersonas.Rows.Count == 0)
+            {
+                DgvPersonas.ColumnHeadersVisible = false;
+            }
+            else
+            {
+                DgvPersonas.ColumnHeadersVisible = true;
+            }
 
 
         }
-        void SeleccionarEntrega()
+        void SeleccionarHallazgo()  // lo que hace la funcion es recorrer el dgv y seleccioonar el hallazgo
         {
-            foreach (DataGridViewRow item in dataGridViewEntregas.Rows)
+            foreach (DataGridViewRow item in dgvHallazgos.Rows)
             {
-                if (item.Cells["NroActa"].Value.ToString() == bEEntregaSeleccionada.NroActa)
+                if (item.Cells["NroActa"].Value.ToString() == BEEntregaSeleccionado.NroActa)
                 {
                     item.Cells["Seleccion"].Value = true;
                     item.Selected = true;
                 }
-                else
-                {
-                    item.Cells["Seleccion"].Value = false;
-                }
             }
         }
-        void Dgv()
+
+        #endregion
+
+        #region "MetodosHallazgo"
+        void limpiarCamposEntrega()
         {
-            if (ModoCreacion)
+            dateTimePickerFechaEntrega.Value = DateTime.Now;
+            textBoxNroActa.Text = "";
+            textBoxObservacion.Text = "";
+            checkBoxObservacion.Checked = false;
+            SeleccionEntrega = false;
+            BEEntregaSeleccionado = null;
+        }
+        void ComboBox()
+        {
+            if (SeleccionEntrega) // si esta en modo creacion
             {
-                dataGridViewEntregas.Enabled = false;
+                comboBoxUnidad.Text = BEEntregaSeleccionado.Unidad.Nombre;
+
+                if (Usuario.Destino is BEUrsa)
+                    comboBoxUnidad.Enabled = false;
             }
             else
             {
-                dataGridViewEntregas.Enabled = true;
+                if (Usuario.Destino is BEUrsa)
+                    comboBoxUnidad.Enabled = true;
+
             }
         }
         void Botones()
         {
-
             if (SeleccionEntrega)
             {
-
-                if (ModoCreacion)
-                {
-                    buttonAgregar.Visible = false;
-                    buttonModificar.Visible = true;
-                    buttonEliminar.Visible = true;
-                    buttonFinalizar.Visible = true;
-                    buttonEliminarDeEntrega.Visible = true;
-                    dataGridViewEntregas.Enabled = false;
-                    buttonCargarPersonas.Visible = true;
-                    buttonAgregarEntrega.Visible = listaElementosAgregarEntrega?.Count > 0 ? true : false;
-                    buttonEliminarDeEntrega.Visible = listaElementoEliminarEntrega?.Count > 0 ? true : false;
-                }
-                else
-                {
-                    buttonAgregar.Visible = false;
-                    buttonEliminar.Visible = false;
-                    buttonFinalizar.Visible = false;
-                    buttonModificar.Visible = false;
-                    buttonCargarPersonas.Visible = false;
-                    buttonAgregarEntrega.Visible = false;
-                    buttonEliminarDeEntrega.Visible = false;
-                    dataGridViewEntregas.Enabled = true;
-                }
-
-                if (VerificarCantidadPersonas())
-                {
-                    buttonCargarPersonas.BackColor = Color.Green;
-
-                    if (bEEntregaSeleccionada.listaElementos?.Count > 0)
-                    {
-                        buttonImprimir.Visible = true;
-
-                    }
-                }
-                else
-                {
-                    buttonCargarPersonas.BackColor = Color.Red;
-                }
-
-            } //SE SELECCIONO ALGO EN DGV ENTREGAS
-            else  //MODO INICIAL
+                buttonEliminar.Visible = true;
+                button_Modificar.Visible = true;
+            }
+            else
             {
-                buttonAgregar.Visible = true;
-                buttonModificar.Visible = false;
+                button_Modificar.Visible = false;
                 buttonEliminar.Visible = false;
-                buttonAgregarEntrega.Visible = false;
-                buttonEliminarDeEntrega.Visible = false;
-                buttonCargarPersonas.Visible = false;
-                buttonImprimir.Visible = false;
-                buttonFinalizar.Visible = false;
             }
 
         }
-        void Combobox()
-        {
-            if (SeleccionEntrega)
-            {
-                comboBoxUnidad.Text = bEEntregaSeleccionada.Unidad.Nombre;
-            }
-
-        }
-
         void Habilitar()
         {
             Botones();
-            Combobox();
-            Dgv();
-        }
-        bool VerificarCantidadPersonas()
-        {
-            bool cumple = false;
-
-            if (bEEntregaSeleccionada.listaPersonas != null)
-            {
-                if (bEEntregaSeleccionada.listaPersonas?.Count == 4)
-                {
-                    cumple = true;
-                }
-                if (bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Testigo") && bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Propietario") && bEEntregaSeleccionada.listaPersonas.Exists(x => x.EstadoPersona.Nombre == "Instructor"))
-                {
-                    cumple = true;
-                }
-
-            }
-            return cumple;
-        }
-
-        void CargariGriilaElementosBusqueda()
-        {
-            if (listaElementosBusqueda.Count != 0 || listaElementosBusqueda == null)
-            {
-                DgvBusqueda.DataSource = null;
-                DgvBusqueda.DataSource = listaElementosBusqueda;
-                DgvBusqueda.Columns["Select"].Visible = ModoCreacion;
-                DgvBusqueda.Columns["Id"].Width = 30;
-                DgvBusqueda.Columns["Cantidad"].Width = 30;
-                DgvBusqueda.Columns["Cantidad"].HeaderText = "Cant";
-                DgvBusqueda.Columns["Fecha_hallazgo"].HeaderText = "Fecha Hallazgo";
-                DgvBusqueda.Columns["Fecha_hallazgo"].Width = 58;
-                DgvBusqueda.Columns["Lugar"].Width = 60;
-                DgvBusqueda.Columns["Select"].Width = 25;
-                DgvBusqueda.Columns["Descripcion"].Width = 140;
-                DgvBusqueda.Columns["Estado"].Width = 65;
-                DgvBusqueda.Columns["Hallazgo"].Width = 80;
-                DgvBusqueda.Columns["Entrega"].Width = 83;
-                DgvBusqueda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                DgvBusqueda.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-                DgvBusqueda.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                DgvBusqueda.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
-                DgvBusqueda.ClearSelection();
-            }
-            else
-            {
-                //DgvBusqueda.Columns["Select"].Visible = false;
-                MessageBox.Show("¡No existen elementos con esa descripción!\n\n\tRealicé una nueva busqueda", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        void CargarGrillaElementosEntrega()
-        {
-            DgvElementosEntrega.DataSource = null;
-            DgvElementosEntrega.Columns["Sel"].Visible = ModoCreacion;
-
-            if (SeleccionEntrega)
-            {
-                if (ModoCreacion)
-                {
-                    bEEntregaSeleccionada = bLLEntrega.ListarObjetoElementos(bEEntregaSeleccionada);
-                    DgvElementosEntrega.DataSource = bEEntregaSeleccionada.listaElementos;
-                }
-                else
-                {
-                    DgvElementosEntrega.DataSource = bEEntregaSeleccionada.listaElementos;
-                }
-
-
-                if (bEEntregaSeleccionada != null && bEEntregaSeleccionada.listaElementos?.Count > 0)
-                {
-                    DgvElementosEntrega.Columns["Sel"].Width = 20;
-                    DgvElementosEntrega.Columns["Id"].Width = 30;
-                    DgvElementosEntrega.Columns["Cantidad"].Width = 45;
-                    DgvElementosEntrega.Columns["Estado"].Width = 60;
-                    DgvElementosEntrega.Columns["Articulo"].Width = 80;
-                    DgvElementosEntrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    DgvElementosEntrega.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-                    DgvElementosEntrega.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                    DgvElementosEntrega.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
-                    DgvElementosEntrega.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 8F);
-                    DgvElementosEntrega.ClearSelection();
-                }
-
-                else
-                {
-                    if (!ModoCreacion)
-                    {
-                        var result = MessageBox.Show("La Entrega no contiene elementos\n\n¿Desea eliminar la entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (result == DialogResult.Yes)
-                        {
-                            if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
-                            {
-                                MessageBox.Show("La Entrega se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LimpiarCamposEntrega();
-                                CargarGrillaEntregas();
-                                Habilitar();
-                            }
-                        }
-                    }
-                }
-
-                if (DgvElementosEntrega.DataSource == null || DgvElementosEntrega.Rows.Count == 0)
-                {
-                    DgvElementosEntrega.ColumnHeadersVisible = false;
-                }
-                else
-                {
-                    DgvElementosEntrega.ColumnHeadersVisible = true;
-                }
-
-
-
-            }
+            ComboBox();
         }
         void CargarGrillaEntregas()
         {
-            dataGridViewEntregas.DataSource = null;
-            listaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+            this.dgvHallazgos.DataSource = null;
 
-            if (listaEntregas != null && listaEntregas.Count > 0)
+
+            if (ListaEntregas != null && ListaEntregas.Count > 0)
             {
-                dataGridViewEntregas.DataSource = listaEntregas;
-                this.dataGridViewEntregas.Columns["Id"].Visible = false;
-                this.dataGridViewEntregas.Columns["NroActa"].HeaderText = "Entrega";
-                this.dataGridViewEntregas.Columns["FechaActa"].Visible = false;
-                this.dataGridViewEntregas.Columns["Fecha_entrega"].HeaderText = "Fecha Entrega";
-                this.dataGridViewEntregas.Columns["Anio"].HeaderText = "Año";
-                this.dataGridViewEntregas.Columns["Seleccion"].Visible = true;
-                this.dataGridViewEntregas.Columns["Seleccion"].Width = 25;
-                this.dataGridViewEntregas.RowTemplate.Height = 20;
+                this.dgvHallazgos.DataSource = ListaEntregas;
+                this.dgvHallazgos.Columns["NroActa"].HeaderText = "Nro Entrega";
+                this.dgvHallazgos.Columns["Fecha_entrega"].HeaderText = "Fecha Entrega";
+                this.dgvHallazgos.Columns["Anio"].HeaderText = "Año";
+                this.dgvHallazgos.Columns["Unidad"].Visible = false;
+                this.dgvHallazgos.Columns["FechaActa"].Visible = false;
+                this.dgvHallazgos.Columns["Id"].Visible = false;
+                this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+                this.dgvHallazgos.Columns["Seleccion"].Visible = true;
 
-                this.dataGridViewEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                this.dataGridViewEntregas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-                this.dataGridViewEntregas.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-                this.dataGridViewEntregas.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                this.dataGridViewEntregas.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
-
+                this.dgvHallazgos.ClearSelection();
             }
             else
             {
-                this.dataGridViewEntregas.Columns["Seleccion"].Visible = false;
-            }
-        }
-        void LimpiarbBusqueda()
-        {
-            DgvBusqueda.DataSource = null;
-            DgvBusqueda.Columns["Select"].Visible = false;
-        }
-        void limpiarCamposBusqueda()
-        {
-            dateTimePickerDesde.Value = DateTime.Now;
-            dateTimePickerHasta.Value = DateTime.Now;
-            numericUpDownHallazgo.Text = "0";
-            textBoxDescripcion.Text = "";
-            textBoxLugar.Text = "";
-            checkBoxArticulo.Checked = false;
-            checkBoxFecha.Checked = false;
-            DgvBusqueda.DataSource = null;
-        }
-        bool VerficarCampos()
-        {
-            if (comboBoxUnidad.Text == "" || comboBoxUrsa.Text == "" || dateTimePickerDesde.Text == "" || textBoxNroActa.Text == "")
-            {
-                MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (!Validar.VerificarNroHallazgo(textBoxNroActa.Text))
-            {
-                MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        void BuscarElementos()
-        {
-            DateTime? Desde = null;
-            DateTime? Hasta = null;
-            BECategoria bEcategoria = null;
-            BEArticulo bEArticulo = null;
-            string LugarHallazgo = "";
-            string PDescripcion = "";
-            string NroHallazgo = "";
-
-            if (checkBoxFecha.Checked)
-            {
-                Desde = dateTimePickerDesde.Value;
-                Hasta = dateTimePickerHasta.Value;
-            }
-            if (checkBoxCategoria.Checked && comboBoxCategoria.Enabled)
-            {
-                bEcategoria = (BECategoria)comboBoxCategoria.SelectedItem;
-            }
-            if (checkBoxArticulo.Checked && comboBoxArticulo.Enabled)
-            {
-                bEArticulo = (BEArticulo)comboBoxArticulo.SelectedItem;
-            }
-            if (checkBoxDescripcion.Checked && textBoxDescripcion.Enabled)
-            {
-                PDescripcion = textBoxDescripcion.Text;
-            }
-            if (checkBoxLugar.Checked && textBoxLugar.Enabled)
-            {
-                LugarHallazgo = textBoxLugar.Text;
-            }
-
-            if (checkBoxNroHallazgo.Checked && numericUpDownHallazgo.Enabled && numericUpDownHallazgo.Value != 0)
-            {
-                NroHallazgo = numericUpDownHallazgo.Text;
+                this.dgvHallazgos.Columns["Seleccion"].Visible = false;
 
             }
-            listaElementosBusqueda = bLLElemento.BusquedaElementos(Desde, Hasta, bEcategoria, bEArticulo, LugarHallazgo, PDescripcion, bEUnidad, NroHallazgo);
-        }
-        void LimpiarCamposEntrega()
-        {
-            SeleccionEntrega = false;
-            dateTimePickerFechaEntrega.Value = DateTime.Now;
-            bEEntregaSeleccionada = null;
-            DgvElementosEntrega.DataSource = null;
-            listaElementosAgregarEntrega = null;
-            listaElementoEliminarEntrega = null;
-            ColocarNumero();
-        }
-        void ColocarNumero()
-        {
-            textBoxNroActa.Text = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
-        }
-        BEEntrega CrearEntrega()
-        {
-            if (!SeleccionEntrega) // AGREGAR UNO NUEVO
-            {
-                bEEntregaSeleccionada = new BEEntrega();
-            }
-            bEEntregaSeleccionada.NroActa = textBoxNroActa.Text;
-            bEEntregaSeleccionada.Unidad = bEUnidad;
-            bEEntregaSeleccionada.Fecha_entrega = dateTimePickerFechaEntrega.Value;
-            bEEntregaSeleccionada.Anio = dateTimePickerFechaEntrega.Value.Year;
-            bEEntregaSeleccionada.Observacion = textBoxObservacion.Text;
-
-            listaElementoEliminarEntrega = new List<BEElemento>();
-            listaElementosAgregarEntrega = new List<BEElemento>();
-            return bEEntregaSeleccionada;
         }
         void VerificarEntregaSeleccionados()
         {
             SeleccionEntrega = false;
 
-            foreach (DataGridViewRow row in dataGridViewEntregas.Rows)
+            foreach (DataGridViewRow row in dgvHallazgos.Rows)
             {
                 var valorCelda = row.Cells[0].Value;
                 var valor = valorCelda as bool? ?? false;
@@ -455,262 +260,175 @@ namespace Presentacion_UI
                 if (valor)
                 {
                     SeleccionEntrega = true;
-
-                    if (bEEntregaSeleccionada?.Id != ((BEEntrega)row.DataBoundItem).Id) // SI YA ESTA SELECCIONADO
+                    if (BEEntregaSeleccionado?.Id != ((BEEntrega)row.DataBoundItem).Id) // SI YA ESTA SELECCIONADO
                     {
-                        bEEntregaSeleccionada = bLLEntrega.ListarObjeto((BEEntrega)row.DataBoundItem);
+                        BEEntregaSeleccionado = bLLEntrega.ListarObjeto((BEEntrega)row.DataBoundItem);
                     }
-                    textBoxNroActa.Text = bEEntregaSeleccionada.NroActa;
-                    dateTimePickerDesde.Value = bEEntregaSeleccionada.Fecha_entrega;
-                    CargarGrillaElementosEntrega();
+                    textBoxNroActa.Text = BEEntregaSeleccionado.NroActa;
+                    dateTimePickerFechaEntrega.Value = BEEntregaSeleccionado.Fecha_entrega;
 
+                    if (!string.IsNullOrEmpty(BEEntregaSeleccionado.Observacion))
+                    {
+                        checkBoxObservacion.Checked = true;
+                        textBoxObservacion.Text = BEEntregaSeleccionado.Observacion;
+                    }
+
+                    CargarGrillaElementos();
+                    CargarGrillaPersonas();
+                    Habilitar();
                     break;
                 }
             }
             if (!SeleccionEntrega)
             {
-                bEEntregaSeleccionada = null;
+                BEEntregaSeleccionado = null;
                 CargarGrillaEntregas();
-                CargarGrillaElementosEntrega();
-                LimpiarCamposEntrega();
+                CargarGrillaElementos();
+                CargarGrillaPersonas();
+                limpiarCamposEntrega();
+                Habilitar();
             }
-            Habilitar();
-
         }
+        bool VerficarCampos()
+        {
+            if (comboBoxUnidad.Text == ""
+                || comboBoxUrsa.Text == ""
+                || dateTimePickerFechaEntrega.Text == ""
+                || textBoxNroActa.Text == ""
+                || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
+            {
+                MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validar.VerificarNroActa(textBoxNroActa.Text, bEUnidad.Cod))
+            {
+                MessageBox.Show("Verifique el numero de Entrega\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        BEEntrega CrearHallazgo()
+        {
+            if (!SeleccionEntrega)// agregar
+            {
+                BEEntregaSeleccionado = new BEEntrega();
+            }
 
+            BEEntregaSeleccionado.Fecha_entrega = dateTimePickerFechaEntrega.Value;
+            BEEntregaSeleccionado.NroActa = textBoxNroActa.Text;
+            BEEntregaSeleccionado.Unidad = bEUnidad;
+            BEEntregaSeleccionado.Anio = dateTimePickerFechaEntrega.Value.Year;
+            BEEntregaSeleccionado.Observacion = textBoxObservacion.Text;
 
+            return BEEntregaSeleccionado;
+        }
         #endregion
 
+        #endregion
         #region "Botones"
-        private void buttonBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                LimpiarbBusqueda();
-                BuscarElementos();
-                CargariGriilaElementosBusqueda();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-        }
-        private void buttonAgregar_Click(object sender, EventArgs e)
+        void button_Modificar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (VerficarCampos())
                 {
-                    bEEntregaSeleccionada = bLLEntrega.Agregar(CrearEntrega());
-
-                    if (bEEntregaSeleccionada.Id != 0)
+                    if (bLLEntrega.Actualizar(CrearHallazgo()))
                     {
-                        bllbitacora.RegistrarEvento(Usuario, $"Se genero el nro Acta de Entrega {bEEntregaSeleccionada.NroActa}");
-                        ModoCreacion = true;
-                        SeleccionEntrega = true;
-                        CargarGrillaEntregas();
-                        SeleccionarEntrega();
-                        MessageBox.Show($"La Entrega se creó {textBoxNroActa.Text} correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        bLLBitacora.RegistrarEvento(Usuario, $"Se modifico el nro Acta de Entrega {BEEntregaSeleccionado.NroActa}");
                         Habilitar();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"El Nro.de Entrega {textBoxNroActa.Text} ya se encuentra utilizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        ColocarNumero();
-
+                        CargarGrillaEntregas();
+                        SeleccionarHallazgo();
+                        MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void buttonModificar_Click(object sender, EventArgs e)
+        void buttonEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-
-                if (bLLEntrega.Actualizar(CrearEntrega()))
+                if (bLLEntrega.Eliminar(BEEntregaSeleccionado))
                 {
-                    Habilitar();
+                    bLLBitacora.RegistrarEvento(Usuario, $"Se elimino el nro Acta de Entrega {BEEntregaSeleccionado.NroActa}");
+                    limpiarCamposEntrega();
+                    ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
                     CargarGrillaEntregas();
-                    SeleccionarEntrega();
-                    MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
-        private void buttonEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
-                {
-                    bllbitacora.RegistrarEvento(Usuario, $"Se elimino el nro Acta de Entrega {bEEntregaSeleccionada.NroActa}");
-                    MessageBox.Show("La Entrega se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCamposEntrega();
-                    CargarGrillaEntregas();
-                    CargarGrillaElementosEntrega();
+                    CargarGrillaElementos();
+                    CargarGrillaPersonas();
                     Habilitar();
+                    MessageBox.Show("El Hallazgo se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
-
-        private void buttonCargarPersonas_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Form_Persona form_Personas = new Form_Persona(bEEntregaSeleccionada);
-                form_Personas.ShowDialog();
-                bEEntregaSeleccionada = (BEEntrega)form_Personas.BePAdreHallazgo;
-                Habilitar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void buttonLimpiar_Click(object sender, EventArgs e)
-        {
-            limpiarCamposBusqueda();
-        }
-        private void buttonImprimir_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //if (bEEntregaSeleccionada.listaPersonas?.Count >= 3 && bEEntregaSeleccionada.listaElementos?.Count > 0)
-                //{
-                Form_Impresion form_Impresion = new Form_Impresion(bEEntregaSeleccionada);
-                form_Impresion.ShowDialog();
-
-                //}
-                //else
-                //{
-                //    MessageBox.Show($"No posee la cantidad de intervinientes para imprimir el acta", "Requisitos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                //}
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void buttonFinalizar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (bEEntregaSeleccionada.listaElementos == null || bEEntregaSeleccionada.listaElementos.Count == 0)
-                {
-                    var result = MessageBox.Show("La Entrega no contiene elementos.\n\n¿Desea finalizar la carga?\n\nSi decide finalizar, se borrará la Entrega", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        ModoCreacion = false;
-                        bLLEntrega.Eliminar(bEEntregaSeleccionada);
-                        LimpiarCamposEntrega();
-                        Habilitar();
-                        CargarGrillaEntregas();
-                        //CargarGrillaElementosEntrega();
-                        LimpiarbBusqueda();
-                    }
-                }
-                else
-                {
-                    var result = MessageBox.Show("¿Desea finalizar la Entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        ModoCreacion = false;
-                        LimpiarCamposEntrega();
-                        Habilitar();
-                        CargarGrillaEntregas();
-                        //CargarGrillaElementosEntrega();
-                        LimpiarbBusqueda();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
 
         #endregion
 
-        #region "Acciones Datagrid y Combobox"
 
 
-        private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        #region "Entrega"
+
+        void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
-            LimpiarCamposEntrega();
+            BEEntregaSeleccionado = null;
+            limpiarCamposEntrega();
+            ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
             CargarGrillaEntregas();
             Habilitar();
 
         }
-
-        private void dateTimePickerFechaEntrega_ValueChanged(object sender, EventArgs e)
+        void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
-            if (!ModoCreacion && !SeleccionEntrega) // SI NO ESTA EN MODO CREACION 
+            if (!SeleccionEntrega) // SI NO ESTA EN MODO CREACION 
             {
                 CargarGrillaEntregas();
             }
+
 
         }
 
         #endregion
 
-        private void comboBoxCategoria_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            comboBoxArticulo.DataSource = ((BECategoria)comboBoxCategoria.SelectedItem).Articulos;
-        }
 
-        private void DgvBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        #region "Datagridview funciones"
+
+        void dgvHallazgos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (ModoCreacion)
+                // Verifica si se hizo clic en la columna "Seleccion"
+                if (e.ColumnIndex == this.dgvHallazgos.Columns["Seleccion"].Index)
                 {
-                    if (e.ColumnIndex == this.DgvBusqueda.Columns["Select"].Index)
+                    // Obtiene el valor actual de la celda "Seleccion"
+                    var valorCelda = dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value;
+                    var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
+
+                    if (!valor) // Si se seleccionó con el tilde
                     {
-                        var valorCelda = DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value;
-                        var valorEntrega = (string)DgvBusqueda.Rows[e.RowIndex].Cells["Entrega"].Value;
-                        var valor = valorCelda as bool? ?? false;
-                        if (!valor && valorEntrega == "No entregado") // SI SELECCIONO CON EL TILDE
-                        {
-
-                            var index = e.RowIndex;
-                            DgvBusqueda.Rows[index].Cells["Select"].Value = true;
-                            var elemento = (ElementoBusqueda)DgvBusqueda.Rows[index].DataBoundItem;
-                            listaElementosAgregarEntrega.Add(bLLElemento.CovertirElemento(elemento));
-                        }
-                        else  // SACAR LA SELECCION 
-                        {
-                            DgvBusqueda.Rows[e.RowIndex].Cells["Select"].Value = false;
-                            var elementoBusqueda = (ElementoBusqueda)DgvBusqueda.Rows[e.RowIndex].DataBoundItem;
-                            listaElementosAgregarEntrega.RemoveAll(elemento => elemento.Id == elementoBusqueda.Id);
-
-                        }
-                        Habilitar();
+                        var index = dgvHallazgos.CurrentRow.Index;
+                        dgvHallazgos.Rows[index].Cells["Seleccion"].Value = true;
                     }
+                    else  // Si se quiere deseleccionar
+                    {
+                        dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
+                    }
+                    VerificarEntregaSeleccionados();
                 }
 
             }
@@ -719,44 +437,21 @@ namespace Presentacion_UI
                 MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void DgvBusqueda_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == this.DgvBusqueda.Columns["Hallazgo"].Index)
-            {
-                string Nroacta = DgvBusqueda.Rows[e.RowIndex].Cells["Hallazgo"].Value.ToString();
-                listaElementosBusqueda = bLLElemento.BusquedaElementosHallazgo(Nroacta);
-                CargariGriilaElementosBusqueda();
-                MessageBox.Show($"¡Usted ah ingresado a los elementos del hallazgo\n\t\t{Nroacta} !", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
+        #endregion
+
+        #region "Texto box funciones"
+        void textBoxNroActa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.SoloEnterossSinEspacios(e);
+        }
+        void textBoxLugar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.NoSaltosDelinea(e);
         }
 
-        private void dgvEntregas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!ModoCreacion)
-            {
-                if (e.ColumnIndex == this.dataGridViewEntregas.Columns["Seleccion"].Index)
-                {
-                    // Obtiene el valor actual de la celda "Seleccion"
-                    var valorCelda = dataGridViewEntregas.Rows[e.RowIndex].Cells["Seleccion"].Value;
-                    var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
-
-                    if (!valor) // SI SELECCIONO CON EL TILDE
-                    {
-                        var index = dataGridViewEntregas.CurrentRow.Index;
-                        dataGridViewEntregas.Rows[index].Cells["Seleccion"].Value = true;
-                    }
-                    else  // SACAR LA SELECCION 
-                    {
-                        SeleccionEntrega = false;
-                        dataGridViewEntregas.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
-                    }
-                    VerificarEntregaSeleccionados();
-                }
-            }
-        }
-
-        private void checkBoxObservacion_CheckedChanged(object sender, EventArgs e)
+        #endregion
+        void checkBoxObservacion_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxObservacion.Checked)
             {
@@ -768,118 +463,29 @@ namespace Presentacion_UI
                 textBoxObservacion.Text = "";
             }
         }
-        private void checkBoxNroHallazgo_CheckedChanged(object sender, EventArgs e)
+        private void buttonBuscar_Click(object sender, EventArgs e)
         {
+            string nro = Interaction.InputBox("Por favor, ingrese el número de Entrega a buscar", "Busqueda por Nro Acta", "");
 
-            numericUpDownHallazgo.Enabled = checkBoxNroHallazgo.Checked;
-            numericUpDownHallazgo.Value = checkBoxNroHallazgo.Checked ? numericUpDownHallazgo.Value : 0;
-
-
-        }
-        private void comboBoxArticulo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            if (!string.IsNullOrEmpty(nro))
             {
-                // Obtener la sugerencia seleccionada en el ComboBox de artículos
-                string sugerenciaSeleccionada = comboBoxArticulo.Text;
-
-                var articulo = ListaArticulos.Find(x => x.Nombre == sugerenciaSeleccionada);
-                if (articulo != null)
-                {
-                    comboBoxCategoria.SelectedItem = articulo.Categoria;
-                    comboBoxCategoria.Text = articulo.Categoria.Nombre;
-                    comboBoxArticulo.Text = articulo.Nombre;
-
-                }
-
-
+                ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value).FindAll(x => x.NroActa.Contains(nro));
+                if (ListaEntregas.Count == 0)
+                    MessageBox.Show("No se encontro ese nro de hallagos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    CargarGrillaEntregas();
             }
         }
 
-        private void checkBoxFecha_CheckedChanged(object sender, EventArgs e)
+        private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            dateTimePickerDesde.Enabled = checkBoxFecha.Checked;
-            dateTimePickerHasta.Enabled = checkBoxFecha.Checked;
-        }
-
-        private void checkBoxLugar_CheckedChanged(object sender, EventArgs e)
-        {
-            textBoxLugar.Enabled = checkBoxLugar.Checked;
-            textBoxLugar.Text = checkBoxLugar.Checked ? textBoxLugar.Text : string.Empty;
-        }
-
-        private void checkBoxCatetegoria_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBoxCategoria.Enabled = checkBoxCategoria.Checked;
-        }
-
-        private void checkBoxArticulo_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBoxArticulo.Enabled = checkBoxArticulo.Checked;
-        }
-
-        private void checkBoxDescripcion_CheckedChanged(object sender, EventArgs e)
-        {
-            textBoxDescripcion.Enabled = checkBoxDescripcion.Checked;
-            textBoxDescripcion.Text = checkBoxDescripcion.Checked ? textBoxDescripcion.Text : string.Empty;
-
-        }
-
-        private void buttonAgregarAEntrega_Click(object sender, EventArgs e)
-        {
-            foreach (var elemento in listaElementosAgregarEntrega)
-            {
-                bLLElemento.AgregarElementoEntrega(bEEntregaSeleccionada, elemento);
-            }
-            CargarGrillaElementosEntrega();
-            CargariGriilaElementosBusqueda();
-            listaElementosAgregarEntrega.Clear();
+            limpiarCamposEntrega();
+            ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+            CargarGrillaEntregas();
+            CargarGrillaElementos();
+            CargarGrillaPersonas();
             Habilitar();
         }
-
-        private void buttonEliminarDeEntrega_Click(object sender, EventArgs e)
-        {
-
-            foreach (var elemento in listaElementoEliminarEntrega)
-            {
-                bLLElemento.EliminarElementoEntrega(bEEntregaSeleccionada, elemento);
-            }
-
-            CargarGrillaElementosEntrega();
-            CargariGriilaElementosBusqueda();
-            listaElementoEliminarEntrega.Clear();
-            Habilitar();
-        }
-
-        private void DgvElementosEntrega_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (e.ColumnIndex == this.DgvElementosEntrega.Columns["Sel"].Index)
-            {
-                // Obtiene el valor actual de la celda "Seleccion"
-                var valorCelda = DgvElementosEntrega.Rows[e.RowIndex].Cells["Sel"].Value;
-                var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
-
-                if (!valor) // SI SELECCIONO CON EL TILDE
-                {
-                    var index = DgvElementosEntrega.CurrentRow.Index;
-                    DgvElementosEntrega.Rows[index].Cells["Sel"].Value = true;
-                    listaElementoEliminarEntrega.Add((BEElemento)DgvElementosEntrega.Rows[index].DataBoundItem);
-
-                }
-                else  // SACAR LA SELECCION 
-                {
-
-                    DgvElementosEntrega.Rows[e.RowIndex].Cells["Sel"].Value = false;
-
-                    // Eliminar el elemento de la lista
-                    var elemento = (BEElemento)DgvElementosEntrega.Rows[e.RowIndex].DataBoundItem;
-                    listaElementoEliminarEntrega.Remove(elemento);
-                }
-                Habilitar();
-            }
-        }
-
 
     }
 }

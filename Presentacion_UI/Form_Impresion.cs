@@ -8,7 +8,7 @@ namespace Presentacion_UI
     public partial class Form_Impresion : Form
     {
 
-        public Form_Impresion(BEPAdreHallazgo Bepadre)
+        public Form_Impresion(BEPadreHallazgo Bepadre)
         {
             InitializeComponent();
             if (Bepadre is BEHallazgo)
@@ -22,7 +22,7 @@ namespace Presentacion_UI
             }
         }
 
-        BEPAdreHallazgo ePAdreHallazgo;
+        BEPadreHallazgo ePAdreHallazgo;
         BEActa acta;
         private void FormImpresion_Load(object sender, EventArgs e)
         {

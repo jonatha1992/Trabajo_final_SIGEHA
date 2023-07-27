@@ -45,7 +45,7 @@ namespace Presentacion_UI
         void CargarMenu()
         {
 
-            List<string> listaToolStrip = ObternerTodosMenuStripItems(menuStrip1);
+            //List<string> listaToolStrip = ObternerTodosMenuStripItems(menuStrip1);
             List<string> permisosDelUsuario = bLLPermiso.ObternerPermisosMenu(usuario);
 
             foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
@@ -80,36 +80,36 @@ namespace Presentacion_UI
 
         }
 
-        public List<string> ObternerTodosMenuStripItems(MenuStrip menuStrip)
-        {
-            List<string> items = new List<string>();
+        //public List<string> ObternerTodosMenuStripItems(MenuStrip menuStrip)
+        //{
+        //    List<string> items = new List<string>();
 
-            foreach (ToolStripItem item in menuStrip.Items)
-            {
-                items.Add(item.Name);
-                if (item is ToolStripMenuItem)
-                {
-                    items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)item));
-                }
-            }
+        //    foreach (ToolStripItem item in menuStrip.Items)
+        //    {
+        //        items.Add(item.Name);
+        //        if (item is ToolStripMenuItem)
+        //        {
+        //            items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)item));
+        //        }
+        //    }
 
-            return items;
-        }
-        private List<string> ObtenerDropDownItems(ToolStripMenuItem item)
-        {
-            List<string> items = new List<string>();
+        //    return items;
+        //}
+        //private List<string> ObtenerDropDownItems(ToolStripMenuItem item)
+        //{
+        //    List<string> items = new List<string>();
 
-            foreach (ToolStripItem dropdownItem in item.DropDownItems)
-            {
-                items.Add(dropdownItem.Name);
-                if (dropdownItem is ToolStripMenuItem)
-                {
-                    items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)dropdownItem));
-                }
-            }
+        //    foreach (ToolStripItem dropdownItem in item.DropDownItems)
+        //    {
+        //        items.Add(dropdownItem.Name);
+        //        if (dropdownItem is ToolStripMenuItem)
+        //        {
+        //            items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)dropdownItem));
+        //        }
+        //    }
 
-            return items;
-        }
+        //    return items;
+        //}
 
 
         private void Form_Contenedor_Load(object sender, EventArgs e)
@@ -132,44 +132,12 @@ namespace Presentacion_UI
             }
         }
 
-        private void reporteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                //Reporte reporte = new Reporte(usuario);
-
-                XLWorkbook wb = new XLWorkbook();
-                string esc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                SaveFileDialog file = new SaveFileDialog();
-
-                //wb.AddWorksheet(reporte.reporte);
-
-                file.Filter = "Excel Files | *.xlsx";
-                file.FileName = $"Reporte {DateTime.Today.Day + DateTime.Today.ToString("MMMM").ToUpper() + DateTime.Now.Year.ToString()}";
-
-
-                wb.Worksheet("Elementos").Columns().AdjustToContents();
-                wb.Worksheet("Hallazgos - Actores").Columns().AdjustToContents();
-                wb.Worksheet("Entrega - Actores").Columns().AdjustToContents();
-                if (file.ShowDialog() == DialogResult.OK)
-                {
-                    wb.SaveAs(file.FileName);
-                    Process.Start(file.FileName);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
+
                 if (usuario != null) // si ya hay una secion iniciada
                 {
                     if (form_login == null || form_login.IsDisposed)
@@ -177,19 +145,18 @@ namespace Presentacion_UI
                         var result = MessageBox.Show("¿Desea finalizar la Sesion?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (result == DialogResult.Yes)
                         {
-                            bLLBitacora.RegistrarEvento(usuario, "Cierra Sesión");
+                            menuStrip1.Enabled = false;
                             usuario = null;
                             form_login = new Form_Login();
                             form_login.MdiParent = this;
                             form_login.FormClosed += Form_Login_FormClosed;
                             form_login.Show();
                         }
-
                     }
                 }
                 else // primer inicio
                 {
-                    if (form_login == null || form_login.IsDisposed )
+                    if (form_login == null || form_login.IsDisposed)
                     {
                         this.WindowState = FormWindowState.Maximized;
                         usuario = null;
@@ -217,15 +184,12 @@ namespace Presentacion_UI
                 {
                     usuario = form_login.Usuario;
                     form_login = null;
-                    menuStrip1.Enabled = true;
                     CargarMenu();
+                    menuStrip1.Enabled = true;
+                    toolStripStatusLabelUsuario.Text = usuario.NombreUsuario;
                 }
                 else
                 {
-                    if (usuario != null)
-                    {
-                        bLLBitacora.RegistrarEvento(usuario, "Cierre de sesión");
-                    }
                     Application.Exit();
                 }
             }
@@ -258,7 +222,7 @@ namespace Presentacion_UI
 
             try
             {
-                if (form_Usuarios == null || form_Usuarios.IsDisposed   )
+                if (form_Usuarios == null || form_Usuarios.IsDisposed)
                 {
                     form_Usuarios = new Form_Usuarios();
                     form_Usuarios.MdiParent = this;
@@ -313,7 +277,7 @@ namespace Presentacion_UI
 
             try
             {
-                if (form_backUp == null || form_backUp.IsDisposed  )
+                if (form_backUp == null || form_backUp.IsDisposed)
                 {
                     form_backUp = new Form_BackUp();
                     form_backUp.MdiParent = this;
@@ -344,13 +308,7 @@ namespace Presentacion_UI
             }
         }
 
-        private void Form_Contenedor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (usuario != null)
-            {
-                bLLBitacora.RegistrarEvento(usuario, "Cierra sesión");
-            }
-        }
+
 
         private void GestionHallazgo_Click(object sender, EventArgs e)
         {

@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="labelEstado.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -160,7 +160,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelEstado.Location" type="System.Drawing.Point, System.Drawing">
-    <value>960, 39</value>
+    <value>478, 29</value>
   </data>
   <data name="labelEstado.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -178,28 +178,28 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelEstado.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;labelEstado.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="labelHallazgo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelHallazgo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Rounded MT Bold, 12pt</value>
+    <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
   <data name="labelHallazgo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="labelHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>962, 53</value>
+    <value>968, 250</value>
   </data>
   <data name="labelHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="labelHallazgo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 18</value>
+    <value>83, 18</value>
   </data>
   <data name="labelHallazgo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelHallazgo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="DgvElementos.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -226,13 +226,13 @@
     <value>30</value>
   </data>
   <data name="DgvElementos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>659, 73</value>
+    <value>674, 277</value>
   </data>
   <data name="DgvElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="DgvElementos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 316</value>
+    <value>612, 348</value>
   </data>
   <data name="DgvElementos.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -4204,19 +4204,19 @@
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 11.1pt, style=Bold</value>
+    <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>922, 411</value>
+    <value>947, 46</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 18</value>
+    <value>104, 18</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -4243,13 +4243,13 @@
     <value>20</value>
   </data>
   <data name="DgvPersonas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>659, 442</value>
+    <value>674, 66</value>
   </data>
   <data name="DgvPersonas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="DgvPersonas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 180</value>
+    <value>612, 142</value>
   </data>
   <data name="DgvPersonas.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -4300,7 +4300,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="textBoxLugar.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -4327,7 +4327,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;textBoxLugar.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="labelNroHallazgo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4363,7 +4363,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;labelNroHallazgo.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4399,7 +4399,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="dateTimePickerFechaHallazgo.CustomFormat" xml:space="preserve">
     <value>dd/MM/yyyy     HH:mm</value>
@@ -4429,7 +4429,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;dateTimePickerFechaHallazgo.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4465,7 +4465,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="comboBoxUnidad.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -4492,7 +4492,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;comboBoxUnidad.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="dgvHallazgos.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>40</value>
@@ -4528,7 +4528,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;dgvHallazgos.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="textBoxNroActa.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -4558,7 +4558,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;textBoxNroActa.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4594,7 +4594,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="comboBoxUrsa.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -4621,13 +4621,13 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;comboBoxUrsa.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+    <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4639,7 +4639,7 @@
     <value>1, 0, 1, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
+    <value>79, 18</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -4657,7 +4657,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="textBoxObservacion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -4690,7 +4690,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;textBoxObservacion.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="button_Modificar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -4726,7 +4726,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;button_Modificar.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="checkBoxObservacion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4759,7 +4759,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;checkBoxObservacion.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="buttonEliminar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -4812,6 +4812,87 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;buttonEliminar.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;buttonLimpiar.Name" xml:space="preserve">
+    <value>buttonLimpiar</value>
+  </data>
+  <data name="&gt;&gt;buttonLimpiar.Type" xml:space="preserve">
+    <value>Seguridad.RJButton, Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonLimpiar.Parent" xml:space="preserve">
+    <value>groupBoxDatosHallazgo</value>
+  </data>
+  <data name="&gt;&gt;buttonLimpiar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerFechaActa.Name" xml:space="preserve">
+    <value>dateTimePickerFechaActa</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerFechaActa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerFechaActa.Parent" xml:space="preserve">
+    <value>groupBoxDatosHallazgo</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerFechaActa.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBoxDatosHallazgo</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonBuscar.Name" xml:space="preserve">
+    <value>buttonBuscar</value>
+  </data>
+  <data name="&gt;&gt;buttonBuscar.Type" xml:space="preserve">
+    <value>Seguridad.RJButton, Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;buttonBuscar.Parent" xml:space="preserve">
+    <value>groupBoxDatosHallazgo</value>
+  </data>
+  <data name="&gt;&gt;buttonBuscar.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 34</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>606, 599</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="groupBoxDatosHallazgo.Text" xml:space="preserve">
+    <value>Datos Hallazgo</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosHallazgo.Name" xml:space="preserve">
+    <value>groupBoxDatosHallazgo</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosHallazgo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosHallazgo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosHallazgo.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="buttonLimpiar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -4971,39 +5052,6 @@
   <data name="&gt;&gt;buttonBuscar.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="groupBoxDatosHallazgo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Century Gothic, 9pt, style=Bold</value>
-  </data>
-  <data name="groupBoxDatosHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 34</value>
-  </data>
-  <data name="groupBoxDatosHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBoxDatosHallazgo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBoxDatosHallazgo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>606, 599</value>
-  </data>
-  <data name="groupBoxDatosHallazgo.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="groupBoxDatosHallazgo.Text" xml:space="preserve">
-    <value>Datos Hallazgo</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosHallazgo.Name" xml:space="preserve">
-    <value>groupBoxDatosHallazgo</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosHallazgo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosHallazgo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosHallazgo.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -5017,7 +5065,7 @@
     <value>1297, 650</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 8.25pt, style=Bold</value>
+    <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

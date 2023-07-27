@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
+using MPP;
+using System.Xml.Linq;
 
 namespace Presentacion_UI
 {
@@ -24,20 +26,16 @@ namespace Presentacion_UI
         public int Cant_Elementos_Resguardo { get; set; }
         public int Cant_Elementos_Entregado { get; set; }
 
-
-
         public BEReporte()
         {
 
             BLLElemento = new BLLElemento();
             BLLHallazgo = new BLLHallazgo();
             BLLEntrega = new BLLEntrega();
-
             ListaHallazgo = BLLHallazgo.ListarTodo();
             ListaEntregas = BLLEntrega.ListarTodo();
             ListaElementos = BLLElemento.ListarTodo();
         }
-
 
         public void HacerReporteGenerico()
         {
@@ -50,11 +48,11 @@ namespace Presentacion_UI
         public Chart HacerReporteHallazgos(BEUnidad bEUnidad, string periodo, Chart chart)
         {
             chart.Titles.Clear();
-           
+
             Series serieHallazgos = chart.Series.FirstOrDefault();
             serieHallazgos.Points.Clear();
             List<BEHallazgo> hallazgosFiltrados;
-       
+
 
             switch (periodo)
             {
@@ -151,7 +149,7 @@ namespace Presentacion_UI
                             Cantidad = hallazgosFiltrados.Count(h => h.FechaHallazgo.Day == dia)
                         }).ToList();
 
-         
+
                     // Agregar los datos al gráfico
                     foreach (var item in hallazgosPorDia)
                     {
@@ -172,14 +170,13 @@ namespace Presentacion_UI
 
             return chart;
         }
-
         public Chart HacerReporteEntregas(BEUnidad bEUnidad, string periodo, Chart chart)
         {
             chart.Titles.Clear();
             Series serieEntregas = chart.Series.FirstOrDefault();
             serieEntregas.Points.Clear();
             List<BEEntrega> entregasFiltradas;
-       
+
 
             switch (periodo)
             {
@@ -305,7 +302,7 @@ namespace Presentacion_UI
             List<BEElemento> elementosFiltrados;
             List<BEHallazgo> hallazgosFiltrados;
             List<string> categorias;
-     
+
             switch (periodo)
             {
                 case "anual":
@@ -440,7 +437,7 @@ namespace Presentacion_UI
                                                          .Sum(e => e.Cantidad);
                         serieElementos.Points.AddXY(categoria, cantidad);
                     }
-          
+
                     // Configurar el título del gráfico
                     chart.Titles.Add("Reporte Mensual de Elementos en Resguardo");
                     break;
@@ -452,12 +449,89 @@ namespace Presentacion_UI
             return chart;
         }
 
+        public DataSet GenerarReporteExcel(BEUsuario usuario)
+        {
+            List<BEElemento> elementosFiltrados = FiltrarElementosPorUnidad(usuario);
+
+            DataSet dataSet = new DataSet();
+            DataTable dataTable = new DataTable("Elementos");
+
+            // Definir las columnas del DataTable
+            dataTable.Columns.Add("Ursa", typeof(string));
+            dataTable.Columns.Add("Unidad", typeof(string));
+            dataTable.Columns.Add("NroActaHallazgo", typeof(string));
+            dataTable.Columns.Add("FechaHallazgo", typeof(DateTime));
+            dataTable.Columns.Add("Categoria", typeof(string));
+            dataTable.Columns.Add("Articulo", typeof(string));
+            dataTable.Columns.Add("Cantidad", typeof(double));
+            dataTable.Columns.Add("Descripcion", typeof(string));
+            dataTable.Columns.Add("Estado", typeof(string));
+            dataTable.Columns.Add("LugarHallazgo", typeof(string));
+            dataTable.Columns.Add("NroActaEntrega", typeof(string));
+            dataTable.Columns.Add("FechaEntrega", typeof(DateTime));
+
+            foreach (var elemento in elementosFiltrados)
+            {
+                dataTable.Rows.Add(
+                    elemento.Hallazgo.Unidad.Ursa.Nombre,
+                    elemento.Hallazgo.Unidad.Cod,
+                    elemento.Hallazgo.NroActa,
+                    elemento.Hallazgo.FechaHallazgo,
+                    elemento.Articulo.Categoria.Nombre,
+                    elemento.Articulo.Nombre,
+                    elemento.Cantidad,
+                    elemento.Descripcion,
+                    elemento.Estado.Nombre,
+                    elemento.Hallazgo.LugarHallazgo,
+                    elemento.Entrega?.NroActa,
+                    elemento.Entrega?.Fecha_entrega
+                ); ;
+            }
+            dataSet.Tables.Add(dataTable);
+
+            return dataSet;
+
+        }
+        private List<BEElemento> FiltrarElementosPorUnidad(BEUsuario usuario)
+        {
+            BEUrsa ursa;
+            List<BEUnidad> unidades;
+
+            BLLUnidad bLLUnidad = new BLLUnidad();
+            BLLUrsa bLLUrsa = new BLLUrsa();
+            var listaUnidades = bLLUnidad.ListarTodo();
+            var listaUrsas = bLLUrsa.ListarTodo();
 
 
+            if (usuario.Destino is BEUrsa)
+            {
+                ursa = (BEUrsa)usuario.Destino;
+                unidades = ursa.Unidades;
+            }
+            else
+            {
+                unidades = new List<BEUnidad> { (BEUnidad)usuario.Destino };
+                ursa = unidades.First().Ursa;
+            }
+            //ursa = usuario.Destino is BEUrsa ? (BEUrsa)usuario.Destino : ((BEUnidad)usuario.Destino).Ursa;
+            //unidades = usuario.Destino is BEUrsa ? ((BEUrsa)usuario.Destino).Unidades : new List<BEUnidad> { (BEUnidad)usuario.Destino };
+
+            foreach (var elemento in ListaElementos)
+            {
+                elemento.Hallazgo = ListaHallazgo.Find(x => x.Id == elemento.Hallazgo.Id);
+                elemento.Entrega = ListaEntregas.Find(x => x.Id == elemento.Entrega.Id);
+
+            }
+
+            foreach (var item in ListaElementos)
+            {
+                item.Hallazgo.Unidad = listaUnidades.Find(unidad => unidad.Id == item.Hallazgo.Unidad.Id);
+                item.Hallazgo.Unidad.Ursa = listaUrsas.Find(x => x.Id ==item.Hallazgo.Unidad.Ursa.Id);
+            }
+
+            return ListaElementos.FindAll(elemento => unidades.Any(unidad => unidad.Id == elemento.Hallazgo.Unidad.Id));
+        }
     }
-
-
-
 }
 
 

@@ -194,6 +194,15 @@ namespace Presentacion_UI
             if (SeleccionHallazgo) // si esta en modo creacion
             {
                 comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
+
+                if (Usuario.Destino is BEUrsa)
+                    comboBoxUnidad.Enabled = false;
+            }
+            else
+            {
+                if (Usuario.Destino is BEUrsa)
+                    comboBoxUnidad.Enabled = true;
+
             }
         }
         void Botones()
@@ -299,7 +308,7 @@ namespace Presentacion_UI
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroHallazgo(textBoxNroActa.Text))
+            if (!Validar.VerificarNroActa(textBoxNroActa.Text, bEUnidad.Cod))
             {
                 MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -315,8 +324,9 @@ namespace Presentacion_UI
             {
                 bEHallazgoSeleccionado = new BEHallazgo();
             }
+
             bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
-            bEHallazgoSeleccionado.FechaActa = DateTime.Now;
+            bEHallazgoSeleccionado.FechaActa = dateTimePickerFechaActa.Value;
             bEHallazgoSeleccionado.NroActa = textBoxNroActa.Text;
             bEHallazgoSeleccionado.Unidad = bEUnidad;
             bEHallazgoSeleccionado.Anio = dateTimePickerFechaHallazgo.Value.Year;
@@ -484,7 +494,7 @@ namespace Presentacion_UI
             ListaHallazgos = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
             CargarGrillaHallazgos();
             CargarGrillaElementos();
-            CargarGrillaPersonas(); 
+            CargarGrillaPersonas();
             Habilitar();
         }
 

@@ -130,7 +130,7 @@ namespace MPP
 
         }
 
-        public BEEntrega ListarObjetoPersonas(BEEntrega pEntrega)
+        public BEEntrega ListarEntregaPersonas(BEEntrega pEntrega)
         {
             MPPPersona mPPPersona = new MPPPersona();
             MPPInstructor mPPInstructor = new MPPInstructor();
@@ -171,7 +171,7 @@ namespace MPP
 
         }
 
-        public BEEntrega ListarObjetoElementos(BEEntrega pEntrega)
+        public BEEntrega ListarEntregaElementos(BEEntrega pEntrega)
         {
             MPPArticulo mPPArticulo = new MPPArticulo();
             MPPEstado_Elemento mPPEstados = new MPPEstado_Elemento();

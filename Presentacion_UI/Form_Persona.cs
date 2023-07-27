@@ -11,7 +11,7 @@ namespace Presentacion_UI
 {
     public partial class Form_Persona : Form
     {
-        public Form_Persona(BEPAdreHallazgo bEPAdreHallazgo)
+        public Form_Persona(BEPadreHallazgo bEPAdreHallazgo)
         {
             InitializeComponent();
 
@@ -52,7 +52,7 @@ namespace Presentacion_UI
 
         #region "Campos"
 
-        public BEPAdreHallazgo BePAdreHallazgo;
+        public BEPadreHallazgo BePAdreHallazgo;
         BEPersona personaSeleccionada;
 
         BLLPersona bllPersonas;
@@ -290,7 +290,7 @@ namespace Presentacion_UI
             }
             else
             {
-                BePAdreHallazgo.listaPersonas = bLLEntrega.ListarObjetoPersonas((BEEntrega)BePAdreHallazgo).listaPersonas;
+                BePAdreHallazgo.listaPersonas = bLLEntrega.ListarEntregaPersonas((BEEntrega)BePAdreHallazgo).listaPersonas;
             }
 
             DgvPersonas.DataSource = BePAdreHallazgo.listaPersonas;

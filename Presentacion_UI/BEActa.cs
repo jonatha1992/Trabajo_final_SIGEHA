@@ -25,7 +25,7 @@ namespace Presentacion_UI
 
         public ReportParameterCollection Parametros;
         public List<Elemento> elementos;
-        public BEActa(BEPAdreHallazgo Padre)
+        public BEActa(BEPadreHallazgo Padre)
         {
             bLLElemento = new BLLElemento();
             Elemento = new Elemento();
