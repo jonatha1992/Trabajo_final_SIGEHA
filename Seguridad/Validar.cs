@@ -210,11 +210,6 @@ namespace Seguridad
         }
 
 
-        static public bool VerificarNroHallazgo(string text)
-        {
-            bool respuesta = Regex.IsMatch(text, "^(([0-9]{4}[A-Z]{3}/[0-9]{4})+$)");
-            return respuesta;
-        }
         static public bool VerificarNroActa(string text,string CodUnidad)
         {
             // Verificar que el número de Acta tenga al menos 4 dígitos al principio seguidos de cualquier cantidad de dígitos adicionales y luego siga el formato "XXXXCCC/YYYY"

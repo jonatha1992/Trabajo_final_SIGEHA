@@ -1,4 +1,5 @@
 ﻿using BE;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.VisualBasic;
 using Negocio;
@@ -35,7 +36,9 @@ namespace Presentacion_UI
                 CargarCombo();
                 Habilitar();
 
-                ListaHallazgos = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+                listaHallazgosSeleccionado = new List<BEHallazgo>();
+
                 CargarGrillaHallazgos();
 
             }
@@ -47,20 +50,20 @@ namespace Presentacion_UI
         }
 
 
-        #region "Propiedades"
+        #region "Campos Seleccionados"
 
         BEUsuario Usuario;
         BEUnidad bEUnidad;
         BEUrsa bEUrsa;
 
         BEHallazgo bEHallazgoSeleccionado;
-        List<BEHallazgo> ListaHallazgos;
+        List<BEHallazgo> ListaHallazgosBase;
+        List<BEHallazgo> listaHallazgosSeleccionado;
         BLLHallazgo bLLHallazgo;
         BLLBitacora bLLBitacora;
 
 
 
-        bool SeleccionHallazgo = false;
         #endregion
 
         #region "Metodos"
@@ -95,7 +98,8 @@ namespace Presentacion_UI
             {
                 DgvElementos.DataSource = null;
 
-                if (SeleccionHallazgo)
+           
+                if (bEHallazgoSeleccionado != null)
                 {
 
                     DgvElementos.DataSource = bLLHallazgo.ListarHallazgoElementos(bEHallazgoSeleccionado).listaElementos;
@@ -129,7 +133,7 @@ namespace Presentacion_UI
         {
             DgvPersonas.DataSource = null;
 
-            if (SeleccionHallazgo)
+            if (bEHallazgoSeleccionado != null)
             {
                 bEHallazgoSeleccionado.listaPersonas = bLLHallazgo.ListarHallazgoPersonas(bEHallazgoSeleccionado).listaPersonas;
                 DgvPersonas.DataSource = bEHallazgoSeleccionado.listaPersonas;
@@ -186,12 +190,11 @@ namespace Presentacion_UI
             textBoxLugar.Text = "";
             textBoxObservacion.Text = "";
             checkBoxObservacion.Checked = false;
-            SeleccionHallazgo = false;
             bEHallazgoSeleccionado = null;
         }
         void ComboBox()
         {
-            if (SeleccionHallazgo) // si esta en modo creacion
+            if (bEHallazgoSeleccionado != null) // si esta en modo creacion
             {
                 comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
 
@@ -207,7 +210,8 @@ namespace Presentacion_UI
         }
         void Botones()
         {
-            if (SeleccionHallazgo)
+ 
+            if (bEHallazgoSeleccionado != null) // si esta en modo creacion
             {
                 buttonEliminar.Visible = true;
                 button_Modificar.Visible = true;
@@ -229,9 +233,9 @@ namespace Presentacion_UI
             this.dgvHallazgos.DataSource = null;
 
 
-            if (ListaHallazgos != null && ListaHallazgos.Count > 0)
+            if (ListaHallazgosBase != null && ListaHallazgosBase.Count > 0)
             {
-                this.dgvHallazgos.DataSource = ListaHallazgos;
+                this.dgvHallazgos.DataSource = ListaHallazgosBase;
                 this.dgvHallazgos.Columns["NroActa"].HeaderText = "Nro Hallazgo";
                 this.dgvHallazgos.Columns["FechaHallazgo"].HeaderText = "Fecha Hallazgo";
                 this.dgvHallazgos.Columns["LugarHallazgo"].HeaderText = "Lugar";
@@ -241,7 +245,7 @@ namespace Presentacion_UI
                 this.dgvHallazgos.Columns["Id"].Visible = false;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
 
 
@@ -253,49 +257,45 @@ namespace Presentacion_UI
 
             }
         }
-        void VerificarHallazgosSeleccionados()
+
+        void HabilitarHallazgo()
         {
-            SeleccionHallazgo = false;
 
-            foreach (DataGridViewRow row in dgvHallazgos.Rows)
+            if (listaHallazgosSeleccionado?.Count > 0) // modo creacion
             {
-                var valorCelda = row.Cells[0].Value;
-                var valor = valorCelda as bool? ?? false;
+                bEHallazgoSeleccionado = listaHallazgosSeleccionado.First();
 
-                if (valor)
+                if (bEHallazgoSeleccionado != null) // SI YA ESTA SELECCIONADO
                 {
-                    SeleccionHallazgo = true;
-                    if (bEHallazgoSeleccionado?.Id != ((BEHallazgo)row.DataBoundItem).Id) // SI YA ESTA SELECCIONADO
-                    {
-                        bEHallazgoSeleccionado = bLLHallazgo.ListarObjeto((BEHallazgo)row.DataBoundItem);
-                    }
                     textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
                     textBoxNroActa.Text = bEHallazgoSeleccionado.NroActa;
                     dateTimePickerFechaActa.Value = bEHallazgoSeleccionado.FechaActa ?? bEHallazgoSeleccionado.FechaHallazgo;
                     dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
-
                     if (!string.IsNullOrEmpty(bEHallazgoSeleccionado.Observacion))
                     {
                         checkBoxObservacion.Checked = true;
                         textBoxObservacion.Text = bEHallazgoSeleccionado.Observacion;
                     }
 
-                    CargarGrillaElementos();
-                    CargarGrillaPersonas();
-                    Habilitar();
-                    break;
                 }
+                CargarGrillaElementos();
+                CargarGrillaPersonas();
+
             }
-            if (!SeleccionHallazgo)
+            else
             {
-                bEHallazgoSeleccionado = null;
+                limpiarCamposHallazgos();
                 CargarGrillaHallazgos();
                 CargarGrillaElementos();
                 CargarGrillaPersonas();
-                limpiarCamposHallazgos();
-                Habilitar();
+
             }
+
+            Habilitar();
         }
+
+
+
         bool VerficarCampos()
         {
             if (comboBoxUnidad.Text == ""
@@ -320,10 +320,10 @@ namespace Presentacion_UI
         }
         BEHallazgo CrearHallazgo()
         {
-            if (!SeleccionHallazgo)// agregar
-            {
-                bEHallazgoSeleccionado = new BEHallazgo();
-            }
+            //if (!SeleccionHallazgo) 
+            //{
+            //    bEHallazgoSeleccionado = new BEHallazgo();
+            //}
 
             bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
             bEHallazgoSeleccionado.FechaActa = dateTimePickerFechaActa.Value;
@@ -344,15 +344,19 @@ namespace Presentacion_UI
         {
             try
             {
-                if (VerficarCampos())
+                var result = MessageBox.Show($"Desea Modificar el Hallazgo {bEHallazgoSeleccionado.NroActa}", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    if (bLLHallazgo.Actualizar(CrearHallazgo()))
+                    if (VerficarCampos())
                     {
-                        bLLBitacora.RegistrarEvento(Usuario, $"Se modifico el nro Acta de Hallazgo {bEHallazgoSeleccionado.NroActa}");
-                        Habilitar();
-                        CargarGrillaHallazgos();
-                        SeleccionarHallazgo();
-                        MessageBox.Show("El Hallazgo se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (bLLHallazgo.Actualizar(CrearHallazgo()))
+                        {
+                            bLLBitacora.RegistrarEvento(Usuario, $"Se modifico el nro Acta de Hallazgo {bEHallazgoSeleccionado.NroActa}");
+                            Habilitar();
+                            CargarGrillaHallazgos();
+                            SeleccionarHallazgo();
+                            MessageBox.Show("El Hallazgo se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -365,18 +369,30 @@ namespace Presentacion_UI
         {
             try
             {
-                if (bLLHallazgo.Eliminar(bEHallazgoSeleccionado))
+
+
+                // Construir la lista de elementos para mostrar en el MessageBox
+                string elementosAEliminar = string.Join(Environment.NewLine, listaHallazgosSeleccionado.Select(h => h.NroActa));
+              
+                var result = MessageBox.Show($"Desea eliminar el/los siguientes Hallazgos: {Environment.NewLine}{elementosAEliminar}", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    bLLBitacora.RegistrarEvento(Usuario, $"Se elimino el nro Acta  de Hallazgo {bEHallazgoSeleccionado.NroActa}");
+
+                    foreach (var item in listaHallazgosSeleccionado)
+                    {
+                        bLLHallazgo.Eliminar(item);
+
+                        bLLBitacora.RegistrarEvento(Usuario, $"eliminó el nro Acta de Hallazgo {item.NroActa}");
+                    }
+
                     limpiarCamposHallazgos();
-                    ListaHallazgos = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+                    ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
                     CargarGrillaHallazgos();
                     CargarGrillaElementos();
                     CargarGrillaPersonas();
                     Habilitar();
-                    MessageBox.Show("El Hallazgo se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El/los Hallazgos se eliminaron correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
 
             }
             catch (Exception ex)
@@ -388,17 +404,13 @@ namespace Presentacion_UI
 
         #endregion
 
-
-
-
         #region "Hallazgo"
-
         void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
             bEHallazgoSeleccionado = null;
             limpiarCamposHallazgos();
-            ListaHallazgos = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+            ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
             CargarGrillaHallazgos();
             Habilitar();
 
@@ -406,7 +418,11 @@ namespace Presentacion_UI
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
-            if (!SeleccionHallazgo) // SI NO ESTA EN MODO CREACION 
+            //if (!SeleccionHallazgo) // SI NO ESTA EN MODO CREACION 
+            //{
+            //    CargarGrillaHallazgos();
+            //}
+            if (bEHallazgoSeleccionado == null) // SI NO ESTA EN MODO CREACION 
             {
                 CargarGrillaHallazgos();
             }
@@ -429,17 +445,26 @@ namespace Presentacion_UI
                     // Obtiene el valor actual de la celda "Seleccion"
                     var valorCelda = dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value;
                     var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
+                    var index = dgvHallazgos.CurrentRow.Index;
 
                     if (!valor) // Si se seleccionó con el tilde
                     {
-                        var index = dgvHallazgos.CurrentRow.Index;
+                        //var index = dgvHallazgos.CurrentRow.Index;
                         dgvHallazgos.Rows[index].Cells["Seleccion"].Value = true;
+                        var bEHallazgoSeleccion = (BEHallazgo)dgvHallazgos.Rows[index].DataBoundItem;
+                        listaHallazgosSeleccionado.Add(bEHallazgoSeleccion);
+
                     }
                     else  // Si se quiere deseleccionar
                     {
                         dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
+
+                        // Eliminar el elemento de la lista
+                        var bEHallazgoSeleccion = (BEHallazgo)dgvHallazgos.Rows[index].DataBoundItem;
+                        listaHallazgosSeleccionado.RemoveAll(elemento => elemento.Id == bEHallazgoSeleccion.Id);
                     }
-                    VerificarHallazgosSeleccionados();
+                    //VerificarHallazgosSeleccionados();
+                    HabilitarHallazgo();
                 }
 
             }
@@ -480,8 +505,8 @@ namespace Presentacion_UI
 
             if (!string.IsNullOrEmpty(nro))
             {
-                ListaHallazgos = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value).FindAll(x => x.NroActa.Contains(nro));
-                if (ListaHallazgos.Count == 0)
+                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value).FindAll(x => x.NroActa.Contains(nro));
+                if (ListaHallazgosBase.Count == 0)
                     MessageBox.Show("No se encontro ese nro de hallagos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     CargarGrillaHallazgos();
@@ -491,7 +516,7 @@ namespace Presentacion_UI
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCamposHallazgos();
-            ListaHallazgos = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+            ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
             CargarGrillaHallazgos();
             CargarGrillaElementos();
             CargarGrillaPersonas();
