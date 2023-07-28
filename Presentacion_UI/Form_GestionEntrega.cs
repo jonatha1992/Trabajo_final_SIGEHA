@@ -36,6 +36,7 @@ namespace Presentacion_UI
                 Habilitar();
 
                 ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+                listaEntreegaSeleccionado = new List<BEEntrega>();
                 CargarGrillaEntregas();
 
             }
@@ -47,7 +48,7 @@ namespace Presentacion_UI
         }
 
 
-        #region "Propiedades"
+        #region "Campos"
 
         BEUsuario Usuario;
         BEUnidad bEUnidad;
@@ -55,6 +56,9 @@ namespace Presentacion_UI
 
         BEEntrega BEEntregaSeleccionado;
         List<BEEntrega> ListaEntregas;
+        List<BEEntrega> listaEntreegaSeleccionado;
+
+
         BLLEntrega bLLEntrega;
         BLLBitacora bLLBitacora;
 
@@ -95,7 +99,7 @@ namespace Presentacion_UI
             {
                 DgvElementos.DataSource = null;
 
-                if (SeleccionEntrega)
+                if (BEEntregaSeleccionado != null)
                 {
 
                     DgvElementos.DataSource = bLLEntrega.ListarEntregaElementos(BEEntregaSeleccionado).listaElementos;
@@ -129,7 +133,7 @@ namespace Presentacion_UI
         {
             DgvPersonas.DataSource = null;
 
-            if (SeleccionEntrega)
+            if (BEEntregaSeleccionado != null)
             {
                 BEEntregaSeleccionado.listaPersonas = bLLEntrega.ListarEntregaPersonas(BEEntregaSeleccionado).listaPersonas;
                 DgvPersonas.DataSource = BEEntregaSeleccionado.listaPersonas;
@@ -162,7 +166,7 @@ namespace Presentacion_UI
 
 
         }
-        void SeleccionarHallazgo()  // lo que hace la funcion es recorrer el dgv y seleccioonar el hallazgo
+        void SeleccionarEntrega()  // lo que hace la funcion es recorrer el dgv y seleccioonar el hallazgo
         {
             foreach (DataGridViewRow item in dgvHallazgos.Rows)
             {
@@ -176,19 +180,18 @@ namespace Presentacion_UI
 
         #endregion
 
-        #region "MetodosHallazgo"
+        #region "Metodos"
         void limpiarCamposEntrega()
         {
             dateTimePickerFechaEntrega.Value = DateTime.Now;
             textBoxNroActa.Text = "";
             textBoxObservacion.Text = "";
             checkBoxObservacion.Checked = false;
-            SeleccionEntrega = false;
             BEEntregaSeleccionado = null;
         }
         void ComboBox()
         {
-            if (SeleccionEntrega) // si esta en modo creacion
+            if (BEEntregaSeleccionado != null) // si esta en modo creacion
             {
                 comboBoxUnidad.Text = BEEntregaSeleccionado.Unidad.Nombre;
 
@@ -204,7 +207,7 @@ namespace Presentacion_UI
         }
         void Botones()
         {
-            if (SeleccionEntrega)
+            if (BEEntregaSeleccionado != null)
             {
                 buttonEliminar.Visible = true;
                 button_Modificar.Visible = true;
@@ -289,6 +292,41 @@ namespace Presentacion_UI
                 Habilitar();
             }
         }
+        void HabilitarEntrega()
+        {
+
+            if (listaEntreegaSeleccionado?.Count > 0) // modo creacion
+            {
+                BEEntregaSeleccionado = listaEntreegaSeleccionado.First();
+
+                if (BEEntregaSeleccionado != null) // SI YA ESTA SELECCIONADO
+                {
+                    textBoxNroActa.Text = BEEntregaSeleccionado.NroActa;
+                    dateTimePickerFechaEntrega.Value = BEEntregaSeleccionado.Fecha_entrega;
+                    if (!string.IsNullOrEmpty(BEEntregaSeleccionado.Observacion))
+                    {
+                        checkBoxObservacion.Checked = true;
+                        textBoxObservacion.Text = BEEntregaSeleccionado.Observacion;
+                    }
+
+                }
+                CargarGrillaElementos();
+                CargarGrillaPersonas();
+
+            }
+            else
+            {
+                limpiarCamposEntrega();
+                CargarGrillaEntregas();
+                CargarGrillaElementos();
+                CargarGrillaPersonas();
+
+            }
+
+            Habilitar();
+        }
+
+
         bool VerficarCampos()
         {
             if (comboBoxUnidad.Text == ""
@@ -312,10 +350,6 @@ namespace Presentacion_UI
         }
         BEEntrega CrearHallazgo()
         {
-            if (!SeleccionEntrega)// agregar
-            {
-                BEEntregaSeleccionado = new BEEntrega();
-            }
 
             BEEntregaSeleccionado.Fecha_entrega = dateTimePickerFechaEntrega.Value;
             BEEntregaSeleccionado.NroActa = textBoxNroActa.Text;
@@ -334,15 +368,19 @@ namespace Presentacion_UI
         {
             try
             {
-                if (VerficarCampos())
+                var result = MessageBox.Show($"Desea Modificar la Entrega {BEEntregaSeleccionado.NroActa}", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    if (bLLEntrega.Actualizar(CrearHallazgo()))
+                    if (VerficarCampos())
                     {
-                        bLLBitacora.RegistrarEvento(Usuario, $"Se modifico el nro Acta de Entrega {BEEntregaSeleccionado.NroActa}");
-                        Habilitar();
-                        CargarGrillaEntregas();
-                        SeleccionarHallazgo();
-                        MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (bLLEntrega.Actualizar(CrearHallazgo()))
+                        {
+                            bLLBitacora.RegistrarEvento(Usuario, $"Se modifico el nro Acta de Entrega {BEEntregaSeleccionado.NroActa}");
+                            Habilitar();
+                            CargarGrillaEntregas();
+                            SeleccionarEntrega();
+                            MessageBox.Show("La Entrega se modificó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -355,19 +393,28 @@ namespace Presentacion_UI
         {
             try
             {
-                if (bLLEntrega.Eliminar(BEEntregaSeleccionado))
+                // Construir la lista de elementos para mostrar en el MessageBox
+                string elementosAEliminar = string.Join(Environment.NewLine, listaEntreegaSeleccionado.Select(h => h.NroActa));
+                var result = MessageBox.Show($"Desea eliminar el/los siguientes Entrega: {Environment.NewLine}{elementosAEliminar}", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    bLLBitacora.RegistrarEvento(Usuario, $"Se elimino el nro Acta de Entrega {BEEntregaSeleccionado.NroActa}");
+
+                    foreach (var item in listaEntreegaSeleccionado)
+                    {
+                        bLLEntrega.Eliminar(item);
+
+                        bLLBitacora.RegistrarEvento(Usuario, $"eliminó el nro Acta de Entrega {item.NroActa}");
+                    }
+
+
                     limpiarCamposEntrega();
                     ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
                     CargarGrillaEntregas();
                     CargarGrillaElementos();
                     CargarGrillaPersonas();
                     Habilitar();
-                    MessageBox.Show("El Hallazgo se eliminó correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Las entregas se eliminaron correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -394,13 +441,10 @@ namespace Presentacion_UI
         }
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
-
-            if (!SeleccionEntrega) // SI NO ESTA EN MODO CREACION 
+            if (BEEntregaSeleccionado == null) // SI NO ESTA EN MODO CREACION 
             {
                 CargarGrillaEntregas();
             }
-
-
         }
 
         #endregion
@@ -418,17 +462,22 @@ namespace Presentacion_UI
                     // Obtiene el valor actual de la celda "Seleccion"
                     var valorCelda = dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value;
                     var valor = valorCelda as bool? ?? false; // Asigna false si el valor es null
+                    var index = dgvHallazgos.CurrentRow.Index;
 
                     if (!valor) // Si se seleccionó con el tilde
                     {
-                        var index = dgvHallazgos.CurrentRow.Index;
                         dgvHallazgos.Rows[index].Cells["Seleccion"].Value = true;
+                        var EntregaSeleccionada = (BEEntrega)dgvHallazgos.Rows[index].DataBoundItem;
+                        listaEntreegaSeleccionado.Add(EntregaSeleccionada);
                     }
                     else  // Si se quiere deseleccionar
                     {
                         dgvHallazgos.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
+                        var EntregaSeleccionada = (BEEntrega)dgvHallazgos.Rows[index].DataBoundItem;
+                        listaEntreegaSeleccionado.RemoveAll(elemento => elemento.Id == EntregaSeleccionada.Id);
+
                     }
-                    VerificarEntregaSeleccionados();
+                    HabilitarEntrega();
                 }
 
             }

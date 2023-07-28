@@ -98,7 +98,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvRegistros.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvRegistros.Location = new System.Drawing.Point(186, 44);
+            this.DgvRegistros.Location = new System.Drawing.Point(186, 64);
             this.DgvRegistros.Margin = new System.Windows.Forms.Padding(2);
             this.DgvRegistros.MultiSelect = false;
             this.DgvRegistros.Name = "DgvRegistros";
@@ -121,7 +121,7 @@
             this.DgvRegistros.RowTemplate.Height = 60;
             this.DgvRegistros.RowTemplate.ReadOnly = true;
             this.DgvRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvRegistros.Size = new System.Drawing.Size(576, 316);
+            this.DgvRegistros.Size = new System.Drawing.Size(576, 296);
             this.DgvRegistros.TabIndex = 87;
             // 
             // Sel
@@ -186,7 +186,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(447, 25);
+            this.label1.Location = new System.Drawing.Point(447, 44);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 17);
@@ -203,7 +203,7 @@
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(773, 22);
+            this.customTitleBar1.Size = new System.Drawing.Size(773, 24);
             this.customTitleBar1.TabIndex = 94;
             this.customTitleBar1.Title = "Bitacora";
             // 

@@ -205,7 +205,7 @@ namespace Presentacion_UI
             this.customTitleBar1.Name = "customTitleBar1";
             this.customTitleBar1.Size = new System.Drawing.Size(294, 24);
             this.customTitleBar1.TabIndex = 26;
-            this.customTitleBar1.Title = "Contraseña";
+            this.customTitleBar1.Title = "Cambiar Contraseña";
             // 
             // Form_Contraseña
             // 

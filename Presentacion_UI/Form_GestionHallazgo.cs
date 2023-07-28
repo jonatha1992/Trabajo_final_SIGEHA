@@ -181,7 +181,7 @@ namespace Presentacion_UI
 
         #endregion
 
-        #region "MetodosHallazgo"
+        #region "Metodos"
         void limpiarCamposHallazgos()
         {
             dateTimePickerFechaActa.Value = DateTime.Now;
@@ -320,10 +320,7 @@ namespace Presentacion_UI
         }
         BEHallazgo CrearHallazgo()
         {
-            //if (!SeleccionHallazgo) 
-            //{
-            //    bEHallazgoSeleccionado = new BEHallazgo();
-            //}
+          
 
             bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
             bEHallazgoSeleccionado.FechaActa = dateTimePickerFechaActa.Value;
@@ -377,14 +374,12 @@ namespace Presentacion_UI
                 var result = MessageBox.Show($"Desea eliminar el/los siguientes Hallazgos: {Environment.NewLine}{elementosAEliminar}", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-
                     foreach (var item in listaHallazgosSeleccionado)
                     {
                         bLLHallazgo.Eliminar(item);
 
                         bLLBitacora.RegistrarEvento(Usuario, $"eliminó el nro Acta de Hallazgo {item.NroActa}");
                     }
-
                     limpiarCamposHallazgos();
                     ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
                     CargarGrillaHallazgos();
@@ -418,10 +413,7 @@ namespace Presentacion_UI
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
-            //if (!SeleccionHallazgo) // SI NO ESTA EN MODO CREACION 
-            //{
-            //    CargarGrillaHallazgos();
-            //}
+ 
             if (bEHallazgoSeleccionado == null) // SI NO ESTA EN MODO CREACION 
             {
                 CargarGrillaHallazgos();
@@ -449,7 +441,6 @@ namespace Presentacion_UI
 
                     if (!valor) // Si se seleccionó con el tilde
                     {
-                        //var index = dgvHallazgos.CurrentRow.Index;
                         dgvHallazgos.Rows[index].Cells["Seleccion"].Value = true;
                         var bEHallazgoSeleccion = (BEHallazgo)dgvHallazgos.Rows[index].DataBoundItem;
                         listaHallazgosSeleccionado.Add(bEHallazgoSeleccion);
@@ -463,7 +454,6 @@ namespace Presentacion_UI
                         var bEHallazgoSeleccion = (BEHallazgo)dgvHallazgos.Rows[index].DataBoundItem;
                         listaHallazgosSeleccionado.RemoveAll(elemento => elemento.Id == bEHallazgoSeleccion.Id);
                     }
-                    //VerificarHallazgosSeleccionados();
                     HabilitarHallazgo();
                 }
 
