@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Contenedor));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Hallazgo = new System.Windows.Forms.ToolStripMenuItem();
-            this.GenerarHallazgo = new System.Windows.Forms.ToolStripMenuItem();
+            this.CrearHallazgo = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionHallazgo = new System.Windows.Forms.ToolStripMenuItem();
             this.Entrega = new System.Windows.Forms.ToolStripMenuItem();
-            this.GenerarEntrega = new System.Windows.Forms.ToolStripMenuItem();
+            this.CrearEntrega = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionEntrega = new System.Windows.Forms.ToolStripMenuItem();
             this.Administracion = new System.Windows.Forms.ToolStripMenuItem();
             this.Reporte = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,48 +75,48 @@
             // Hallazgo
             // 
             this.Hallazgo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.GenerarHallazgo,
+            this.CrearHallazgo,
             this.GestionHallazgo});
             this.Hallazgo.ForeColor = System.Drawing.Color.Black;
             this.Hallazgo.Name = "Hallazgo";
             this.Hallazgo.Size = new System.Drawing.Size(131, 22);
             this.Hallazgo.Text = "Menú Hallazgo";
             // 
-            // GenerarHallazgo
+            // CrearHallazgo
             // 
-            this.GenerarHallazgo.Name = "GenerarHallazgo";
-            this.GenerarHallazgo.Size = new System.Drawing.Size(138, 22);
-            this.GenerarHallazgo.Text = "Generar";
-            this.GenerarHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
+            this.CrearHallazgo.Name = "CrearHallazgo";
+            this.CrearHallazgo.Size = new System.Drawing.Size(180, 22);
+            this.CrearHallazgo.Text = "Crear";
+            this.CrearHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
             // 
             // GestionHallazgo
             // 
             this.GestionHallazgo.Name = "GestionHallazgo";
-            this.GestionHallazgo.Size = new System.Drawing.Size(138, 22);
+            this.GestionHallazgo.Size = new System.Drawing.Size(180, 22);
             this.GestionHallazgo.Text = "Gestión";
             this.GestionHallazgo.Click += new System.EventHandler(this.GestionHallazgo_Click);
             // 
             // Entrega
             // 
             this.Entrega.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.GenerarEntrega,
+            this.CrearEntrega,
             this.GestionEntrega});
             this.Entrega.ForeColor = System.Drawing.Color.Black;
             this.Entrega.Name = "Entrega";
             this.Entrega.Size = new System.Drawing.Size(122, 22);
             this.Entrega.Text = "Menú Entrega";
             // 
-            // GenerarEntrega
+            // CrearEntrega
             // 
-            this.GenerarEntrega.Name = "GenerarEntrega";
-            this.GenerarEntrega.Size = new System.Drawing.Size(138, 22);
-            this.GenerarEntrega.Text = "Generar";
-            this.GenerarEntrega.Click += new System.EventHandler(this.GenerarEntrega_Click);
+            this.CrearEntrega.Name = "CrearEntrega";
+            this.CrearEntrega.Size = new System.Drawing.Size(180, 22);
+            this.CrearEntrega.Text = "Crear";
+            this.CrearEntrega.Click += new System.EventHandler(this.GenerarEntrega_Click);
             // 
             // GestionEntrega
             // 
             this.GestionEntrega.Name = "GestionEntrega";
-            this.GestionEntrega.Size = new System.Drawing.Size(138, 22);
+            this.GestionEntrega.Size = new System.Drawing.Size(180, 22);
             this.GestionEntrega.Text = "Gestión";
             this.GestionEntrega.Click += new System.EventHandler(this.GestionEntrega_Click);
             // 
@@ -272,9 +272,9 @@
         private System.Windows.Forms.ToolStripMenuItem Hallazgo;
         private System.Windows.Forms.ToolStripMenuItem Entrega;
         private System.Windows.Forms.ToolStripMenuItem Login;
-        private System.Windows.Forms.ToolStripMenuItem GenerarHallazgo;
+        private System.Windows.Forms.ToolStripMenuItem CrearHallazgo;
         private System.Windows.Forms.ToolStripMenuItem GestionHallazgo;
-        private System.Windows.Forms.ToolStripMenuItem GenerarEntrega;
+        private System.Windows.Forms.ToolStripMenuItem CrearEntrega;
         private System.Windows.Forms.ToolStripMenuItem GestionEntrega;
         private System.Windows.Forms.ToolStripMenuItem Administracion;
         private System.Windows.Forms.ToolStripMenuItem Reporte;

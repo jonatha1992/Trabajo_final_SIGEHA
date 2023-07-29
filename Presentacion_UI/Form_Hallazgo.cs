@@ -214,7 +214,7 @@ namespace Presentacion_UI
                         this.DgvElementos.Columns["Id"].Width = 35;
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                         this.DgvElementos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                        this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+                        this.DgvElementos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
 
                     }
                     if (DgvElementos.DataSource == null || DgvElementos.Rows.Count == 0)
@@ -403,7 +403,7 @@ namespace Presentacion_UI
                 this.dgvHallazgos.Columns["Id"].Visible = false;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
 
 
