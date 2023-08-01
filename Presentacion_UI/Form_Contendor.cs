@@ -1,13 +1,10 @@
 ﻿using BE;
-using ClosedXML.Excel;
 using DAL;
 using Negocio;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
-using System.Linq;
-
+using System.Drawing;
 
 namespace Presentacion_UI
 {
@@ -16,6 +13,19 @@ namespace Presentacion_UI
         public Form_Contenedor()
         {
             InitializeComponent();
+
+
+            // Define tu color personalizado
+            Color colorPersonalizado = Color.FromArgb(52, 73, 94);
+
+            // Busca el control MdiClient y cambia su BackColor
+            foreach (Control control in this.Controls)
+            {
+                if (control is MdiClient)
+                {
+                    control.BackColor = colorPersonalizado;
+                }
+            }
 
             bLLPermiso = new BLLPermiso();
             bLLBitacora = new BLLBitacora();

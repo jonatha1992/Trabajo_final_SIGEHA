@@ -197,7 +197,7 @@ namespace MPP
             var articulos = mPPArticulo.ListarTodo();
             var Estados = mPPEstados.ListarTodo();
 
-            IEnumerable<XElement> elementosXml = conexion.LeerTodos("Elemento")
+            IEnumerable<XElement> elementosXml = conexion.LeerTodos("ElementoActa")
                                                .Where(e => e.Element("IdHallazgo")?.Value == bEHallazgo.Id.ToString());
 
             // Verificamos si hay algún elemento XML después de filtrar.

@@ -85,14 +85,14 @@
             // CrearHallazgo
             // 
             this.CrearHallazgo.Name = "CrearHallazgo";
-            this.CrearHallazgo.Size = new System.Drawing.Size(180, 22);
+            this.CrearHallazgo.Size = new System.Drawing.Size(132, 22);
             this.CrearHallazgo.Text = "Crear";
             this.CrearHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
             // 
             // GestionHallazgo
             // 
             this.GestionHallazgo.Name = "GestionHallazgo";
-            this.GestionHallazgo.Size = new System.Drawing.Size(180, 22);
+            this.GestionHallazgo.Size = new System.Drawing.Size(132, 22);
             this.GestionHallazgo.Text = "Gestión";
             this.GestionHallazgo.Click += new System.EventHandler(this.GestionHallazgo_Click);
             // 
@@ -109,14 +109,14 @@
             // CrearEntrega
             // 
             this.CrearEntrega.Name = "CrearEntrega";
-            this.CrearEntrega.Size = new System.Drawing.Size(180, 22);
+            this.CrearEntrega.Size = new System.Drawing.Size(132, 22);
             this.CrearEntrega.Text = "Crear";
             this.CrearEntrega.Click += new System.EventHandler(this.GenerarEntrega_Click);
             // 
             // GestionEntrega
             // 
             this.GestionEntrega.Name = "GestionEntrega";
-            this.GestionEntrega.Size = new System.Drawing.Size(180, 22);
+            this.GestionEntrega.Size = new System.Drawing.Size(132, 22);
             this.GestionEntrega.Text = "Gestión";
             this.GestionEntrega.Click += new System.EventHandler(this.GestionEntrega_Click);
             // 
@@ -241,7 +241,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1133, 440);
             this.Controls.Add(this.statusStrip1);

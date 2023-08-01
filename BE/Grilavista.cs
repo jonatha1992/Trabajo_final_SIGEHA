@@ -16,10 +16,10 @@ namespace BE
         public string Entrega { get; set; }
     }
 
-    public class Elemento
+    public class ElementoActa
     {
 
-        public Elemento() { }
+        public ElementoActa() { }
 
         public int Id { get; set; }
         public string Articulo { get; set; }
@@ -29,24 +29,7 @@ namespace BE
 
 
 
-        public List<Elemento> CrearListaElementos(List<BEElemento> bEElementos)
-        {
-            List<Elemento> lista = new List<Elemento>();
-            
-            foreach (BEElemento item in bEElementos)
-            {
-                Elemento elemento = new Elemento();
-                elemento.Id = item.Id;
-                elemento.Articulo = item.Articulo.Categoria.Nombre + "-" + item.Articulo.Nombre;
-                elemento.Descripcion = item.Descripcion.ToLower();
-                elemento.Cantidad = item.Cantidad;
-                elemento.Estado = item.Estado.Nombre;
-                lista.Add(elemento);
-
-            }
-            return lista;
-
-        }
+       
 
 
     }

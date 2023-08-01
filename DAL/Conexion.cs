@@ -22,7 +22,7 @@ namespace DAL
 
             try
             {
-                string rutaDestino = Path.Combine(XmlFolderPathBackup, bEBackUp.NombreArchivo);
+                string rutaDestino = Path.Combine(XmlFolderPathBackup, bEBackUp.Nombre);
                 File.Copy(XmlFilePathBaseDatos, rutaDestino);
                 return true;
             }
@@ -36,7 +36,7 @@ namespace DAL
         {
             try
             {
-                string rutaBackup = Path.Combine(XmlFolderPathBackup, bEBackUp.NombreArchivo);
+                string rutaBackup = Path.Combine(XmlFolderPathBackup, bEBackUp.Nombre);
 
                 // Restaurar el backup copiando el archivo al archivo de base de datos
                

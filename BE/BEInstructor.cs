@@ -16,11 +16,6 @@ namespace BE
         }
         public int Legajo { get; set; }
         public BEJerarquia Jerarquia { get; set; }
-        public BEUnidad Unidad{ get; set; }
-        public BEUrsa Ursa { get; set; }
-
-        public string Password{ get; set; }
-        public string Mail { get; set; }
 
 
     }

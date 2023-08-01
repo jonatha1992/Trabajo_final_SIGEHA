@@ -180,7 +180,7 @@ namespace MPP
 
             pEntrega.listaElementos.Clear();
 
-            IEnumerable<XElement> elementosXml = conexion.LeerTodos("Elemento")
+            IEnumerable<XElement> elementosXml = conexion.LeerTodos("ElementoActa")
                                                .Where(e => e.Element("IdEntrega")?.Value == pEntrega.Id.ToString());
 
             // Verificamos si hay algún elemento XML después de filtrar.

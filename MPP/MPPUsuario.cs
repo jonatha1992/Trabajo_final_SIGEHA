@@ -172,17 +172,17 @@ namespace MPP
 
 
             //string consulta = "SELECT Ursa.Nombre AS Ursa, Unidad.Nombre AS Aeropuerto , Hallazgo.[Nro acta] AS Hallazgo, Hallazgo.[Fecha hallazgo] as [Fecha Hallazgo], " +
-            //                  "Categoria.Categoria, Articulo.Articulo, Elemento.Cantidad , Elemento.Descripcion, Estado_Elemento.Estado, " +
+            //                  "Categoria.Categoria, Articulo.Articulo, ElementoActa.Cantidad , ElementoActa.Descripcion, Estado_Elemento.Estado, " +
             //                  "Hallazgo.[Lugar hallazgo], Entrega.[Nro acta] AS Entrega , Entrega.[Fecha Entrega] FROM Entrega " +
             //                  "RIGHT JOIN(Estado_Elemento INNER JOIN (Categoria INNER JOIN (Articulo INNER JOIN " +
-            //                  "((Unidad INNER JOIN (Hallazgo INNER JOIN Elemento " +
-            //                  "ON Hallazgo.Id = Elemento.[Id hallazgo]) " +
+            //                  "((Unidad INNER JOIN (Hallazgo INNER JOIN ElementoActa " +
+            //                  "ON Hallazgo.Id = ElementoActa.[Id hallazgo]) " +
             //                  "ON Unidad.Id = Hallazgo.[Id unidad]) INNER JOIN Ursa " +
             //                  "ON Unidad.[Id ursa] = Ursa.Id) " +
-            //                  "ON Articulo.Id = Elemento.[Id articulo]) " +
+            //                  "ON Articulo.Id = ElementoActa.[Id articulo]) " +
             //                  "ON Categoria.Id = Articulo.[Id categoria]) " +
-            //                  "ON Estado_Elemento.Id = Elemento.[Id estado_elemento]) " +
-            //                  "ON Entrega.Id = Elemento.[Id entrega]" +
+            //                  "ON Estado_Elemento.Id = ElementoActa.[Id estado_elemento]) " +
+            //                  "ON Entrega.Id = ElementoActa.[Id entrega]" +
             //                  $"{Regional} {Unidad} ";
 
 

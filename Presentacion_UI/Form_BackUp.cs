@@ -44,9 +44,9 @@ namespace Presentacion_UI
                 bLLBackUp.RestaurarBackup(bEBackUp);
 
                 // Registrar el evento de restauración en la bitácora
-                bLLBitacora.RegistrarEvento(Form_Contenedor.usuario, $"Restauro BackUp {bEBackUp.NombreArchivo}");
+                bLLBitacora.RegistrarEvento(Form_Contenedor.usuario, $"Restauro BackUp {bEBackUp.Nombre}");
                 cargarGrilla() ;
-                MessageBox.Show($"Se restauro el {bEBackUp.NombreArchivo} con exito ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Se restauro el {bEBackUp.Nombre} con exito ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             }

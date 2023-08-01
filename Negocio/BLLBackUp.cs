@@ -27,9 +27,9 @@ namespace Negocio
         {
             BEBackUp bEBackUp = new BEBackUp();
             bEBackUp.Fecha = DateTime.Now;
-            bEBackUp.NombreArchivo = $"BackUp_{bEBackUp.Fecha.ToString("dd-MM-yyyy HH-mm-ss")}.xml";
+            bEBackUp.Nombre = $"BackUp_{bEBackUp.Fecha.ToString("dd-MM-yyyy HH-mm-ss")}.xml";
             mppBackup.GenerarBackUp(bEBackUp);
-            return bEBackUp.NombreArchivo;
+            return bEBackUp.Nombre;
         }
 
         public bool RestaurarBackup(BEBackUp bEBackUp)

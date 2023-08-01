@@ -58,7 +58,6 @@ namespace Negocio
             return mpParticulo.ListarObjeto(Object);
         }
 
-
         public List<BEArticulo> ListarTodo()
         {
       

@@ -43,7 +43,6 @@ namespace Negocio
             return mPPElemento.Eliminar_Elemento_Entrega(elemento);
         }
 
-
         public BEElemento Agregar(BEElemento pElemeto)
         {
             return mPPElemento.Agregar(pElemeto);
@@ -69,12 +68,6 @@ namespace Negocio
             return NroActa;
         }
 
-        public string ObtenerNroEntrega(BEElemento pElemento)
-        {
-            string NroActa = mPPElemento.ObtenerNroEntrega(pElemento);
-            return NroActa;
-        }
-
         public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad, string nrohallazgo)
         {
 
@@ -85,7 +78,6 @@ namespace Negocio
             }
             return mPPElemento.BusquedaElementos(desde, hasta, bECategoria, bEArticulo, lugar, descripcion, unidad, nrohallazgo);
         }
-
 
         public BEElemento CovertirElemento(ElementoBusqueda elementoBusqueda)
         {

@@ -38,7 +38,7 @@ namespace MPP
                     BEBackUp backup = new BEBackUp()
                     {
                         Fecha = fecha,
-                        NombreArchivo = nombreArchivo
+                        Nombre = nombreArchivo
                     };
 
                     lista.Add(backup);

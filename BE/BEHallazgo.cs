@@ -18,7 +18,7 @@ namespace BE
         public DateTime FechaHallazgo { get; set; }
 
         public string LugarHallazgo { get; set; }
-
+        
         public int CompareTo(BEHallazgo other)
         {
             if (this.FechaHallazgo > other.FechaHallazgo) return 1;

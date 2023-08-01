@@ -14,13 +14,15 @@ namespace Presentacion_UI
         {
             InitializeComponent();
 
+            bEBitacora = new BEBitacora();
+            bEBitacora.ListaEventos = bLLBitacora.ListarTodo();
         }
-        List<BEEvento> listaEventos = new List<BEEvento>();
+
+        BEBitacora bEBitacora;
         BLLBitacora bLLBitacora = new BLLBitacora();
         private void Form_Bitacora_Load(object sender, EventArgs e)
         {
-            listaEventos = bLLBitacora.ListarTodo();
-            cargarGrilla(listaEventos);
+            cargarGrilla(bEBitacora.ListaEventos);
 
         }
 
@@ -33,13 +35,13 @@ namespace Presentacion_UI
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            var lista = listaEventos.FindAll(x => x.Usuario.Contains(textBoxCriterio.Text) || x.Mensaje.Contains(textBoxCriterio.Text) );
+            var lista = bEBitacora.ListaEventos.FindAll(x => x.Usuario.Contains(textBoxCriterio.Text) || x.Mensaje.Contains(textBoxCriterio.Text));
             cargarGrilla(lista);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            cargarGrilla(listaEventos);
+            cargarGrilla(bEBitacora.ListaEventos);
         }
 
     }

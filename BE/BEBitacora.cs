@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BEBackUp
+    public class BEBitacora
     {
-        public DateTime Fecha { get; set; }
-        public string Nombre { get; set; }
+        public List<BEEvento> ListaEventos { get; set; }
 
     }
 }

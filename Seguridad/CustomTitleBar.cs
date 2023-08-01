@@ -18,8 +18,31 @@ namespace Seguridad
         private PictureBox iconPictureBox;
         private Label titleLabel;
 
+        private bool mousePresionado = false;
+        private Point ultimaUbicacion;
         public CustomTitleBar()
         {
+            this.MouseDown += (s, e) =>
+            {
+                mousePresionado = true;
+                ultimaUbicacion = e.Location;
+            };
+
+            this.MouseMove += (s, e) =>
+            {
+                if (mousePresionado)
+                {
+                    this.ParentForm.Location = new Point(
+                        (this.ParentForm.Location.X - ultimaUbicacion.X) + e.X,
+                        (this.ParentForm.Location.Y - ultimaUbicacion.Y) + e.Y);
+                }
+            };
+
+            this.MouseUp += (s, e) =>
+            {
+                mousePresionado = false;
+            };
+
             this.Size = new Size(800, 30);
             this.Dock = DockStyle.Top;
 

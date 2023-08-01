@@ -1,6 +1,5 @@
 ﻿using BE;
 using Microsoft.Reporting.WinForms;
-using System.Data;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -14,21 +13,20 @@ namespace Presentacion_UI
     public class BEActa
     {
 
-        BLLElemento bLLElemento;
         public BEInstructor Instructor { get; set; }
         public BEPersona Desc_Propie { get; set; }
         public BEPersona Testigo1 { get; set; }
         public BEPersona Testigo2 { get; set; }
         public BEHallazgo hallazgo { get; set; }
         public BEEntrega entrega { get; set; }
-        Elemento Elemento;
+       
+        BLLElemento bLLElemento;
 
         public ReportParameterCollection Parametros;
-        public List<Elemento> elementos;
+        public List<ElementoActa> elementos;
         public BEActa(BEPadreHallazgo Padre)
         {
             bLLElemento = new BLLElemento();
-            Elemento = new Elemento();
 
             if (Padre.listaPersonas != null)
             {
@@ -60,7 +58,7 @@ namespace Presentacion_UI
                 }
             }
 
-            elementos = Elemento.CrearListaElementos(Padre.listaElementos);
+            elementos = Conversion(Padre.listaElementos);
             if (Padre is BEHallazgo)
             {
                 hallazgo = (BEHallazgo)Padre;
@@ -98,7 +96,6 @@ namespace Presentacion_UI
 
             AgregarParametrosComunes();
         }
-
         void llenarParametrosEntrega()
         {
             Parametros = new ReportParameterCollection
@@ -141,6 +138,25 @@ namespace Presentacion_UI
                 Parametros.Add(new ReportParameter("DNITestigo2", Testigo2?.DNI));
                 Parametros.Add(new ReportParameter("NombreTestigo2", Testigo2?.NombreCompleto));
             }
+        }
+
+        List<ElementoActa> Conversion(List<BEElemento> bEElementos)
+        {
+            List<ElementoActa> lista = new List<ElementoActa>();
+
+            foreach (BEElemento item in bEElementos)
+            {
+                ElementoActa elemento = new ElementoActa();
+                elemento.Id = item.Id;
+                elemento.Articulo = item.Articulo.Categoria.Nombre + "-" + item.Articulo.Nombre;
+                elemento.Descripcion = item.Descripcion.ToLower();
+                elemento.Cantidad = item.Cantidad;
+                elemento.Estado = item.Estado.Nombre;
+                lista.Add(elemento);
+
+            }
+            return lista;
+
         }
 
     }
