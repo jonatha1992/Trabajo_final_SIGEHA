@@ -1,11 +1,12 @@
 ﻿using BE;
+using Abstraccion;
 using MPP;
 using System.Collections.Generic;
 using System.Data;
 
 namespace Negocio
 {
-    public class BLLUsuario
+    public class BLLUsuario: IGestor<BEUsuario>
     {
         MPPUsuario mpPUsuario;
         MPPPermiso mpPpermiso;
@@ -120,6 +121,16 @@ namespace Negocio
             }
 
             return true;
+        }
+
+        public BEUsuario Agregar(BEUsuario Object)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Actualizar(BEUsuario Object)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
