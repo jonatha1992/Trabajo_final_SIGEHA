@@ -14,7 +14,6 @@ namespace BE
         }
 
 
-
         public override List<BEComponente> Hijos
         {
             get
@@ -23,8 +22,6 @@ namespace BE
             }
 
         }
-
-
 
 
         public override void AgregarHijo(BEComponente c)

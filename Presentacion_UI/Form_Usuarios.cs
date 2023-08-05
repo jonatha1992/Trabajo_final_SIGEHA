@@ -160,7 +160,7 @@ namespace Presentacion_UI
         {
             if (seleccion != null)
             {
-                if (oBLLUsu.verificarol(seleccion))
+                if (oBLLUsu.UsuarioTieneRolInstructorOsupervisor(seleccion))
                 {
                     groupBoxDestino.Enabled = true;
 

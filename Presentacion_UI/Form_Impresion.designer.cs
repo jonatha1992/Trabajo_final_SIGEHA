@@ -36,10 +36,10 @@
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Presentacion_UI.ActaHallazgo.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 30);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 24);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(775, 708);
+            this.reportViewer1.Size = new System.Drawing.Size(775, 714);
             this.reportViewer1.TabIndex = 37;
             // 
             // customTitleBar1
@@ -48,12 +48,12 @@
             this.customTitleBar1.CloseButtonVisible = true;
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.customTitleBar1.ForeColor = System.Drawing.SystemColors.Window;
-            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Icon = global::Presentacion_UI.Properties.Resources.articulos_perdidos1;
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(775, 30);
+            this.customTitleBar1.Size = new System.Drawing.Size(775, 24);
             this.customTitleBar1.TabIndex = 38;
             this.customTitleBar1.Title = "Vista previa ";
             // 

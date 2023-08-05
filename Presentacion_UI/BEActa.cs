@@ -13,16 +13,16 @@ namespace Presentacion_UI
     public class BEActa
     {
 
-        public BEInstructor Instructor { get; set; }
-        public BEPersona Desc_Propie { get; set; }
-        public BEPersona Testigo1 { get; set; }
-        public BEPersona Testigo2 { get; set; }
-        public BEHallazgo hallazgo { get; set; }
-        public BEEntrega entrega { get; set; }
+        public BEInstructor Instructor;
+        public BEPersona Desc_Propie;
+        public BEPersona Testigo1;
+        public BEPersona Testigo2;
+        public BEHallazgo hallazgo;
+        public BEEntrega entrega;
+        public ReportParameterCollection Parametros;
        
         BLLElemento bLLElemento;
 
-        public ReportParameterCollection Parametros;
         public List<ElementoActa> elementos;
         public BEActa(BEPadreHallazgo Padre)
         {

@@ -57,11 +57,11 @@ namespace Negocio
         }
 
    
-        public bool verificarol(BEUsuario usuario)
+        public bool UsuarioTieneRolInstructorOsupervisor(BEUsuario usuario)
         {
             foreach (var item in usuario.Permisos)
             {
-                if (VerificarRolUsuario(item))
+                if (ComponenteEsInstructorOSupervisor(item))
                 {
                     return true;
                 }
@@ -69,7 +69,7 @@ namespace Negocio
             }
             return false;
         }
-        bool VerificarRolUsuario(BEComponente componente)
+        bool ComponenteEsInstructorOSupervisor(BEComponente componente)
         {
 
             if (componente is BERol)
@@ -83,7 +83,7 @@ namespace Negocio
                 // Verificar los roles de los hijos recursivamente
                 foreach (BEComponente hijo in componente.Hijos)
                 {
-                    if (VerificarRolUsuario(hijo))
+                    if (ComponenteEsInstructorOSupervisor(hijo))
                     {
                         return true;
                     }
@@ -101,9 +101,15 @@ namespace Negocio
             return mpPUsuario.Eliminar(oBEUsu);
         }
 
+
+        /// <summary>
+        /// lo que hace el metodo en si es verificar si es usuario es instructor o supervisor
+        /// y no tiene un destino asignado no permite guardar el usuario hasta que no tenga un
+        /// destino asginado
+        /// </summary>
         public bool GuardarUsuario(BEUsuario oBEUsu)
         {
-            if (verificarol(oBEUsu) && oBEUsu.Destino == null)
+            if (UsuarioTieneRolInstructorOsupervisor(oBEUsu) && oBEUsu.Destino == null)
             {
                 return false;
             }
@@ -111,11 +117,11 @@ namespace Negocio
             {
                 if (oBEUsu.Id == 0)
                 {
-                    mpPUsuario.Agregar(oBEUsu);
+                    Agregar(oBEUsu);
                 }
                 else
                 {
-                    mpPUsuario.Actualizar(oBEUsu);
+                    Actualizar(oBEUsu);
                 }
                 mpPUsuario.GuardarPermisosUsuario(oBEUsu);
             }
@@ -125,12 +131,12 @@ namespace Negocio
 
         public BEUsuario Agregar(BEUsuario Object)
         {
-            throw new System.NotImplementedException();
+           return mpPUsuario.Agregar(Object);
         }
 
         public bool Actualizar(BEUsuario Object)
         {
-            throw new System.NotImplementedException();
+          return  mpPUsuario.Actualizar(Object);
         }
     }
 }

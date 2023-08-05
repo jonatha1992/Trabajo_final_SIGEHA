@@ -10,12 +10,10 @@ namespace BE
         {
             Id = id;
         }
-        //public int Id { get; set; }
-        //public string Nombre { get; set; }
 
         public List<BEUnidad> Unidades { get; set; }
         
-        //ahora ver si modifico algo 
+   
  
     }
 }

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo-PSA.ico</ApplicationIcon>
+    <ApplicationIcon>articulos-perdidos.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -357,6 +357,8 @@
     <None Include="Resources\Ministerio_seguridad_logo.svg.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="articulos-perdidos.ico" />
+    <Content Include="icono.ico" />
     <Content Include="Logo-PSA.ico" />
     <None Include="Resources\icons8-visible-16.png" />
     <None Include="Resources\icons8-visible-16 %281%29.png" />
@@ -369,6 +371,8 @@
     <None Include="Resources\settings.png" />
     <None Include="Resources\configuration.png" />
     <None Include="Resources\maximizar-tamano.png" />
+    <None Include="Resources\articulos-perdidos.ico" />
+    <None Include="Resources\articulos-perdidos.png" />
     <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

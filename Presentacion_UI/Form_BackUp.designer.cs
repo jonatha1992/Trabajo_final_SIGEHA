@@ -36,9 +36,9 @@
             this.DgvBackups = new System.Windows.Forms.DataGridView();
             this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
-            this.customTitleBar1 = new Seguridad.CustomTitleBar();
-            this.btnGenerarBackUP = new Seguridad.RJButton();
             this.buttonRestaurar = new Seguridad.RJButton();
+            this.btnGenerarBackUP = new Seguridad.RJButton();
+            this.customTitleBar1 = new Seguridad.CustomTitleBar();
             ((System.ComponentModel.ISupportInitialize)(this.DgvBackups)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,19 +122,29 @@
             this.label5.TabIndex = 90;
             this.label5.Text = "BackUps";
             // 
-            // customTitleBar1
+            // buttonRestaurar
             // 
-            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
-            this.customTitleBar1.CloseButtonVisible = true;
-            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
-            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
-            this.customTitleBar1.MaximizeButtonVisible = false;
-            this.customTitleBar1.MinimizeButtonVisible = false;
-            this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(671, 25);
-            this.customTitleBar1.TabIndex = 93;
-            this.customTitleBar1.Title = "Backup";
+            this.buttonRestaurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonRestaurar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.buttonRestaurar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.buttonRestaurar.BorderRadius = 20;
+            this.buttonRestaurar.BorderSize = 0;
+            this.buttonRestaurar.FlatAppearance.BorderSize = 0;
+            this.buttonRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRestaurar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.buttonRestaurar.ForeColor = System.Drawing.Color.White;
+            this.buttonRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("buttonRestaurar.Image")));
+            this.buttonRestaurar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonRestaurar.Location = new System.Drawing.Point(19, 182);
+            this.buttonRestaurar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonRestaurar.Name = "buttonRestaurar";
+            this.buttonRestaurar.Size = new System.Drawing.Size(115, 44);
+            this.buttonRestaurar.TabIndex = 95;
+            this.buttonRestaurar.Text = "Restaurar";
+            this.buttonRestaurar.TextColor = System.Drawing.Color.White;
+            this.buttonRestaurar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonRestaurar.UseVisualStyleBackColor = false;
+            this.buttonRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
             // 
             // btnGenerarBackUP
             // 
@@ -160,29 +170,19 @@
             this.btnGenerarBackUP.UseVisualStyleBackColor = false;
             this.btnGenerarBackUP.Click += new System.EventHandler(this.btnGenerarBackUP_Click);
             // 
-            // buttonRestaurar
+            // customTitleBar1
             // 
-            this.buttonRestaurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.buttonRestaurar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.buttonRestaurar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.buttonRestaurar.BorderRadius = 20;
-            this.buttonRestaurar.BorderSize = 0;
-            this.buttonRestaurar.FlatAppearance.BorderSize = 0;
-            this.buttonRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRestaurar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.buttonRestaurar.ForeColor = System.Drawing.Color.White;
-            this.buttonRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("buttonRestaurar.Image")));
-            this.buttonRestaurar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonRestaurar.Location = new System.Drawing.Point(19, 182);
-            this.buttonRestaurar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonRestaurar.Name = "buttonRestaurar";
-            this.buttonRestaurar.Size = new System.Drawing.Size(115, 44);
-            this.buttonRestaurar.TabIndex = 95;
-            this.buttonRestaurar.Text = "Restaurar";
-            this.buttonRestaurar.TextColor = System.Drawing.Color.White;
-            this.buttonRestaurar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonRestaurar.UseVisualStyleBackColor = false;
-            this.buttonRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
+            this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
+            this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.customTitleBar1.MaximizeButtonVisible = false;
+            this.customTitleBar1.MinimizeButtonVisible = false;
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.Size = new System.Drawing.Size(671, 25);
+            this.customTitleBar1.TabIndex = 93;
+            this.customTitleBar1.Title = "Backup";
             // 
             // Form_BackUp
             // 
