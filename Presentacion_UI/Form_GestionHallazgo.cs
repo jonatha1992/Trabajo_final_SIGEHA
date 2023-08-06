@@ -253,7 +253,7 @@ namespace Presentacion_UI
             }
             else
             {
-                this.dgvHallazgos.Columns["Seleccion"].Visible = false;
+                dgvHallazgos.ColumnHeadersVisible = true;
 
             }
         }
@@ -293,8 +293,6 @@ namespace Presentacion_UI
 
             Habilitar();
         }
-
-
 
         bool VerficarCampos()
         {

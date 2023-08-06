@@ -1,4 +1,6 @@
-﻿namespace Presentacion_UI
+﻿using System;
+
+namespace Presentacion_UI
 {
     partial class Form_Entrega
     {
@@ -959,7 +961,7 @@
             this.dateTimePickerFechaEntrega.Name = "dateTimePickerFechaEntrega";
             this.dateTimePickerFechaEntrega.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerFechaEntrega.TabIndex = 3;
-            this.dateTimePickerFechaEntrega.Value = new System.DateTime(2023, 7, 7, 12, 9, 42, 539);
+            this.dateTimePickerFechaEntrega.Value = DateTime.Now;
             this.dateTimePickerFechaEntrega.ValueChanged += new System.EventHandler(this.dateTimePickerFechaEntrega_ValueChanged);
             // 
             // label6

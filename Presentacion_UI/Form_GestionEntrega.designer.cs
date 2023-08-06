@@ -1,4 +1,6 @@
-﻿namespace Presentacion_UI
+﻿using System;
+
+namespace Presentacion_UI
 {
     partial class Form_GestionEntrega
     {
@@ -232,7 +234,7 @@
             this.dateTimePickerFechaEntrega.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dateTimePickerFechaEntrega.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaEntrega.Name = "dateTimePickerFechaEntrega";
-            this.dateTimePickerFechaEntrega.Value = new System.DateTime(2023, 7, 2, 17, 6, 30, 441);
+            this.dateTimePickerFechaEntrega.Value = DateTime.Now;
             this.dateTimePickerFechaEntrega.ValueChanged += new System.EventHandler(this.dateTimePickerFechaHallazgo_ValueChanged);
             // 
             // comboBoxUnidad

@@ -104,7 +104,24 @@ namespace Negocio
             return lista;
         }
 
-        
+        public override int ObtenerNroActa2(BEUnidad unidad, int anio)
+        {
+            var hallazgos = ListarTodo();
 
+            string nroHallazgo = hallazgos
+                .Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+                .OrderByDescending(h => h.NroActa)
+                .FirstOrDefault()?.NroActa;
+
+            int numeroSecuencial = 0;
+
+            string numeroSecuencialStr = nroHallazgo.Substring(0, nroHallazgo.IndexOf(unidad.Cod));
+
+            if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
+            {
+                numeroSecuencial = numeroParseado + 1;
+            }
+            return numeroSecuencial;
+        }
     }
 }

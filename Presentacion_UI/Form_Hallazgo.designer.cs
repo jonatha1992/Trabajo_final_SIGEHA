@@ -1,4 +1,6 @@
-﻿namespace Presentacion_UI
+﻿using System;
+
+namespace Presentacion_UI
 {
     partial class Form_Hallazgo
     {
@@ -299,7 +301,7 @@
             this.dateTimePickerFechaHallazgo.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dateTimePickerFechaHallazgo.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaHallazgo.Name = "dateTimePickerFechaHallazgo";
-            this.dateTimePickerFechaHallazgo.Value = new System.DateTime(2023, 7, 2, 17, 6, 30, 441);
+            this.dateTimePickerFechaHallazgo.Value = DateTime.Now;
             this.dateTimePickerFechaHallazgo.ValueChanged += new System.EventHandler(this.dateTimePickerFechaHallazgo_ValueChanged);
             // 
             // label4
