@@ -17,7 +17,7 @@ namespace BE
 
         public override string ToString()
         {
-            return Nombre == "" ? "No tiene" : Nombre;
+            return  Nombre;
         }
     }
 

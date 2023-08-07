@@ -215,11 +215,11 @@ namespace Presentacion_UI
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
             // 
-            // labelNroHallazgo
+            // labelNroEntrega
             // 
-            resources.ApplyResources(this.labelNroHallazgo, "labelNroHallazgo");
+            resources.ApplyResources(this.labelNroHallazgo, "labelNroEntrega");
             this.labelNroHallazgo.ForeColor = System.Drawing.Color.White;
-            this.labelNroHallazgo.Name = "labelNroHallazgo";
+            this.labelNroHallazgo.Name = "labelNroEntrega";
             // 
             // label4
             // 
@@ -237,13 +237,13 @@ namespace Presentacion_UI
             this.dateTimePickerFechaEntrega.Value = DateTime.Now;
             this.dateTimePickerFechaEntrega.ValueChanged += new System.EventHandler(this.dateTimePickerFechaHallazgo_ValueChanged);
             // 
-            // comboBoxUnidad
+            // comboBoxUnidadEntrega
             // 
             this.comboBoxUnidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxUnidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            resources.ApplyResources(this.comboBoxUnidad, "comboBoxUnidad");
+            resources.ApplyResources(this.comboBoxUnidad, "comboBoxUnidadEntrega");
             this.comboBoxUnidad.FormattingEnabled = true;
-            this.comboBoxUnidad.Name = "comboBoxUnidad";
+            this.comboBoxUnidad.Name = "comboBoxUnidadEntrega";
             this.comboBoxUnidad.SelectedIndexChanged += new System.EventHandler(this.comboBoxUnidad_SelectedIndexChanged);
             // 
             // dgvHallazgos

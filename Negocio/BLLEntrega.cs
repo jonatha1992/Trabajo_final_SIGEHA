@@ -100,7 +100,6 @@ namespace Negocio
 
         public List<BEEntrega> ListarTodo()
         {
-
             return mmPEntrega.ListarTodo(); 
         }
 
@@ -128,14 +127,18 @@ namespace Negocio
                 .OrderByDescending(h => h.NroActa)
                 .FirstOrDefault()?.NroActa;
 
-            int numeroSecuencial = 0;
+            int numeroSecuencial = 1;
 
-            string numeroSecuencialStr = nroEntrega.Substring(0, nroEntrega.IndexOf(unidad.Cod));
-
-            if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
+            if (!string.IsNullOrEmpty(nroEntrega) && nroEntrega.Contains(unidad.Cod))
             {
-                numeroSecuencial = numeroParseado + 1;
+                string numeroSecuencialStr = nroEntrega.Substring(0, nroEntrega.IndexOf(unidad.Cod));
+
+                if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
+                {
+                    numeroSecuencial = numeroParseado + 1;
+                }
             }
+
             return numeroSecuencial;
         }
 
@@ -148,7 +151,7 @@ namespace Negocio
 
             if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
             {
-                numeroSecuencial = numeroParseado + 1;
+                numeroSecuencial = numeroParseado ;
             }
             return numeroSecuencial;
         }

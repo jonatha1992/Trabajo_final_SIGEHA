@@ -321,7 +321,7 @@ namespace Presentacion_UI
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.buttonAsignarRol_Click);
             // 
-            // comboBox1
+            // comboBoxUnidad
             // 
             this.comboBox1.BackColor = System.Drawing.Color.Silver;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -329,7 +329,7 @@ namespace Presentacion_UI
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(20, 41);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Name = "comboBoxUnidad";
             this.comboBox1.Size = new System.Drawing.Size(227, 23);
             this.comboBox1.TabIndex = 30;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoles_SelectedIndexChanged);

@@ -49,6 +49,14 @@ namespace Presentacion_UI
 
         public static BEUsuario usuario;
 
+        private void CerrarFormulario(Form formulario)
+        {
+            if (formulario != null )
+            {
+                formulario.Close();
+                formulario = null;
+            }
+        }
 
 
 
@@ -213,17 +221,34 @@ namespace Presentacion_UI
         {
             try
             {
+
                 if (form_Hallazgo == null || form_Hallazgo.IsDisposed)
                 {
                     form_Hallazgo = new Form_Hallazgo();
                     form_Hallazgo.MdiParent = this;
                     form_Hallazgo.Show();
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void CrearEntrega_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (form_Entrega == null || form_Entrega.IsDisposed)
+                {
+                    form_Entrega = new Form_Entrega();
+                    form_Entrega.MdiParent = this;
+                    form_Entrega.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -338,23 +363,6 @@ namespace Presentacion_UI
             }
         }
 
-        private void GenerarEntrega_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (form_Entrega == null || form_Entrega.IsDisposed)
-                {
-                    form_Entrega = new Form_Entrega();
-                    form_Entrega.MdiParent = this;
-                    form_Entrega.Show();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha surgido un error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void GestionEntrega_Click(object sender, EventArgs e)
         {
             try
@@ -389,5 +397,6 @@ namespace Presentacion_UI
             }
         }
 
+     
     }
 }

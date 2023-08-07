@@ -188,7 +188,7 @@ namespace Presentacion_UI
         {
             if (SeleccionEntrega)
             {
-                comboBoxUnidad.Text = bEEntregaSeleccionada.Unidad.Nombre;
+                this.comboBoxUnidad.Text = bEEntregaSeleccionada.Unidad.Nombre;
             }
 
         }
@@ -281,23 +281,6 @@ namespace Presentacion_UI
                     DgvElementosEntrega.ClearSelection();
                 }
 
-                //else
-                //{
-                //    if (!ModoCreacion)
-                //    {
-                //        var result = MessageBox.Show("La Entrega no contiene elementos\n\n¿Desea eliminar la entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                //        if (result == DialogResult.Yes)
-                //        {
-                //            if (bLLEntrega.Eliminar(bEEntregaSeleccionada))
-                //            {
-                //                MessageBox.Show("La Entrega se elimino correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //                LimpiarCamposEntrega();
-                //                CargarGrillaEntregas();
-                //                Habilitar();
-                //            }
-                //        }
-                //    }
-                //}
 
                 if (DgvElementosEntrega.DataSource == null || DgvElementosEntrega.Rows.Count == 0)
                 {
@@ -334,11 +317,13 @@ namespace Presentacion_UI
                 this.dataGridViewEntregas.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dataGridViewEntregas.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                 this.dataGridViewEntregas.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
+                this.dataGridViewEntregas.ColumnHeadersVisible = true;
 
             }
             else
             {
-                this.dataGridViewEntregas.Columns["Seleccion"].Visible = false;
+               this.dataGridViewEntregas.ColumnHeadersVisible = false;
+                //this.dataGridViewEntregas.Columns["Seleccion"].Visible = false;
             }
         }
         void LimpiarbBusqueda()
@@ -357,14 +342,17 @@ namespace Presentacion_UI
             checkBoxFecha.Checked = false;
             DgvBusqueda.DataSource = null;
         }
-        bool VerficarCampos()
+        bool VerficarCamposEntrega()
         {
-            if (comboBoxUnidad.Text == "" || comboBoxUrsa.Text == "" || dateTimePickerDesde.Text == "" || textBoxNroActa.Text == "")
+            if (comboBoxUnidad.Text == ""
+                || comboBoxUrsa.Text == ""
+                || dateTimePickerDesde.Text == ""
+                || numericUpDownNroEntrega.Value == 0)
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroActa(textBoxNroActa.Text,bEUnidad.Cod))
+            if (!Validar.VerificarNroActa(labelNroEntrega.Text, bEUnidad.Cod))
             {
                 MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -425,6 +413,10 @@ namespace Presentacion_UI
         }
         void ColocarNumero()
         {
+            if (!SeleccionEntrega)
+            {
+                numericUpDownNroEntrega.Value = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
+            }
             //textBoxNroActa.Text = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
         }
         BEEntrega CrearEntrega()
@@ -433,7 +425,7 @@ namespace Presentacion_UI
             {
                 bEEntregaSeleccionada = new BEEntrega();
             }
-            bEEntregaSeleccionada.NroActa = textBoxNroActa.Text;
+            bEEntregaSeleccionada.NroActa = labelNroEntrega.Text;
             bEEntregaSeleccionada.Unidad = bEUnidad;
             bEEntregaSeleccionada.Fecha_entrega = dateTimePickerFechaEntrega.Value;
             bEEntregaSeleccionada.Anio = dateTimePickerFechaEntrega.Value.Year;
@@ -460,7 +452,8 @@ namespace Presentacion_UI
                     {
                         bEEntregaSeleccionada = bLLEntrega.ListarObjeto((BEEntrega)row.DataBoundItem);
                     }
-                    textBoxNroActa.Text = bEEntregaSeleccionada.NroActa;
+                    //textBoxNroActa.Text = bEEntregaSeleccionada.NroActa;
+                    numericUpDownNroEntrega.Value = bLLEntrega.ExtraerNro(bEEntregaSeleccionada.NroActa, bEEntregaSeleccionada.Unidad);
                     dateTimePickerDesde.Value = bEEntregaSeleccionada.Fecha_entrega;
                     CargarGrillaElementosEntrega();
 
@@ -500,7 +493,7 @@ namespace Presentacion_UI
         {
             try
             {
-                if (VerficarCampos())
+                if (VerficarCamposEntrega())
                 {
                     bEEntregaSeleccionada = bLLEntrega.Agregar(CrearEntrega());
 
@@ -511,12 +504,12 @@ namespace Presentacion_UI
                         SeleccionEntrega = true;
                         CargarGrillaEntregas();
                         SeleccionarEntrega();
-                        MessageBox.Show($"La Entrega se creó {textBoxNroActa.Text} correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"La Entrega se creó {labelNroEntrega.Text} correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Habilitar();
                     }
                     else
                     {
-                        MessageBox.Show($"El Nro.de Entrega {textBoxNroActa.Text} ya se encuentra utilizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show($"El Nro.de Entrega {labelNroEntrega.Text} ya se encuentra utilizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         ColocarNumero();
 
                     }
@@ -593,17 +586,9 @@ namespace Presentacion_UI
         {
             try
             {
-                //if (bEEntregaSeleccionada.listaPersonas?.Count >= 3 && bEEntregaSeleccionada.listaElementos?.Count > 0)
-                //{
+            
                 Form_Impresion form_Impresion = new Form_Impresion(bEEntregaSeleccionada);
                 form_Impresion.ShowDialog();
-
-                //}
-                //else
-                //{
-                //    MessageBox.Show($"No posee la cantidad de intervinientes para imprimir el acta", "Requisitos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                //}
 
             }
             catch (Exception ex)
@@ -656,15 +641,16 @@ namespace Presentacion_UI
         #region "Acciones Datagrid y Combobox"
 
 
-        private void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxUnidadEntrega_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            bEUnidad = (BEUnidad)this.comboBoxUnidad.SelectedItem;
             LimpiarCamposEntrega();
             CargarGrillaEntregas();
             Habilitar();
 
         }
+
 
         private void dateTimePickerFechaEntrega_ValueChanged(object sender, EventArgs e)
         {
@@ -880,6 +866,20 @@ namespace Presentacion_UI
             }
         }
 
+        private void numericUpDownNroEntrega_ValueChanged(object sender, EventArgs e)
+        {
+            labelNroEntrega.Text = numericUpDownNroEntrega.Value + bEUnidad.Cod + "/" + dateTimePickerFechaEntrega.Value.Year;
+        }
 
+        private void numericUpDownNroEntrega_Leave(object sender, EventArgs e)
+        {
+            // Verificar si el valor está vacío o si es menor al valor mínimo permitido.
+            if (string.IsNullOrWhiteSpace(numericUpDownNroEntrega.Text) || numericUpDownNroEntrega.Value < numericUpDownNroEntrega.Minimum)
+            {
+                numericUpDownNroEntrega.Value = numericUpDownNroEntrega.Minimum;
+            }
+        }
+
+    
     }
 }

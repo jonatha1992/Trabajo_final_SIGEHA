@@ -44,7 +44,6 @@ namespace Presentacion_UI
                 Habilitar();
                 HabilitarElemento();
                 CargarGrillaHallazgos();
-                //ColocarNumero();
 
             }
             catch (Exception ex)
@@ -94,16 +93,16 @@ namespace Presentacion_UI
                 bEUnidad = Usuario.Destino as BEUnidad;
                 bEUrsa =  bEUnidad.Ursa;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidad.SelectedItem = bEUnidad;
-                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUnidadHallazgo.SelectedItem = bEUnidad;
+                comboBoxUnidadHallazgo.Text = bEUnidad.Nombre;
                 comboBoxUrsa.Enabled = false;
-                comboBoxUnidad.Enabled = false;
+                comboBoxUnidadHallazgo.Enabled = false;
             }
             if (Usuario.Destino is BEUrsa) //destino region
             {
                 bEUrsa = Usuario.Destino as BEUrsa;
                 bEUnidad = bEUrsa.Unidades.First();
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
+                comboBoxUnidadHallazgo.DataSource = bEUrsa.Unidades;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUrsa.Enabled = false;
             }
@@ -265,7 +264,6 @@ namespace Presentacion_UI
         void limpiarCamposHallazgos()
         {
             textBoxLugar.Text = "";
-            //textBoxNroActa.Text = "";
             textBoxObservacion.Text = "";
             dateTimePickerFechaHallazgo.Value = DateTime.Now;
             SeleccionHallazgo = false;
@@ -275,15 +273,14 @@ namespace Presentacion_UI
         {
             if (!SeleccionHallazgo)
             {
-                //textBoxNroActa.Text = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
-                numericUpDownHallazgo.Value = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
+                numericUpDownNroHallazgo.Value = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
             }
         }
         void ComboBox()
         {
             if (SeleccionHallazgo) // si esta en modo creacion
             {
-                comboBoxUnidad.Text = bEHallazgoSeleccionado.Unidad.Nombre;
+                comboBoxUnidadHallazgo.Text = bEHallazgoSeleccionado.Unidad.Nombre;
             }
             else
             {
@@ -385,10 +382,10 @@ namespace Presentacion_UI
             ComboBox();
             Dgv();
         }
-        void CargarGrillaHallazgos()
+       private void CargarGrillaHallazgos()
         {
 
-            this.dgvHallazgos.DataSource = null;
+             this.dgvHallazgos.DataSource = null;
 
             List<BEHallazgo> Lista = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
 
@@ -406,17 +403,14 @@ namespace Presentacion_UI
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
                 this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
+                this.dgvHallazgos.ColumnHeadersVisible = true;
 
 
                 this.dgvHallazgos.ClearSelection();
             }
             else
             {
-
-                //this.dgvHallazgos.Columns["Seleccion"].Visible = false;
-                dgvHallazgos.ColumnHeadersVisible = true;
-
-
+                this.dgvHallazgos.ColumnHeadersVisible = false;
             }
         }
 
@@ -437,8 +431,7 @@ namespace Presentacion_UI
                         bEHallazgoSeleccionado = bLLHallazgo.ListarObjeto((BEHallazgo)row.DataBoundItem);
                     }
                     textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
-                    numericUpDownHallazgo.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa, bEHallazgoSeleccionado.Unidad);
-                    //labelNroHallazgo.Text = bEHallazgoSeleccionado.NroActa;
+                    numericUpDownNroHallazgo.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa, bEHallazgoSeleccionado.Unidad);
                     dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     CargarGrillaElementos();
                     Habilitar();
@@ -457,12 +450,12 @@ namespace Presentacion_UI
 
         bool VerficarCamposHallazgo()
         {
-            if (comboBoxUnidad.Text == "" 
+            if (comboBoxUnidadHallazgo.Text == "" 
                 || comboBoxUrsa.Text == "" 
                 || dateTimePickerFechaHallazgo.Text == "" 
                 || textBoxLugar.Text == "" 
-                || numericUpDownHallazgo.Value == 0
-                || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
+                || numericUpDownNroHallazgo.Value == 0
+                || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidadHallazgo.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -803,10 +796,10 @@ namespace Presentacion_UI
 
         #region "Hallazgo"
   
-        void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        void comboBoxUnidadHallazgo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            bEUnidad = (BEUnidad)this.comboBoxUnidadHallazgo.SelectedItem;
             bEHallazgoSeleccionado = null;
             limpiarCamposHallazgos();
             CargarGrillaHallazgos();
@@ -865,10 +858,7 @@ namespace Presentacion_UI
         #endregion
 
         #region "Texto box funciones"
-        void textBoxNroActa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validar.SoloEnterossSinEspacios(e);
-        }
+      
         void textBoxLugar_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validar.NoSaltosDelinea(e);
@@ -983,15 +973,15 @@ namespace Presentacion_UI
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            labelNroHallazgo.Text = numericUpDownHallazgo.Value + bEUnidad.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
+            labelNroHallazgo.Text = numericUpDownNroHallazgo.Value + bEUnidad.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
         }
 
         private void numericUpDownHallazgo_Leave(object sender, EventArgs e)
         {
             // Verificar si el valor está vacío o si es menor al valor mínimo permitido.
-            if (string.IsNullOrWhiteSpace(numericUpDownHallazgo.Text) || numericUpDownHallazgo.Value < numericUpDownHallazgo.Minimum)
+            if (string.IsNullOrWhiteSpace(numericUpDownNroHallazgo.Text) || numericUpDownNroHallazgo.Value < numericUpDownNroHallazgo.Minimum)
             {
-                numericUpDownHallazgo.Value = numericUpDownHallazgo.Minimum;
+                numericUpDownNroHallazgo.Value = numericUpDownNroHallazgo.Minimum;
             }
         }
     }

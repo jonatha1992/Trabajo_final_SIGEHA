@@ -237,6 +237,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Entrega.resx">
       <DependentUpon>Form_Entrega.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Hallazgo.aa-ER.resx">
       <DependentUpon>Form_Hallazgo.cs</DependentUpon>

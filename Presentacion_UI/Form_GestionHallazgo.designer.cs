@@ -226,11 +226,11 @@ namespace Presentacion_UI
             this.textBoxLugar.Name = "textBoxLugar";
             this.textBoxLugar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLugar_KeyPress);
             // 
-            // labelNroHallazgo
+            // labelNroEntrega
             // 
-            resources.ApplyResources(this.labelNroHallazgo, "labelNroHallazgo");
+            resources.ApplyResources(this.labelNroHallazgo, "labelNroEntrega");
             this.labelNroHallazgo.ForeColor = System.Drawing.Color.White;
-            this.labelNroHallazgo.Name = "labelNroHallazgo";
+            this.labelNroHallazgo.Name = "labelNroEntrega";
             // 
             // label4
             // 
@@ -254,13 +254,13 @@ namespace Presentacion_UI
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Name = "label13";
             // 
-            // comboBoxUnidad
+            // comboBoxUnidadEntrega
             // 
             this.comboBoxUnidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxUnidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            resources.ApplyResources(this.comboBoxUnidad, "comboBoxUnidad");
+            resources.ApplyResources(this.comboBoxUnidad, "comboBoxUnidadEntrega");
             this.comboBoxUnidad.FormattingEnabled = true;
-            this.comboBoxUnidad.Name = "comboBoxUnidad";
+            this.comboBoxUnidad.Name = "comboBoxUnidadEntrega";
             this.comboBoxUnidad.SelectedIndexChanged += new System.EventHandler(this.comboBoxUnidad_SelectedIndexChanged);
             // 
             // dgvHallazgos

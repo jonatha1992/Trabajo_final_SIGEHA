@@ -67,7 +67,9 @@ namespace Seguridad
             closeButton.Image = Properties.Resources.cerrar;
             closeButton.Size = new Size(30, 30);
             closeButton.BackColor = Color.Transparent;
-            closeButton.Click += (sender, e) => this.ParentForm.Close();
+            closeButton.Click += (sender, e) => {
+                this.ParentForm.Close();
+                };
 
             maximizeButton = new Button();
             maximizeButton.FlatStyle = FlatStyle.Flat;
