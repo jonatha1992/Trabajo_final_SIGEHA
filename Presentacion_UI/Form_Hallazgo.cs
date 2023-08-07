@@ -44,7 +44,7 @@ namespace Presentacion_UI
                 Habilitar();
                 HabilitarElemento();
                 CargarGrillaHallazgos();
-                ColocarNumero();
+                //ColocarNumero();
 
             }
             catch (Exception ex)
@@ -265,7 +265,7 @@ namespace Presentacion_UI
         void limpiarCamposHallazgos()
         {
             textBoxLugar.Text = "";
-            textBoxNroActa.Text = "";
+            //textBoxNroActa.Text = "";
             textBoxObservacion.Text = "";
             dateTimePickerFechaHallazgo.Value = DateTime.Now;
             SeleccionHallazgo = false;
@@ -275,7 +275,8 @@ namespace Presentacion_UI
         {
             if (!SeleccionHallazgo)
             {
-                textBoxNroActa.Text = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
+                //textBoxNroActa.Text = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
+                numericUpDownHallazgo.Value = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
             }
         }
         void ComboBox()
@@ -411,7 +412,10 @@ namespace Presentacion_UI
             }
             else
             {
-                this.dgvHallazgos.Columns["Seleccion"].Visible = false;
+
+                //this.dgvHallazgos.Columns["Seleccion"].Visible = false;
+                dgvHallazgos.ColumnHeadersVisible = true;
+
 
             }
         }
@@ -433,7 +437,8 @@ namespace Presentacion_UI
                         bEHallazgoSeleccionado = bLLHallazgo.ListarObjeto((BEHallazgo)row.DataBoundItem);
                     }
                     textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
-                    textBoxNroActa.Text = bEHallazgoSeleccionado.NroActa;
+                    numericUpDownHallazgo.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa, bEHallazgoSeleccionado.Unidad);
+                    //labelNroHallazgo.Text = bEHallazgoSeleccionado.NroActa;
                     dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     CargarGrillaElementos();
                     Habilitar();
@@ -450,19 +455,19 @@ namespace Presentacion_UI
             }
         }
 
-        bool VerficarCampos()
+        bool VerficarCamposHallazgo()
         {
             if (comboBoxUnidad.Text == "" 
                 || comboBoxUrsa.Text == "" 
                 || dateTimePickerFechaHallazgo.Text == "" 
                 || textBoxLugar.Text == "" 
-                || textBoxNroActa.Text == "" 
+                || numericUpDownHallazgo.Value == 0
                 || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroActa(textBoxNroActa.Text, bEUnidad.Cod))
+            if (!Validar.VerificarNroActa(labelNroHallazgo.Text, bEUnidad.Cod))
             {
                 MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -482,7 +487,9 @@ namespace Presentacion_UI
             }
             bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
             bEHallazgoSeleccionado.FechaActa = DateTime.Now;
-            bEHallazgoSeleccionado.NroActa = textBoxNroActa.Text;
+            //bEHallazgoSeleccionado.NroActa = numericUpDown1.Value + bEUnidad.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
+            //bEHallazgoSeleccionado.NroActa = textBoxNroActa.Text;
+            bEHallazgoSeleccionado.NroActa = labelNroHallazgo.Text;
             bEHallazgoSeleccionado.Unidad = bEUnidad;
             bEHallazgoSeleccionado.Anio = dateTimePickerFechaHallazgo.Value.Year;
             bEHallazgoSeleccionado.LugarHallazgo = textBoxLugar.Text;
@@ -500,7 +507,7 @@ namespace Presentacion_UI
         {
             try
             {
-                if (VerficarCampos())
+                if (VerficarCamposHallazgo())
                 {
                     bEHallazgoSeleccionado = bLLHallazgo.Agregar(CrearHallazgo());
 
@@ -513,11 +520,11 @@ namespace Presentacion_UI
                         Habilitar();
                         CargarGrillaHallazgos();
                         SeleccionarHallazgo();
-                        MessageBox.Show($"El Hallazgo  {textBoxNroActa.Text} se creo correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"El Hallazgo  {labelNroHallazgo.Text} se creo correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show($"El Nro. de Hallazgo {textBoxNroActa.Text} ya se encuentra utilizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show($"El Nro. de Hallazgo {labelNroHallazgo.Text} ya se encuentra utilizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         ColocarNumero();
                     }
                 }
@@ -533,7 +540,7 @@ namespace Presentacion_UI
         {
             try
             {
-                if (VerficarCampos())
+                if (VerficarCamposHallazgo())
                 {
                     if (bLLHallazgo.Actualizar(CrearHallazgo()))
                     {
@@ -804,7 +811,6 @@ namespace Presentacion_UI
             limpiarCamposHallazgos();
             CargarGrillaHallazgos();
             Habilitar();
-            ColocarNumero();
 
         }
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
@@ -814,10 +820,6 @@ namespace Presentacion_UI
             {
                 CargarGrillaHallazgos();
             }
-            //if (!SeleccionEntrega && Usuario.Rol == "UNIDAD")
-            //{
-            //    ColocarNumero();
-            //}
 
         }
 
@@ -979,5 +981,18 @@ namespace Presentacion_UI
             }
         }
 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            labelNroHallazgo.Text = numericUpDownHallazgo.Value + bEUnidad.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
+        }
+
+        private void numericUpDownHallazgo_Leave(object sender, EventArgs e)
+        {
+            // Verificar si el valor está vacío o si es menor al valor mínimo permitido.
+            if (string.IsNullOrWhiteSpace(numericUpDownHallazgo.Text) || numericUpDownHallazgo.Value < numericUpDownHallazgo.Minimum)
+            {
+                numericUpDownHallazgo.Value = numericUpDownHallazgo.Minimum;
+            }
+        }
     }
 }

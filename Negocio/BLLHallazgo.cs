@@ -33,7 +33,7 @@ namespace Negocio
 
         public List<BEHallazgo> ListarTodo()
         {
-            return mPPHallazgo.ListarTodo();
+            return mPPHallazgo.ListarTodo(); 
         }
         public BEHallazgo ListarObjeto(BEHallazgo Phallazgo)
         {
@@ -56,37 +56,37 @@ namespace Negocio
             return mPPHallazgo.Eliminar(pHallazgo);
         }
 
-        public override string ObtenerNroActa(BEUnidad unidad, int anio)
-        {
-            var hallazgos = ListarTodo();
+        //public override string ObtenerNroActa(BEUnidad unidad, int anio)
+        //{
+        //    var hallazgos = ListarTodo();
 
-            string nroHallazgo = hallazgos
-                .Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
-                .OrderByDescending(h => h.NroActa)
-                .FirstOrDefault()?.NroActa;
+        //    string nroHallazgo = hallazgos
+        //        .Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
+        //        .OrderByDescending(h => h.NroActa)
+        //        .FirstOrDefault()?.NroActa;
 
-            int numeroSecuencial = 0;
+        //    int numeroSecuencial = 0;
 
-            if (nroHallazgo == "" || nroHallazgo == null)
-            {
-                numeroSecuencial = 1;
-            }
-            else
-            {
-                // Extraer solo el número secuencial sin incluir el código de unidad y el año
-                string numeroSecuencialStr = nroHallazgo.Substring(0, nroHallazgo.IndexOf(unidad.Cod));
+        //    if (nroHallazgo == "" || nroHallazgo == null)
+        //    {
+        //        numeroSecuencial = 1;
+        //    }
+        //    else
+        //    {
+        //        // Extraer solo el número secuencial sin incluir el código de unidad y el año
+        //        string numeroSecuencialStr = nroHallazgo.Substring(0, nroHallazgo.IndexOf(unidad.Cod));
 
-                if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
-                {
-                    numeroSecuencial = numeroParseado + 1;
-                }
-            }
+        //        if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
+        //        {
+        //            numeroSecuencial = numeroParseado + 1;
+        //        }
+        //    }
 
-            // Crear el nuevo número de Acta con el formato "XXXXCCC/YYYY"
-            nroHallazgo = $"{numeroSecuencial:D4}{unidad.Cod}/{anio}";
+        //    // Crear el nuevo número de Acta con el formato "XXXXCCC/YYYY"
+        //    nroHallazgo = $"{numeroSecuencial:D4}{unidad.Cod}/{anio}";
 
-            return nroHallazgo;
-        }
+        //    return nroHallazgo;
+        //}
 
         public List<BEHallazgo> ListarTodo(BEUnidad bEUnidad, DateTime fecha)
         {
@@ -104,22 +104,45 @@ namespace Negocio
             return lista;
         }
 
-        public override int ObtenerNroActa2(BEUnidad unidad, int anio)
+        public override int ObtenerNroActa(BEUnidad unidad, int anio)
         {
             var hallazgos = ListarTodo();
 
             string nroHallazgo = hallazgos
                 .Where(h => h.Unidad.Id == unidad.Id && h.Anio == anio)
-                .OrderByDescending(h => h.NroActa)
+                .OrderByDescending(h => h.FechaHallazgo)
                 .FirstOrDefault()?.NroActa;
+
+
+
+            int numeroSecuencial = 1;
+
+
+            if (!string.IsNullOrEmpty(nroHallazgo) && nroHallazgo.Contains(unidad.Cod))
+            {
+                string numeroSecuencialStr = nroHallazgo.Substring(0, nroHallazgo.IndexOf(unidad.Cod));
+
+                if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
+                {
+                    numeroSecuencial = numeroParseado + 1;
+                }
+            }
+        
+            return numeroSecuencial;
+        }
+
+
+
+        public override int ExtraerNro(string NroActaHallago , BEUnidad unidad)
+        {
 
             int numeroSecuencial = 0;
 
-            string numeroSecuencialStr = nroHallazgo.Substring(0, nroHallazgo.IndexOf(unidad.Cod));
+            string numeroSecuencialStr = NroActaHallago.Substring(0, NroActaHallago.IndexOf(unidad.Cod));
 
             if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
             {
-                numeroSecuencial = numeroParseado + 1;
+                numeroSecuencial = numeroParseado ;
             }
             return numeroSecuencial;
         }

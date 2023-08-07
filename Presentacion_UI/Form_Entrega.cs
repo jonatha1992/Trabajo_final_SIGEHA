@@ -425,7 +425,7 @@ namespace Presentacion_UI
         }
         void ColocarNumero()
         {
-            textBoxNroActa.Text = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
+            //textBoxNroActa.Text = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
         }
         BEEntrega CrearEntrega()
         {

@@ -212,11 +212,22 @@ namespace Seguridad
 
         static public bool VerificarNroActa(string text,string CodUnidad)
         {
-            // Verificar que el número de Acta tenga al menos 4 dígitos al principio seguidos de cualquier cantidad de dígitos adicionales y luego siga el formato "XXXXCCC/YYYY"
-            bool respuesta = Regex.IsMatch(text, "^[0-9]{4,}[A-Z]{3}/[0-9]{4}$");
+
+
+            // Verificar que el número de Acta tenga entre 1 y 5 dígitos, seguidos de 3 letras, "/", y luego 4 dígitos al final.
+            bool respuesta = Regex.IsMatch(text, @"^\d{1,5}[A-Z]{3}/\d{4}$");
+
+            if (respuesta)
+            {
+                string codigoUnidadActa = text.Substring(text.Length - 8, 3); // Extraer los 3 caracteres del código de unidad
+                respuesta = codigoUnidadActa == CodUnidad;
+            }
             
-            string codigoUnidadActa = text.Substring(text.Length - 8, 3); // Extraer los 3 caracteres del código de unidad
-            respuesta = respuesta && codigoUnidadActa == CodUnidad;
+            //// Verificar que el número de Acta tenga al menos 4 dígitos al principio seguidos de cualquier cantidad de dígitos adicionales y luego siga el formato "XXXXCCC/YYYY"
+            //bool respuesta = Regex.IsMatch(text, "^[0-9]{4,}[A-Z]{3}/[0-9]{4}$");
+            
+            //string codigoUnidadActa = text.Substring(text.Length - 8, 3); // Extraer los 3 caracteres del código de unidad
+            //respuesta = respuesta && codigoUnidadActa == CodUnidad;
             
             return respuesta;
         }
