@@ -27,7 +27,7 @@ namespace Presentacion_UI
             bLLEstado_elementos = new BLLEstado_Elemento();
             bLLBitacora = new BLLBitacora();
 
-            Usuario = Form_Contenedor.usuario;
+            Usuario = (BEUsuario)Form_Contenedor.usuario.Clone();
             listaCategorias = bLLcategorias.ListarTodo();
             listaArticulos = bLLArticulos.ListarTodo();
             ListabEEstadoElementos = bLLEstado_elementos.ListarEstadoHallazgo();
@@ -57,7 +57,7 @@ namespace Presentacion_UI
         #region "Propiedades"
 
         BEUsuario Usuario;
-        BEUnidad bEUnidad;
+        BEUnidad bEUnidadH;
         BEUrsa bEUrsa;
 
         BEHallazgo bEHallazgoSeleccionado;
@@ -77,7 +77,7 @@ namespace Presentacion_UI
         BLLBitacora bLLBitacora;
 
 
-    
+
         bool SeleccionHallazgo = false;
         bool ModoCreacion = false;
         #endregion
@@ -90,18 +90,18 @@ namespace Presentacion_UI
         {
             if (Usuario.Destino is BEUnidad)//destino unidad
             {
-                bEUnidad = Usuario.Destino as BEUnidad;
-                bEUrsa =  bEUnidad.Ursa;
+                bEUnidadH = Usuario.Destino as BEUnidad;
+                bEUrsa = bEUnidadH.Ursa;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidadHallazgo.SelectedItem = bEUnidad;
-                comboBoxUnidadHallazgo.Text = bEUnidad.Nombre;
+                comboBoxUnidadHallazgo.SelectedItem = bEUnidadH;
+                comboBoxUnidadHallazgo.Text = bEUnidadH.Nombre;
                 comboBoxUrsa.Enabled = false;
                 comboBoxUnidadHallazgo.Enabled = false;
             }
             if (Usuario.Destino is BEUrsa) //destino region
             {
                 bEUrsa = Usuario.Destino as BEUrsa;
-                bEUnidad = bEUrsa.Unidades.First();
+                bEUnidadH = bEUrsa.Unidades.First();
                 comboBoxUnidadHallazgo.DataSource = bEUrsa.Unidades;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUrsa.Enabled = false;
@@ -109,6 +109,8 @@ namespace Presentacion_UI
             comboBoxArticulo.DataSource = listaArticulos;
             comboBoxCategoria.DataSource = listaCategorias;
             comboBoxArticulo = Utilidades.SetAutoCompleteCombo(comboBoxArticulo, listaArticulos, articulo => articulo.Nombre);
+
+
 
         }
 
@@ -273,7 +275,8 @@ namespace Presentacion_UI
         {
             if (!SeleccionHallazgo)
             {
-                numericUpDownNroHallazgo.Value = bLLHallazgo.ObtenerNroActa(bEUnidad, dateTimePickerFechaHallazgo.Value.Year);
+                numericUpDownNroHallazgo.Value = 0;
+                numericUpDownNroHallazgo.Value = bLLHallazgo.ObtenerNroActa(bEUnidadH, dateTimePickerFechaHallazgo.Value.Year);
             }
         }
         void ComboBox()
@@ -382,12 +385,12 @@ namespace Presentacion_UI
             ComboBox();
             Dgv();
         }
-       private void CargarGrillaHallazgos()
+        private void CargarGrillaHallazgos()
         {
 
-             this.dgvHallazgos.DataSource = null;
+            this.dgvHallazgos.DataSource = null;
 
-            List<BEHallazgo> Lista = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+            List<BEHallazgo> Lista = bLLHallazgo.ListarTodo(bEUnidadH, dateTimePickerFechaHallazgo.Value);
 
             if (Lista != null && Lista.Count > 0)
             {
@@ -450,19 +453,19 @@ namespace Presentacion_UI
 
         bool VerficarCamposHallazgo()
         {
-            if (comboBoxUnidadHallazgo.Text == "" 
-                || comboBoxUrsa.Text == "" 
-                || dateTimePickerFechaHallazgo.Text == "" 
-                || textBoxLugar.Text == "" 
+            if (comboBoxUnidadHallazgo.Text == ""
+                || comboBoxUrsa.Text == ""
+                || dateTimePickerFechaHallazgo.Text == ""
+                || textBoxLugar.Text == ""
                 || numericUpDownNroHallazgo.Value == 0
                 || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidadHallazgo.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroActa(labelNroHallazgo.Text, bEUnidad.Cod))
+            if (!Validar.VerificarNroActa(labelNroHallazgo.Text, bEUnidadH.Cod))
             {
-                MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 1EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             else
@@ -480,10 +483,8 @@ namespace Presentacion_UI
             }
             bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
             bEHallazgoSeleccionado.FechaActa = DateTime.Now;
-            //bEHallazgoSeleccionado.NroActa = numericUpDown1.Value + bEUnidad.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
-            //bEHallazgoSeleccionado.NroActa = textBoxNroActa.Text;
             bEHallazgoSeleccionado.NroActa = labelNroHallazgo.Text;
-            bEHallazgoSeleccionado.Unidad = bEUnidad;
+            bEHallazgoSeleccionado.Unidad = bEUnidadH;
             bEHallazgoSeleccionado.Anio = dateTimePickerFechaHallazgo.Value.Year;
             bEHallazgoSeleccionado.LugarHallazgo = textBoxLugar.Text;
             bEHallazgoSeleccionado.Observacion = textBoxObservacion.Text;
@@ -795,17 +796,7 @@ namespace Presentacion_UI
         #endregion
 
         #region "Hallazgo"
-  
-        void comboBoxUnidadHallazgo_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-            bEUnidad = (BEUnidad)this.comboBoxUnidadHallazgo.SelectedItem;
-            bEHallazgoSeleccionado = null;
-            limpiarCamposHallazgos();
-            CargarGrillaHallazgos();
-            Habilitar();
-
-        }
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
@@ -858,7 +849,7 @@ namespace Presentacion_UI
         #endregion
 
         #region "Texto box funciones"
-      
+
         void textBoxLugar_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validar.NoSaltosDelinea(e);
@@ -973,7 +964,7 @@ namespace Presentacion_UI
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            labelNroHallazgo.Text = numericUpDownNroHallazgo.Value + bEUnidad.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
+            labelNroHallazgo.Text = numericUpDownNroHallazgo.Value + bEUnidadH.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
         }
 
         private void numericUpDownHallazgo_Leave(object sender, EventArgs e)
@@ -983,6 +974,15 @@ namespace Presentacion_UI
             {
                 numericUpDownNroHallazgo.Value = numericUpDownNroHallazgo.Minimum;
             }
+        }
+
+        private void comboBoxUnidadHallazgo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            bEUnidadH = (BEUnidad)this.comboBoxUnidadHallazgo.SelectedItem;
+            bEHallazgoSeleccionado = null;
+            limpiarCamposHallazgos();
+            CargarGrillaHallazgos();
+            Habilitar();
         }
     }
 }

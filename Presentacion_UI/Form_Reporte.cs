@@ -19,11 +19,13 @@ namespace Presentacion_UI
         public Form_Reporte()
         {
             InitializeComponent();
+            bUsuario = (BEUsuario)Form_Contenedor.usuario.Clone();
         }
 
         BEReporte Reporte;
         BEUrsa bEUrsa;
         BEUnidad bEUnidad;
+        BEUsuario bUsuario ;
 
         private void Form_Reporte_Load(object sender, EventArgs e)
         {
@@ -45,16 +47,16 @@ namespace Presentacion_UI
         void CargarCombo()
         {
             comboBoxUnidad.DataSource = null;
-            if (Form_Contenedor.usuario.Destino is BEUrsa)
+            if (bUsuario.Destino is BEUrsa)
             {
-                bEUrsa = Form_Contenedor.usuario.Destino as BEUrsa;
+                bEUrsa = bUsuario.Destino as BEUrsa;
                 bEUnidad = bEUrsa.Unidades.First();
                 comboBoxUnidad.DataSource = bEUrsa.Unidades;
             }
 
-            if (Form_Contenedor.usuario.Destino is BEUnidad)
+            if (bUsuario.Destino is BEUnidad)
             {
-                bEUnidad = Form_Contenedor.usuario.Destino as BEUnidad;
+                bEUnidad = bUsuario.Destino as BEUnidad;
                 bEUrsa = bEUnidad.Ursa;
                 comboBoxUnidad.DataSource = new List<BEUnidad> { bEUnidad};
                 comboBoxUnidad.Text = bEUnidad.Nombre;
@@ -123,7 +125,7 @@ namespace Presentacion_UI
                 string esc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 SaveFileDialog file = new SaveFileDialog();
 
-                wb.AddWorksheet(Reporte.GenerarReporteExcel(Form_Contenedor.usuario ));
+                wb.AddWorksheet(Reporte.GenerarReporteExcel(bUsuario));
 
                 file.Filter = "Excel Files | *.xlsx";
                 file.FileName = $"Reporte {DateTime.Today.Day + DateTime.Today.ToString("MMMM").ToUpper() + DateTime.Now.Year.ToString()}";

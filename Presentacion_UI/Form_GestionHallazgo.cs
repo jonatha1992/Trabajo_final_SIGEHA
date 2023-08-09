@@ -25,7 +25,7 @@ namespace Presentacion_UI
             bLLHallazgo = new BLLHallazgo();
             bLLBitacora = new BLLBitacora();
 
-            Usuario = Form_Contenedor.usuario;
+            Usuario = (BEUsuario)Form_Contenedor.usuario.Clone();
         }
 
 
@@ -36,7 +36,7 @@ namespace Presentacion_UI
                 CargarCombo();
                 Habilitar();
 
-                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidadGH, dateTimePickerFechaHallazgo.Value);
                 listaHallazgosSeleccionado = new List<BEHallazgo>();
 
                 CargarGrillaHallazgos();
@@ -53,7 +53,7 @@ namespace Presentacion_UI
         #region "Campos Seleccionados"
 
         BEUsuario Usuario;
-        BEUnidad bEUnidad;
+        BEUnidad bEUnidadGH;
         BEUrsa bEUrsa;
 
         BEHallazgo bEHallazgoSeleccionado;
@@ -74,18 +74,18 @@ namespace Presentacion_UI
         {
             if (Usuario.Destino is BEUnidad)//destino unidad
             {
-                bEUnidad = Usuario.Destino as BEUnidad;
-                bEUrsa = bEUnidad.Ursa;
+                bEUnidadGH = Usuario.Destino as BEUnidad;
+                bEUrsa = bEUnidadGH.Ursa;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidad.SelectedItem = bEUnidad;
-                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUnidad.SelectedItem = bEUnidadGH;
+                comboBoxUnidad.Text = bEUnidadGH.Nombre;
                 comboBoxUrsa.Enabled = false;
                 comboBoxUnidad.Enabled = false;
             }
             if (Usuario.Destino is BEUrsa) //destino region
             {
                 bEUrsa = Usuario.Destino as BEUrsa;
-                bEUnidad = bEUrsa.Unidades.First();
+                bEUnidadGH = bEUrsa.Unidades.First();
                 comboBoxUnidad.DataSource = bEUrsa.Unidades;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUrsa.Enabled = false;
@@ -98,7 +98,7 @@ namespace Presentacion_UI
             {
                 DgvElementos.DataSource = null;
 
-           
+
                 if (bEHallazgoSeleccionado != null)
                 {
 
@@ -186,7 +186,7 @@ namespace Presentacion_UI
         {
             dateTimePickerFechaActa.Value = DateTime.Now;
             dateTimePickerFechaHallazgo.Value = DateTime.Now;
-            textBoxNroActa.Text = "";
+            numericUpDownNro.Value = 0;
             textBoxLugar.Text = "";
             textBoxObservacion.Text = "";
             checkBoxObservacion.Checked = false;
@@ -210,7 +210,7 @@ namespace Presentacion_UI
         }
         void Botones()
         {
- 
+
             if (bEHallazgoSeleccionado != null) // si esta en modo creacion
             {
                 buttonEliminar.Visible = true;
@@ -268,7 +268,7 @@ namespace Presentacion_UI
                 if (bEHallazgoSeleccionado != null) // SI YA ESTA SELECCIONADO
                 {
                     textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
-                    textBoxNroActa.Text = bEHallazgoSeleccionado.NroActa;
+                    numericUpDownNro.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa,bEUnidadGH);
                     dateTimePickerFechaActa.Value = bEHallazgoSeleccionado.FechaActa ?? bEHallazgoSeleccionado.FechaHallazgo;
                     dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     if (!string.IsNullOrEmpty(bEHallazgoSeleccionado.Observacion))
@@ -300,13 +300,13 @@ namespace Presentacion_UI
                 || comboBoxUrsa.Text == ""
                 || dateTimePickerFechaHallazgo.Text == ""
                 || textBoxLugar.Text == ""
-                || textBoxNroActa.Text == ""
+                || numericUpDownNro.Value== 0
                 || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroActa(textBoxNroActa.Text, bEUnidad.Cod))
+            if (!Validar.VerificarNroActa(labelNro.Text, bEUnidadGH.Cod))
             {
                 MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -318,12 +318,12 @@ namespace Presentacion_UI
         }
         BEHallazgo CrearHallazgo()
         {
-          
+
 
             bEHallazgoSeleccionado.FechaHallazgo = dateTimePickerFechaHallazgo.Value;
             bEHallazgoSeleccionado.FechaActa = dateTimePickerFechaActa.Value;
-            bEHallazgoSeleccionado.NroActa = textBoxNroActa.Text;
-            bEHallazgoSeleccionado.Unidad = bEUnidad;
+            bEHallazgoSeleccionado.NroActa = labelNro.Text;
+            bEHallazgoSeleccionado.Unidad = bEUnidadGH;
             bEHallazgoSeleccionado.Anio = dateTimePickerFechaHallazgo.Value.Year;
             bEHallazgoSeleccionado.LugarHallazgo = textBoxLugar.Text;
             bEHallazgoSeleccionado.Observacion = textBoxObservacion.Text;
@@ -368,7 +368,7 @@ namespace Presentacion_UI
 
                 // Construir la lista de elementos para mostrar en el MessageBox
                 string elementosAEliminar = string.Join(Environment.NewLine, listaHallazgosSeleccionado.Select(h => h.NroActa));
-              
+
                 var result = MessageBox.Show($"Desea eliminar el/los siguientes Hallazgos: {Environment.NewLine}{elementosAEliminar}", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
@@ -379,7 +379,7 @@ namespace Presentacion_UI
                         bLLBitacora.RegistrarEvento(Usuario, $"eliminó el nro Acta de Hallazgo {item.NroActa}");
                     }
                     limpiarCamposHallazgos();
-                    ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+                    ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidadGH, dateTimePickerFechaHallazgo.Value);
                     CargarGrillaHallazgos();
                     CargarGrillaElementos();
                     CargarGrillaPersonas();
@@ -400,10 +400,10 @@ namespace Presentacion_UI
         #region "Hallazgo"
         void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            bEUnidadGH = (BEUnidad)comboBoxUnidad.SelectedItem;
             bEHallazgoSeleccionado = null;
             limpiarCamposHallazgos();
-            ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+            ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidadGH, dateTimePickerFechaHallazgo.Value);
             CargarGrillaHallazgos();
             Habilitar();
 
@@ -411,7 +411,7 @@ namespace Presentacion_UI
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
- 
+
             if (bEHallazgoSeleccionado == null) // SI NO ESTA EN MODO CREACION 
             {
                 CargarGrillaHallazgos();
@@ -493,7 +493,7 @@ namespace Presentacion_UI
 
             if (!string.IsNullOrEmpty(nro))
             {
-                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value).FindAll(x => x.NroActa.Contains(nro));
+                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidadGH, dateTimePickerFechaHallazgo.Value).FindAll(x => x.NroActa.Contains(nro));
                 if (ListaHallazgosBase.Count == 0)
                     MessageBox.Show("No se encontro ese nro de hallagos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
@@ -504,12 +504,28 @@ namespace Presentacion_UI
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCamposHallazgos();
-            ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidad, dateTimePickerFechaHallazgo.Value);
+            ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidadGH, dateTimePickerFechaHallazgo.Value);
             CargarGrillaHallazgos();
             CargarGrillaElementos();
             CargarGrillaPersonas();
             Habilitar();
         }
 
+        private void numericUpDownNro_ValueChanged(object sender, EventArgs e)
+        {
+            if (bEHallazgoSeleccionado != null)
+            {
+                labelNro.Text = numericUpDownNro.Value + bEUnidadGH.Cod + "/" + dateTimePickerFechaHallazgo.Value.Year;
+            }
+        }
+
+        private void numericUpDownNro_Leave(object sender, EventArgs e)
+        {
+            // Verificar si el valor está vacío o si es menor al valor mínimo permitido.
+            if (string.IsNullOrWhiteSpace(numericUpDownNro.Text) || numericUpDownNro.Value < numericUpDownNro.Minimum)
+            {
+                numericUpDownNro.Value = numericUpDownNro.Minimum;
+            }
+        }
     }
 }

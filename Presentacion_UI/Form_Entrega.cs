@@ -21,7 +21,7 @@ namespace Presentacion_UI
             bLLEntrega = new BLLEntrega();
             bLLCategorias = new BLLCategoria();
             bLLArticulo = new BLLArticulo();
-            Usuario = Form_Contenedor.usuario;
+            Usuario = (BEUsuario)Form_Contenedor.usuario.Clone();
 
             ListaCategorias = bLLCategorias.ListarTodo();
             ListaArticulos = bLLArticulo.ListarTodo();
@@ -55,7 +55,7 @@ namespace Presentacion_UI
 
 
         BEUrsa bEUrsa;
-        BEUnidad bEUnidad;
+        BEUnidad bEUnidadE;
         BEUsuario Usuario;
 
 
@@ -75,19 +75,19 @@ namespace Presentacion_UI
         {
             if (Usuario.Destino is BEUnidad)//destino unidad
             {
-                bEUnidad = Usuario.Destino as BEUnidad;
-                bEUrsa = bEUnidad.Ursa;
+                bEUnidadE = Usuario.Destino as BEUnidad;
+                bEUrsa = bEUnidadE.Ursa;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidad.SelectedItem = bEUnidad;
-                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUnidadFormEntrega.SelectedItem = bEUnidadE;
+                comboBoxUnidadFormEntrega.Text = bEUnidadE.Nombre;
                 comboBoxUrsa.Enabled = false;
-                comboBoxUnidad.Enabled = false;
+                comboBoxUnidadFormEntrega.Enabled = false;
             }
             if (Usuario.Destino is BEUrsa) //destino region
             {
                 bEUrsa = Usuario.Destino as BEUrsa;
-                bEUnidad = bEUrsa.Unidades.First();
-                comboBoxUnidad.DataSource = bEUrsa.Unidades;
+                bEUnidadE = bEUrsa.Unidades.First();
+                comboBoxUnidadFormEntrega.DataSource = bEUrsa.Unidades;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUrsa.Enabled = false;
             }
@@ -188,7 +188,7 @@ namespace Presentacion_UI
         {
             if (SeleccionEntrega)
             {
-                this.comboBoxUnidad.Text = bEEntregaSeleccionada.Unidad.Nombre;
+                this.comboBoxUnidadFormEntrega.Text = bEEntregaSeleccionada.Unidad.Nombre;
             }
 
         }
@@ -298,7 +298,7 @@ namespace Presentacion_UI
         void CargarGrillaEntregas()
         {
             dataGridViewEntregas.DataSource = null;
-            listaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+            listaEntregas = bLLEntrega.ListarTodo(bEUnidadE, dateTimePickerFechaEntrega.Value);
 
             if (listaEntregas != null && listaEntregas.Count > 0)
             {
@@ -344,7 +344,7 @@ namespace Presentacion_UI
         }
         bool VerficarCamposEntrega()
         {
-            if (comboBoxUnidad.Text == ""
+            if (comboBoxUnidadFormEntrega.Text == ""
                 || comboBoxUrsa.Text == ""
                 || dateTimePickerDesde.Text == ""
                 || numericUpDownNroEntrega.Value == 0)
@@ -352,9 +352,9 @@ namespace Presentacion_UI
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroActa(labelNroEntrega.Text, bEUnidad.Cod))
+            if (!Validar.VerificarNroActa(labelNroEntrega.Text, bEUnidadE.Cod))
             {
-                MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Verifique el numero de Hallazgo\n\nEj. 1EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             else
@@ -399,7 +399,7 @@ namespace Presentacion_UI
                 NroHallazgo = numericUpDownHallazgo.Text;
 
             }
-            listaElementosBusqueda = bLLElemento.BusquedaElementos(Desde, Hasta, bEcategoria, bEArticulo, LugarHallazgo, PDescripcion, bEUnidad, NroHallazgo);
+            listaElementosBusqueda = bLLElemento.BusquedaElementos(Desde, Hasta, bEcategoria, bEArticulo, LugarHallazgo, PDescripcion, bEUnidadE, NroHallazgo);
         }
         void LimpiarCamposEntrega()
         {
@@ -415,7 +415,8 @@ namespace Presentacion_UI
         {
             if (!SeleccionEntrega)
             {
-                numericUpDownNroEntrega.Value = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
+                numericUpDownNroEntrega.Value = 0;
+                numericUpDownNroEntrega.Value = bLLEntrega.ObtenerNroActa(bEUnidadE, dateTimePickerFechaEntrega.Value.Year);
             }
             //textBoxNroActa.Text = bLLEntrega.ObtenerNroActa(bEUnidad, dateTimePickerFechaEntrega.Value.Year);
         }
@@ -426,7 +427,7 @@ namespace Presentacion_UI
                 bEEntregaSeleccionada = new BEEntrega();
             }
             bEEntregaSeleccionada.NroActa = labelNroEntrega.Text;
-            bEEntregaSeleccionada.Unidad = bEUnidad;
+            bEEntregaSeleccionada.Unidad = bEUnidadE;
             bEEntregaSeleccionada.Fecha_entrega = dateTimePickerFechaEntrega.Value;
             bEEntregaSeleccionada.Anio = dateTimePickerFechaEntrega.Value.Year;
             bEEntregaSeleccionada.Observacion = textBoxObservacion.Text;
@@ -639,17 +640,6 @@ namespace Presentacion_UI
         #endregion
 
         #region "Acciones Datagrid y Combobox"
-
-
-        private void comboBoxUnidadEntrega_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            bEUnidad = (BEUnidad)this.comboBoxUnidad.SelectedItem;
-            LimpiarCamposEntrega();
-            CargarGrillaEntregas();
-            Habilitar();
-
-        }
 
 
         private void dateTimePickerFechaEntrega_ValueChanged(object sender, EventArgs e)
@@ -868,7 +858,7 @@ namespace Presentacion_UI
 
         private void numericUpDownNroEntrega_ValueChanged(object sender, EventArgs e)
         {
-            labelNroEntrega.Text = numericUpDownNroEntrega.Value + bEUnidad.Cod + "/" + dateTimePickerFechaEntrega.Value.Year;
+            labelNroEntrega.Text = numericUpDownNroEntrega.Value + bEUnidadE.Cod + "/" + dateTimePickerFechaEntrega.Value.Year;
         }
 
         private void numericUpDownNroEntrega_Leave(object sender, EventArgs e)
@@ -880,6 +870,15 @@ namespace Presentacion_UI
             }
         }
 
-    
+        private void comboBoxUnidadFormEntrega_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bEUnidadE = (BEUnidad)comboBoxUnidadFormEntrega.SelectedItem;
+            LimpiarCamposEntrega();
+            CargarGrillaEntregas();
+            Habilitar();
+            
+        }
+
+       
     }
 }

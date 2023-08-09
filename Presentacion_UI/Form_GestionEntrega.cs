@@ -24,7 +24,7 @@ namespace Presentacion_UI
             bLLEntrega = new BLLEntrega();
             bLLBitacora = new BLLBitacora();
 
-            Usuario = Form_Contenedor.usuario;
+            Usuario = (BEUsuario)Form_Contenedor.usuario.Clone();
         }
 
 
@@ -35,7 +35,7 @@ namespace Presentacion_UI
                 CargarCombo();
                 Habilitar();
 
-                ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+                ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
                 listaEntreegaSeleccionado = new List<BEEntrega>();
                 CargarGrillaEntregas();
 
@@ -51,7 +51,7 @@ namespace Presentacion_UI
         #region "Campos"
 
         BEUsuario Usuario;
-        BEUnidad bEUnidad;
+        BEUnidad bEUnidadGE;
         BEUrsa bEUrsa;
 
         BEEntrega BEEntregaSeleccionado;
@@ -75,18 +75,18 @@ namespace Presentacion_UI
         {
             if (Usuario.Destino is BEUnidad)//destino unidad
             {
-                bEUnidad = Usuario.Destino as BEUnidad;
-                bEUrsa = bEUnidad.Ursa;
+                bEUnidadGE = Usuario.Destino as BEUnidad;
+                bEUrsa = bEUnidadGE.Ursa;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
-                comboBoxUnidad.SelectedItem = bEUnidad;
-                comboBoxUnidad.Text = bEUnidad.Nombre;
+                comboBoxUnidad.SelectedItem = bEUnidadGE;
+                comboBoxUnidad.Text = bEUnidadGE.Nombre;
                 comboBoxUrsa.Enabled = false;
                 comboBoxUnidad.Enabled = false;
             }
             if (Usuario.Destino is BEUrsa) //destino region
             {
                 bEUrsa = Usuario.Destino as BEUrsa;
-                bEUnidad = bEUrsa.Unidades.First();
+                bEUnidadGE = bEUrsa.Unidades.First();
                 comboBoxUnidad.DataSource = bEUrsa.Unidades;
                 comboBoxUrsa.Text = bEUrsa.Nombre;
                 comboBoxUrsa.Enabled = false;
@@ -184,7 +184,7 @@ namespace Presentacion_UI
         void limpiarCamposEntrega()
         {
             dateTimePickerFechaEntrega.Value = DateTime.Now;
-            textBoxNroActa.Text = "";
+            numericUpDownNroEntrega.Value = 0;
             textBoxObservacion.Text = "";
             checkBoxObservacion.Checked = false;
             BEEntregaSeleccionado = null;
@@ -267,7 +267,7 @@ namespace Presentacion_UI
                     {
                         BEEntregaSeleccionado = bLLEntrega.ListarObjeto((BEEntrega)row.DataBoundItem);
                     }
-                    textBoxNroActa.Text = BEEntregaSeleccionado.NroActa;
+                    numericUpDownNroEntrega.Value=  bLLEntrega.ExtraerNro(BEEntregaSeleccionado.NroActa, bEUnidadGE);
                     dateTimePickerFechaEntrega.Value = BEEntregaSeleccionado.Fecha_entrega;
 
                     if (!string.IsNullOrEmpty(BEEntregaSeleccionado.Observacion))
@@ -301,7 +301,10 @@ namespace Presentacion_UI
 
                 if (BEEntregaSeleccionado != null) // SI YA ESTA SELECCIONADO
                 {
-                    textBoxNroActa.Text = BEEntregaSeleccionado.NroActa;
+                    //textBoxNroActa.Text = BEEntregaSeleccionado.NroActa;
+                    numericUpDownNroEntrega.Value = bLLEntrega.ExtraerNro(BEEntregaSeleccionado.NroActa, bEUnidadGE);
+                    labelNroEntrega.Text = BEEntregaSeleccionado.NroActa;
+
                     dateTimePickerFechaEntrega.Value = BEEntregaSeleccionado.Fecha_entrega;
                     if (!string.IsNullOrEmpty(BEEntregaSeleccionado.Observacion))
                     {
@@ -332,15 +335,15 @@ namespace Presentacion_UI
             if (comboBoxUnidad.Text == ""
                 || comboBoxUrsa.Text == ""
                 || dateTimePickerFechaEntrega.Text == ""
-                || textBoxNroActa.Text == ""
+                || numericUpDownNroEntrega.Value == 0
                 || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validar.VerificarNroActa(textBoxNroActa.Text, bEUnidad.Cod))
+            if (!Validar.VerificarNroActa(labelNroEntrega.Text, bEUnidadGE.Cod))
             {
-                MessageBox.Show("Verifique el numero de Entrega\n\nEj. 0001EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Verifique el numero de Entrega\n\nEj. 1EZE/2020", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             else
@@ -352,8 +355,8 @@ namespace Presentacion_UI
         {
 
             BEEntregaSeleccionado.Fecha_entrega = dateTimePickerFechaEntrega.Value;
-            BEEntregaSeleccionado.NroActa = textBoxNroActa.Text;
-            BEEntregaSeleccionado.Unidad = bEUnidad;
+            BEEntregaSeleccionado.NroActa = labelNroEntrega.Text;
+            BEEntregaSeleccionado.Unidad = bEUnidadGE;
             BEEntregaSeleccionado.Anio = dateTimePickerFechaEntrega.Value.Year;
             BEEntregaSeleccionado.Observacion = textBoxObservacion.Text;
 
@@ -408,7 +411,7 @@ namespace Presentacion_UI
 
 
                     limpiarCamposEntrega();
-                    ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+                    ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
                     CargarGrillaEntregas();
                     CargarGrillaElementos();
                     CargarGrillaPersonas();
@@ -431,10 +434,10 @@ namespace Presentacion_UI
 
         void comboBoxUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bEUnidad = (BEUnidad)comboBoxUnidad.SelectedItem;
+            bEUnidadGE = (BEUnidad)comboBoxUnidad.SelectedItem;
             BEEntregaSeleccionado = null;
             limpiarCamposEntrega();
-            ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+            ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
             CargarGrillaEntregas();
             Habilitar();
 
@@ -518,7 +521,7 @@ namespace Presentacion_UI
 
             if (!string.IsNullOrEmpty(nro))
             {
-                ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value).FindAll(x => x.NroActa.Contains(nro));
+                ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value).FindAll(x => x.NroActa.Contains(nro));
                 if (ListaEntregas.Count == 0)
                     MessageBox.Show("No se encontro ese nro de hallagos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
@@ -529,11 +532,28 @@ namespace Presentacion_UI
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCamposEntrega();
-            ListaEntregas = bLLEntrega.ListarTodo(bEUnidad, dateTimePickerFechaEntrega.Value);
+            ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
             CargarGrillaEntregas();
             CargarGrillaElementos();
             CargarGrillaPersonas();
             Habilitar();
+        }
+
+        private void numericUpDownNroEntrega_ValueChanged(object sender, EventArgs e)
+        {
+            if (BEEntregaSeleccionado != null)
+            {
+                labelNroEntrega.Text = numericUpDownNroEntrega.Value + bEUnidadGE.Cod + "/" + dateTimePickerFechaEntrega.Value.Year;
+            }
+        }
+
+        private void numericUpDownNroEntrega_Leave(object sender, EventArgs e)
+        {
+            // Verificar si el valor está vacío o si es menor al valor mínimo permitido.
+            if (string.IsNullOrWhiteSpace(numericUpDownNroEntrega.Text) || numericUpDownNroEntrega.Value < numericUpDownNroEntrega.Minimum)
+            {
+                numericUpDownNroEntrega.Value = numericUpDownNroEntrega.Minimum;
+            }
         }
 
     }

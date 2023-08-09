@@ -30,15 +30,15 @@ namespace Presentacion_UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Hallazgo));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvHallazgos = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -54,14 +54,13 @@ namespace Presentacion_UI
             this.textBoxObservacion = new System.Windows.Forms.TextBox();
             this.comboBoxUrsa = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxUnidadHallazgo = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dateTimePickerFechaHallazgo = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxLugar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.labelHallazgo = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.groupBoxDatosElementos = new System.Windows.Forms.GroupBox();
             this.btnEliminarElemento = new Seguridad.RJButton();
             this.btnModificarElemento = new Seguridad.RJButton();
@@ -83,6 +82,7 @@ namespace Presentacion_UI
             this.buttonCargarPersonas = new Seguridad.RJButton();
             this.buttonImprimir = new Seguridad.RJButton();
             this.customTitleBar1 = new Seguridad.CustomTitleBar();
+            this.comboBoxUnidadHallazgo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHallazgos)).BeginInit();
             this.groupBoxDatosHallazgo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNroHallazgo)).BeginInit();
@@ -100,45 +100,45 @@ namespace Presentacion_UI
             this.dgvHallazgos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvHallazgos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvHallazgos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHallazgos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHallazgos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.dgvHallazgos, "dgvHallazgos");
             this.dgvHallazgos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvHallazgos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHallazgos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHallazgos.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvHallazgos.EnableHeadersVisualStyles = false;
             this.dgvHallazgos.MultiSelect = false;
             this.dgvHallazgos.Name = "dgvHallazgos";
             this.dgvHallazgos.ReadOnly = true;
             this.dgvHallazgos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHallazgos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHallazgos.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvHallazgos.RowHeadersVisible = false;
             this.dgvHallazgos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvHallazgos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            this.dgvHallazgos.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvHallazgos.RowTemplate.Height = 32;
             this.dgvHallazgos.RowTemplate.ReadOnly = true;
             this.dgvHallazgos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -166,6 +166,7 @@ namespace Presentacion_UI
             // groupBoxDatosHallazgo
             // 
             this.groupBoxDatosHallazgo.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxDatosHallazgo.Controls.Add(this.comboBoxUnidadHallazgo);
             this.groupBoxDatosHallazgo.Controls.Add(this.labelNroHallazgo);
             this.groupBoxDatosHallazgo.Controls.Add(this.numericUpDownNroHallazgo);
             this.groupBoxDatosHallazgo.Controls.Add(this.buttonFinalizarHallazgo);
@@ -176,7 +177,6 @@ namespace Presentacion_UI
             this.groupBoxDatosHallazgo.Controls.Add(this.textBoxObservacion);
             this.groupBoxDatosHallazgo.Controls.Add(this.comboBoxUrsa);
             this.groupBoxDatosHallazgo.Controls.Add(this.label5);
-            this.groupBoxDatosHallazgo.Controls.Add(this.comboBoxUnidadHallazgo);
             this.groupBoxDatosHallazgo.Controls.Add(this.label13);
             this.groupBoxDatosHallazgo.Controls.Add(this.dateTimePickerFechaHallazgo);
             this.groupBoxDatosHallazgo.Controls.Add(this.label4);
@@ -294,15 +294,6 @@ namespace Presentacion_UI
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Name = "label5";
             // 
-            // comboBoxUnidadHallazgo
-            // 
-            this.comboBoxUnidadHallazgo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxUnidadHallazgo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxUnidadHallazgo.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBoxUnidadHallazgo, "comboBoxUnidadHallazgo");
-            this.comboBoxUnidadHallazgo.Name = "comboBoxUnidadHallazgo";
-            this.comboBoxUnidadHallazgo.SelectedIndexChanged += new System.EventHandler(this.comboBoxUnidadHallazgo_SelectedIndexChanged);
-            // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
@@ -344,11 +335,11 @@ namespace Presentacion_UI
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
             // 
-            // labelHallazgo
+            // label23
             // 
-            resources.ApplyResources(this.labelHallazgo, "labelHallazgo");
-            this.labelHallazgo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelHallazgo.Name = "labelHallazgo";
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label23.Name = "label23";
             // 
             // groupBoxDatosElementos
             // 
@@ -499,50 +490,50 @@ namespace Presentacion_UI
             // 
             this.DgvElementos.AllowUserToAddRows = false;
             this.DgvElementos.AllowUserToDeleteRows = false;
-            resources.ApplyResources(this.DgvElementos, "DgvElementos");
             this.DgvElementos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvElementos.BackgroundColor = System.Drawing.Color.Black;
             this.DgvElementos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvElementos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DgvElementos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            resources.ApplyResources(this.DgvElementos, "DgvElementos");
             this.DgvElementos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvElementos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Sel});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvElementos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvElementos.DefaultCellStyle = dataGridViewCellStyle22;
             this.DgvElementos.EnableHeadersVisualStyles = false;
             this.DgvElementos.MultiSelect = false;
             this.DgvElementos.Name = "DgvElementos";
             this.DgvElementos.ReadOnly = true;
             this.DgvElementos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.DgvElementos.RowHeadersVisible = false;
             this.DgvElementos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.DgvElementos.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+            this.DgvElementos.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.DgvElementos.RowTemplate.Height = 30;
             this.DgvElementos.RowTemplate.ReadOnly = true;
             this.DgvElementos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -606,6 +597,13 @@ namespace Presentacion_UI
             this.customTitleBar1.Name = "customTitleBar1";
             this.customTitleBar1.Title = "Creación Hallazgos";
             // 
+            // comboBoxUnidadHallazgo
+            // 
+            this.comboBoxUnidadHallazgo.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxUnidadHallazgo, "comboBoxUnidadHallazgo");
+            this.comboBoxUnidadHallazgo.Name = "comboBoxUnidadHallazgo";
+            this.comboBoxUnidadHallazgo.SelectedIndexChanged += new System.EventHandler(this.comboBoxUnidadHallazgo_SelectedIndexChanged_1);
+            // 
             // Form_Hallazgo
             // 
             resources.ApplyResources(this, "$this");
@@ -618,7 +616,7 @@ namespace Presentacion_UI
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DgvElementos);
             this.Controls.Add(this.groupBoxDatosElementos);
-            this.Controls.Add(this.labelHallazgo);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.groupBoxDatosHallazgo);
             this.Controls.Add(this.labelEstado);
             this.Controls.Add(this.dgvHallazgos);
@@ -648,14 +646,13 @@ namespace Presentacion_UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelEstado;
         private System.Windows.Forms.GroupBox groupBoxDatosHallazgo;
-        private System.Windows.Forms.ComboBox comboBoxUnidadHallazgo;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaHallazgo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxLugar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label labelHallazgo;
+        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBoxDatosElementos;
         private System.Windows.Forms.ComboBox comboBoxEstado;
         private System.Windows.Forms.Label label11;
@@ -688,6 +685,7 @@ namespace Presentacion_UI
         private Seguridad.CustomTitleBar customTitleBar1;
         private System.Windows.Forms.NumericUpDown numericUpDownNroHallazgo;
         private System.Windows.Forms.Label labelNroHallazgo;
+        private System.Windows.Forms.ComboBox comboBoxUnidadHallazgo;
     }
 }
 

@@ -127,6 +127,9 @@
   <data name="Seleccion.HeaderText" xml:space="preserve">
     <value />
   </data>
+  <data name="Seleccion.MinimumWidth" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
   <data name="Seleccion.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -166,7 +169,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1253, 0</value>
+    <value>1255, 0</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -216,14 +219,38 @@
   <data name="&gt;&gt;labelEstado.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="comboBoxUnidadHallazgo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 57</value>
+  </data>
+  <data name="comboBoxUnidadHallazgo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 24</value>
+  </data>
+  <data name="comboBoxUnidadHallazgo.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUnidadHallazgo.Name" xml:space="preserve">
+    <value>comboBoxUnidadHallazgo</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUnidadHallazgo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUnidadHallazgo.Parent" xml:space="preserve">
+    <value>groupBoxDatosHallazgo</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUnidadHallazgo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="labelNroHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>290, 152</value>
   </data>
   <data name="labelNroHallazgo.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
   </data>
   <data name="labelNroHallazgo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="labelNroHallazgo.Text" xml:space="preserve">
+    <value>0COD/AÑO</value>
   </data>
   <data name="&gt;&gt;labelNroHallazgo.Name" xml:space="preserve">
     <value>labelNroHallazgo</value>
@@ -235,7 +262,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;labelNroHallazgo.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="numericUpDownNroHallazgo.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 152</value>
@@ -259,7 +286,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;numericUpDownNroHallazgo.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="buttonFinalizarHallazgo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -289,7 +316,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;buttonFinalizarHallazgo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="buttonEliminar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -342,7 +369,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;buttonEliminar.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="checkBoxObservacion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -372,7 +399,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;checkBoxObservacion.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="button_Modificar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -405,7 +432,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;button_Modificar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="button_Agregar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -454,7 +481,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;button_Agregar.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="textBoxObservacion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -487,7 +514,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;textBoxObservacion.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="comboBoxUrsa.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9pt, style=Bold</value>
@@ -514,7 +541,7 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;comboBoxUrsa.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -550,27 +577,6 @@
     <value>groupBoxDatosHallazgo</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="comboBoxUnidadHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 59</value>
-  </data>
-  <data name="comboBoxUnidadHallazgo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 24</value>
-  </data>
-  <data name="comboBoxUnidadHallazgo.TabIndex" type="System.Int32, mscorlib">
-    <value>106</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUnidadHallazgo.Name" xml:space="preserve">
-    <value>comboBoxUnidadHallazgo</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUnidadHallazgo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUnidadHallazgo.Parent" xml:space="preserve">
-    <value>groupBoxDatosHallazgo</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUnidadHallazgo.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
@@ -778,7 +784,7 @@
     <value>Century Gothic, 9pt, style=Bold</value>
   </data>
   <data name="groupBoxDatosHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 34</value>
+    <value>11, 39</value>
   </data>
   <data name="groupBoxDatosHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -787,7 +793,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxDatosHallazgo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>606, 299</value>
+    <value>606, 294</value>
   </data>
   <data name="groupBoxDatosHallazgo.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -807,44 +813,245 @@
   <data name="&gt;&gt;groupBoxDatosHallazgo.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="labelHallazgo.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelHallazgo.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 11.25pt, style=Bold</value>
   </data>
-  <data name="labelHallazgo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>900, 355</value>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>904, 352</value>
   </data>
-  <data name="labelHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
-  <data name="labelHallazgo.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 18</value>
   </data>
-  <data name="labelHallazgo.TabIndex" type="System.Int32, mscorlib">
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="labelHallazgo.Text" xml:space="preserve">
+  <data name="label23.Text" xml:space="preserve">
     <value>Elementos</value>
   </data>
-  <data name="&gt;&gt;labelHallazgo.Name" xml:space="preserve">
-    <value>labelHallazgo</value>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
   </data>
-  <data name="&gt;&gt;labelHallazgo.Type" xml:space="preserve">
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelHallazgo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelHallazgo.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="groupBoxDatosElementos.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;btnEliminarElemento.Name" xml:space="preserve">
+    <value>btnEliminarElemento</value>
+  </data>
+  <data name="&gt;&gt;btnEliminarElemento.Type" xml:space="preserve">
+    <value>Seguridad.RJButton, Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnEliminarElemento.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;btnEliminarElemento.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnModificarElemento.Name" xml:space="preserve">
+    <value>btnModificarElemento</value>
+  </data>
+  <data name="&gt;&gt;btnModificarElemento.Type" xml:space="preserve">
+    <value>Seguridad.RJButton, Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnModificarElemento.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;btnModificarElemento.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnAgregarElemento.Name" xml:space="preserve">
+    <value>btnAgregarElemento</value>
+  </data>
+  <data name="&gt;&gt;btnAgregarElemento.Type" xml:space="preserve">
+    <value>Seguridad.RJButton, Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAgregarElemento.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;btnAgregarElemento.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;NUPCantidad.Name" xml:space="preserve">
+    <value>NUPCantidad</value>
+  </data>
+  <data name="&gt;&gt;NUPCantidad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUPCantidad.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;NUPCantidad.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEstado.Name" xml:space="preserve">
+    <value>comboBoxEstado</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEstado.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEstado.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEstado.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBoxDescripcion.Name" xml:space="preserve">
+    <value>textBoxDescripcion</value>
+  </data>
+  <data name="&gt;&gt;textBoxDescripcion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDescripcion.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;textBoxDescripcion.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCategoria.Name" xml:space="preserve">
+    <value>comboBoxCategoria</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCategoria.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCategoria.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCategoria.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;comboBoxArticulo.Name" xml:space="preserve">
+    <value>comboBoxArticulo</value>
+  </data>
+  <data name="&gt;&gt;comboBoxArticulo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxArticulo.Parent" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;comboBoxArticulo.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="groupBoxDatosElementos.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxDatosElementos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 334</value>
+  </data>
+  <data name="groupBoxDatosElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="groupBoxDatosElementos.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="groupBoxDatosElementos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 312</value>
+  </data>
+  <data name="groupBoxDatosElementos.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="groupBoxDatosElementos.Text" xml:space="preserve">
+    <value>Datos Elemento</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosElementos.Name" xml:space="preserve">
+    <value>groupBoxDatosElementos</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosElementos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosElementos.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDatosElementos.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="btnEliminarElemento.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1335,42 +1542,6 @@
   <data name="&gt;&gt;comboBoxArticulo.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="groupBoxDatosElementos.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxDatosElementos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 334</value>
-  </data>
-  <data name="groupBoxDatosElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="groupBoxDatosElementos.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="groupBoxDatosElementos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 312</value>
-  </data>
-  <data name="groupBoxDatosElementos.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="groupBoxDatosElementos.Text" xml:space="preserve">
-    <value>Datos Elemento</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosElementos.Name" xml:space="preserve">
-    <value>groupBoxDatosElementos</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosElementos.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosElementos.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDatosElementos.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="DgvElementos.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="DgvElementos.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
@@ -1380,11 +1551,14 @@
   <data name="Sel.HeaderText" xml:space="preserve">
     <value />
   </data>
+  <data name="Sel.MinimumWidth" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
   <data name="Sel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="DgvElementos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 372</value>
+    <value>638, 374</value>
   </data>
   <data name="DgvElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1539,7 +1713,7 @@
     <value>0, 0</value>
   </data>
   <data name="customTitleBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1253, 25</value>
+    <value>1255, 25</value>
   </data>
   <data name="customTitleBar1.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -1566,7 +1740,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1253, 654</value>
+    <value>1255, 662</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 8.25pt, style=Bold</value>
