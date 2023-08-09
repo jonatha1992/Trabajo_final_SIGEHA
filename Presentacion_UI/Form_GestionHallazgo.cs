@@ -268,9 +268,9 @@ namespace Presentacion_UI
                 if (bEHallazgoSeleccionado != null) // SI YA ESTA SELECCIONADO
                 {
                     textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
+                    dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     numericUpDownNro.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa,bEUnidadGH);
                     dateTimePickerFechaActa.Value = bEHallazgoSeleccionado.FechaActa ?? bEHallazgoSeleccionado.FechaHallazgo;
-                    dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
                     if (!string.IsNullOrEmpty(bEHallazgoSeleccionado.Observacion))
                     {
                         checkBoxObservacion.Checked = true;
@@ -411,12 +411,15 @@ namespace Presentacion_UI
         void dateTimePickerFechaHallazgo_ValueChanged(object sender, EventArgs e)
         {
 
-
             if (bEHallazgoSeleccionado == null) // SI NO ESTA EN MODO CREACION 
             {
+                ListaHallazgosBase = bLLHallazgo.ListarTodo(bEUnidadGH, dateTimePickerFechaHallazgo.Value);
                 CargarGrillaHallazgos();
             }
-
+            else // si esta seleccionado un hallazgo
+            {
+                numericUpDownNro_ValueChanged(null,null);
+            }
 
         }
 

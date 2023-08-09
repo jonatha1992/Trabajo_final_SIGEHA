@@ -349,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 158</value>
+    <value>46, 130</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -445,7 +445,7 @@
     <value>Century Gothic, 9pt, style=Bold</value>
   </data>
   <data name="dateTimePickerFechaHallazgo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 152</value>
+    <value>161, 126</value>
   </data>
   <data name="dateTimePickerFechaHallazgo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -825,7 +825,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelNro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 98</value>
+    <value>282, 98</value>
   </data>
   <data name="labelNro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -976,7 +976,7 @@
     <value>Century Gothic, 9pt, style=Bold</value>
   </data>
   <data name="dateTimePickerFechaActa.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 122</value>
+    <value>161, 154</value>
   </data>
   <data name="dateTimePickerFechaActa.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1009,7 +1009,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 128</value>
+    <value>70, 158</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>

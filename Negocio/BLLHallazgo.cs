@@ -131,8 +131,6 @@ namespace Negocio
             return numeroSecuencial;
         }
 
-
-
         public override int ExtraerNro(string NroActaHallago , BEUnidad unidad)
         {
 

@@ -35,7 +35,7 @@ namespace Presentacion_UI
                 CargarCombo();
                 Habilitar();
 
-                ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
+                ListaEntregasBase = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
                 listaEntreegaSeleccionado = new List<BEEntrega>();
                 CargarGrillaEntregas();
 
@@ -55,7 +55,7 @@ namespace Presentacion_UI
         BEUrsa bEUrsa;
 
         BEEntrega BEEntregaSeleccionado;
-        List<BEEntrega> ListaEntregas;
+        List<BEEntrega> ListaEntregasBase;
         List<BEEntrega> listaEntreegaSeleccionado;
 
 
@@ -66,7 +66,6 @@ namespace Presentacion_UI
 
         bool SeleccionEntrega = false;
         #endregion
-
         #region "Metodos"
 
         #region "MetodosElementos"
@@ -229,9 +228,9 @@ namespace Presentacion_UI
             this.dgvHallazgos.DataSource = null;
 
 
-            if (ListaEntregas != null && ListaEntregas.Count > 0)
+            if (ListaEntregasBase != null && ListaEntregasBase.Count > 0)
             {
-                this.dgvHallazgos.DataSource = ListaEntregas;
+                this.dgvHallazgos.DataSource = ListaEntregasBase;
                 this.dgvHallazgos.Columns["NroActa"].HeaderText = "Nro Entrega";
                 this.dgvHallazgos.Columns["Fecha_entrega"].HeaderText = "Fecha Entrega";
                 this.dgvHallazgos.Columns["Anio"].HeaderText = "Año";
@@ -251,57 +250,15 @@ namespace Presentacion_UI
 
             }
         }
-        void VerificarEntregaSeleccionados()
-        {
-            SeleccionEntrega = false;
-
-            foreach (DataGridViewRow row in dgvHallazgos.Rows)
-            {
-                var valorCelda = row.Cells[0].Value;
-                var valor = valorCelda as bool? ?? false;
-
-                if (valor)
-                {
-                    SeleccionEntrega = true;
-                    if (BEEntregaSeleccionado?.Id != ((BEEntrega)row.DataBoundItem).Id) // SI YA ESTA SELECCIONADO
-                    {
-                        BEEntregaSeleccionado = bLLEntrega.ListarObjeto((BEEntrega)row.DataBoundItem);
-                    }
-                    numericUpDownNroEntrega.Value=  bLLEntrega.ExtraerNro(BEEntregaSeleccionado.NroActa, bEUnidadGE);
-                    dateTimePickerFechaEntrega.Value = BEEntregaSeleccionado.Fecha_entrega;
-
-                    if (!string.IsNullOrEmpty(BEEntregaSeleccionado.Observacion))
-                    {
-                        checkBoxObservacion.Checked = true;
-                        textBoxObservacion.Text = BEEntregaSeleccionado.Observacion;
-                    }
-
-                    CargarGrillaElementos();
-                    CargarGrillaPersonas();
-                    Habilitar();
-                    break;
-                }
-            }
-            if (!SeleccionEntrega)
-            {
-                BEEntregaSeleccionado = null;
-                CargarGrillaEntregas();
-                CargarGrillaElementos();
-                CargarGrillaPersonas();
-                limpiarCamposEntrega();
-                Habilitar();
-            }
-        }
+        
         void HabilitarEntrega()
         {
-
             if (listaEntreegaSeleccionado?.Count > 0) // modo creacion
             {
                 BEEntregaSeleccionado = listaEntreegaSeleccionado.First();
 
                 if (BEEntregaSeleccionado != null) // SI YA ESTA SELECCIONADO
                 {
-                    //textBoxNroActa.Text = BEEntregaSeleccionado.NroActa;
                     numericUpDownNroEntrega.Value = bLLEntrega.ExtraerNro(BEEntregaSeleccionado.NroActa, bEUnidadGE);
                     labelNroEntrega.Text = BEEntregaSeleccionado.NroActa;
 
@@ -311,7 +268,6 @@ namespace Presentacion_UI
                         checkBoxObservacion.Checked = true;
                         textBoxObservacion.Text = BEEntregaSeleccionado.Observacion;
                     }
-
                 }
                 CargarGrillaElementos();
                 CargarGrillaPersonas();
@@ -411,7 +367,7 @@ namespace Presentacion_UI
 
 
                     limpiarCamposEntrega();
-                    ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
+                    ListaEntregasBase = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
                     CargarGrillaEntregas();
                     CargarGrillaElementos();
                     CargarGrillaPersonas();
@@ -437,7 +393,7 @@ namespace Presentacion_UI
             bEUnidadGE = (BEUnidad)comboBoxUnidad.SelectedItem;
             BEEntregaSeleccionado = null;
             limpiarCamposEntrega();
-            ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
+            ListaEntregasBase = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
             CargarGrillaEntregas();
             Habilitar();
 
@@ -446,7 +402,12 @@ namespace Presentacion_UI
         {
             if (BEEntregaSeleccionado == null) // SI NO ESTA EN MODO CREACION 
             {
+                ListaEntregasBase = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
                 CargarGrillaEntregas();
+            }
+            else
+            {
+                numericUpDownNroEntrega_ValueChanged(null, null);
             }
         }
 
@@ -521,8 +482,8 @@ namespace Presentacion_UI
 
             if (!string.IsNullOrEmpty(nro))
             {
-                ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value).FindAll(x => x.NroActa.Contains(nro));
-                if (ListaEntregas.Count == 0)
+                ListaEntregasBase = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value).FindAll(x => x.NroActa.Contains(nro));
+                if (ListaEntregasBase.Count == 0)
                     MessageBox.Show("No se encontro ese nro de hallagos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     CargarGrillaEntregas();
@@ -532,7 +493,7 @@ namespace Presentacion_UI
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCamposEntrega();
-            ListaEntregas = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
+            ListaEntregasBase = bLLEntrega.ListarTodo(bEUnidadGE, dateTimePickerFechaEntrega.Value);
             CargarGrillaEntregas();
             CargarGrillaElementos();
             CargarGrillaPersonas();
