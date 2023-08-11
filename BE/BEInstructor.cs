@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BE
+﻿namespace BE
 {
     public class BEInstructor : BEPersona
     {

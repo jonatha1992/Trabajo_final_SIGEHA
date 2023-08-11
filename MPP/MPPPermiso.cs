@@ -1,10 +1,8 @@
-﻿using System;
+﻿using BE;
+using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
-using BE;
 using System.Xml.Linq;
 
 namespace MPP
@@ -132,7 +130,7 @@ namespace MPP
                         Nombre = permisoElement.Element("Nombre").Value,
                     };
                     // AgregarEvento el rol a la lista.
-                 
+
                     Listarol.Add(rol);
                 }
 
@@ -210,12 +208,12 @@ namespace MPP
             return user;
         }
 
-        public bool EliminarRol(BERol bERol )
+        public bool EliminarRol(BERol bERol)
         {
-     
-            conexion.Eliminar("Permisos_Permisos", bERol.Id.ToString(), "IdPermisoPadre",true);
+
+            conexion.Eliminar("Permisos_Permisos", bERol.Id.ToString(), "IdPermisoPadre", true);
             conexion.Eliminar("Permisos", bERol.Id.ToString(), "Id");
-            conexion.Eliminar("Usuario_Permisos", bERol.Id.ToString(), "IdPermiso",true);
+            conexion.Eliminar("Usuario_Permisos", bERol.Id.ToString(), "IdPermiso", true);
             return true;
         }
     }

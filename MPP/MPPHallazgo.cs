@@ -71,7 +71,7 @@ namespace MPP
                     HallazgoExistente.SetElementValue("LugarHallazgo", pHallazgo.LugarHallazgo);
                     HallazgoExistente.SetElementValue("Anio", pHallazgo.Anio);
                     HallazgoExistente.SetElementValue("FechaHallazgo", pHallazgo.FechaHallazgo.ToString("dd/MM/yyyy HH:mm"));
-                    
+
                     // Verifica si el campo "Observacion" está presente en el objeto entrega
                     if (!string.IsNullOrEmpty(pHallazgo.Observacion))
                     {
@@ -117,7 +117,7 @@ namespace MPP
                         }).ToList();
             }
 
-            
+
             return list;
         }
 

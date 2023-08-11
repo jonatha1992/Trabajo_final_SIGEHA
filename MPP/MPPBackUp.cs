@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
 using DAL;
-using BE;
-using System.Xml.Linq;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 
 namespace MPP
 {
@@ -21,7 +17,7 @@ namespace MPP
 
         public List<BEBackUp> ListarTodo()
         {
-             var archivos = conexion.ListarBackups();
+            var archivos = conexion.ListarBackups();
 
             List<BEBackUp> lista = new List<BEBackUp>();
             foreach (string archivo in archivos)

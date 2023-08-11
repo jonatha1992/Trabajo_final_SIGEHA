@@ -4,7 +4,6 @@ using Seguridad;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Presentacion_UI
@@ -320,7 +319,7 @@ namespace Presentacion_UI
                 }
             }
             else this.DgvPersonas.Columns["Sel"].Visible = false;
-           
+
             if (DgvPersonas.DataSource == null || DgvPersonas.Rows.Count == 0)
             {
                 DgvPersonas.ColumnHeadersVisible = false;
@@ -759,7 +758,7 @@ namespace Presentacion_UI
         {
             LimpiarCampos();
             Habilitar();
-           DeseleccionarDatagriview();
+            DeseleccionarDatagriview();
 
         }
 

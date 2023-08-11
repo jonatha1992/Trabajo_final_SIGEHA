@@ -33,7 +33,7 @@ namespace Negocio
 
         public List<BEHallazgo> ListarTodo()
         {
-            return mPPHallazgo.ListarTodo(); 
+            return mPPHallazgo.ListarTodo();
         }
         public BEHallazgo ListarObjeto(BEHallazgo Phallazgo)
         {
@@ -44,7 +44,7 @@ namespace Negocio
 
         public BEHallazgo ListarHallazgoPersonas(BEHallazgo Phallazgo)
         {
-            return mPPHallazgo.ListarHallazgoPersonas(Phallazgo); 
+            return mPPHallazgo.ListarHallazgoPersonas(Phallazgo);
         }
 
         public BEHallazgo ListarHallazgoElementos(BEHallazgo Phallazgo)
@@ -91,10 +91,13 @@ namespace Negocio
         public List<BEHallazgo> ListarTodo(BEUnidad bEUnidad, DateTime fecha)
         {
             int Anio = fecha.Year;
-            int Mes = fecha.Month;
+            //int Mes = fecha.Month;
 
-            List<BEHallazgo> lista = ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.FechaHallazgo.Month == Mes)
-                                     .OrderByDescending(x => x.FechaHallazgo).ToList();
+            //List<BEHallazgo> lista = ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.FechaHallazgo.Month == Mes)
+            //                         .OrderByDescending(x => x.FechaHallazgo).ToList();
+
+            List<BEHallazgo> lista = ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio)
+                           .OrderByDescending(x => x.FechaHallazgo).ToList();
 
             foreach (var hallazgo in lista)
             {
@@ -127,11 +130,11 @@ namespace Negocio
                     numeroSecuencial = numeroParseado + 1;
                 }
             }
-        
+
             return numeroSecuencial;
         }
 
-        public override int ExtraerNro(string NroActaHallago , BEUnidad unidad)
+        public override int ExtraerNro(string NroActaHallago, BEUnidad unidad)
         {
 
             int numeroSecuencial = 0;
@@ -140,7 +143,7 @@ namespace Negocio
 
             if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
             {
-                numeroSecuencial = numeroParseado ;
+                numeroSecuencial = numeroParseado;
             }
             return numeroSecuencial;
         }

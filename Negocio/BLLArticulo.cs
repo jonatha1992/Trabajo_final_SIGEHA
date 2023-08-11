@@ -2,7 +2,6 @@
 using BE;
 using MPP;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Negocio
 {
@@ -60,10 +59,10 @@ namespace Negocio
 
         public List<BEArticulo> ListarTodo()
         {
-      
+
             return mpParticulo.ListarTodo();
         }
-        
+
     }
 }
 

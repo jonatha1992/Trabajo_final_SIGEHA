@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using BE;
+﻿using BE;
 using Negocio;
 using Seguridad;
+using System;
+using System.Windows.Forms;
 
 namespace Presentacion_UI
 {
@@ -11,7 +10,7 @@ namespace Presentacion_UI
     {
         public Form_Login()
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
             customTitleBar1.MaximizeButtonVisible = false;
             customTitleBar1.MinimizeButtonVisible = false;
@@ -20,10 +19,10 @@ namespace Presentacion_UI
         }
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
-            if (Verificar()) 
+            if (Verificar())
             {
                 this.Close();
-            } 
+            }
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -41,8 +40,8 @@ namespace Presentacion_UI
                 {
                     if (Validar.SoloContraseña(TextBoxPassword1.Texto))
                     {
-                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text,Encriptacion.Encriptar(TextBoxPassword1.Texto));
-                        
+                        Usuario = bLLUsuario.ControlPasswword(textBoxUsuario.Text, Encriptacion.Encriptar(TextBoxPassword1.Texto));
+
                         if (Usuario != null)
                         {
                             Usuario = bLLUsuario.ListarObjeto(Usuario);
@@ -77,9 +76,9 @@ namespace Presentacion_UI
         }
 
 
-    
 
-    
+
+
         private void Form_Login_Load(object sender, EventArgs e)
         {
             bLLUsuario = new BLLUsuario();
@@ -94,6 +93,6 @@ namespace Presentacion_UI
             }
         }
 
-      
+
     }
 }

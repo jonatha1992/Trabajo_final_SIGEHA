@@ -1,13 +1,11 @@
 ﻿using BE;
-using System.Data;
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Globalization;
-using MPP;
-using System.Xml.Linq;
 
 namespace Presentacion_UI
 {
@@ -526,7 +524,7 @@ namespace Presentacion_UI
             foreach (var item in ListaElementos)
             {
                 item.Hallazgo.Unidad = listaUnidades.Find(unidad => unidad.Id == item.Hallazgo.Unidad.Id);
-                item.Hallazgo.Unidad.Ursa = listaUrsas.Find(x => x.Id ==item.Hallazgo.Unidad.Ursa.Id);
+                item.Hallazgo.Unidad.Ursa = listaUrsas.Find(x => x.Id == item.Hallazgo.Unidad.Ursa.Id);
             }
 
             return ListaElementos.FindAll(elemento => unidades.Any(unidad => unidad.Id == elemento.Hallazgo.Unidad.Id));

@@ -1,6 +1,4 @@
-﻿using Abstraccion;
-
-namespace BE
+﻿namespace BE
 {
     public class BEUnidad : BEDestino
     {
@@ -9,7 +7,7 @@ namespace BE
         {
             Id = id;
         }
-   
+
         public string Cod { get; set; }
         public BEUrsa Ursa { get; set; }
 
@@ -19,9 +17,9 @@ namespace BE
             {
                 Id = this.Id,
                 Nombre = this.Nombre,
-                Cod = this.Cod, 
+                Cod = this.Cod,
                 Ursa = this.Ursa
-           };
+            };
         }
     }
 }

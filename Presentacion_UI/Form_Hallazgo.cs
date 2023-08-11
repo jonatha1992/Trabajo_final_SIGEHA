@@ -1,5 +1,4 @@
 ﻿using BE;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Negocio;
 using Seguridad;
 using System;
@@ -7,7 +6,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
 
@@ -44,6 +42,7 @@ namespace Presentacion_UI
                 Habilitar();
                 HabilitarElemento();
                 CargarGrillaHallazgos();
+                ColocarNumero();
 
             }
             catch (Exception ex)
@@ -802,6 +801,7 @@ namespace Presentacion_UI
 
             if (!ModoCreacion && !SeleccionHallazgo) // SI NO ESTA EN MODO CREACION 
             {
+                ColocarNumero();
                 CargarGrillaHallazgos();
             }
 

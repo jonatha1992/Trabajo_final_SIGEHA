@@ -1,9 +1,8 @@
-﻿using System;
+﻿using BE;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using BE;
-
-using Negocio;
 
 namespace Presentacion_UI
 {
@@ -114,7 +113,7 @@ namespace Presentacion_UI
         {
             try
             {
-                
+
                 BERol nuevoRol = new BERol();
                 nuevoRol.Nombre = txtNombreRol.Text;
                 bllpermiso.CrearComponente(nuevoRol, true);

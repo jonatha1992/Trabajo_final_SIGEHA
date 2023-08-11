@@ -12,7 +12,7 @@ namespace BE
         public int Anio { get; set; }
         public List<BEPersona> listaPersonas { get; set; }
         public List<BEElemento> listaElementos { get; set; }
-        public string  Observacion { get; set; }
+        public string Observacion { get; set; }
 
 
     }

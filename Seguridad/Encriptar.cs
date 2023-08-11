@@ -10,7 +10,7 @@ namespace Seguridad
 
         private static byte[] Llave = Encoding.UTF8.GetBytes("Clave_Maestra123"); // Debe ser de 16 bytes
         private static byte[] IV = new byte[16]; // 16 bytes inicializados a 0
-       
+
 
         public static string Encriptar(string text)
         {

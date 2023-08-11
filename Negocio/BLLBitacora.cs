@@ -32,7 +32,7 @@ namespace Negocio
                 Mensaje = mensaje
             };
 
-            mpPBitacora.RegistrarEvento(evento); 
+            mpPBitacora.RegistrarEvento(evento);
         }
 
     }

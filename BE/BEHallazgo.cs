@@ -6,7 +6,8 @@ namespace BE
 {
     public class BEHallazgo : BEPadreHallazgo, IEntidad, IComparable<BEHallazgo>
     {
-        public BEHallazgo() {
+        public BEHallazgo()
+        {
 
             listaElementos = new List<BEElemento>();
         }
@@ -18,7 +19,7 @@ namespace BE
         public DateTime FechaHallazgo { get; set; }
 
         public string LugarHallazgo { get; set; }
-        
+
         public int CompareTo(BEHallazgo other)
         {
             if (this.FechaHallazgo > other.FechaHallazgo) return 1;

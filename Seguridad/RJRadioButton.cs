@@ -1,9 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Drawing;
-using System.ComponentModel;
-using Color = System.Drawing.Color;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
+using Color = System.Drawing.Color;
 using Pen = System.Drawing.Pen;
 
 namespace Seguridad
@@ -36,7 +34,7 @@ namespace Seguridad
                 this.Invalidate();
             }
         }
-        
+
         //Constructor
         public RJRadioButton()
         {

@@ -1,5 +1,4 @@
 ﻿using BE;
-using Microsoft.VisualBasic;
 using Negocio;
 using Seguridad;
 using System;
@@ -322,7 +321,7 @@ namespace Presentacion_UI
             }
             else
             {
-               this.dataGridViewEntregas.ColumnHeadersVisible = false;
+                this.dataGridViewEntregas.ColumnHeadersVisible = false;
                 //this.dataGridViewEntregas.Columns["Seleccion"].Visible = false;
             }
         }
@@ -587,7 +586,7 @@ namespace Presentacion_UI
         {
             try
             {
-            
+
                 Form_Impresion form_Impresion = new Form_Impresion(bEEntregaSeleccionada);
                 form_Impresion.ShowDialog();
 
@@ -647,6 +646,7 @@ namespace Presentacion_UI
 
             if (!ModoCreacion && !SeleccionEntrega) // SI NO ESTA EN MODO CREACION 
             {
+                ColocarNumero();
                 CargarGrillaEntregas();
             }
 
@@ -876,9 +876,9 @@ namespace Presentacion_UI
             LimpiarCamposEntrega();
             CargarGrillaEntregas();
             Habilitar();
-            
+
         }
 
-       
+
     }
 }

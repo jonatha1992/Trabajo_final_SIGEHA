@@ -1,5 +1,4 @@
-﻿using Seguridad;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Seguridad
@@ -13,7 +12,7 @@ namespace Seguridad
 
         bool visible = false;
 
-  
+
 
         private void pictureBox1raContrasena_Click(object sender, EventArgs e)
         {

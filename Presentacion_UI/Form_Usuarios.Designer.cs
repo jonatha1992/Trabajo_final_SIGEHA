@@ -62,13 +62,8 @@ namespace Presentacion_UI
             this.rjButtonDesasignarDestino = new Seguridad.RJButton();
             this.radiobuttonUrsa = new Seguridad.RJRadioButton();
             this.rjButtonAsignarDestino = new Seguridad.RJButton();
-            this.textBoxPassword4 = new Seguridad.TextBoxPassword();
             this.textBoxPassword2 = new Seguridad.TextBoxPassword();
-            this.textBoxPassword3 = new Seguridad.TextBoxPassword();
             this.textBoxPassword1 = new Seguridad.TextBoxPassword();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.customTitleBar1 = new Seguridad.CustomTitleBar();
             this.ButtonEliminarUsuario = new Seguridad.RJButton();
             this.ButtonGenerarUsuario = new Seguridad.RJButton();
@@ -321,7 +316,7 @@ namespace Presentacion_UI
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.buttonAsignarRol_Click);
             // 
-            // comboBoxUnidadFormEntrega
+            // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.Silver;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -329,7 +324,7 @@ namespace Presentacion_UI
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(20, 41);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBoxUnidadFormEntrega";
+            this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(227, 23);
             this.comboBox1.TabIndex = 30;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoles_SelectedIndexChanged);
@@ -370,20 +365,15 @@ namespace Presentacion_UI
             this.groupBoxDatosUsuario.Controls.Add(this.label8);
             this.groupBoxDatosUsuario.Controls.Add(this.labelDestino);
             this.groupBoxDatosUsuario.Controls.Add(this.groupBoxDestino);
-            this.groupBoxDatosUsuario.Controls.Add(this.textBoxPassword4);
-            this.groupBoxDatosUsuario.Controls.Add(this.textBoxPassword2);
             this.groupBoxDatosUsuario.Controls.Add(this.label1);
-            this.groupBoxDatosUsuario.Controls.Add(this.textBoxPassword3);
             this.groupBoxDatosUsuario.Controls.Add(this.groupBoxPermisos);
             this.groupBoxDatosUsuario.Controls.Add(this.textBoxPassword1);
+            this.groupBoxDatosUsuario.Controls.Add(this.textBoxPassword2);
             this.groupBoxDatosUsuario.Controls.Add(this.treeViewPermisos);
-            this.groupBoxDatosUsuario.Controls.Add(this.textBox3);
             this.groupBoxDatosUsuario.Controls.Add(this.label7);
             this.groupBoxDatosUsuario.Controls.Add(this.textBoxDNI);
-            this.groupBoxDatosUsuario.Controls.Add(this.textBox2);
             this.groupBoxDatosUsuario.Controls.Add(this.label6);
             this.groupBoxDatosUsuario.Controls.Add(this.textBoxUsuario);
-            this.groupBoxDatosUsuario.Controls.Add(this.textBox1);
             this.groupBoxDatosUsuario.Controls.Add(this.label3);
             this.groupBoxDatosUsuario.Controls.Add(this.textBoxNombre);
             this.groupBoxDatosUsuario.Controls.Add(this.label4);
@@ -542,17 +532,6 @@ namespace Presentacion_UI
             this.rjButtonAsignarDestino.UseVisualStyleBackColor = false;
             this.rjButtonAsignarDestino.Click += new System.EventHandler(this.buttonAsignarDestino_Click);
             // 
-            // textBoxPassword4
-            // 
-            this.textBoxPassword4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxPassword4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword4.Location = new System.Drawing.Point(37, 219);
-            this.textBoxPassword4.Margin = new System.Windows.Forms.Padding(12, 9, 12, 9);
-            this.textBoxPassword4.Name = "textBoxPassword4";
-            this.textBoxPassword4.Size = new System.Drawing.Size(265, 32);
-            this.textBoxPassword4.TabIndex = 29;
-            this.textBoxPassword4.Texto = "";
-            // 
             // textBoxPassword2
             // 
             this.textBoxPassword2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -563,17 +542,6 @@ namespace Presentacion_UI
             this.textBoxPassword2.TabIndex = 29;
             this.textBoxPassword2.Texto = "";
             // 
-            // textBoxPassword3
-            // 
-            this.textBoxPassword3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxPassword3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword3.Location = new System.Drawing.Point(38, 166);
-            this.textBoxPassword3.Margin = new System.Windows.Forms.Padding(12, 9, 12, 9);
-            this.textBoxPassword3.Name = "textBoxPassword3";
-            this.textBoxPassword3.Size = new System.Drawing.Size(265, 35);
-            this.textBoxPassword3.TabIndex = 28;
-            this.textBoxPassword3.Texto = "";
-            // 
             // textBoxPassword1
             // 
             this.textBoxPassword1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -583,34 +551,6 @@ namespace Presentacion_UI
             this.textBoxPassword1.Size = new System.Drawing.Size(227, 30);
             this.textBoxPassword1.TabIndex = 28;
             this.textBoxPassword1.Texto = "";
-            // 
-            // textBox3
-            // 
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(38, 124);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(227, 21);
-            this.textBox3.TabIndex = 26;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(38, 36);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(227, 21);
-            this.textBox2.TabIndex = 24;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(38, 80);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 21);
-            this.textBox1.TabIndex = 25;
             // 
             // customTitleBar1
             // 
@@ -763,16 +703,11 @@ namespace Presentacion_UI
         private Seguridad.RJButton rjButtonDesasignarDestino;
         private Seguridad.RJButton ButtonGuardar;
         private Seguridad.RJButton ButtonEliminarUsuario;
-        private TextBoxPassword textBoxPassword4;
         private System.Windows.Forms.GroupBox groupBox1;
         private RJButton rjButton1;
         private RJButton rjButton2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label9;
-        private TextBoxPassword textBoxPassword3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private CustomTitleBar customTitleBar1;
     }
 }

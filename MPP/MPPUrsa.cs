@@ -26,7 +26,7 @@ namespace MPP
         {
             throw new NotImplementedException();
         }
-         
+
 
         public BEUrsa ListarObjeto(BEUrsa pursa)
         {
@@ -36,27 +36,27 @@ namespace MPP
             if (Consulta.Count() > 0)
             {
                 pursa = (from x in Consulta
-                              where Convert.ToInt32(x.Element("Id")?.Value) > 0
-                              select new BEUrsa
-                              {
-                                  Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                  Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                              }).FirstOrDefault();
+                         where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                         select new BEUrsa
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                         }).FirstOrDefault();
 
                 Consulta = conexion.LeerTodos("Unidad");
                 if (Consulta.Count() > 0)
                 {
-                    pursa.Unidades= new List<BEUnidad>();
+                    pursa.Unidades = new List<BEUnidad>();
 
                     pursa.Unidades = (from x in Consulta
-                                            where Convert.ToInt32(x.Element("IdUrsa")?.Value) == pursa.Id
-                                            select new BEUnidad
-                                            {
-                                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                                Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                                                Cod = Convert.ToString(x.Element("Cod")?.Value),
-                                                Ursa= new BEUrsa(pursa.Id)
-                                            }).ToList();
+                                      where Convert.ToInt32(x.Element("IdUrsa")?.Value) == pursa.Id
+                                      select new BEUnidad
+                                      {
+                                          Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                          Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                                          Cod = Convert.ToString(x.Element("Cod")?.Value),
+                                          Ursa = new BEUrsa(pursa.Id)
+                                      }).ToList();
                 }
             }
             else
@@ -73,13 +73,13 @@ namespace MPP
 
             if (Consulta.Count() > 0)
             {
-                 lista = (from x in Consulta
-                             where Convert.ToInt32(x.Element("Id")?.Value) > 0
-                             select new BEUrsa
-                             {
-                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                 Nombre = Convert.ToString(x.Element("Nombre")?.Value),
-                             }).ToList(); ;
+                lista = (from x in Consulta
+                         where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                         select new BEUrsa
+                         {
+                             Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                             Nombre = Convert.ToString(x.Element("Nombre")?.Value),
+                         }).ToList(); ;
             }
             else
             {

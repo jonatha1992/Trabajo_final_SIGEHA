@@ -1,5 +1,4 @@
 ﻿using BE;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.VisualBasic;
 using Negocio;
 using Seguridad;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
 
@@ -250,7 +248,7 @@ namespace Presentacion_UI
 
             }
         }
-        
+
         void HabilitarEntrega()
         {
             if (listaEntreegaSeleccionado?.Count > 0) // modo creacion

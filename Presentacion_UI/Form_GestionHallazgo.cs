@@ -1,6 +1,4 @@
 ﻿using BE;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.VisualBasic;
 using Negocio;
 using Seguridad;
@@ -9,7 +7,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
 
@@ -269,7 +266,7 @@ namespace Presentacion_UI
                 {
                     textBoxLugar.Text = bEHallazgoSeleccionado.LugarHallazgo;
                     dateTimePickerFechaHallazgo.Value = bEHallazgoSeleccionado.FechaHallazgo;
-                    numericUpDownNro.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa,bEUnidadGH);
+                    numericUpDownNro.Value = bLLHallazgo.ExtraerNro(bEHallazgoSeleccionado.NroActa, bEUnidadGH);
                     dateTimePickerFechaActa.Value = bEHallazgoSeleccionado.FechaActa ?? bEHallazgoSeleccionado.FechaHallazgo;
                     if (!string.IsNullOrEmpty(bEHallazgoSeleccionado.Observacion))
                     {
@@ -300,7 +297,7 @@ namespace Presentacion_UI
                 || comboBoxUrsa.Text == ""
                 || dateTimePickerFechaHallazgo.Text == ""
                 || textBoxLugar.Text == ""
-                || numericUpDownNro.Value== 0
+                || numericUpDownNro.Value == 0
                 || (bEUrsa.Unidades != null && !bEUrsa.Unidades.Exists(x => x.Nombre == comboBoxUnidad.Text)))
             {
                 MessageBox.Show("Complete todos los campos correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -418,7 +415,7 @@ namespace Presentacion_UI
             }
             else // si esta seleccionado un hallazgo
             {
-                numericUpDownNro_ValueChanged(null,null);
+                numericUpDownNro_ValueChanged(null, null);
             }
 
         }

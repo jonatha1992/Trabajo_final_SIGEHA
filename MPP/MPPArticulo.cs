@@ -2,10 +2,9 @@
 using BE;
 using DAL;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-using System.Collections.Generic;
-using System.Data;
 
 namespace MPP
 {
@@ -65,7 +64,7 @@ namespace MPP
 
         public List<BEArticulo> ListarTodo()
         {
-            MPPCategoria mPPCategoria = new MPPCategoria(); 
+            MPPCategoria mPPCategoria = new MPPCategoria();
             var Articulos = conexion.LeerTodos(NodoContenedor);
             var categorias = conexion.LeerTodos("Categoria");
 

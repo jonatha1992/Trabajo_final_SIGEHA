@@ -6,7 +6,8 @@ namespace BE
 {
     public class BEEntrega : BEPadreHallazgo, IEntidad, IComparable<BEEntrega>
     {
-        public BEEntrega() {
+        public BEEntrega()
+        {
             listaElementos = new List<BEElemento>();
         }
         public BEEntrega(int id)

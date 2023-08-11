@@ -35,13 +35,13 @@ namespace MPP
             if (Consulta.Count() > 0)
             {
                 jerarquia = (from x in Consulta
-                            where Convert.ToInt32(x.Element("Id")?.Value) == jerarquia.Id
-                            select new BEJerarquia
-                            {
-                                Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                Jerarquia = Convert.ToString(x.Element("Jerarquia")?.Value),
-                                Abreviatura = Convert.ToString(x.Element("Abreviatura")?.Value),
-                            }).FirstOrDefault();
+                             where Convert.ToInt32(x.Element("Id")?.Value) == jerarquia.Id
+                             select new BEJerarquia
+                             {
+                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                 Jerarquia = Convert.ToString(x.Element("Jerarquia")?.Value),
+                                 Abreviatura = Convert.ToString(x.Element("Abreviatura")?.Value),
+                             }).FirstOrDefault();
             }
             else
             { jerarquia = null; }
@@ -58,13 +58,13 @@ namespace MPP
             if (Consulta.Count() > 0)
             {
                 jerarquias = (from x in Consulta
-                             where Convert.ToInt32(x.Element("Id")?.Value) > 0
-                             select new BEJerarquia
-                             {
-                                 Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
-                                 Jerarquia = Convert.ToString(x.Element("Jerarquia")?.Value),
-                                 Abreviatura = Convert.ToString(x.Element("Abreviatura")?.Value),
-                             }).ToList<BEJerarquia>();
+                              where Convert.ToInt32(x.Element("Id")?.Value) > 0
+                              select new BEJerarquia
+                              {
+                                  Id = Convert.ToInt32(Convert.ToString(x.Element("Id")?.Value)),
+                                  Jerarquia = Convert.ToString(x.Element("Jerarquia")?.Value),
+                                  Abreviatura = Convert.ToString(x.Element("Abreviatura")?.Value),
+                              }).ToList<BEJerarquia>();
             }
             else
             { jerarquias = null; }

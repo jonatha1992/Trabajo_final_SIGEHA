@@ -3,8 +3,8 @@ using DAL;
 using Negocio;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Presentacion_UI
 {
@@ -51,7 +51,7 @@ namespace Presentacion_UI
 
         private void CerrarFormulario(Form formulario)
         {
-            if (formulario != null )
+            if (formulario != null)
             {
                 formulario.Close();
                 formulario = null;
@@ -397,6 +397,6 @@ namespace Presentacion_UI
             }
         }
 
-     
+
     }
 }

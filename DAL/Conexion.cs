@@ -1,10 +1,9 @@
-﻿using Abstraccion;
+﻿using BE;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using BE;
 using System.Xml.Linq;
 
 namespace DAL
@@ -17,7 +16,7 @@ namespace DAL
         string XmlFolderPathBackup = "BackUps";
 
 
-        public bool GenerarBackUp(BEBackUp bEBackUp )
+        public bool GenerarBackUp(BEBackUp bEBackUp)
         {
 
             try
@@ -39,7 +38,7 @@ namespace DAL
                 string rutaBackup = Path.Combine(XmlFolderPathBackup, bEBackUp.Nombre);
 
                 // Restaurar el backup copiando el archivo al archivo de base de datos
-               
+
                 string rutaDestino = Path.Combine(Path.GetDirectoryName(XmlFilePathBaseDatos), "Base de datos.xml");
                 File.Copy(rutaBackup, rutaDestino, true);
 
@@ -59,7 +58,7 @@ namespace DAL
             {
                 Directory.CreateDirectory(XmlFolderPathBackup);
             }
-            
+
             string[] rutasArchivos = Directory.GetFiles(XmlFolderPathBackup);
             return rutasArchivos;
         }

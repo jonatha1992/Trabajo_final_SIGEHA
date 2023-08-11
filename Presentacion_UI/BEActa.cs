@@ -4,9 +4,6 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Presentacion_UI
 {
@@ -20,7 +17,7 @@ namespace Presentacion_UI
         public BEHallazgo hallazgo;
         public BEEntrega entrega;
         public ReportParameterCollection Parametros;
-       
+
         BLLElemento bLLElemento;
 
         public List<ElementoActa> elementos;

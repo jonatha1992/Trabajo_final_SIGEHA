@@ -1,12 +1,10 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿using BE;
+using Negocio;
+using Seguridad;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using BE;
-using Negocio;
-using Seguridad;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Presentacion_UI
 {

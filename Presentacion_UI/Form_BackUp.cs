@@ -1,9 +1,6 @@
 ﻿using BE;
 using Negocio;
-using Seguridad;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Presentacion_UI
@@ -45,7 +42,7 @@ namespace Presentacion_UI
 
                 // Registrar el evento de restauración en la bitácora
                 bLLBitacora.RegistrarEvento(Form_Contenedor.usuario, $"Restauro BackUp {bEBackUp.Nombre}");
-                cargarGrilla() ;
+                cargarGrilla();
                 MessageBox.Show($"Se restauro el {bEBackUp.Nombre} con exito ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 

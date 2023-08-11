@@ -2,7 +2,7 @@
 using System;
 
 namespace BE
-{ 
+{
     public class BEJerarquia : IEntidad, IComparable<BEJerarquia>
     {
         public BEJerarquia() { }

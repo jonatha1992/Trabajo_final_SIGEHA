@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Seguridad
@@ -67,9 +61,10 @@ namespace Seguridad
             closeButton.Image = Properties.Resources.cerrar;
             closeButton.Size = new Size(30, 30);
             closeButton.BackColor = Color.Transparent;
-            closeButton.Click += (sender, e) => {
+            closeButton.Click += (sender, e) =>
+            {
                 this.ParentForm.Close();
-                };
+            };
 
             maximizeButton = new Button();
             maximizeButton.FlatStyle = FlatStyle.Flat;
@@ -105,7 +100,7 @@ namespace Seguridad
             minimizeButton.Size = new Size(30, 30);
             minimizeButton.BackColor = Color.Transparent;
             minimizeButton.Click += (sender, e) => this.ParentForm.WindowState = FormWindowState.Minimized;
-            
+
             this.Controls.Add(iconPictureBox);
             this.Controls.Add(closeButton);
             this.Controls.Add(maximizeButton);
@@ -114,7 +109,7 @@ namespace Seguridad
             this.Resize += CustomTitleBar_Resize;
         }
 
-       
+
         public bool MinimizeButtonVisible
         {
             get { return minimizeButton.Visible; }

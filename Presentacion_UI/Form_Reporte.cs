@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BE;
+﻿using BE;
 using ClosedXML.Excel;
-using Negocio;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Presentacion_UI
 {
@@ -25,7 +19,7 @@ namespace Presentacion_UI
         BEReporte Reporte;
         BEUrsa bEUrsa;
         BEUnidad bEUnidad;
-        BEUsuario bUsuario ;
+        BEUsuario bUsuario;
 
         private void Form_Reporte_Load(object sender, EventArgs e)
         {
@@ -39,8 +33,8 @@ namespace Presentacion_UI
             labelTotalEntregas.Text = Reporte.Entregas.ToString();
             labelElementosEntregados.Text = Reporte.Cant_Elementos_Entregado.ToString();
             labelElementosResguardados.Text = Reporte.Cant_Elementos_Resguardo.ToString();
-            
-            
+
+
             RadiocButtonClick(null, null);
         }
 
@@ -58,7 +52,7 @@ namespace Presentacion_UI
             {
                 bEUnidad = bUsuario.Destino as BEUnidad;
                 bEUrsa = bEUnidad.Ursa;
-                comboBoxUnidad.DataSource = new List<BEUnidad> { bEUnidad};
+                comboBoxUnidad.DataSource = new List<BEUnidad> { bEUnidad };
                 comboBoxUnidad.Text = bEUnidad.Nombre;
             }
         }

@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Xml.Linq;
 
 namespace MPP
@@ -45,7 +43,7 @@ namespace MPP
             {
                 Elementoxml.Add(new XElement("IdEntrega", entrega.Id));  // Añade IdEntrega al ElementoActa
                 Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al ElementoActa
-               
+
                 return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el ElementoActa entrega el XML
             }
 
@@ -135,7 +133,7 @@ namespace MPP
 
         }
 
-     
+
         public List<BEElemento> ListarTodo()
         {
             List<BEElemento> lista = new List<BEElemento>();
@@ -197,7 +195,7 @@ namespace MPP
                 bElemento.Articulo = mPPArticulo.ListarObjeto(new BEArticulo(Convert.ToInt32(x.Element("IdArticulo")?.Value)));
                 bElemento.Estado = mPPEstado_Articulo.ListarObjeto(new BEEstado_Elemento(Convert.ToInt32(x.Element("IdEstadoElemento")?.Value)));
                 bElemento.Hallazgo = new BEHallazgo(Convert.ToInt32(x.Element("IdHallazgo")?.Value));
-                bElemento.Entrega = new BEEntrega (Convert.ToInt32(x.Element("IdEntrega")?.Value));
+                bElemento.Entrega = new BEEntrega(Convert.ToInt32(x.Element("IdEntrega")?.Value));
             }
             else
             { bElemento = null; }
@@ -209,11 +207,11 @@ namespace MPP
             List<ElementoBusqueda> lista = new List<ElementoBusqueda>();
             MPPHallazgo mPPHallazgo = new MPPHallazgo();
 
-         
+
             var Hallazgo = mPPHallazgo.ListarTodo().Find(x => x.NroActa == nroActa);
 
             Hallazgo = mPPHallazgo.ListarHallazgoElementos(Hallazgo);
-            
+
 
 
             if (Hallazgo != null)
@@ -239,15 +237,15 @@ namespace MPP
         }
 
 
-        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad ,string nroHallazgo)
+        public List<ElementoBusqueda> BusquedaElementos(DateTime? desde, DateTime? hasta, BECategoria bECategoria, BEArticulo bEArticulo, string lugar, string descripcion, BEUnidad unidad, string nroHallazgo)
         {
             List<ElementoBusqueda> elementoBusquedas = new List<ElementoBusqueda>();
 
-            
+
 
             var categorias = conexion.LeerTodos("Categoria");
-            var articulos = conexion.LeerTodos("Articulo"); 
-            var hallazgos = conexion.LeerTodos("Hallazgo"); 
+            var articulos = conexion.LeerTodos("Articulo");
+            var hallazgos = conexion.LeerTodos("Hallazgo");
             var Entregas = conexion.LeerTodos("Entrega");
             var elementos = conexion.LeerTodos("ElementoActa");
             var Estados = conexion.LeerTodos("Estado_Elemento");
@@ -255,7 +253,7 @@ namespace MPP
             // Filtra por fechas
             if (desde != null && hasta != null)
             {
-                hallazgos = hallazgos.Where(h => Convert.ToDateTime(h.Element("FechaHallazgo").Value) 
+                hallazgos = hallazgos.Where(h => Convert.ToDateTime(h.Element("FechaHallazgo").Value)
                        >= desde && Convert.ToDateTime(h.Element("FechaHallazgo").Value) <= hasta).ToList();
             }
 
@@ -319,6 +317,6 @@ namespace MPP
             return elementoBusquedas;
         }
 
-        
+
     }
 }

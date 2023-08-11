@@ -1,7 +1,6 @@
 ﻿using Abstraccion;
 using BE;
 using MPP;
-using System;
 using System.Collections.Generic;
 
 namespace Negocio
@@ -35,7 +34,7 @@ namespace Negocio
         }
 
 
-        public BEInstructor BuscarPor_legajo_dni(string legajo,string dni="")
+        public BEInstructor BuscarPor_legajo_dni(string legajo, string dni = "")
         {
             int legajoInt;
             if (int.TryParse(legajo, out legajoInt))

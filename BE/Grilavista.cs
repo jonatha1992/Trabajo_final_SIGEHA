@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BE
+﻿namespace BE
 {
 
     public class ElementoBusqueda
@@ -29,7 +27,7 @@ namespace BE
 
 
 
-       
+
 
 
     }

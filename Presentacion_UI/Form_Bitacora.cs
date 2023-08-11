@@ -1,9 +1,7 @@
 ﻿using BE;
 using Negocio;
-using Seguridad;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Presentacion_UI

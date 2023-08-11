@@ -4,8 +4,8 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Xml.Linq;
 using System.Linq;
+using System.Xml.Linq;
 
 
 namespace MPP
@@ -54,7 +54,7 @@ namespace MPP
             var Consulta = conexion.LeerTodos(NodoPadre).Descendants("Unidad");
 
 
-            List<BEUnidad> lista = new List<BEUnidad>();    
+            List<BEUnidad> lista = new List<BEUnidad>();
             if (Consulta.Count() > 0)
             {
                 lista = (from x in Consulta
@@ -64,7 +64,7 @@ namespace MPP
                              Nombre = Convert.ToString(x.Element("Nombre")?.Value),
                              Cod = Convert.ToString(x.Element("Cod")?.Value),
                              Ursa = new BEUrsa(Convert.ToInt32(Convert.ToString(x.Element("IdUrsa")?.Value)))
-                           }).ToList();
+                         }).ToList();
 
             }
             else

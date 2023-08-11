@@ -1,12 +1,11 @@
-﻿using BE;
-using Abstraccion;
+﻿using Abstraccion;
+using BE;
 using MPP;
 using System.Collections.Generic;
-using System.Data;
 
 namespace Negocio
 {
-    public class BLLUsuario: IGestor<BEUsuario>
+    public class BLLUsuario : IGestor<BEUsuario>
     {
         MPPUsuario mpPUsuario;
         MPPPermiso mpPpermiso;
@@ -27,7 +26,7 @@ namespace Negocio
         }
         public BEUsuario ListarObjeto(BEUsuario bEUsuario)
         {
-            
+
             bEUsuario = mpPpermiso.ObternerPermisoUsuario(bEUsuario);
 
             if (bEUsuario != null)
@@ -45,7 +44,7 @@ namespace Negocio
             return bEUsuario;
 
 
-           
+
         }
         public BEUsuario ControlPasswword(string nombre, string pass)
         {
@@ -56,7 +55,7 @@ namespace Negocio
                 return usuario;
         }
 
-   
+
         public bool UsuarioTieneRolInstructorOsupervisor(BEUsuario usuario)
         {
             foreach (var item in usuario.Permisos)
@@ -94,7 +93,7 @@ namespace Negocio
 
         public bool CambiarContraseña(BEUsuario oBEUsu)
         {
-           return mpPUsuario.Actualizar(oBEUsu);
+            return mpPUsuario.Actualizar(oBEUsu);
         }
         public bool Eliminar(BEUsuario oBEUsu)
         {
@@ -131,12 +130,12 @@ namespace Negocio
 
         public BEUsuario Agregar(BEUsuario Object)
         {
-           return mpPUsuario.Agregar(Object);
+            return mpPUsuario.Agregar(Object);
         }
 
         public bool Actualizar(BEUsuario Object)
         {
-          return  mpPUsuario.Actualizar(Object);
+            return mpPUsuario.Actualizar(Object);
         }
     }
 }

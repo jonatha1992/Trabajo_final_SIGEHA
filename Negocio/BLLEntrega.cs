@@ -2,7 +2,6 @@
 using BE;
 using MPP;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -86,7 +85,7 @@ namespace Negocio
         public bool Eliminar(BEEntrega pEntrega)
         {
             BLLElemento bLLElemento = new BLLElemento();
-           
+
             if (pEntrega.listaElementos != null)
             {
                 foreach (var item in pEntrega.listaElementos)
@@ -100,15 +99,19 @@ namespace Negocio
 
         public List<BEEntrega> ListarTodo()
         {
-            return mmPEntrega.ListarTodo(); 
+            return mmPEntrega.ListarTodo();
         }
 
 
         public List<BEEntrega> ListarTodo(BEUnidad bEUnidad, DateTime Fecha)
         {
             int Anio = Fecha.Year;
-            int Mes = Fecha.Month;
-            var Lista = mmPEntrega.ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.Fecha_entrega.Month == Mes)
+
+            //int Mes = Fecha.Month;
+            //var Lista = mmPEntrega.ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio && x.Fecha_entrega.Month == Mes)
+            //                         .OrderByDescending(x => x.Fecha_entrega).ToList();
+
+            var Lista = mmPEntrega.ListarTodo().Where(x => x.Unidad.Id == bEUnidad.Id && x.Anio == Anio)
                                      .OrderByDescending(x => x.Fecha_entrega).ToList();
 
             foreach (var entrega in Lista)
@@ -151,7 +154,7 @@ namespace Negocio
 
             if (int.TryParse(numeroSecuencialStr, out int numeroParseado))
             {
-                numeroSecuencial = numeroParseado ;
+                numeroSecuencial = numeroParseado;
             }
             return numeroSecuencial;
         }

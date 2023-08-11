@@ -210,7 +210,7 @@ namespace Seguridad
         }
 
 
-        static public bool VerificarNroActa(string text,string CodUnidad)
+        static public bool VerificarNroActa(string text, string CodUnidad)
         {
 
 
@@ -222,13 +222,13 @@ namespace Seguridad
                 string codigoUnidadActa = text.Substring(text.Length - 8, 3); // Extraer los 3 caracteres del código de unidad
                 respuesta = codigoUnidadActa == CodUnidad;
             }
-            
+
             //// Verificar que el número de Acta tenga al menos 4 dígitos al principio seguidos de cualquier cantidad de dígitos adicionales y luego siga el formato "XXXXCCC/YYYY"
             //bool respuesta = Regex.IsMatch(text, "^[0-9]{4,}[A-Z]{3}/[0-9]{4}$");
-            
+
             //string codigoUnidadActa = text.Substring(text.Length - 8, 3); // Extraer los 3 caracteres del código de unidad
             //respuesta = respuesta && codigoUnidadActa == CodUnidad;
-            
+
             return respuesta;
         }
         static public bool VerificarNroDocumento(string text)

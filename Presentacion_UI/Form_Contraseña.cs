@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BE;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using DocumentFormat.OpenXml.Spreadsheet;
+﻿using BE;
 using Negocio;
 using Seguridad;
+using System;
+using System.Windows.Forms;
 
 namespace Presentacion_UI
 {
@@ -51,7 +42,7 @@ namespace Presentacion_UI
                 return false;
             }
 
-            if ( textBoxPassword1.Texto == ""  || textBoxPassword2.Texto == "")
+            if (textBoxPassword1.Texto == "" || textBoxPassword2.Texto == "")
             {
                 MessageBox.Show("Complete todos los campos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -69,7 +60,7 @@ namespace Presentacion_UI
             if (VerficarCamposUsuario())
             {
                 bLLUsuario.CambiarContraseña(eUsuario);
-                MessageBox.Show("Se cambio la contraseña correctamente","Mensaje",MessageBoxButtons.OK,MessageBoxIcon.Information); 
+                MessageBox.Show("Se cambio la contraseña correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

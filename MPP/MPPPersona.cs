@@ -45,7 +45,7 @@ namespace MPP
                 persona.SetElementValue("Ocupacion", pPersona.Ocupacion);
                 persona.SetElementValue("Telefono", pPersona.Telefono);
             }
-           
+
             return conexion.Actualizar(NodoPadre, pPersona.Id.ToString(), persona);
 
         }
