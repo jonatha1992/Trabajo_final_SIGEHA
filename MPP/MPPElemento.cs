@@ -13,7 +13,7 @@ namespace MPP
     {
         Conexion conexion = new Conexion();
         string NodoPadre = "Elementos";
-        string NodoContenedor = "ElementoActa";
+        string NodoContenedor = "Elemento";
         public BEElemento Agregar(BEElemento pElemento)
         {
             throw new NotImplementedException();
@@ -23,7 +23,7 @@ namespace MPP
         {
             var NuevoID = conexion.ObtenerUltimoID(NodoPadre);
 
-            XElement Elemento = new XElement("ElementoActa",
+            XElement Elemento = new XElement("Elemento",
              new XElement("Id", NuevoID),
              new XElement("IdArticulo", elemento.Articulo.Id),
              new XElement("IdEstadoElemento", elemento.Estado.Id),
@@ -37,44 +37,44 @@ namespace MPP
 
         public bool Agregar_Elemento_Entrega(BEEntrega entrega, BEElemento elemento)
         {
-            XElement Elementoxml = conexion.LeerObjeto("ElementoActa", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            XElement Elementoxml = conexion.LeerObjeto("                    ", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
 
             if (Elementoxml != null)
             {
-                Elementoxml.Add(new XElement("IdEntrega", entrega.Id));  // Añade IdEntrega al ElementoActa
-                Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al ElementoActa
+                Elementoxml.Add(new XElement("IdEntrega", entrega.Id));  // Añade IdEntrega al Elemento
+                Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al Elemento
 
-                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el ElementoActa entrega el XML
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el Elemento entrega el XML
             }
 
-            return false; // No se encontró el ElementoActa
+            return false; // No se encontró el Elemento
         }
 
         public bool Eliminar_Elemento_Entrega(BEElemento elemento)
         {
-            XElement Elementoxml = conexion.LeerObjeto("ElementoActa", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            XElement Elementoxml = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
 
             if (Elementoxml != null)
             {
                 Elementoxml.Element("IdEntrega")?.Remove();
-                Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al ElementoActa
-                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el ElementoActa entrega el XML
+                Elementoxml.SetElementValue("IdEstadoElemento", elemento.Estado.Id);  // Añade IdEntrega al Elemento
+                return conexion.Actualizar("Elementos", elemento.Id.ToString(), Elementoxml); // Actualiza el Elemento entrega el XML
             }
             return false;
         }
 
         public bool Actualizar(BEElemento pElemento)
         {
-            XElement Elemento = conexion.LeerObjeto("ElementoActa", pElemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            XElement Elemento = conexion.LeerObjeto("Elemento", pElemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
             if (Elemento != null)
             {
                 Elemento.SetElementValue("IdArticulo", pElemento.Articulo.Id);
                 Elemento.SetElementValue("IdEstadoElemento", pElemento.Estado.Id);
                 Elemento.SetElementValue("Descripcion", pElemento.Descripcion);
                 Elemento.SetElementValue("Cantidad", pElemento.Cantidad);
-                return conexion.Actualizar("Elementos", pElemento.Id.ToString(), Elemento); // Actualiza el ElementoActa entrega el XML
+                return conexion.Actualizar("Elementos", pElemento.Id.ToString(), Elemento); // Actualiza el Elemento entrega el XML
             }
-            return false; // No se encontró el ElementoActa
+            return false; // No se encontró el Elemento
         }
         public bool Eliminar(BEElemento pElemento)
         {
@@ -83,12 +83,12 @@ namespace MPP
 
         public string ObtenerNroHallazgo(BEElemento bEElemento)
         {
-            // Obtener el XElement que corresponde al ElementoActa
-            XElement elementoXml = conexion.LeerObjeto("ElementoActa", bEElemento.Id.ToString());
+            // Obtener el XElement que corresponde al Elemento
+            XElement elementoXml = conexion.LeerObjeto("Elemento", bEElemento.Id.ToString());
 
             if (elementoXml != null)
             {
-                // Obtener el IdHallazgo del ElementoActa
+                // Obtener el IdHallazgo del Elemento
                 string idHallazgo = elementoXml.Element("IdHallazgo")?.Value;
 
                 // Si hay un IdHallazgo, buscar el Hallazgo correspondiente
@@ -103,17 +103,17 @@ namespace MPP
                     }
                 }
             }
-            // Si no se encontró el ElementoActa o el Hallazgo, retornar un string vacío
+            // Si no se encontró el Elemento o el Hallazgo, retornar un string vacío
             return "";
         }
         public string ObtenerNroEntrega(BEElemento bEElemento)
         {
-            // Obtener el XElement que corresponde al ElementoActa
-            XElement elementoXml = conexion.LeerObjeto("ElementoActa", bEElemento.Id.ToString());
+            // Obtener el XElement que corresponde al Elemento
+            XElement elementoXml = conexion.LeerObjeto("Elemento", bEElemento.Id.ToString());
 
             if (elementoXml != null)
             {
-                // Obtener el IdEntrega del ElementoActa
+                // Obtener el IdEntrega del Elemento
                 string idEntrega = elementoXml.Element("IdEntrega")?.Value;
 
                 // Si hay un IdHallazgo, buscar el Hallazgo correspondiente
@@ -128,7 +128,7 @@ namespace MPP
                     }
                 }
             }
-            // Si no se encontró el ElementoActa o el Hallazgo, retornar un string vacío
+            // Si no se encontró el Elemento o el Hallazgo, retornar un string vacío
             return "No entregado";
 
         }
@@ -139,7 +139,7 @@ namespace MPP
             List<BEElemento> lista = new List<BEElemento>();
 
             var Estadoxml = conexion.LeerTodos("Estado_Elemento");
-            var elementosxml = conexion.LeerTodos("ElementoActa");
+            var elementosxml = conexion.LeerTodos("Elemento");
             var articulosxml = conexion.LeerTodos("Articulo");
             var categoriasxml = conexion.LeerTodos("Categoria");
 
@@ -247,7 +247,7 @@ namespace MPP
             var articulos = conexion.LeerTodos("Articulo");
             var hallazgos = conexion.LeerTodos("Hallazgo");
             var Entregas = conexion.LeerTodos("Entrega");
-            var elementos = conexion.LeerTodos("ElementoActa");
+            var elementos = conexion.LeerTodos("Elemento");
             var Estados = conexion.LeerTodos("Estado_Elemento");
 
             // Filtra por fechas

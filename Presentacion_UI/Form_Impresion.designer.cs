@@ -36,10 +36,10 @@
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Presentacion_UI.ActaHallazgo.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 24);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 29);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(775, 714);
+            this.reportViewer1.Size = new System.Drawing.Size(775, 709);
             this.reportViewer1.TabIndex = 37;
             // 
             // customTitleBar1
@@ -53,7 +53,7 @@
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(775, 24);
+            this.customTitleBar1.Size = new System.Drawing.Size(775, 28);
             this.customTitleBar1.TabIndex = 38;
             this.customTitleBar1.Title = "Vista previa ";
             // 

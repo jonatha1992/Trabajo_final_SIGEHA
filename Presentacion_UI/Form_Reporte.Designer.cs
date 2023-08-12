@@ -80,7 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartCategoria)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBoxUnidadEntrega
+            // comboBoxUnidad
             // 
             this.comboBoxUnidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxUnidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
@@ -89,7 +89,7 @@
             this.comboBoxUnidad.FormattingEnabled = true;
             this.comboBoxUnidad.Location = new System.Drawing.Point(94, 28);
             this.comboBoxUnidad.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxUnidad.Name = "comboBoxUnidadEntrega";
+            this.comboBoxUnidad.Name = "comboBoxUnidad";
             this.comboBoxUnidad.Size = new System.Drawing.Size(196, 20);
             this.comboBoxUnidad.TabIndex = 39;
             // 

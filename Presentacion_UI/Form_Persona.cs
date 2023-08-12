@@ -43,9 +43,17 @@ namespace Presentacion_UI
         {
             var personas = bllPersonas.ListarTodo();
             var Instructores = bLLInstructor.ListarTodo();
-            textBoxLegajo = Utilidades.SetAutoCompleteTextBox(textBoxLegajo, Instructores, instructor => instructor.Legajo.ToString());
-            textBoxDniDescubridor = Utilidades.SetAutoCompleteTextBox(textBoxDniDescubridor, personas, persona => persona.DNI);
-            textBoxDniTestigo = Utilidades.SetAutoCompleteTextBox(textBoxDniTestigo, personas, persona => persona.DNI);
+
+            if (Instructores != null)
+            {
+                textBoxLegajo = Utilidades.SetAutoCompleteTextBox(textBoxLegajo, Instructores, instructor => instructor.Legajo.ToString());
+            }
+            if (personas != null)
+            {
+                textBoxDniDescubridor = Utilidades.SetAutoCompleteTextBox(textBoxDniDescubridor, personas, persona => persona.DNI);
+                textBoxDniTestigo = Utilidades.SetAutoCompleteTextBox(textBoxDniTestigo, personas, persona => persona.DNI);
+            }
+           
         }
 
 

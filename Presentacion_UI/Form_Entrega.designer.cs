@@ -430,7 +430,7 @@ namespace Presentacion_UI
             this.DgvBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBusqueda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -459,7 +459,7 @@ namespace Presentacion_UI
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.DgvBusqueda.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.DgvBusqueda.RowTemplate.Height = 60;
+            this.DgvBusqueda.RowTemplate.Height = 35;
             this.DgvBusqueda.RowTemplate.ReadOnly = true;
             this.DgvBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DgvBusqueda.Size = new System.Drawing.Size(712, 306);
@@ -587,7 +587,7 @@ namespace Presentacion_UI
             this.buttonEliminar.Location = new System.Drawing.Point(390, 172);
             this.buttonEliminar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(98, 39);
+            this.buttonEliminar.Size = new System.Drawing.Size(98, 37);
             this.buttonEliminar.TabIndex = 105;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.TextColor = System.Drawing.Color.White;
@@ -611,7 +611,7 @@ namespace Presentacion_UI
             this.buttonModificar.Location = new System.Drawing.Point(270, 172);
             this.buttonModificar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(98, 39);
+            this.buttonModificar.Size = new System.Drawing.Size(98, 37);
             this.buttonModificar.TabIndex = 104;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.TextColor = System.Drawing.Color.Black;
@@ -635,7 +635,7 @@ namespace Presentacion_UI
             this.buttonAgregar.Location = new System.Drawing.Point(148, 173);
             this.buttonAgregar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonAgregar.Name = "buttonAgregar";
-            this.buttonAgregar.Size = new System.Drawing.Size(98, 38);
+            this.buttonAgregar.Size = new System.Drawing.Size(98, 36);
             this.buttonAgregar.TabIndex = 103;
             this.buttonAgregar.Text = "Nuevo";
             this.buttonAgregar.TextColor = System.Drawing.Color.White;
@@ -806,14 +806,14 @@ namespace Presentacion_UI
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewEntregas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewEntregas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEntregas.ColumnHeadersHeight = 35;
             this.dataGridViewEntregas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewEntregas.DefaultCellStyle = dataGridViewCellStyle6;
@@ -838,7 +838,7 @@ namespace Presentacion_UI
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             this.dataGridViewEntregas.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewEntregas.RowTemplate.Height = 60;
+            this.dataGridViewEntregas.RowTemplate.Height = 33;
             this.dataGridViewEntregas.RowTemplate.ReadOnly = true;
             this.dataGridViewEntregas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewEntregas.Size = new System.Drawing.Size(525, 159);
@@ -856,13 +856,13 @@ namespace Presentacion_UI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label8.Location = new System.Drawing.Point(255, 225);
             this.label8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.Size = new System.Drawing.Size(63, 16);
             this.label8.TabIndex = 107;
             this.label8.Text = "Entregas";
             // 
@@ -872,7 +872,7 @@ namespace Presentacion_UI
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(222, 406);
+            this.label11.Location = new System.Drawing.Point(222, 416);
             this.label11.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(146, 16);
@@ -924,19 +924,19 @@ namespace Presentacion_UI
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvElementosEntrega.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.DgvElementosEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvElementosEntrega.ColumnHeadersHeight = 35;
             this.DgvElementosEntrega.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Sel});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvElementosEntrega.DefaultCellStyle = dataGridViewCellStyle10;
             this.DgvElementosEntrega.EnableHeadersVisualStyles = false;
-            this.DgvElementosEntrega.Location = new System.Drawing.Point(11, 424);
+            this.DgvElementosEntrega.Location = new System.Drawing.Point(11, 434);
             this.DgvElementosEntrega.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.DgvElementosEntrega.MultiSelect = false;
             this.DgvElementosEntrega.Name = "DgvElementosEntrega";
@@ -956,10 +956,10 @@ namespace Presentacion_UI
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
             this.DgvElementosEntrega.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.DgvElementosEntrega.RowTemplate.Height = 60;
+            this.DgvElementosEntrega.RowTemplate.Height = 35;
             this.DgvElementosEntrega.RowTemplate.ReadOnly = true;
             this.DgvElementosEntrega.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DgvElementosEntrega.Size = new System.Drawing.Size(525, 159);
+            this.DgvElementosEntrega.Size = new System.Drawing.Size(525, 149);
             this.DgvElementosEntrega.TabIndex = 64;
             this.DgvElementosEntrega.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvElementosEntrega_CellContentClick);
             // 
@@ -1012,8 +1012,8 @@ namespace Presentacion_UI
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxEntrega);
-            this.splitContainer1.Size = new System.Drawing.Size(1323, 636);
-            this.splitContainer1.SplitterDistance = 747;
+            this.splitContainer1.Size = new System.Drawing.Size(1319, 636);
+            this.splitContainer1.SplitterDistance = 744;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 97;
             // 
@@ -1028,7 +1028,7 @@ namespace Presentacion_UI
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(1330, 25);
+            this.customTitleBar1.Size = new System.Drawing.Size(1319, 25);
             this.customTitleBar1.TabIndex = 98;
             this.customTitleBar1.Title = "Busqueda y Entrega";
             // 
@@ -1037,7 +1037,7 @@ namespace Presentacion_UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1330, 630);
+            this.ClientSize = new System.Drawing.Size(1319, 666);
             this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Century Gothic", 7.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1048,6 +1048,7 @@ namespace Presentacion_UI
             this.Name = "Form_Entrega";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Entrega_FormClosing);
             this.Load += new System.EventHandler(this.Form_Entrega_Load);
             this.groupBoxBusqueda.ResumeLayout(false);
             this.groupBoxBusqueda.PerformLayout();

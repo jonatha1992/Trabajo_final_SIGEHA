@@ -140,7 +140,11 @@ namespace Presentacion_UI
                 {
                     loginToolStripMenuItem_Click(null, null);
                 }
-
+                else
+                {
+                    MessageBox.Show("No se pudo realizar la conexion con la base de datos ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
 
             }
             catch (Exception ex)

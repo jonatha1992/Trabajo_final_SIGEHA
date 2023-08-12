@@ -41,7 +41,6 @@
             this.BackUp = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionPermisos = new System.Windows.Forms.ToolStripMenuItem();
-            this.ABMCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.Bitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.Login = new System.Windows.Forms.ToolStripMenuItem();
             this.CambiarContrasena = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,14 +84,14 @@
             // CrearHallazgo
             // 
             this.CrearHallazgo.Name = "CrearHallazgo";
-            this.CrearHallazgo.Size = new System.Drawing.Size(180, 22);
+            this.CrearHallazgo.Size = new System.Drawing.Size(132, 22);
             this.CrearHallazgo.Text = "Crear";
             this.CrearHallazgo.Click += new System.EventHandler(this.CrearHallazgo_Click);
             // 
             // GestionHallazgo
             // 
             this.GestionHallazgo.Name = "GestionHallazgo";
-            this.GestionHallazgo.Size = new System.Drawing.Size(180, 22);
+            this.GestionHallazgo.Size = new System.Drawing.Size(132, 22);
             this.GestionHallazgo.Text = "Gestión";
             this.GestionHallazgo.Click += new System.EventHandler(this.GestionHallazgo_Click);
             // 
@@ -109,14 +108,14 @@
             // CrearEntrega
             // 
             this.CrearEntrega.Name = "CrearEntrega";
-            this.CrearEntrega.Size = new System.Drawing.Size(180, 22);
+            this.CrearEntrega.Size = new System.Drawing.Size(132, 22);
             this.CrearEntrega.Text = "Crear";
             this.CrearEntrega.Click += new System.EventHandler(this.CrearEntrega_Click);
             // 
             // GestionEntrega
             // 
             this.GestionEntrega.Name = "GestionEntrega";
-            this.GestionEntrega.Size = new System.Drawing.Size(180, 22);
+            this.GestionEntrega.Size = new System.Drawing.Size(132, 22);
             this.GestionEntrega.Text = "Gestión";
             this.GestionEntrega.Click += new System.EventHandler(this.GestionEntrega_Click);
             // 
@@ -127,7 +126,6 @@
             this.BackUp,
             this.GestionUsuarios,
             this.GestionPermisos,
-            this.ABMCategorias,
             this.Bitacora});
             this.Administracion.ForeColor = System.Drawing.Color.Black;
             this.Administracion.Name = "Administracion";
@@ -161,12 +159,6 @@
             this.GestionPermisos.Size = new System.Drawing.Size(199, 22);
             this.GestionPermisos.Text = "Gestion Permisos";
             this.GestionPermisos.Click += new System.EventHandler(this.GestionPermisos_Click);
-            // 
-            // ABMCategorias
-            // 
-            this.ABMCategorias.Name = "ABMCategorias";
-            this.ABMCategorias.Size = new System.Drawing.Size(199, 22);
-            this.ABMCategorias.Text = "ABM Categorias";
             // 
             // Bitacora
             // 
@@ -280,7 +272,6 @@
         private System.Windows.Forms.ToolStripMenuItem BackUp;
         private System.Windows.Forms.ToolStripMenuItem GestionUsuarios;
         private System.Windows.Forms.ToolStripMenuItem GestionPermisos;
-        private System.Windows.Forms.ToolStripMenuItem ABMCategorias;
         private System.Windows.Forms.ToolStripMenuItem CambiarContrasena;
         private System.Windows.Forms.ToolStripMenuItem Bitacora;
         private Seguridad.CustomTitleBar customTitleBar1;

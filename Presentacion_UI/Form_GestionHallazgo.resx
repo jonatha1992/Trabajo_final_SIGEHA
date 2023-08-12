@@ -526,7 +526,7 @@
     <value>16</value>
   </data>
   <data name="dgvHallazgos.ColumnHeadersHeight" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>36</value>
   </data>
   <metadata name="Seleccion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -634,7 +634,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 339</value>
+    <value>237, 339</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 1, 0</value>

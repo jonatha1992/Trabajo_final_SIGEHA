@@ -198,6 +198,9 @@
   <data name="DgvElementos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="DgvElementos.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
   <data name="DgvElementos.Size" type="System.Drawing.Size, System.Drawing">
     <value>612, 359</value>
   </data>
@@ -222,7 +225,7 @@
   <data name="customTitleBar1.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAGbASURBVHhe7d0F
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAGbASURBVHhe7d0F
         eJ3l2Qdw4kmTNPU2tdQtdbe0Td3d3d1dKT4cxtDhMgYdg8EE2QrDoRRpGV5aYEy+jTGG+/Pd9xmni9zJ
         eV63//+6fte3jybvec5Jcu7/OeeVUxDfpj5ZSe4lR8k/iAqhz8gr5FLSmridhuRH5CXyCZHWaNZX5D3y
         FLmajCTpBEEQBEHKpS25h3xPpKESZt+QM0gycSPryOdEWotTPiQ7SRZBEARBkFNSySWEh6A0OKLkWuJ0
@@ -733,6 +736,9 @@
   <data name="DgvPersonas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
+  <data name="DgvPersonas.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
   <data name="DgvPersonas.Size" type="System.Drawing.Size, System.Drawing">
     <value>612, 142</value>
   </data>
@@ -875,7 +881,7 @@
     <value>13</value>
   </data>
   <data name="dgvHallazgos.ColumnHeadersHeight" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>30</value>
   </data>
   <metadata name="Seleccion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -891,6 +897,9 @@
   </data>
   <data name="dgvHallazgos.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 305</value>
+  </data>
+  <data name="dgvHallazgos.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
   <data name="dgvHallazgos.Size" type="System.Drawing.Size, System.Drawing">
     <value>566, 274</value>

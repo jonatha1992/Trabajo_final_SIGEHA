@@ -309,13 +309,12 @@ namespace Presentacion_UI
                 this.dataGridViewEntregas.Columns["Anio"].HeaderText = "Año";
                 this.dataGridViewEntregas.Columns["Seleccion"].Visible = true;
                 this.dataGridViewEntregas.Columns["Seleccion"].Width = 25;
-                this.dataGridViewEntregas.RowTemplate.Height = 20;
 
                 this.dataGridViewEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 this.dataGridViewEntregas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
                 this.dataGridViewEntregas.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dataGridViewEntregas.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                this.dataGridViewEntregas.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 8F, FontStyle.Bold);
+                this.dataGridViewEntregas.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
                 this.dataGridViewEntregas.ColumnHeadersVisible = true;
 
             }
@@ -879,6 +878,39 @@ namespace Presentacion_UI
 
         }
 
+        private void Form_Entrega_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (ModoCreacion)
+            {
+                if (bEEntregaSeleccionada.listaElementos == null || bEEntregaSeleccionada.listaElementos?.Count == 0)
+                {
+                    var result = MessageBox.Show("La entrega no contiene elementos \n¿Desea finalizar la carga? \n Si decide salir se borrara la entrega", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        ModoCreacion = false;
+                        bLLEntrega.Eliminar(bEEntregaSeleccionada);
+                        this.Close();
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else
+                {
+                    var result = MessageBox.Show("¿Desea salir de la carga de la entrega?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        ModoCreacion = false;
+                        this.Close();
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+                }
 
+            }
+        }
     }
 }

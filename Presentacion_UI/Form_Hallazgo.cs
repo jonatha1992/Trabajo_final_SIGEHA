@@ -403,7 +403,7 @@ namespace Presentacion_UI
                 this.dgvHallazgos.Columns["Id"].Visible = false;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
                 this.dgvHallazgos.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
+                this.dgvHallazgos.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
                 this.dgvHallazgos.Columns["Seleccion"].Visible = true;
                 this.dgvHallazgos.ColumnHeadersVisible = true;
 

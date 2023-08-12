@@ -140,5 +140,10 @@ namespace Presentacion_UI
             }
 
         }
+
+        private void RadioButtonAnual_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
