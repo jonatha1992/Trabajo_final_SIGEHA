@@ -37,7 +37,7 @@ namespace MPP
 
         public bool Agregar_Elemento_Entrega(BEEntrega entrega, BEElemento elemento)
         {
-            XElement Elementoxml = conexion.LeerObjeto("                    ", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
+            XElement Elementoxml = conexion.LeerObjeto("Elemento", elemento.Id.ToString()); // Asume que LeerObjeto devuelve un XElement
 
             if (Elementoxml != null)
             {

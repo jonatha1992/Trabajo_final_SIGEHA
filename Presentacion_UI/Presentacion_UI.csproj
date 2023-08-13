@@ -359,7 +359,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="articulos-perdidos.ico" />
-    <Content Include="icono.ico" />
     <Content Include="Logo-PSA.ico" />
     <None Include="Resources\icons8-visible-16.png" />
     <None Include="Resources\icons8-visible-16 %281%29.png" />
