@@ -46,9 +46,10 @@
             // 
             this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
             this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Color_Borde = System.Drawing.Color.SteelBlue;
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.customTitleBar1.ForeColor = System.Drawing.SystemColors.Window;
-            this.customTitleBar1.Icon = global::Presentacion_UI.Properties.Resources.articulos_perdidos1;
+            this.customTitleBar1.Icon = global::Presentacion_UI.Properties.Resources.lupa;
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;

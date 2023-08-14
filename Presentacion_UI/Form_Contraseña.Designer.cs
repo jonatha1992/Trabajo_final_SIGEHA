@@ -73,9 +73,9 @@ namespace Presentacion_UI
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(12, 30);
+            this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 327);
+            this.groupBox1.Size = new System.Drawing.Size(265, 317);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Usuario";
@@ -197,13 +197,14 @@ namespace Presentacion_UI
             // 
             this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
             this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Color_Borde = System.Drawing.Color.SteelBlue;
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Icon = null;
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(294, 24);
+            this.customTitleBar1.Size = new System.Drawing.Size(294, 28);
             this.customTitleBar1.TabIndex = 26;
             this.customTitleBar1.Title = "Cambiar Contraseña";
             // 

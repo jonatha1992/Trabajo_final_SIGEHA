@@ -38,6 +38,8 @@ namespace Presentacion_UI
             this.ButtonSalir = new Seguridad.RJButton();
             this.ButtonIngresar = new Seguridad.RJButton();
             this.TextBoxPassword1 = new Seguridad.TextBoxPassword();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -45,7 +47,7 @@ namespace Presentacion_UI
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(13, 87);
+            this.label2.Location = new System.Drawing.Point(194, 103);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
@@ -57,7 +59,7 @@ namespace Presentacion_UI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(41, 45);
+            this.label1.Location = new System.Drawing.Point(222, 61);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 17);
@@ -67,7 +69,7 @@ namespace Presentacion_UI
             // textBoxUsuario
             // 
             this.textBoxUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsuario.Location = new System.Drawing.Point(120, 43);
+            this.textBoxUsuario.Location = new System.Drawing.Point(296, 60);
             this.textBoxUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.Size = new System.Drawing.Size(177, 23);
@@ -77,13 +79,14 @@ namespace Presentacion_UI
             // 
             this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
             this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Color_Borde = System.Drawing.Color.SteelBlue;
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Icon = null;
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.customTitleBar1.MaximizeButtonVisible = true;
             this.customTitleBar1.MinimizeButtonVisible = true;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(359, 26);
+            this.customTitleBar1.Size = new System.Drawing.Size(535, 25);
             this.customTitleBar1.TabIndex = 20;
             this.customTitleBar1.Title = "Login";
             // 
@@ -98,7 +101,7 @@ namespace Presentacion_UI
             this.ButtonSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSalir.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonSalir.ForeColor = System.Drawing.Color.White;
-            this.ButtonSalir.Location = new System.Drawing.Point(206, 121);
+            this.ButtonSalir.Location = new System.Drawing.Point(382, 138);
             this.ButtonSalir.Name = "ButtonSalir";
             this.ButtonSalir.Size = new System.Drawing.Size(91, 40);
             this.ButtonSalir.TabIndex = 19;
@@ -118,7 +121,7 @@ namespace Presentacion_UI
             this.ButtonIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonIngresar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonIngresar.ForeColor = System.Drawing.Color.White;
-            this.ButtonIngresar.Location = new System.Drawing.Point(67, 121);
+            this.ButtonIngresar.Location = new System.Drawing.Point(243, 138);
             this.ButtonIngresar.Name = "ButtonIngresar";
             this.ButtonIngresar.Size = new System.Drawing.Size(91, 40);
             this.ButtonIngresar.TabIndex = 18;
@@ -131,19 +134,30 @@ namespace Presentacion_UI
             // 
             this.TextBoxPassword1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.TextBoxPassword1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxPassword1.Location = new System.Drawing.Point(115, 73);
+            this.TextBoxPassword1.Location = new System.Drawing.Point(291, 90);
             this.TextBoxPassword1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TextBoxPassword1.Name = "TextBoxPassword1";
             this.TextBoxPassword1.Size = new System.Drawing.Size(226, 43);
             this.TextBoxPassword1.TabIndex = 17;
             this.TextBoxPassword1.Texto = "";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Presentacion_UI.Properties.Resources.Oficial_Entrega;
+            this.pictureBox1.Location = new System.Drawing.Point(44, 46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(143, 118);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(359, 173);
+            this.ClientSize = new System.Drawing.Size(535, 201);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.ButtonSalir);
             this.Controls.Add(this.ButtonIngresar);
@@ -162,6 +176,7 @@ namespace Presentacion_UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form_Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +190,6 @@ namespace Presentacion_UI
         private RJButton ButtonIngresar;
         private RJButton ButtonSalir;
         private CustomTitleBar customTitleBar1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

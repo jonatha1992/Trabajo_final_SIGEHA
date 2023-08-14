@@ -139,8 +139,9 @@ namespace Presentacion_UI
             // 
             this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
             this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Color_Borde = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.customTitleBar1, "customTitleBar1");
-            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Icon = null;
             this.customTitleBar1.MaximizeButtonVisible = true;
             this.customTitleBar1.MinimizeButtonVisible = true;
             this.customTitleBar1.Name = "customTitleBar1";

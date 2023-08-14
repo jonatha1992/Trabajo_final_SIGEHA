@@ -50,7 +50,7 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(3, 44);
+            this.label5.Location = new System.Drawing.Point(25, 77);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 17);
@@ -62,7 +62,7 @@
             this.textBoxCriterio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBoxCriterio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxCriterio.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCriterio.Location = new System.Drawing.Point(4, 64);
+            this.textBoxCriterio.Location = new System.Drawing.Point(26, 97);
             this.textBoxCriterio.MaxLength = 100;
             this.textBoxCriterio.Name = "textBoxCriterio";
             this.textBoxCriterio.Size = new System.Drawing.Size(169, 24);
@@ -98,7 +98,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvRegistros.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvRegistros.Location = new System.Drawing.Point(186, 64);
+            this.DgvRegistros.Location = new System.Drawing.Point(218, 58);
             this.DgvRegistros.Margin = new System.Windows.Forms.Padding(2);
             this.DgvRegistros.MultiSelect = false;
             this.DgvRegistros.Name = "DgvRegistros";
@@ -121,7 +121,7 @@
             this.DgvRegistros.RowTemplate.Height = 60;
             this.DgvRegistros.RowTemplate.ReadOnly = true;
             this.DgvRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvRegistros.Size = new System.Drawing.Size(576, 296);
+            this.DgvRegistros.Size = new System.Drawing.Size(633, 296);
             this.DgvRegistros.TabIndex = 87;
             // 
             // Sel
@@ -147,7 +147,7 @@
             this.buttonLimpiar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLimpiar.ForeColor = System.Drawing.Color.White;
             this.buttonLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("buttonLimpiar.Image")));
-            this.buttonLimpiar.Location = new System.Drawing.Point(108, 104);
+            this.buttonLimpiar.Location = new System.Drawing.Point(130, 137);
             this.buttonLimpiar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonLimpiar.Name = "buttonLimpiar";
             this.buttonLimpiar.Size = new System.Drawing.Size(65, 31);
@@ -169,7 +169,7 @@
             this.buttonBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBuscar.ForeColor = System.Drawing.Color.White;
             this.buttonBuscar.Image = global::Presentacion_UI.Properties.Resources.lupa;
-            this.buttonBuscar.Location = new System.Drawing.Point(6, 104);
+            this.buttonBuscar.Location = new System.Drawing.Point(28, 137);
             this.buttonBuscar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(84, 31);
@@ -186,7 +186,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(447, 44);
+            this.label1.Location = new System.Drawing.Point(511, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 17);
@@ -197,13 +197,14 @@
             // 
             this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
             this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Color_Borde = System.Drawing.Color.SteelBlue;
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customTitleBar1.Icon = ((System.Drawing.Image)(resources.GetObject("customTitleBar1.Icon")));
+            this.customTitleBar1.Icon = null;
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.customTitleBar1.MaximizeButtonVisible = false;
             this.customTitleBar1.MinimizeButtonVisible = false;
             this.customTitleBar1.Name = "customTitleBar1";
-            this.customTitleBar1.Size = new System.Drawing.Size(773, 24);
+            this.customTitleBar1.Size = new System.Drawing.Size(862, 24);
             this.customTitleBar1.TabIndex = 94;
             this.customTitleBar1.Title = "Bitacora";
             // 
@@ -213,7 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(773, 371);
+            this.ClientSize = new System.Drawing.Size(862, 370);
             this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonBuscar);

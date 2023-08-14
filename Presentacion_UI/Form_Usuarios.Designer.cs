@@ -62,8 +62,8 @@ namespace Presentacion_UI
             this.rjButtonDesasignarDestino = new Seguridad.RJButton();
             this.radiobuttonUrsa = new Seguridad.RJRadioButton();
             this.rjButtonAsignarDestino = new Seguridad.RJButton();
-            this.textBoxPassword2 = new Seguridad.TextBoxPassword();
             this.textBoxPassword1 = new Seguridad.TextBoxPassword();
+            this.textBoxPassword2 = new Seguridad.TextBoxPassword();
             this.customTitleBar1 = new Seguridad.CustomTitleBar();
             this.ButtonEliminarUsuario = new Seguridad.RJButton();
             this.ButtonGenerarUsuario = new Seguridad.RJButton();
@@ -532,16 +532,6 @@ namespace Presentacion_UI
             this.rjButtonAsignarDestino.UseVisualStyleBackColor = false;
             this.rjButtonAsignarDestino.Click += new System.EventHandler(this.buttonAsignarDestino_Click);
             // 
-            // textBoxPassword2
-            // 
-            this.textBoxPassword2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxPassword2.Location = new System.Drawing.Point(37, 219);
-            this.textBoxPassword2.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
-            this.textBoxPassword2.Name = "textBoxPassword2";
-            this.textBoxPassword2.Size = new System.Drawing.Size(227, 28);
-            this.textBoxPassword2.TabIndex = 29;
-            this.textBoxPassword2.Texto = "";
-            // 
             // textBoxPassword1
             // 
             this.textBoxPassword1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -552,12 +542,23 @@ namespace Presentacion_UI
             this.textBoxPassword1.TabIndex = 28;
             this.textBoxPassword1.Texto = "";
             // 
+            // textBoxPassword2
+            // 
+            this.textBoxPassword2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxPassword2.Location = new System.Drawing.Point(37, 219);
+            this.textBoxPassword2.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.textBoxPassword2.Name = "textBoxPassword2";
+            this.textBoxPassword2.Size = new System.Drawing.Size(227, 28);
+            this.textBoxPassword2.TabIndex = 29;
+            this.textBoxPassword2.Texto = "";
+            // 
             // customTitleBar1
             // 
             this.customTitleBar1.BackColor = System.Drawing.Color.SlateGray;
             this.customTitleBar1.CloseButtonVisible = true;
+            this.customTitleBar1.Color_Borde = System.Drawing.Color.SteelBlue;
             this.customTitleBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.customTitleBar1.Icon = global::Presentacion_UI.Properties.Resources.articulos_perdidos1;
+            this.customTitleBar1.Icon = null;
             this.customTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.customTitleBar1.MaximizeButtonVisible = true;
             this.customTitleBar1.MinimizeButtonVisible = true;

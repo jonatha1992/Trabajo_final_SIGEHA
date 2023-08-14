@@ -98,37 +98,6 @@ namespace Presentacion_UI
 
         }
 
-        //public List<string> ObternerTodosMenuStripItems(MenuStrip menuStrip)
-        //{
-        //    List<string> items = new List<string>();
-
-        //    foreach (ToolStripItem item in menuStrip.Items)
-        //    {
-        //        items.Add(item.Name);
-        //        if (item is ToolStripMenuItem)
-        //        {
-        //            items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)item));
-        //        }
-        //    }
-
-        //    return items;
-        //}
-        //private List<string> ObtenerDropDownItems(ToolStripMenuItem item)
-        //{
-        //    List<string> items = new List<string>();
-
-        //    foreach (ToolStripItem dropdownItem in item.DropDownItems)
-        //    {
-        //        items.Add(dropdownItem.Name);
-        //        if (dropdownItem is ToolStripMenuItem)
-        //        {
-        //            items.AddRange(ObtenerDropDownItems((ToolStripMenuItem)dropdownItem));
-        //        }
-        //    }
-
-        //    return items;
-        //}
-
 
         private void Form_Contenedor_Load(object sender, EventArgs e)
         {
@@ -180,7 +149,6 @@ namespace Presentacion_UI
                 {
                     if (form_login == null || form_login.IsDisposed)
                     {
-                        this.WindowState = FormWindowState.Maximized;
                         usuario = null;
                         form_login = new Form_Login();
                         form_login.MdiParent = this;
@@ -401,6 +369,6 @@ namespace Presentacion_UI
             }
         }
 
-
+      
     }
 }
