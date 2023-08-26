@@ -50,7 +50,7 @@ namespace Presentacion_UI
             this.label2.Location = new System.Drawing.Point(194, 103);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 17);
+            this.label2.Size = new System.Drawing.Size(108, 19);
             this.label2.TabIndex = 14;
             this.label2.Text = "Contraseña:";
             // 
@@ -62,7 +62,7 @@ namespace Presentacion_UI
             this.label1.Location = new System.Drawing.Point(222, 61);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
+            this.label1.Size = new System.Drawing.Size(73, 19);
             this.label1.TabIndex = 13;
             this.label1.Text = "Usuario:";
             // 
@@ -72,7 +72,7 @@ namespace Presentacion_UI
             this.textBoxUsuario.Location = new System.Drawing.Point(296, 60);
             this.textBoxUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxUsuario.Name = "textBoxUsuario";
-            this.textBoxUsuario.Size = new System.Drawing.Size(177, 23);
+            this.textBoxUsuario.Size = new System.Drawing.Size(177, 27);
             this.textBoxUsuario.TabIndex = 12;
             // 
             // customTitleBar1
@@ -143,7 +143,7 @@ namespace Presentacion_UI
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Presentacion_UI.Properties.Resources.Oficial_Entrega;
+            this.pictureBox1.Image = global::Presentacion_UI.Properties.Resources.Logo_PSA;
             this.pictureBox1.Location = new System.Drawing.Point(44, 46);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(143, 118);
@@ -153,7 +153,7 @@ namespace Presentacion_UI
             // 
             // Form_Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(535, 201);
